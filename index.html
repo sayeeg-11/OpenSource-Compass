@@ -39,7 +39,7 @@
             border-bottom: 1px solid #eaeaea;
             padding: 16px 8%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
         }
 
@@ -47,7 +47,9 @@
             color: var(--primary-blue);
             font-size: 22px;
         }
-
+        nav {
+            margin-left: auto;
+        }
         nav a {
             margin-left: 24px;
             text-decoration: none;
@@ -193,6 +195,9 @@
 
         .theme-animate {
             animation: iconSwitch 0.4s ease;
+        }
+        #themeToggle {
+            margin-left: 16px;
         }
 
     </style>
