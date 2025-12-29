@@ -5,6 +5,7 @@
     <title>OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -161,7 +162,39 @@
             .hero h2 {
                 font-size: 32px;
             }
+            nav {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
         }
+
+/* Dark mode applied here */
+
+        .dark-mode {
+            --white: #1a1a1a;
+            --text-dark: #ffffff;
+            --light-gray: #2a2a2a;
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+        #themeToggle:hover {
+            transform: scale(1.15);
+            transition: 0.2s;
+        }
+        /* 🔄 Icon animation */
+        @keyframes iconSwitch {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(0.7); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .theme-animate {
+            animation: iconSwitch 0.4s ease;
+        }
+
     </style>
 </head>
 
@@ -177,6 +210,8 @@
         <a href="#">Resources</a>
         <a href="#">Contribute</a>
     </nav>
+    <!-- Dark Mode Switch Applied 🌙/☀️-->
+    <button id="themeToggle" style="margin-left:20px; background:none; border:none; font-size:20px; cursor:pointer;">🌙</button>
 </header>
 
 <!-- Hero Section -->
@@ -250,6 +285,40 @@
 <footer>
     <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
 </footer>
+
+<!--Dark mode-->
+
+<script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Load saved theme
+    if(localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+}
+
+// toggle theme with animation
+    toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    // animation
+    toggleBtn.classList.add("theme-animate");
+
+    if(body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+
+    // remove animation class after animation completes
+    setTimeout(() => {
+        toggleBtn.classList.remove("theme-animate");
+    }, 400); // matches animation time
+});
+</script>
 
 </body>
 </html>
