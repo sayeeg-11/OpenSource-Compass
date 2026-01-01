@@ -121,6 +121,16 @@
             padding: 24px;
             border-radius: 8px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+            transition: 
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+            border-color: var(--secondary-blue);
         }
 
         .card h4 {
