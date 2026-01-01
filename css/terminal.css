@@ -1,0 +1,91 @@
+/* =========================
+   Terminal Styles
+========================= */
+.terminal-window {
+    background: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    margin-top: 24px;
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red {
+    background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+    background: #ffbd2e;
+}
+
+.terminal-dot.green {
+    background: #27c93f;
+}
+
+.terminal-title {
+    color: #999;
+    font-size: 12px;
+    margin-left: 12px;
+}
+
+.terminal-body {
+    padding: 16px;
+    height: 300px;
+    overflow-y: auto;
+    color: #f0f0f0;
+    font-size: 14px;
+}
+
+.term-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.term-line.success {
+    color: #4af626;
+}
+
+.term-line.error {
+    color: #ff5f56;
+}
+
+.term-line.warning {
+    color: #ffbd2e;
+}
+
+.term-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.term-prompt {
+    color: #27c93f;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+#term-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+    outline: none;
+    caret-color: #fff;
+}

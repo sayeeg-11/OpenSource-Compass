@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Git & GitHub - OpenSource Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="../index.html" style="color: inherit; text-decoration: none;">OpenSource Compass</a></h1>
+        <nav>
+            <a href="../index.html">Home</a>
+
+            <a href="../programs/index.html">Programs</a>
+            <a href="../resources/videos.html">Resources</a>
+            <a href="git-github.html" style="color: var(--secondary-blue);">Contribute</a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Contribution Guide</h2>
+            <p class="section-desc">
+                Learn how to contribute to open source projects. We'll cover the general workflow for any project and
+                specific instructions for <strong>OpenSource Compass</strong>.
+            </p>
+
+            <style>
+                .step {
+                    margin-bottom: 40px;
+                }
+
+                .step h3 {
+                    font-size: 20px;
+                    color: var(--primary-blue);
+                    margin-bottom: 8px;
+                }
+
+                .step p {
+                    margin-bottom: 8px;
+                    color: #444;
+                }
+
+                .divider {
+                    margin: 60px 0;
+                    border: 0;
+                    border-top: 1px solid #eaeaea;
+                }
+
+                .highlight-box {
+                    background-color: var(--light-gray);
+                    padding: 24px;
+                    border-radius: 8px;
+                    border-left: 4px solid var(--secondary-blue);
+                    margin-bottom: 40px;
+                }
+            </style>
+
+            <!-- PART 1: Contributing to THIS Project -->
+            <div class="highlight-box">
+                <h3 style="color: var(--primary-blue); margin-bottom: 12px;">🌟 Contribute to OpenSource Compass</h3>
+                <p>Want to improve this website? We'd love your help! Use the link below to find our repository.</p>
+                <a href="https://github.com/hr720/OpenSource-Compass" target="_blank" class="btn-primary"
+                    style="margin-top: 16px;">Visit Project Repository</a>
+            </div>
+
+            <hr class="divider">
+
+            <!-- PART 2: General Workflow -->
+            <h2 class="section-title">How to Contribute to Any Project</h2>
+            <p class="section-desc">Follow these standard steps to make your first contribution to any open-source
+                repository.</p>
+
+            <div class="guide-content">
+
+                <div class="step">
+                    <h3>1. Find an Issue & Read Guidelines</h3>
+                    <p>Before writing code, check the project's <strong>Issues</strong> tab for something to fix. Always
+                        read <code>CONTRIBUTING.md</code> to understand the project's rules.</p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Fork the Repository</h3>
+                    <p>Click the <strong>Fork</strong> button on the top right of the repository page. This creates your
+                        own copy of the project where you can make changes safely.</p>
+                </div>
+
+                <div class="step">
+                    <h3>3. Clone Your Fork</h3>
+                    <p>Download your forked copy to your local machine using the terminal/command prompt.</p>
+                    <div class="code-block">git clone https://github.com/YOUR-USERNAME/PROJECT-NAME.git</div>
+                </div>
+
+                <div class="step">
+                    <h3>4. Create a New Branch</h3>
+                    <p>Never work on the <code>main</code> branch. Create a feature branch with a descriptive name.</p>
+                    <div class="code-block">git checkout -b feature/add-new-guide</div>
+                </div>
+
+                <div class="step">
+                    <h3>5. Make Changes & Commit</h3>
+                    <p>Edit the files in your code editor. Once done, stage and commit your changes with a clear
+                        message.</p>
+                    <div class="code-block">
+                        git add .
+                        git commit -m "Added a detailed guide on Git workflow"
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3>6. Push Changes</h3>
+                    <p>Upload your changes from your computer to your forked repository on GitHub.</p>
+                    <div class="code-block">git push origin feature/add-new-guide</div>
+                </div>
+
+                <div class="step">
+                    <h3>7. Create a Pull Request (PR)</h3>
+                    <p>Go to the original repository. You’ll usually see a "Compare & pull request" button. Click it,
+                        describe your changes, and submit!</p>
+                </div>
+
+                <div class="step">
+                    <h3>8. Sync with Upstream (Optional but Recommended)</h3>
+                    <p>If the original project has changed while you were working, you need to keep your fork updated.
+                    </p>
+                    <div class="code-block">
+                        git remote add upstream https://github.com/ORIGINAL-OWNER/PROJECT-NAME.git
+                        git fetch upstream
+                        git merge upstream/main
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

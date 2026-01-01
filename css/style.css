@@ -5,9 +5,15 @@
     --primary-blue: #1F3C88;
     --secondary-blue: #4D96FF;
     --light-gray: #F5F7FA;
-    --text-dark: #2E2E2E;
+    --text-dark: #33302E;
+    /* Warmer dark */
     --success-green: #3CCF91;
     --white: #FFFFFF;
+
+    /* New Theme Variables */
+    --bg-cream: #FDFBF7;
+    --text-heading: #4B4237;
+    /* Darker creamy (Coffee/Taupe) */
 }
 
 /* =========================
@@ -21,9 +27,21 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--white);
+    background-color: var(--bg-cream);
     color: var(--text-dark);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-heading);
 }
 
 a {
@@ -191,7 +209,7 @@ footer {
     color: var(--white);
     text-align: center;
     padding: 24px;
-    margin-top: 48px;
+    margin-top: auto;
 }
 
 footer p {
@@ -224,4 +242,41 @@ footer p {
     .hero p {
         font-size: 16px;
     }
+}
+
+/* =========================
+   Code Block & Copy Button
+========================= */
+.code-block-wrapper {
+    position: relative;
+    margin-top: 16px;
+}
+
+.code-block {
+    background: #E1E8F5;
+    padding: 16px;
+    border-radius: 6px;
+    font-family: monospace;
+    color: #333;
+    overflow-x: auto;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: var(--white);
+    border: 1px solid #ccc;
+    color: var(--text-dark);
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    border-color: var(--secondary-blue);
 }

@@ -1,0 +1,70 @@
+{
+  "programs": [
+    {
+      "id": "swoc",
+      "name": "Social Winter of Code",
+      "description": "An open-source program that aims to bring students into the world of open source development.",
+      "season": "Winter",
+      "difficulty": "Beginner",
+      "status": "Upcoming",
+      "tags": ["Mentorship", "Web", "App"],
+      "link": "swoc.html",
+      "official_link": "https://swoc.tech/"
+    },
+    {
+      "id": "gssoc",
+      "name": "GirlScript Summer of Code",
+      "description": "A three-month long open-source program conducted by GirlScript Foundation.",
+      "season": "Summer",
+      "difficulty": "Intermediate",
+      "status": "Annual",
+      "tags": ["Women in Tech", "Global"],
+      "link": "gssoc.html",
+      "official_link": "https://gssoc.girlscript.tech/"
+    },
+    {
+      "id": "gsoc",
+      "name": "Google Summer of Code",
+      "description": "A global program focused on bringing more student developers into open source software development.",
+      "season": "Summer",
+      "difficulty": "Advanced",
+      "status": "Annual",
+      "tags": ["Stipend", "Google"],
+      "link": "gsoc.html",
+      "official_link": "https://summerofcode.withgoogle.com/"
+    },
+    {
+      "id": "hacktoberfest",
+      "name": "Hacktoberfest",
+      "description": "A month-long celebration of open source software run by DigitalOcean. Contributing to any open source project counts!",
+      "season": "Fall",
+      "difficulty": "Beginner",
+      "status": "Annual",
+      "tags": ["T-Shirt", "Global"],
+      "link": "#",
+      "official_link": "https://hacktoberfest.com/"
+    },
+    {
+      "id": "mlh-fellowship",
+      "name": "MLH Fellowship",
+      "description": "A remote internship alternative for aspiring software engineers. You'll contribute to real open source projects.",
+      "season": "All Year",
+      "difficulty": "Intermediate",
+      "status": "Open",
+      "tags": ["Fellowship", "Remote"],
+      "link": "#",
+      "official_link": "https://fellowship.mlh.io/"
+    },
+    {
+      "id": "outreachy",
+      "name": "Outreachy",
+      "description": "Internships for people subject to systemic bias and impacted by underrepresentation in the technical industry.",
+      "season": "Bi-annual",
+      "difficulty": "Beginner",
+      "status": "Open",
+      "tags": ["Paid", "Remote", "Diversity"],
+      "link": "#",
+      "official_link": "https://www.outreachy.org/"
+    }
+  ]
+}
