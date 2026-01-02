@@ -301,6 +301,36 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
                 font-size: 32px;
             }
         }
+        /* ---------- Scroll To Top Button ---------- */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+
+            font-size: 20px;
+            cursor: pointer;
+
+            display: none;
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: 
+                transform 0.3s ease,
+                background-color 0.3s ease;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-4px);
+        }
+
     </style>
 </head>
 
@@ -419,6 +449,28 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
 <footer>
     <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
 </footer>
+
+<button id="scrollTopBtn" title="Go to top">↑</button>
+
+<script>
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
 
 </body>
 </html>
