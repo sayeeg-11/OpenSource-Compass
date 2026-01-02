@@ -1,3 +1,4 @@
+
 /* =========================
    Global Variables
 ========================= */
@@ -23,6 +24,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
@@ -62,14 +64,6 @@ ul {
     margin: auto;
 }
 
-.section {
-    padding: 64px 0;
-}
-
-.section-light {
-    background-color: var(--light-gray);
-}
-
 /* =========================
    Header / Navbar
 ========================= */
@@ -80,22 +74,49 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* For the hamburger menu */
 }
 
 header h1 {
-    font-size: 22px;
     color: var(--primary-blue);
-    font-weight: 700;
+    font-size: 22px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
     margin-left: 24px;
-    font-weight: 500;
+    text-decoration: none;
     color: var(--text-dark);
+    font-weight: 500;
 }
 
 nav a:hover {
     color: var(--secondary-blue);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    margin: 5px 0;
+}
+
+.close-icon {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* =========================
@@ -104,6 +125,9 @@ nav a:hover {
 .hero {
     background-color: var(--light-gray);
     padding: 80px 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .hero h2 {
@@ -113,43 +137,47 @@ nav a:hover {
 }
 
 .hero p {
-    max-width: 620px;
+    max-width: 600px;
     font-size: 18px;
     margin-bottom: 32px;
 }
 
-.hero .btn {
+.hero button {
     background-color: var(--secondary-blue);
     color: var(--white);
+    border: none;
     padding: 14px 28px;
-    border-radius: 6px;
     font-size: 16px;
-    font-weight: 600;
-    display: inline-block;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.hero .btn:hover {
+.hero button:hover {
     background-color: var(--primary-blue);
 }
 
 /* =========================
-   Section Titles
+   Section Common
 ========================= */
-.section-title {
+section {
+    padding: 64px 8%;
+}
+
+section h3 {
     font-size: 28px;
     color: var(--primary-blue);
     margin-bottom: 12px;
 }
 
-.section-desc {
-    max-width: 720px;
+section p {
+    max-width: 700px;
     margin-bottom: 32px;
 }
 
 /* =========================
    Cards
 ========================= */
-.card-grid {
+.card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 24px;
@@ -159,22 +187,21 @@ nav a:hover {
     background-color: var(--white);
     padding: 24px;
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-.card h3 {
-    color: var(--secondary-blue);
+.card h4 {
     margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.card p {
-    font-size: 15px;
+    color: var(--secondary-blue);
 }
 
 /* =========================
-   Program Badge
+   Programs Section
 ========================= */
+.programs {
+    background-color: var(--light-gray);
+}
+
 .badge {
     display: inline-block;
     background-color: var(--success-green);
@@ -183,22 +210,6 @@ nav a:hover {
     border-radius: 12px;
     font-size: 12px;
     margin-top: 10px;
-}
-
-/* =========================
-   Buttons
-========================= */
-.btn-primary {
-    background-color: var(--secondary-blue);
-    color: var(--white);
-    padding: 12px 22px;
-    border-radius: 6px;
-    font-weight: 600;
-    display: inline-block;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-blue);
 }
 
 /* =========================
@@ -220,28 +231,115 @@ footer p {
    Responsive Design
 ========================= */
 @media (max-width: 768px) {
-
     header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active {
+        display: none;
     }
 
     nav {
-        margin-top: 10px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--white);
+        padding: 20px 8%;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav.active .close-icon {
+        display: block;
     }
 
     nav a {
-        margin-left: 0;
-        margin-right: 16px;
+        margin: 10px 0;
+        width: 100%;
+        font-size: 20px;
+        margin: 20px 0;
     }
 
+    .hero {
+        padding: 60px 8%;
+    }
+    
     .hero h2 {
         font-size: 32px;
     }
-
+    
     .hero p {
         font-size: 16px;
     }
+
+    section {
+        padding: 48px 8%;
+    }
+
+    section h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Hover effect to the cards */
+
+/* Base card style */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  will-change: transform, box-shadow;
+}
+
+/* Hover interaction */
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Keyboard accessibility (important for a11y) */
+.card:focus-within {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: smoother feel on touch devices */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 }
 
 /* =========================

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenSource Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --primary-blue: #1F3C88;
+            --secondary-blue: #4D96FF;
+            --light-gray: #F5F7FA;
+            --text-dark: #2E2E2E;
+            --success-green: #3CCF91;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ---------- Navbar ---------- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid #eaeaea;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 22px;
+        }
+
+        nav a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--secondary-blue);
+        }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            background-color: var(--light-gray);
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        .hero button {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* ---------- Section Common ---------- */
+        section {
+            padding: 64px 8%;
+        }
+
+        section h3 {
+            font-size: 28px;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        section p {
+            max-width: 700px;
+            margin-bottom: 32px;
+        }
+
+        /* ---------- Cards ---------- */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-blue);
+        }
+
+        /* ---------- Programs Section ---------- */
+        .programs {
+            background-color: var(--light-gray);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--success-green);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 24px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<!-- Navbar -->
+<header>
+    <h1>OpenSource Compass</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="guides.html">Guides</a>
+        <a href="#">Programs</a>
+        <a href="#">Resources</a>
+        <a href="#">Contribute</a>
+    </nav>
+</header>
+
+<div class="py-5"> 
+    <h1 class="display-5 fw-bold text-center" style="color: #1F3C88;">Outreachy</h1><br>
+
+    <div class="col-lg-6 mx-auto"> 
+        <p class="fs-5 mb-4 text-center">
+  Paid internship program for underrepresented contributors.
+</p>
+
+    </div> 
+</div>
+
+<iframe 
+  src="guides_pdf/Outreachy.pdf" 
+  width="100%" 
+  height="600px" 
+  style="border:1px solid #ccc;"
+  title="Embedded PDF">
+</iframe>
+
+<footer>
+    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+</footer>
+
+</html>

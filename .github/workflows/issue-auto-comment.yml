@@ -1,0 +1,38 @@
+name: Issue Auto Comment (OpenSource Compass)
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  auto-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Comment on new issue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const user = context.payload.issue.user.login;
+
+            const comment = ` 
+            Thanks @${user}! 👋  
+            Your issue is important — maintainers will take a look soon.
+
+            **Before contributing, please note:**  
+            🔹 Make sure you check **[#23 – Important Contributing Guidelines for OpenSource Compass](https://github.com/sayeeg-11/OpenSource-Compass/issues/23)**  
+            🔹 **PRs should be raised only after the issue is assigned**
+            `;
+
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
