@@ -1,8 +1,7 @@
-﻿<div align="center">
+<div align="center">
 
 # 🌍 OpenSource Compass  
-
-### ✨ Lost in open source? We've got your map! 🗺️
+### *Navigate your Open Source journey with clarity.*
 
 <img src="assets/swoc_banner.png" alt="OpenSource Compass Banner" width="100%"/>
 
@@ -14,287 +13,170 @@
 
 ---
 
-## 🚀 What is OpenSource Compass?
+## 📌 About the Project
 
-Your **ultimate guide** to jumping into the open source world! No fancy jargon. No confusing steps. Just real answers for beginners who want to start contributing and making an impact.
+**OpenSource Compass** is a beginner-friendly, community-driven web platform designed to help students and first-time contributors confidently start their open-source journey.  
 
-Think of us as your friend who knows all the shortcuts! 🤝
+The project provides structured guidance on:
+- Open source fundamentals  
+- Git & GitHub workflows  
+- Contribution best practices  
+- Common do’s and don’ts  
+- A centralized hub for ongoing and upcoming open-source programs  
 
----
-
-## 💡 Our Promise
-
-**We believe:** Every developer deserves a clear path to contributing.
-
-**We deliver:** Simple guides, real examples, and friendly community support to get you started.
-
----
-
-## 🎯 What You'll Learn Here
-
-| 📖 Guides | 🎥 Resources | 💬 Community |
-|-----------|-------------|-----------|
-| Step-by-step tutorials | Video lessons | Support & help |
-| Do's and Don'ts | Articles & tips | Mentorship |
-| Real examples | Learning paths | Making friends |
+Built initially using **HTML, CSS, and JavaScript**, the platform focuses on simplicity, accessibility, and meaningful community contributions.
 
 ---
 
-## ✨ Amazing Features
+## 🎯 Project Objectives
 
-🔥 **Beginner Friendly Guides** - No experience needed!
-
-🚀 **Quick Start Instructions** - Get going in 5 minutes
-
-🎓 **Learn Git & GitHub** - From zero to hero
-
-📚 **Tons of Resources** - Videos, articles, everything
-
-🌟 **Program Information** - SWOC, GSSoC, GSoC & more
-
-🤝 **Community Support** - We've got your back!
+- Help beginners understand open source in a structured way  
+- Reduce confusion and common beginner mistakes  
+- Provide a single platform for open-source program information  
+- Encourage quality contributions and collaborative learning  
+- Create an easy-to-contribute project for newcomers  
 
 ---
 
-## 💻 What We Use
+## 🧩 Features
 
-- **HTML5** - Beautiful structure
-- **CSS3** - Stunning design  
-- **JavaScript** - Cool features
-- **JSON** - Smart data handling
+- 📘 Beginner-friendly Open Source guides  
+- ⚠️ Do’s and Don’ts for contributors  
+- 🛠 Step-by-step contribution workflow  
+- 🎥 Curated learning resources & videos  
+- 📅 Open Source Programs Hub (SWOC, GSSoC, GSoC, Hacktoberfest, etc.)  
+- 🤝 Community-driven content  
 
 ---
 
-## 📂 How It's Organized
+## 🛠 Tech Stack
+
+- **HTML** – Structure  
+- **CSS** – Styling & responsiveness  
+- **JavaScript** – Interactivity  
+- **JSON** – Data handling (program listings, resources)
+
+---
+
+## 📂 Project Structure
 
 ```
+
 OpenSource-Compass/
-├── 📄 index.html (Main page)
-├── 📁 guides/ (Learning materials)
-├── 📁 programs/ (Open source programs)
-├── 📁 resources/ (Videos & articles)
-├── 🎨 css/ (Beautiful styling)
-├── ⚙️ js/ (Interactive features)
-└── 📊 data/ (Program info)
-```
+│
+├── index.html
+├── guides/
+│   ├── open-source-basics.html
+│   ├── git-github.html
+│
+├── programs/
+│   ├── swoc.html
+│   ├── gssoc.html
+│
+├── resources/
+│   ├── videos.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── main.js
+│
+├── data/
+│   └── programs.json
+│
+├── assets/
+│   └── images/
+│
+└── README.md
+
+````
 
 ---
 
-## 🎬 Getting Started (Super Easy!)
+## 🚀 Getting Started
 
-### 1️⃣ Fork the Repo
-Click "Fork" on GitHub. Done! ✅
+1. **Fork** this repository  
+2. **Clone** your fork  
+   ```bash
+   git clone https://github.com/your-username/OpenSource-Compass.git
 
-### 2️⃣ Clone It
-```
-git clone https://github.com/YOUR-USERNAME/OpenSource-Compass.git
-cd OpenSource-Compass
-```
-
-### 3️⃣ Open & Play
-Double-click `index.html` or use a server. That's it! 🎉
-
-### 4️⃣ Time to Contribute
-Make changes → Test → Push → Create Pull Request ✨
+3. Open `index.html` in your browser
+4. Start contributing 🎉
 
 ---
 
-## 🤝 How to Help (We Need You!)
+## 🤝 Contribution Guidelines
 
-### 💪 Ways to Contribute
+We welcome all kinds of contributions:
 
-✏️ Fix typos and improve writing
+* Improving UI/UX
+* Adding guides or resources
+* Updating open-source program details
+* Fixing bugs or improving documentation
 
-🎨 Make it look better and prettier
+Before contributing:
 
-📝 Add new guides and tutorials
-
-🐛 Find and fix bugs
-
-💡 Share awesome ideas
-
----
-
-## 📋 How to Send Your Changes
-
-**Step 1:** Create your own branch
-```
-git checkout -b feature/amazing-idea
-```
-
-**Step 2:** Make your magic! ✨
-
-**Step 3:** Test everything in your browser
-
-**Step 4:** Save your work
-```
-git add .
-git commit -m "Add something awesome"
-```
-
-**Step 5:** Push to GitHub
-```
-git push origin feature/amazing-idea
-```
-
-**Step 6:** Create a Pull Request
-Go to GitHub and click "Create Pull Request". Done! 🚀
+* Read `CONTRIBUTING.md`
+* Create meaningful PRs
+* Follow clean commit messages
+* Be respectful and collaborative
 
 ---
 
-## ✅ Do These Things
+## 📌 Contribution Types
 
-✔️ Ask questions - we love helping!
-
-✔️ Read the existing code first
-
-✔️ Make small, focused changes
-
-✔️ Test your work
-
-✔️ Be nice and respectful
+* 🟢 Beginner: Content updates, UI fixes
+* 🟡 Intermediate: New pages, JS features
+* 🔵 Advanced: Architecture improvements (future scope)
 
 ---
 
-## ❌ Don't Do These Things
+## 🖼 Screenshots (Dummy)
 
-❌ Don't make huge changes all at once
-
-❌ Don't ignore feedback from reviewers
-
-❌ Don't add random files
-
-❌ Don't be mean to people
-
-❌ Don't skip testing
+<div align="center">
+<img src="assets/home.png" width="45%" />
+<img src="assets/programs.png" width="45%" />
+</div>
 
 ---
 
-## 💝 Code of Conduct
+## 📜 Code of Conduct
 
-**Be awesome. Be kind. Be respectful.**
-
-We don't accept:
-- 😠 Rudeness or bullying
-- 👎 Mean comments
-- 🚫 Discrimination
-- 💬 Hateful language
-
-**Everyone is welcome here!** 🌈
+Please read and follow our **Code of Conduct** to maintain a respectful and inclusive community.
 
 ---
 
-## 🌟 Open Source Programs
+## 🌱 Future Scope
 
-Join these cool programs and get recognized! 🏆
-
-- **SWOC** - Student Winter of Code 🎿
-- **GSSoC** - GirlScript Summer Code 👩‍💻
-- **GSoC** - Google Summer of Code 🚀
-- **Hacktoberfest** - October fest! 🎃
-
----
-
-## 📚 Learn More
-
-### Right Here:
-- Getting Started Guide
-- Git & GitHub Tutorial
-- Programs Hub
-- Video Library
-- Tips & Tricks
-
-### Out There:
-- [GitHub Basics](https://guides.github.com)
-- [Git Tutorial](https://git-scm.com)
-- [Web Dev Docs](https://developer.mozilla.org)
-- [Open Source Tips](https://opensource.guide)
+* Backend integration
+* Search & filters for programs
+* User profiles
+* Community blog & stories
+* Admin dashboard
 
 ---
 
-## 🐛 Found a Bug?
+## 💙 Community & Support
 
-We want to know! Tell us! 📢
+If you like this project:
 
-1. Check if someone already reported it
-2. Click "New Issue" on GitHub
-3. Write what happened
-4. We'll fix it! ✅
+* ⭐ Star the repo
+* 🍴 Fork it
+* 🛠 Contribute
+* 📢 Share it with others
 
----
-
-## 🎁 Cool Ideas to Contribute
-
-- 📝 Add more program guides
-- 🎨 Make the design cooler
-- 📱 Fix mobile issues
-- 🎥 Add video tutorials
-- 🌍 Translate to other languages
-- ⭐ Share your success story
+Together, let’s make open source easier for everyone 🚀
 
 ---
 
-## 🚀 What's Coming Next?
+## 🏷 License
 
-We're planning:
-
-- 📱 Mobile app
-- 👤 User accounts
-- 💬 Forums & discussions
-- 🏅 Achievement badges
-- 🌐 Many languages
-- 🤖 AI helper
-
----
-
-## 👥 Join Us!
-
-### Love what we do?
-
-⭐ Give us a star on GitHub!
-
-🍴 Fork and contribute
-
-💬 Share feedback
-
-📣 Tell your friends
-
----
-
-## 📜 License
-
-MIT License = You can use, modify, and share freely! 🎉
-
----
-
-## 🙏 Special Thanks
-
-Big thanks to everyone contributing! You make this awesome! 💖
-
----
-
-## ❓ Need Help?
-
-📧 Open an issue on GitHub
-
-💬 Join our discussions
-
-📚 Check our guides
-
----
-
-## 🚀 Quick Links
-
-[Repository](https://github.com/sayeeg-11/OpenSource-Compass) | [Issues](https://github.com/sayeeg-11/OpenSource-Compass/issues) | [Pull Requests](https://github.com/sayeeg-11/OpenSource-Compass/pulls)
+This project is licensed under the **MIT License**.
 
 ---
 
 <div align="center">
-
-## ❤️ Made with Love for the Open Source Community
-
-**Let's make open source awesome for everyone!**
-
-⭐ Please star if this helps you! ⭐
-
+Made with ❤️ for the Open Source Community
 </div>
+

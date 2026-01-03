@@ -16,127 +16,6 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-
-<!-- Navbar -->
-<header>
-    <h1>OpenSource Compass</h1>
-    <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <nav>
-        <div class="close-icon">X</div>
-        <a href="#">Home</a>
-        <a href="#">Guides</a>
-        <a href="#">Programs</a>
-        <a href="#">Resources</a>
-        <a href="#">Contribute</a>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<section class="hero">
-    <h2>Navigate Your Open Source Journey</h2>
-    <p>
-        OpenSource Compass helps beginners understand open source,
-        make their first meaningful contributions, and explore
-        open-source programs with confidence.
-    </p>
-    <button>Get Started</button>
-</section>
-
-<!-- Why Section -->
-<section>
-    <h3>Why OpenSource Compass?</h3>
-    <p>
-        Starting open source can be overwhelming. This platform simplifies
-        the process with structured guidance, best practices, and a
-        centralized program hub.
-    </p>
-
-    <div class="card-container">
-        <div class="card">
-            <h4>Beginner Friendly</h4>
-            <p>Clear explanations and simple steps for first-time contributors.</p>
-        </div>
-
-        <div class="card">
-            <h4>Best Practices</h4>
-            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
-        </div>
-
-        <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Programs Section -->
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
-
-    <div class="card-container">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
-        </div>
-
-        <div class="card">
-            <h4>GirlScript Summer of Code</h4>
-            <p>Large-scale open-source program for students.</p>
-            <span class="badge">Annual</span>
-        </div>
-
-        <div class="card">
-            <h4>Google Summer of Code</h4>
-            <p>Global program for advanced contributors.</p>
-            <span class="badge">Advanced</span>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-</footer>
-
-<script>
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
-    const closeIcon = document.querySelector('.close-icon');
-
-    hamburger.addEventListener('click', () => {
-        nav.classList.add('active');
-        hamburger.classList.add('active');
-    });
-
-    closeIcon.addEventListener('click', () => {
-        nav.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
-    });
-</script>
-
-</body>
-</html>
-ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
 
     <style>
         :root {
@@ -208,7 +87,7 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
             margin-bottom: 32px;
         }
 
-        .hero button {
+        .hero a button {
             background-color: var(--secondary-blue);
             color: var(--white);
             border: none;
@@ -218,7 +97,7 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
             cursor: pointer;
         }
 
-        .hero button:hover {
+        .hero a button:hover {
             background-color: var(--primary-blue);
         }
 
@@ -297,6 +176,15 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
 
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 12px;
+            }
+
             .hero h2 {
                 font-size: 32px;
             }
@@ -340,8 +228,8 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
 <header>
     <h1>OpenSource Compass</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
+        <a href="#">Home</a>
+        <a href="#">Guides</a>
         <a href="#">Programs</a>
         <a href="#">Resources</a>
         <a href="#">Contribute</a>
@@ -356,7 +244,11 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
         make their first meaningful contributions, and explore
         open-source programs with confidence.
     </p>
-    <button>Get Started</button>
+
+    <!-- CTA should redirect -->
+    <a href="pages/home.html">
+        <button>Get Started</button>
+    </a>
 </section>
 
 <!-- Why Section -->
@@ -472,5 +364,6 @@ ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&displa
 </script>
 
 
+<script src="js/main.js"></script>
 </body>
 </html>

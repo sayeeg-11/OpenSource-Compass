@@ -322,3 +322,23 @@ footer p {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 }
+
+/* ---------- Dark Mode ---------- */
+body.dark {
+  background: #121212;
+  color: white;
+}
+
+/* FAQ / Accordion */
+.faq-answer {
+  display: none;
+}
+
+.faq-answer.open {
+  display: block;
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
