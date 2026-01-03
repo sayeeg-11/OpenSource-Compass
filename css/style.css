@@ -286,15 +286,92 @@ section p {
    Footer
 ========================= */
 footer {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    text-align: center;
-    padding: 24px;
-    margin-top: 40px;
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+    padding: 48px 8% !important;
+    margin-top: 60px !important;
+    border-top: 3px solid var(--secondary-blue) !important;
+    text-align: left !important;
 }
 
-footer p {
+footer .footer-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px !important;
+    max-width: 100% !important;
+    margin: 0 0 32px 0 !important;
+    justify-items: start !important;
+}
+
+footer .footer-section h4 {
+    color: var(--white) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+}
+
+footer .footer-section ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+footer .footer-section li {
+    margin-bottom: 10px;
+}
+
+footer .footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
     font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+footer .footer-section a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+footer .footer-bottom {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding-top: 24px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    text-align: left !important;
+}
+
+footer .footer-bottom p {
+    font-size: 13px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+footer .social-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+footer .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    background-color: var(--secondary-blue);
+    text-decoration: none;
 }
 
 /* =========================
@@ -394,6 +471,18 @@ footer p {
     
     .card-container {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    footer .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    footer .footer-bottom {
+        flex-direction: column !important;
+        align-items: flex-start !important;
     }
 }
 

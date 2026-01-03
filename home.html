@@ -5,23 +5,7 @@
 <title>OpenSource Compass</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--p:#1F3C88;--s:#4D96FF;--g:#F5F7FA;--d:#2E2E2E;--w:#fff}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-body{background:var(--w);color:var(--d);line-height:1.6}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;border-bottom:1px solid #eee}
-nav a{margin-left:22px;text-decoration:none;color:var(--d);font-weight:500}
-nav a:hover{color:var(--s)}
-.hero{background:linear-gradient(135deg,#e8efff,#f4f9ff);padding:100px 8%}
-.hero h1{font-size:48px;color:var(--p)}
-.hero p{max-width:600px;margin:20px 0 35px}
-.btn{background:var(--s);color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none}
-section{padding:70px 8%}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.card{background:#fff;padding:26px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.06)}
-footer{text-align:center;background:var(--p);color:#fff;padding:26px;margin-top:60px}
-body{background:linear-gradient(180deg,#ffffff,#f4f7ff)}.card:hover{transform:translateY(-6px);transition:.3s}.btn:hover{opacity:.9}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
@@ -48,6 +32,44 @@ body{background:linear-gradient(180deg,#ffffff,#f4f7ff)}.card:hover{transform:tr
 <div class="card">Guides</div><div class="card">Programs</div><div class="card">Resources</div><div class="card">Contribute</div>
 </div>
 </section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="pages/index.html">Home</a></li>
+                <li><a href="pages/guides.html">Guides</a></li>
+                <li><a href="pages/programs.html">Programs</a></li>
+                <li><a href="pages/Resources.html">Resources</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>Programs</h4>
+            <ul>
+                <li><a href="gsoc.html">Google Summer of Code</a></li>
+                <li><a href="gssoc.html">GirlScript Summer of Code</a></li>
+                <li><a href="hacktober.html">Hacktoberfest</a></li>
+                <li><a href="linux.html">Linux Foundation</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>About</h4>
+            <ul>
+                <li><a href="https://github.com/sayeeg-11" target="_blank">Creator</a></li>
+                <li><a href="LICENSE">License (MIT)</a></li>
+                <li><a href="https://github.com/sayeeg-11/OpenSource-Compass/issues" target="_blank">Report Issues</a></li>
+                <li><a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 OpenSource Compass. All rights reserved.</p>
+    </div>
+</footer>
 
 </body>
 </html>
