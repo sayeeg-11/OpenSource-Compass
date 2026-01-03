@@ -26,6 +26,9 @@ The project provides structured guidance on:
 
 Built initially using **HTML, CSS, and JavaScript**, the platform focuses on simplicity, accessibility, and meaningful community contributions.
 
+# Test change for PR
+Added a test line
+
 ---
 
 ## 🎯 Project Objectives
