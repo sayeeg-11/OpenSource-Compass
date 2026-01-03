@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Contribute | OpenSource Compass</title>
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/contribute.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <h1>OpenSource Compass</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="guides.html">Guides</a>
+            <a href="programs.html">Programs</a>
+            <a href="Resources.html">Resources</a>
+            <a href="contribute.html" class="active">Contribute</a>
+        </nav>
+    </header>
+
+    <main class="contribute-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Your Path to Open Source Contribution</h1>
+                <p class="hero-subtitle">Follow this step-by-step guide to make your first meaningful contribution to any open source project.</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contribution Workflow -->
+        <section class="workflow-section">
+            <div class="container">
+                <h2 class="section-title">Contribution Workflow</h2>
+                <p class="section-description">Follow these 6 essential steps to contribute to any open source project</p>
+                
+                <div class="workflow-container" id="workflowContainer">
+                    <!-- Steps will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Do's and Don'ts -->
+        <section class="dos-donts-section">
+            <div class="container">
+                <h2 class="section-title">Contribution Etiquette</h2>
+                <p class="section-description">Follow these best practices to ensure your contributions are welcomed</p>
+                
+                <div class="dos-donts-grid">
+                    <div class="dos-section">
+                        <h3>Do's <span class="do-badge">Good Practices</span></h3>
+                        <ul class="dos-list">
+                            <!-- Do's will be dynamically inserted here -->
+                        </ul>
+                    </div>
+                    <div class="donts-section">
+                        <h3>Don'ts <span class="dont-badge">Avoid These</span></h3>
+                        <ul class="donts-list">
+                            <!-- Don'ts will be dynamically inserted here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PR Template -->
+        <section class="pr-template-section">
+            <div class="container">
+                <h2 class="section-title">Sample Pull Request Template</h2>
+                <p class="section-description">A well-structured PR description helps maintainers understand your contribution</p>
+                
+                <div class="pr-template-container">
+                    <div class="pr-template-header">
+                        <span class="pr-template-title">Fix: Resolve pagination issue in user dashboard</span>
+                    </div>
+                    <div class="pr-template-body">
+                        <p>This PR addresses the pagination bug in the user dashboard where pages beyond the first weren't loading correctly.</p>
+                        
+                        <h4>Changes Made</h4>
+                        <ul>
+                            <li>Fixed page parameter handling in API endpoint</li>
+                            <li>Updated pagination component to handle edge cases</li>
+                            <li>Added unit tests for pagination functionality</li>
+                        </ul>
+                        
+                        <h4>Related Issues</h4>
+                        <p>Closes #1234</p>
+                        
+                        <h4>Testing</h4>
+                        <p>Verified pagination works correctly for:</p>
+                        <ul>
+                            <li>First page</li>
+                            <li>Last page</li>
+                            <li>Empty results</li>
+                            <li>Large datasets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Make Your First Contribution?</h2>
+                    <p>Start with a beginner-friendly issue and join the open source community today!</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">Find Beginner Issues</button>
+                        <button class="btn btn-secondary">Join Our Community</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 OpenSource Compass • Built for the Open Source Community</p>
+    </footer>
+
+    <script src="../Js_scripts/contribute.js"></script>
+</body>
+</html>

@@ -15,6 +15,7 @@ fetch('programs.json')
             {
                 id: 1,
                 name: "Google Summer of Code",
+                image: "../assets/program_logo/gsoc.webp",
                 description: "Google's annual, international program focused on bringing more student developers into open source software development.",
                 status: "Active",
                 difficulty: "Advanced",
@@ -40,6 +41,7 @@ fetch('programs.json')
             {
                 id: 2,
                 name: "GirlScript Summer of Code",
+                image: "../assets/program_logo/ggsoc.png",
                 description: "A nationwide summer program to inspire girls to explore technology and make their first meaningful open-source contribution.",
                 status: "Active",
                 difficulty: "Beginner",
@@ -65,6 +67,7 @@ fetch('programs.json')
             {
                 id: 3,
                 name: "Hacktoberfest",
+                image: "../assets/program_logo/hacktober.webp",
                 description: "Digital celebration of open source software. Make four quality pull requests during October and earn a limited edition t-shirt.",
                 status: "Upcoming",
                 difficulty: "Beginner",
@@ -90,6 +93,7 @@ fetch('programs.json')
             {
                 id: 4,
                 name: "MLH Fellowship",
+                image: "../assets/program_logo/mlh.webp",
                 description: "A remote internship alternative for aspiring technologists. Get mentorship, build projects, and contribute to open source.",
                 status: "Active",
                 difficulty: "Intermediate",
@@ -115,6 +119,7 @@ fetch('programs.json')
             {
                 id: 5,
                 name: "Outreachy",
+                image: "../assets/program_logo/outreachy.webp",
                 description: "Paid, remote internship program to support diversity in open source. Open to underrepresented groups in tech.",
                 status: "Upcoming",
                 difficulty: "Intermediate",
@@ -140,6 +145,7 @@ fetch('programs.json')
             {
                 id: 6,
                 name: "Social Winter of Code",
+                image: "../assets/program_logo/ssoc.webp",
                 description: "A beginner-friendly winter program encouraging students to contribute to open source during winter break.",
                 status: "Completed",
                 difficulty: "Beginner",
@@ -181,7 +187,8 @@ function renderPrograms(filteredPrograms = programs) {
     }
 
     container.innerHTML = filteredPrograms.map(program => `
-        <div class="program-card" onclick="openModal(${program.id})">
+    <div class="program-card" onclick="openModal(${program.id})">
+        <div class="program-info">
             <div class="program-header">
                 <h3>${program.name}</h3>
                 <span class="program-status status-${program.status.toLowerCase()}">${program.status}</span>
@@ -218,7 +225,12 @@ function renderPrograms(filteredPrograms = programs) {
                 <button class="btn btn-secondary" onclick="event.stopPropagation(); viewIssues(${program.id})">View Issues</button>
             </div>
         </div>
-    `).join('');
+
+        <div class="program-logo">
+            <img src="${program.image}" alt="${program.name} logo" onerror="this.src='../assets/program_logo/placeholder.png'">
+        </div>
+    </div>
+`).join('');
 }
 
 // Open Modal
@@ -227,6 +239,9 @@ function openModal(programId) {
     const modalBody = document.getElementById('modalBody');
     
     modalBody.innerHTML = `
+        <div class="modal-logo">
+            <img src="${program.image}" alt="${program.name} logo" onerror="this.src='../assets/program_logo/placeholder.png'">
+        </div>
         <h2>${program.name}</h2>
         <p style="color: #666; margin-bottom: 16px;">${program.description}</p>
         

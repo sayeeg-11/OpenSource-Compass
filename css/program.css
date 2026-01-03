@@ -111,31 +111,54 @@ nav a:hover {
     margin-bottom: 40px;
 }
 
+/* Update the card to handle a side-by-side layout */
 .program-card {
     background-color: var(--white);
     border-radius: 8px;
-    padding: 24px;
+    padding: 32px; /* Increased padding for better spacing */
     margin-bottom: 24px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    
+    /* Add Flexbox to align content and logo */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
 }
 
-.program-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+/* Ensure the text container takes up the remaining space */
+.program-card > div:not(.program-logo) {
+    flex: 1;
 }
 
+/* Make the images significantly bigger and positioned at the right */
+.program-card img {
+    max-width: 120px; /* Increased from 60px */
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* Keeps logo proportions */
+    display: block;
+    border-radius: 8px;
+    background: #fcfcfc; /* Optional: light background for transparency */
+    padding: 5px;
+}
+
+/* Ensure the header doesn't conflict with the new layout */
 .program-header {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     margin-bottom: 16px;
 }
 
-.program-header h3 {
-    color: var(--primary-blue);
-    font-size: 22px;
+.program-card img {
+    max-width: 60px;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }
 
 .program-status {
@@ -441,5 +464,19 @@ footer p {
     .modal-content {
         width: 95%;
         margin: 20% auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .program-card {
+        flex-direction: column-reverse; /* Put logo at the top on small screens */
+        align-items: center;
+        text-align: center;
+    }
+
+    .program-card img {
+        max-width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
     }
 }

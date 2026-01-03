@@ -1,0 +1,489 @@
+:root {
+    --primary-blue: #1F3C88;
+    --secondary-blue: #4D96FF;
+    --light-gray: #F5F7FA;
+    --text-dark: #2E2E2E;
+    --success-green: #3CCF91;
+    --warning-red: #FF6B6B;
+    --warning-orange: #FF9F43;
+    --white: #FFFFFF;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ---------- Navbar ---------- */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid #eaeaea;
+    padding: 16px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    color: var(--primary-blue);
+    font-size: 22px;
+}
+
+nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a:hover, nav a.active {
+    color: var(--secondary-blue);
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+    padding: 60px 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(77, 150, 255, 0.1);
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(61, 207, 145, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 42px;
+    color: var(--primary-blue);
+    margin-bottom: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    max-width: 650px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* ---------- Progress Indicator ---------- */
+.progress-indicator {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--secondary-blue);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+/* ---------- Section Styles ---------- */
+.section-title {
+    font-size: 32px;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.section-description {
+    font-size: 18px;
+    max-width: 700px;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* ---------- Workflow Section ---------- */
+.workflow-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.workflow-step {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.workflow-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.workflow-step.completed {
+    border-color: var(--success-green);
+    background: rgba(60, 207, 145, 0.05);
+}
+
+.workflow-step-number {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--secondary-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(77, 150, 255, 0.3);
+}
+
+.workflow-step-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--secondary-blue);
+}
+
+.workflow-step-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+}
+
+.workflow-step-description {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.code-block {
+    background: #2d333b;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+    position: relative;
+    font-family: monospace;
+    font-size: 14px;
+    color: #e0e0e0;
+    overflow-x: auto;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.copy-btn.copied {
+    background: var(--success-green);
+}
+
+/* ---------- Do's and Don'ts Section ---------- */
+.dos-donts-section {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+.dos-donts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.dos-section, .donts-section {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+}
+
+.dos-section h3 {
+    color: var(--success-green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.donts-section h3 {
+    color: var(--warning-red);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.do-badge, .dont-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.do-badge {
+    background: rgba(60, 207, 145, 0.2);
+    color: var(--success-green);
+}
+
+.dont-badge {
+    background: rgba(255, 107, 107, 0.2);
+    color: var(--warning-red);
+}
+
+.dos-list, .donts-list {
+    list-style: none;
+}
+
+.dos-list li, .donts-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.dos-list li:last-child, .donts-list li:last-child {
+    border-bottom: none;
+}
+
+.check-icon, .cross-icon {
+    font-size: 20px;
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-icon {
+    color: var(--success-green);
+}
+
+.cross-icon {
+    color: var(--warning-red);
+}
+
+/* ---------- PR Template Section ---------- */
+.pr-template-section {
+    padding: 80px 0;
+}
+
+.pr-template-container {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+.pr-template-header {
+    background: rgba(31, 60, 136, 0.05);
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.pr-template-title {
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 20px;
+}
+
+.pr-template-body {
+    padding: 30px;
+}
+
+.pr-template-body h4 {
+    margin: 20px 0 10px;
+    color: var(--primary-blue);
+    font-size: 18px;
+}
+
+.pr-template-body ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.pr-template-body li {
+    margin-bottom: 5px;
+}
+
+.pr-template-body p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* ---------- CTA Section ---------- */
+.cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2a4d99 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .workflow-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 16px 5%;
+    }
+    
+    .hero-title {
+        font-size: 30px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .dos-donts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
