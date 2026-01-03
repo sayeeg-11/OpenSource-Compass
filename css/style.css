@@ -104,37 +104,88 @@ nav a:hover {
    Hero Section
 ========================= */
 .hero {
-    background-color: var(--light-gray);
-    padding: 80px 8%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    background: linear-gradient(180deg, rgba(245,247,250,1) 0%, rgba(255,255,255,1) 100%);
+    padding: 64px 0;
 }
 
-.hero h2 {
-    font-size: 42px;
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-left h2 {
+    font-size: 48px;
     color: var(--primary-blue);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    line-height: 1.06;
 }
 
-.hero p {
-    max-width: 600px;
+.hero-left p {
+    max-width: 620px;
     font-size: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
+    color: rgba(46,46,46,0.9);
 }
 
-.hero button {
-    background-color: var(--secondary-blue);
-    color: var(--white);
-    border: none;
-    padding: 14px 28px;
-    font-size: 16px;
-    border-radius: 6px;
+.hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-blob {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    filter: drop-shadow(0 20px 30px rgba(31,60,136,0.12));
+    transform: translateY(0);
+    transition: transform 0.6s cubic-bezier(.2,.9,.2,1);
+}
+
+.hero-right:hover .hero-blob {
+    transform: translateY(-8px) rotate(-1.5deg) scale(1.02);
+}
+
+/* CTA Buttons */
+.hero-ctas {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.hero button:hover {
-    background-color: var(--primary-blue);
+.btn-primary {
+    background: linear-gradient(90deg,var(--secondary-blue),var(--primary-blue));
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(77,150,255,0.18);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 1px solid rgba(31,60,136,0.12);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(31,60,136,0.06);
 }
 
 /* =========================

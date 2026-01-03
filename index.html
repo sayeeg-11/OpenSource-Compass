@@ -39,14 +39,40 @@
 </header>
 
 <!-- Hero Section -->
+<!-- Hero Section -->
 <section class="hero">
-    <h2>Navigate Your Open Source Journey</h2>
-    <p>
-        OpenSource Compass helps beginners understand open source,
-        make their first meaningful contributions, and explore
-        open-source programs with confidence.
-    </p>
-    <button>Get Started</button>
+    <div class="hero-inner container">
+        <div class="hero-left">
+            <h2>Navigate Your Open Source Journey</h2>
+            <p>
+                OpenSource Compass helps beginners understand open source,
+                make their first meaningful contributions, and explore
+                open-source programs with confidence.
+            </p>
+
+            <div class="hero-ctas">
+                <a class="btn btn-primary" href="guides.html">Get Started</a>
+                <a class="btn btn-secondary" href="guides.html">Browse Guides</a>
+            </div>
+        </div>
+
+        <div class="hero-right" aria-hidden="true">
+            <!-- Decorative SVG blob to add visual interest without new assets -->
+            <svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-blob">
+                <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#4D96FF" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#1F3C88" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+                <rect width="320" height="220" rx="28" fill="url(#g1)"/>
+                <g fill-opacity="0.12" fill="#FFFFFF">
+                    <circle cx="260" cy="40" r="40"/>
+                    <circle cx="40" cy="180" r="28"/>
+                </g>
+            </svg>
+        </div>
+    </div>
 </section>
 
 <!-- Why Section -->
