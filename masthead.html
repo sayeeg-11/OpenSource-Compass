@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Masthead | OpenSource Compass</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary-blue: #1F3C88;
+      --secondary-blue: #4D96FF;
+      --light-gray: #F5F7FA;
+      --text-dark: #2E2E2E;
+      --success-green: #3CCF91;
+      --warning-orange: #FFA726;
+      --danger-red: #EF5350;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--light-gray);
+      color: var(--text-dark);
+      line-height: 1.6;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    /* Masthead Header */
+    .masthead-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 90px 20px;
+      text-align: center;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .masthead-header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .masthead-header p {
+      max-width: 750px;
+      margin: 0 auto 30px;
+      font-size: 1.2rem;
+    }
+
+    .masthead-header button {
+      padding: 14px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: var(--success-green);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    .masthead-header button:hover {
+      background: var(--warning-orange);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: var(--primary-blue);
+      margin-bottom: 30px;
+    }
+
+    /* Mission */
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 14px;
+      border-top: 5px solid var(--secondary-blue);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--secondary-blue);
+      margin-bottom: 10px;
+    }
+
+    /* Contributors Grid */
+.contributors {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 4 per row */
+  gap: 25px;
+  justify-items: center;
+}
+
+.contributor {
+  width: 180px;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid var(--secondary-blue);
+  transition: all 0.3s ease;
+}
+
+.contributor img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.contributor a {
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+.contributor:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .contributors {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .contributors {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
+  }
+}
+
+
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      font-size: 1.6rem;
+      color: var(--primary-blue);
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: var(--secondary-blue);
+    }
+
+    /* Back to top */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: var(--primary-blue);
+      color: var(--white);
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    #backToTop:hover {
+      background: var(--secondary-blue);
+    }
+    /* Repo / Follow Link Style (same as first card) */
+.repo-link {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--primary-blue);
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 0.3s ease;
+}
+
+.repo-link:hover {
+  color: var(--secondary-blue);
+}
+
+/* Social icons alignment improvement */
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: var(--primary-blue);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.25);
+  color: var(--secondary-blue);
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Masthead -->
+  <section class="masthead-header">
+    <h1>🌍 OpenSource Compass</h1>
+    <p>Your friendly guide to navigating the open source world - simple, beginner-friendly, and community-driven.</p>
+    <button onclick="window.location.href='index.html'">Go to Home</button>
+  </section>
+
+  <div class="container">
+
+    <!-- Mission -->
+    <section class="card">
+      <h2>Our Mission</h2>
+      <p>
+        OpenSource Compass helps beginners confidently start their open source journey
+        by providing clear guides, real examples, and community support - no confusion, no jargon.
+      </p>
+    </section>
+
+    <!-- Features -->
+    <section>
+      <h2>What You'll Learn</h2>
+      <div class="features">
+        <div class="feature-card">
+          <i class="fa-solid fa-road"></i>
+          <h3>Beginner Roadmaps</h3>
+          <p>Clear step-by-step paths to start contributing.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-brands fa-github"></i>
+          <h3>Git & GitHub</h3>
+          <p>From zero to confident contributor.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-users"></i>
+          <h3>Community Support</h3>
+          <p>Friendly help and mentorship.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-award"></i>
+          <h3>Programs Info</h3>
+          <p>SWOC, GSSoC, GSoC & more.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contributors -->
+    <section>
+      <h2>Contributors</h2>
+      <div id="contributors" class="contributors"></div>
+    </section>
+
+    <!-- Contact -->
+   <div class="contact-card">
+  <p>
+    <i class="fa-brands fa-github"></i>
+    <a 
+      href="https://github.com/sayeeg-11" 
+      target="_blank" 
+      class="repo-link"
+    >
+      Follow OpenSource Compass on GitHub
+    </a>
+  </p>
+
+  <div class="social-icons">
+    <a href="https://github.com/sayeeg-11" target="_blank" title="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a href="#" title="Twitter">
+      <i class="fa-brands fa-twitter"></i>
+    </a>
+    <a href="#" title="LinkedIn">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="#" title="Discord">
+      <i class="fa-brands fa-discord"></i>
+    </a>
+  </div>
+</div>
+
+
+  </div>
+
+  <button id="backToTop">↑</button>
+
+  <script>
+  async function fetchContributors() {
+    try {
+      const response = await fetch(
+        "https://api.github.com/repos/sayeeg-11/OpenSource-Compass/contributors"
+      );
+      const contributors = await response.json();
+      const container = document.getElementById("contributors");
+      container.innerHTML = "";
+
+      contributors.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "contributor";
+        div.innerHTML = `
+          <a href="${c.html_url}" target="_blank" rel="noopener noreferrer">
+            <img src="${c.avatar_url}" alt="${c.login}">
+            <p><strong>${c.login}</strong></p>
+          </a>
+        `;
+        container.appendChild(div);
+      });
+    } catch (error) {
+      console.error("Error fetching contributors:", error);
+    }
+  }
+
+  fetchContributors();
+</script>
+
+</body>
+</html>
