@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OpenSource Compass — Programs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--primary:#2563eb;--secondary:#1e40af;--bg:#f8fafc;--card:#ffffff;--text:#0f172a}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(120deg,#1f3c88,#1e3a8a);color:#fff;padding:24px 8%;font-size:22px;font-weight:700}
+section{padding:50px 8%}
+h2,h3{margin-top:0}
+.programs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.program-card{background:var(--card);padding:22px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.05);transition:.3s}
+.program-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.program-badge{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;display:inline-block}
+.badge-upcoming{background:#fef3c7;color:#92400e}
+.badge-annual{background:#e0e7ff;color:#3730a3}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filter-pill{background:#fff;border:1px solid #c7d2fe;border-radius:999px;padding:8px 14px;cursor:pointer;transition:.2s}
+.filter-pill:hover{background:#2563eb;color:#fff}
+.timeline-item{display:flex;gap:14px;margin-bottom:18px}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:#2563eb;margin-top:6px}
+.card-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:#fff;padding:22px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.05)}
+footer{text-align:center;padding:20px;background:#0f172a;color:#cbd5f5}
+</style>
+</head>
+<body>
+<header>OpenSource Compass</header>
+<section class="programs-hero">
+<h2>Open Source Programs</h2>
+<p>Discover curated programs, mentorships, and seasonal events that help contributors grow.</p>
+<div class="filters">
+<span class="filter-pill">All</span><span class="filter-pill">Beginner</span><span class="filter-pill">Student</span><span class="filter-pill">Mentorship</span><span class="filter-pill">Seasonal</span><span class="filter-pill">Advanced</span>
+</div>
+</section>
+<section>
+<h3>Featured Programs</h3>
+<div class="programs-grid">
+<div class="program-card"><h4>Social Winter of Code</h4><p>Beginner friendly winter mentorship program.</p><span class="program-badge badge-upcoming">Ongoing</span></div>
+<div class="program-card"><h4>GirlScript Summer of Code</h4><p>Large-scale summer open source program.</p><span class="program-badge badge-annual">Annual</span></div>
+<div class="program-card"><h4>Mentorship Circles</h4><p>Cohort-based guided mentorships.</p><span class="program-badge badge-annual">Ongoing</span></div>
+</div>
+</section>
+<section>
+<h3>Program Timeline</h3>
+<div class="timeline-item"><div class="timeline-dot"></div><div>Applications Open</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div>Onboarding</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div>Contribution Phase</div></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div>Wrap Up</div></div>
+</section>
+<section>
+<h3>How to Prepare</h3>
+<div class="card-container">
+<div class="card">Read CONTRIBUTING.md</div>
+<div class="card">Complete a Small Task</div>
+<div class="card">Prepare a Short Proposal</div>
+</div>
+</section>
+</body>
+</html>

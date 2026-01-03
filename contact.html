@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+   
+    #contactForm {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 16px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+  
+    #submissions {
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    #submissions li {
+      background-color: #e9ecef;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      border-left: 4px solid #007BFF;
+    }
+
+ 
+    @media (max-width: 600px) {
+      #contactForm {
+        width: 90%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" placeholder="Your Name" required><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" placeholder="Your Email" required><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" placeholder="Your Message" rows="5" required></textarea><br>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <ul id="submissions"></ul>
+  </div>
+
+  <script>
+   
+    const form = document.getElementById('contactForm');
+    const submissionsList = document.getElementById('submissions');
+
+    
+    let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
+
+  
+    if (submissions.length > 0) {
+      const last = submissions[submissions.length - 1];
+      document.getElementById('name').value = last.name;
+      document.getElementById('email').value = last.email;
+      document.getElementById('message').value = last.message;
+    }
+
+ 
+ 
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+     
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+   
+      submissions.push({ name, email, message });
+
+      
+      localStorage.setItem('submissions', JSON.stringify(submissions));
+
+    
+    
+
+      
+
+      
+      document.getElementById('name').value = name;
+      document.getElementById('email').value = email;
+      document.getElementById('message').value = message;
+    });
+
+ 
+  </script>
+
+</body>
+</html>
+
