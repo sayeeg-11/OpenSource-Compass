@@ -1,4 +1,3 @@
-
 /* =========================
    Global Variables
 ========================= */
@@ -9,6 +8,11 @@
     --text-dark: #2E2E2E;
     --success-green: #3CCF91;
     --white: #FFFFFF;
+    
+    /* Shredded Colors */
+    --shred-1: #FF4D4D;
+    --shred-2: #4D96FF;
+    --shred-3: #FFD93D;
     
     /* New Animation & Glassmorphism Variables */
     --glass-bg: rgba(255, 255, 255, 0.7);
@@ -30,24 +34,43 @@ body {
     background-color: var(--white);
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden; /* Prevents scrollbars during animations */
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
+    overflow-x: hidden; 
 }
 
 /* =========================
-   Layout Helpers
-.container {
-    width: 84%;
-    max-width: 1200px;
-    margin: auto;
+   Shredded Background Effect
+========================= */
+.shredded-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.shredded-bg::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--shred-1), var(--shred-3));
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%, 25% 50%);
+    opacity: 0.15;
+    z-index: -1;
+    transform: rotate(15deg);
+}
+
+.shredded-bg::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--shred-2), var(--shred-1));
+    clip-path: polygon(0% 15%, 100% 30%, 85% 85%, 15% 100%);
+    opacity: 0.1;
+    z-index: -1;
+    transform: rotate(-10deg);
 }
 
 /* =========================
@@ -60,69 +83,41 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* For the hamburger menu */
-}
-
-header h1 {
-    color: var(--primary-blue);
-    font-size: 22px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 a {
-    color: inherit;
-    text-decoration: none;
-}
-
-nav {
-    display: flex;
-    align-items: center;
+    color: var(--primary-blue);
+    font-size: 22px;
+    font-weight: 700;
 }
 
 nav a {
     margin-left: 24px;
-    text-decoration: none;
-    color: var(--text-dark);
     font-weight: 500;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
 }
 
-nav a:hover::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: var(--primary-blue);
-    margin: 5px 0;
-}
-
-.close-icon {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
+nav a:hover {
+    color: var(--secondary-blue);
 }
 
 /* =========================
-   Hero Section
+   Hero Section (Applying Shredded BG)
 ========================= */
 .hero {
     background-color: var(--light-gray);
-    padding: 80px 8%;
+    padding: 100px 8%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .hero h2 {
-    font-size: 42px;
+    font-size: 48px;
     color: var(--primary-blue);
     margin-bottom: 16px;
 }
@@ -131,59 +126,84 @@ nav a:hover::after {
     max-width: 600px;
     font-size: 18px;
     margin-bottom: 32px;
+    color: #555;
 }
+
 .hero button {
     background-color: var(--secondary-blue);
     color: var(--white);
     border: none;
-    padding: 14px 28px;
+    padding: 16px 32px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(77, 150, 255, 0.3);
+    transition: var(--transition-speed) var(--anim-curve);
+    box-shadow: 0 4px 15px rgba(77, 150, 255, 0.3);
 }
 
 .hero button:hover {
     background-color: var(--primary-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(77, 150, 255, 0.4);
-}
-
-.hero button:active {
-    transform: translateY(0);
-}
-
-/* =========================
-   Section Common
-section {
-    padding: 64px 8%;
-}
-
-section h3 {
-    font-size: 28px;
-    color: var(--primary-blue);
-    margin-bottom: 12px;
-}
-
-section p {
-    max-width: 700px;
-    margin-bottom: 32px;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(77, 150, 255, 0.4);
 }
 
 /* =========================
    Cards & Grid
 ========================= */
-.card-container {
+.card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
+    gap: 30px;
+    margin-top: 40px;
 }
 
-/* Glassmorphism Pattern */
 .card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-blue);
+}
+
+.card h4 {
+    margin-bottom: 12px;
+    color: var(--primary-blue);
+    font-size: 20px;
+}
+
+/* =========================
+   Footer (Shredded Look)
+========================= */
+footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 40px 8%;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: var(--white);
+    clip-path: polygon(0 0, 5% 100%, 10% 0, 15% 100%, 20% 0, 25% 100%, 30% 0, 35% 100%, 40% 0, 45% 100%, 50% 0, 55% 100%, 60% 0, 65% 100%, 70% 0, 75% 100%, 80% 0, 85% 100%, 90% 0, 95% 100%, 100% 0);
+}
+
+/* =========================
+   Animations
+========================= */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
@@ -195,239 +215,19 @@ section p {
     transform: translateY(0);
 }
 
-    background-color: var(--white);
-    padding: 24px;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.card h4 {
-    margin-bottom: 10px;
-    color: var(--secondary-blue);
-}
-
-/* =========================
-   Why Section - Specific Styling
-========================= */
-.why-cards .card {
-    background-color: var(--white);
-    border: 1px solid #E5E7EB;
-    padding: 32px 24px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.why-cards .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-    border-color: var(--secondary-blue);
-}
-
-/* Icon Styling for Why Section */
-.why-cards .icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, var(--secondary-blue), #3b82f6);
-    border-radius: 10px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-.why-cards .card:hover .icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.why-cards .icon svg {
-    width: 32px;
-    height: 32px;
-    stroke: white;
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-/* Why Section Card Headings */
-.why-cards .card h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--primary-blue);
-    margin-bottom: 10px;
-}
-
-/* Why Section Card Text */
-.why-cards .card p {
-    font-size: 14px;
-    color: #6B7280;
-    max-width: 100%;
-    margin-bottom: 0;
-}
-
-/* =========================
-   Programs Section
-.programs {
-    background-color: var(--light-gray);
-}
-
-.badge {
-    display: inline-block;
-    background-color: var(--success-green);
-    color: var(--white);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    margin-top: 10px;
-}
-
-/* =========================
-   Footer
-========================= */
-footer {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    text-align: center;
-    padding: 24px;
-    margin-top: 40px;
-}
-
-footer p {
-    font-size: 14px;
-}
-
-/* =========================
-   Responsive
-========================= */
-@media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .hamburger.active {
-        display: none;
-    }
-
-    nav {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: var(--white);
-        padding: 20px 8%;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    nav.active .close-icon {
-        display: block;
-    }
-
-    nav a {
-        margin: 10px 0;
-        width: 100%;
-        font-size: 20px;
-        margin: 20px 0;
-    }
-
-    .profile-dropdown {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .profile-icon {
-        width: 100%;
-        border-radius: 6px;
-        margin-left: 0;
-        justify-content: center;
-    }
-
-    .profile-menu {
-        position: static;
-        box-shadow: none;
-        border: 1px solid #e0e0e0;
-        margin-top: 10px;
-        border-radius: 6px;
-    }
-
-    .hero {
-        padding: 60px 8%;
-    }
-    
-    .hero h2 {
-        font-size: 32px;
-    }
-    
-    .hero p {
-        font-size: 16px;
-    }
-
-    section {
-        padding: 48px 8%;
-    }
-
-    section h3 {
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h2 {
-        font-size: 28px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-    
-    .card-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* Hover effect to the cards */
-
-/* Base card style */
-.card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: 
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  will-change: transform, box-shadow;
-}
-
-/* Hover interaction */
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-}
-
-/* Keyboard accessibility (important for a11y) */
-.card:focus-within {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-}
-
-/* Optional: smoother feel on touch devices */
-@media (hover: none) {
-  .card:hover {
-    transform: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
+/* Scroll To Top */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--secondary-blue);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 99;
 }

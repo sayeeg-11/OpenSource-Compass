@@ -1,0 +1,46 @@
+/* Sidebar Styles */
+.nav-sidebar {
+    width: 250px;
+    background: var(--white);
+    border-right: 1px solid #eee;
+    padding: 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.nav-sidebar a {
+    display: block;
+    padding: 10px;
+    color: var(--text-dark);
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.nav-sidebar a.active {
+    background: var(--light-gray);
+    color: var(--secondary-blue);
+    font-weight: 600;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+    padding: 10px 8%;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a { color: var(--secondary-blue); }
+
+/* Search Overlay */
+#searchResults {
+    position: absolute;
+    top: 100%;
+    right: 8%;
+    width: 300px;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    display: none;
+    z-index: 1001;
+}

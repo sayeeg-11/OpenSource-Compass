@@ -2,163 +2,228 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OpenSource Compass</title>
+    <title>OpenSource Compass | Navigate Open Source</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Core Styles -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navigation.css">
 
     <style>
-        /* Specific styles for index.html that differ from global style.css */
-        .card {
-            border: 1px solid transparent;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        body {
+            font-family: 'Inter', sans-serif;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.12);
-            border-color: #4D96FF; /* var(--secondary-blue) */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #fff;
         }
 
-        /* Scroll To Top Button */
+        body.dark-mode header,
+        body.dark-mode footer {
+            background: #121212;
+        }
+
+        .main-layout {
+            display: flex;
+            padding: 0 8%;
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .hero {
+            margin-top: 40px;
+        }
+
+        .hero button {
+            margin-top: 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
         #scrollTopBtn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            z-index: 1000;
-            background-color: #4D96FF; /* var(--secondary-blue) */
-            color: #FFFFFF; /* var(--white) */
+            background: #4D96FF;
+            color: white;
             border: none;
-            border-radius: 50%;
             width: 48px;
             height: 48px;
-            font-size: 20px;
+            border-radius: 50%;
+            font-size: 18px;
             cursor: pointer;
             display: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        #scrollTopBtn:hover {
-            background-color: #1F3C88; /* var(--primary-blue) */
-            transform: translateY(-4px);
         }
     </style>
 </head>
+
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
-    <h1>OpenSource Compass</h1>
+    <h1>
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            OpenSource Compass
+        </a>
+    </h1>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="guides.html">Guides</a>
         <a href="programs.html">Programs</a>
         <a href="Resources.html">Resources</a>
         <a href="Contribute.html">Contribute</a>
+
+        <!-- GLOBAL SEARCH -->
+        <div class="search-container">
+            <input type="text" placeholder="Search programs or guides..."
+                   oninput="performSearch(this.value)">
+            <div id="searchResults"></div>
+        </div>
+
+        <button id="themeToggle"
+                style="background:none; border:none; font-size:1.2rem; cursor:pointer;">
+            🌙
+        </button>
     </nav>
 </header>
 
-<section class="hero">
-    <h2 class="fade-in-up" style="transition-delay: 0.1s;">Navigate Your Open Source Journey</h2>
-    <p class="fade-in-up" style="transition-delay: 0.3s;">
-        OpenSource Compass helps beginners understand open source,
-        make their first meaningful contributions, and explore
-        open-source programs with confidence.
-    </p>
-    <button onclick="window.location.href='dashboard.html'">Get Started</button>
-</section>
+<!-- ================= BREADCRUMB ================= -->
+<nav class="breadcrumb">
+    <a href="index.html">Home</a> > <span>Overview</span>
+</nav>
 
-<section>
-    <h3>Why OpenSource Compass?</h3>
-    <p>Starting open source can be overwhelming. This platform simplifies the process with structured guidance and best practices.</p>
+<!-- ================= LAYOUT ================= -->
+<div class="main-layout">
 
-    <div class="card-grid">
-        <div class="card">
-            <h4>Beginner Friendly</h4>
-            <p>Clear explanations and simple steps for first-time contributors.</p>
-        </div>
-        <div class="card">
-            <h4>Best Practices</h4>
-            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
-        </div>
-        <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
-        </div>
-    </div>
-</section>
+    <!-- QUICK NAV SIDEBAR -->
+    <aside class="nav-sidebar">
+        <h4>Programs</h4>
+        <a href="Event/gsoc.html">Google Summer of Code</a>
+        <a href="Event/gssoc.html">GirlScript SoC</a>
+        <a href="Event/hacktober.html">Hacktoberfest</a>
 
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>Explore ongoing and upcoming open-source programs with timelines and official resources.</p>
+        <h4 style="margin-top:25px;">Guides</h4>
+        <a href="Resources.html" class="active">Git Essentials</a>
+        <a href="guides.html">Contribution Guide</a>
+    </aside>
 
-    <div class="card-grid">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p><br><br>
-            <span class="badge">Upcoming</span>
-        </div>
-        <div class="card">
-            <h4>GirlScript Summer of Code</h4>
-            <p>Large-scale open-source program for students.</p><br><br>
-            <span class="badge">Annual</span>
-        </div>
-        <div class="card">
-            <h4>Google Summer of Code</h4>
-            <p>Global program for advanced contributors.</p><br><br>
-            <span class="badge">Advanced</span>
-        </div>
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="content-area">
 
-        <div class="card">
-            <h4>Hacktoberfest (by DigitalOcean)</h4>
-            <p>Global event encouraging first-time open-source participation.</p>
-            <span class="badge">Beginner</span>
-        </div>
+        <!-- HERO -->
+        <section class="hero">
+            <h2>Navigate Your Open Source Journey</h2>
+            <p>
+                Learn open source from scratch, make meaningful contributions,
+                and prepare for global programs with confidence.
+            </p>
+            <button onclick="location.href='programs.html'">Get Started</button>
+        </section>
 
-        <div class="card">
-            <h4>Winter of Code (WoC)</h4>
-            <p>Mentorship-based program for student contributors.</p><br>
-            <span class="badge">Intermediate</span>
-        </div>
+        <!-- WHY -->
+        <section style="margin-top:80px;">
+            <h3>Why OpenSource Compass?</h3>
+            <p style="max-width:700px;">
+                Open source is powerful — but confusing for beginners.
+                OpenSource Compass removes uncertainty and gives you
+                a clear, structured path.
+            </p>
 
-        <div class="card">
-            <h4>Social Summer of Code (SSoC)</h4>
-            <p>Community-driven program for open-source beginners.</p>
-            <span class="badge">Beginner</span>
-        </div>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>🧭 Beginner Friendly</h4>
+                    <p>No assumptions. No jargon overload.</p>
+                </div>
+                <div class="card">
+                    <h4>🛠 Real Workflows</h4>
+                    <p>Learn how real open source projects operate.</p>
+                </div>
+                <div class="card">
+                    <h4>🌍 Program Ready</h4>
+                    <p>GSoC, Hacktoberfest, GSSoC focused preparation.</p>
+                </div>
+                <div class="card">
+                    <h4>📈 Career Impact</h4>
+                    <p>Build proof-of-work, not just certificates.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-            <h4>Outreachy</h4>
-            <p>Paid internship program for underrepresented contributors.</p>
-            <span class="badge">Intermediate</span>
-        </div>
+        <!-- ROADMAP -->
+        <section style="margin-top:90px;">
+            <h3>Your Learning Roadmap</h3>
+            <ol style="line-height:1.9; max-width:700px;">
+                <li>Understand open source culture</li>
+                <li>Master Git & GitHub basics</li>
+                <li>Find beginner-friendly issues</li>
+                <li>Submit meaningful pull requests</li>
+                <li>Participate in global programs</li>
+            </ol>
+        </section>
 
-        <div class="card">
-            <h4>Linux Foundation Mentorship Program</h4>
-            <p>Industry-backed program for open-source development.</p>
-            <span class="badge">Intermediate</span>
-        </div>
-    </div>
-</section>
+        <!-- IMPACT -->
+        <section style="margin-top:90px; background:#f7f9fc; padding:40px; border-radius:14px;">
+            <h3>Community Impact</h3>
+            <div style="display:flex; gap:50px; flex-wrap:wrap; margin-top:25px;">
+                <div>
+                    <h2 style="color:#4D96FF;">1,000+</h2>
+                    <p>Learners Guided</p>
+                </div>
+                <div>
+                    <h2 style="color:#4D96FF;">200+</h2>
+                    <p>First PRs</p>
+                </div>
+                <div>
+                    <h2 style="color:#4D96FF;">50+</h2>
+                    <p>Projects Covered</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- CTA -->
+        <section style="margin-top:100px; text-align:center;">
+            <h2>Start Contributing Today</h2>
+            <p>One pull request can change your entire journey.</p>
+            <button onclick="location.href='guides.html'">Explore Guides</button>
+            <button onclick="location.href='Contribute.html'">Contribute</button>
+        </section>
+
+    </main>
+</div>
+
+<!-- ================= FOOTER ================= -->
 <footer>
     <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
 </footer>
 
-<button id="scrollTopBtn" title="Go to top">↑</button>
+<button id="scrollTopBtn">↑</button>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="../js/search.js"></script>
 
 <script>
-    /* Theme Toggle */
     const themeToggle = document.getElementById("themeToggle");
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
     themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
         themeToggle.textContent =
             document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
     });
 
-    /* Scroll To Top */
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
     window.addEventListener("scroll", () => {
         scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
     });
@@ -167,6 +232,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 </script>
-<script src="../Js_scripts/main.js"></script>
+
 </body>
 </html>
