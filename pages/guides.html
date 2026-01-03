@@ -2,279 +2,186 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Guides | OpenSource Compass</title>
+    
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-    <style>
-        :root {
-            --primary-blue: #1F3C88;
-            --secondary-blue: #4D96FF;
-            --light-gray: #F5F7FA;
-            --text-dark: #2E2E2E;
-            --success-green: #3CCF91;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-        }
-
-        nav a {
-            margin-left: 24px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background-color: var(--light-gray);
-            padding: 80px 8%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            font-size: 18px;
-            margin-bottom: 32px;
-        }
-
-        .hero button {
-            background-color: var(--secondary-blue);
-            color: var(--white);
-            border: none;
-            padding: 14px 28px;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .hero button:hover {
-            background-color: var(--primary-blue);
-        }
-
-        /* ---------- Section Common ---------- */
-        section {
-            padding: 64px 8%;
-        }
-
-        section h3 {
-            font-size: 28px;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-        }
-
-        section p {
-            max-width: 700px;
-            margin-bottom: 32px;
-        }
-
-        /* ---------- Cards ---------- */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
-        .card {
-            background-color: var(--white);
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        .card h4 {
-            margin-bottom: 10px;
-            color: var(--secondary-blue);
-        }
-
-        /* ---------- Programs Section ---------- */
-        .programs {
-            background-color: var(--light-gray);
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: var(--success-green);
-            color: var(--white);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 24px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            font-size: 14px;
-        }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/guides.css">
 </head>
-
 <body>
+    <!-- Navbar -->
+    <header>
+        <h1>OpenSource Compass</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="guides.html" class="active">Guides</a>
+            <a href="programs.html">Programs</a>
+            <a href="Resources.html">Resources</a>
+            <a href="Contribute.html">Contribute</a>
+        </nav>
+    </header>
 
-<!-- Navbar -->
-<header>
-    <h1>OpenSource Compass</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
-        <a href="programs.html">Programs</a>
-        <a href="Resources.html">Resources</a>
-        <a href="Contribute.html">Contribute</a>
-    </nav>
-</header>
-
-<div class="py-5"> 
-    <h1 class="display-5 fw-bold text-center" style="color: #1F3C88;">Guide to Open Source Programs</h1><br>
-
-    <div class="col-lg-6 mx-auto"> 
-        <p class="fs-5 mb-4">A curated guide to global open-source programs for contributors.</p> 
-    </div> 
-</div>
-
-<div class="album py-5 bg-body-tertiary"> 
-    <div class="container"> 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/ggsoc.png" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>GirlScript Summer of Code</strong> <br>Large-scale open-source program for students.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="gssoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/gsoc.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Google Summer of Code</strong> <br>Global program for advanced contributors.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="gsoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div>  
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/hacktober.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Hacktoberfest (by DigitalOcean)</strong> <br>Global event encouraging first-time open-source participation.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="hacktober.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div>  
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/outreachy.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Outreachy</strong> <br>Paid internship program for underrepresented contributors.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="outreachy.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Guides Hub</div>
+                <button class="toggle-sidebar" id="toggle-sidebar">≡</button>
             </div>
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/linux.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Linux Foundation Mentorship Program</strong> <br>Industry-backed program for open-source development.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="linux.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div>  
-                        </div> 
-                    </div> 
-                </div> 
+            <ul class="sidebar-menu">
+                <li><a href="#basics" class="active"><i>📝</i> <span class="menu-text">Open Source Basics</span></a></li>
+                <li><a href="#git"><i>🐙</i> <span class="menu-text">Git & GitHub</span></a></li>
+                <li><a href="#best-practices"><i>✅</i> <span class="menu-text">Best Practices</span></a></li>
+                <li><a href="#contributing"><i>🤝</i> <span class="menu-text">Contributing Guide</span></a></li>
+                <li><a href="#resources"><i>📚</i> <span class="menu-text">Learning Resources</span></a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="guide-header">
+                <h2>Open Source Contribution Guides</h2>
+                <p>Your comprehensive roadmap to becoming an effective open source contributor. Start from the basics and progress to advanced practices.</p>
             </div>
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/ssoc.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Social Summer of Code (SSoC)</strong> <br>Community-driven program for open-source beginners.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="ssoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
-            </div>  
-        </div> 
-    </div> 
-</div>
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-</footer>
+
+            <div class="guide-content">
+                <!-- Open Source Basics Section -->
+                <section id="basics">
+                    <h3>1. Open Source Basics</h3>
+                    <p>Open source software is code that is designed to be publicly accessible—anyone can see, modify, and distribute the code as they see fit. This collaborative approach has produced some of the world's most important software, including Linux, Python, and the Apache web server.</p>
+                    
+                    <h4>Why Contribute to Open Source?</h4>
+                    <ul>
+                        <li><strong>Improve your skills:</strong> Work on real-world projects with experienced developers</li>
+                        <li><strong>Build your portfolio:</strong> Showcase your contributions to potential employers</li>
+                        <li><strong>Give back to the community:</strong> Help improve software you use every day</li>
+                        <li><strong>Learn collaboration:</strong> Experience how distributed teams work together</li>
+                    </ul>
+                    
+                    <div class="progress-section">
+                        <h4>Understanding Check</h4>
+                        <ul class="progress-items">
+                            <li><input type="checkbox" class="progress-checkbox" id="check1"> <label for="check1">I understand what open source software is</label></li>
+                            <li><input type="checkbox" class="progress-checkbox" id="check2"> <label for="check2">I know why contributing to open source is valuable</label></li>
+                            <li><input type="checkbox" class="progress-checkbox" id="check3"> <label for="check3">I can identify open source projects I might contribute to</label></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Git & GitHub Section -->
+                <section id="git">
+                    <h3>2. Git & GitHub Fundamentals</h3>
+                    <p>Git is a version control system that tracks changes in your code. GitHub is a platform that hosts Git repositories and provides collaboration features. Mastering these tools is essential for open source contributions.</p>
+                    
+                    <h4>Essential Git Commands</h4>
+                    <p>Here are the most important commands you'll need:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">git</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre>git clone https://github.com/username/repository.git
+git checkout -b new-feature-branch
+git add .
+git commit -m "Describe your changes"
+git push origin new-feature-branch</pre>
+                    </div>
+                    
+                    <h4>GitHub Workflow</h4>
+                    <ol>
+                        <li>Fork the repository you want to contribute to</li>
+                        <li>Clone your fork to your local machine</li>
+                        <li>Create a new branch for your changes</li>
+                        <li>Make your changes and commit them</li>
+                        <li>Push your changes to your fork on GitHub</li>
+                        <li>Create a pull request to the original repository</li>
+                    </ol>
+                    
+                    <div class="progress-section">
+                        <h4>Git Proficiency Check</h4>
+                        <ul class="progress-items">
+                            <li><input type="checkbox" class="progress-checkbox" id="check4"> <label for="check4">I can clone a repository</label></li>
+                            <li><input type="checkbox" class="progress-checkbox" id="check5"> <label for="check5">I understand branching and merging</label></li>
+                            <li><input type="checkbox" class="progress-checkbox" id="check6"> <label for="check6">I can create a pull request</label></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Best Practices Section -->
+                <section id="best-practices">
+                    <h3>3. Open Source Best Practices</h3>
+                    <p>Following best practices will make your contributions more valuable and increase your chances of having your work accepted.</p>
+                    
+                    <h4>Before Contributing</h4>
+                    <ul>
+                        <li><strong>Read the documentation:</strong> Most projects have a CONTRIBUTING.md file</li>
+                        <li><strong>Search existing issues:</strong> Avoid duplicating work</li>
+                        <li><strong>Start small:</strong> Look for "good first issue" or "help wanted" labels</li>
+                    </ul>
+                    
+                    <h4>Writing Good Pull Requests</h4>
+                    <ul>
+                        <li><strong>Clear title:</strong> Describe what your PR does</li>
+                        <li><strong>Detailed description:</strong> Explain your changes and why they're needed</li>
+                        <li><strong>Follow the style guide:</strong> Match the project's coding conventions</li>
+                        <li><strong>Write tests:</strong> If the project has tests, add them for your changes</li>
+                    </ul>
+                    
+                    <div class="progress-section">
+                        <h4>Best Practices Check</h4>
+                        <ul class="progress-items">
+                            <li><input type="checkbox" class="progress-checkbox" id="check7"> <label for="check7">I know how to find beginner-friendly issues</label></li>
+                            <li><input type="checkbox" class="progress-checkbox" id="check8"> <label for="check8">I understand how to write a good PR description</label></li>
+                            <li><input type="checkbox" class="progress-checkbox" id="check9"> <label for="check9">I can follow a project's contribution guidelines</label></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Resources Section -->
+                <section id="resources">
+                    <div class="resources-section">
+                        <h3>Curated Learning Resources</h3>
+                        <p>Expand your knowledge with these handpicked resources from the open source community.</p>
+                        
+                        <div class="resource-list">
+                            <div class="resource-card">
+                                <h5>First Contributions</h5>
+                                <p>A project to help beginners get started with contributions</p>
+                                <span class="resource-tag">Beginner</span>
+                            </div>
+                            <div class="resource-card">
+                                <h5>Git Handbook</h5>
+                                <p>Comprehensive guide to Git by GitHub</p>
+                                <span class="resource-tag">Intermediate</span>
+                            </div>
+                            <div class="resource-card">
+                                <h5>How to Contribute to Open Source</h5>
+                                <p>Free ebook by GitHub</p>
+                                <span class="resource-tag">All Levels</span>
+                            </div>
+                            <div class="resource-card">
+                                <h5>Open Source Guides</h5>
+                                <p>Collection of guides for open source maintainers</p>
+                                <span class="resource-tag">Maintainers</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 OpenSource Compass • Built for the Open Source Community</p>
+    </footer>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="../Js_scripts/guides.js"></script>
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>
