@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     padding: 40px 8%;
-    background-color: var(--light-gray);
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f1ff 100%);
 }
 
 .auth-container {
@@ -21,6 +21,13 @@
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(31, 60, 136, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.auth-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
 .auth-card h2 {
@@ -28,6 +35,7 @@
     font-size: 28px;
     margin-bottom: 8px;
     text-align: center;
+    font-weight: 700;
 }
 
 .auth-subtitle {
@@ -49,7 +57,7 @@
     display: block;
     margin-bottom: 8px;
     color: var(--text-dark);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
 }
 
@@ -57,17 +65,19 @@
     width: 100%;
     padding: 12px 16px;
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
     font-family: 'Inter', sans-serif;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
+    background-color: #f9f9f9;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--secondary-blue);
     box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.1);
+    background-color: var(--white);
 }
 
 .form-group input::placeholder {
@@ -76,9 +86,10 @@
 
 .error-message {
     display: none;
-    color: #e74c3c;
+    color: #DC2626;
     font-size: 12px;
     margin-top: 6px;
+    font-weight: 500;
 }
 
 .form-hint {
@@ -101,12 +112,14 @@
     cursor: pointer;
     font-size: 14px;
     color: var(--text-dark);
+    user-select: none;
 }
 
 .checkbox-label input[type="checkbox"] {
     width: auto;
     margin-right: 8px;
     cursor: pointer;
+    accent-color: var(--secondary-blue);
 }
 
 .auth-button {
@@ -117,19 +130,26 @@
     padding: 14px;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 12px rgba(77, 150, 255, 0.3);
 }
 
 .auth-button:hover {
     background-color: var(--primary-blue);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(31, 60, 136, 0.4);
 }
 
 .auth-button:active {
     transform: translateY(0);
+}
+
+.auth-button:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
 }
 
 .auth-footer {
@@ -152,6 +172,12 @@
 .auth-footer a:hover {
     color: var(--primary-blue);
     text-decoration: underline;
+}
+
+.auth-footer a:focus-visible {
+    outline: 2px solid var(--secondary-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* =========================
@@ -181,6 +207,11 @@
     transform: scale(1.05);
 }
 
+.profile-icon:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
 .profile-dropdown {
     position: relative;
     display: inline-block;
@@ -197,10 +228,12 @@
     border-radius: 8px;
     z-index: 1000;
     overflow: hidden;
+    border: 1px solid #f0f0f0;
 }
 
 .profile-menu.active {
     display: block;
+    animation: slideInUp 0.2s ease;
 }
 
 .profile-menu-item {
@@ -220,15 +253,21 @@
 .profile-menu-item:hover {
     background-color: var(--light-gray);
     color: var(--primary-blue);
+    padding-left: 20px;
+}
+
+.profile-menu-item:focus-visible {
+    outline: 2px solid var(--secondary-blue);
+    outline-offset: -2px;
 }
 
 .profile-menu-item.logout {
-    color: #e74c3c;
+    color: #DC2626;
 }
 
 .profile-menu-item.logout:hover {
-    background-color: #fee;
-    color: #c0392b;
+    background-color: #FEE2E2;
+    color: #991B1B;
 }
 
 /* =========================
@@ -273,6 +312,26 @@
         height: 32px;
         font-size: 12px;
         margin-left: 12px;
+    }
+}
+
+/* =========================
+   Dark Mode Support (Optional)
+========================= */
+@media (prefers-color-scheme: dark) {
+    .auth-section {
+        background: linear-gradient(135deg, #1a2a4a 0%, #1f3c5f 100%);
+    }
+    
+    .auth-card {
+        background-color: #2d3748;
+        color: #f0f0f0;
+    }
+    
+    .form-group input {
+        background-color: #374151;
+        border-color: #4b5563;
+        color: #f0f0f0;
     }
 }
 

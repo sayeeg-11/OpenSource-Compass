@@ -2,102 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OpenSource Compass</title>
+    <title>Guides - OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style>
-        :root {
-            --primary-blue: #1F3C88;
-            --secondary-blue: #4D96FF;
-            --light-gray: #F5F7FA;
-            --text-dark: #2E2E2E;
-            --success-green: #3CCF91;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
             font-family: 'Inter', sans-serif;
         }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
+        
+        .guide-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        
+        .guide-card:hover {
+            transform: translateY(-8px);
         }
-
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-        }
-
-        nav a {
-            margin-left: 24px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background-color: var(--light-gray);
-            padding: 80px 8%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            font-size: 18px;
-            margin-bottom: 32px;
-        }
-
-        .hero button {
-            background-color: var(--secondary-blue);
-            color: var(--white);
-            border: none;
-            padding: 14px 28px;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .hero button:hover {
-            background-color: var(--primary-blue);
-        }
-
-        /* ---------- Section Common ---------- */
-        section {
-            padding: 64px 8%;
-        }
+    </style>
+</head>
+<body class="bg-white">
 
         section h3 {
             font-size: 28px;
@@ -165,116 +92,125 @@
         }
     </style>
 </head>
-
-<body>
+<body class="bg-white">
 
 <!-- Navbar -->
-<header>
-    <h1>OpenSource Compass</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
-        <a href="programs.html">Programs</a>
-        <a href="Resources.html">Resources</a>
-        <a href="Contribute.html">Contribute</a>
+<header class="sticky top-0 bg-white border-b border-gray-200 shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+        <h1 class="text-2xl font-bold text-blue-700"><a href="index.html" class="hover:text-blue-600 transition">OpenSource Compass</a></h1>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Home</a>
+            <a href="guides.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Guides</a>
+            <a href="programs.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Programs</a>
+            <a href="Resources.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Resources</a>
+            <a href="Contribute.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Contribute</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+            <button class="hamburger-menu text-blue-700 text-2xl">☰</button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+        <a href="index.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Home</a>
+        <a href="guides.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Guides</a>
+        <a href="programs.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Programs</a>
+        <a href="Resources.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Resources</a>
+        <a href="Contribute.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Contribute</a>
     </nav>
 </header>
 
-<div class="py-5"> 
-    <h1 class="display-5 fw-bold text-center" style="color: #1F3C88;">Guide to Open Source Programs</h1><br>
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-50 to-blue-100 py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Guide to Open Source Programs</h1>
+        <p class="text-lg text-gray-700 mb-8 max-w-2xl">A curated guide to global open-source programs for contributors.</p>
+    </div>
+</section>
 
-    <div class="col-lg-6 mx-auto"> 
-        <p class="fs-5 mb-4">A curated guide to global open-source programs for contributors.</p> 
-    </div> 
-</div>
+<!-- Programs Grid -->
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- GirlScript Summer of Code -->
+            <div class="guide-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
+                <img src="../assets/program_logo/ggsoc.png" alt="GirlScript Summer of Code" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">GirlScript Summer of Code</h3>
+                    <p class="text-gray-700 mb-6">Large-scale open-source program for students.</p>
+                    <a href="gssoc.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-300">View Details</a>
+                </div>
+            </div>
 
-<div class="album py-5 bg-body-tertiary"> 
-    <div class="container"> 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/ggsoc.png" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>GirlScript Summer of Code</strong> <br>Large-scale open-source program for students.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="gssoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/gsoc.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Google Summer of Code</strong> <br>Global program for advanced contributors.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="gsoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div>  
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/hacktober.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Hacktoberfest (by DigitalOcean)</strong> <br>Global event encouraging first-time open-source participation.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="hacktober.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div>  
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/outreachy.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Outreachy</strong> <br>Paid internship program for underrepresented contributors.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="outreachy.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
+            <!-- Google Summer of Code -->
+            <div class="guide-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
+                <img src="../assets/program_logo/gsoc.webp" alt="Google Summer of Code" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Google Summer of Code</h3>
+                    <p class="text-gray-700 mb-6">Global program for advanced contributors.</p>
+                    <a href="gsoc.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-300">View Details</a>
+                </div>
             </div>
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/linux.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Linux Foundation Mentorship Program</strong> <br>Industry-backed program for open-source development.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="linux.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div>  
-                        </div> 
-                    </div> 
-                </div> 
+
+            <!-- Hacktoberfest -->
+            <div class="guide-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
+                <img src="../assets/program_logo/hacktober.webp" alt="Hacktoberfest" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Hacktoberfest</h3>
+                    <p class="text-gray-700 mb-6">Global event encouraging first-time open-source participation.</p>
+                    <a href="hacktober.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-300">View Details</a>
+                </div>
             </div>
-            <div class="col"> 
-                <div class="card shadow-sm"> 
-                    <img src="../assets/program_logo/ssoc.webp" class="card-img-top"alt="Thumbnail image"style="height: 225px; object-fit: cover;">
-                    <div class="card-body"> 
-                        <p class="card-text"> <strong>Social Summer of Code (SSoC)</strong> <br>Community-driven program for open-source beginners.</p> 
-                        <div class="d-flex justify-content-between align-items-center"> 
-                            <div class="btn-group"> 
-                                <a href="ssoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
-            </div>  
-        </div> 
-    </div> 
-</div>
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+
+            <!-- Outreachy -->
+            <div class="guide-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
+                <img src="../assets/program_logo/outreachy.webp" alt="Outreachy" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Outreachy</h3>
+                    <p class="text-gray-700 mb-6">Paid internship program for underrepresented contributors.</p>
+                    <a href="outreachy.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-300">View Details</a>
+                </div>
+            </div>
+
+            <!-- Linux Foundation -->
+            <div class="guide-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
+                <img src="../assets/program_logo/linux.webp" alt="Linux Foundation" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Linux Foundation Mentorship</h3>
+                    <p class="text-gray-700 mb-6">Industry-backed program for open-source development.</p>
+                    <a href="linux.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-300">View Details</a>
+                </div>
+            </div>
+
+            <!-- Social Summer of Code -->
+            <div class="guide-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
+                <img src="../assets/program_logo/ssoc.webp" alt="Social Summer of Code" class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Social Summer of Code</h3>
+                    <p class="text-gray-700 mb-6">Community-driven program for open-source beginners.</p>
+                    <a href="ssoc.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-300">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto text-center">
+        <p class="text-gray-300">© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </div>
 </footer>
-</body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>
+</body>
+</html>

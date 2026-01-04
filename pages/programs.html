@@ -7,69 +7,129 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/program.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .program-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-8px);
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-gray-50">
 
 <!-- Navbar -->
-<header>
-    <h1 onclick="window.location.href='index.html'">OpenSource Compass</h1>
-    <nav>
-        <a href="../pages/index.html">Home</a>
-        <a href="../pages/guides.html">Guides</a>
-        <a href="programs.html">Programs</a>
-        <a href="Resources.html">Resources</a>
-        <a href="#">Contribute</a>
+<header class="sticky top-0 bg-white border-b border-gray-200 shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+        <h1 class="text-2xl font-bold text-blue-700 cursor-pointer hover:text-blue-600 transition" onclick="window.location.href='index.html'">OpenSource Compass</h1>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Home</a>
+            <a href="guides.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Guides</a>
+            <a href="programs.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Programs</a>
+            <a href="Resources.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Resources</a>
+            <a href="Contribute.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Contribute</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+            <button class="hamburger-menu text-blue-700 text-2xl">☰</button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+        <a href="index.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Home</a>
+        <a href="guides.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Guides</a>
+        <a href="programs.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Programs</a>
+        <a href="Resources.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Resources</a>
+        <a href="Contribute.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Contribute</a>
     </nav>
 </header>
 
 <!-- Dashboard Header -->
-<div class="dashboard-header">
-    <h2>Open Source Programs Dashboard</h2>
-    <p>Explore diverse open-source programs, learn about their contributions, and find issues to work on</p>
+<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Open Source Programs Dashboard</h2>
+        <p class="text-lg text-blue-100">Explore diverse open-source programs, learn about their contributions, and find issues to work on</p>
+    </div>
 </div>
 
 <!-- Filter Section -->
-<div class="filter-section">
-    <label for="difficultyFilter">Difficulty:</label>
-    <select id="difficultyFilter">
-        <option value="">All Levels</option>
-        <option value="Beginner">Beginner</option>
-        <option value="Intermediate">Intermediate</option>
-        <option value="Advanced">Advanced</option>
-    </select>
+<div class="bg-white border-b border-gray-200 py-8 px-4 sm:px-6 lg:px-8 sticky top-20 z-40">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+            <div>
+                <label for="difficultyFilter" class="block text-sm font-semibold text-gray-700 mb-2">Difficulty:</label>
+                <select id="difficultyFilter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                    <option value="">All Levels</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
 
-    <label for="statusFilter">Status:</label>
-    <select id="statusFilter">
-        <option value="">All Status</option>
-        <option value="Active">Active</option>
-        <option value="Upcoming">Upcoming</option>
-        <option value="Completed">Completed</option>
-    </select>
+            <div>
+                <label for="statusFilter" class="block text-sm font-semibold text-gray-700 mb-2">Status:</label>
+                <select id="statusFilter" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
 
-    <input type="text" id="searchBox" class="search-box" placeholder="Search programs...">
+            <div class="md:col-span-2">
+                <label for="searchBox" class="block text-sm font-semibold text-gray-700 mb-2">Search:</label>
+                <input type="text" id="searchBox" class="search-box w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Search programs...">
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Programs -->
-<div class="programs-container" id="programsContainer"></div>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="programs-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="programsContainer"></div>
+</div>
 
 <!-- Modal -->
-<div id="programModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
+<div id="programModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-96 overflow-y-auto">
+        <span class="close-btn absolute top-4 right-4 text-2xl cursor-pointer text-gray-600 hover:text-gray-900 transition">&times;</span>
         <div id="modalBody"></div>
     </div>
 </div>
 
 <!-- Footer -->
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+<footer class="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8 mt-16">
+    <div class="max-w-6xl mx-auto text-center">
+        <p class="text-gray-300">© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </div>
 </footer>
 
 <!-- JS -->
+<script>
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>
 <script src="../Js_scripts/programs.js"></script>
+</body>
+</html>
 </body>
 </html>

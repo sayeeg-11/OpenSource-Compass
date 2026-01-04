@@ -6,161 +6,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-        /* Specific styles for index.html that differ from global style.css */
-        .card {
-            border: 1px solid transparent;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        body {
+            font-family: 'Inter', sans-serif;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.12);
-            border-color: #4D96FF; /* var(--secondary-blue) */
+        .card-hover {
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Scroll To Top Button */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            background-color: #4D96FF; /* var(--secondary-blue) */
-            color: #FFFFFF; /* var(--white) */
-            border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, background-color 0.3s ease;
+        .card-hover:hover {
+            transform: translateY(-8px);
         }
 
-        #scrollTopBtn:hover {
-            background-color: #1F3C88; /* var(--primary-blue) */
-            transform: translateY(-4px);
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hamburger-menu:focus {
+            outline: none;
         }
     </style>
 </head>
-<body>
+<body class="bg-white">
 
-<header>
-    <h1>OpenSource Compass</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
-        <a href="programs.html">Programs</a>
-        <a href="Resources.html">Resources</a>
-        <a href="Contribute.html">Contribute</a>
+<header class="sticky top-0 bg-white border-b border-gray-200 shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+        <h1 class="text-2xl font-bold text-blue-700"><a href="index.html" class="hover:text-blue-600 transition">OpenSource Compass</a></h1>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Home</a>
+            <a href="guides.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Guides</a>
+            <a href="programs.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Programs</a>
+            <a href="Resources.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Resources</a>
+            <a href="Contribute.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Contribute</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+            <button class="hamburger-menu text-blue-700 text-2xl">☰</button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+        <a href="index.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Home</a>
+        <a href="guides.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Guides</a>
+        <a href="programs.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Programs</a>
+        <a href="Resources.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Resources</a>
+        <a href="Contribute.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Contribute</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h2 class="fade-in-up" style="transition-delay: 0.1s;">Navigate Your Open Source Journey</h2>
-    <p class="fade-in-up" style="transition-delay: 0.3s;">
-        OpenSource Compass helps beginners understand open source,
-        make their first meaningful contributions, and explore
-        open-source programs with confidence.
-    </p>
-    <button onclick="window.location.href='dashboard.html'">Get Started</button>
+<section class="bg-gradient-to-r from-blue-50 to-blue-100 py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="fade-in-up text-4xl md:text-5xl font-bold text-blue-900 mb-6">Navigate Your Open Source Journey</h2>
+        <p class="fade-in-up text-lg text-gray-700 mb-8 max-w-2xl leading-relaxed">
+            OpenSource Compass helps beginners understand open source,
+            make their first meaningful contributions, and explore
+            open-source programs with confidence.
+        </p>
+        <button onclick="window.location.href='dashboard.html'" class="fade-in-up bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">Get Started</button>
+    </div>
 </section>
 
-<section>
-    <h3>Why OpenSource Compass?</h3>
-    <p>Starting open source can be overwhelming. This platform simplifies the process with structured guidance and best practices.</p>
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why OpenSource Compass?</h3>
+        <p class="text-gray-700 text-lg mb-12 max-w-2xl">Starting open source can be overwhelming. This platform simplifies the process with structured guidance and best practices.</p>
 
-    <div class="card-grid">
-        <div class="card">
-            <h4>Beginner Friendly</h4>
-            <p>Clear explanations and simple steps for first-time contributors.</p>
-        </div>
-        <div class="card">
-            <h4>Best Practices</h4>
-            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
-        </div>
-        <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-3">Beginner Friendly</h4>
+                <p class="text-gray-700">Clear explanations and simple steps for first-time contributors.</p>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-3">Best Practices</h4>
+                <p class="text-gray-700">Learn do's, don'ts, and how to contribute the right way.</p>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-3">Community Driven</h4>
+                <p class="text-gray-700">Built by contributors, improved by contributors.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>Explore ongoing and upcoming open-source programs with timelines and official resources.</p>
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Open Source Programs</h3>
+        <p class="text-gray-700 text-lg mb-12 max-w-2xl">Explore ongoing and upcoming open-source programs with timelines and official resources.</p>
 
-    <div class="card-grid">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p><br><br>
-            <span class="badge">Upcoming</span>
-        </div>
-        <div class="card">
-            <h4>GirlScript Summer of Code</h4>
-            <p>Large-scale open-source program for students.</p><br><br>
-            <span class="badge">Annual</span>
-        </div>
-        <div class="card">
-            <h4>Google Summer of Code</h4>
-            <p>Global program for advanced contributors.</p><br><br>
-            <span class="badge">Advanced</span>
-        </div>
-
-        <div class="card">
-            <h4>Hacktoberfest (by DigitalOcean)</h4>
-            <p>Global event encouraging first-time open-source participation.</p>
-            <span class="badge">Beginner</span>
-        </div>
-
-        <div class="card">
-            <h4>Winter of Code (WoC)</h4>
-            <p>Mentorship-based program for student contributors.</p><br>
-            <span class="badge">Intermediate</span>
-        </div>
-
-        <div class="card">
-            <h4>Social Summer of Code (SSoC)</h4>
-            <p>Community-driven program for open-source beginners.</p>
-            <span class="badge">Beginner</span>
-        </div>
-
-        <div class="card">
-            <h4>Outreachy</h4>
-            <p>Paid internship program for underrepresented contributors.</p>
-            <span class="badge">Intermediate</span>
-        </div>
-
-        <div class="card">
-            <h4>Linux Foundation Mentorship Program</h4>
-            <p>Industry-backed program for open-source development.</p>
-            <span class="badge">Intermediate</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Social Winter of Code</h4>
+                <p class="text-gray-700 mb-4">Beginner-focused winter open-source program.</p>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Upcoming</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">GirlScript Summer of Code</h4>
+                <p class="text-gray-700 mb-4">Large-scale open-source program for students.</p>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Annual</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Google Summer of Code</h4>
+                <p class="text-gray-700 mb-4">Global program for advanced contributors.</p>
+                <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Advanced</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Hacktoberfest (by DigitalOcean)</h4>
+                <p class="text-gray-700 mb-4">Global event encouraging first-time open-source participation.</p>
+                <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Beginner</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Winter of Code (WoC)</h4>
+                <p class="text-gray-700 mb-4">Mentorship-based program for student contributors.</p>
+                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Intermediate</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Social Summer of Code (SSoC)</h4>
+                <p class="text-gray-700 mb-4">Community-driven program for open-source beginners.</p>
+                <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Beginner</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Outreachy</h4>
+                <p class="text-gray-700 mb-4">Paid internship program for underrepresented contributors.</p>
+                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Intermediate</span>
+            </div>
+            <div class="card-hover bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Linux Foundation Mentorship Program</h4>
+                <p class="text-gray-700 mb-4">Industry-backed program for open-source development.</p>
+                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Intermediate</span>
+            </div>
         </div>
     </div>
 </section>
 
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+<footer class="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8 mt-16">
+    <div class="max-w-6xl mx-auto text-center">
+        <p class="text-gray-300">© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </div>
 </footer>
 
-<button id="scrollTopBtn" title="Go to top">↑</button>
+<button id="scrollTopBtn" title="Go to top" class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition duration-300 transform hover:scale-110 hidden z-40">↑</button>
 
 <script>
-    /* Theme Toggle */
-    const themeToggle = document.getElementById("themeToggle");
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        themeToggle.textContent =
-            document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-    });
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 
-    /* Scroll To Top */
+    // Scroll To Top
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     window.addEventListener("scroll", () => {
-        scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+        scrollTopBtn.classList.toggle('hidden', window.scrollY <= 300);
     });
 
     scrollTopBtn.addEventListener("click", () => {

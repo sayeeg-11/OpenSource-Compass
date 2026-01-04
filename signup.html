@@ -5,57 +5,64 @@
     <title>Sign Up - OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/auth.css">
 </head>
-<body>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100">
     <!-- Navbar -->
-    <header>
-        <h1><a href="index.html">OpenSource Compass</a></h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="login.html">Login</a>
-        </nav>
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <h1 class="text-2xl font-bold text-blue-700"><a href="pages/index.html" class="hover:text-blue-600 transition">OpenSource Compass</a></h1>
+            <nav class="flex gap-6 items-center">
+                <a href="pages/index.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Home</a>
+                <a href="login.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Login</a>
+            </nav>
+        </div>
     </header>
 
     <!-- Sign Up Section -->
-    <section class="auth-section">
-        <div class="auth-container">
-            <div class="auth-card">
-                <h2>Create Your Account</h2>
-                <p class="auth-subtitle">Join OpenSource Compass and start your open source journey</p>
+    <section class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md">
+            <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+                <h2 class="text-3xl font-bold text-blue-900 mb-2 text-center">Create Your Account</h2>
+                <p class="text-center text-gray-600 mb-8">Join OpenSource Compass and start your open source journey</p>
                 
-                <form id="signupForm" class="auth-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                        <span class="error-message" id="nameError"></span>
+                <form id="signupForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        <span class="error-message text-red-500 text-sm mt-1 hidden" id="nameError"></span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email">
-                        <span class="error-message" id="emailError"></span>
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        <span class="error-message text-red-500 text-sm mt-1 hidden" id="emailError"></span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required placeholder="Create a password">
-                        <span class="error-message" id="passwordError"></span>
-                        <small class="form-hint">Must be at least 6 characters</small>
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Create a password" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        <span class="error-message text-red-500 text-sm mt-1 hidden" id="passwordError"></span>
+                        <small class="text-gray-500 text-xs block mt-2">Must be at least 6 characters</small>
                     </div>
 
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
-                        <span class="error-message" id="confirmPasswordError"></span>
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        <span class="error-message text-red-500 text-sm mt-1 hidden" id="confirmPasswordError"></span>
                     </div>
 
-                    <button type="submit" class="auth-button">Sign Up</button>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">Sign Up</button>
                 </form>
 
-                <div class="auth-footer">
-                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">Already have an account? <a href="login.html" class="text-blue-600 font-semibold hover:text-blue-700 transition">Login here</a></p>
                 </div>
             </div>
         </div>

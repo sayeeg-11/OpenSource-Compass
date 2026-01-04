@@ -5,98 +5,151 @@
   <title>OpenSource Compass — Resources</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/resources.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .resource-card {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-8px);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-white">
 
-<header>
-    <h1>OpenSource Compass</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
-        <a href="programs.html">Programs</a>
-        <a href="Resources.html">Resources</a>
-        <a href="Contribute.html">Contribute</a>
+<header class="sticky top-0 bg-white border-b border-gray-200 shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+        <h1 class="text-2xl font-bold text-blue-700"><a href="index.html" class="hover:text-blue-600 transition">OpenSource Compass</a></h1>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a href="index.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Home</a>
+            <a href="guides.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Guides</a>
+            <a href="programs.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Programs</a>
+            <a href="Resources.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Resources</a>
+            <a href="Contribute.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Contribute</a>
+        </nav>
+        <div class="md:hidden flex items-center">
+            <button class="hamburger-menu text-blue-700 text-2xl">☰</button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+        <a href="index.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Home</a>
+        <a href="guides.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Guides</a>
+        <a href="programs.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Programs</a>
+        <a href="Resources.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Resources</a>
+        <a href="Contribute.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 transition">Contribute</a>
     </nav>
 </header>
 
-<section class="resources-hero">
-  <h2>Resources</h2>
-  <p>Tutorials, tools, and guides to help you start and grow in open source.</p>
-  <a href="#" class="btn-primary">Get Started</a>
-</section>
-
-<section>
-  <div class="resources-grid">
-    <article class="resource-card">
-      <h4>How to Contribute to Open Source</h4>
-      <div class="resource-meta">Guide • Beginner • 15–20 min read</div>
-      <p>Step-by-step walkthrough for finding issues, opening PRs, and communicating with maintainers.</p>
-    </article>
-
-    <article class="resource-card">
-      <h4>Git and GitHub Essentials</h4>
-      <div class="resource-meta">Tutorial • Beginner • Interactive</div>
-      <ol>
-        <li>Setup: install Git, configure user.name and user.email</li>
-        <li>Fork the project, clone your fork locally</li>
-        <li>Create a branch: git checkout -b fix/short-description</li>
-        <li>Make focused commits run project tests</li>
-        <li>Push and open PR: push branch and open a PR against upstream</li>
-        <li>Respond to review: iterate on feedback, squash or rebase, then merge when approved</li>
-      </ol>
-    </article>
-
-    <article class="resource-card">
-      <h4>Open Source Licensing Explained</h4>
-      <div class="resource-meta">Reference • Intermediate • 10–15 min read</div>
-      <p>Comparison of common licenses and guidance on choosing one for your project.</p>
-      <div class="resource-actions">
-        <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">View</a>
-      </div>
-    </article>
-
-    <article class="resource-card">
-      <h4>Finding Good First Issues</h4>
-      <div class="resource-meta">Tool • Beginner • Live</div>
-      <p>Aggregators and search tips to locate beginner-friendly issues across projects.</p>
-      <div class="resource-actions">
-        <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">Explore</a>
-      </div>
-    </article>
+<section class="bg-gradient-to-r from-blue-50 to-blue-100 py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Resources</h2>
+    <p class="text-lg text-gray-700 mb-8 max-w-2xl">Tutorials, tools, and guides to help you start and grow in open source.</p>
+    <a href="#resources-grid" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">Get Started</a>
   </div>
 </section>
 
-<div class="filters">
-  <span class="filter-pill active" data-filter="all">All</span>
-  <span class="filter-pill" data-filter="guide">Guides</span>
-  <span class="filter-pill" data-filter="tutorial">Tutorials</span>
-  <span class="filter-pill" data-filter="tool">Tools</span>
-  <span class="filter-pill" data-filter="reference">Reference</span>
-</div>
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8" id="resources-grid">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <article class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-2">How to Contribute to Open Source</h4>
+        <div class="text-sm text-gray-500 mb-4">Guide • Beginner • 15–20 min read</div>
+        <p class="text-gray-700">Step-by-step walkthrough for finding issues, opening PRs, and communicating with maintainers.</p>
+      </article>
 
-<section>
-  <h3>Community Hubs</h3>
-  <p>Places to ask questions, find mentors, and join contributor-friendly communities.</p>
-  <div class="card-container">
-    <div class="card">
-      <h4>Discord & Slack Communities</h4>
-      <p>Real-time help and project channels to get quick feedback and find collaborators.</p>
-    </div>
-    <div class="card">
-      <h4>Mailing Lists & Forums</h4>
-      <p>Long-form discussions, RFCs, and announcements for deeper project context.</p>
-    </div>
-    <div class="card">
-      <h4>Mentorship Programs</h4>
-      <p>Programs pairing newcomers with experienced contributors for guided onboarding.</p>
+      <article class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-2">Git and GitHub Essentials</h4>
+        <div class="text-sm text-gray-500 mb-4">Tutorial • Beginner • Interactive</div>
+        <ol class="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Setup: install Git, configure user.name and user.email</li>
+          <li>Fork the project, clone your fork locally</li>
+          <li>Create a branch: git checkout -b fix/short-description</li>
+          <li>Make focused commits and run project tests</li>
+          <li>Push and open PR: push branch and open a PR against upstream</li>
+          <li>Respond to review: iterate on feedback, squash or rebase, then merge</li>
+        </ol>
+      </article>
+
+      <article class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-2">Open Source Licensing Explained</h4>
+        <div class="text-sm text-gray-500 mb-4">Reference • Intermediate • 10–15 min read</div>
+        <p class="text-gray-700 mb-6">Comparison of common licenses and guidance on choosing one for your project.</p>
+        <div class="resource-actions">
+          <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition" href="https://github.com/sayeeg-11/OpenSource-Compass">View</a>
+        </div>
+      </article>
+
+      <article class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-2">Finding Good First Issues</h4>
+        <div class="text-sm text-gray-500 mb-4">Tool • Beginner • Live</div>
+        <p class="text-gray-700 mb-6">Aggregators and search tips to locate beginner-friendly issues across projects.</p>
+        <div class="resource-actions">
+          <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition" href="https://github.com/sayeeg-11/OpenSource-Compass">Explore</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+<section class="py-4 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-wrap gap-3">
+      <span class="filter-pill active bg-blue-600 text-white px-4 py-2 rounded-full cursor-pointer transition" data-filter="all">All</span>
+      <span class="filter-pill bg-gray-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer transition hover:bg-gray-300" data-filter="guide">Guides</span>
+      <span class="filter-pill bg-gray-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer transition hover:bg-gray-300" data-filter="tutorial">Tutorials</span>
+      <span class="filter-pill bg-gray-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer transition hover:bg-gray-300" data-filter="tool">Tools</span>
+      <span class="filter-pill bg-gray-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer transition hover:bg-gray-300" data-filter="reference">Reference</span>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto">
+    <h3 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Community Hubs</h3>
+    <p class="text-gray-700 text-lg mb-12 max-w-2xl">Places to ask questions, find mentors, and join contributor-friendly communities.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-3">Discord & Slack Communities</h4>
+        <p class="text-gray-700">Real-time help and project channels to get quick feedback and find collaborators.</p>
+      </div>
+      <div class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-3">Mailing Lists & Forums</h4>
+        <p class="text-gray-700">Long-form discussions, RFCs, and announcements for deeper project context.</p>
+      </div>
+      <div class="resource-card bg-white p-8 rounded-lg border border-gray-200 shadow-md hover:shadow-xl transition">
+        <h4 class="text-xl font-bold text-blue-900 mb-3">Mentorship Programs</h4>
+        <p class="text-gray-700">Programs pairing newcomers with experienced contributors for guided onboarding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto text-center">
+    <p class="text-gray-300">© 2025 OpenSource Compass • Built for the Open Source Community</p>
+  </div>
 </footer>
+
+<script>
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>
 <script src="../Js_scripts/resources.js"></script>
+</body>
+</html>
 </body>
 </html>

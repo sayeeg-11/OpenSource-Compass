@@ -5,51 +5,56 @@
     <title>Login - OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/auth.css">
 </head>
-<body>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100">
     <!-- Navbar -->
-    <header>
-        <h1><a href="index.html">OpenSource Compass</a></h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="signup.html">Sign Up</a>
-        </nav>
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <h1 class="text-2xl font-bold text-blue-700"><a href="pages/index.html" class="hover:text-blue-600 transition">OpenSource Compass</a></h1>
+            <nav class="flex gap-6 items-center">
+                <a href="pages/index.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Home</a>
+                <a href="signup.html" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Sign Up</a>
+            </nav>
+        </div>
     </header>
 
     <!-- Login Section -->
-    <section class="auth-section">
-        <div class="auth-container">
-            <div class="auth-card">
-                <h2>Welcome Back</h2>
-                <p class="auth-subtitle">Login to continue your open source journey</p>
+    <section class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md">
+            <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+                <h2 class="text-3xl font-bold text-blue-900 mb-2 text-center">Welcome Back</h2>
+                <p class="text-center text-gray-600 mb-8">Login to continue your open source journey</p>
                 
-                <form id="loginForm" class="auth-form">
-                    <div class="form-group">
-                        <label for="loginEmail">Email Address</label>
-                        <input type="email" id="loginEmail" name="email" required placeholder="Enter your email">
-                        <span class="error-message" id="loginEmailError"></span>
+                <form id="loginForm" class="space-y-6">
+                    <div>
+                        <label for="loginEmail" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="loginEmail" name="email" required placeholder="Enter your email" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        <span class="error-message text-red-500 text-sm mt-1 hidden" id="loginEmailError"></span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
-                        <span class="error-message" id="loginPasswordError"></span>
+                    <div>
+                        <label for="loginPassword" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                        <input type="password" id="loginPassword" name="password" required placeholder="Enter your password" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        <span class="error-message text-red-500 text-sm mt-1 hidden" id="loginPasswordError"></span>
                     </div>
 
-                    <div class="form-options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="rememberMe">
-                            <span>Remember me</span>
+                    <div class="flex items-center">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" id="rememberMe" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="ml-2 text-sm text-gray-600">Remember me</span>
                         </label>
                     </div>
 
-                    <button type="submit" class="auth-button">Login</button>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
                 </form>
 
-                <div class="auth-footer">
-                    <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">Don't have an account? <a href="signup.html" class="text-blue-600 font-semibold hover:text-blue-700 transition">Sign up here</a></p>
                 </div>
             </div>
         </div>
