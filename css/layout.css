@@ -1,0 +1,153 @@
+/* Layout styles for the Open Source Compass project */
+<style > :root {
+  --primary-blue: #1f3c88;
+  --secondary-blue: #4d96ff;
+  --light-gray: #f5f7fa;
+  --text-dark: #2e2e2e;
+  --success-green: #3ccf91;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ---------- Navbar ---------- */
+header {
+  background-color: var(--white);
+  border-bottom: 1px solid #eaeaea;
+  padding: 16px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--primary-blue);
+  font-size: 22px;
+}
+
+nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--secondary-blue);
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  background-color: var(--light-gray);
+  padding: 80px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero h2 {
+  font-size: 42px;
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 600px;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.hero button {
+  background-color: var(--secondary-blue);
+  color: var(--white);
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background-color: var(--primary-blue);
+}
+
+/* ---------- Section Common ---------- */
+section {
+  padding: 64px 8%;
+}
+
+section h3 {
+  font-size: 28px;
+  color: var(--primary-blue);
+  margin-bottom: 12px;
+}
+
+section p {
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+/* ---------- Cards ---------- */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background-color: var(--white);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h4 {
+  margin-bottom: 10px;
+  color: var(--secondary-blue);
+}
+
+/* ---------- Programs Section ---------- */
+.programs {
+  background-color: var(--light-gray);
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--success-green);
+  color: var(--white);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 24px;
+  margin-top: 40px;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 32px;
+  }
+}

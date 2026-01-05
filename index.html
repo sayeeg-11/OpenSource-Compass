@@ -1,255 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>OpenSource Compass</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Layout Styles -->
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
 
-    <style>
-        :root {
-            --primary-blue: #1F3C88;
-            --secondary-blue: #4D96FF;
-            --light-gray: #F5F7FA;
-            --text-dark: #2E2E2E;
-            --success-green: #3CCF91;
-            --white: #FFFFFF;
-        }
+  <body>
+    <!-- Navbar -->
+    <header>
+      <h1>OpenSource Compass</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pages/About.html">About</a>
+        <a href="pages/Contact.html">Contact</a>
+        <a href="pages/Guide.html">Guide</a>
+        <a href="pages/Programs.html">Programs</a>
+        <a href="pages/Resources.html">Resources</a>
+        <a href="pages/Contribute.html">Contribute</a>
+      </nav>
+    </header>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+    <!-- Hero Section -->
+    <section class="hero">
+      <h2>Navigate Your Open Source Journey</h2>
+      <p>
+        OpenSource Compass helps beginners understand open source, make their
+        first meaningful contributions, and explore open-source programs with
+        confidence.
+      </p>
+      <button>Get Started</button>
+    </section>
 
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+    <!-- Why Section -->
+    <section>
+      <h3>Why OpenSource Compass?</h3>
+      <p>
+        Starting open source can be overwhelming. This platform simplifies the
+        process with structured guidance, best practices, and a centralized
+        program hub.
+      </p>
 
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-        }
-
-        nav a {
-            margin-left: 24px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background-color: var(--light-gray);
-            padding: 80px 8%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            font-size: 18px;
-            margin-bottom: 32px;
-        }
-
-        .hero button {
-            background-color: var(--secondary-blue);
-            color: var(--white);
-            border: none;
-            padding: 14px 28px;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .hero button:hover {
-            background-color: var(--primary-blue);
-        }
-
-        /* ---------- Section Common ---------- */
-        section {
-            padding: 64px 8%;
-        }
-
-        section h3 {
-            font-size: 28px;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-        }
-
-        section p {
-            max-width: 700px;
-            margin-bottom: 32px;
-        }
-
-        /* ---------- Cards ---------- */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
-        .card {
-            background-color: var(--white);
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        .card h4 {
-            margin-bottom: 10px;
-            color: var(--secondary-blue);
-        }
-
-        /* ---------- Programs Section ---------- */
-        .programs {
-            background-color: var(--light-gray);
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: var(--success-green);
-            color: var(--white);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 24px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            font-size: 14px;
-        }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 32px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<!-- Navbar -->
-<header>
-    <h1>OpenSource Compass</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Guides</a>
-        <a href="#">Programs</a>
-        <a href="#">Resources</a>
-        <a href="#">Contribute</a>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<section class="hero">
-    <h2>Navigate Your Open Source Journey</h2>
-    <p>
-        OpenSource Compass helps beginners understand open source,
-        make their first meaningful contributions, and explore
-        open-source programs with confidence.
-    </p>
-    <button>Get Started</button>
-</section>
-
-<!-- Why Section -->
-<section>
-    <h3>Why OpenSource Compass?</h3>
-    <p>
-        Starting open source can be overwhelming. This platform simplifies
-        the process with structured guidance, best practices, and a
-        centralized program hub.
-    </p>
-
-    <div class="card-container">
+      <div class="card-container">
         <div class="card">
-            <h4>Beginner Friendly</h4>
-            <p>Clear explanations and simple steps for first-time contributors.</p>
+          <h4>Beginner Friendly</h4>
+          <p>
+            Clear explanations and simple steps for first-time contributors.
+          </p>
         </div>
 
         <div class="card">
-            <h4>Best Practices</h4>
-            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
+          <h4>Best Practices</h4>
+          <p>Learn do’s, don’ts, and how to contribute the right way.</p>
         </div>
 
         <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
+          <h4>Community Driven</h4>
+          <p>Built by contributors, improved by contributors.</p>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Programs Section -->
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
+    <!-- Programs Section -->
+    <section class="programs">
+      <h3>Open Source Programs</h3>
+      <p>
         Explore ongoing and upcoming open-source programs with timelines,
         prerequisites, and official resources.
-    </p>
+      </p>
 
-    <div class="card-container">
+      <div class="card-container">
         <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
+          <h4>Social Winter of Code</h4>
+          <p>Beginner-focused winter open-source program.</p>
+          <span class="badge">Upcoming</span>
         </div>
 
         <div class="card">
-            <h4>GirlScript Summer of Code</h4>
-            <p>Large-scale open-source program for students.</p>
-            <span class="badge">Annual</span>
+          <h4>GirlScript Summer of Code</h4>
+          <p>Large-scale open-source program for students.</p>
+          <span class="badge">Annual</span>
         </div>
 
         <div class="card">
-            <h4>Google Summer of Code</h4>
-            <p>Global program for advanced contributors.</p>
-            <span class="badge">Advanced</span>
+          <h4>Google Summer of Code</h4>
+          <p>Global program for advanced contributors.</p>
+          <span class="badge">Advanced</span>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Footer -->
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-</footer>
-
-</body>
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </footer>
+  </body>
 </html>
