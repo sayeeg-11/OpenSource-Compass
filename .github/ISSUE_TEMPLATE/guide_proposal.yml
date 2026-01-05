@@ -1,0 +1,47 @@
+name: 📘 Guide Proposal
+description: Propose a new learning guide or tutorial
+title: "[Guide]: "
+labels: ["guide"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📘 New Guide Proposal
+        Help us expand our learning resources.
+
+  - type: input
+    id: topic
+    attributes:
+      label: Guide Topic
+      placeholder: Introduction to GitHub Actions
+    validations:
+      required: true
+
+  - type: textarea
+    id: audience
+    attributes:
+      label: Target Audience
+      placeholder: Beginners, Intermediate developers, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: outline
+    attributes:
+      label: Proposed Outline
+      placeholder: |
+        1. Introduction
+        2. Core Concepts
+        3. Examples
+        4. Resources
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is this guide needed?
+      description: Explain the value to the community.
+

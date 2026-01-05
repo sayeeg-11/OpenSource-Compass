@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "name": "Google Summer of Code",
+    "description": "Google's annual, international program focused on bringing more student developers into open source software development.",
+    "status": "Active",
+    "difficulty": "Advanced",
+    "timeline": "May - August",
+    "stipend": "$3000 - $6600",
+    "contributors": 2000,
+    "issues": 450,
+    "organizations": 180,
+    "contributions": [
+      "Bug fixes and feature implementations",
+      "Documentation improvements",
+      "Performance optimization",
+      "UI/UX enhancements"
+    ],
+    "issues_list": [
+      "Fix pagination in search results",
+      "Implement dark mode support",
+      "Add multi-language support",
+      "Optimize database queries",
+      "Create user dashboard"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "GirlScript Summer of Code",
+    "description": "A nationwide summer program to inspire girls to explore technology and make their first meaningful open-source contribution.",
+    "status": "Active",
+    "difficulty": "Beginner",
+    "timeline": "March - May",
+    "stipend": "Certificates & Perks",
+    "contributors": 1500,
+    "issues": 320,
+    "organizations": 120,
+    "contributions": [
+      "Frontend development",
+      "Backend integration",
+      "API documentation",
+      "Testing and QA"
+    ],
+    "issues_list": [
+      "Create landing page UI",
+      "Build contact form with validation",
+      "Add responsive design fixes",
+      "Implement search functionality",
+      "Write unit tests"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Hacktoberfest",
+    "description": "A month-long celebration of open source software run by DigitalOcean encouraging contributions to open repositories.",
+    "status": "Upcoming",
+    "difficulty": "Beginner",
+    "timeline": "October 1 - October 31",
+    "stipend": "T-Shirt & Digital Badge",
+    "contributors": 100000,
+    "issues": 5000,
+    "organizations": 500,
+    "contributions": [
+      "Bug fixes",
+      "Documentation updates",
+      "Code refactoring",
+      "Translation"
+    ],
+    "issues_list": [
+      "Fix typos in documentation",
+      "Improve README files",
+      "Resolve beginner GitHub issues",
+      "Add missing comments",
+      "Fix broken links"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "MLH Fellowship",
+    "description": "A remote, structured internship alternative where developers collaborate on real-world open source projects.",
+    "status": "Active",
+    "difficulty": "Intermediate",
+    "timeline": "Year-round",
+    "stipend": "$3000 - $5000",
+    "contributors": 800,
+    "issues": 380,
+    "organizations": 90,
+    "contributions": [
+      "Full-stack development",
+      "Machine learning projects",
+      "Cloud infrastructure",
+      "DevOps pipelines"
+    ],
+    "issues_list": [
+      "Build REST APIs",
+      "Optimize ML models",
+      "Create CI/CD pipelines",
+      "Implement dashboards",
+      "Improve system performance"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Outreachy",
+    "description": "Paid remote internships supporting diversity and inclusion in free and open source software communities.",
+    "status": "Upcoming",
+    "difficulty": "Intermediate",
+    "timeline": "May-August & Dec-March",
+    "stipend": "$6000 - $7000",
+    "contributors": 400,
+    "issues": 200,
+    "organizations": 60,
+    "contributions": [
+      "Backend systems",
+      "Community tooling",
+      "Technical writing",
+      "System administration"
+    ],
+    "issues_list": [
+      "Refactor legacy code",
+      "Improve documentation",
+      "Automate deployments",
+      "Build admin dashboards",
+      "Fix scalability issues"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Social Winter of Code",
+    "description": "A winter open source program designed for beginners to get started with real-world open source projects.",
+    "status": "Completed",
+    "difficulty": "Beginner",
+    "timeline": "December - January",
+    "stipend": "Certificates & Prizes",
+    "contributors": 600,
+    "issues": 150,
+    "organizations": 45,
+    "contributions": [
+      "Beginner bug fixes",
+      "Documentation contributions",
+      "Code reviews",
+      "Community engagement"
+    ],
+    "issues_list": [
+      "Fix CSS alignment issues",
+      "Add beginner guides",
+      "Improve test coverage",
+      "Refactor simple modules",
+      "Add inline comments"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Season of KDE",
+    "description": "An outreach program by KDE community offering students opportunities to contribute to KDE projects.",
+    "status": "Active",
+    "difficulty": "Intermediate",
+    "timeline": "January - April",
+    "stipend": "$3000",
+    "contributors": 300,
+    "issues": 120,
+    "organizations": 1,
+    "contributions": [
+      "Desktop application development",
+      "Qt programming",
+      "Bug tracking",
+      "UI improvements"
+    ],
+    "issues_list": [
+      "Fix KDE UI glitches",
+      "Improve application performance",
+      "Add new features to KDE apps",
+      "Refactor Qt components",
+      "Improve accessibility support"
+    ]
+  }
+]

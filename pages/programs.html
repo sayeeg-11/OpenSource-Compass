@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - OpenSource Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/program.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header>
+    <h1 onclick="window.location.href='index.html'">OpenSource Compass</h1>
+    <nav>
+        <a href="../pages/index.html">Home</a>
+        <a href="../pages/guides.html">Guides</a>
+        <a href="programs.html">Programs</a>
+        <a href="Resources.html">Resources</a>
+        <a href="#">Contribute</a>
+    </nav>
+</header>
+
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+    <h2>Open Source Programs Dashboard</h2>
+    <p>Explore diverse open-source programs, learn about their contributions, and find issues to work on</p>
+</div>
+
+<!-- Filter Section -->
+<div class="filter-section">
+    <label for="difficultyFilter">Difficulty:</label>
+    <select id="difficultyFilter">
+        <option value="">All Levels</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+    </select>
+
+    <label for="statusFilter">Status:</label>
+    <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="Active">Active</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+    <input type="text" id="searchBox" class="search-box" placeholder="Search programs...">
+</div>
+
+<!-- Programs -->
+<div class="programs-container" id="programsContainer"></div>
+
+<!-- Modal -->
+<div id="programModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+</footer>
+
+<!-- JS -->
+<script src="../Js_scripts/programs.js"></script>
+</body>
+</html>

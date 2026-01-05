@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenSource Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            --primary-blue: #1F3C88;
+            --secondary-blue: #4D96FF;
+            --light-gray: #F5F7FA;
+            --text-dark: #2E2E2E;
+            --success-green: #3CCF91;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ---------- Navbar ---------- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid #eaeaea;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 22px;
+        }
+
+        nav a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--secondary-blue);
+        }
+
+        #themeToggle {
+            margin-left: 24px;
+            background-color: var(--light-gray);
+            color: var(--secondary-blue);
+            border: 2px solid #000;
+            border-radius: 6px;
+            font-size: 22px;
+            padding: 4px 10px;
+            cursor: pointer;
+            line-height: 1;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        #themeToggle:hover {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+        }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            background-color: var(--light-gray);
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        .hero button {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* ---------- Section Common ---------- */
+        section {
+            padding: 64px 8%;
+        }
+
+        section h3 {
+            font-size: 28px;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        section p {
+            max-width: 700px;
+            margin-bottom: 32px;
+        }
+
+        /* ---------- Cards ---------- */
+        .card-container,
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+            border-color: var(--secondary-blue);
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-blue);
+        }
+
+        /* ---------- Programs Section ---------- */
+        .programs {
+            background-color: var(--light-gray);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--success-green);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 24px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+
+        body.dark-mode {
+            --white: #0f172a;
+            --light-gray: #020617;
+            --text-dark: #e5e7eb;
+            --primary-blue: #93c5fd;
+            --secondary-blue: #60a5fa;
+        }
+
+        /* ---------- Scroll To Top Button ---------- */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>OpenSource Compass</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="guides.html">Guides</a>
+        <a href="#">Programs</a>
+        <a href="#">Resources</a>
+        <a href="#">Contribute</a>
+        <button id="themeToggle" title="Toggle theme">🌙</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Navigate Your Open Source Journey</h2>
+    <p>
+        OpenSource Compass helps beginners understand open source,
+        make their first meaningful contributions, and explore
+        open-source programs with confidence.
+    </p>
+    <button>Get Started</button>
+</section>
+
+<section>
+    <h3>Why OpenSource Compass?</h3>
+    <p>Starting open source can be overwhelming. This platform simplifies the process with structured guidance and best practices.</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <h4>Beginner Friendly</h4>
+            <p>Clear explanations and simple steps for first-time contributors.</p>
+        </div>
+        <div class="card">
+            <h4>Best Practices</h4>
+            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
+        </div>
+        <div class="card">
+            <h4>Community Driven</h4>
+            <p>Built by contributors, improved by contributors.</p>
+        </div>
+    </div>
+</section>
+
+<section class="programs">
+    <h3>Open Source Programs</h3>
+    <p>Explore ongoing and upcoming open-source programs with timelines and official resources.</p>
+
+    <div class="card-grid">
+        <div class="card"><h4>Social Winter of Code</h4><p>Beginner-focused winter open-source program.</p><span class="badge">Upcoming</span></div>
+        <div class="card"><h4>GirlScript Summer of Code</h4><p>Large-scale open-source program for students.</p><span class="badge">Annual</span></div>
+        <div class="card"><h4>Google Summer of Code</h4><p>Global program for advanced contributors.</p><span class="badge">Advanced</span></div>
+        <div class="card"><h4>Hacktoberfest (by DigitalOcean)</h4><p>Global event encouraging first-time open-source participation.</p><span class="badge">Beginner</span></div>
+        <div class="card"><h4>Winter of Code (WoC)</h4><p>Mentorship-based program for student contributors.</p><span class="badge">Beginner → Intermediate</span></div>
+        <div class="card"><h4>Social Summer of Code (SSoC)</h4><p>Community-driven program for open-source beginners.</p><span class="badge">Beginner</span></div>
+        <div class="card"><h4>Outreachy</h4><p>Paid internship program for underrepresented contributors.</p><span class="badge">Intermediate</span></div>
+        <div class="card"><h4>Linux Foundation Mentorship Program</h4><p>Industry-backed program for open-source development.</p><span class="badge">Intermediate</span></div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+</footer>
+
+<button id="scrollTopBtn" title="Go to top">↑</button>
+
+<script>
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        themeToggle.textContent =
+            document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+        scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
+
+</body>
+</html>

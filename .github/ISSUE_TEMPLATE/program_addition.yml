@@ -1,0 +1,48 @@
+name: 🧩 Program Addition
+description: Suggest a new Open Source program to include
+title: "[Program]: "
+labels: ["program"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧩 Open Source Program Suggestion
+        Please provide accurate and verifiable information.
+
+  - type: input
+    id: name
+    attributes:
+      label: Program Name
+      placeholder: Google Summer of Code
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Official Website
+      placeholder: https://example.com
+    validations:
+      required: true
+
+  - type: input
+    id: dates
+    attributes:
+      label: Program Dates
+      placeholder: May 2026 – August 2026
+
+  - type: textarea
+    id: eligibility
+    attributes:
+      label: Eligibility Criteria
+      placeholder: Who can apply?
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why should this be added?
+      description: Explain relevance to the community.
+    validations:
+      required: true

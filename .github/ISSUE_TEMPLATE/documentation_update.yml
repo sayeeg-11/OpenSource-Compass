@@ -1,0 +1,45 @@
+name: 📚 Documentation Update
+description: Fix typos, errors, or improve clarity
+title: "[Docs]: "
+labels: ["documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 Documentation Improvement
+
+  - type: input
+    id: location
+    attributes:
+      label: Documentation Location
+      placeholder: README.md / Guides/Setup.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue Description
+      placeholder: What is incorrect or unclear?
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested Fix
+      placeholder: How should it be corrected?
+
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Type of Change
+      options:
+        - Typo
+        - Grammar
+        - Incorrect Information
+        - Improvement
+    validations:
+      required: true
