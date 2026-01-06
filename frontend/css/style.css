@@ -1,0 +1,377 @@
+/* =========================
+   Global Variables
+========================= */
+:root {
+    --primary-blue: #1F3C88;
+    --secondary-blue: #4D96FF;
+    --light-gray: #F5F7FA;
+    --text-dark: #2E2E2E;
+    --success-green: #3CCF91;
+    --white: #FFFFFF;
+    
+    /* Shredded Colors */
+    --shred-1: #FF4D4D;
+    --shred-2: #4D96FF;
+    --shred-3: #FFD93D;
+    
+    /* New Animation & Glassmorphism Variables */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --transition-speed: 0.3s;
+    --anim-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* =========================
+   Reset & Base Styles
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; 
+}
+
+/* =========================
+   Shredded Background Effect
+========================= */
+.shredded-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.shredded-bg::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--shred-1), var(--shred-3));
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%, 25% 50%);
+    opacity: 0.15;
+    z-index: -1;
+    transform: rotate(15deg);
+}
+
+.shredded-bg::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--shred-2), var(--shred-1));
+    clip-path: polygon(0% 15%, 100% 30%, 85% 85%, 15% 100%);
+    opacity: 0.1;
+    z-index: -1;
+    transform: rotate(-10deg);
+}
+
+/* =========================
+   Header / Navbar
+========================= */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid #eaeaea;
+    padding: 16px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 a {
+    color: var(--primary-blue);
+    font-size: 22px;
+    font-weight: 700;
+}
+#state-container {
+    margin: 40px 8%;
+    padding: 24px;
+    background-color: #F5F7FA;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #2E2E2E;
+}
+nav a {
+    margin-left: 24px;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--secondary-blue);
+}
+
+/* =========================
+   Hero Section (Applying Shredded BG)
+========================= */
+.hero {
+    background-color: var(--light-gray);
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero h2 {
+    font-size: 48px;
+    color: var(--primary-blue);
+    margin-bottom: 16px;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #555;
+}
+
+.hero button {
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    border: none;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-speed) var(--anim-curve);
+    box-shadow: 0 4px 15px rgba(77, 150, 255, 0.3);
+}
+
+.hero button:hover {
+    background-color: var(--primary-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(77, 150, 255, 0.4);
+}
+
+/* =========================
+   Cards & Grid
+========================= */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    color: var(--secondary-blue);
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--anim-curve), transform 0.8s var(--anim-curve);
+}
+
+.fade-in-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   Why Section - Specific Styling
+    border-color: var(--secondary-blue);
+}
+
+.card h4 {
+    margin-bottom: 12px;
+    color: var(--primary-blue);
+    font-size: 20px;
+}
+
+/* =========================
+   Footer (Shredded Look)
+========================= */
+footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 40px 8%;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: var(--white);
+    clip-path: polygon(0 0, 5% 100%, 10% 0, 15% 100%, 20% 0, 25% 100%, 30% 0, 35% 100%, 40% 0, 45% 100%, 50% 0, 55% 100%, 60% 0, 65% 100%, 70% 0, 75% 100%, 80% 0, 85% 100%, 90% 0, 95% 100%, 100% 0);
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active {
+        display: none;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--white);
+        padding: 20px 8%;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav.active .close-icon {
+        display: block;
+    }
+
+    nav a {
+        margin: 10px 0;
+        width: 100%;
+        font-size: 20px;
+        margin: 20px 0;
+    }
+
+    .profile-dropdown {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .profile-icon {
+        width: 100%;
+        border-radius: 6px;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .profile-menu {
+        position: static;
+        box-shadow: none;
+        border: 1px solid #e0e0e0;
+        margin-top: 10px;
+        border-radius: 6px;
+    }
+
+    .hero {
+        padding: 60px 8%;
+    }
+    
+    .hero h2 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 48px 8%;
+    }
+
+    section h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Hover effect to the cards */
+
+/* Base card style */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  will-change: transform, box-shadow;
+}
+
+/* Hover interaction */
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+
+/* =========================
+   Animations
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--anim-curve), transform 0.8s var(--anim-curve);
+}
+
+.fade-in-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll To Top */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--secondary-blue);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 99;
+}

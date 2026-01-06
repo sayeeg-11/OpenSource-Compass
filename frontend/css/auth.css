@@ -1,0 +1,278 @@
+/* =========================
+   Authentication Pages Styles
+========================= */
+
+.auth-section {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 8%;
+    background-color: var(--light-gray);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h2 {
+    color: var(--primary-blue);
+    font-size: 28px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 32px;
+    font-size: 14px;
+}
+
+.auth-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.error-message {
+    display: none;
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.form-hint {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.form-options {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.auth-button {
+    width: 100%;
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-button:hover {
+    background-color: var(--primary-blue);
+    transform: translateY(-1px);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+.auth-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.auth-footer p {
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: var(--secondary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-footer a:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+/* =========================
+   Profile Icon Styles
+========================= */
+
+.profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--secondary-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid transparent;
+    text-decoration: none;
+}
+
+.profile-icon:hover {
+    background-color: var(--primary-blue);
+    transform: scale(1.05);
+}
+
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background-color: var(--white);
+    min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.profile-menu.active {
+    display: block;
+}
+
+.profile-menu-item {
+    padding: 12px 16px;
+    color: var(--text-dark);
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-menu-item:last-child {
+    border-bottom: none;
+}
+
+.profile-menu-item:hover {
+    background-color: var(--light-gray);
+    color: var(--primary-blue);
+}
+
+.profile-menu-item.logout {
+    color: #e74c3c;
+}
+
+.profile-menu-item.logout:hover {
+    background-color: #fee;
+    color: #c0392b;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+@media (max-width: 768px) {
+    .auth-section {
+        padding: 20px 4%;
+        min-height: calc(100vh - 150px);
+    }
+
+    .auth-card {
+        padding: 32px 24px;
+    }
+
+    .auth-card h2 {
+        font-size: 24px;
+    }
+
+    .profile-menu {
+        right: 8%;
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 24px 20px;
+    }
+
+    .auth-card h2 {
+        font-size: 22px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .profile-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+        margin-left: 12px;
+    }
+}
+

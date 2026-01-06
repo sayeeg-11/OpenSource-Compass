@@ -1,0 +1,88 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "hi",
+                "hello",
+                "hey",
+                "greetings",
+                "good morning",
+                "good evening"
+            ],
+            "responses": [
+                "Hello! How can I help you today?",
+                "Hi there! Welcome to OpenSource Compass. What can I do for you?",
+                "Hey! Ready to explore open source?"
+            ]
+        },
+        {
+            "tag": "about",
+            "patterns": [
+                "what is this",
+                "who are you",
+                "about",
+                "what is opensource compass"
+            ],
+            "responses": [
+                "I am the OpenSource Compass chatbot. I'm here to guide you through your open source journey and help you navigate this platform.",
+                "OpenSource Compass is a platform designed to help beginners start their open source journey with guides, programs, and resources."
+            ]
+        },
+        {
+            "tag": "opensource",
+            "patterns": [
+                "what is open source",
+                "define open source",
+                "open source meaning"
+            ],
+            "responses": [
+                "Open source software is code that is designed to be publicly accessible—anyone can see, modify, and distribute the code as they see fit."
+            ]
+        },
+        {
+            "tag": "contribution",
+            "patterns": [
+                "how to contribute",
+                "how do i start",
+                "start contributing",
+                "first contribution"
+            ],
+            "responses": [
+                "To start contributing, picked a project you like, check its issues (look for 'good first issue' tags), fork the repo, make changes, and submit a Pull Request. Check our 'Guides' section for a step-by-step tutorial."
+            ]
+        },
+        {
+            "tag": "programs",
+            "patterns": [
+                "programs",
+                "gsoc",
+                "hacktoberfest",
+                "internships",
+                "open source programs"
+            ],
+            "responses": [
+                "We list many open source programs like GSoC, Hacktoberfest, and Outreachy. Check the 'Programs' page for a full list and timelines."
+            ]
+        },
+        {
+            "tag": "guides",
+            "patterns": [
+                "guides",
+                "tutorials",
+                "learn",
+                "how to learn"
+            ],
+            "responses": [
+                "Our 'Guides' section has comprehensive tutorials on Git, GitHub, and making your first contribution."
+            ]
+        },
+        {
+            "tag": "unknown",
+            "patterns": [],
+            "responses": [
+                "I'm not sure I understand. Try asking about 'open source', 'programs', 'guides', or just say 'hi'!"
+            ]
+        }
+    ]
+}

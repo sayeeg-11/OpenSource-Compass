@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OpenSource Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
+
+    <style>
+/* 1. Global & Background - Applied to the whole page */
+        body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../library/assets/lightsnow.png'); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+            font-family: 'Inter', sans-serif;
+    color: #333;
+}
+
+/* 2. Layout Containers */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    background: transparent; /* No background here so body snow shows through */
+}
+
+/* 3. Section Alignment - Centers the headings you arrowed */
+.section-header, 
+.programs {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.centered-description {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 4. The Premium Dark Cards */
+.card {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../library/assets/box.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(77, 150, 255, 0.25);
+    border-color: #4D96FF;
+        }
+
+/* 5. Typography inside Cards */
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+        }
+
+.card h4 {
+    color: #ffffff !important;
+    font-size: 1.4rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin-top: 0;
+    margin-bottom: 12px;
+        }
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+    border-color: #4D96FF;
+}
+
+.card p {
+    color: #ffffff !important;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(77, 150, 255, 0.2);
+    border: 1px solid #4D96FF;
+    color: #4D96FF;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+/* 6. UI Elements */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+    z-index: 1000;
+    background-color: #4D96FF;
+    color: #FFFFFF;
+            border: none;
+    border-radius: 50%;
+            width: 48px;
+            height: 48px;
+    font-size: 20px;
+            cursor: pointer;
+            display: none;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+    background-color: #1F3C88;
+    transform: translateY(-4px);
+}
+
+/* Updated Hero section for perfect centering */
+.hero {
+    background-color: #f0f7ff;
+    padding: 80px 20px;
+    text-align: center; /* Centers text and inline elements */
+    display: flex; /* Enables flexbox */
+    flex-direction: column; /* Stacks content vertically */
+    align-items: center; /* Centers the button and paragraphs horizontally */
+    justify-content: center; /* Centers content vertically if height is added */
+}
+
+.hero p {
+    max-width: 600px; /* Limits width to keep text readable */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style for the SWoC Popup */
+#live-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4D96FF;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.5s ease-out;
+}
+
+#live-popup button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+        }
+    </style>
+
+</head>
+<body>
+
+
+<header>
+    <h1>OpenSource Compass</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="guides.html">Guides</a>
+        <a href="programs.html">Programs</a>
+        <a href="Resources.html">Resources</a>
+        <a href="faq.html">FAQ</a>
+        <a href="Contribute.html">Contribute</a>
+    </nav>
+</header>
+
+    <div id="live-popup">
+        <span>🎉 <strong>SWoC is now LIVE!</strong> Start contributing today.</span>
+        <button onclick="this.parentElement.style.display='none'">×</button>
+    </div>
+
+<section class="hero">
+        <h2 class="fade-in-up" style="transition-delay: 0.1s;">Navigate Your Open Source Journey</h2>
+        <p class="fade-in-up" style="transition-delay: 0.3s;">
+            OpenSource Compass helps beginners understand open source,
+            make their first meaningful contributions, and explore
+            open-source programs with confidence.
+        </p>
+        <button onclick="window.location.href='dashboard.html'">Get Started</button>
+    </section>
+
+    <section class="modern-section">
+        <div class="section-header">
+            <h3 class="glow-text">🚀 Why OpenSource Compass?</h3>
+            <p class="centered-description">Starting open source can be overwhelming. This platform simplifies the process with structured guidance and best practices.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🌱</div> 
+                <div class="card-content">
+                    <h4>Beginner Friendly</h4>
+                    <p>Clear explanations and simple steps for first-time contributors.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <div class="card-content">
+                    <h4>Best Practices</h4>
+                    <p>Learn do’s, don’ts, and how to contribute the right way.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <div class="card-content">
+                    <h4>Community Driven</h4>
+                    <p>Built by contributors, improved by contributors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="programs">
+        <h3>Open Source Programs</h3>
+        <p>Explore ongoing and upcoming open-source programs with timelines and official resources.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>Social Winter of Code</h4>
+                <p>Beginner-focused winter open-source program.</p><br><br>
+                <span class="badge">Upcoming</span>
+            </div>
+            <div class="card">
+                <h4>GirlScript Summer of Code</h4>
+                <p>Large-scale open-source program for students.</p><br><br>
+                <span class="badge">Annual</span>
+            </div>
+            <div class="card">
+                <h4>Google Summer of Code</h4>
+                <p>Global program for advanced contributors.</p><br><br>
+                <span class="badge">Advanced</span>
+            </div>
+            <div class="card">
+                <h4>Hacktoberfest (by DigitalOcean)</h4>
+                <p>Global event encouraging first-time open-source participation.</p>
+                <span class="badge">Beginner</span>
+            </div>
+            <div class="card">
+                <h4>Winter of Code (WoC)</h4>
+                <p>Mentorship-based program for student contributors.</p><br>
+                <span class="badge">Intermediate</span>
+            </div>
+            <div class="card">
+                <h4>Social Summer of Code (SSoC)</h4>
+                <p>Community-driven program for open-source beginners.</p>
+                <span class="badge">Beginner</span>
+            </div>
+            <div class="card">
+                <h4>Outreachy</h4>
+                <p>Paid internship program for underrepresented contributors.</p>
+                <span class="badge">Intermediate</span>
+            </div>
+            <div class="card">
+                <h4>Linux Foundation Mentorship Program</h4>
+                <p>Industry-backed program for open-source development.</p>
+                <span class="badge">Intermediate</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </footer>
+
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+
+    <script>
+        /* Theme Toggle & Scroll To Top Logic */
+        const themeToggle = document.getElementById("themeToggle");
+        if(themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+            });
+        }
+
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.addEventListener("scroll", () => {
+            scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+        });
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+    <script src="../js/chatbot.js"></script>
+</body>
