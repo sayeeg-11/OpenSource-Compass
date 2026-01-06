@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guides | OpenSource Compass</title>
-    
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/guides.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <header>
@@ -30,147 +31,95 @@
                 <div class="sidebar-title">Guides Hub</div>
                 <button class="toggle-sidebar" id="toggle-sidebar">≡</button>
             </div>
+
             <ul class="sidebar-menu">
-                <li><a href="#basics" class="active"><i>📝</i> <span class="menu-text">Open Source Basics</span></a></li>
-                <li><a href="#git"><i>🐙</i> <span class="menu-text">Git & GitHub</span></a></li>
-                <li><a href="#best-practices"><i>✅</i> <span class="menu-text">Best Practices</span></a></li>
-                <li><a href="#contributing"><i>🤝</i> <span class="menu-text">Contributing Guide</span></a></li>
-                <li><a href="#resources"><i>📚</i> <span class="menu-text">Learning Resources</span></a></li>
+                <li><a href="#basics" class="active">📝 Open Source Basics</a></li>
+                <li><a href="#git">🐙 Git & GitHub</a></li>
+                <li><a href="#best-practices">✅ Best Practices</a></li>
+                <li><a href="#contributing">🤝 Contributing Guide</a></li>
+                <li><a href="#resources">📚 Learning Resources</a></li>
             </ul>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="guide-header">
-                <h2>Open Source Contribution Guides</h2>
-                <p>Your comprehensive roadmap to becoming an effective open source contributor. Start from the basics and progress to advanced practices.</p>
+
+            <!-- Page Intro -->
+            <div class="py-5 text-center">
+                <h1 class="display-5 fw-bold" style="color:#1F3C88;">Guide to Open Source Programs</h1>
+                <p class="fs-5">A curated guide to global open-source programs for contributors.</p>
             </div>
 
-            <div class="guide-content">
-                <!-- Open Source Basics Section -->
-                <section id="basics">
-                    <h3>1. Open Source Basics</h3>
-                    <p>Open source software is code that is designed to be publicly accessible—anyone can see, modify, and distribute the code as they see fit. This collaborative approach has produced some of the world's most important software, including Linux, Python, and the Apache web server.</p>
-                    
-                    <h4>Why Contribute to Open Source?</h4>
-                    <ul>
-                        <li><strong>Improve your skills:</strong> Work on real-world projects with experienced developers</li>
-                        <li><strong>Build your portfolio:</strong> Showcase your contributions to potential employers</li>
-                        <li><strong>Give back to the community:</strong> Help improve software you use every day</li>
-                        <li><strong>Learn collaboration:</strong> Experience how distributed teams work together</li>
-                    </ul>
-                    
-                    <div class="progress-section">
-                        <h4>Understanding Check</h4>
-                        <ul class="progress-items">
-                            <li><input type="checkbox" class="progress-checkbox" id="check1"> <label for="check1">I understand what open source software is</label></li>
-                            <li><input type="checkbox" class="progress-checkbox" id="check2"> <label for="check2">I know why contributing to open source is valuable</label></li>
-                            <li><input type="checkbox" class="progress-checkbox" id="check3"> <label for="check3">I can identify open source projects I might contribute to</label></li>
-                        </ul>
-                    </div>
-                </section>
+            <!-- Program Cards -->
+            <div class="album py-5 bg-body-tertiary">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-                <!-- Git & GitHub Section -->
-                <section id="git">
-                    <h3>2. Git & GitHub Fundamentals</h3>
-                    <p>Git is a version control system that tracks changes in your code. GitHub is a platform that hosts Git repositories and provides collaboration features. Mastering these tools is essential for open source contributions.</p>
-                    
-                    <h4>Essential Git Commands</h4>
-                    <p>Here are the most important commands you'll need:</p>
-                    
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span class="code-language">git</span>
-                            <button class="copy-btn">Copy</button>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="../assets/program_logo/ggsoc.png" class="card-img-top" style="height:225px;object-fit:cover;">
+                                <div class="card-body">
+                                    <p><strong>GirlScript Summer of Code</strong><br>Large-scale open-source program for students.</p>
+                                    <a href="gssoc.html" class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
                         </div>
-                        <pre>git clone https://github.com/username/repository.git
-git checkout -b new-feature-branch
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="../assets/program_logo/gsoc.webp" class="card-img-top" style="height:225px;object-fit:cover;">
+                                <div class="card-body">
+                                    <p><strong>Google Summer of Code</strong><br>Global program for advanced contributors.</p>
+                                    <a href="gsoc.html" class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="../assets/program_logo/hacktober.webp" class="card-img-top" style="height:225px;object-fit:cover;">
+                                <div class="card-body">
+                                    <p><strong>Hacktoberfest</strong><br>Beginner-friendly open-source event.</p>
+                                    <a href="hacktober.html" class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guides Content -->
+            <section id="basics">
+                <h3>1. Open Source Basics</h3>
+                <p>Open source software is publicly accessible code that anyone can use, modify, and distribute.</p>
+            </section>
+
+            <section id="git">
+                <h3>2. Git & GitHub</h3>
+                <pre>
+git clone repo
+git checkout -b feature
 git add .
-git commit -m "Describe your changes"
-git push origin new-feature-branch</pre>
-                    </div>
-                    
-                    <h4>GitHub Workflow</h4>
-                    <ol>
-                        <li>Fork the repository you want to contribute to</li>
-                        <li>Clone your fork to your local machine</li>
-                        <li>Create a new branch for your changes</li>
-                        <li>Make your changes and commit them</li>
-                        <li>Push your changes to your fork on GitHub</li>
-                        <li>Create a pull request to the original repository</li>
-                    </ol>
-                    
-                    <div class="progress-section">
-                        <h4>Git Proficiency Check</h4>
-                        <ul class="progress-items">
-                            <li><input type="checkbox" class="progress-checkbox" id="check4"> <label for="check4">I can clone a repository</label></li>
-                            <li><input type="checkbox" class="progress-checkbox" id="check5"> <label for="check5">I understand branching and merging</label></li>
-                            <li><input type="checkbox" class="progress-checkbox" id="check6"> <label for="check6">I can create a pull request</label></li>
-                        </ul>
-                    </div>
-                </section>
+git commit -m "message"
+git push origin feature
+                </pre>
+            </section>
 
-                <!-- Best Practices Section -->
-                <section id="best-practices">
-                    <h3>3. Open Source Best Practices</h3>
-                    <p>Following best practices will make your contributions more valuable and increase your chances of having your work accepted.</p>
-                    
-                    <h4>Before Contributing</h4>
-                    <ul>
-                        <li><strong>Read the documentation:</strong> Most projects have a CONTRIBUTING.md file</li>
-                        <li><strong>Search existing issues:</strong> Avoid duplicating work</li>
-                        <li><strong>Start small:</strong> Look for "good first issue" or "help wanted" labels</li>
-                    </ul>
-                    
-                    <h4>Writing Good Pull Requests</h4>
-                    <ul>
-                        <li><strong>Clear title:</strong> Describe what your PR does</li>
-                        <li><strong>Detailed description:</strong> Explain your changes and why they're needed</li>
-                        <li><strong>Follow the style guide:</strong> Match the project's coding conventions</li>
-                        <li><strong>Write tests:</strong> If the project has tests, add them for your changes</li>
-                    </ul>
-                    
-                    <div class="progress-section">
-                        <h4>Best Practices Check</h4>
-                        <ul class="progress-items">
-                            <li><input type="checkbox" class="progress-checkbox" id="check7"> <label for="check7">I know how to find beginner-friendly issues</label></li>
-                            <li><input type="checkbox" class="progress-checkbox" id="check8"> <label for="check8">I understand how to write a good PR description</label></li>
-                            <li><input type="checkbox" class="progress-checkbox" id="check9"> <label for="check9">I can follow a project's contribution guidelines</label></li>
-                        </ul>
-                    </div>
-                </section>
+            <section id="best-practices">
+                <h3>3. Best Practices</h3>
+                <ul>
+                    <li>Read documentation</li>
+                    <li>Start with small issues</li>
+                    <li>Write clear PRs</li>
+                </ul>
+            </section>
 
-                <!-- Resources Section -->
-                <section id="resources">
-                    <div class="resources-section">
-                        <h3>Curated Learning Resources</h3>
-                        <p>Expand your knowledge with these handpicked resources from the open source community.</p>
-                        
-                        <div class="resource-list">
-                            <div class="resource-card">
-                                <h5>First Contributions</h5>
-                                <p>A project to help beginners get started with contributions</p>
-                                <span class="resource-tag">Beginner</span>
-                            </div>
-                            <div class="resource-card">
-                                <h5>Git Handbook</h5>
-                                <p>Comprehensive guide to Git by GitHub</p>
-                                <span class="resource-tag">Intermediate</span>
-                            </div>
-                            <div class="resource-card">
-                                <h5>How to Contribute to Open Source</h5>
-                                <p>Free ebook by GitHub</p>
-                                <span class="resource-tag">All Levels</span>
-                            </div>
-                            <div class="resource-card">
-                                <h5>Open Source Guides</h5>
-                                <p>Collection of guides for open source maintainers</p>
-                                <span class="resource-tag">Maintainers</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <section id="resources">
+                <h3>Learning Resources</h3>
+                <p>Curated open-source learning materials.</p>
+            </section>
+
         </main>
     </div>
 
@@ -178,9 +127,6 @@ git push origin new-feature-branch</pre>
     <footer>
         <p>© 2026 OpenSource Compass • Built for the Open Source Community</p>
     </footer>
-
-    <!-- Overlay for mobile sidebar -->
-    <div class="overlay" id="overlay"></div>
 
     <script src="../Js_scripts/guides.js"></script>
 </body>
