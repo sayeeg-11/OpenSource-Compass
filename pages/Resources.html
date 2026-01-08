@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>OpenSource Compass — Resources</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/quiz.css" />
   <style>
     :root {
       --primary-blue: #1F3C88;
@@ -14,7 +16,7 @@
       --text-dark: #2E2E2E;
       --success-green: #3CCF91;
       --white: #FFFFFF;
-      --hover-shadow: 0 12px 25px rgba(0,0,0,0.08);
+      --hover-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
     }
 
     body {
@@ -34,7 +36,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     header h1 {
@@ -86,7 +88,7 @@
 
     .resources-hero .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
     .resources-grid {
@@ -100,7 +102,7 @@
       background: var(--white);
       padding: 24px;
       border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -124,7 +126,8 @@
       font-weight: 500;
     }
 
-    .resource-card p, .resource-card ol {
+    .resource-card p,
+    .resource-card ol {
       font-size: 14px;
       color: #333;
     }
@@ -169,7 +172,7 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     }
 
     .filters {
@@ -224,7 +227,7 @@
       background: var(--white);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
@@ -251,110 +254,165 @@
       .resources-hero {
         padding: 50px 6%;
       }
+
       .resources-hero h2 {
         font-size: 32px;
       }
+
       .resources-hero p {
         font-size: 16px;
       }
     }
   </style>
 </head>
+
 <body>
 
-<header>
+  <header>
     <h1>OpenSource Compass</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
-        <a href="programs.html">Programs</a>
-        <a href="Resources.html">Resources</a>
-        <a href="faq.html">FAQ</a>
-        <a href="Contribute.html">Contribute</a>
+      <a href="../index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="programs.html">Programs</a>
+      <a href="Resources.html">Resources</a>
+      <a href="faq.html">FAQ</a>
+      <a href="Contribute.html">Contribute</a>
     </nav>
-</header>
+  </header>
 
-<section class="resources-hero">
-  <h2>Resources</h2>
-  <p>Tutorials, tools, and guides to help you start and grow in open source.</p>
-  <a href="#" class="btn-primary">Get Started</a>
-</section>
+  <section class="resources-hero">
+    <h2>Resources</h2>
+    <p>Tutorials, tools, and guides to help you start and grow in open source.</p>
+    <a href="#" class="btn-primary">Get Started</a>
+  </section>
 
-<section>
-  <div class="resources-grid">
-    <article class="resource-card">
-      <h4>How to Contribute to Open Source</h4>
-      <div class="resource-meta">Guide • Beginner • 15–20 min read</div>
-      <p>Step-by-step walkthrough for finding issues, opening PRs, and communicating with maintainers.</p>
-    </article>
+  <section>
+    <div class="resources-grid">
+      <article class="resource-card">
+        <h4>How to Contribute to Open Source</h4>
+        <div class="resource-meta">Guide • Beginner • 15–20 min read</div>
+        <p>Step-by-step walkthrough for finding issues, opening PRs, and communicating with maintainers.</p>
+      </article>
 
-    <article class="resource-card">
-      <h4>Git and GitHub Essentials</h4>
-      <div class="resource-meta">Tutorial • Beginner • Interactive</div>
-      <ol>
-        <li>Setup: install Git, configure user.name and user.email</li>
-        <li>Fork the project, clone your fork locally</li>
-        <li>Create a branch: git checkout -b fix/short-description</li>
-        <li>Make focused commits run project tests</li>
-        <li>Push and open PR: push branch and open a PR against upstream</li>
-        <li>Respond to review: iterate on feedback, squash or rebase, then merge when approved</li>
-      </ol>
-    </article>
+      <article class="resource-card">
+        <h4>Git and GitHub Essentials</h4>
+        <div class="resource-meta">Tutorial • Beginner • Interactive</div>
+        <ol>
+          <li>Setup: install Git, configure user.name and user.email</li>
+          <li>Fork the project, clone your fork locally</li>
+          <li>Create a branch: git checkout -b fix/short-description</li>
+          <li>Make focused commits run project tests</li>
+          <li>Push and open PR: push branch and open a PR against upstream</li>
+          <li>Respond to review: iterate on feedback, squash or rebase, then merge when approved</li>
+        </ol>
+      </article>
 
-    <article class="resource-card">
-      <h4>Open Source Licensing Explained</h4>
-      <div class="resource-meta">Reference • Intermediate • 10–15 min read</div>
-      <p>Comparison of common licenses and guidance on choosing one for your project.</p>
-      <div class="resource-actions">
-        <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">View</a>
-      </div>
-    </article>
+      <article class="resource-card">
+        <h4>Open Source Licensing Explained</h4>
+        <div class="resource-meta">Reference • Intermediate • 10–15 min read</div>
+        <p>Comparison of common licenses and guidance on choosing one for your project.</p>
+        <div class="resource-actions">
+          <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">View</a>
+        </div>
+      </article>
 
-    <article class="resource-card">
-      <h4>Finding Good First Issues</h4>
-      <div class="resource-meta">Tool • Beginner • Live</div>
-      <p>Aggregators and search tips to locate beginner-friendly issues across projects.</p>
-      <div class="resource-actions">
-        <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">Explore</a>
-      </div>
-    </article>
+      <article class="resource-card">
+        <h4>Finding Good First Issues</h4>
+        <div class="resource-meta">Tool • Beginner • Live</div>
+        <p>Aggregators and search tips to locate beginner-friendly issues across projects.</p>
+        <div class="resource-actions">
+          <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">Explore</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="filters">
+    <span class="filter-pill active" data-filter="all">All</span>
+    <span class="filter-pill" data-filter="guide">Guides</span>
+    <span class="filter-pill" data-filter="tutorial">Tutorials</span>
+    <span class="filter-pill" data-filter="tool">Tools</span>
+    <span class="filter-pill" data-filter="reference">Reference</span>
   </div>
-</section>
 
-<div class="filters">
-  <span class="filter-pill active" data-filter="all">All</span>
-  <span class="filter-pill" data-filter="guide">Guides</span>
-  <span class="filter-pill" data-filter="tutorial">Tutorials</span>
-  <span class="filter-pill" data-filter="tool">Tools</span>
-  <span class="filter-pill" data-filter="reference">Reference</span>
-</div>
-
-<section>
-  <h3>Community Hubs</h3>
-  <p>Places to ask questions, find mentors, and join contributor-friendly communities.</p>
-  <div class="card-container">
-    <div class="card">
-      <h4>Discord & Slack Communities</h4>
-      <p>Real-time help and project channels to get quick feedback and find collaborators.</p>
+  <section>
+    <h3>Community Hubs</h3>
+    <p>Places to ask questions, find mentors, and join contributor-friendly communities.</p>
+    <div class="card-container">
+      <div class="card">
+        <h4>Discord & Slack Communities</h4>
+        <p>Real-time help and project channels to get quick feedback and find collaborators.</p>
+      </div>
+      <div class="card">
+        <h4>Mailing Lists & Forums</h4>
+        <p>Long-form discussions, RFCs, and announcements for deeper project context.</p>
+      </div>
+      <div class="card">
+        <h4>Mentorship Programs</h4>
+        <p>Programs pairing newcomers with experienced contributors for guided onboarding.</p>
+      </div>
     </div>
-    <div class="card">
-      <h4>Mailing Lists & Forums</h4>
-      <p>Long-form discussions, RFCs, and announcements for deeper project context.</p>
-    </div>
-    <div class="card">
-      <h4>Mentorship Programs</h4>
-      <p>Programs pairing newcomers with experienced contributors for guided onboarding.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-        <p>&copy; <span id="current-year">2025</span> OpenSource Compass • Made with ❤️ for the Open Source Community</p>
-    </footer>
+  <section id="quiz-section">
+    <h3>Test Your Knowledge</h3>
+    <p>Complete the interactive modules below to earn XP, track your progress, and master open-source concepts!</p>
 
-    <script>
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    </script>
-<script src="../Js_scripts/resources.js"></script>
+    <!-- My Progress Dashboard -->
+    <div class="progress-dashboard">
+      <div class="dashboard-header">
+        <h3>My Progress</h3>
+        <span class="xp-badge" id="total-xp">0 XP</span>
+      </div>
+      <span class="rank-text">Rank: Beginner</span>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="global-progress-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <h3 id="quiz-selector-title">Your Learning Path</h3>
+
+    <!-- Learning Path Scroll Container -->
+    <div class="learning-path-scroll">
+      <div class="learning-path-track" id="quiz-modules">
+        <!-- Nodes injected by JS -->
+      </div>
+    </div>
+
+    <!-- Quiz Play Area -->
+    <div class="quiz-container" id="quiz-play-area">
+      <div class="quiz-header">
+        <h4 id="current-module-title">Module Title</h4>
+        <span id="progress-text">1 / 10</span>
+      </div>
+      <div class="question" id="question-text">Question goes here?</div>
+      <div class="options-container" id="options-container">
+        <!-- Options injected by JS -->
+      </div>
+      <button id="next-btn" class="next-btn">Next</button>
+    </div>
+
+    <!-- Result Area -->
+    <div class="quiz-result" id="quiz-result">
+      <div class="result-circle">
+        <span id="final-score" class="score-text">0/10</span>
+      </div>
+      <h4>Quiz Completed!</h4>
+      <p id="result-message" class="result-msg">Good job!</p>
+      <button id="restart-btn" class="restart-btn">Continue Learning Path</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="current-year">2025</span> OpenSource Compass • Made with ❤️ for the Open Source Community</p>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+  <script src="../Js_scripts/resources.js"></script>
+  <script src="../Js_scripts/quiz_data.js"></script>
+  <script src="../Js_scripts/quiz.js"></script>
 </body>
+
 </html>

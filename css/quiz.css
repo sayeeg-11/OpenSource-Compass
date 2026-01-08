@@ -1,0 +1,320 @@
+/* Quiz Section Container */
+#quiz-section {
+    padding: 60px 8%;
+    background-color: #fdfdfd;
+    /* Off-white background */
+    font-family: 'Inter', sans-serif;
+}
+
+/* My Progress Dashboard */
+.progress-dashboard {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 60px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dashboard-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.xp-badge {
+    color: #4D96FF;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.rank-text {
+    color: #666;
+    font-size: 14px;
+    margin-top: -5px;
+    display: block;
+}
+
+.progress-bar-container {
+    background-color: #eee;
+    height: 12px;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar-fill {
+    background-color: #d1d5db;
+    /* Default gray for empty */
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 99px;
+}
+
+
+/* Learning Path Container */
+.learning-path-scroll {
+    overflow-x: auto;
+    padding-bottom: 40px;
+    /* Space for shadows */
+    margin-bottom: 40px;
+}
+
+.learning-path-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    position: relative;
+    padding: 20px 10px;
+    width: max-content;
+    /* Ensure it expands */
+}
+
+/* Connecting Line */
+.learning-path-track::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    /* Aligns with center of circle node (circle is 60px height -> eq 30 + padding 20 = 50) */
+    left: 40px;
+    right: 40px;
+    height: 4px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+
+/* Level Node Wrapper */
+.level-node-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    flex-shrink: 0;
+}
+
+/* The Circle Node */
+.level-node {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    /* Default locked gray */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #9ca3af;
+    position: relative;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    cursor: default;
+}
+
+/* Status: Unlocked/Active */
+.level-node.unlocked {
+    background-color: #1F3C88;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(31, 60, 136, 0.3);
+}
+
+.level-node.unlocked:hover {
+    transform: scale(1.1);
+}
+
+.level-node.locked span {
+    font-size: 16px;
+    /* Lock icon size */
+}
+
+/* Level Info Card */
+.level-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s;
+}
+
+.level-node.unlocked+.level-card {
+    cursor: pointer;
+}
+
+.level-node.unlocked+.level-card:hover {
+    transform: translateY(-5px);
+    border-color: #4D96FF;
+}
+
+.level-card h4 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 8px;
+    min-height: 40px;
+    /* Ensure alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.level-xp {
+    font-size: 13px;
+    color: #4D96FF;
+    font-weight: 600;
+}
+
+.level-status {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+
+/* Quiz Play Area (Reused specific styles) */
+.quiz-container {
+    background: white;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: none;
+    border-top: 5px solid #1F3C88;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.quiz-header h4 {
+    color: #4D96FF;
+    margin: 0;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.option-btn:hover {
+    background-color: #f5f7fa;
+    border-color: #cccc;
+}
+
+.option-btn.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.option-btn.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.next-btn {
+    margin-top: 25px;
+    background-color: #1F3C88;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+    display: none;
+}
+
+.next-btn:hover {
+    background-color: #162d69;
+}
+
+/* Results Area */
+.quiz-result {
+    text-align: center;
+    padding: 40px;
+    display: none;
+    background: white;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.result-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #f8faff;
+    border: 5px solid #4D96FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.score-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1F3C88;
+}
+
+.result-msg {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.restart-btn {
+    background-color: #4D96FF;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.restart-btn:hover {
+    background-color: #1F3C88;
+}
