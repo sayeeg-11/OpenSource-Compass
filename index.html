@@ -4,8 +4,136 @@
     <meta charset="UTF-8">
     <title>OpenSource Compass - Classic Edition</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;500&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header>
+    <h1>OpenSource Compass</h1>
+    <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <nav>
+        <div class="close-icon">X</div>
+        <a href="#">Home</a>
+        <a href="#">Guides</a>
+        <a href="#">Programs</a>
+        <a href="#">Resources</a>
+        <a href="#">Contribute</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Navigate Your Open Source Journey</h2>
+    <p>
+        OpenSource Compass helps beginners understand open source,
+        make their first meaningful contributions, and explore
+        open-source programs with confidence.
+    </p>
+    <button>Get Started</button>
+</section>
+
+<!-- Why Section -->
+<section>
+    <h3>Why OpenSource Compass?</h3>
+    <p>
+        Starting open source can be overwhelming. This platform simplifies
+        the process with structured guidance, best practices, and a
+        centralized program hub.
+    </p>
+
+    <div class="card-container">
+        <div class="card">
+            <h4>Beginner Friendly</h4>
+            <p>Clear explanations and simple steps for first-time contributors.</p>
+        </div>
+
+        <div class="card">
+            <h4>Best Practices</h4>
+            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
+        </div>
+
+        <div class="card">
+            <h4>Community Driven</h4>
+            <p>Built by contributors, improved by contributors.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Programs Section -->
+<section class="programs">
+    <h3>Open Source Programs</h3>
+    <p>
+        Explore ongoing and upcoming open-source programs with timelines,
+        prerequisites, and official resources.
+    </p>
+
+    <div class="card-container">
+        <div class="card">
+            <h4>Social Winter of Code</h4>
+            <p>Beginner-focused winter open-source program.</p>
+            <span class="badge">Upcoming</span>
+        </div>
+
+        <div class="card">
+            <h4>GirlScript Summer of Code</h4>
+            <p>Large-scale open-source program for students.</p>
+            <span class="badge">Annual</span>
+        </div>
+
+        <div class="card">
+            <h4>Google Summer of Code</h4>
+            <p>Global program for advanced contributors.</p>
+            <span class="badge">Advanced</span>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+</footer>
+
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    const closeIcon = document.querySelector('.close-icon');
+
+    hamburger.addEventListener('click', () => {
+        nav.classList.add('active');
+        hamburger.classList.add('active');
+    });
+
+    closeIcon.addEventListener('click', () => {
+        nav.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
+</script>
+
+</body>
+</html>
+<ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        <style>
+
     <style>
         :root {
             --primary-gold: #D4AF37;
@@ -416,34 +544,66 @@
                 padding: 0.9rem 5%;
             }
 
-            .navbar-container {
-                flex-direction: column;
-                gap: 1.2rem;
-            }
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    margin-bottom: 24px;
+}
 
-            .nav-links {
-                gap: 1.2rem;
-            }
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: var(--white);
+}
 
-            section {
-                padding: 4rem 5%;
-            }
+.footer-section p {
+    font-size: 14px;
+    opacity: 0.9;
+    max-width: 280px;
+}
 
-            .hero {
-                padding: 2.5rem 5%;
-                min-height: 85vh;
-            }
-        }
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
 
-        @media (max-width: 480px) {
-            body {
-                font-size: 14.5px;
-            }
-            
-            .nav-links a {
-                font-size: 0.92rem;
-            }
-        }
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 16px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* ---------- Footer Responsive ---------- */
+@media (max-width: 600px) {
+    .footer {
+        padding: 40px 6% 20px;
+    }
+
+    .footer-section p {
+        max-width: 100%;
+    }
+}
+
     </style>
 </head>
 <body>
