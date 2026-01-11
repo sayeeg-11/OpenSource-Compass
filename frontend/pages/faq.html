@@ -1,460 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>FAQ - OpenSource Compass</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>OpenSource Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+  <!-- Font Awesome (REQUIRED for logo) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
-    <style>
-        /* FAQ Page Specific Styles */
-        .faq-hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #1F3C88 0%, #4D96FF 100%);
-            color: white;
-            margin-bottom: 40px;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-        .faq-hero h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .faq-hero p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .faq-content {
-            display: flex;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .faq-accordion {
-            flex: 1;
-        }
-
-        .chatbot-container {
-            flex: 0 0 350px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .chatbot-header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #4D96FF;
-        }
-
-        .chatbot-header h3 {
-            color: #1F3C88;
-            margin: 0;
-        }
-
-        .chat-messages {
-            height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: white;
-        }
-
-        .message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 18px;
-            max-width: 80%;
-        }
-
-        .message.user {
-            background: #4D96FF;
-            color: white;
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .message.bot {
-            background: #e9ecef;
-            color: #333;
-        }
-
-        .chat-input-container {
-            display: flex;
-            gap: 10px;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .chat-input:focus {
-            border-color: #4D96FF;
-        }
-
-        .chat-send-btn {
-            padding: 10px 20px;
-            background: #4D96FF;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-
-        .chat-send-btn:hover {
-            background: #1F3C88;
-        }
-
-        .quick-questions {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
-        }
-
-        .quick-questions h4 {
-            margin-bottom: 10px;
-            color: #1F3C88;
-            font-size: 14px;
-        }
-
-        .quick-question-btn {
-            display: block;
-            width: 100%;
-            padding: 8px 12px;
-            margin-bottom: 5px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .quick-question-btn:hover {
-            background: #4D96FF;
-            color: white;
-            border-color: #4D96FF;
-        }
-
-        /* FAQ Accordion Styles */
-        .faq h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #1F3C88;
-        }
-
-        .accordion {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .accordion-item {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .accordion-item:last-child {
-            border-bottom: none;
-        }
-
-        .accordion-button {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border: none;
-            width: 100%;
-            text-align: left;
-            padding: 20px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .accordion-button:hover {
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            color: #4D96FF;
-        }
-
-        .accordion-button::after {
-            content: '+';
-            position: absolute;
-            right: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-button.active::after {
-            content: '−';
-        }
-
-        .accordion-panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background: #ffffff;
-        }
-
-        .accordion-panel.show {
-            max-height: 500px;
-        }
-
-        .accordion-panel p {
-            padding: 20px;
-            margin: 0;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .faq-content {
-                flex-direction: column;
-            }
-
-            .chatbot-container {
-                position: static;
-            }
-        }
-    </style>
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
+
+
 <body>
-    <header>
-        <h1>OpenSource Compass</h1>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="guides.html">Guides</a>
-            <a href="programs.html">Programs</a>
-            <a href="Resources.html">Resources</a>
-            <a href="faq.html">FAQ</a>
-            <a href="Contribute.html">Contribute</a>
-        </nav>
-    </header>
 
-    <section class="faq-hero">
-        <h2>Frequently Asked Questions</h2>
-        <p>Get answers to common questions about OpenSource Compass and open source contribution</p>
-    </section>
-
-    <div class="faq-content">
-        <section class="faq-accordion">
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-button">What is OpenSource Compass?</button>
-                    <div class="accordion-panel">
-                        <p>OpenSource Compass is a platform designed to help beginners navigate their open source journey. It provides structured guidance, best practices, and information about various open-source programs to make contributing easier and more accessible.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">Do I need programming experience to contribute to open source?</button>
-                    <div class="accordion-panel">
-                        <p>While programming skills are helpful, they're not always required. Many open-source projects need help with documentation, design, testing, translation, and community management. OpenSource Compass helps you find opportunities that match your skills and interests.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">How do I find the right open-source program for me?</button>
-                    <div class="accordion-panel">
-                        <p>Consider your experience level, available time, and interests. Beginner-friendly programs like Hacktoberfest or Social Summer of Code are great starting points. More experienced contributors might prefer Google Summer of Code or Outreachy. Use our Programs page to explore options with detailed timelines and requirements.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">What should I do before making my first contribution?</button>
-                    <div class="accordion-panel">
-                        <p>Start by exploring our Guides section to understand open-source basics. Choose a project that interests you, read its contribution guidelines, set up your development environment, and start with small tasks like fixing typos or improving documentation. Remember, every expert was once a beginner!</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">How can I get help if I'm stuck?</button>
-                    <div class="accordion-panel">
-                        <p>Most open-source projects have active communities on platforms like GitHub, Discord, or Slack. Don't hesitate to ask questions in issue discussions or community forums. OpenSource Compass also provides resources and guides to help you through common challenges.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">What are the benefits of contributing to open source?</button>
-                    <div class="accordion-panel">
-                        <p>Open source contribution helps you build your portfolio, learn new skills, network with developers worldwide, and give back to the community. Many contributors also find job opportunities through their open source work and gain valuable experience in collaborative development.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-button">How do I choose a project to contribute to?</button>
-                    <div class="accordion-panel">
-                        <p>Look for projects that align with your interests and skill level. Check the project's activity, community responsiveness, and documentation quality. Start with projects that have beginner-friendly issues labeled as "good first issue" or "help wanted" on GitHub.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="chatbot-container">
-            <div class="chatbot-header">
-                <h3>🤖 OpenSource Assistant</h3>
-                <p>Ask me anything about open source!</p>
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    Hi! I'm here to help you with questions about OpenSource Compass and open source contribution. What would you like to know?
-                </div>
-            </div>
-
-            <div class="chat-input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Type your question...">
-                <button class="chat-send-btn" id="sendBtn">Send</button>
-            </div>
-
-            <div class="quick-questions">
-                <h4>Quick Questions:</h4>
-                <button class="quick-question-btn" data-question="What is OpenSource Compass?">What is OpenSource Compass?</button>
-                <button class="quick-question-btn" data-question="Do I need programming experience?">Do I need programming experience?</button>
-                <button class="quick-question-btn" data-question="How do I get started?">How do I get started?</button>
-                <button class="quick-question-btn" data-question="What are the benefits?">What are the benefits?</button>
-            </div>
+<!-- Navbar copied EXACTLY from home.html -->
+  <header>
+      <div class="navbar-container">
+        <h1>
+          <i
+            class="fas fa-compass"
+            style="color: var(--primary-gold); margin-right: 0.4rem"
+          ></i
+          >OpenSource Compass
+        </h1>
+        <div class="nav-links">
+          <a href="../../home.html">Home</a>
+          <a href="./guides.html">Guides</a>
+          <a href="./programs.html">Programs</a>
+          <a href="./Resources.html">Resources</a>
+          <a href="./contributors.html">Contributors</a>
+          <a href="./faq.html">FAQ</a>
+          <a href="./Contribute.html">Contribute</a>
         </div>
+      </div>
+    </header>
+<main>
+  <section>
+    <h3>Frequently Asked Questions</h3>
+    <p>Common questions about OpenSource Compass and open source contributions.</p>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h4>What is OpenSource Compass?</h4>
+        <p>
+          OpenSource Compass is a platform that helps beginners navigate open
+          source by providing structured guides, resources, and program
+          information.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Do I need programming experience?</h4>
+        <p>
+          No. You can contribute to open source through documentation, design,
+          testing, community support, and many other non-coding roles.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>How do I get started with open source?</h4>
+        <p>
+          Start by reading contribution guides, choosing a beginner-friendly
+          project, and working on small issues such as documentation or bug fixes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>How do I choose a project to contribute to?</h4>
+        <p>
+          Pick projects that match your interests and skill level. Look for
+          repositories with labels like “good first issue” or “help wanted”.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>What are the benefits of contributing to open source?</h4>
+        <p>
+          Contributing helps you build a portfolio, improve technical skills,
+          collaborate globally, and gain real-world development experience.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Where can I ask for help?</h4>
+        <p>
+          Most projects have active communities on GitHub, Discord, or Slack.
+          Asking questions is encouraged and is part of open-source culture.
+        </p>
+      </div>
+
     </div>
+  </section>
+</main>
 
-    <footer>
-        <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-    </footer>
+<footer>
+  <p>© 2026 OpenSource Compass · <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a></p>
+</footer>
 
-    <script>
-        // FAQ Accordion Functionality
-        document.querySelectorAll('.accordion-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const panel = button.nextElementSibling;
-                const isOpen = panel.classList.contains('show');
-
-                // Close all panels
-                document.querySelectorAll('.accordion-panel').forEach(p => {
-                    p.classList.remove('show');
-                });
-                document.querySelectorAll('.accordion-button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-
-                // Open clicked panel if it wasn't already open
-                if (!isOpen) {
-                    panel.classList.add('show');
-                    button.classList.add('active');
-                }
-            });
-        });
-
-        // Chatbot Functionality
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
-        const sendBtn = document.getElementById('sendBtn');
-
-        // FAQ Knowledge Base
-        const faqData = {
-            "what is opensource compass": "OpenSource Compass is a platform designed to help beginners navigate their open source journey. It provides structured guidance, best practices, and information about various open-source programs to make contributing easier and more accessible.",
-            "do i need programming experience": "While programming skills are helpful, they're not always required. Many open-source projects need help with documentation, design, testing, translation, and community management. OpenSource Compass helps you find opportunities that match your skills and interests.",
-            "how do i find the right open-source program": "Consider your experience level, available time, and interests. Beginner-friendly programs like Hacktoberfest or Social Summer of Code are great starting points. More experienced contributors might prefer Google Summer of Code or Outreachy. Use our Programs page to explore options with detailed timelines and requirements.",
-            "what should i do before making my first contribution": "Start by exploring our Guides section to understand open-source basics. Choose a project that interests you, read its contribution guidelines, set up your development environment, and start with small tasks like fixing typos or improving documentation. Remember, every expert was once a beginner!",
-            "how can i get help if i'm stuck": "Most open-source projects have active communities on platforms like GitHub, Discord, or Slack. Don't hesitate to ask questions in issue discussions or community forums. OpenSource Compass also provides resources and guides to help you through common challenges.",
-            "what are the benefits of contributing to open source": "Open source contribution helps you build your portfolio, learn new skills, network with developers worldwide, and give back to the community. Many contributors also find job opportunities through their open source work and gain valuable experience in collaborative development.",
-            "how do i choose a project to contribute to": "Look for projects that align with your interests and skill level. Check the project's activity, community responsiveness, and documentation quality. Start with projects that have beginner-friendly issues labeled as \"good first issue\" or \"help wanted\" on GitHub."
-        };
-
-        function addMessage(content, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${type}`;
-            messageDiv.textContent = content;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function getBotResponse(userMessage) {
-            const lowerMessage = userMessage.toLowerCase().trim();
-
-            // Check for exact matches first
-            for (const [key, value] of Object.entries(faqData)) {
-                if (lowerMessage.includes(key)) {
-                    return value;
-                }
-            }
-
-            // Check for partial matches
-            const keywords = {
-                "opensource compass": faqData["what is opensource compass"],
-                "programming": faqData["do i need programming experience"],
-                "experience": faqData["do i need programming experience"],
-                "program": faqData["how do i find the right open-source program"],
-                "contribution": faqData["what should i do before making my first contribution"],
-                "help": faqData["how can i get help if i'm stuck"],
-                "stuck": faqData["how can i get help if i'm stuck"],
-                "benefits": faqData["what are the benefits of contributing to open source"],
-                "choose": faqData["how do i choose a project to contribute to"],
-                "project": faqData["how do i choose a project to contribute to"],
-                "started": faqData["what should i do before making my first contribution"],
-                "begin": faqData["what should i do before making my first contribution"]
-            };
-
-            for (const [keyword, response] of Object.entries(keywords)) {
-                if (lowerMessage.includes(keyword)) {
-                    return response;
-                }
-            }
-
-            // Default responses
-            const defaultResponses = [
-                "I'm not sure about that specific question. Try checking our FAQ section above or our Guides page for more information!",
-                "That's an interesting question! For detailed guidance, I recommend exploring our Programs and Resources sections.",
-                "I don't have information on that topic yet. Feel free to browse our other pages or ask about open source basics!",
-                "I'm still learning! For now, I can help best with questions about OpenSource Compass and general open source contribution."
-            ];
-
-            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-        }
-
-        function sendMessage() {
-            const message = chatInput.value.trim();
-            if (message) {
-                addMessage(message, 'user');
-                chatInput.value = '';
-
-                // Simulate typing delay
-                setTimeout(() => {
-                    const response = getBotResponse(message);
-                    addMessage(response, 'bot');
-                }, 500);
-            }
-        }
-
-        sendBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Quick question buttons
-        document.querySelectorAll('.quick-question-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const question = btn.dataset.question;
-                chatInput.value = question;
-                sendMessage();
-            });
-        });
-    </script>
 </body>
 </html>

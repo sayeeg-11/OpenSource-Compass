@@ -1,154 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guides | OpenSource Compass</title>
+  <meta charset="UTF-8" />
+  <title>OpenSource Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/guides.css">
-</head>
+  <!-- Font Awesome (REQUIRED for logo) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+</head> 
 
 <body>
-    <!-- Navbar -->
-    <header>
-        <h1>OpenSource Compass</h1>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="guides.html" class="active">Guides</a>
-            <a href="programs.html">Programs</a>
-            <a href="Resources.html">Resources</a>
-            <a href="Contribute.html">Contribute</a>
-        </nav>
+
+<!-- Navbar copied EXACTLY from home.html -->
+  <header>
+      <div class="navbar-container">
+        <h1>
+          <i
+            class="fas fa-compass"
+            style="color: var(--primary-gold); margin-right: 0.4rem"
+          ></i
+          >OpenSource Compass
+        </h1>
+        <div class="nav-links">
+          <a href="../../home.html">Home</a>
+          <a href="./guides.html">Guides</a>
+          <a href="./programs.html">Programs</a>
+          <a href="./Resources.html">Resources</a>
+          <a href="./contributors.html">Contributors</a>
+          <a href="./faq.html">FAQ</a>
+          <a href="./Contribute.html">Contribute</a>
+        </div>
+      </div>
     </header>
+<main>
+  <section>
+    <h3>Frequently Asked Questions</h3>
+    <p>Answers to common questions about OpenSource Compass and open source contribution.</p>
 
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-title">Guides Hub</div>
-                <button class="toggle-sidebar" id="toggle-sidebar">≡</button>
-            </div>
+    <div class="card-grid">
 
-            <ul class="sidebar-menu">
-                <li><a href="#basics" class="active">📝 Open Source Basics</a></li>
-                <li><a href="#git">🐙 Git & GitHub</a></li>
-                <li><a href="#best-practices">✅ Best Practices</a></li>
-                <li><a href="#contributing">🤝 Contributing Guide</a></li>
-                <li><a href="#resources">📚 Learning Resources</a></li>
-            </ul>
-        </aside>
+      <div class="card">
+        <h4>What is OpenSource Compass?</h4>
+        <p>
+          OpenSource Compass is a beginner-friendly platform that helps contributors
+          navigate open source programs, best practices, and real-world contribution workflows.
+        </p>
+      </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
+      <div class="card">
+        <h4>Do I need prior experience?</h4>
+        <p>
+          No. Many contributions involve documentation, design, testing, and beginner-friendly issues.
+          Programming experience helps but is not mandatory.
+        </p>
+      </div>
 
-            <!-- Page Intro -->
-            <div class="py-5 text-center">
-                <h1 class="display-5 fw-bold" style="color:#1F3C88;">Guide to Open Source Programs</h1>
-                <p class="fs-5">A curated guide to global open-source programs for contributors.</p>
-            </div>
+      <div class="card">
+        <h4>How do I start contributing?</h4>
+        <p>
+          Start by reading the Guides section, pick a beginner-friendly issue,
+          follow contribution guidelines, and submit a pull request.
+        </p>
+      </div>
 
-            <!-- Program Cards -->
-            <div class="album py-5 bg-body-tertiary">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="card">
+        <h4>Which programs are beginner-friendly?</h4>
+        <p>
+          Programs like Hacktoberfest, Social Winter of Code, and GirlScript Summer of Code
+          are great starting points.
+        </p>
+      </div>
 
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <img src="../library/assets/program_logo/ggsoc.png" class="card-img-top" style="height:225px;object-fit:cover;">
-                                <div class="card-body">
-                                    <p><strong>GirlScript Summer of Code</strong><br>Large-scale open-source program for students.</p>
-                                    <a href="/pages/Event/gssoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                                </div>
-                            </div>
-                        </div>
+      <div class="card">
+        <h4>Where can I get help?</h4>
+        <p>
+          Most projects have active communities on GitHub, Discord, or Slack.
+          You can also refer to our Resources and Guides pages.
+        </p>
+      </div>
 
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <img src="../library/assets/program_logo/gsoc.webp" class="card-img-top" style="height:225px;object-fit:cover;">
-                                <div class="card-body">
-                                    <p><strong>Google Summer of Code</strong><br>Global program for advanced contributors.</p>
-                                    <a href="/pages/Event/gsoc.html" class="btn btn-sm btn-outline-secondary">View</a>
-                                </div>
-                            </div>
-                        </div>
+      <div class="card">
+        <h4>Will my contributions remain after the competition?</h4>
+        <p>
+          Yes. All merged pull requests remain permanently on GitHub
+          and continue to strengthen your profile and portfolio.
+        </p>
+      </div>
 
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <img src="../library/assets/program_logo/hacktober.webp" class="card-img-top" style="height:225px;object-fit:cover;">
-                                <div class="card-body">
-                                    <p><strong>Hacktoberfest</strong><br>Beginner-friendly open-source event.</p>
-                                    <a href="/pages/Event/hacktober.html" class="btn btn-sm btn-outline-secondary">View</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Guides Content -->
-            <section id="basics">
-                <h3>1. Open Source Basics</h3>
-                <p>Open source software is publicly accessible code that anyone can use, modify, and distribute.</p>
-            </section>
-
-            <section id="git">
-                <h3>2. Git & GitHub</h3>
-                <pre>
-git clone repo
-git checkout -b feature
-git add .
-git commit -m "message"
-git push origin feature
-                </pre>
-            </section>
-
-            <section id="best-practices">
-                <h3>3. Best Practices</h3>
-                <ul>
-                    <li>Read documentation</li>
-                    <li>Start with small issues</li>
-                    <li>Write clear PRs</li>
-                </ul>
-            </section>
-
-            <section id="resources">
-                <h3>Learning Resources</h3>
-                <p>Curated open-source learning materials.</p>
-            </section>
-
-        </main>
     </div>
+  </section>
+</main>
 
-<div class="py-5 text-center"> 
-    <h1 class="display-5 fw-bold" style="color: #1F3C88;">
-        Guide to Open Source Programs
-    </h1>
+<!-- Footer copied EXACTLY from home.html -->
+<footer>
+  <p>
+    © 2026 OpenSource Compass ·
+    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank">GitHub</a>
+  </p>
+</footer>
 
-    <p class="fs-5 mb-4">
-        A curated guide to global open-source programs for contributors.
-    </p>
-
-    <a href="beginners-guide.html"
-    class="btn btn-lg mt-2"
-    style="background-color:#3253a8; color:#fff;">
-        Beginner’s Guide to Open Source
-    </a>
-
-
-
-    <p class="mt-2 text-muted" style="font-size: 14px;">
-        New to open source? Start here before exploring programs.
-    </p>
-</div>
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 OpenSource Compass • Built for the Open Source Community</p>
-    </footer>
-
-    <script src="../js/guides.js"></script>
 </body>
 </html>

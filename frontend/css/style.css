@@ -1,377 +1,282 @@
 /* =========================
-   Global Variables
-========================= */
-:root {
-    --primary-blue: #1F3C88;
-    --secondary-blue: #4D96FF;
-    --light-gray: #F5F7FA;
-    --text-dark: #2E2E2E;
-    --success-green: #3CCF91;
-    --white: #FFFFFF;
-    
-    /* Shredded Colors */
-    --shred-1: #FF4D4D;
-    --shred-2: #4D96FF;
-    --shred-3: #FFD93D;
-    
-    /* New Animation & Glassmorphism Variables */
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --transition-speed: 0.3s;
-    --anim-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* =========================
-   Reset & Base Styles
+   GLOBAL RESET
 ========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html,
 body {
-    background-color: var(--white);
-    color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden; 
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* =========================
-   Shredded Background Effect
+   THEME VARIABLES (CLASSIC)
 ========================= */
-.shredded-bg {
-    position: relative;
-    overflow: hidden;
-}
+:root {
+  --primary-gold: #d4af37;
+  --secondary-gold: #b8860b;
+  --deep-navy: #1b263b;
+  --warm-cream: #fdf4e3;
+  --light-parchment: #fff8e7;
+  --charcoal-dark: #2c2c2c;
+  --text-secondary: #5a5a5a;
 
-.shredded-bg::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(135deg, var(--shred-1), var(--shred-3));
-    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%, 25% 50%);
-    opacity: 0.15;
-    z-index: -1;
-    transform: rotate(15deg);
-}
-
-.shredded-bg::after {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    left: -5%;
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, var(--shred-2), var(--shred-1));
-    clip-path: polygon(0% 15%, 100% 30%, 85% 85%, 15% 100%);
-    opacity: 0.1;
-    z-index: -1;
-    transform: rotate(-10deg);
+  --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
 }
 
 /* =========================
-   Header / Navbar
+   BASE STYLES
 ========================= */
-header {
-    background-color: var(--white);
-    border-bottom: 1px solid #eaeaea;
-    padding: 16px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-header h1 a {
-    color: var(--primary-blue);
-    font-size: 22px;
-    font-weight: 700;
-}
-#state-container {
-    margin: 40px 8%;
-    padding: 24px;
-    background-color: #F5F7FA;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 16px;
-    color: #2E2E2E;
-}
-nav a {
-    margin-left: 24px;
-    font-weight: 500;
-    color: var(--text-dark);
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--secondary-blue);
+body {
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  background: linear-gradient(
+    135deg,
+    var(--light-parchment) 0%,
+    var(--warm-cream) 100%
+  );
+  color: var(--charcoal-dark);
 }
 
 /* =========================
-   Hero Section (Applying Shredded BG)
+   HEADER / NAVBAR
 ========================= */
-.hero {
-    background-color: var(--light-gray);
-    padding: 100px 8%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+
+      header {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 3px solid var(--primary-gold);
+        padding: 1rem 6%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-main);
+      }
+
+      .navbar-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.6rem, 3vw, 1.9rem); /* Smaller logo */
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--deep-navy) 0%,
+          var(--primary-gold) 70%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--charcoal-dark) !important;
+        font-family: "Inter", -apple-system, sans-serif;
+        font-weight: 500;
+        font-size: 0.95rem; /* Smaller nav links */
+        padding: 0.4rem 0;
+        position: relative;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px; /* Thinner underline */
+        background: linear-gradient(
+          90deg,
+          var(--primary-gold),
+          var(--secondary-gold)
+        );
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        border-radius: 1px;
+      }
+
+      .nav-links a:hover {
+        color: var(--deep-navy) !important;
+        transform: translateY(-1px);
+      }
+
+      .nav-links a:hover::before {
+        width: 70%;
+      }
+
+
+main {
+  margin-top: 0;
+  padding-top: 0;
+}
+header h1 i {
+  font-size: 0.95em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
-.hero h2 {
-    font-size: 48px;
-    color: var(--primary-blue);
-    margin-bottom: 16px;
+
+
+/* =========================
+   SECTIONS
+========================= */
+main section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 6%;
 }
 
-.hero p {
-    max-width: 600px;
-    font-size: 18px;
-    margin-bottom: 32px;
-    color: #555;
+section h3 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4.5vw, 2.9rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--deep-navy);
+  margin-bottom: 1.2rem;
 }
 
-.hero button {
-    background-color: var(--secondary-blue);
-    color: var(--white);
-    border: none;
-    padding: 16px 32px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transition-speed) var(--anim-curve);
-    box-shadow: 0 4px 15px rgba(77, 150, 255, 0.3);
+section h3::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  margin: 1.2rem auto 0;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
 }
 
-.hero button:hover {
-    background-color: var(--primary-blue);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(77, 150, 255, 0.4);
+section p {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 3.5rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
 }
 
 /* =========================
-   Cards & Grid
+   CARD GRID
 ========================= */
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
 }
 
 .card {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 16px;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 100%;
+  max-width: 360px;
+  padding: 2.2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-main);
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
 }
 
 .card h4 {
-    margin-bottom: 10px;
-    color: var(--secondary-blue);
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  color: var(--deep-navy);
+  margin-bottom: 1.1rem;
 }
 
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s var(--anim-curve), transform 0.8s var(--anim-curve);
-}
-
-.fade-in-up.active {
-    opacity: 1;
-    transform: translateY(0);
+.card p {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
 }
 
 /* =========================
-   Why Section - Specific Styling
-    border-color: var(--secondary-blue);
-}
-
-.card h4 {
-    margin-bottom: 12px;
-    color: var(--primary-blue);
-    font-size: 20px;
-}
-
-/* =========================
-   Footer (Shredded Look)
+   FOOTER
 ========================= */
 footer {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    text-align: center;
-    padding: 40px 8%;
-    position: relative;
+  background: var(--deep-navy);
+  color: var(--warm-cream);
+  text-align: center;
+  padding: 3rem 6% 2.5rem;
+  font-size: 0.95rem;
 }
 
-footer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 15px;
-    background: var(--white);
-    clip-path: polygon(0 0, 5% 100%, 10% 0, 15% 100%, 20% 0, 25% 100%, 30% 0, 35% 100%, 40% 0, 45% 100%, 50% 0, 55% 100%, 60% 0, 65% 100%, 70% 0, 75% 100%, 80% 0, 85% 100%, 90% 0, 95% 100%, 100% 0);
+footer a {
+  color: var(--primary-gold);
+  text-decoration: none;
+  font-weight: 500;
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  .navbar-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 
-    .hamburger {
-        display: block;
-    }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
 
-    .hamburger.active {
-        display: none;
-    }
+  main section {
+    padding: 3rem 5%;
+  }
 
-    nav {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: var(--white);
-        padding: 20px 8%;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    nav.active .close-icon {
-        display: block;
-    }
-
-    nav a {
-        margin: 10px 0;
-        width: 100%;
-        font-size: 20px;
-        margin: 20px 0;
-    }
-
-    .profile-dropdown {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .profile-icon {
-        width: 100%;
-        border-radius: 6px;
-        margin-left: 0;
-        justify-content: center;
-    }
-
-    .profile-menu {
-        position: static;
-        box-shadow: none;
-        border: 1px solid #e0e0e0;
-        margin-top: 10px;
-        border-radius: 6px;
-    }
-
-    .hero {
-        padding: 60px 8%;
-    }
-    
-    .hero h2 {
-        font-size: 32px;
-    }
-    
-    .hero p {
-        font-size: 16px;
-    }
-
-    section {
-        padding: 48px 8%;
-    }
-
-    section h3 {
-        font-size: 24px;
-    }
+  section h3 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .hero h2 {
-        font-size: 28px;
-    }
+  body {
+    font-size: 14px;
+  }
 
-    .hero p {
-        font-size: 15px;
-    }
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .card {
+    padding: 1.6rem 1.3rem;
+  }
+
+  .card h4 {
+    font-size: 1.25rem;
+  }
+}
     
-    .card-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* Hover effect to the cards */
-
-/* Base card style */
-.card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: 
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  will-change: transform, box-shadow;
-}
-
-/* Hover interaction */
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-
-/* =========================
-   Animations
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s var(--anim-curve), transform 0.8s var(--anim-curve);
-}
-
-.fade-in-up.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Scroll To Top */
-#scrollTopBtn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--secondary-blue);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    display: none;
-    z-index: 99;
-}

@@ -1,102 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>OpenSource Compass — Resources</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/navigation.css" />
-  <link rel="stylesheet" href="../css/resources.css" />
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <title>OpenSource Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
- <!-- Navbar -->
-    <header>
-        <h1>OpenSource Compass</h1>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="guides.html" class="active">Guides</a>
-            <a href="programs.html">Programs</a>
-            <a href="Resources.html">Resources</a>
-            <a href="Contribute.html">Contribute</a>
-        </nav>
+  <!-- Font Awesome (REQUIRED for logo) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+
+  <body>
+    <!-- Navbar copied EXACTLY from home.html -->
+  <header>
+      <div class="navbar-container">
+        <h1>
+          <i
+            class="fas fa-compass"
+            style="color: var(--primary-gold); margin-right: 0.4rem"
+          ></i
+          >OpenSource Compass
+        </h1>
+        <div class="nav-links">
+          <a href="../../home.html">Home</a>
+          <a href="./guides.html">Guides</a>
+          <a href="./programs.html">Programs</a>
+          <a href="./Resources.html">Resources</a>
+          <a href="./contributors.html">Contributors</a>
+          <a href="./faq.html">FAQ</a>
+          <a href="./Contribute.html">Contribute</a>
+        </div>
+      </div>
     </header>
 
-<main>
-  <section class="resources-hero">
-    <h2>Resources</h2>
-    <p>Tutorials, tools, and guides to help you start and grow in open source.</p>
-    <a href="#resources-grid" class="btn-primary">Get Started</a>
-  </section>
+    <main>
+      <section>
+        <h3>Resources</h3>
+        <p>
+          Tutorials, tools, and references to help you start and grow in open
+          source.
+        </p>
 
-  <div class="filters">
-    <span class="filter-pill active" data-filter="all">All</span>
-    <span class="filter-pill" data-filter="guide">Guides</span>
-    <span class="filter-pill" data-filter="tutorial">Tutorials</span>
-    <span class="filter-pill" data-filter="tool">Tools</span>
-    <span class="filter-pill" data-filter="reference">Reference</span>
-  </div>
+        <div class="card-grid">
+          <div class="card">
+            <h4>How to Contribute to Open Source</h4>
+            <p>
+              A step-by-step guide for finding beginner-friendly issues, opening
+              pull requests, and communicating with maintainers.
+            </p>
+          </div>
 
-  <section id="resources-grid" class="resources-grid">
-    <article class="resource-card" data-type="guide">
-      <h4>How to Contribute to Open Source</h4>
-      <div class="resource-meta">Guide • Beginner • 15–20 min read</div>
-      <p>Step-by-step walkthrough for finding issues, opening PRs, and communicating with maintainers.</p>
-    </article>
+          <div class="card">
+            <h4>Git and GitHub Essentials</h4>
+            <p>
+              Learn Git basics including forking repositories, creating
+              branches, writing commits, and opening pull requests on GitHub.
+            </p>
+          </div>
 
-    <article class="resource-card" data-type="tutorial">
-      <h4>Git and GitHub Essentials</h4>
-      <div class="resource-meta">Tutorial • Beginner • Interactive</div>
-      <ol>
-        <li>Fork the project and clone it locally.</li>
-        <li>Create a branch and make focused commits.</li>
-        <li>Push and open a Pull Request.</li>
-      </ol>
-    </article>
+          <div class="card">
+            <h4>Open Source Licensing Explained</h4>
+            <p>
+              Understand common open source licenses and how to choose the right
+              one for your project.
+            </p>
+          </div>
 
-    <article class="resource-card" data-type="reference">
-      <h4>Open Source Licensing Explained</h4>
-      <div class="resource-meta">Reference • Intermediate • 10–15 min read</div>
-      <p>Comparison of common licenses and guidance on choosing one for your project.</p>
-      <div class="resource-actions">
-        <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">View</a>
-      </div>
-    </article>
+          <div class="card">
+            <h4>Finding Good First Issues</h4>
+            <p>
+              Tips and tools to discover beginner-friendly issues across open
+              source repositories.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <article class="resource-card" data-type="tool">
-      <h4>Finding Good First Issues</h4>
-      <div class="resource-meta">Tool • Beginner • Live</div>
-      <p>Aggregators and search tips to locate beginner-friendly issues across projects.</p>
-      <div class="resource-actions">
-        <a class="btn-outline" href="https://github.com/sayeeg-11/OpenSource-Compass">Explore</a>
-      </div>
-    </article>
-  </section>
+      <section>
+        <h3>Community Hubs</h3>
+        <p>
+          Places to ask questions, find mentors, and collaborate with others.
+        </p>
 
-  <section class="community-hubs">
-    <h3>Community Hubs</h3>
-    <p>Places to ask questions, find mentors, and join contributor-friendly communities.</p>
-    <div class="card-container">
-      <div class="card">
-        <h4>Discord & Slack</h4>
-        <p>Real-time help and project channels to get quick feedback.</p>
-      </div>
-      <div class="card">
-        <h4>Mentorship Programs</h4>
-        <p>Programs pairing newcomers with experienced contributors.</p>
-      </div>
-    </div>
-  </section>
-</main>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Discord & Slack Communities</h4>
+            <p>
+              Real-time chat communities where contributors help each other and
+              discuss project ideas.
+            </p>
+          </div>
 
-<!-- Footer -->
+          <div class="card">
+            <h4>Mailing Lists & Forums</h4>
+            <p>
+              Long-form discussions, announcements, and deeper technical
+              conversations around projects.
+            </p>
+          </div>
+
+          <div class="card">
+            <h4>Mentorship Programs</h4>
+            <p>
+              Programs that pair beginners with experienced contributors for
+              guided learning.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <footer>
-        <p>© 2026 OpenSource Compass • Built for the Open Source Community</p>
+      <p>
+        © 2026 OpenSource Compass ·
+        <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
+      </p>
     </footer>
-
-<script src="../js/components.js"></script>
-<script src="../js/resources.js"></script>
-</body>
+  </body>
 </html>
