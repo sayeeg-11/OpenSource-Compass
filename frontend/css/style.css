@@ -279,3 +279,74 @@ footer a {
   }
 }
     
+/* ============================
+   Programs Comparison Page
+   ============================ */
+
+.programs-page {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.programs-page h1,
+.programs-page h2 {
+  color: var(--deep-navy);
+  margin-bottom: 16px;
+}
+
+.programs-page h1 {
+  font-size: 2.2rem;
+}
+
+.programs-page h2 {
+  font-size: 1.6rem;
+}
+
+.programs-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
+.programs-page th,
+.programs-page td {
+  padding: 14px 16px;
+  border: 1px solid #dddddd;
+  text-align: left;
+}
+
+.programs-page th {
+  background-color: #f0f3f6;
+  font-weight: 600;
+}
+
+.programs-page tr:hover {
+  background-color: #f9f9f9;
+}
+
+.programs-page ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.programs-page ul li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .programs-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .programs-page h2 {
+    font-size: 1.4rem;
+  }
+
+  .programs-page th,
+  .programs-page td {
+    padding: 10px;
+  }
+}
