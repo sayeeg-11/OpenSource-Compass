@@ -46,99 +46,89 @@ body {
 /* =========================
    HEADER / NAVBAR
 ========================= */
+header {
+  background: rgb(255 255 255 / 98%);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 3px solid var(--primary-gold);
+  padding: 1rem 6%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-main);
+}
 
-      header {
-        background: rgb(255 255 255 / 98%);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 3px solid var(--primary-gold);
-        padding: 1rem 6%;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: var(--shadow-main);
-      }
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-      .navbar-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 3vw, 1.9rem);
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--deep-navy) 0%,
+    var(--primary-gold) 70%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.01em;
+}
 
-      header h1 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(1.6rem, 3vw, 1.9rem); /* Smaller logo */
-        font-weight: 700;
-        background: linear-gradient(
-          135deg,
-          var(--deep-navy) 0%,
-          var(--primary-gold) 70%
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -0.01em;
-      }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
+.nav-links a {
+  text-decoration: none;
+  color: var(--charcoal-dark) !important;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
 
-      .nav-links a {
-        text-decoration: none;
-        color: var(--charcoal-dark) !important;
-        font-family: "Inter", -apple-system, sans-serif;
-        font-weight: 500;
-        font-size: 0.95rem; /* Smaller nav links */
-        padding: 0.4rem 0;
-        position: relative;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
 
-      .nav-links a::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px; /* Thinner underline */
-        background: linear-gradient(
-          90deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateX(-50%);
-        border-radius: 1px;
-      }
+.nav-links a:hover {
+  color: var(--deep-navy) !important;
+  transform: translateY(-1px);
+}
 
-      .nav-links a:hover {
-        color: var(--deep-navy) !important;
-        transform: translateY(-1px);
-      }
-
-      .nav-links a:hover::before {
-        width: 70%;
-      }
-
+.nav-links a:hover::before {
+  width: 70%;
+}
 
 main {
   margin-top: 0;
   padding-top: 0;
 }
-header h1 i {
-  font-size: 0.95em;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-}
-
-
 
 /* =========================
    SECTIONS
@@ -205,19 +195,6 @@ section p {
   box-shadow: var(--shadow-hover);
 }
 
-.card h4 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.45rem;
-  color: var(--deep-navy);
-  margin-bottom: 1.1rem;
-}
-
-.card p {
-  font-size: 0.98rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-}
-
 /* =========================
    FOOTER
 ========================= */
@@ -229,7 +206,6 @@ footer {
   font-size: 0.95rem;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
 footer a {
   color: var(--primary-gold);
   text-decoration: none;
@@ -240,12 +216,6 @@ footer a {
    RESPONSIVE
 ========================= */
 @media (width <= 768px) {
-  .navbar-container {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
@@ -269,20 +239,11 @@ footer a {
   .nav-links a {
     font-size: 0.8rem;
   }
-
-  .card {
-    padding: 1.6rem 1.3rem;
-  }
-
-  .card h4 {
-    font-size: 1.25rem;
-  }
 }
-    
-/* ============================
-   Programs Comparison Page
-   ============================ */
 
+/* ============================
+   PROGRAMS COMPARISON PAGE
+============================ */
 .programs-page {
   max-width: 1000px;
   margin: 40px auto;
@@ -293,14 +254,6 @@ footer a {
 .programs-page h2 {
   color: var(--deep-navy);
   margin-bottom: 16px;
-}
-
-.programs-page h1 {
-  font-size: 2.2rem;
-}
-
-.programs-page h2 {
-  font-size: 1.6rem;
 }
 
 .programs-page table {
@@ -322,31 +275,9 @@ footer a {
   font-weight: 600;
 }
 
-.programs-page tr:hover {
-  background-color: #f9f9f9;
-}
-
-.programs-page ul {
-  margin-top: 15px;
-  padding-left: 20px;
-}
-
-.programs-page ul li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .programs-page h1 {
-    font-size: 1.8rem;
-  }
-
-  .programs-page h2 {
-    font-size: 1.4rem;
-  }
-
-  .programs-page th,
-  .programs-page td {
-    padding: 10px;
-  }
+/* =========================
+   QUIZ SECTION SCROLLBAR
+========================= */
+#level-chain-wrapper::-webkit-scrollbar {
+  display: none;
 }

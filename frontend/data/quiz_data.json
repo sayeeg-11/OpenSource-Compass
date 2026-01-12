@@ -1,0 +1,672 @@
+[
+    {
+        "id": 1,
+        "title": "Open Source Basics",
+        "icon": "fas fa-seedling",
+        "questions": [
+            {
+                "q": "What does OSS stand for?",
+                "options": [
+                    "Open Source Software",
+                    "Operating System Service",
+                    "Open System Security",
+                    "One Stop Shop"
+                ],
+                "a": 0,
+                "xp": 10,
+                "explanation": "OSS stands for Open Source Software, code that is designed to be publicly accessible."
+            },
+            {
+                "q": "Which is NOT a core principle of open source?",
+                "options": [
+                    "Transparency",
+                    "Collaboration",
+                    "Secrecy",
+                    "Community"
+                ],
+                "a": 2,
+                "xp": 10,
+                "explanation": "Secrecy is the opposite of open source; transparency and openness are key."
+            },
+            {
+                "q": "Who can contribute to open source?",
+                "options": [
+                    "Only expert coders",
+                    "Anyone",
+                    "Only employees",
+                    "Only Linux users"
+                ],
+                "a": 1,
+                "xp": 10,
+                "explanation": "Anyone can contribute! Contributions include code, documentation, design, and more."
+            },
+            {
+                "q": "What is a 'fork'?",
+                "options": [
+                    "A copy of a repository",
+                    "A bug in the code",
+                    "A system error",
+                    "A utensil"
+                ],
+                "a": 0,
+                "xp": 10,
+                "explanation": "Forking creates a personal copy of someone else's project for your own use."
+            },
+            {
+                "q": "Why contribute?",
+                "options": [
+                    "To get rich quick",
+                    "To learn and give back",
+                    "To break things",
+                    "To avoid homework"
+                ],
+                "a": 1,
+                "xp": 10,
+                "explanation": "Contributing helps you learn, build a reputation, and give back to the community."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Version Control (Git)",
+        "icon": "fas fa-code-branch",
+        "questions": [
+            {
+                "q": "What command creates a new repo?",
+                "options": [
+                    "git init",
+                    "git start",
+                    "git new",
+                    "git create"
+                ],
+                "a": 0,
+                "xp": 15,
+                "explanation": "`git init` initializes a new Git repository."
+            },
+            {
+                "q": "Which command saves changes to history?",
+                "options": [
+                    "git save",
+                    "git commit",
+                    "git add",
+                    "git store"
+                ],
+                "a": 1,
+                "xp": 15,
+                "explanation": "`git commit` records changes to the repository."
+            },
+            {
+                "q": "What is 'origin' usually?",
+                "options": [
+                    "Your local computer",
+                    "The remote repository",
+                    " The creator",
+                    "The database"
+                ],
+                "a": 1,
+                "xp": 15,
+                "explanation": "'origin' is the default alias for the remote repository URL."
+            },
+            {
+                "q": "How do you download a repo?",
+                "options": [
+                    "git download",
+                    "git clone",
+                    "git pull",
+                    "git get"
+                ],
+                "a": 1,
+                "xp": 15,
+                "explanation": "`git clone` copies an existing repository."
+            },
+            {
+                "q": "What command shows status?",
+                "options": [
+                    "git info",
+                    "git status",
+                    "git check",
+                    "git show"
+                ],
+                "a": 1,
+                "xp": 15,
+                "explanation": "`git status` displays the state of the working directory and staging area."
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "GitHub Fundamentals",
+        "icon": "fab fa-github",
+        "questions": [
+            {
+                "q": "What is an 'Issue'?",
+                "options": [
+                    "A fatal error",
+                    "Examples of bad code",
+                    "A task or bug report",
+                    "A magazine"
+                ],
+                "a": 2,
+                "xp": 20,
+                "explanation": "Issues are used to track tasks, enhancements, and bugs."
+            },
+            {
+                "q": "What does 'Starring' a repo do?",
+                "options": [
+                    "Downloads it",
+                    "Bookmarks/Likes it",
+                    "Deletes it",
+                    "Emails the author"
+                ],
+                "a": 1,
+                "xp": 20,
+                "explanation": "Starring shows appreciation and bookmarks the repository."
+            },
+            {
+                "q": "What is a README?",
+                "options": [
+                    "A file to ignore",
+                    "Project documentation",
+                    "License file",
+                    "Source code"
+                ],
+                "a": 1,
+                "xp": 20,
+                "explanation": "README is the main documentation file visitors see first."
+            },
+            {
+                "q": "Where do you host static sites?",
+                "options": [
+                    "GitHub Pages",
+                    "GitHub Issues",
+                    "GitHub Actions",
+                    "GitHub Servers"
+                ],
+                "a": 0,
+                "xp": 20,
+                "explanation": "GitHub Pages hosts static websites directly from a repository."
+            },
+            {
+                "q": "What is a Gist?",
+                "options": [
+                    "A code snippet",
+                    "A full project",
+                    "A comment",
+                    "A large file"
+                ],
+                "a": 0,
+                "xp": 20,
+                "explanation": "Gists are a way to share code snippets."
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Licensing Essentials",
+        "icon": "fas fa-scale-balanced",
+        "questions": [
+            {
+                "q": "Which license is permissive?",
+                "options": [
+                    "GPL",
+                    "MIT",
+                    "AGPL",
+                    "Proprietary"
+                ],
+                "a": 1,
+                "xp": 25,
+                "explanation": "MIT is a permissive license, allowing almost unrestricted reuse."
+            },
+            {
+                "q": "What does 'Copyleft' mean?",
+                "options": [
+                    "No copyright",
+                    "Derivative work must be same license",
+                    "You can't copy",
+                    "All rights reserved"
+                ],
+                "a": 1,
+                "xp": 25,
+                "explanation": "Copyleft requires derivative works to use the same license (e.g., GPL)."
+            },
+            {
+                "q": "Can you sell open source software?",
+                "options": [
+                    "Yes",
+                    "No",
+                    "Only on Sundays",
+                    "Only if you beg"
+                ],
+                "a": 0,
+                "xp": 25,
+                "explanation": "Yes, many open source licenses allow commercial use and selling."
+            },
+            {
+                "q": "What is the Unlicense?",
+                "options": [
+                    "Public Domain",
+                    "Strict Copyright",
+                    "Illegal",
+                    "Paid License"
+                ],
+                "a": 0,
+                "xp": 25,
+                "explanation": "The Unlicense dedicates the work to the public domain."
+            },
+            {
+                "q": "Why have a license?",
+                "options": [
+                    "To look cool",
+                    "Define legal usage rights",
+                    "It's required by law",
+                    "To make it slower"
+                ],
+                "a": 1,
+                "xp": 25,
+                "explanation": "A license defines how others can use, modify, and distribute your code."
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Community Etiquette",
+        "icon": "fas fa-users",
+        "questions": [
+            {
+                "q": "Always check what before posting?",
+                "options": [
+                    "The weather",
+                    "Existing issues",
+                    "Your horoscope",
+                    "Your email"
+                ],
+                "a": 1,
+                "xp": 30,
+                "explanation": "Avoid duplicates by checking existing issues first."
+            },
+            {
+                "q": "What applies to behavior?",
+                "options": [
+                    "Code of Conduct",
+                    "Rule of Law",
+                    "Terms of Service",
+                    "The Constitution"
+                ],
+                "a": 0,
+                "xp": 30,
+                "explanation": "A Code of Conduct sets expectations for community behavior."
+            },
+            {
+                "q": "How to treat maintainers?",
+                "options": [
+                    "Demand fixes",
+                    "With respect and patience",
+                    "Ignore them",
+                    "Pay them"
+                ],
+                "a": 1,
+                "xp": 30,
+                "explanation": "Maintainers are often volunteers; kindness goes a long way."
+            },
+            {
+                "q": "Is 'it doesn't work' a good report?",
+                "options": [
+                    "Yes",
+                    "No, provide details",
+                    "Maybe",
+                    "I don't know"
+                ],
+                "a": 1,
+                "xp": 30,
+                "explanation": "Vague reports are unhelpful; provide reproduction steps and logs."
+            },
+            {
+                "q": "What if your PR is rejected?",
+                "options": [
+                    "Insult everyone",
+                    "Ask for feedback & improve",
+                    "Delete account",
+                    "Sue them"
+                ],
+                "a": 1,
+                "xp": 30,
+                "explanation": "Rejection is part of learning; ask for feedback and improve."
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Finding Projects",
+        "icon": "fas fa-magnifying-glass",
+        "questions": [
+            {
+                "q": "Good label for beginners?",
+                "options": [
+                    "good first issue",
+                    "critical",
+                    "wontfix",
+                    "hard"
+                ],
+                "a": 0,
+                "xp": 35,
+                "explanation": "'good first issue' labels are specifically meant for new contributors."
+            },
+            {
+                "q": "Where to search?",
+                "options": [
+                    "Facebook",
+                    "GitHub Explore / Topics",
+                    "Department Store",
+                    "Twitter"
+                ],
+                "a": 1,
+                "xp": 35,
+                "explanation": "GitHub Explore and Topics are great places to find projects."
+            },
+            {
+                "q": "What indicates an active project?",
+                "options": [
+                    "Old commits",
+                    "Recent activity & responses",
+                    "No issues",
+                    "Lots of stars only"
+                ],
+                "a": 1,
+                "xp": 35,
+                "explanation": "Recent commits and responses to issues indicate a live project."
+            },
+            {
+                "q": "What is 'Up for Grabs'?",
+                "options": [
+                    "Free snacks",
+                    "Issues ready for assignment",
+                    "Deleted code",
+                    "Expensive"
+                ],
+                "a": 1,
+                "xp": 35,
+                "explanation": "'Up for grabs' is another common label for issues needing help."
+            },
+            {
+                "q": "Should you hack a project you use?",
+                "options": [
+                    "No",
+                    "Yes, it helps you understand it",
+                    "Only if paid",
+                    "Maybe"
+                ],
+                "a": 1,
+                "xp": 35,
+                "explanation": "Contributing to tools you use is one of the best ways to start."
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Making Contributions",
+        "icon": "fas fa-code-pull-request",
+        "questions": [
+            {
+                "q": "Steps to contribute?",
+                "options": [
+                    "Fork -> Branch -> Change -> PR",
+                    "Change -> Push",
+                    "Email code",
+                    "Commit -> Push"
+                ],
+                "a": 0,
+                "xp": 40,
+                "explanation": "The standard flow: Fork, Branch, Commit, Pull Request."
+            },
+            {
+                "q": "Why use branches?",
+                "options": [
+                    "To isolate changes",
+                    "To make it slower",
+                    "To confuse others",
+                    "To duplicate code"
+                ],
+                "a": 0,
+                "xp": 40,
+                "explanation": "Branches keep your changes separate from the main codebase until ready."
+            },
+            {
+                "q": "What should commit messages be?",
+                "options": [
+                    "Funny",
+                    "Clear and descriptive",
+                    "Empty",
+                    "Random"
+                ],
+                "a": 1,
+                "xp": 40,
+                "explanation": "Clear messages help reviewers understand your changes."
+            },
+            {
+                "q": "Test your code?",
+                "options": [
+                    "No, let them test",
+                    "Yes, locally first",
+                    "Only in production",
+                    "Never"
+                ],
+                "a": 1,
+                "xp": 40,
+                "explanation": "Always verify your changes locally to save everyone time."
+            },
+            {
+                "q": "What links a PR to an issue?",
+                "options": [
+                    "Magic",
+                    "Keywords like 'Fixes #1'",
+                    "Not possible",
+                    "URL"
+                ],
+                "a": 1,
+                "xp": 40,
+                "explanation": "Keywords like 'Fixes' or 'Closes' automatically link and close issues."
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Review & Merging",
+        "icon": "fas fa-check-double",
+        "questions": [
+            {
+                "q": "Who reviews code?",
+                "options": [
+                    "Maintainers/Peers",
+                    "The computer only",
+                    "No one",
+                    "The CEO"
+                ],
+                "a": 0,
+                "xp": 45,
+                "explanation": "Code review is done by humans (maintainers) and sometimes automated tools."
+            },
+            {
+                "q": "What is CI?",
+                "options": [
+                    "Continuous Integration",
+                    "Code Insert",
+                    "Common Issue",
+                    "Code Improvement"
+                ],
+                "a": 0,
+                "xp": 45,
+                "explanation": "CI (Continuous Integration) automatically builds and tests code."
+            },
+            {
+                "q": "What if feedback requests changes?",
+                "options": [
+                    "Ignore it",
+                    "Make changes & push",
+                    "Close PR",
+                    "Argue"
+                ],
+                "a": 1,
+                "xp": 45,
+                "explanation": "Iterate on your PR by pushing new commits to the same branch."
+            },
+            {
+                "q": "What keeps syntax consistent?",
+                "options": [
+                    "Linters",
+                    "Comments",
+                    "Guessing",
+                    "Compilers"
+                ],
+                "a": 0,
+                "xp": 45,
+                "explanation": "Linters automatically check for style and syntax errors."
+            },
+            {
+                "q": "When is code merged?",
+                "options": [
+                    "Immediately",
+                    "After approval & passing tests",
+                    "Never",
+                    "When you feel like it"
+                ],
+                "a": 1,
+                "xp": 45,
+                "explanation": "Merge happens after humans approve and automated tests pass."
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Project Maintenance",
+        "icon": "fas fa-screwdriver-wrench",
+        "questions": [
+            {
+                "q": "What is Triage?",
+                "options": [
+                    "Sorting/Prioritizing issues",
+                    "Deleting code",
+                    "Writing docs",
+                    "Coding"
+                ],
+                "a": 0,
+                "xp": 50,
+                "explanation": "Triage involves sorting, prioritizing, and labeling incoming issues."
+            },
+            {
+                "q": "What is Semantic Versioning?",
+                "options": [
+                    "Random numbers",
+                    "MAJOR.MINOR.PATCH",
+                    "Dates",
+                    "Alphabetical"
+                ],
+                "a": 1,
+                "xp": 50,
+                "explanation": "SemVer uses Major.Minor.Patch to indicate compatibility."
+            },
+            {
+                "q": "How to avoid burnout?",
+                "options": [
+                    "Work 24/7",
+                    "Delegate & set boundaries",
+                    "Quit",
+                    "Drink coffee"
+                ],
+                "a": 1,
+                "xp": 50,
+                "explanation": "Sustainable maintenance requires boundaries and delegation."
+            },
+            {
+                "q": "Who manages releases?",
+                "options": [
+                    "Maintainers",
+                    "Users",
+                    "GitHub",
+                    "Bots"
+                ],
+                "a": 0,
+                "xp": 50,
+                "explanation": "Maintainers are responsible for cutting and publishing releases."
+            },
+            {
+                "q": "Key to sustainability?",
+                "options": [
+                    "Funding & Community",
+                    "Ads",
+                    "Paywalls",
+                    "Magic"
+                ],
+                "a": 0,
+                "xp": 50,
+                "explanation": "A healthy community and sometimes funding keep projects alive."
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Advanced Concepts",
+        "icon": "fas fa-infinity",
+        "questions": [
+            {
+                "q": "What is a Foundation?",
+                "options": [
+                    "Non-profit supporting projects",
+                    "Basement",
+                    "Start point",
+                    "A building"
+                ],
+                "a": 0,
+                "xp": 60,
+                "explanation": "Foundations (like Linux Foundation) provide legal and financial support."
+            },
+            {
+                "q": "What is DCO?",
+                "options": [
+                    "Developer Certificate of Origin",
+                    "Direct Code Output",
+                    "Data Control Only",
+                    "Data Center"
+                ],
+                "a": 0,
+                "xp": 60,
+                "explanation": "DCO confirms you have the right to submit the code."
+            },
+            {
+                "q": "What is InnerSource?",
+                "options": [
+                    "Open source practices inside companies",
+                    "Secrets",
+                    "Localhost",
+                    "Outsourcing"
+                ],
+                "a": 0,
+                "xp": 60,
+                "explanation": "InnerSource applies open source culture to proprietary corporate code."
+            },
+            {
+                "q": "Bus Factor?",
+                "options": [
+                    "Transportation",
+                    "Risk if key people leave",
+                    "Code speed",
+                    "Commute time"
+                ],
+                "a": 1,
+                "xp": 60,
+                "explanation": "Bus factor measures how many people's disappearance would stall the project."
+            },
+            {
+                "q": "Open Collective?",
+                "options": [
+                    "Funding platform",
+                    "A group chat",
+                    "A license",
+                    "A union"
+                ],
+                "a": 0,
+                "xp": 60,
+                "explanation": "Open Collective helps projects transparently manage funding."
+            }
+        ]
+    }
+]

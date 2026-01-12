@@ -1,90 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Font Awesome (REQUIRED for logo) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
   <!-- Global CSS -->
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
+  <link rel="stylesheet" href="../css/chatbot.css" />
 </head>
 
 
-  <body>
-    <!-- Navbar (copied from home.html) -->
-    <header>
-      <div class="navbar-container">
-        <h1>
-          <i
-            class="fas fa-compass"
-            style="color: var(--primary-gold); margin-right: 0.4rem"
-          ></i
-          >OpenSource Compass
-        </h1>
-        <div class="nav-links">
-          <a href="../../index.html">Home</a>
-          <a href="./guides.html">Guides</a>
-          <a href="./programs.html">Programs</a>
-          <a href="./Resources.html">Resources</a>
-          <a href="./contributors.html">Contributors</a>
-          <a href="./faq.html">FAQ</a>
-          <a href="./Contribute.html">Contribute</a>
+<body>
+  <!-- Navbar (copied from home.html) -->
+  <header>
+    <div class="navbar-container">
+      <h1>
+        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>OpenSource Compass
+      </h1>
+      <div class="nav-links">
+        <a href="../../index.html">Home</a>
+        <a href="./guides.html">Guides</a>
+        <a href="./programs.html">Programs</a>
+        <a href="./Resources.html">Resources</a>
+        <a href="./contributors.html">Contributors</a>
+        <a href="./faq.html">FAQ</a>
+        <a href="./Contribute.html">Contribute</a>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <!-- Page-specific content -->
+  <main>
+    <section>
+      <h3>How to Contribute</h3>
+      <p>Follow these steps to make your first open source contribution.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h4>Fork the Repository</h4>
+          <p>Create a personal copy of the project on GitHub.</p>
+        </div>
+
+        <div class="card">
+          <h4>Clone Locally</h4>
+          <p>Clone the forked repository to your local machine.</p>
+        </div>
+
+        <div class="card">
+          <h4>Create a Branch</h4>
+          <p>Work on a new feature or fix in a separate branch.</p>
+        </div>
+
+        <div class="card">
+          <h4>Open Pull Request</h4>
+          <p>Submit your changes for review by maintainers.</p>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Page-specific content -->
-    <main>
-      <section>
-        <h3>How to Contribute</h3>
-        <p>Follow these steps to make your first open source contribution.</p>
-
-        <div class="card-grid">
-          <div class="card">
-            <h4>Fork the Repository</h4>
-            <p>Create a personal copy of the project on GitHub.</p>
-          </div>
-
-          <div class="card">
-            <h4>Clone Locally</h4>
-            <p>Clone the forked repository to your local machine.</p>
-          </div>
-
-          <div class="card">
-            <h4>Create a Branch</h4>
-            <p>Work on a new feature or fix in a separate branch.</p>
-          </div>
-
-          <div class="card">
-            <h4>Open Pull Request</h4>
-            <p>Submit your changes for review by maintainers.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer (copied from home.html) -->
-    <footer>
+    <section>
+      <h3>Community Hubs</h3>
       <p>
-        © 2026 OpenSource Compass ·
-        <a href="https://github.com/sayeeg-11/opensource-compass">GitHub</a>
+        Places to ask questions, find mentors, and collaborate with others.
       </p>
-    </footer>
 
-    <script src="../js/theme.js"></script>
-  
+      <div class="card-grid">
+        <div class="card">
+          <h4>Discord & Slack Communities</h4>
+          <p>
+            Real-time chat communities where contributors help each other and
+            discuss project ideas.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Mailing Lists & Forums</h4>
+          <p>
+            Long-form discussions, announcements, and deeper technical
+            conversations around projects.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Mentorship Programs</h4>
+          <p>
+            Programs that pair beginners with experienced contributors for
+            guided learning.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      © 2026 OpenSource Compass ·
+      <a href="https://github.com/sayeeg-11/opensource-compass">GitHub</a>
+    </p>
+  </footer>
+
+  <script src="../js/theme.js"></script>
   <script src="../js/chatbot.js"></script>
-  </body>
+</body>
+
 </html>
