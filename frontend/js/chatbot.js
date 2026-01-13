@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements - Create dynamically to be less intrusive
+    // DOM Elements
     const chatBtn = document.createElement('button');
     chatBtn.className = 'chat-widget-btn';
     chatBtn.innerHTML = '💬';
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="chat-messages" id="chatMessages">
             <div class="message bot">
-                Hello! I'm here to help you with your open source journey. Ask me anything!
+                Hello! I'm here to help you with your open source journey.
             </div>
         </div>
         <div class="chat-input-area">
@@ -33,26 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let intents = [];
 
-    // Load data
-    // Note: This path assumes index.html is in /pages/ and data is in /data/
+    // Load chatbot data
     fetch('../data/chatbot_data.json')
-        .then(response => response.json())
-        .then(data => {
-            intents = data.intents;
-        })
-        .catch(error => {
-            console.error('Error loading chatbot data:', error);
-            // Fallback if fetch fails
-            intents = [
-                {
-                    tag: "greeting",
-                    patterns: ["hi", "hello"],
-                    responses: ["Hello! I'm having trouble connecting to my brain, but I'm here!"]
-                }
-            ];
+        .then(res => res.json())
+        .then(data => intents = data.intents)
+        .catch(() => {
+            intents = [{
+                tag: "fallback",
+                patterns: [],
+                responses: ["I'm having trouble responding right now."]
+            }];
         });
 
-    // Toggle Chat
+    // Toggle chat
     chatBtn.addEventListener('click', () => {
         chatWindow.classList.add('active');
         chatBtn.style.display = 'none';
@@ -61,28 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeBtn.addEventListener('click', () => {
         chatWindow.classList.remove('active');
-        chatBtn.style.display = 'flex'; // Use flex to center the icon
+        chatBtn.style.display = 'flex';
     });
 
-    // Send Message Logic
     function sendMessage() {
         const text = chatInput.value.trim();
         if (!text) return;
 
-        // Add User Message
         addMessage(text, 'user');
         chatInput.value = '';
 
-        // Process Bot Response
-        // Simulate thinking time
         setTimeout(() => {
             const response = getBotResponse(text);
             addMessage(response, 'bot');
-        }, 500);
+        }, 400);
     }
 
     sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
+    chatInput.addEventListener('keypress', e => {
         if (e.key === 'Enter') sendMessage();
     });
 
@@ -94,25 +83,39 @@ document.addEventListener('DOMContentLoaded', () => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
+    function normalize(text) {
+        return text.toLowerCase().replace(/[^\w\s]/g, '');
+    }
+
     function getBotResponse(input) {
-        input = input.toLowerCase();
+        const userText = normalize(input);
+
+        let bestMatch = null;
+        let highestScore = 0;
 
         for (const intent of intents) {
+            let score = 0;
+
             for (const pattern of intent.patterns) {
-                if (input.includes(pattern.toLowerCase())) {
-                    const responses = intent.responses;
-                    return responses[Math.floor(Math.random() * responses.length)];
-                }
+                const p = normalize(pattern);
+                if (userText.includes(p)) score += 2;
+                else if (p.split(' ').some(word => userText.includes(word))) score += 1;
+            }
+
+            if (score > highestScore) {
+                highestScore = score;
+                bestMatch = intent;
             }
         }
 
-        // Fallback
-        const fallback = intents.find(i => i.tag === 'unknown') || intents.find(i => i.tag === 'default');
-        if (fallback) {
-            const responses = fallback.responses;
+        if (bestMatch && highestScore > 0) {
+            const responses = bestMatch.responses;
             return responses[Math.floor(Math.random() * responses.length)];
         }
 
-        return "I'm not sure about that. Try asking about open source programs or guides.";
+        const fallback = intents.find(i => i.tag === 'unknown');
+        return fallback
+            ? fallback.responses[Math.floor(Math.random() * fallback.responses.length)]
+            : "I'm not sure about that. Try asking about Git or open source.";
     }
 });
