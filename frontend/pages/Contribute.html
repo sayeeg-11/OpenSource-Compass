@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass</title>
+  <title>How to Contribute - OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Font Awesome (REQUIRED for logo) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet"
+  />
 
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/contribute.css" />
 </head>
 
-
 <body>
-  <!-- Navbar (copied from home.html) -->
+  <!-- Navbar -->
   <header>
     <div class="navbar-container">
       <h1>
-        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>OpenSource Compass
+        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+        OpenSource Compass
       </h1>
       <div class="nav-links">
         <a href="../../index.html">Home</a>
@@ -36,81 +37,275 @@
         <a href="./Contribute.html">Contribute</a>
       </div>
     </div>
-    </div>
   </header>
 
-  <!-- Page-specific content -->
+  <!-- Main Content -->
   <main>
-    <section>
-      <h3>How to Contribute</h3>
-      <p>Follow these steps to make your first open source contribution.</p>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h2>Your Journey to Open Source Contribution</h2>
+      <p>Master the art of contributing to open source projects with our comprehensive step-by-step guide. From forking your first repository to submitting pull requests like a seasoned developer.</p>
+    </div>
 
-      <div class="card-grid">
-        <div class="card">
-          <h4>Fork the Repository</h4>
-          <p>Create a personal copy of the project on GitHub.</p>
+    <!-- Steps Section -->
+    <div class="steps-container">
+      <h2 class="section-title">Complete Contribution Workflow</h2>
+
+      <!-- Step 1 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">1</div>
+          <h3>Fork the Repository</h3>
         </div>
-
-        <div class="card">
-          <h4>Clone Locally</h4>
-          <p>Clone the forked repository to your local machine.</p>
-        </div>
-
-        <div class="card">
-          <h4>Create a Branch</h4>
-          <p>Work on a new feature or fix in a separate branch.</p>
-        </div>
-
-        <div class="card">
-          <h4>Open Pull Request</h4>
-          <p>Submit your changes for review by maintainers.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h3>Community Hubs</h3>
-      <p>
-        Places to ask questions, find mentors, and collaborate with others.
-      </p>
-
-      <div class="card-grid">
-        <div class="card">
-          <h4>Discord & Slack Communities</h4>
-          <p>
-            Real-time chat communities where contributors help each other and
-            discuss project ideas.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>Mailing Lists & Forums</h4>
-          <p>
-            Long-form discussions, announcements, and deeper technical
-            conversations around projects.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>Mentorship Programs</h4>
-          <p>
-            Programs that pair beginners with experienced contributors for
-            guided learning.
-          </p>
+        <div class="step-content">
+          <p>Forking creates your own copy of someone else's project. This allows you to freely experiment with changes without affecting the original project.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Navigate to the repository on GitHub and click the "Fork" button</span>
+<span class="code-comment"># This creates a copy under your GitHub account</span>
+https://github.com/original-owner/project-name
+  ↓
+https://github.com/your-username/project-name</pre>
+          </div>
+          <p><strong>Example:</strong> If you want to contribute to a project like <code>awesome-readme</code>, visit the repository page and click the Fork button in the top-right corner. This creates <code>https://github.com/your-username/awesome-readme</code>.</p>
         </div>
       </div>
-    </section>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">2</div>
+          <h3>Clone the Repository Locally</h3>
+        </div>
+        <div class="step-content">
+          <p>Cloning downloads the forked repository to your local machine so you can work on it offline with your favorite code editor.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Clone your forked repository</span>
+git clone https://github.com/your-username/project-name.git
+
+<span class="code-comment"># Navigate into the project directory</span>
+cd project-name
+
+<span class="code-comment"># Add the original repository as upstream (to sync later)</span>
+git remote add upstream https://github.com/original-owner/project-name.git</pre>
+          </div>
+          <p><strong>Pro Tip:</strong> Adding the upstream remote allows you to pull the latest changes from the original repository and keep your fork up to date.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">3</div>
+          <h3>Create a New Branch</h3>
+        </div>
+        <div class="step-content">
+          <p>Always create a new branch for your changes. This keeps your work organized and makes it easier for maintainers to review specific features or fixes.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Create and switch to a new branch</span>
+git checkout -b feature/add-new-feature
+
+<span class="code-comment"># Or for bug fixes</span>
+git checkout -b fix/fix-bug-description
+
+<span class="code-comment"># Verify you're on the new branch</span>
+git branch</pre>
+          </div>
+          <p><strong>Naming Convention:</strong> Use descriptive names like <code>feature/user-authentication</code>, <code>fix/login-bug</code>, or <code>docs/update-readme</code>. This helps maintainers understand your contribution at a glance.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">4</div>
+          <h3>Make Your Changes</h3>
+        </div>
+        <div class="step-content">
+          <p>Now it's time to write code, fix bugs, or update documentation. Follow the project's contribution guidelines and coding standards.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Edit files using your preferred code editor</span>
+<span class="code-comment"># Example: Adding a new feature to index.js</span>
+
+<span class="code-comment"># Check which files you've modified</span>
+git status
+
+<span class="code-comment"># Stage your changes</span>
+git add filename.js
+<span class="code-comment"># Or stage all changes</span>
+git add .</pre>
+          </div>
+          <p><strong>Best Practice:</strong> Make small, focused commits. Each commit should represent a single logical change. This makes it easier to review and revert if needed.</p>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">5</div>
+          <h3>Commit Your Changes</h3>
+        </div>
+        <div class="step-content">
+          <p>Write clear, descriptive commit messages that explain what you changed and why. Good commit messages help maintainers understand your contribution.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Commit with a descriptive message</span>
+git commit -m "Add user authentication feature with JWT"
+
+<span class="code-comment"># For multiple line commits (more detailed)</span>
+git commit -m "Fix: Resolve login redirect issue" -m "Users were being redirected to the wrong page after login. Updated the routing logic to fix this."</pre>
+          </div>
+          <p><strong>Commit Message Format:</strong> Start with a verb (Add, Fix, Update, Remove) and keep the first line under 50 characters. Add a detailed description if needed.</p>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">6</div>
+          <h3>Push to Your Fork</h3>
+        </div>
+        <div class="step-content">
+          <p>Upload your local changes to your forked repository on GitHub. This prepares your changes for the pull request.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Push your branch to your forked repository</span>
+git push origin feature/add-new-feature
+
+<span class="code-comment"># If this is your first push on this branch</span>
+git push -u origin feature/add-new-feature</pre>
+          </div>
+          <p><strong>Note:</strong> The <code>-u</code> flag sets up tracking, so future pushes can simply use <code>git push</code> without specifying the branch.</p>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">7</div>
+          <h3>Create a Pull Request</h3>
+        </div>
+        <div class="step-content">
+          <p>A Pull Request (PR) is how you propose your changes to the original project. Visit your forked repository on GitHub and you'll see a prompt to create a PR.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># On GitHub, navigate to your forked repository</span>
+<span class="code-comment"># Click "Compare & pull request" button</span>
+<span class="code-comment"># Fill in the PR template with:</span>
+
+Title: Add user authentication with JWT
+
+Description:
+- Implemented JWT-based authentication
+- Added login and signup endpoints
+- Created middleware for protected routes
+- Updated documentation
+
+Fixes #123</pre>
+          </div>
+          <p><strong>PR Best Practices:</strong> Reference related issues using keywords like "Fixes #123" or "Closes #456". This automatically links and closes issues when your PR is merged. Include screenshots for UI changes.</p>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="step">
+        <div class="step-header">
+          <div class="step-number">8</div>
+          <h3>Respond to Feedback</h3>
+        </div>
+        <div class="step-content">
+          <p>Maintainers will review your PR and may request changes. Be responsive, polite, and open to feedback. This is a collaborative process.</p>
+          <div class="code-block">
+            <pre><span class="code-comment"># Make requested changes locally</span>
+git add .
+git commit -m "Address review feedback: update validation logic"
+git push origin feature/add-new-feature
+
+<span class="code-comment"># The PR will automatically update with your new commits</span></pre>
+          </div>
+          <p><strong>Communication Tips:</strong> Thank reviewers for their time, ask questions if feedback is unclear, and explain your reasoning for implementation choices. Remember, everyone is working toward the same goal of improving the project.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div class="tips-section">
+      <h2 class="section-title">Essential Tips for Success</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-book-open"></i></div>
+          <h4>Read the Documentation</h4>
+          <p>Always read CONTRIBUTING.md, README.md, and CODE_OF_CONDUCT.md before starting. These files contain project-specific guidelines and expectations.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-search"></i></div>
+          <h4>Find Good First Issues</h4>
+          <p>Look for labels like "good first issue", "beginner-friendly", or "help wanted". These are perfect for newcomers and are often well-documented.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-sync-alt"></i></div>
+          <h4>Keep Your Fork Updated</h4>
+          <p>Regularly sync your fork with the upstream repository to avoid merge conflicts and stay current with the latest changes.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-check-circle"></i></div>
+          <h4>Test Your Changes</h4>
+          <p>Always test your code thoroughly before submitting a PR. Run existing tests and add new ones if you're adding features.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-comments"></i></div>
+          <h4>Engage with the Community</h4>
+          <p>Join project discussions, ask questions, and help others. Being an active community member makes contributing more enjoyable and effective.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+          <h4>Start Small</h4>
+          <p>Don't try to rewrite entire features initially. Start with documentation fixes, typos, or small bug fixes to learn the workflow.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="best-practices">
+      <div class="practices-container">
+        <h3>Contribution Best Practices</h3>
+        <ul class="practice-list">
+          <li>
+            <i class="fas fa-check"></i>
+            <span><strong>Write clear commit messages:</strong> Use present tense ("Add feature" not "Added feature") and be specific about what changed and why.</span>
+          </li>
+          <li>
+            <i class="fas fa-check"></i>
+            <span><strong>Follow coding standards:</strong> Use the same code style, indentation, and naming conventions as the existing codebase. Many projects use linters to enforce this.</span>
+          </li>
+          <li>
+            <i class="fas fa-check"></i>
+            <span><strong>Keep PRs focused:</strong> One PR should address one issue or feature. Avoid mixing unrelated changes in the same pull request.</span>
+          </li>
+          <li>
+            <i class="fas fa-check"></i>
+            <span><strong>Update documentation:</strong> If your change affects how users interact with the project, update the relevant documentation files.</span>
+          </li>
+          <li>
+            <i class="fas fa-check"></i>
+            <span><strong>Be patient and respectful:</strong> Maintainers are often volunteers. It may take time to review your PR. Be courteous in all interactions.</span>
+          </li>
+          <li>
+            <i class="fas fa-check"></i>
+            <span><strong>Learn from feedback:</strong> Code reviews are learning opportunities. Don't take criticism personally—use it to improve your skills.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>
       © 2026 OpenSource Compass ·
       <a href="https://github.com/sayeeg-11/opensource-compass">GitHub</a>
     </p>
   </footer>
-
-  <script src="../js/theme.js"></script>
-  <script src="../js/chatbot.js"></script>
 </body>
-
 </html>

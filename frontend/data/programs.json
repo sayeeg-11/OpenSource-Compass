@@ -370,5 +370,172 @@
       "Testing"
     ],
     "issues_list": []
+  },
+
+  {
+    "id": 18,
+    "name": "Google Season of Docs",
+    "description": "Google program connecting open source organizations with technical writers to improve documentation and developer experience.",
+    "url": "https://developers.google.com/season-of-docs",
+    "image": "../library/assets/program_logo/gsod.webp",
+    "status": "Seasonal",
+    "difficulty": "Beginner → Intermediate",
+    "timeline": "Varies (Yearly)",
+    "stipend": "Paid (varies by project)",
+    "contributors": 0,
+    "issues": 0,
+    "organizations": 0,
+    "contributions": [
+      "Technical writing",
+      "Documentation restructuring",
+      "Tutorial creation",
+      "Developer guides",
+      "Docs tooling improvement"
+    ],
+    "issues_list": [
+      "Rewrite Getting Started guide",
+      "Add API reference improvements",
+      "Create onboarding tutorials",
+      "Improve docs navigation",
+      "Add examples and code snippets"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Julia Seasons of Contributions (JSoC)",
+    "description": "Seasonal open source program for contributing to Julia ecosystem projects (scientific computing, ML, data science).",
+    "url": "https://julialang.org/jsoc/",
+    "image": "../library/assets/program_logo/julia.webp",
+    "status": "Seasonal",
+    "difficulty": "Intermediate",
+    "timeline": "Summer",
+    "stipend": "Paid (varies)",
+    "contributors": 0,
+    "issues": 0,
+    "organizations": 1,
+    "contributions": [
+      "Julia package development",
+      "Performance optimization",
+      "Documentation",
+      "Scientific computing features"
+    ],
+    "issues_list": [
+      "Optimize numerical routines",
+      "Add missing tests",
+      "Improve documentation examples",
+      "Fix performance bottlenecks",
+      "Implement new package features"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Hyperledger Mentorship Program",
+    "description": "Mentorship initiative under Hyperledger ecosystem focusing on blockchain and distributed ledger open source projects.",
+    "url": "https://wiki.hyperledger.org/display/INTERN/Hyperledger+Mentorship+Program",
+    "image": "../library/assets/program_logo/hyperledger.webp",
+    "status": "Seasonal",
+    "difficulty": "Intermediate",
+    "timeline": "Multiple batches",
+    "stipend": "Paid (varies)",
+    "contributors": 0,
+    "issues": 0,
+    "organizations": 1,
+    "contributions": [
+      "Blockchain development",
+      "Smart contract tooling",
+      "Testing and QA",
+      "Documentation",
+      "DevOps pipelines"
+    ],
+    "issues_list": [
+      "Improve network performance",
+      "Fix bugs in SDK",
+      "Write integration tests",
+      "Refactor core modules",
+      "Add documentation guides"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Open Mainframe Project Mentorship",
+    "description": "Linux Foundation mentorship program for students contributing to mainframe open source projects.",
+    "url": "https://www.openmainframeproject.org/projects/mentorship-program",
+    "image": "../library/assets/program_logo/mainframe.webp",
+    "status": "Seasonal",
+    "difficulty": "Intermediate",
+    "timeline": "Varies",
+    "stipend": "Paid (varies)",
+    "contributors": 0,
+    "issues": 0,
+    "organizations": 1,
+    "contributions": [
+      "Mainframe development",
+      "Tooling improvements",
+      "Automation",
+      "Documentation",
+      "Testing"
+    ],
+    "issues_list": [
+      "Add missing automation scripts",
+      "Fix compatibility issues",
+      "Improve CI workflows",
+      "Write usage documentation",
+      "Improve performance"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "FOSSASIA Codeheat",
+    "description": "Open source coding contest focused on contributing to FOSSASIA projects and community tools.",
+    "url": "https://codeheat.org/",
+    "image": "../library/assets/program_logo/fossasia.webp",
+    "status": "Seasonal",
+    "difficulty": "Beginner → Intermediate",
+    "timeline": "Varies (often Winter)",
+    "stipend": "Prizes & Certificates",
+    "contributors": 0,
+    "issues": 0,
+    "organizations": 1,
+    "contributions": [
+      "Frontend development",
+      "Backend development",
+      "Bug fixes",
+      "Documentation",
+      "Feature implementation"
+    ],
+    "issues_list": [
+      "Fix UI bugs",
+      "Add search filters",
+      "Improve app performance",
+      "Update documentation",
+      "Implement missing features"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Igalia Coding Experience Program",
+    "description": "Mentorship-based program by Igalia offering contributors opportunities to work on real open source projects.",
+    "url": "https://www.igalia.com/coding-experience/",
+    "image": "../library/assets/program_logo/igalia.webp",
+    "status": "Seasonal",
+    "difficulty": "Advanced",
+    "timeline": "Varies",
+    "stipend": "Paid (varies)",
+    "contributors": 0,
+    "issues": 0,
+    "organizations": 1,
+    "contributions": [
+      "Browser engine development",
+      "Systems programming",
+      "Performance optimization",
+      "Open source toolchains"
+    ],
+    "issues_list": [
+      "Fix rendering bugs",
+      "Implement performance patches",
+      "Improve web standards support",
+      "Write tests for engine modules",
+      "Refactor old components"
+    ]
   }
 ]
