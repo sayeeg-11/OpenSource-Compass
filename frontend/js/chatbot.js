@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (bestMatch && highestScore > 0) {
+        if (bestMatch>0 && highestScore > 0) {
             const responses = bestMatch.responses;
             return responses[Math.floor(Math.random() * responses.length)];
         }
