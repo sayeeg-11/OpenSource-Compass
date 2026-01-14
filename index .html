@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوصلة المصادر المفتوحة | OpenSource Compass</title>
+    
+    <!-- Google Fonts: Cairo for Modern Arabic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            gold: '#d4af37',
+                            darkGold: '#b8860b',
+                            navy: '#1b263b',
+                            light: '#fdf4e3',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .hero-pattern {
+            background-color: #1b263b;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans overflow-x-hidden selection:bg-brand-gold selection:text-white">
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-brand-gold shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-compass text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-brand-navy leading-none">OpenSource</h1>
+                        <span class="text-sm font-semibold text-brand-darkGold tracking-wide">Compass</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#home" class="text-gray-700 hover:text-brand-navy font-semibold transition-colors">الرئيسية</a>
+                    <a href="#guides" class="text-gray-700 hover:text-brand-navy font-semibold transition-colors">الدليل</a>
+                    <a href="#programs" class="text-gray-700 hover:text-brand-navy font-semibold transition-colors">البرامج</a>
+                    <a href="#calibration" class="text-gray-700 hover:text-brand-navy font-semibold transition-colors">المعايرة</a>
+                    <a href="#contribute" class="px-6 py-2 bg-brand-navy text-white rounded-full font-bold hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md transform hover:scale-105">
+                        ساهم معنا
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-brand-navy text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col pt-24 px-6 gap-6 shadow-2xl">
+            <button id="close-menu-btn" class="absolute top-6 left-6 text-3xl text-gray-500">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#home" class="text-xl font-bold text-gray-800 border-b pb-2 border-gray-100">الرئيسية</a>
+            <a href="#guides" class="text-xl font-bold text-gray-800 border-b pb-2 border-gray-100">الدليل</a>
+            <a href="#programs" class="text-xl font-bold text-gray-800 border-b pb-2 border-gray-100">البرامج</a>
+            <a href="#calibration" class="text-xl font-bold text-gray-800 border-b pb-2 border-gray-100">المعايرة</a>
+            <a href="#contribute" class="text-xl font-bold text-brand-gold">ساهم معنا</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative hero-pattern min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/80 to-transparent"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center lg:text-right flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 space-y-6">
+                <div class="inline-block px-4 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-sm font-bold animate-pulse">
+                    🚀 الإصدار الكلاسيكي 2026
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-black text-white leading-tight">
+                    ابدأ رحلتك في عالم <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200">المصادر المفتوحة</span>
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    اكتشف الحكمة الخالدة لإتقان البرمجيات مفتوحة المصدر. من أول "Commit" وحتى تصبح مشرفاً (Maintainer)، ارسم مسارك مع أدلة مثبتة وبرامج أسطورية.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                    <button onclick="document.querySelector('#programs').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-gradient-to-r from-brand-gold to-brand-darkGold text-brand-navy font-bold rounded-full shadow-lg shadow-brand-gold/30 hover:shadow-brand-gold/50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="fas fa-rocket"></i> ابدأ الرحلة
+                    </button>
+                    <button class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-full hover:bg-white/20 transition-all">
+                        شاهد الفيديو
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Hero Illustration/Visual -->
+            <div class="lg:w-1/2 relative">
+                <div class="relative z-10 bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500">
+                    <div class="flex items-center gap-2 mb-4 border-b border-white/10 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-xs text-gray-400 mr-2 font-mono">contribution.git</span>
+                    </div>
+                    <div class="space-y-3 font-mono text-sm">
+                        <div class="flex gap-2">
+                            <span class="text-purple-400">git</span>
+                            <span class="text-white">commit -m</span>
+                            <span class="text-green-400">"My first contribution! 🚀"</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="text-purple-400">git</span>
+                            <span class="text-white">push origin main</span>
+                        </div>
+                        <div class="text-gray-500 mt-2"># Uploading objects: 100% (5/5), done.</div>
+                        <div class="text-brand-gold mt-2">Success! Welcome to Open Source.</div>
+                    </div>
+                </div>
+                <!-- Decorative Elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-gold/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section id="guides" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl lg:text-4xl font-bold text-brand-navy mb-4 relative inline-block">
+                    لماذا بوصلة المصادر المفتوحة؟
+                    <span class="block h-1 w-24 bg-brand-gold mx-auto mt-4 rounded-full"></span>
+                </h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    مبادئ خالدة تلتقي مع المصادر المفتوحة الحديثة. مسارات منظمة مبنية على عقود من الحكمة الجماعية.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-100 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3">أسس خالدة</h4>
+                    <p class="text-gray-600 leading-relaxed">منهجيات مثبتة تم صقلها على مدار أكثر من 20 عاماً من تطور المصادر المفتوحة.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-100 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mb-6">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3">إتقان قواعد السلوك</h4>
+                    <p class="text-gray-600 leading-relaxed">تنقل في معايير المجتمع بثقة وطلاقة ثقافية، وافهم كيفية التواصل الفعال.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 bg-gray-50 rounded-2xl border border-gray-100 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center text-brand-darkGold text-2xl mb-6">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-3">شبكة المرشدين</h4>
+                    <p class="text-gray-600 leading-relaxed">تواصل مع المشرفين (Maintainers) الذين يوجهون الآلاف سنوياً نحو النجاح.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-brand-navy text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-brand-gold">50K+</h2>
+                    <p class="text-gray-300 font-medium">أول مساهمة</p>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-brand-gold">200+</h2>
+                    <p class="text-gray-300 font-medium">برنامج متابع</p>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-brand-gold">10K+</h2>
+                    <p class="text-gray-300 font-medium">مرشد نشط</p>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-brand-gold">5Y+</h2>
+                    <p class="text-gray-300 font-medium">سجل حافل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl lg:text-4xl font-bold text-brand-navy mb-4">برامج المصادر المفتوحة الأسطورية</h3>
+                <p class="text-gray-600">برامج منتقاة بعناية مع معدلات نجاح تاريخية ورؤى من المشرفين.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Program Card 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border-t-4 border-brand-gold group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-brand-navy group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                            <i class="fas fa-snowflake text-xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">يناير 2026</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-2">شتاء الكود الاجتماعي (SWoC)</h4>
+                    <p class="text-gray-600 text-sm mb-4">البرنامج الشتوي الأول في الهند. قبول بنسبة 85% للمقترحات عالية الجودة.</p>
+                </div>
+
+                <!-- Program Card 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border-t-4 border-orange-500 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                            <i class="fas fa-sun text-xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full">صيف 2026</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-2">GirlScript Summer of Code</h4>
+                    <p class="text-gray-600 text-sm mb-4">تم توجيه أكثر من 3000 طالب. رواتب من شركاء الصناعة.</p>
+                </div>
+
+                <!-- Program Card 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border-t-4 border-blue-500 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                            <i class="fab fa-google text-xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">متقدم</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-navy mb-2">Google Summer of Code</h4>
+                    <p class="text-gray-600 text-sm mb-4">المعيار العالمي. رواتب تزيد عن 3000 دولار. مستمر منذ أكثر من 20 عاماً.</p>
+                </div>
+                
+                <!-- More cards can be added here following the same pattern -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Calibration Table Section (Requested specifically) -->
+    <section id="calibration" class="py-20 bg-white border-y border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-brand-navy mb-3">متطلبات معايرة البوصلة الرقمية</h3>
+                <p class="text-gray-600">المعايير الفنية للويب والكمبيوتر لضمان دقة التوجيه.</p>
+            </div>
+
+            <div class="overflow-x-auto shadow-lg rounded-xl border border-gray-200">
+                <table class="min-w-full bg-white text-right">
+                    <thead class="bg-brand-navy text-white">
+                        <tr>
+                            <th class="py-4 px-6 text-sm font-bold uppercase tracking-wider">المتطلب</th>
+                            <th class="py-4 px-6 text-sm font-bold uppercase tracking-wider">التفاصيل الفنية</th>
+                            <th class="py-4 px-6 text-sm font-bold uppercase tracking-wider">آلية التنفيذ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="hover:bg-brand-light/30 transition-colors">
+                            <td class="py-4 px-6 font-semibold text-brand-navy">1. واجهة معايرة ذكية</td>
+                            <td class="py-4 px-6 text-gray-600">تصميم نظام معايرة متكامل للهواتف والحواسيب</td>
+                            <td class="py-4 px-6 text-gray-500 font-mono text-sm">DeviceOrientation API + خوارزميات تصحيح</td>
+                        </tr>
+                        <tr class="hover:bg-brand-light/30 transition-colors bg-gray-50">
+                            <td class="py-4 px-6 font-semibold text-brand-navy">2. دعم متصفحات متعددة</td>
+                            <td class="py-4 px-6 text-gray-600">توافق مع Chrome, Firefox, Edge</td>
+                            <td class="py-4 px-6 text-gray-500 font-mono text-sm">JavaScript متوافق مع معايير W3C</td>
+                        </tr>
+                        <tr class="hover:bg-brand-light/30 transition-colors">
+                            <td class="py-4 px-6 font-semibold text-brand-navy">3. تخزين إعدادات المعايرة</td>
+                            <td class="py-4 px-6 text-gray-600">حفظ قيم التصحيح محليًا</td>
+                            <td class="py-4 px-6 text-gray-500 font-mono text-sm">localStorage مع تشفير آمن</td>
+                        </tr>
+                        <tr class="hover:bg-brand-light/30 transition-colors bg-gray-50">
+                            <td class="py-4 px-6 font-semibold text-brand-navy">4. وضع معايرة تفاعلي</td>
+                            <td class="py-4 px-6 text-gray-600">واجهة توجيه واضحة للمستخدم</td>
+                            <td class="py-4 px-6 text-gray-500 font-mono text-sm">رسومات وتعليمات مرئية لحركة الجهاز</td>
+                        </tr>
+                        <tr class="hover:bg-brand-light/30 transition-colors">
+                            <td class="py-4 px-6 font-semibold text-brand-navy">5. حل احتياطي يدوي</td>
+                            <td class="py-4 px-6 text-gray-600">إمكانية إدخال قيم التصحيح يدويًا</td>
+                            <td class="py-4 px-6 text-gray-500 font-mono text-sm">نموذج إدخال دقيق مع التحقق من الصحة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-brand-navy relative overflow-hidden">
+        <!-- Decorative Circle -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h3 class="text-3xl font-bold text-white mb-4">ابقَ في طليعة المصادر المفتوحة</h3>
+            <p class="text-gray-300 mb-8 max-w-xl mx-auto">نشرات أسبوعية: مواعيد البرامج النهائية، جلسات AMA مع المشرفين، واستراتيجيات المساهمة.</p>
+            
+            <form class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="بريدك الإلكتروني..." class="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all">
+                <button type="submit" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded-full hover:bg-brand-darkGold transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane"></i> اشتراك
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold text-white mb-1">OpenSource Compass</h2>
+                    <p class="text-sm">دليلك الموثوق في عالم البرمجيات.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fab fa-discord text-xl"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 بوصلة المصادر المفتوحة. جميع الحقوق محفوظة.</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1">
+                    صنع بـ <i class="fas fa-heart text-red-500 animate-pulse"></i> لمجتمع المطورين
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="fixed bottom-8 left-8 w-12 h-12 bg-brand-gold text-brand-navy rounded-full shadow-lg items-center justify-center hidden hover:-translate-y-1 transition-all z-50">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.remove('hidden');
+                scrollTopBtn.classList.add('flex');
+            } else {
+                scrollTopBtn.classList.add('hidden');
+                scrollTopBtn.classList.remove('flex');
+            }
+            
+            // Navbar Glass Effect on Scroll
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Newsletter Form
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('شكراً لاشتراكك! 🌟 تفقد بريدك الإلكتروني قريباً.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
