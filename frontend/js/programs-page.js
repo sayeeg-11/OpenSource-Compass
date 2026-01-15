@@ -37,7 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${timeline && difficulty ? '<span style="margin:0 0.5rem;">·</span>' : ''}
                 ${difficulty ? `<span><strong>Level:</strong> ${difficulty}</span>` : ''}
               </p>
-              ${url ? `<p style="margin-top: 1rem;"><a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--deep-navy); font-weight: 600; text-decoration: none;"><i class=\"fas fa-arrow-up-right-from-square\" aria-hidden=\"true\" style=\"margin-right:0.4rem;color:var(--primary-gold);\"></i>Official website</a></p>` : ''}
+             ${url ? `<p style="margin-top: 1rem;">
+  <a
+    href="${url}"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit official website of ${name} (opens in a new tab)"
+    style="color: var(--deep-navy); font-weight: 600; text-decoration: none;"
+  >
+    <i
+      class="fas fa-arrow-up-right-from-square"
+      aria-hidden="true"
+      style="margin-right:0.4rem;color:var(--primary-gold);"
+    ></i>
+    Official website
+  </a>
+</p>` : ''}
+
             </div>
           `;
         })

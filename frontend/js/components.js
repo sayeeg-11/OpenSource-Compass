@@ -24,8 +24,9 @@ const navbarHTML = `
 <header>
     <div class="navbar-container">
         <h1>
-            <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
-            OpenSource Compass
+           <i class="fas fa-compass" aria-hidden="true" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
+OpenSource Compass
+
         </h1>
         <div class="nav-links">
             <a href="${getPath('index.html')}">Home</a>
@@ -35,9 +36,15 @@ const navbarHTML = `
             <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
             <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
             <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
-            <button id="themeToggle" title="Toggle Dark Mode" style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
-                <i class="fas fa-moon"></i>
-            </button>
+           <button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+>
+  <i class="fas fa-moon" aria-hidden="true"></i>
+</button>
+
         </div>
     </div>
 </header>
@@ -48,7 +55,15 @@ const footerHTML = `
     <p>
         <i class="fas fa-heart" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
         © 2026 OpenSource Compass   
-        <a href="https://github.com/sayeeg-11/opensource-compass" target="_blank">GitHub</a>
+        <a
+  href="https://github.com/sayeeg-11/opensource-compass"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Open OpenSource Compass GitHub repository (opens in a new tab)"
+>
+  GitHub
+</a>
+
     </p>
 </footer>
 `;
