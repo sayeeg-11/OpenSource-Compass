@@ -822,6 +822,8 @@
     </button>
 
     <script>
+      (function(){
+  // 🔥 Hamburger menu toggle
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("nav-links");
   const navItems = navLinks.querySelectorAll("a");
@@ -843,11 +845,8 @@
       navLinks.classList.remove("active");
     }
   });
+})();
 </script>
-
-
-    
-
 
     <script>
       // Smooth scroll animations (unchanged)
@@ -1675,6 +1674,7 @@
     <button id="scrollTopBtn" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
 
     <script>
+      (function(){
         // Smooth scroll animations (unchanged)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1705,6 +1705,7 @@
             const scrolled = window.pageYOffset * 0.3;
             document.querySelector('.hero').style.transform = `translateY(${scrolled}px)`;
         });
+      })();
     </script>
     <script src="/frontend/js/components.js"></script>
     <script src="/frontend/js/theme.js"></script>
