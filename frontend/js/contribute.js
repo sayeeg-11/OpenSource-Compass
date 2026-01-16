@@ -1,181 +1,195 @@
+/* =========================
+   DATA
+========================= */
+
 // Contribution workflow steps
 const workflowSteps = [
-    {
-        id: 1,
-        title: "Fork the Repository",
-        description: "Create your own copy of the repository by clicking the 'Fork' button at the top right of the project page.",
-        icon: "🍴",
-        code: "git clone https://github.com/your-username/repository.git\ncd repository"
-    },
-    {
-        id: 2,
-        title: "Clone Your Fork",
-        description: "Download your fork to your local machine to start working on it.",
-        icon: "📥",
-        code: "git clone https://github.com/your-username/repository.git\ncd repository"
-    },
-    {
-        id: 3,
-        title: "Create a Branch",
-        description: "Create a new branch for your feature or bug fix to keep your changes organized.",
-        icon: "🌿",
-        code: "git checkout -b feature/your-feature-name"
-    },
-    {
-        id: 4,
-        title: "Make Your Changes",
-        description: "Implement your feature or fix the bug. Remember to follow the project's coding style.",
-        icon: "✏️",
-        code: "git add .\ngit commit -m \"feat: add new feature\""
-    },
-    {
-        id: 5,
-        title: "Push Your Changes",
-        description: "Push your changes to your fork on GitHub to prepare for creating a pull request.",
-        icon: "📤",
-        code: "git push origin feature/your-feature-name"
-    },
-    {
-        id: 6,
-        title: "Create a Pull Request",
-        description: "Open a pull request to propose your changes to the original repository. Provide a clear description of your work.",
-        icon: "🔄",
-        code: "# Navigate to your fork on GitHub\n# Click 'Compare & pull request'"
-    }
+  {
+    id: 1,
+    title: "Fork the Repository",
+    description: "Create your own copy of the repository using the Fork button on GitHub.",
+    icon: "🍴",
+    code: "git clone https://github.com/your-username/repository.git\ncd repository"
+  },
+  {
+    id: 2,
+    title: "Clone Your Fork",
+    description: "Clone the forked repository to your local machine.",
+    icon: "📥",
+    code: "git clone https://github.com/your-username/repository.git\ncd repository"
+  },
+  {
+    id: 3,
+    title: "Create a Branch",
+    description: "Always work on a separate branch for features or fixes.",
+    icon: "🌿",
+    code: "git checkout -b feature/your-feature-name"
+  },
+  {
+    id: 4,
+    title: "Make Your Changes",
+    description: "Implement changes and commit them with a clear message.",
+    icon: "✏️",
+    code: "git add .\ngit commit -m \"feat: add new feature\""
+  },
+  {
+    id: 5,
+    title: "Push Changes",
+    description: "Push your branch to GitHub.",
+    icon: "📤",
+    code: "git push origin feature/your-feature-name"
+  },
+  {
+    id: 6,
+    title: "Open a Pull Request",
+    description: "Create a PR with a clear description of your work.",
+    icon: "🔄",
+    code: "# Go to GitHub\n# Click 'Compare & pull request'"
+  }
 ];
 
-// Do's and Don'ts
+// Contribution guidelines
 const contributionGuidelines = {
-    dos: [
-        "Open an issue to discuss larger changes before starting work",
-        "Follow the project's contribution guidelines in CONTRIBUTING.md",
-        "Write clear, descriptive commit messages and PR titles",
-        "Include tests for your code changes",
-        "Keep your PR focused on a single issue or feature",
-        "Respond promptly to review feedback"
-    ],
-    donts: [
-        "Submit large, unrelated changes in a single PR",
-        "Ignore existing code style and formatting conventions",
-        "Skip writing tests for new functionality",
-        "Merge your own PR without review (unless you're a maintainer)",
-        "Make changes directly to the main branch",
-        "Forget to update documentation when changing functionality"
-    ]
+  dos: [
+    "Discuss large changes via issues first",
+    "Follow CONTRIBUTING.md rules",
+    "Write meaningful commit messages",
+    "Add tests when required",
+    "Keep PRs small and focused",
+    "Respond to review comments"
+  ],
+  donts: [
+    "Mix unrelated changes in one PR",
+    "Ignore code style rules",
+    "Skip tests",
+    "Merge without review",
+    "Commit directly to main branch",
+    "Forget documentation updates"
+  ]
 };
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', function() {
-    // Render workflow steps
-    renderWorkflowSteps();
-    
-    // Render Do's and Don'ts
-    renderContributionGuidelines();
-    
-    // Initialize progress tracking
-    setupProgressTracking();
-    
-    // Add event listeners
-    addEventListeners();
+/* =========================
+   INIT
+========================= */
+document.addEventListener('DOMContentLoaded', () => {
+  renderWorkflowSteps();
+  renderGuidelines();
+  setupProgressTracking();
+  setupCopyButtons();
+  setupSmoothScroll();
 });
 
-// Render workflow steps
+/* =========================
+   RENDER FUNCTIONS
+========================= */
+
 function renderWorkflowSteps() {
-    const container = document.getElementById('workflowContainer');
-    container.innerHTML = workflowSteps.map(step => `
-        <div class="workflow-step" data-step="${step.id}">
-            <div class="workflow-step-number">${step.id}</div>
-            <div class="workflow-step-icon">${step.icon}</div>
-            <h3 class="workflow-step-title">${step.title}</h3>
-            <p class="workflow-step-description">${step.description}</p>
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <pre>${step.code}</pre>
-            </div>
-        </div>
-    `).join('');
+  const container = document.getElementById('workflowContainer');
+  if (!container) return;
+
+  container.innerHTML = workflowSteps.map(step => `
+    <div class="workflow-step" data-step="${step.id}">
+      <div class="workflow-step-number">${step.id}</div>
+      <div class="workflow-step-icon">${step.icon}</div>
+      <h3>${step.title}</h3>
+      <p>${step.description}</p>
+
+      <div class="code-block">
+        <button class="copy-btn">Copy</button>
+        <pre>${step.code}</pre>
+      </div>
+    </div>
+  `).join('');
 }
 
-// Render Do's and Don'ts
-function renderContributionGuidelines() {
-    const dosList = document.querySelector('.dos-list');
-    const dontsList = document.querySelector('.donts-list');
-    
-    dosList.innerHTML = contributionGuidelines.dos.map(item => `
-        <li>
-            <div class="check-icon">✓</div>
-            <div>${item}</div>
-        </li>
-    `).join('');
-    
-    dontsList.innerHTML = contributionGuidelines.donts.map(item => `
-        <li>
-            <div class="cross-icon">✕</div>
-            <div>${item}</div>
-        </li>
-    `).join('');
+function renderGuidelines() {
+  renderList('.dos-list', contributionGuidelines.dos, '✓', 'check-icon');
+  renderList('.donts-list', contributionGuidelines.donts, '✕', 'cross-icon');
 }
 
-// Setup progress tracking
+function renderList(selector, items, symbol, iconClass) {
+  const list = document.querySelector(selector);
+  if (!list) return;
+
+  list.innerHTML = items.map(item => `
+    <li>
+      <span class="${iconClass}">${symbol}</span>
+      <span>${item}</span>
+    </li>
+  `).join('');
+}
+
+/* =========================
+   INTERACTIONS
+========================= */
+
 function setupProgressTracking() {
-    const steps = document.querySelectorAll('.workflow-step');
-    const progressFill = document.getElementById('progressFill');
-    
-    steps.forEach((step, index) => {
-        step.addEventListener('click', () => {
-            // Mark this step as completed
-            step.classList.add('completed');
-            
-            // Update progress bar
-            const completedSteps = document.querySelectorAll('.workflow-step.completed').length;
-            const totalSteps = steps.length;
-            const progressPercentage = (completedSteps / totalSteps) * 100;
-            progressFill.style.width = `${progressPercentage}%`;
-            
-            // Highlight next step if available
-            if (index < steps.length - 1) {
-                const nextStep = steps[index + 1];
-                nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                nextStep.classList.add('highlight');
-                setTimeout(() => nextStep.classList.remove('highlight'), 2000);
-            }
-        });
+  const steps = document.querySelectorAll('.workflow-step');
+  const progressFill = document.getElementById('progressFill');
+  if (!steps.length || !progressFill) return;
+
+  steps.forEach((step, index) => {
+    step.addEventListener('click', () => {
+      step.classList.add('completed');
+
+      const completed = document.querySelectorAll('.workflow-step.completed').length;
+      progressFill.style.width = `${(completed / steps.length) * 100}%`;
+
+      highlightNextStep(steps, index);
     });
+  });
 }
 
-// Add event listeners
-function addEventListeners() {
-    // Copy to clipboard functionality
-    document.querySelectorAll('.copy-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const codeBlock = this.closest('.code-block').querySelector('pre');
-            const code = codeBlock.innerText;
-            
-            navigator.clipboard.writeText(code).then(() => {
-                this.textContent = 'Copied!';
-                this.classList.add('copied');
-                
-                setTimeout(() => {
-                    this.textContent = 'Copy';
-                    this.classList.remove('copied');
-                }, 2000);
-            });
-        });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
+function highlightNextStep(steps, index) {
+  if (index >= steps.length - 1) return;
+
+  const next = steps[index + 1];
+  next.classList.add('highlight');
+  next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  setTimeout(() => next.classList.remove('highlight'), 2000);
 }
 
-// Helper function to simulate PR creation
+function setupCopyButtons() {
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('copy-btn')) return;
+
+    const pre = e.target.nextElementSibling;
+    if (!pre) return;
+
+    navigator.clipboard.writeText(pre.innerText).then(() => {
+      e.target.textContent = 'Copied!';
+      e.target.classList.add('copied');
+
+      setTimeout(() => {
+        e.target.textContent = 'Copy';
+        e.target.classList.remove('copied');
+      }, 2000);
+    });
+  });
+}
+
+function setupSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(anchor.getAttribute('href'))?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+}
+
+/* =========================
+   DEMO HELP
+========================= */
+
 function simulatePR() {
-    alert("Great job! You've completed all the steps to contribute to open source.\n\nIn a real scenario, you would now:\n1. Navigate to your fork on GitHub\n2. Click 'Compare & pull request'\n3. Fill out the PR template with your changes\n4. Submit your PR for review");
+  alert(
+    "🎉 Great job!\n\nNext steps on GitHub:\n" +
+    "1. Open your fork\n" +
+    "2. Click 'Compare & pull request'\n" +
+    "3. Fill PR details\n" +
+    "4. Submit for review"
+  );
 }

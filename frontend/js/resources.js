@@ -1,17 +1,31 @@
-document.querySelectorAll('.filter-pill').forEach(button => {
-  button.addEventListener('click', () => {
-    // UI Update: Toggle active class
-    document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-    button.classList.add('active');
+/**
+ * Resource Filter Logic
+ * Handles filter pills and resource card visibility
+ */
 
-    const filter = button.dataset.filter;
-    document.querySelectorAll('.resource-card').forEach(card => {
-      // Logic fix: card.dataset.type now exists in the HTML
-      if (filter === 'all' || card.dataset.type === filter) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+document.addEventListener('DOMContentLoaded', initResourceFilters);
+
+function initResourceFilters() {
+  const pills = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.resource-card');
+
+  if (!pills.length || !cards.length) return;
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => applyFilter(pill, pills, cards));
   });
-});
+}
+
+function applyFilter(activePill, allPills, cards) {
+  // UI: active state
+  allPills.forEach(p => p.classList.remove('active'));
+  activePill.classList.add('active');
+
+  const filter = activePill.dataset.filter;
+
+  cards.forEach(card => {
+    const type = card.dataset.type;
+    card.style.display =
+      filter === 'all' || type === filter ? 'flex' : 'none';
+  });
+}

@@ -1,118 +1,132 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements - Create dynamically to be less intrusive
-    const chatBtn = document.createElement('button');
-    chatBtn.className = 'chat-widget-btn';
-    chatBtn.innerHTML = '💬';
-    chatBtn.title = 'Need Help?';
+// chatbot.js
+// Lightweight rule-based chatbot (non-intrusive, dynamic injection)
 
-    const chatWindow = document.createElement('div');
-    chatWindow.className = 'chat-window';
-    chatWindow.innerHTML = `
-        <div class="chat-header">
-            <span>OpenSource Guide</span>
-            <button class="close-btn">&times;</button>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-                Hello! I'm here to help you with your open source journey. Ask me anything!
-            </div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Type a message...">
-            <button id="sendBtn">➤</button>
-        </div>
-    `;
+document.addEventListener('DOMContentLoaded', initChatbot);
 
-    document.body.appendChild(chatBtn);
-    document.body.appendChild(chatWindow);
+function initChatbot() {
+  const chatBtn = createChatButton();
+  const chatWindow = createChatWindow();
 
-    const closeBtn = chatWindow.querySelector('.close-btn');
-    const sendBtn = document.getElementById('sendBtn');
-    const chatInput = document.getElementById('chatInput');
-    const messagesContainer = document.getElementById('chatMessages');
+  document.body.append(chatBtn, chatWindow);
 
-    let intents = [];
+  const closeBtn = chatWindow.querySelector('.close-btn');
+  const sendBtn = chatWindow.querySelector('#sendBtn');
+  const chatInput = chatWindow.querySelector('#chatInput');
+  const messages = chatWindow.querySelector('#chatMessages');
 
-    // Load data
-    // Note: This path assumes index.html is in /pages/ and data is in /data/
-    fetch('../data/chatbot_data.json')
-        .then(response => response.json())
-        .then(data => {
-            intents = data.intents;
-        })
-        .catch(error => {
-            console.error('Error loading chatbot data:', error);
-            // Fallback if fetch fails
-            intents = [
-                {
-                    tag: "greeting",
-                    patterns: ["hi", "hello"],
-                    responses: ["Hello! I'm having trouble connecting to my brain, but I'm here!"]
-                }
-            ];
-        });
+  let intents = [];
 
-    // Toggle Chat
-    chatBtn.addEventListener('click', () => {
-        chatWindow.classList.add('active');
-        chatBtn.style.display = 'none';
-        chatInput.focus();
-    });
-
-    closeBtn.addEventListener('click', () => {
-        chatWindow.classList.remove('active');
-        chatBtn.style.display = 'flex'; // Use flex to center the icon
-    });
-
-    // Send Message Logic
-    function sendMessage() {
-        const text = chatInput.value.trim();
-        if (!text) return;
-
-        // Add User Message
-        addMessage(text, 'user');
-        chatInput.value = '';
-
-        // Process Bot Response
-        // Simulate thinking time
-        setTimeout(() => {
-            const response = getBotResponse(text);
-            addMessage(response, 'bot');
-        }, 500);
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
-
-    function addMessage(text, sender) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}`;
-        msgDiv.textContent = text;
-        messagesContainer.appendChild(msgDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function getBotResponse(input) {
-        input = input.toLowerCase();
-
-        for (const intent of intents) {
-            for (const pattern of intent.patterns) {
-                if (input.includes(pattern.toLowerCase())) {
-                    const responses = intent.responses;
-                    return responses[Math.floor(Math.random() * responses.length)];
-                }
-            }
+  /* =========================
+     LOAD CHAT DATA
+  ========================= */
+  fetch('../data/chatbot_data.json')
+    .then(res => res.json())
+    .then(data => (intents = data.intents || []))
+    .catch(() => {
+      // Minimal fallback
+      intents = [
+        {
+          tag: 'default',
+          patterns: ['hi', 'hello'],
+          responses: ['Hello! How can I help you with open source today?']
         }
+      ];
+    });
 
-        // Fallback
-        const fallback = intents.find(i => i.tag === 'unknown') || intents.find(i => i.tag === 'default');
-        if (fallback) {
-            const responses = fallback.responses;
-            return responses[Math.floor(Math.random() * responses.length)];
-        }
+  /* =========================
+     TOGGLE CHAT
+  ========================= */
+  chatBtn.addEventListener('click', () => {
+    chatWindow.classList.add('active');
+    chatBtn.style.display = 'none';
+    chatInput.focus();
+  });
 
-        return "I'm not sure about that. Try asking about open source programs or guides.";
+  closeBtn.addEventListener('click', () => {
+    chatWindow.classList.remove('active');
+    chatBtn.style.display = 'flex';
+  });
+
+  /* =========================
+     SEND MESSAGE
+  ========================= */
+  sendBtn.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    chatInput.value = '';
+
+    setTimeout(() => {
+      addMessage(getBotResponse(text), 'bot');
+    }, 400);
+  }
+
+  /* =========================
+     MESSAGE HELPERS
+  ========================= */
+  function addMessage(text, type) {
+    const msg = document.createElement('div');
+    msg.className = `message ${type}`;
+    msg.textContent = text;
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function getBotResponse(input) {
+    const msg = input.toLowerCase();
+
+    for (const intent of intents) {
+      if (intent.patterns.some(p => msg.includes(p.toLowerCase()))) {
+        return random(intent.responses);
+      }
     }
-});
+
+    const fallback = intents.find(i => i.tag === 'unknown' || i.tag === 'default');
+    return fallback ? random(fallback.responses) : 'Can you rephrase that?';
+  }
+}
+
+/* =========================
+   UI CREATORS
+========================= */
+function createChatButton() {
+  const btn = document.createElement('button');
+  btn.className = 'chat-widget-btn';
+  btn.title = 'Need Help?';
+  btn.textContent = '💬';
+  return btn;
+}
+
+function createChatWindow() {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'chat-window';
+  wrapper.innerHTML = `
+    <div class="chat-header">
+      <span>OpenSource Guide</span>
+      <button class="close-btn">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        Hello! I’m here to help you with open source 🚀
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button id="sendBtn">➤</button>
+    </div>
+  `;
+  return wrapper;
+}
+
+/* =========================
+   UTILS
+========================= */
+function random(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}

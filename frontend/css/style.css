@@ -1,6 +1,6 @@
-/* =========================
-   GLOBAL RESET
-========================= */
+/* =====================================================
+   1. GLOBAL RESET
+===================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -13,9 +13,9 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   THEME VARIABLES (CLASSIC)
-========================= */
+/* =====================================================
+   2. THEME VARIABLES
+===================================================== */
 :root {
   --primary-gold: #d4af37;
   --secondary-gold: #b8860b;
@@ -24,164 +24,185 @@ body {
   --light-parchment: #fff8e7;
   --charcoal-dark: #2c2c2c;
   --text-secondary: #5a5a5a;
+  --success-emerald: #2ecc71;
+
   --shadow-main: 0 8px 32px rgb(0 0 0 / 12%);
   --shadow-hover: 0 20px 40px rgb(0 0 0 / 18%);
 }
 
-/* =========================
-   BASE STYLES
-========================= */
+/* =====================================================
+   3. BASE STYLES
+===================================================== */
 body {
-  font-family: "Crimson Text", "Georgia", serif;
+  font-family: "Crimson Text", Georgia, serif;
   font-size: 15px;
   line-height: 1.7;
   background: linear-gradient(
     135deg,
-    var(--light-parchment) 0%,
-    var(--warm-cream) 100%
+    var(--light-parchment),
+    var(--warm-cream)
   );
   color: var(--charcoal-dark);
 }
 
-/* =========================
-   HEADER / NAVBAR
-========================= */
-
-      header {
-        background: rgb(255 255 255 / 98%);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 3px solid var(--primary-gold);
-        padding: 1rem 6%;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: var(--shadow-main);
-      }
-
-      .navbar-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      header h1 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(1.6rem, 3vw, 1.9rem); /* Smaller logo */
-        font-weight: 700;
-        background: linear-gradient(
-          135deg,
-          var(--deep-navy) 0%,
-          var(--primary-gold) 70%
-        );
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -0.01em;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--charcoal-dark) !important;
-        font-family: "Inter", -apple-system, sans-serif;
-        font-weight: 500;
-        font-size: 0.95rem; /* Smaller nav links */
-        padding: 0.4rem 0;
-        position: relative;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-
-      .nav-links a::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px; /* Thinner underline */
-        background: linear-gradient(
-          90deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateX(-50%);
-        border-radius: 1px;
-      }
-
-      .nav-links a:hover {
-        color: var(--deep-navy) !important;
-        transform: translateY(-1px);
-      }
-
-      .nav-links a:hover::before {
-        width: 70%;
-      }
-
-
-main {
-  margin-top: 0;
-  padding-top: 0;
+/* =====================================================
+   4. HEADER / NAVBAR
+===================================================== */
+header {
+  background: rgb(255 255 255 / 98%);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 3px solid var(--primary-gold);
+  padding: 1rem 6%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-main);
 }
-header h1 i {
-  font-size: 0.95em;
-  line-height: 1;
-  display: inline-flex;
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 3vw, 1.9rem);
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--deep-navy),
+    var(--primary-gold)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
+header h1 i {
+  font-size: 0.95em;
+}
 
-/* =========================
-   SECTIONS
-========================= */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--charcoal-dark);
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  transform: translateX(-50%);
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 70%;
+}
+
+/* =====================================================
+   5. PAGE LAYOUT
+===================================================== */
+.page-content {
+  min-height: calc(100vh - 160px);
+}
+
 main section {
   max-width: 1400px;
   margin: 0 auto;
   padding: 5rem 6%;
 }
 
-section h3 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.2rem, 4.5vw, 2.9rem);
-  font-weight: 700;
+/* =====================================================
+   6. PAGE HEADER
+===================================================== */
+.page-header {
   text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4.5rem 6% 3rem;
+}
+
+.page-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  color: var(--deep-navy);
+}
+
+.page-header p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+/* =====================================================
+   7. HERO SECTION (INDEX)
+===================================================== */
+.hero-section {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 6vw, 3.6rem);
   color: var(--deep-navy);
   margin-bottom: 1.2rem;
 }
 
-section h3::after {
-  content: "";
-  display: block;
-  width: 90px;
-  height: 3px;
-  margin: 1.2rem auto 0;
-  background: linear-gradient(
-    90deg,
-    var(--primary-gold),
-    var(--secondary-gold)
-  );
-}
-
-section p {
-  text-align: center;
-  max-width: 750px;
-  margin: 0 auto 3.5rem;
-  font-size: 1.05rem;
+.hero-section p {
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
 }
 
-/* =========================
-   CARD GRID
-========================= */
+.btn-primary {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  border-radius: 40px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  color: var(--deep-navy);
+  text-decoration: none;
+  box-shadow: var(--shadow-main);
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =====================================================
+   8. CARD GRID
+===================================================== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -190,14 +211,13 @@ section p {
 }
 
 .card {
-  width: 100%;
-  max-width: 360px;
+  background: #fff;
   padding: 2.2rem;
   border-radius: 20px;
-  background: rgb(255 255 255 / 95%);
-  box-shadow: var(--shadow-main);
+  max-width: 360px;
   text-align: center;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: var(--shadow-main);
+  transition: 0.35s ease;
 }
 
 .card:hover {
@@ -207,82 +227,68 @@ section p {
 
 .card h4 {
   font-family: "Playfair Display", serif;
-  font-size: 1.45rem;
   color: var(--deep-navy);
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.8rem;
 }
 
 .card p {
-  font-size: 0.98rem;
   color: var(--text-secondary);
-  line-height: 1.65;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* =====================================================
+   9. BADGES
+===================================================== */
+.badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.beginner { background: #3CCF91; color: #fff; }
+.badge.advanced { background: #4D96FF; color: #fff; }
+.badge.special  { background: #9B59B6; color: #fff; }
+
+/* =====================================================
+   10. FOOTER
+===================================================== */
 footer {
   background: var(--deep-navy);
   color: var(--warm-cream);
   text-align: center;
   padding: 3rem 6% 2.5rem;
-  font-size: 0.95rem;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-footer a {
-  color: var(--primary-gold);
+/* =====================================================
+   11. UTILITIES & ACCESSIBILITY
+===================================================== */
+.card-link {
   text-decoration: none;
-  font-weight: 500;
+  color: inherit;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (width <= 768px) {
+[hidden] {
+  display: none !important;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary-gold);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   12. RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
     gap: 1rem;
-    text-align: center;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
   }
 
   main section {
     padding: 3rem 5%;
   }
-
-  section h3 {
-    font-size: 2rem;
-  }
 }
-
-@media (width <= 480px) {
-  body {
-    font-size: 14px;
-  }
-
-  .nav-links a {
-    font-size: 0.8rem;
-  }
-
-  .card {
-    padding: 1.6rem 1.3rem;
-  }
-
-  .card h4 {
-    font-size: 1.25rem;
-  }
-}
-
-/* =========================
-   QUIZ SECTION SCROLLBAR
-========================= */
-#level-chain-wrapper::-webkit-scrollbar {
-  display: none;
-}
-    

@@ -2,95 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass - FAQ</title>
+  <title>FAQ • OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
 
+  <!-- Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
+  <!-- Global Styles -->
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/faq.css" />
 </head>
 
 <body>
 
-<!-- Navbar copied EXACTLY from home.html -->
-  <header>
-      <div class="navbar-container">
-        <h1>
-          <i
-            class="fas fa-compass"
-            style="color: var(--primary-gold); margin-right: 0.4rem"
-          ></i
-          >OpenSource Compass
-        </h1>
-        <div class="nav-links">
-          <a href="../../index.html">Home</a>
-          <a href="./guides.html">Guides</a>
-          <a href="./programs.html">Programs</a>
-          <a href="./Resources.html">Resources</a>
-          <a href="./contributors.html">Contributors</a>
-          <a href="./faq.html">FAQ</a>
-          <a href="./Contribute.html">Contribute</a>
-        </div>
-      </div>
-    </header>
-<main>
-    <section>
-      <h3>Frequently Asked Questions</h3>
-      <p>Common questions about OpenSource Compass and open source contributions.</p>
+<!-- Navbar -->
+<div id="navbar"></div>
 
-      <div class="card-grid">
-        <div class="card">
-          <h4>What is OpenSource Compass?</h4>
-          <p>OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information.</p>
-        </div>
+<main class="page-content container">
 
-        <div class="card">
-          <h4>Do I need programming experience?</h4>
-          <p>No. You can contribute to open source through documentation, design, testing, community support, and many other non-coding roles.</p>
-        </div>
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Frequently Asked Questions</h1>
+    <p>
+      Common questions about OpenSource Compass and how to get started
+      with open source contributions.
+    </p>
+  </section>
 
-        <div class="card">
-          <h4>How do I get started with open source?</h4>
-          <p>Start by reading contribution guides, choosing a beginner-friendly project, and working on small issues such as documentation or bug fixes.</p>
-        </div>
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="faq-list">
 
-        <div class="card">
-          <h4>How do I choose a project to contribute to?</h4>
-          <p>Pick projects that match your interests and skill level. Look for repositories with labels like “good first issue” or “help wanted”.</p>
-        </div>
+      <article class="faq-item">
+        <h3>What is OpenSource Compass?</h3>
+        <p>
+          OpenSource Compass is a platform designed to help beginners
+          navigate open source through structured guides, resources,
+          and curated programs.
+        </p>
+      </article>
 
-        <div class="card">
-          <h4>What are the benefits of contributing to open source?</h4>
-          <p>Contributing helps you build a portfolio, improve technical skills, collaborate globally, and gain real-world development experience.</p>
-        </div>
+      <article class="faq-item">
+        <h3>Do I need programming experience?</h3>
+        <p>
+          No. Open source welcomes contributors of all backgrounds.
+          You can help with documentation, design, testing, community
+          support, and more.
+        </p>
+      </article>
 
-        <div class="card">
-          <h4>Where can I ask for help?</h4>
-          <p>Most projects have active communities on GitHub, Discord, or Slack. Asking questions is encouraged and is part of open-source culture.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      <article class="faq-item">
+        <h3>How do I get started with open source?</h3>
+        <p>
+          Start by reading contribution guides, choosing a
+          beginner-friendly repository, and working on small issues
+          like documentation or minor bug fixes.
+        </p>
+      </article>
 
-<footer>
-  <p>© 2026 OpenSource Compass · <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a></p>
-</footer>
+      <article class="faq-item">
+        <h3>How do I choose the right project?</h3>
+        <p>
+          Pick projects that match your interests and skill level.
+          Look for repositories with labels like
+          <strong>good first issue</strong> or <strong>help wanted</strong>.
+        </p>
+      </article>
 
+      <article class="faq-item">
+        <h3>What are the benefits of contributing?</h3>
+        <p>
+          Contributing to open source helps you build a public
+          portfolio, improve technical and communication skills,
+          collaborate globally, and gain real-world experience.
+        </p>
+      </article>
 
+      <article class="faq-item">
+        <h3>Where can I ask for help?</h3>
+        <p>
+          Most projects have active communities on GitHub, Discord,
+          Slack, or mailing lists. Asking questions is encouraged and
+          is part of open source culture.
+        </p>
+      </article>
 
-  <script src="../js/components.js"></script>
-  
-  <script src="../js/theme.js"></script>
-  
-  <script src="../js/chatbot.js"></script>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<div id="footer"></div>
+
+<!-- Scripts -->
+<script src="../js/components.js"></script>
+<script src="../js/theme.js"></script>
+
 </body>
 </html>

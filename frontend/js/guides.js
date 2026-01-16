@@ -1,98 +1,107 @@
-// Toggle sidebar on mobile
-const toggleBtn = document.getElementById('toggle-sidebar');
+/* =========================
+   ELEMENT REFERENCES
+========================= */
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
+const toggleBtn = document.getElementById('toggle-sidebar');
 
+/* =========================
+   SIDEBAR TOGGLE (MOBILE)
+========================= */
 if (toggleBtn && sidebar && overlay) {
-    toggleBtn.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-    });
-    
-    overlay.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-    });
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+  });
+
+  overlay.addEventListener('click', closeSidebar);
 }
 
-// Copy to clipboard functionality
-document.querySelectorAll('.copy-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const codeBlock = button.closest('.code-block').querySelector('pre');
-        const code = codeBlock.innerText;
-        
-        navigator.clipboard.writeText(code).then(() => {
-            button.textContent = 'Copied!';
-            button.classList.add('copied');
-            
-            setTimeout(() => {
-                button.textContent = 'Copy';
-                button.classList.remove('copied');
-            }, 2000);
-        });
-    });
+function closeSidebar() {
+  sidebar?.classList.remove('active');
+  overlay?.classList.remove('active');
+}
+
+/* =========================
+   COPY TO CLIPBOARD
+   (Event Delegation)
+========================= */
+document.addEventListener('click', e => {
+  if (!e.target.classList.contains('copy-btn')) return;
+
+  const codeBlock = e.target.closest('.code-block')?.querySelector('pre');
+  if (!codeBlock) return;
+
+  navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+    e.target.textContent = 'Copied!';
+    e.target.classList.add('copied');
+
+    setTimeout(() => {
+      e.target.textContent = 'Copy';
+      e.target.classList.remove('copied');
+    }, 2000);
+  });
 });
 
-// Progress checkboxes functionality
-document.querySelectorAll('.progress-checkbox').forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-        if(this.checked) {
-            this.nextElementSibling.style.textDecoration = 'line-through';
-            this.nextElementSibling.style.color = '#666';
-        } else {
-            this.nextElementSibling.style.textDecoration = 'none';
-            this.nextElementSibling.style.color = 'inherit';
-        }
-    });
+/* =========================
+   PROGRESS CHECKBOXES
+========================= */
+document.addEventListener('change', e => {
+  if (!e.target.classList.contains('progress-checkbox')) return;
+
+  const label = e.target.nextElementSibling;
+  if (!label) return;
+
+  label.style.textDecoration = e.target.checked ? 'line-through' : 'none';
+  label.style.color = e.target.checked ? '#666' : 'inherit';
 });
 
-// Smooth scrolling for sidebar links
-document.querySelectorAll('.sidebar-menu a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Remove active class from all links
-        document.querySelectorAll('.sidebar-menu a').forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        // Add active class to clicked link
-        this.classList.add('active');
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if(targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }
-        
-        // Close sidebar on mobile after clicking
-        if(window.innerWidth <= 992) {
-            if (sidebar) sidebar.classList.remove('active');
-            if (overlay) overlay.classList.remove('active');
-        }
-    });
+/* =========================
+   SIDEBAR LINK SCROLL
+========================= */
+document.addEventListener('click', e => {
+  const link = e.target.closest('.sidebar-menu a');
+  if (!link) return;
+
+  e.preventDefault();
+
+  setActiveSidebarLink(link);
+
+  const target = document.querySelector(link.getAttribute('href'));
+  if (!target) return;
+
+  window.scrollTo({
+    top: target.offsetTop - 100,
+    behavior: 'smooth'
+  });
+
+  if (window.innerWidth <= 992) closeSidebar();
 });
 
-// Handle active sidebar item on scroll
+function setActiveSidebarLink(activeLink) {
+  document.querySelectorAll('.sidebar-menu a')
+    .forEach(link => link.classList.remove('active'));
+
+  activeLink.classList.add('active');
+}
+
+/* =========================
+   ACTIVE LINK ON SCROLL
+========================= */
 window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        if(pageYOffset >= sectionTop) {
-            currentSection = '#' + section.getAttribute('id');
-        }
-    });
-    
-    document.querySelectorAll('.sidebar-menu a').forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href') === currentSection) {
-            link.classList.add('active');
-        }
-    });
+  const sections = document.querySelectorAll('section[id]');
+  let currentId = '';
+
+  sections.forEach(section => {
+    if (pageYOffset >= section.offsetTop - 150) {
+      currentId = `#${section.id}`;
+    }
+  });
+
+  document.querySelectorAll('.sidebar-menu a').forEach(link => {
+    link.classList.toggle(
+      'active',
+      link.getAttribute('href') === currentId
+    );
+  });
 });

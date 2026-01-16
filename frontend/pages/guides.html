@@ -2,117 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass</title>
+  <title>FAQ • OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Awesome (REQUIRED for logo) -->
+  <!-- Fonts -->
   <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Global CSS -->
+  <!-- Global Styles -->
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
-</head> 
+  <link rel="stylesheet" href="../css/faq.css" />
+</head>
 
 <body>
 
-<!-- Navbar copied EXACTLY from home.html -->
-  <header>
-      <div class="navbar-container">
-        <h1>
-          <i
-            class="fas fa-compass"
-            style="color: var(--primary-gold); margin-right: 0.4rem"
-          ></i
-          >OpenSource Compass
-        </h1>
-        <div class="nav-links">
-          <a href="../../index.html">Home</a>
-          <a href="./guides.html">Guides</a>
-          <a href="./programs.html">Programs</a>
-          <a href="./Resources.html">Resources</a>
-          <a href="./contributors.html">Contributors</a>
-          <a href="./faq.html">FAQ</a>
-          <a href="./Contribute.html">Contribute</a>
-        </div>
-      </div>
-    </header>
-<main>
-  <section>
-    <h3>Frequently Asked Questions</h3>
-    <p>Answers to common questions about OpenSource Compass and open source contribution.</p>
+<!-- Navbar -->
+<div id="navbar"></div>
 
-    <div class="card-grid">
+<main class="page-content container">
 
-      <div class="card">
-        <h4>What is OpenSource Compass?</h4>
-        <p>
-          OpenSource Compass is a beginner-friendly platform that helps contributors
-          navigate open source programs, best practices, and real-world contribution workflows.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Do I need prior experience?</h4>
-        <p>
-          No. Many contributions involve documentation, design, testing, and beginner-friendly issues.
-          Programming experience helps but is not mandatory.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>How do I start contributing?</h4>
-        <p>
-          Start by reading the Guides section, pick a beginner-friendly issue,
-          follow contribution guidelines, and submit a pull request.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Which programs are beginner-friendly?</h4>
-        <p>
-          Programs like Hacktoberfest, Social Winter of Code, and GirlScript Summer of Code
-          are great starting points.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Where can I get help?</h4>
-        <p>
-          Most projects have active communities on GitHub, Discord, or Slack.
-          You can also refer to our Resources and Guides pages.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Will my contributions remain after the competition?</h4>
-        <p>
-          Yes. All merged pull requests remain permanently on GitHub
-          and continue to strengthen your profile and portfolio.
-        </p>
-      </div>
-
-    </div>
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Frequently Asked Questions</h1>
+    <p>
+      Clear answers to common questions about OpenSource Compass
+      and open source contributions.
+    </p>
   </section>
+
+  <!-- FAQ List -->
+  <section class="faq-section">
+
+    <article class="faq-item">
+      <h3>What is OpenSource Compass?</h3>
+      <p>
+        OpenSource Compass is a beginner-friendly platform that helps contributors
+        navigate open source programs, best practices, and real-world contribution workflows.
+      </p>
+    </article>
+
+    <article class="faq-item">
+      <h3>Do I need prior experience?</h3>
+      <p>
+        No. Many open source contributions involve documentation, design, testing,
+        and beginner-friendly issues. Programming experience helps but is not mandatory.
+      </p>
+    </article>
+
+    <article class="faq-item">
+      <h3>How do I start contributing?</h3>
+      <p>
+        Start by reading the Guides section, pick a beginner-friendly issue,
+        follow the project’s contribution guidelines, and submit a pull request.
+      </p>
+    </article>
+
+    <article class="faq-item">
+      <h3>Which programs are beginner-friendly?</h3>
+      <p>
+        Programs like Hacktoberfest, Social Winter of Code,
+        and GirlScript Summer of Code are excellent starting points.
+      </p>
+    </article>
+
+    <article class="faq-item">
+      <h3>Where can I get help?</h3>
+      <p>
+        Most projects have active communities on GitHub, Discord, or Slack.
+        You can also explore our Guides and Resources pages.
+      </p>
+    </article>
+
+    <article class="faq-item">
+      <h3>Will my contributions remain after a program ends?</h3>
+      <p>
+        Yes. All merged pull requests remain permanently on GitHub
+        and continue to strengthen your public profile and portfolio.
+      </p>
+    </article>
+
+  </section>
+
 </main>
 
-<!-- Footer copied EXACTLY from home.html -->
-<footer>
-  <p>
-    © 2026 OpenSource Compass ·
-    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank">GitHub</a>
-  </p>
-</footer>
+<!-- Footer -->
+<div id="footer"></div>
 
+<!-- Scripts -->
+<script src="../js/components.js"></script>
 <script src="../js/theme.js"></script>
-  
-  <script src="../js/chatbot.js"></script>
+
 </body>
 </html>

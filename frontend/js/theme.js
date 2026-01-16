@@ -1,54 +1,60 @@
+/**
+ * theme.js
+ * Handles dark mode toggle and scroll-to-top behavior
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Check LocalStorage on load and apply theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        updateThemeIcon(true); // Helper function to set icon
-    }
-
-    // 2. Event Delegation for the Theme Button
-    // This works even if the button is injected dynamically by components.js
-    document.addEventListener('click', (e) => {
-        const toggleBtn = e.target.closest('#themeToggle');
-        if (toggleBtn) {
-            // Toggle the class
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            
-            // Update the icon
-            updateThemeIcon(isDark);
-
-            // Save preference
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        }
-    });
-
-    // 3. Scroll to Top Logic
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    
-    if (scrollTopBtn) {
-        window.addEventListener("scroll", () => {
-            scrollTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
-        });
-
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
+  applySavedTheme();
+  setupThemeToggle();
+  setupScrollToTop();
 });
 
-// Helper function to update the icon safely
+/* ---------------------------
+   Theme Handling
+---------------------------- */
+function applySavedTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const isDark = savedTheme === 'dark';
+
+  document.body.classList.toggle('dark-mode', isDark);
+  updateThemeIcon(isDark);
+}
+
+function setupThemeToggle() {
+  // Event delegation: works even if navbar is injected dynamically
+  document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('#themeToggle');
+    if (!toggleBtn) return;
+
+    const isDark = document.body.classList.toggle('dark-mode');
+    updateThemeIcon(isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+}
+
 function updateThemeIcon(isDark) {
-    // We try to find the icon. It might be inside the injected navbar.
-    const icon = document.querySelector('#themeToggle i');
-    if (icon) {
-        if (isDark) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    }
+  const icon = document.querySelector('#themeToggle i');
+  if (!icon) return;
+
+  icon.classList.toggle('fa-moon', !isDark);
+  icon.classList.toggle('fa-sun', isDark);
+}
+
+/* ---------------------------
+   Scroll To Top
+---------------------------- */
+function setupScrollToTop() {
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  if (!scrollBtn) return;
+
+  window.addEventListener('scroll', () => {
+    scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 }

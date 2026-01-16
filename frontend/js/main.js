@@ -1,80 +1,99 @@
 /**
- * OpenSource Compass - Interactivity Script
- * Handles scroll-triggered reveal animations, micro-interactions, and data fetching.
+ * OpenSource Compass - Interactions
+ * Scroll animations, smooth scrolling, and dynamic data loading
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Intersection Observer for Scroll-Triggered Animations
-    const observerOptions = {
-        threshold: 0.15, // Trigger when 15% of the element is visible
-        rootMargin: '0px 0px -50px 0px' // Slightly offset the trigger point
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Add the 'active' class to trigger the CSS transition
-                entry.target.classList.add('active');
-                
-                // Once the animation has played, stop observing to save resources
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Select all elements that should fade in on scroll
-    const hiddenElements = document.querySelectorAll('.fade-in-up');
-    hiddenElements.forEach(el => observer.observe(el));
-
-    // 2. Smooth Scrolling for Navigation Links
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // 3. Load Programs from JSON (Solves Issue #64)
-    loadHomePagePrograms();
+  initScrollReveal();
+  initSmoothScroll();
+  loadHomePrograms();
 });
 
-// Function to fetch and render programs on the home page
-function loadHomePagePrograms() {
-    const container = document.getElementById('programs-container');
-    
-    // Check if container exists (to avoid errors on pages without this section)
-    if (!container) return;
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.fade-in-up');
+  if (!elements.length) return;
 
-    fetch('../data/programs.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(programs => {
-            container.innerHTML = programs.map(program => `
-                <div class="card">
-                    <h4>${program.name}</h4>
-                    <p>${program.description}</p>
-                    <span class="badge">${program.difficulty}</span>
-                </div>
-            `).join('');
-        })
-        .catch(error => {
-            console.error('Error loading programs:', error);
-            container.innerHTML = `
-                <div class="error-message">
-                    <p>Failed to load programs. Please try refreshing the page.</p>
-                </div>
-            `;
-        });
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('active'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    }
+  );
+
+  elements.forEach(el => observer.observe(el));
+}
+
+/* =========================
+   SMOOTH SCROLL (NAV)
+========================= */
+function initSmoothScroll() {
+  document.addEventListener('click', e => {
+    const link = e.target.closest('nav a[href^="#"]');
+    if (!link) return;
+
+    const targetId = link.getAttribute('href');
+    if (targetId === '#') return;
+
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+/* =========================
+   HOME PAGE PROGRAMS
+========================= */
+function loadHomePrograms() {
+  const container = document.getElementById('programs-container');
+  if (!container) return;
+
+  fetchPrograms()
+    .then(programs => renderPrograms(programs, container))
+    .catch(() => {
+      container.innerHTML = `
+        <div class="error-message">
+          <p>Unable to load programs right now.</p>
+        </div>
+      `;
+    });
+}
+
+function fetchPrograms() {
+  return fetch('../data/programs.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to fetch');
+      return res.json();
+    });
+}
+
+function renderPrograms(programs, container) {
+  container.innerHTML = programs
+    .map(
+      p => `
+      <div class="card fade-in-up">
+        <h4>${p.name}</h4>
+        <p>${p.description}</p>
+        <span class="badge">${p.difficulty}</span>
+      </div>
+    `
+    )
+    .join('');
 }

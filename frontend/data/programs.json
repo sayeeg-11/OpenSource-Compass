@@ -2,540 +2,111 @@
   {
     "id": 1,
     "name": "Google Summer of Code",
-    "description": "Google's annual, international program focused on bringing more student developers into open source software development.",
+    "description": "Google’s global program bringing student developers into open source organizations.",
     "url": "https://summerofcode.withgoogle.com/",
     "image": "../library/assets/program_logo/gsoc.webp",
     "status": "Active",
-    "difficulty": "Advanced",
-    "timeline": "May - August",
-    "stipend": "$3000 - $6600",
-    "contributors": 2000,
-    "issues": 450,
-    "organizations": 180,
-    "contributions": [
-      "Bug fixes and feature implementations",
-      "Documentation improvements",
-      "Performance optimization",
-      "UI/UX enhancements"
-    ],
-    "issues_list": [
-      "Fix pagination in search results",
-      "Implement dark mode support",
-      "Add multi-language support",
-      "Optimize database queries",
-      "Create user dashboard"
-    ]
+    "levels": ["advanced"],
+    "timeline": "May – August",
+    "stipend": "$3000 – $6600"
   },
   {
     "id": 2,
     "name": "GirlScript Summer of Code",
-    "description": "A nationwide summer program to inspire girls to explore technology and make their first meaningful open-source contribution.",
+    "description": "Beginner-friendly nationwide program encouraging first open source contributions.",
     "url": "https://gssoc.girlscript.tech/",
     "image": "../library/assets/program_logo/ggsoc.webp",
     "status": "Active",
-    "difficulty": "Beginner",
-    "timeline": "March - May",
-    "stipend": "Certificates & Perks",
-    "contributors": 1500,
-    "issues": 320,
-    "organizations": 120,
-    "contributions": [
-      "Frontend development",
-      "Backend integration",
-      "API documentation",
-      "Testing and QA"
-    ],
-    "issues_list": [
-      "Create landing page UI",
-      "Build contact form with validation",
-      "Add responsive design fixes",
-      "Implement search functionality",
-      "Write unit tests"
-    ]
+    "levels": ["beginner"],
+    "timeline": "March – May",
+    "stipend": "Certificates & perks"
   },
   {
     "id": 3,
     "name": "Hacktoberfest",
-    "description": "A month-long celebration of open source software run by DigitalOcean encouraging contributions to open repositories.",
+    "description": "Month-long celebration of open source encouraging contributions to public repositories.",
     "url": "https://hacktoberfest.com/",
     "image": "../library/assets/program_logo/hacktober.webp",
-    "status": "Upcoming",
-    "difficulty": "Beginner",
-    "timeline": "October 1 - October 31",
-    "stipend": "T-Shirt & Digital Badge",
-    "contributors": 100000,
-    "issues": 5000,
-    "organizations": 500,
-    "contributions": [
-      "Bug fixes",
-      "Documentation updates",
-      "Code refactoring",
-      "Translation"
-    ],
-    "issues_list": [
-      "Fix typos in documentation",
-      "Improve README files",
-      "Resolve beginner GitHub issues",
-      "Add missing comments",
-      "Fix broken links"
-    ]
+    "status": "Seasonal",
+    "levels": ["beginner"],
+    "timeline": "October",
+    "stipend": "Swag & digital badges"
   },
   {
     "id": 4,
     "name": "MLH Fellowship",
-    "description": "A remote, structured internship alternative where developers collaborate on real-world open source projects.",
+    "description": "Remote, structured internship alternative working on real-world open source projects.",
     "url": "https://fellowship.mlh.io/",
-    "image": "../library/assets/logo.png",
+    "image": "../library/assets/program_logo/mlh.webp",
     "status": "Active",
-    "difficulty": "Intermediate",
+    "levels": ["intermediate"],
     "timeline": "Year-round",
-    "stipend": "$3000 - $5000",
-    "contributors": 800,
-    "issues": 380,
-    "organizations": 90,
-    "contributions": [
-      "Full-stack development",
-      "Machine learning projects",
-      "Cloud infrastructure",
-      "DevOps pipelines"
-    ],
-    "issues_list": [
-      "Build REST APIs",
-      "Optimize ML models",
-      "Create CI/CD pipelines",
-      "Implement dashboards",
-      "Improve system performance"
-    ]
+    "stipend": "$3000 – $5000"
   },
   {
     "id": 5,
     "name": "Outreachy",
-    "description": "Paid remote internships supporting diversity and inclusion in free and open source software communities.",
+    "description": "Paid remote internships supporting diversity in open source communities.",
     "url": "https://www.outreachy.org/",
     "image": "../library/assets/program_logo/outreachy.webp",
-    "status": "Upcoming",
-    "difficulty": "Intermediate",
-    "timeline": "May-August & Dec-March",
-    "stipend": "$6000 - $7000",
-    "contributors": 400,
-    "issues": 200,
-    "organizations": 60,
-    "contributions": [
-      "Backend systems",
-      "Community tooling",
-      "Technical writing",
-      "System administration"
-    ],
-    "issues_list": [
-      "Refactor legacy code",
-      "Improve documentation",
-      "Automate deployments",
-      "Build admin dashboards",
-      "Fix scalability issues"
-    ]
+    "status": "Seasonal",
+    "levels": ["intermediate"],
+    "timeline": "May–Aug & Dec–Mar",
+    "stipend": "$6000 – $7000"
   },
   {
     "id": 6,
     "name": "Social Winter of Code",
-    "description": "A winter open source program designed for beginners to get started with real-world open source projects.",
+    "description": "Beginner-focused winter open source mentorship program.",
     "url": "https://swoc.in/",
     "image": "../library/assets/program_logo/ssoc.webp",
     "status": "Completed",
-    "difficulty": "Beginner",
-    "timeline": "December - January",
-    "stipend": "Certificates & Prizes",
-    "contributors": 600,
-    "issues": 150,
-    "organizations": 45,
-    "contributions": [
-      "Beginner bug fixes",
-      "Documentation contributions",
-      "Code reviews",
-      "Community engagement"
-    ],
-    "issues_list": [
-      "Fix CSS alignment issues",
-      "Add beginner guides",
-      "Improve test coverage",
-      "Refactor simple modules",
-      "Add inline comments"
-    ]
+    "levels": ["beginner"],
+    "timeline": "Dec – Jan",
+    "stipend": "Certificates & prizes"
   },
   {
     "id": 7,
-    "name": "Season of KDE",
-    "description": "An outreach program by KDE community offering students opportunities to contribute to KDE projects.",
-    "url": "https://season.kde.org/",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Intermediate",
-    "timeline": "January - April",
-    "stipend": "$3000",
-    "contributors": 300,
-    "issues": 120,
-    "organizations": 1,
-    "contributions": [
-      "Desktop application development",
-      "Qt programming",
-      "Bug tracking",
-      "UI improvements"
-    ],
-    "issues_list": [
-      "Fix KDE UI glitches",
-      "Improve application performance",
-      "Add new features to KDE apps",
-      "Refactor Qt components",
-      "Improve accessibility support"
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Winter of Code (WoC)",
-    "description": "Mentorship-based program for student contributors.",
-    "url": "",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Beginner → Intermediate",
-    "timeline": "Winter",
-    "stipend": "Certificates",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-        "Mentorship",
-        "Project Development"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 9,
-    "name": "Social Summer of Code (SSoC)",
-    "description": "Community-driven program for open-source beginners.",
-    "url": "",
-    "image": "../library/assets/program_logo/ssoc.webp",
-    "status": "Active",
-    "difficulty": "Beginner",
-    "timeline": "Summer",
-    "stipend": "Certificates",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-        "Open source contributions"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 10,
     "name": "Linux Foundation Mentorship",
-    "description": "Industry-backed program for open-source development.",
+    "description": "Industry-backed mentorship program for open source development.",
     "url": "https://mentorship.lfx.linuxfoundation.org/",
     "image": "../library/assets/program_logo/linux.webp",
     "status": "Active",
-    "difficulty": "Intermediate",
+    "levels": ["intermediate"],
     "timeline": "Varies",
-    "stipend": "Varies",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 1,
-    "contributions": [
-        "Kernel development",
-        "Cloud Native",
-        "Networking"
-    ],
-    "issues_list": []
+    "stipend": "Paid (varies)"
   },
   {
-    "id": 11,
-    "name": "EliteCoders Winter of Code",
-    "description": "A winter mentorship program by the EliteCoders community to help students contribute to open source projects.",
-    "url": "https://code.elitecoders.xyz/",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Beginner",
-    "timeline": "Winter",
-    "stipend": "Certificates & Swags (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Beginner-friendly issues",
-      "Documentation",
-      "Bug fixes",
-      "Feature work"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 12,
-    "name": "Apertre (Resourcio Community)",
-    "description": "An open source program by the Resourcio community focused on mentorship, contributions, and learning by building.",
-    "url": "https://apertre.resourcio.in/",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Beginner",
-    "timeline": "Varies",
-    "stipend": "Certificates (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Open source contributions",
-      "Community projects",
-      "Documentation",
-      "Bug fixes"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 13,
-    "name": "Kharagpur Winter of Code (KWoC)",
-    "description": "A winter mentorship program by KOSS IIT Kharagpur that pairs students with open source organizations.",
-    "url": "https://kwoc.kossiitkgp.org/",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Beginner → Intermediate",
-    "timeline": "December - January",
-    "stipend": "Certificates",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Mentored contributions",
-      "Real-world projects",
-      "Bug fixes",
-      "Documentation"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 14,
-    "name": "Winter of Code (IIIT Kalyani)",
-    "description": "A student-led winter mentorship initiative by IIIT Kalyani to encourage open source contributions.",
-    "url": "",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Beginner",
-    "timeline": "Winter",
-    "stipend": "Certificates",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Mentorship",
-      "Project work",
-      "Bug fixes",
-      "Documentation"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 15,
-    "name": "Summer of Bitcoin",
-    "description": "A global summer internship program focused on contributing to Bitcoin and related open source projects.",
-    "url": "https://www.summerofbitcoin.org/",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Intermediate",
-    "timeline": "Summer",
-    "stipend": "Stipend (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Protocol & tooling",
-      "Dev tools",
-      "Documentation",
-      "Testing"
-    ],
-    "issues_list": []
-  },
-  {
-    "id": 17,
-    "name": "Open Source Promotion Plan (OSPP)",
-    "description": "A summer program that encourages students to participate in open source communities and contribute to projects under mentorship.",
-    "url": "https://summer-ospp.ac.cn/",
-    "image": "../library/assets/logo.png",
-    "status": "Active",
-    "difficulty": "Beginner → Advanced",
-    "timeline": "Summer",
-    "stipend": "Stipend (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Mentored contributions",
-      "Feature work",
-      "Documentation",
-      "Testing"
-    ],
-    "issues_list": []
-  },
-
-  {
-    "id": 18,
+    "id": 8,
     "name": "Google Season of Docs",
-    "description": "Google program connecting open source organizations with technical writers to improve documentation and developer experience.",
+    "description": "Program connecting open source organizations with technical writers.",
     "url": "https://developers.google.com/season-of-docs",
     "image": "../library/assets/program_logo/gsod.webp",
     "status": "Seasonal",
-    "difficulty": "Beginner → Intermediate",
-    "timeline": "Varies (Yearly)",
-    "stipend": "Paid (varies by project)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 0,
-    "contributions": [
-      "Technical writing",
-      "Documentation restructuring",
-      "Tutorial creation",
-      "Developer guides",
-      "Docs tooling improvement"
-    ],
-    "issues_list": [
-      "Rewrite Getting Started guide",
-      "Add API reference improvements",
-      "Create onboarding tutorials",
-      "Improve docs navigation",
-      "Add examples and code snippets"
-    ]
+    "levels": ["beginner", "intermediate"],
+    "timeline": "Yearly",
+    "stipend": "Paid"
   },
   {
-    "id": 19,
-    "name": "Julia Seasons of Contributions (JSoC)",
-    "description": "Seasonal open source program for contributing to Julia ecosystem projects (scientific computing, ML, data science).",
+    "id": 9,
+    "name": "Julia Seasons of Contributions",
+    "description": "Seasonal program contributing to the Julia ecosystem.",
     "url": "https://julialang.org/jsoc/",
     "image": "../library/assets/program_logo/julia.webp",
     "status": "Seasonal",
-    "difficulty": "Intermediate",
+    "levels": ["intermediate"],
     "timeline": "Summer",
-    "stipend": "Paid (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 1,
-    "contributions": [
-      "Julia package development",
-      "Performance optimization",
-      "Documentation",
-      "Scientific computing features"
-    ],
-    "issues_list": [
-      "Optimize numerical routines",
-      "Add missing tests",
-      "Improve documentation examples",
-      "Fix performance bottlenecks",
-      "Implement new package features"
-    ]
+    "stipend": "Paid"
   },
   {
-    "id": 20,
+    "id": 10,
     "name": "Hyperledger Mentorship Program",
-    "description": "Mentorship initiative under Hyperledger ecosystem focusing on blockchain and distributed ledger open source projects.",
+    "description": "Blockchain-focused mentorship under the Hyperledger ecosystem.",
     "url": "https://wiki.hyperledger.org/display/INTERN/Hyperledger+Mentorship+Program",
     "image": "../library/assets/program_logo/hyperledger.webp",
     "status": "Seasonal",
-    "difficulty": "Intermediate",
+    "levels": ["intermediate"],
     "timeline": "Multiple batches",
-    "stipend": "Paid (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 1,
-    "contributions": [
-      "Blockchain development",
-      "Smart contract tooling",
-      "Testing and QA",
-      "Documentation",
-      "DevOps pipelines"
-    ],
-    "issues_list": [
-      "Improve network performance",
-      "Fix bugs in SDK",
-      "Write integration tests",
-      "Refactor core modules",
-      "Add documentation guides"
-    ]
-  },
-  {
-    "id": 21,
-    "name": "Open Mainframe Project Mentorship",
-    "description": "Linux Foundation mentorship program for students contributing to mainframe open source projects.",
-    "url": "https://www.openmainframeproject.org/projects/mentorship-program",
-    "image": "../library/assets/program_logo/mainframe.webp",
-    "status": "Seasonal",
-    "difficulty": "Intermediate",
-    "timeline": "Varies",
-    "stipend": "Paid (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 1,
-    "contributions": [
-      "Mainframe development",
-      "Tooling improvements",
-      "Automation",
-      "Documentation",
-      "Testing"
-    ],
-    "issues_list": [
-      "Add missing automation scripts",
-      "Fix compatibility issues",
-      "Improve CI workflows",
-      "Write usage documentation",
-      "Improve performance"
-    ]
-  },
-  {
-    "id": 22,
-    "name": "FOSSASIA Codeheat",
-    "description": "Open source coding contest focused on contributing to FOSSASIA projects and community tools.",
-    "url": "https://codeheat.org/",
-    "image": "../library/assets/program_logo/fossasia.webp",
-    "status": "Seasonal",
-    "difficulty": "Beginner → Intermediate",
-    "timeline": "Varies (often Winter)",
-    "stipend": "Prizes & Certificates",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 1,
-    "contributions": [
-      "Frontend development",
-      "Backend development",
-      "Bug fixes",
-      "Documentation",
-      "Feature implementation"
-    ],
-    "issues_list": [
-      "Fix UI bugs",
-      "Add search filters",
-      "Improve app performance",
-      "Update documentation",
-      "Implement missing features"
-    ]
-  },
-  {
-    "id": 23,
-    "name": "Igalia Coding Experience Program",
-    "description": "Mentorship-based program by Igalia offering contributors opportunities to work on real open source projects.",
-    "url": "https://www.igalia.com/coding-experience/",
-    "image": "../library/assets/program_logo/igalia.webp",
-    "status": "Seasonal",
-    "difficulty": "Advanced",
-    "timeline": "Varies",
-    "stipend": "Paid (varies)",
-    "contributors": 0,
-    "issues": 0,
-    "organizations": 1,
-    "contributions": [
-      "Browser engine development",
-      "Systems programming",
-      "Performance optimization",
-      "Open source toolchains"
-    ],
-    "issues_list": [
-      "Fix rendering bugs",
-      "Implement performance patches",
-      "Improve web standards support",
-      "Write tests for engine modules",
-      "Refactor old components"
-    ]
+    "stipend": "Paid"
   }
 ]

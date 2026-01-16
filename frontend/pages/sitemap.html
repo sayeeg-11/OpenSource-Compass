@@ -2,57 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass | Sitemap</title>
+  <title>Sitemap • OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;500&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;500&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="../css/sitemap.css">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/sitemap.css" />
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header>
-  <div class="navbar-container">
-    <h1>
-      <i class="fas fa-compass"></i>
-      OpenSource Compass
-    </h1>
+<!-- Navbar -->
+<div id="navbar"></div>
 
-    <nav class="nav-links">
-      <a href="../../index.html">Home</a>
-      <a href="guides.html">Guides</a>
-      <a href="programs.html">Programs</a>
-      <a href="resources.html">Resources</a>
-      <a href="contributors.html">Contributors</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contribute.html">Contribute</a>
-    </nav>
-  </div>
-</header>
+<main class="page-content container">
 
-<!-- MAIN -->
-<main class="container">
-
-  <!-- TITLE -->
-  <div class="sitemap-header">
+  <!-- Header -->
+  <section class="page-header sitemap-header">
     <h1><i class="fa-solid fa-sitemap"></i> Sitemap</h1>
-    <p>Explore all pages, programs, and resources in one place</p>
-  </div>
+    <p>Explore all pages, programs, and resources in one place.</p>
+  </section>
 
-  <!-- SEARCH -->
+  <!-- Search -->
   <div class="search-box">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" id="searchInput" placeholder="Search pages..." />
+    <input id="searchInput" type="text" placeholder="Search pages..." />
   </div>
 
-  <!-- CARDS -->
+  <!-- Grid -->
   <div class="sitemap-grid">
 
     <section class="section">
@@ -62,6 +45,7 @@
         <li><a href="guides.html">Guides</a></li>
         <li><a href="programs.html">Programs</a></li>
         <li><a href="resources.html">Resources</a></li>
+        <li><a href="contribute.html">Contribute</a></li>
       </ul>
     </section>
 
@@ -80,7 +64,7 @@
       <ul>
         <li><a href="Event/gsoc.html">GSoC</a></li>
         <li><a href="Event/gssoc.html">GSSoC</a></li>
-        <li><a href="Event/ssoc.html">SSOC</a></li>
+        <li><a href="Event/ssoc.html">SSoC</a></li>
         <li><a href="Event/hacktober.html">Hacktoberfest</a></li>
       </ul>
     </section>
@@ -97,24 +81,26 @@
       <h2><i class="fa-solid fa-users"></i> Community</h2>
       <ul>
         <li><a href="contributors.html">Contributors</a></li>
-        <li><a href="../../CONTRIBUTING.md">Contributing</a></li>
-        <li><a href="../../CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+        <li><a href="../../CONTRIBUTING.md" target="_blank">Contributing</a></li>
+        <li><a href="../../CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a></li>
       </ul>
     </section>
 
   </div>
+
 </main>
 
-<!-- FOOTER (SAME STYLE) -->
-<footer class="sitemap-footer">
-  © 2026 OpenSource Compass • Built for the Open Source Community
-</footer>
+<!-- Footer -->
+<div id="footer"></div>
 
-<!-- SCROLL TOP -->
+<!-- Scroll to top -->
 <button id="scrollTopBtn">
   <i class="fas fa-chevron-up"></i>
 </button>
 
+<!-- Scripts -->
+<script src="../js/components.js"></script>
 <script src="../js/sitemap.js"></script>
+
 </body>
 </html>

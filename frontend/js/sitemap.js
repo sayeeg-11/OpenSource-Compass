@@ -1,23 +1,47 @@
-// SEARCH FILTER
-const searchInput = document.getElementById("searchInput");
-const cards = document.querySelectorAll(".section");
+/**
+ * sitemap.js
+ * Handles sitemap search filtering and scroll-to-top behavior
+ */
 
-searchInput.addEventListener("keyup", () => {
-  const query = searchInput.value.toLowerCase();
+document.addEventListener('DOMContentLoaded', () => {
+  initSearchFilter();
+  initScrollToTop();
+});
 
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(query) ? "block" : "none";
+/* ---------------------------
+   Sitemap Search Filter
+---------------------------- */
+function initSearchFilter() {
+  const searchInput = document.getElementById('searchInput');
+  const sections = document.querySelectorAll('.section');
+
+  if (!searchInput || !sections.length) return;
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+
+    sections.forEach(section => {
+      const content = section.textContent.toLowerCase();
+      section.style.display = content.includes(query) ? 'block' : 'none';
+    });
   });
-});
+}
 
-// SCROLL TO TOP
-const scrollBtn = document.getElementById("scrollTopBtn");
+/* ---------------------------
+   Scroll To Top Button
+---------------------------- */
+function initScrollToTop() {
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  if (!scrollBtn) return;
 
-window.addEventListener("scroll", () => {
-  scrollBtn.style.display = window.scrollY > 500 ? "flex" : "none";
-});
+  window.addEventListener('scroll', () => {
+    scrollBtn.style.display = window.scrollY > 500 ? 'flex' : 'none';
+  });
 
-scrollBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}

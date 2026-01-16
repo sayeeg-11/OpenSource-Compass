@@ -2,47 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass</title>
+  <title>Contributors • OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Awesome (REQUIRED for logo) -->
+  <!-- Favicon -->
+  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+
+  <!-- Font Awesome (required for navbar icon) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
 
+  <!-- Fonts (only what is used globally) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Global CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contributors.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
 </head>
 
+<body class="contributors-page">
 
-  <body class="contributors-page">
-    <div id="navbar"></div>
+  <!-- Navbar injected by components.js -->
+  <div id="navbar"></div>
 
-    <main>
-      <section class="contributors-section">
-        <h3>Contributors</h3>
-        <p>People who have helped build and improve OpenSource Compass.</p>
+  <!-- Page Content -->
+  <main class="page-content">
+    <section class="contributors-section">
+      <h1>Contributors</h1>
+      <p class="subtitle">
+        People who have helped build and improve OpenSource Compass.
+      </p>
 
-        <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
+      <!-- Status (loading / error messages) -->
+      <div
+        class="contributors-status"
+        id="contributors-status"
+        aria-live="polite"
+      ></div>
 
-        <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
-      </section>
-    </main>
+      <!-- Contributors Grid -->
+      <div
+        class="contributors-grid"
+        id="contributors-grid"
+        aria-live="polite"
+      ></div>
+    </section>
+  </main>
 
-    <div id="footer"></div>
+  <!-- Footer injected by components.js -->
+  <div id="footer"></div>
 
-    <script src="../js/components.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/contributors.js"></script>
-  
-  <script src="../js/chatbot.js"></script>
-  </body>
+  <!-- JavaScript -->
+  <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/contributors.js"></script>
+
+</body>
 </html>

@@ -2,48 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass</title>
+  <title>Programs • OpenSource Compass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Awesome (REQUIRED for logo) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 
-  <!-- Global CSS -->
+  <!-- Global Styles -->
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
+  <link rel="stylesheet" href="../css/programs.css" />
 </head>
-
 
 <body>
 
-  <div id="navbar"></div>
+<!-- Navbar -->
+<div id="navbar"></div>
 
-<main>
-  <section>
-    <h3>Open Source Programs</h3>
+<main class="page-content container">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1>Open Source Programs</h1>
     <p>
-      Explore popular open source programs that help students and developers
-      gain real-world experience through contributions.
+      A curated list of beginner-friendly and advanced open source programs
+      that help developers gain real-world experience through meaningful
+      contributions.
     </p>
-
-    <div class="card-grid" id="programs-grid"></div>
   </section>
+
+  <!-- Programs Grid -->
+  <section class="programs-section">
+    <div class="card-grid" id="programsContainer">
+      <!-- Program cards injected via programs-page.js -->
+    </div>
+  </section>
+
 </main>
 
+<!-- Footer -->
 <div id="footer"></div>
 
+<!-- Scripts (ORDER MATTERS) -->
 <script src="../js/components.js"></script>
 <script src="../js/theme.js"></script>
 <script src="../js/programs-page.js"></script>
-  
-  <script src="../js/chatbot.js"></script>
+
 </body>
 </html>

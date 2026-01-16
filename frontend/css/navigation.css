@@ -1,46 +1,88 @@
-/* Sidebar Styles */
+/* =========================
+   NAVIGATION UTILITIES
+   (Depends on global style.css)
+========================= */
+
+/* =========================
+   SIDEBAR
+========================= */
 .nav-sidebar {
-    width: 250px;
-    background: var(--white);
-    border-right: 1px solid #eee;
-    padding: 20px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid #eee;
+  padding: 1.2rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
 }
 
 .nav-sidebar a {
-    display: block;
-    padding: 10px;
-    color: var(--text-dark);
-    border-radius: 6px;
-    margin-bottom: 5px;
+  display: block;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.4rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--charcoal-dark);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.nav-sidebar a:hover {
+  background: var(--light-parchment);
 }
 
 .nav-sidebar a.active {
-    background: var(--light-gray);
-    color: var(--secondary-blue);
-    font-weight: 600;
+  background: var(--light-parchment);
+  color: var(--deep-navy);
+  font-weight: 600;
 }
 
-/* Breadcrumbs */
+/* =========================
+   BREADCRUMBS
+========================= */
 .breadcrumb {
-    padding: 10px 8%;
-    font-size: 14px;
-    color: #666;
+  padding: 0.6rem 6%;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
-.breadcrumb a { color: var(--secondary-blue); }
+.breadcrumb a {
+  color: var(--deep-navy);
+  font-weight: 500;
+  text-decoration: none;
+}
 
-/* Search Overlay */
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   SEARCH OVERLAY
+========================= */
 #searchResults {
-    position: absolute;
-    top: 100%;
-    right: 8%;
-    width: 300px;
-    background: white;
-    box-shadow: 0 10px 25px rgb(0 0 0 / 10%);
-    border-radius: 8px;
+  position: absolute;
+  top: 100%;
+  right: 6%;
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow-hover);
+  display: none;
+  z-index: 1100;
+  overflow: hidden;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .nav-sidebar {
     display: none;
-    z-index: 1001;
+  }
+
+  #searchResults {
+    right: 50%;
+    transform: translateX(50%);
+    width: 90%;
+  }
 }
