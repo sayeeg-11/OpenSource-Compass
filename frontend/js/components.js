@@ -55,15 +55,7 @@ const footerHTML = `
     <p>
         <i class="fas fa-heart" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
         © 2026 OpenSource Compass   
-        <a
-  href="https://github.com/sayeeg-11/opensource-compass"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Open OpenSource Compass GitHub repository (opens in a new tab)"
->
-  GitHub
-</a>
-
+        <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank" rel="noopener noreferrer">GitHub</a>
     </p>
 </footer>
 `;
