@@ -3,7 +3,7 @@
 # 🌍 OpenSource Compass  
 ### Navigate Your Open Source Journey with Confidence
 
-<img src="frontend/library/assets/swoc_banner.png" alt="OpenSource Compass – SWOC'26 Banner" width="100%" />
+<img src="frontend/library/assets/swoc_banner.png" alt="OpenSource Compass – SWOC'26 Banner" width="50%" />
 
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/sayeeg-11/OpenSource-Compass)
 [![GitHub Issues](https://img.shields.io/github/issues/sayeeg-11/OpenSource-Compass)](https://github.com/sayeeg-11/OpenSource-Compass/issues)
@@ -68,7 +68,6 @@ No jargon. No confusion. Just clear steps to help you start contributing with co
 ## 📂 Project Structure
 
 
-
 ```
 OpenSource-Compass/
 │
@@ -109,7 +108,7 @@ OpenSource-Compass/
 │   ├── package-lock.json
 │   └── .gitignore
 │
-├── frontend/                        # Frontend resources 
+├── frontend/                        # Frontend resources
 │   ├── css/                         # Stylesheets
 │   │   ├── auth.css
 │   │   ├── beginners-guide.css
@@ -120,24 +119,30 @@ OpenSource-Compass/
 │   │   ├── navigation.css
 │   │   ├── program.css
 │   │   ├── resources.css
-│   │   └── style.css
+│   │   ├── style.css
+│   │   └── sitemap.css
 │   │
 │   ├── js/                          # Client-side Scripts
+│   │   ├── components.js
+│   │   ├── main.js
+│   │   ├── theme.js
+│   │   ├── sitemap.js
+│   │   ├── search.js
 │   │   ├── auth.js
 │   │   ├── chatbot.js
 │   │   ├── contribute.js
 │   │   ├── contributors.js
 │   │   ├── guides.js
-│   │   ├── main.js
 │   │   ├── profile.js
+│   │   ├── profile2.js
 │   │   ├── programs.js
-│   │   ├── resources.js
-│   │   ├── search.js
-│   │   └── theme.js
+│   │   ├── programs-page.js
+│   │   └── resources.js
 │   │
 │   ├── data/                        # Static JSON data
 │   │   ├── chatbot_data.json
-│   │   └── programs.json
+│   │   ├── programs.json
+│   │   └── quiz_data.json
 │   │
 │   ├── pages/                       # All HTML pages
 │   │   ├── Event/
@@ -145,16 +150,21 @@ OpenSource-Compass/
 │   │   │   ├── gssoc.html
 │   │   │   ├── hacktober.html
 │   │   │   ├── linux.html
-|   |   |   ├── ssoc.html
-│   │   │   └── outreachy.html
-│   │   │    
-│   │   ├── contribute.html
+│   │   │   ├── outreachy.html
+│   │   │   └── ssoc.html
+│   │   │
+│   │   ├── guides/
+│   │   │   └── ethics-licensing.html
+│   │   │
+│   │   ├── Contribute.html
 │   │   ├── contributors.html
 │   │   ├── faq.html
+│   │   ├── glossary.html
 │   │   ├── guides.html
+│   │   ├── profile.html
 │   │   ├── programs.html
-│   │   ├── resources.html
-│   │   
+│   │   ├── Resources.html
+│   │   └── sitemap.html
 │   │
 │   └── library/                     # Frontend reusable assets
 │       ├── assets/
@@ -166,22 +176,26 @@ OpenSource-Compass/
 │       │   │   ├── outreachy.webp
 │       │   │   └── ssoc.webp
 │       │   │
+│       │   ├── favicon.png
 │       │   ├── logo.png
 │       │   └── swoc_banner.png
 │       │
 │       └── guides_pdf/
-│           ├── GSOC.pdf
+│           ├── GSoC.pdf
 │           ├── GSSOC.pdf
 │           ├── Hacktoberfest.pdf
-│           ├── LFX_Mentorship.pdf
+│           ├── LFX Mentorship.pdf
 │           ├── Outreachy.pdf
 │           └── SSoC.pdf
 │
-├── home.html                       # Main landing page (GitHub Pages entry)
-├── CODE_OF_CONDUCT.md              # Community Guidelines
-├── CONTRIBUTING.md                 # Contributing Guidelines
-├── LICENSE                         # OpenSource License
-└── README.md                       # Project Overview
+├── index.html
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── package.json
+├── package-lock.json
+└── .stylеlintrc.json
 
 ```
 
