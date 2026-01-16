@@ -1114,6 +1114,838 @@
                 "You're testing the limits of my knowledge! Try asking about git commands, specific languages, or community terms.",
                 "I might not know that one yet. Ask me about 'forking', 'npm', 'flamewars', or 'MIT license'!"
             ]
+        },
+        {
+            "tag": "git_bisect",
+            "patterns": [
+                "git bisect",
+                "find bug binary search",
+                "bisect command"
+            ],
+            "responses": [
+                "'git bisect' uses binary search to find the commit that introduced a bug. It's magical for debugging regressions.",
+                "You mark a 'good' commit and a 'bad' one, and Git helps you narrow it down."
+            ]
+        },
+        {
+            "tag": "git_reflog",
+            "patterns": [
+                "git reflog",
+                "recover lost commit",
+                "undo reset hard"
+            ],
+            "responses": [
+                "'git reflog' shows a log of all updates to the tip of branches. It saves you when you accidentally delete something!",
+                "Even if a commit isn't in 'git log', it might be in 'git reflog'."
+            ]
+        },
+        {
+            "tag": "git_worktree",
+            "patterns": [
+                "git worktree",
+                "multiple branches at once",
+                "worktree"
+            ],
+            "responses": [
+                "'git worktree' lets you check out more than one branch at a time in separate folders from the same repo.",
+                "Great for fixing a hot bug on main whilst in the middle of a huge feature on another branch."
+            ]
+        },
+        {
+            "tag": "git_upstream",
+            "patterns": [
+                "what is upstream",
+                "upstream vs origin",
+                "upstream remote"
+            ],
+            "responses": [
+                "'upstream' usually refers to the original repository you forked from. 'origin' is your fork.",
+                "You pull from upstream to stay updated, and push to origin to submit PRs."
+            ]
+        },
+        {
+            "tag": "semver",
+            "patterns": [
+                "semantic versioning",
+                "semver",
+                "version numbers",
+                "major minor patch"
+            ],
+            "responses": [
+                "Semantic Versioning (SemVer) uses MAJOR.MINOR.PATCH (e.g., 1.2.3).",
+                "MAJOR = breaking changes, MINOR = new features (compatible), PATCH = bug fixes."
+            ]
+        },
+        {
+            "tag": "cla_dco",
+            "patterns": [
+                "cla",
+                "contributor license agreement",
+                "dco",
+                "developer certificate of origin",
+                "sign off"
+            ],
+            "responses": [
+                "A CLA (Contributor License Agreement) creates a legal contract between you and the project maintainers.",
+                "DCO (Developer Certificate of Origin) is simpler—you just add 'Signed-off-by' to your commits."
+            ]
+        },
+        {
+            "tag": "imposter_syndrome",
+            "patterns": [
+                "i feel stupid",
+                "imposter syndrome",
+                "am i good enough",
+                "everyone knows more than me"
+            ],
+            "responses": [
+                "Imposter syndrome is huge in tech! Even senior engineers feel it. You are learning, and that's enough.",
+                "Don't compare your behind-the-scenes with everyone else's highlight reel. You belong here."
+            ]
+        },
+        {
+            "tag": "burnout",
+            "patterns": [
+                "burnout",
+                "tired of coding",
+                "too much work"
+            ],
+            "responses": [
+                "Open source burnout is real. It's okay to take a break. Your health is more important than a GitHub streak.",
+                "communicate with maintainers if you need to step back. They will understand."
+            ]
+        },
+        {
+            "tag": "profile_readme",
+            "patterns": [
+                "profile readme",
+                "github profile",
+                "special repo name"
+            ],
+            "responses": [
+                "Create a repo with your username (e.g., username/username) to add a README to your GitHub profile!",
+                "It's a great place to show off your tech stack and stats."
+            ]
+        },
+        {
+            "tag": "docker_ecosystem",
+            "patterns": [
+                "docker",
+                "Dockerfile",
+                "docker-compose",
+                "container"
+            ],
+            "responses": [
+                "Docker packages applications into containers so they run the same everywhere.",
+                "A Dockerfile defines the image, and docker-compose runs multi-container apps."
+            ]
+        },
+        {
+            "tag": "lang_typescript",
+            "patterns": [
+                "typescript",
+                "ts",
+                "javascript vs typescript"
+            ],
+            "responses": [
+                "TypeScript is JavaScript with syntax for types. It helps catch errors early and makes code more maintainable."
+            ]
+        },
+        {
+            "tag": "lang_kotlin",
+            "patterns": [
+                "kotlin",
+                "android dev language"
+            ],
+            "responses": [
+                "Kotlin is a modern, concise language heavily used for Android development. It is 100% interoperable with Java."
+            ]
+        },
+        {
+            "tag": "lang_swift",
+            "patterns": [
+                "swift",
+                "ios dev language"
+            ],
+            "responses": [
+                "Swift is Apple's powerful and intuitive programming language for iOS, iPadOS, macOS, tvOS, and watchOS."
+            ]
+        },
+        {
+            "tag": "lang_php",
+            "patterns": [
+                "php",
+                "wordpress language"
+            ],
+            "responses": [
+                "PHP is a popular general-purpose scripting language that is especially suited to web development."
+            ]
+        },
+        {
+            "tag": "lang_ruby",
+            "patterns": [
+                "ruby",
+                "rails language"
+            ],
+            "responses": [
+                "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity."
+            ]
+        },
+        {
+            "tag": "lang_csharp",
+            "patterns": [
+                "c#",
+                "c sharp",
+                ".net"
+            ],
+            "responses": [
+                "C# is a modern, object-oriented, and type-safe programming language. It enables developers to build many types of secure and robust applications that run in .NET."
+            ]
+        },
+        {
+            "tag": "lang_c",
+            "patterns": [
+                "c language",
+                "embedded c"
+            ],
+            "responses": [
+                "C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion. It's the basis of extensive legacy infrastructure."
+            ]
+        },
+        {
+            "tag": "lang_r",
+            "patterns": [
+                "r language",
+                "data science language"
+            ],
+            "responses": [
+                "R is a programming language for statistical computing and graphics. It is widely used among statisticians and data miners."
+            ]
+        },
+        {
+            "tag": "lang_matlab",
+            "patterns": [
+                "matlab"
+            ],
+            "responses": [
+                "MATLAB is a proprietary multi-paradigm programming language and numeric computing environment developed by MathWorks."
+            ]
+        },
+        {
+            "tag": "lang_scala",
+            "patterns": [
+                "scala"
+            ],
+            "responses": [
+                "Scala combines object-oriented and functional programming in one high-level language. It runs on the JVM."
+            ]
+        },
+        {
+            "tag": "lang_perl",
+            "patterns": [
+                "perl"
+            ],
+            "responses": [
+                "Perl is a family of two high-level, general-purpose, interpreted, dynamic programming languages. 'There is more than one way to do it'."
+            ]
+        },
+        {
+            "tag": "lang_lua",
+            "patterns": [
+                "lua",
+                "roblox language"
+            ],
+            "responses": [
+                "Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded use in applications (like games!)."
+            ]
+        },
+        {
+            "tag": "lang_dart",
+            "patterns": [
+                "dart",
+                "flutter language"
+            ],
+            "responses": [
+                "Dart is a client-optimized language for fast apps on any platform. It is the language used by Flutter."
+            ]
+        },
+        {
+            "tag": "lang_haskell",
+            "patterns": [
+                "haskell",
+                "functional programming"
+            ],
+            "responses": [
+                "Haskell is a widely used purely functional language. It is known for its strong static typing and lazy evaluation."
+            ]
+        },
+        {
+            "tag": "lang_elixir",
+            "patterns": [
+                "elixir",
+                "phoenix"
+            ],
+            "responses": [
+                "Elixir is a dynamic, functional language designed for building scalable and maintainable applications. It runs on the Erlang VM."
+            ]
+        },
+        {
+            "tag": "lang_clojure",
+            "patterns": [
+                "clojure",
+                "lisp"
+            ],
+            "responses": [
+                "Clojure is a dynamic, general-purpose programming language, combining the approachability and interactive development of a scripting language with an efficient and robust infrastructure for multithreaded programming."
+            ]
+        },
+        {
+            "tag": "lang_julia",
+            "patterns": [
+                "julia",
+                "scientific computing"
+            ],
+            "responses": [
+                "Julia is a high-level, high-performance, dynamic programming language. It is well suited for numerical analysis and computational science."
+            ]
+        },
+        {
+            "tag": "lang_vba",
+            "patterns": [
+                "vba",
+                "excel macro"
+            ],
+            "responses": [
+                "VBA (Visual Basic for Applications) is the programming language of Excel and other Office programs."
+            ]
+        },
+        {
+            "tag": "lang_objective_c",
+            "patterns": [
+                "objective-c",
+                "old ios language"
+            ],
+            "responses": [
+                "Objective-C is the primary programming language you use when writing software for OS X and iOS. It's strictly a superset of C."
+            ]
+        },
+        {
+            "tag": "lang_assembly",
+            "patterns": [
+                "assembly",
+                "asm",
+                "machine code"
+            ],
+            "responses": [
+                "Assembly language is a low-level programming language for a computer or other programmable device specific to a particular computer architecture."
+            ]
+        },
+        {
+            "tag": "framework_react",
+            "patterns": [
+                "react",
+                "reactjs"
+            ],
+            "responses": [
+                "React is a JavaScript library for building user interfaces. It is maintained by Meta and a community of developers."
+            ]
+        },
+        {
+            "tag": "framework_vue",
+            "patterns": [
+                "vue",
+                "vuejs"
+            ],
+            "responses": [
+                "Vue.js is a progressive JavaScript framework for building user interfaces. It is designed to be incrementally adoptable."
+            ]
+        },
+        {
+            "tag": "framework_angular",
+            "patterns": [
+                "angular",
+                "angularjs"
+            ],
+            "responses": [
+                "Angular is a platform for building mobile and desktop web applications. It is a complete rewrite of the same team that built AngularJS."
+            ]
+        },
+        {
+            "tag": "framework_svelte",
+            "patterns": [
+                "svelte"
+            ],
+            "responses": [
+                "Svelte is a radical new approach to building user interfaces. It shifts that work into a compile step that happens when you build your app."
+            ]
+        },
+        {
+            "tag": "framework_nextjs",
+            "patterns": [
+                "nextjs",
+                "next.js",
+                "react framework"
+            ],
+            "responses": [
+                "Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more."
+            ]
+        },
+        {
+            "tag": "framework_nuxtjs",
+            "patterns": [
+                "nuxtjs",
+                "nuxt",
+                "vue framework"
+            ],
+            "responses": [
+                "Nuxt is an open source framework that makes web development intuitive and powerful. Create performant and production-grade full-stack web apps and websites with confidence."
+            ]
+        },
+        {
+            "tag": "framework_gatsby",
+            "patterns": [
+                "gatsby"
+            ],
+            "responses": [
+                "Gatsby is a React-based open source framework with performance, scalability and security built-in."
+            ]
+        },
+        {
+            "tag": "framework_django",
+            "patterns": [
+                "django",
+                "python web framework"
+            ],
+            "responses": [
+                "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design."
+            ]
+        },
+        {
+            "tag": "framework_flask",
+            "patterns": [
+                "flask"
+            ],
+            "responses": [
+                "Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries."
+            ]
+        },
+        {
+            "tag": "framework_fastapi",
+            "patterns": [
+                "fastapi"
+            ],
+            "responses": [
+                "FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints."
+            ]
+        },
+        {
+            "tag": "framework_springboot",
+            "patterns": [
+                "spring boot",
+                "java web framework"
+            ],
+            "responses": [
+                "Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can 'just run'."
+            ]
+        },
+        {
+            "tag": "framework_laravel",
+            "patterns": [
+                "laravel",
+                "php framework"
+            ],
+            "responses": [
+                "Laravel is a web application framework with expressive, elegant syntax."
+            ]
+        },
+        {
+            "tag": "framework_rails",
+            "patterns": [
+                "ruby on rails",
+                "rails"
+            ],
+            "responses": [
+                "Ruby on Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern."
+            ]
+        },
+        {
+            "tag": "framework_express",
+            "patterns": [
+                "express",
+                "expressjs",
+                "node framework"
+            ],
+            "responses": [
+                "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications."
+            ]
+        },
+        {
+            "tag": "framework_nestjs",
+            "patterns": [
+                "nestjs",
+                "node enterprise"
+            ],
+            "responses": [
+                "Nest (NestJS) is a framework for building efficient, scalable Node.js server-side applications."
+            ]
+        },
+        {
+            "tag": "db_sql",
+            "patterns": [
+                "sql",
+                "relational database"
+            ],
+            "responses": [
+                "SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system."
+            ]
+        },
+        {
+            "tag": "db_nosql",
+            "patterns": [
+                "nosql",
+                "non relational"
+            ],
+            "responses": [
+                "NoSQL databases are non-tabular, and store data differently than relational tables. They come in a variety of types based on their data model."
+            ]
+        },
+        {
+            "tag": "db_postgres",
+            "patterns": [
+                "postgresql",
+                "postgres"
+            ],
+            "responses": [
+                "PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development."
+            ]
+        },
+        {
+            "tag": "db_mysql",
+            "patterns": [
+                "mysql"
+            ],
+            "responses": [
+                "MySQL is the world's most popular open source relational database management system."
+            ]
+        },
+        {
+            "tag": "db_mongodb",
+            "patterns": [
+                "mongodb",
+                "mongo"
+            ],
+            "responses": [
+                "MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas."
+            ]
+        },
+        {
+            "tag": "db_redis",
+            "patterns": [
+                "redis",
+                "caching"
+            ],
+            "responses": [
+                "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker."
+            ]
+        },
+        {
+            "tag": "db_sqlite",
+            "patterns": [
+                "sqlite"
+            ],
+            "responses": [
+                "SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine."
+            ]
+        },
+        {
+            "tag": "db_cassandra",
+            "patterns": [
+                "cassandra"
+            ],
+            "responses": [
+                "Apache Cassandra is a free and open-source, distributed, wide-column store, NoSQL database management system designed to handle large amounts of data across many commodity servers."
+            ]
+        },
+        {
+            "tag": "db_firebase",
+            "patterns": [
+                "firebase",
+                "firestore"
+            ],
+            "responses": [
+                "Firebase is a platform developed by Google for creating mobile and web applications. It includes a real-time database and authentication services."
+            ]
+        },
+        {
+            "tag": "db_supabase",
+            "patterns": [
+                "supabase",
+                "firebase alternative"
+            ],
+            "responses": [
+                "Supabase is an open source Firebase alternative. Build in a weekend, scale to millions."
+            ]
+        },
+        {
+            "tag": "cloud_aws",
+            "patterns": [
+                "aws",
+                "amazon web services"
+            ],
+            "responses": [
+                "Amazon Web Services (AWS) is a subsidiary of Amazon providing on-demand cloud computing platforms and APIs."
+            ]
+        },
+        {
+            "tag": "cloud_azure",
+            "patterns": [
+                "azure",
+                "microsoft cloud"
+            ],
+            "responses": [
+                "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services."
+            ]
+        },
+        {
+            "tag": "cloud_gcp",
+            "patterns": [
+                "gcp",
+                "google cloud platform"
+            ],
+            "responses": [
+                "Google Cloud Platform (GCP), offered by Google, is a suite of cloud computing services that runs on the same infrastructure that Google uses internally."
+            ]
+        },
+        {
+            "tag": "devops_k8s",
+            "patterns": [
+                "kubernetes",
+                "k8s"
+            ],
+            "responses": [
+                "Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications."
+            ]
+        },
+        {
+            "tag": "devops_jenkins",
+            "patterns": [
+                "jenkins"
+            ],
+            "responses": [
+                "Jenkins is a free and open source automation server. It helps orchestrate the different parts of the software development process."
+            ]
+        },
+        {
+            "tag": "devops_heroku",
+            "patterns": [
+                "heroku"
+            ],
+            "responses": [
+                "Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud."
+            ]
+        },
+        {
+            "tag": "devops_vercel",
+            "patterns": [
+                "vercel"
+            ],
+            "responses": [
+                "Vercel is a platform for frontend frameworks and static sites, built to integrate with your headless content, commerce, or database."
+            ]
+        },
+        {
+            "tag": "devops_netlify",
+            "patterns": [
+                "netlify"
+            ],
+            "responses": [
+                "Netlify is a cloud computing company that offers hosting and serverless backend services for web applications and static websites."
+            ]
+        },
+        {
+            "tag": "devops_digitalocean",
+            "patterns": [
+                "digitalocean",
+                "droplet"
+            ],
+            "responses": [
+                "DigitalOcean is an American cloud infrastructure provider headquartered in New York City with data centers worldwide."
+            ]
+        },
+        {
+            "tag": "devops_nginx",
+            "patterns": [
+                "nginx"
+            ],
+            "responses": [
+                "Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache."
+            ]
+        },
+        {
+            "tag": "devops_apache",
+            "patterns": [
+                "apache server",
+                "httpd"
+            ],
+            "responses": [
+                "The Apache HTTP Server is a free and open-source cross-platform web server software."
+            ]
+        },
+        {
+            "tag": "tool_vscode",
+            "patterns": [
+                "vscode",
+                "visual studio code"
+            ],
+            "responses": [
+                "Visual Studio Code is a source-code editor made by Microsoft for Windows, Linux and macOS."
+            ]
+        },
+        {
+            "tag": "tool_intellij",
+            "patterns": [
+                "intellij",
+                "idea"
+            ],
+            "responses": [
+                "IntelliJ IDEA is an integrated development environment (IDE) written in Java for developing computer software."
+            ]
+        },
+        {
+            "tag": "tool_postman",
+            "patterns": [
+                "postman",
+                "api testing"
+            ],
+            "responses": [
+                "Postman is an API platform for building and using APIs."
+            ]
+        },
+        {
+            "tag": "tool_figma",
+            "patterns": [
+                "figma",
+                "design tool"
+            ],
+            "responses": [
+                "Figma is a collaborative interface design tool."
+            ]
+        },
+        {
+            "tag": "concept_rest",
+            "patterns": [
+                "rest api",
+                "restful"
+            ],
+            "responses": [
+                "REST (Representational State Transfer) is a software architectural style that defines a set of constraints to be used for creating Web services."
+            ]
+        },
+        {
+            "tag": "concept_graphql",
+            "patterns": [
+                "graphql"
+            ],
+            "responses": [
+                "GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data."
+            ]
+        },
+        {
+            "tag": "concept_microservices",
+            "patterns": [
+                "microservices"
+            ],
+            "responses": [
+                "Microservices are an architectural style that structures an application as a collection of services that are highly maintainable and testable."
+            ]
+        },
+        {
+            "tag": "concept_agile",
+            "patterns": [
+                "agile"
+            ],
+            "responses": [
+                "Agile software development creates software through the collaborative effort of self-organizing and cross-functional teams and their customer/end user."
+            ]
+        },
+        {
+            "tag": "concept_tdd",
+            "patterns": [
+                "tdd",
+                "test driven development"
+            ],
+            "responses": [
+                "Test-driven development (TDD) is a software development process relying on software requirements being converted to test cases before software is fully developed."
+            ]
+        },
+        {
+            "tag": "concept_cicd",
+            "patterns": [
+                "ci/cd",
+                "continuous integration"
+            ],
+            "responses": [
+                "CI/CD bridges the gaps between development and operation activities and teams by enforcing automation in building, testing and deployment of applications."
+            ]
+        },
+        {
+            "tag": "concept_oop",
+            "patterns": [
+                "oop",
+                "object oriented"
+            ],
+            "responses": [
+                "Object-oriented programming (OOP) is a programming paradigm based on the concept of 'objects', which can contain data and code."
+            ]
+        },
+        {
+            "tag": "term_foss",
+            "patterns": [
+                "foss",
+                "floss"
+            ],
+            "responses": [
+                "FOSS stands for Free and Open Source Software. FLOSS adds 'Libre' to emphasize freedom."
+            ]
+        },
+        {
+            "tag": "term_copyleft",
+            "patterns": [
+                "copyleft"
+            ],
+            "responses": [
+                "Copyleft is the practice of granting the right to freely distribute and modify intellectual property with the requirement that the same rights be preserved in derivative works."
+            ]
+        },
+        {
+            "tag": "security_owasp",
+            "patterns": [
+                "owasp",
+                "top 10"
+            ],
+            "responses": [
+                "The Open Web Application Security Project (OWASP) is an online community that produces freely-available articles, methodologies, documentation, tools, and technologies in the field of web application security."
+            ]
+        },
+        {
+            "tag": "security_xss",
+            "patterns": [
+                "xss",
+                "cross site scripting"
+            ],
+            "responses": [
+                "Cross-site scripting (XSS) is a type of security vulnerability typically found in web applications. XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users."
+            ]
+        },
+        {
+            "tag": "security_sqli",
+            "patterns": [
+                "sql injection",
+                "sqli"
+            ],
+            "responses": [
+                "SQL injection is a code injection technique, used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution."
+            ]
         }
     ]
 }

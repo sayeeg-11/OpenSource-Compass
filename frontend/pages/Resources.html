@@ -16,7 +16,9 @@
 
   <!-- Global CSS -->
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/resources.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
+  
 </head>
 
 
@@ -40,47 +42,193 @@
   </header>
 
   <main>
-    <section>
-      <h3>Resources</h3>
-      <p>
-        Tutorials, tools, and references to help you start and grow in open
-        source.
-      </p>
+<section class="resources-section">
+  <header class="resources-header">
+    <h3>Learning Resources</h3>
+    <p>Official documentation and trusted guides to help you work efficiently.</p>
+  </header>
 
-      <div class="card-grid">
-        <div class="card">
-          <h4>How to Contribute to Open Source</h4>
-          <p>
-            A step-by-step guide for finding beginner-friendly issues, opening
-            pull requests, and communicating with maintainers.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>Git and GitHub Essentials</h4>
-          <p>
-            Learn Git basics including forking repositories, creating
-            branches, writing commits, and opening pull requests on GitHub.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>Open Source Licensing Explained</h4>
-          <p>
-            Understand common open source licenses and how to choose the right
-            one for your project.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4>Finding Good First Issues</h4>
-          <p>
-            Tips and tools to discover beginner-friendly issues across open
-            source repositories.
-          </p>
-        </div>
+  <div class="resources-list">
+    <div class="resource-tile">
+      <div class="tile-accent" style="background-color: #d4af37;"></div>
+      <div class="tile-icon">📚</div>
+      <div class="tile-content">
+        <span class="tile-meta">Official Docs</span>
+        <h5>GitHub Documentation</h5>
+        <p>Explore GitHub features, workflows, and platform capabilities directly from the source.</p>
+        <a href="https://docs.github.com" target="_blank" rel="noopener">Visit documentation →</a>
       </div>
-    </section>
+    </div>
+
+    <div class="resource-tile">
+      <div class="tile-accent" style="background-color: #1f78b4;"></div>
+      <div class="tile-icon">🗂️</div>
+      <div class="tile-content">
+        <span class="tile-meta">Reference</span>
+        <h5>Git Documentation</h5>
+        <p>A complete and authoritative reference for Git commands and internal concepts.</p>
+        <a href="https://git-scm.com/docs" target="_blank" rel="noopener">View Git docs →</a>
+      </div>
+    </div>
+
+    <div class="resource-tile">
+      <div class="tile-accent" style="background-color: #4ecdc4;"></div>
+      <div class="tile-icon">✏️</div>
+      <div class="tile-content">
+        <span class="tile-meta">Guide</span>
+        <h5>Markdown Guide</h5>
+        <p>Learn Markdown syntax, formatting rules, and best practices for clean documentation.</p>
+        <a href="https://www.markdownguide.org" target="_blank" rel="noopener">Read guide →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="templates-section">
+  <header class="templates-header">
+    <h3>Templates & Assets</h3>
+    <p>Pre-made templates and assets to streamline contributions and documentation. Click any tile to view the template.</p>
+  </header>
+
+  <div class="templates-grid">
+    <div class="template-tile">
+      <div class="tile-icon">📄</div>
+      <div class="tile-content">
+        <h5>Pull Request Template</h5>
+        <p>Standard PR structure for clean, consistent submissions.</p>
+        <a href="../assets/templates/pr-template.md" target="_blank" rel="noopener">View Template →</a>
+      </div>
+    </div>
+
+    <div class="template-tile">
+      <div class="tile-icon">🐛</div>
+      <div class="tile-content">
+        <h5>Issue Templates</h5>
+        <p>Predefined bug report and feature request formats to save time and ensure clarity.</p>
+        <a href="../assets/templates/issue-template.md" target="_blank" rel="noopener">View Templates →</a>
+      </div>
+    </div>
+
+    <div class="template-tile">
+      <div class="tile-icon">📘</div>
+      <div class="tile-content">
+        <h5>README Structure</h5>
+        <p>Minimal, effective README layout to guide new contributors and users.</p>
+        <a href="../assets/templates/readme.md" target="_blank" rel="noopener">View Template →</a>
+      </div>
+    </div>
+
+    <div class="template-tile">
+      <div class="tile-icon">🤝</div>
+      <div class="tile-content">
+        <h5>CONTRIBUTING.md</h5>
+        <p>Sample contribution guidelines to make contributing simple and clear.</p>
+        <a href="../assets/templates/contributing.md" target="_blank" rel="noopener">View Template →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="checklists-section">
+  <header class="checklists-header">
+    <h3>Quick Checklists</h3>
+    <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
+  </header>
+
+  <div class="checklists-grid">
+    <div class="checklist-tile">
+      <div class="tile-icon">📝</div>
+      <div class="tile-content">
+        <h5>Before Opening a PR</h5>
+        <ul>
+          <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
+          <li><span class="checkmark">✔</span> Linked issue referenced</li>
+          <li><span class="checkmark">✔</span> PR title is clear</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="checklist-tile">
+      <div class="tile-icon">📂</div>
+      <div class="tile-content">
+        <h5>Before Choosing a Repo</h5>
+        <ul>
+          <li><span class="checkmark">✔</span> Recent commits</li>
+          <li><span class="checkmark">✔</span> Maintainer responses</li>
+          <li><span class="checkmark">✔</span> Beginner labels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tools-section">
+  <header class="tools-header">
+    <h3>Contributor Tools</h3>
+    <p>Essential tools to streamline your workflow and improve contributions.</p>
+  </header>
+
+  <div class="tools-grid">
+    <a class="tool-tile" href="https://code.visualstudio.com" target="_blank" rel="noopener">
+      <div class="tile-icon">💻</div>
+      <div class="tile-content">
+        <h5>VS Code</h5>
+        <p>Popular code editor for efficient development.</p>
+      </div>
+    </a>
+
+    <a class="tool-tile" href="https://cli.github.com" target="_blank" rel="noopener">
+      <div class="tile-icon">🛠️</div>
+      <div class="tile-content">
+        <h5>GitHub CLI</h5>
+        <p>Command-line GitHub workflow for quick operations.</p>
+      </div>
+    </a>
+
+    <a class="tool-tile" href="https://www.diffchecker.com" target="_blank" rel="noopener">
+      <div class="tile-icon">🔍</div>
+      <div class="tile-content">
+        <h5>Diff Checker</h5>
+        <p>Compare code changes visually and catch errors quickly.</p>
+      </div>
+    </a>
+  </div>
+</section>
+<section class="beginner-issues-section">
+  <header class="beginner-header">
+    <h3>Find Beginner-Friendly Issues</h3>
+    <p>Discover repositories and issues curated for first-time contributors.</p>
+  </header>
+
+  <div class="beginner-grid">
+    <a class="beginner-tile" href="https://goodfirstissue.dev" target="_blank" rel="noopener">
+      <div class="tile-icon">🎯</div>
+      <div class="tile-content">
+        <h5>Good First Issue</h5>
+        <p>Curated beginner-friendly issues across open-source projects.</p>
+      </div>
+    </a>
+
+    <a class="beginner-tile" href="https://up-for-grabs.net" target="_blank" rel="noopener">
+      <div class="tile-icon">🚀</div>
+      <div class="tile-content">
+        <h5>Up For Grabs</h5>
+        <p>Projects actively welcoming new contributors to join.</p>
+      </div>
+    </a>
+
+    <a class="beginner-tile" href="https://www.firsttimersonly.com" target="_blank" rel="noopener">
+      <div class="tile-icon">👶</div>
+      <div class="tile-content">
+        <h5>First Timers Only</h5>
+        <p>Repositories specifically made for first-time contributors.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+
+
+
 
     <section id="quiz-section">
       <div

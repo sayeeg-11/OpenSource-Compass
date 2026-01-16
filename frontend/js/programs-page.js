@@ -5,8 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('programs-grid');
   if (!grid) return;
 
-  grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-secondary);">Loading programs…</p>';
+  // -------------------------
+  // Loading state
+  // -------------------------
+  grid.innerHTML = `
+    <p class="status-message">Loading programs…</p>
+  `;
 
+  // Fetch program data
   fetch('../data/programs.json')
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -14,56 +20,81 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then((programs) => {
       if (!Array.isArray(programs) || programs.length === 0) {
-        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-secondary);">No programs found.</p>';
+        grid.innerHTML = `<p class="status-message">No programs found.</p>`;
         return;
       }
 
-      const sorted = [...programs].sort((a, b) => String(a?.name || '').localeCompare(String(b?.name || '')));
+      // Sort programs alphabetically
+      const sorted = [...programs].sort((a, b) =>
+        String(a?.name || '').localeCompare(String(b?.name || ''))
+      );
 
-      grid.innerHTML = sorted
-        .map((p) => {
-          const name = escapeHtml(p?.name || 'Open Source Program');
-          const desc = escapeHtml(p?.description || '');
-          const timeline = escapeHtml(p?.timeline || '');
-          const difficulty = escapeHtml(p?.difficulty || '');
-          const url = typeof p?.url === 'string' ? p.url.trim() : '';
-
-          return `
-            <div class="card">
-              <h4>${name}</h4>
-              <p>${desc}</p>
-              <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">
-                ${timeline ? `<span><strong>Timeline:</strong> ${timeline}</span>` : ''}
-                ${timeline && difficulty ? '<span style="margin:0 0.5rem;">·</span>' : ''}
-                ${difficulty ? `<span><strong>Level:</strong> ${difficulty}</span>` : ''}
-              </p>
-             ${url ? `<p style="margin-top: 1rem;">
-  <a
-    href="${url}"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit official website of ${name} (opens in a new tab)"
-    style="color: var(--deep-navy); font-weight: 600; text-decoration: none;"
-  >
-    <i
-      class="fas fa-arrow-up-right-from-square"
-      aria-hidden="true"
-      style="margin-right:0.4rem;color:var(--primary-gold);"
-    ></i>
-    Official website
-  </a>
-</p>` : ''}
-
-            </div>
-          `;
-        })
-        .join('');
+      // Render cards
+      grid.innerHTML = sorted.map(renderProgramCard).join('');
     })
     .catch((err) => {
       console.error('Failed to load programs:', err);
-      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#a12b2b;">Failed to load programs. Please refresh.</p>';
+      grid.innerHTML = `<p class="status-message error">Failed to load programs. Please refresh the page.</p>`;
     });
 });
+
+function renderProgramCard(program) {
+  const name = escapeHtml(program?.name || 'Open Source Program');
+  const desc = escapeHtml(program?.description || 'No description provided.');
+  const timeline = escapeHtml(program?.timeline || 'N/A');
+  const difficulty = escapeHtml(program?.difficulty || 'Beginner');
+  const stipend = escapeHtml(program?.stipend || 'N/A');
+  const contributors = program?.contributors || 0;
+  const organizations = program?.organizations || 0;
+  const issues = program?.issues || 0;
+  const skills = Array.isArray(program?.skills) ? program.skills : program?.contributions || [];
+  const url = typeof program?.url === 'string' ? program.url.trim() : '';
+
+  // Difficulty color
+  let diffColor = 'var(--primary-gold)';
+  if (difficulty.toLowerCase().includes('intermediate')) diffColor = 'var(--secondary-gold)';
+  if (difficulty.toLowerCase().includes('advanced')) diffColor = '#e74c3c';
+
+  // Skills / Contributions tags
+  const skillsHtml = skills.length
+    ? `<div class="card-skills">
+         ${skills.map(s => `<span class="skill-tag">${escapeHtml(s)}</span>`).join('')}
+       </div>`
+    : '';
+
+  // Stats badges
+  const statsHtml = `
+    <div class="card-stats">
+      <span><i class="fas fa-users"></i> ${contributors} contributors</span>
+      <span><i class="fas fa-building"></i> ${organizations} orgs</span>
+      <span><i class="fas fa-exclamation-circle"></i> ${issues} issues</span>
+    </div>
+  `;
+
+  return `
+    <div class="program-card">
+      <div class="card-accent" style="background: ${diffColor};"></div>
+      <div class="card-content">
+        <h4 class="card-title">${name}</h4>
+        <p class="card-desc">${desc}</p>
+        
+        <div class="card-meta-grid">
+          <div><i class="fas fa-calendar-alt"></i> <strong>Timeline:</strong> ${timeline}</div>
+          <div><i class="fas fa-layer-group"></i> <strong>Level:</strong> <span style="color:${diffColor}; font-weight:600;">${difficulty}</span></div>
+          <div><i class="fas fa-dollar-sign"></i> <strong>Stipend:</strong> ${stipend}</div>
+        </div>
+
+        ${skillsHtml}
+        ${statsHtml}
+
+        ${url ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="card-link">
+          Visit Official Website <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>` : ''}
+      </div>
+    </div>
+  `;
+}
+
 
 function escapeHtml(str) {
   return String(str)

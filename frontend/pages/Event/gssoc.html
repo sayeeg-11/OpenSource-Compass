@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OpenSource Compass</title>
+    <title>GirlScript Summer of Code - OpenSource Compass</title>
     <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete guide to GirlScript Summer of Code (GSSOC) - Learn about program structure, benefits, and how to apply for this beginner-friendly open source program.">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -29,6 +29,10 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--white);
             color: var(--text-dark);
@@ -43,220 +47,1071 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         header h1 {
             color: var(--primary-blue);
             font-size: 22px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
         }
 
         nav a {
-            margin-left: 24px;
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: var(--secondary-blue);
         }
 
+        nav a:hover::after {
+            width: 100%;
+        }
+
         /* ---------- Hero Section ---------- */
         .hero {
-            background-color: var(--light-gray);
+            background: linear-gradient(135deg, #0d1f4d 0%, #1F3C88 50%, #2a4a9e 100%);
+            color: var(--white);
+            padding: 100px 8% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 16px;
+            font-weight: 500;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero .intro {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            max-width: 750px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero .intro strong {
+            color: #FFD700;
+            font-weight: 600;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            will-change: transform, box-shadow;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            transform: skewX(-20deg);
+            transition: transform 0.45s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+        }
+
+        .btn:hover::before {
+            transform: translateX(240%) skewX(-20deg);
+        }
+
+        /* ---------- About Section ---------- */
+        .about-section {
             padding: 80px 8%;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
+        }
+
+        .about-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
+            border-radius: 2px;
+        }
+
+        .about-section p {
+            text-align: center;
+            max-width: 800px;
+            margin: 40px auto 50px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* ---------- Features Section ---------- */
+        .features-section {
+            padding: 80px 8%;
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
+        }
+
+        .features-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .features-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
+            border-radius: 2px;
+        }
+
+        .features-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 36px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out both;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        /* Added animation delays for the new cards */
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            box-shadow: 0 25px 60px rgba(31, 60, 136, 0.25);
+            border-color: var(--secondary-blue);
+        }
+
+        .feature-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(77, 150, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotate(-10deg);
+            box-shadow: 0 12px 30px rgba(77, 150, 255, 0.4);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            text-align: left;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* ---------- Benefits Section ---------- */
+        .benefits-section {
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #0d1f4d 0%, var(--primary-blue) 50%, #2C4A8F 100%);
+            color: var(--white);
+        }
+
+        .benefits-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .benefits-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+            border-radius: 2px;
+        }
+
+        .benefits-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInScale 0.6s ease-out both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .benefit-card:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translateY(-12px) rotate(-1deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            border-color: rgba(255, 215, 0, 0.8);
+        }
+
+        .benefit-card:hover::after {
+            opacity: 1;
+        }
+
+        .benefit-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.25) rotate(10deg);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .benefit-card p {
+            text-align: left;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ---------- Timeline Section ---------- */
+        .timeline-section {
+            padding: 80px 8%;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+            position: relative;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
+        }
+
+        .timeline-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .timeline-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
+            border-radius: 2px;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary-blue), var(--success-green));
+            z-index: 0;
+        }
+
+        .timeline-steps {
             display: flex;
             flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-step {
+            display: flex;
+            gap: 24px;
             align-items: flex-start;
         }
 
-        .hero h2 {
-            font-size: 42px;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            font-size: 18px;
-            margin-bottom: 32px;
-        }
-
-        .hero button {
-            background-color: var(--secondary-blue);
+        .step-marker {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
             color: var(--white);
-            border: none;
-            padding: 14px 28px;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(31, 60, 136, 0.3);
+            position: relative;
+            border: 3px solid var(--white);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero button:hover {
-            background-color: var(--primary-blue);
+        .timeline-step:hover .step-marker {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(31, 60, 136, 0.5);
         }
 
-        /* ---------- Section Common ---------- */
-        section {
-            padding: 64px 8%;
+        .step-info {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
+            padding: 28px;
+            border-radius: 16px;
+            border-left: 5px solid var(--secondary-blue);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInLeft 0.6s ease-out both;
         }
 
-        section h3 {
-            font-size: 28px;
+        .timeline-step:nth-child(1) .step-info { animation-delay: 0.1s; }
+        .timeline-step:nth-child(2) .step-info { animation-delay: 0.2s; }
+        .timeline-step:nth-child(3) .step-info { animation-delay: 0.3s; }
+        .timeline-step:nth-child(4) .step-info { animation-delay: 0.4s; }
+
+        .step-info:hover {
+            transform: translateX(12px) scale(1.02);
+            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
+            border-left-width: 8px;
+        }
+
+        .step-info h3 {
+            font-size: 1.5rem;
             color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .step-info .step-date {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
             margin-bottom: 12px;
         }
 
-        section p {
-            max-width: 700px;
-            margin-bottom: 32px;
+        .step-info p {
+            color: var(--text-dark);
+            line-height: 1.7;
         }
 
-        /* ---------- Cards ---------- */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
+        /* ---------- CTA Section ---------- */
+        .cta-section {
+            padding: 80px 8%;
+            background: linear-gradient(180deg, var(--light-gray) 0%, var(--white) 100%);
+            text-align: center;
+            position: relative;
         }
 
-        .card {
-            background-color: var(--white);
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
         }
 
-        .card h4 {
-            margin-bottom: 10px;
-            color: var(--secondary-blue);
-        }
-
-        .card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .card-link:hover .card {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.12);
-        }
-        /* ---------- Programs Section ---------- */
-        .programs {
-            background-color: var(--light-gray);
-        }
-
-        .badge {
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
             display: inline-block;
-            background-color: var(--success-green);
-            color: var(--white);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-top: 10px;
+            width: 100%;
+        }
+
+        .cta-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
+            border-radius: 2px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .cta-buttons-large {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 18px;
         }
 
         /* ---------- Footer ---------- */
         footer {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a3566 100%);
             color: var(--white);
             text-align: center;
-            padding: 24px;
-            margin-top: 40px;
+            padding: 32px 8%;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
 
         footer p {
-            font-size: 14px;
+            font-size: 15px;
+            opacity: 0.9;
         }
 
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 32px;
+            header {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px 5%;
             }
+
+            nav {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .hero {
+                padding: 60px 5% 50px;
+            }
+
+            .hero .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .about-section,
+            .features-section,
+            .benefits-section,
+            .timeline-section,
+            .cta-section {
+                padding: 60px 5%;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .step-marker {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .step-info {
+                padding: 20px;
+            }
+
+            .features-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .cta-buttons-large {
+                flex-direction: column;
+            }
+
+            .btn-large {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 14px;
+            }
+
+            .step-info h3,
+            .feature-card h3,
+            .benefit-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--secondary-blue);
+            outline-offset: 2px;
         }
     </style>
 </head>
 
 <body>
-<!-- Navbar -->
-<header>
-    <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
-    <nav>
-        <a href="../../../index.html">Home</a>
-        <a href="../guides.html">Guides</a>
-        <a href="../programs.html">Programs</a>
-        <a href="../Resources.html">Resources</a>
-        <a href="../Contribute.html">Contribute</a>
-    </nav>
-</header>
+    <header>
+        <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
+        <nav>
+            <a href="../../../index.html">Home</a>
+            <a href="../guides.html">Guides</a>
+            <a href="../programs.html">Programs</a>
+            <a href="../Resources.html">Resources</a>
+            <a href="../Contribute.html">Contribute</a>
+        </nav>
+    </header>
 
-<div class="py-5"> 
-    <h1 class="display-5 fw-bold text-center" style="color: #1F3C88;">GirlScript Summer of Code</h1><br>
-
-    <div class="col-lg-6 mx-auto"> 
-        <p class="fs-5 mb-4 text-center">
-  Large-scale open-source program for students.
-</p>
-
-    </div> 
-</div>
-
-<iframe 
-  src="../../library/guides_pdf/GSSOC.pdf" 
-  width="1000" 
-  height="600" 
-  style="border:1px solid #ccc; width: 100%;"
-  title="Embedded PDF">
-</iframe>
-
-        <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>GirlScript Summer of Code</h1>
+            <p class="subtitle">Large-scale open-source program for students</p>
+            <p class="intro">
+                GirlScript Summer of Code (GSSOC) is a <strong>3-month long open source program</strong> designed to inspire students to explore technology and make their first meaningful open-source contribution. Despite the name, GSSOC is open to <strong>all genders</strong> and welcomes beginners and experts alike.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://gssoc.girlscript.tech/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    Official GSSOC Portal
+                </a>
+            </div>
         </div>
-    
+    </section>
 
-<!-- Programs Section -->
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
+    <section class="about-section">
+        <h2>About the Program</h2>
+        <p>
+            GirlScript Summer of Code is a nationwide summer program that connects students with mentors and projects to help them get started in open source. The program runs for 3 months (typically March - May) and features a vast selection of projects across various technologies, making it perfect for beginners and experienced contributors alike.
+        </p>
+    </section>
 
-    <div class="card-container">
-        <a href="https://socialwinterofcode.com" class="card-link" target="_blank" rel="noopener noreferrer">
-            <div class="card">
-             <h4>Social Winter of Code</h4>
-                <p>Beginner-focused winter open-source program.</p>
-                <span class="badge">Upcoming</span>
+    <section class="features-section">
+        <h2>Why Choose GSSOC?</h2>
+        <p>Discover what makes GirlScript Summer of Code the perfect starting point for your open source journey</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-card-content">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Beginner-Friendly</h3>
+                    <p>Perfect for newcomers! GSSOC is designed to help students take their first steps in open source with guidance from experienced mentors and a supportive community.</p>
+                </div>
             </div>
-        </a>
-        
-        <a href="https://gssoc.girlscript.tech" class="card-link" target="_blank" rel="noopener noreferrer">
-            <div class="card">
-                <h4>GirlScript Summer of Code</h4>
-                <p>Large-scale open-source program for students.</p>
-                <span class="badge">Annual</span>
+            <div class="feature-card">
+                <div class="feature-card-content">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Vast Project Selection</h3>
+                    <p>Choose from hundreds of projects across web development, mobile apps, AI/ML, blockchain, and more. Find the perfect project that matches your interests and skills.</p>
+                </div>
             </div>
-        </a>
-
-        <a href="https://summerofcode.withgoogle.com" class="card-link" target="_blank" rel="noopener noreferrer">
-            <div class="card">
-                <h4>Google Summer of Code</h4>
-                <p>Global program for advanced contributors.</p>
-                <span class="badge">Advanced</span>
+            <div class="feature-card">
+                <div class="feature-card-content">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Mentorship Support</h3>
+                    <p>Get personalized guidance from experienced mentors throughout the program. Learn best practices, code review, and professional development from industry experts.</p>
+                </div>
             </div>
-        </a>
-    </div>
-</section>
+            <div class="feature-card">
+                <div class="feature-card-content">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Real Contributions</h3>
+                    <p>Make meaningful contributions to real-world projects. Build your portfolio, improve your coding skills, and gain experience that employers value.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-content">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Gamified Experience</h3>
+                    <p>Stay motivated with a real-time leaderboard. Earn points for every successful pull request based on the complexity of the task, fostering a healthy competitive spirit.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-content">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Technical Workshops</h3>
+                    <p>Access exclusive live sessions and webinars conducted by industry experts. Learn about Git, GitHub, and various modern tech stacks to boost your development journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Footer -->
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-</footer>
+    <section class="benefits-section">
+        <h2>Program Benefits</h2>
+        <p>Rewards and opportunities that await you in GirlScript Summer of Code</p>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Certificate of Appreciation</h3>
+                <p>Earn a recognized certificate upon successful completion, showcasing your contribution to open source projects.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Swag Kits</h3>
+                <p>Top performers receive exclusive swag kits including T-shirts, stickers, and other cool merchandise.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Internship Opportunities</h3>
+                <p>Top contributors may receive internship opportunities with partner companies, kickstarting your tech career.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Community Network</h3>
+                <p>Connect with fellow contributors, mentors, and industry professionals. Build lasting relationships in the tech community.</p>
+            </div>
+        </div>
+    </section>
 
+    <section class="timeline-section">
+        <h2>Program Timeline</h2>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-steps">
+                <div class="timeline-step">
+                    <div class="step-marker">1</div>
+                    <div class="step-info">
+                        <h3>Registration Opens</h3>
+                        <div class="step-date">February - March</div>
+                        <p>Register on the official GSSOC portal. Create your profile, explore available projects, and start connecting with project maintainers. This is your time to research and find the perfect project.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-marker">2</div>
+                    <div class="step-info">
+                        <h3>Project Selection & Application</h3>
+                        <div class="step-date">March</div>
+                        <p>Browse through hundreds of projects and apply to the ones that interest you. Make initial contributions to show your interest and get selected by project maintainers.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-marker">3</div>
+                    <div class="step-info">
+                        <h3>Coding Period</h3>
+                        <div class="step-date">March - May</div>
+                        <p>The main coding phase begins! Work on your selected projects, make contributions, and collaborate with mentors. Regular evaluations ensure you're on the right track.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-marker">4</div>
+                    <div class="step-info">
+                        <h3>Evaluation & Results</h3>
+                        <div class="step-date">May - June</div>
+                        <p>Final evaluations take place based on your contributions throughout the program. Top performers receive certificates, swag, and internship opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Start Your Open Source Journey?</h2>
+        <p>Join thousands of students in making meaningful contributions to open source projects. Register for GirlScript Summer of Code and take your first step today!</p>
+        <div class="cta-buttons-large">
+            <a href="https://gssoc.girlscript.tech/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
+                <i class="fas fa-external-link-alt"></i>
+                Visit GSSOC Portal
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations with staggered delays
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with enhanced animations
+        document.querySelectorAll('.feature-card, .timeline-step, .benefit-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px) scale(0.95)';
+            el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
 </body>
 </html>
-
-
