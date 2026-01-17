@@ -7,24 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcon(true); // Helper function to set icon
     }
 
-    // 2. Event Delegation for the Theme Button
-    // This works even if the button is injected dynamically by components.js
+    // 2. Navigation Active State Logic (Fix for Issue #316)
+    // This identifies the current page and highlights the corresponding navbar link
+    const highlightActiveLink = () => {
+        // Get the current page name from the URL (e.g., 'programs.html')
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        navLinks.forEach(link => {
+            // Get the filename from the href attribute
+            const linkPath = link.getAttribute("href").split("/").pop();
+            
+            // If the paths match, add the 'active' class
+            if (linkPath === currentPath) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    };
+
+    // Run the highlighter on load
+    highlightActiveLink();
+
+    // 3. Event Delegation for the Theme Button
     document.addEventListener('click', (e) => {
         const toggleBtn = e.target.closest('#themeToggle');
         if (toggleBtn) {
-            // Toggle the class
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             
-            // Update the icon
             updateThemeIcon(isDark);
-
-            // Save preference
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         }
     });
 
-    // 3. Scroll to Top Logic
+    // 4. Scroll to Top Logic
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     
     if (scrollTopBtn) {
@@ -40,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Helper function to update the icon safely
 function updateThemeIcon(isDark) {
-    // We try to find the icon. It might be inside the injected navbar.
     const icon = document.querySelector('#themeToggle i');
     if (icon) {
         if (isDark) {
