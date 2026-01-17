@@ -1,5 +1,20 @@
 # Contributing to OpenSource-Compass
 
+## 🚀 Quick Start (First-Time Contributors)
+
+1. Fork the repository
+2. Clone your fork locally
+3. Open `index.html` using VS Code Live Server
+4. Pick an issue that is assigned to you
+5. Create a new feature branch
+6. Make small, focused changes
+7. Push your branch and open a Pull Request with screenshots
+
+⏱️ Estimated time: 30–60 minutes
+
+---
+
+
 Thank you for your interest in contributing to **OpenSource-Compass** 🎯
 
 This project has evolved from a simple single-page site into a **modular, component-based architecture** using JavaScript components and JSON-driven data. This guide will help you understand the new workflow and contribute confidently without breaking existing features.
@@ -15,7 +30,7 @@ The project now follows a **modular frontend architecture** to improve scalabili
 * Reusable UI elements like **Navbar** and **Footer** are defined in:
 
   ```
-  js/components.js
+  frontend/js/components.js
   ```
 * These components are dynamically injected into pages using JavaScript to avoid duplication.
 
@@ -31,8 +46,8 @@ The project now follows a **modular frontend architecture** to improve scalabili
 2. Include scripts **at the end of the body** in this order:
 
    ```html
-   <script src="js/components.js"></script>
-   <script src="js/your-page-script.js"></script>
+   <script src="frontend/js/components.js"></script>
+   <script src="frontend/js/your-page-script.js"></script>
    ```
 
 ⚠️ **Important:** Always load `components.js` before page-specific scripts to ensure shared components are available.
@@ -73,6 +88,10 @@ Invalid entries may break the search logic and will be rejected.
 ## 🖥️ Local Development
 
 Since the project uses **async JavaScript features** (fetch, dynamic rendering), it must be run via a local server.
+
+> ⚠️ **Note:** Backend setup is optional for beginner contributors.
+> Most first-time contributions should focus on frontend or documentation.
+
 
 ### ▶️ Recommended: VS Code Live Server
 
@@ -176,7 +195,7 @@ Repeated violations may lead to warnings or bans.
 
   * Screenshots of the current state / problem area
 
-PRs or Issues without visuals will be **automatically rejected**.
+To ensure clarity and faster reviews, submissions without visuals may be requested to update before review.
 
 ---
 

@@ -88,4 +88,3 @@ function toggleProfileMenu(e) {
 }
 
 // Note: getCurrentUser() and logout() functions are defined in auth.js
-

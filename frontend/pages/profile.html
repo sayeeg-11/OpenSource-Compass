@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Settings</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav></nav>
+    
+    <div class="auth-container">
+        <h2>Account Settings</h2>
+        <form id="profileForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="editName" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="editEmail" readonly style="background:#f4f4f4">
+            </div>
+            <div class="form-group">
+                <label>New Password (leave blank to keep current)</label>
+                <input type="password" id="editPassword">
+            </div>
+            <button type="submit" class="btn">Save Changes</button>
+            <p id="profileMessage" class="error-message"></p>
+        </form>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/profile2.js"></script>
+</body>
+</html>
