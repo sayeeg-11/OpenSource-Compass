@@ -36,6 +36,9 @@ async function initContributorsPage() {
     visibleContributors = cached;
     setStatus('');
     renderContributorsGrid(grid, visibleContributors);
+    document.getElementById("page-skeleton")?.classList.add("hidden");
+    document.getElementById("page-content")?.classList.remove("hidden");
+
     void refreshInBackground();
   } else {
     await loadAndRender();
@@ -77,9 +80,15 @@ async function loadAndRender() {
 
     setStatus('');
     renderContributorsGrid(grid, visibleContributors);
+    document.getElementById("page-skeleton")?.classList.add("hidden");
+    document.getElementById("page-content")?.classList.remove("hidden");
+
   } catch (err) {
     renderEmptyState(grid);
     setStatus(formatError(err), true);
+    document.getElementById("page-skeleton")?.classList.add("hidden");
+    document.getElementById("page-content")?.classList.remove("hidden");
+
   }
 }
 

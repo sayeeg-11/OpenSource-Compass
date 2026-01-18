@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((programs) => {
       if (!Array.isArray(programs) || programs.length === 0) {
         grid.innerHTML = `<p class="status-message">No programs found.</p>`;
+        document.getElementById("page-skeleton")?.classList.add("hidden");
+        document.getElementById("page-content")?.classList.remove("hidden");
         return;
       }
 
@@ -31,10 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Render cards
       grid.innerHTML = sorted.map(renderProgramCard).join('');
+      document.getElementById("page-skeleton")?.classList.add("hidden");
+      document.getElementById("page-content")?.classList.remove("hidden");
+
     })
     .catch((err) => {
       console.error('Failed to load programs:', err);
       grid.innerHTML = `<p class="status-message error">Failed to load programs. Please refresh the page.</p>`;
+      document.getElementById("page-skeleton")?.classList.add("hidden");
+      document.getElementById("page-content")?.classList.remove("hidden");
     });
 });
 

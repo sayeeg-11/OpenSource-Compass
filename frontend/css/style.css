@@ -323,3 +323,46 @@ footer a {
 #level-chain-wrapper::-webkit-scrollbar {
   display: none;
 }
+/* ================================
+   Skeleton Loader (Global)
+================================ */
+
+/* hide helper */
+.hidden {
+  display: none !important;
+}
+
+/* skeleton container */
+.skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 30px auto;
+  max-width: 900px;
+  padding: 20px;
+}
+
+/* skeleton shimmering lines */
+.skeleton-line {
+  height: 18px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    #1a1a1a 25%,
+    #2a2a2a 50%,
+    #1a1a1a 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+/* shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+

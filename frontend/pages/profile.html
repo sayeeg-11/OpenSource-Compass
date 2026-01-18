@@ -7,7 +7,16 @@
 </head>
 <body>
     <nav></nav>
-    
+    <main>
+  <!-- ✅ Skeleton Loader -->
+  <div id="page-skeleton" class="skeleton-wrapper">
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line"></div>
+  </div>
+
+  <!-- ✅ Actual Page Content -->
+  <div id="page-content" class="hidden">
     <div class="auth-container">
         <h2>Account Settings</h2>
         <form id="profileForm">
@@ -18,7 +27,7 @@
             <div class="form-group">
                 <label>Email Address</label>
                 <input type="email" id="editEmail" readonly style="background:#f4f4f4">
-            </div>
+            </div
             <div class="form-group">
                 <label>New Password (leave blank to keep current)</label>
                 <input type="password" id="editPassword">
@@ -27,8 +36,12 @@
             <p id="profileMessage" class="error-message"></p>
         </form>
     </div>
+   </div>
+</main>
 
     <script src="../js/auth.js"></script>
     <script src="../js/profile2.js"></script>
+    <script src="../js/theme.js"></script>
+
 </body>
 </html>

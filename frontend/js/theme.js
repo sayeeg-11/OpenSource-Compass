@@ -69,3 +69,16 @@ function updateThemeIcon(isDark) {
         }
     }
 }
+// ✅ Common Skeleton Loader for all pages
+window.addEventListener("load", () => {
+  const skeleton = document.getElementById("page-skeleton");
+  const content = document.getElementById("page-content");
+
+  if (!skeleton || !content) return;
+
+  setTimeout(() => {
+    skeleton.classList.add("hidden");
+    content.classList.remove("hidden");
+  }, 2000);
+});
+
