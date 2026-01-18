@@ -1,195 +1,185 @@
 /* =========================
+   CONSTANTS & STORAGE KEYS
+========================= */
+const STORAGE_KEYS = {
+  COMPLETED_STEPS: "completedSteps",
+  THEME: "theme"
+};
+
+/* =========================
    DATA
 ========================= */
-
-// Contribution workflow steps
 const workflowSteps = [
-  {
-    id: 1,
-    title: "Fork the Repository",
-    description: "Create your own copy of the repository using the Fork button on GitHub.",
-    icon: "🍴",
-    code: "git clone https://github.com/your-username/repository.git\ncd repository"
-  },
-  {
-    id: 2,
-    title: "Clone Your Fork",
-    description: "Clone the forked repository to your local machine.",
-    icon: "📥",
-    code: "git clone https://github.com/your-username/repository.git\ncd repository"
-  },
-  {
-    id: 3,
-    title: "Create a Branch",
-    description: "Always work on a separate branch for features or fixes.",
-    icon: "🌿",
-    code: "git checkout -b feature/your-feature-name"
-  },
-  {
-    id: 4,
-    title: "Make Your Changes",
-    description: "Implement changes and commit them with a clear message.",
-    icon: "✏️",
-    code: "git add .\ngit commit -m \"feat: add new feature\""
-  },
-  {
-    id: 5,
-    title: "Push Changes",
-    description: "Push your branch to GitHub.",
-    icon: "📤",
-    code: "git push origin feature/your-feature-name"
-  },
-  {
-    id: 6,
-    title: "Open a Pull Request",
-    description: "Create a PR with a clear description of your work.",
-    icon: "🔄",
-    code: "# Go to GitHub\n# Click 'Compare & pull request'"
-  }
+  { id: 1, title: "Fork the Repository", description: "Create your own copy of the repository using the Fork button on GitHub.", icon: "🍴", code: "git clone https://github.com/your-username/repository.git\ncd repository" },
+  { id: 2, title: "Clone Your Fork", description: "Clone the forked repository to your local machine.", icon: "📥", code: "git clone https://github.com/your-username/repository.git\ncd repository" },
+  { id: 3, title: "Create a Branch", description: "Always work on a separate branch for features or fixes.", icon: "🌿", code: "git checkout -b feature/your-feature-name" },
+  { id: 4, title: "Make Your Changes", description: "Implement changes and commit them with a clear message.", icon: "✏️", code: "git add .\ngit commit -m \"feat: add new feature\"" },
+  { id: 5, title: "Push Changes", description: "Push your branch to GitHub.", icon: "📤", code: "git push origin feature/your-feature-name" },
+  { id: 6, title: "Open a Pull Request", description: "Create a PR with a clear description of your work.", icon: "🔄", code: "# Go to GitHub\n# Click 'Compare & pull request'" }
 ];
-
-// Contribution guidelines
-const contributionGuidelines = {
-  dos: [
-    "Discuss large changes via issues first",
-    "Follow CONTRIBUTING.md rules",
-    "Write meaningful commit messages",
-    "Add tests when required",
-    "Keep PRs small and focused",
-    "Respond to review comments"
-  ],
-  donts: [
-    "Mix unrelated changes in one PR",
-    "Ignore code style rules",
-    "Skip tests",
-    "Merge without review",
-    "Commit directly to main branch",
-    "Forget documentation updates"
-  ]
-};
 
 /* =========================
    INIT
 ========================= */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  applySavedTheme();
   renderWorkflowSteps();
-  renderGuidelines();
+  restoreProgress();
   setupProgressTracking();
   setupCopyButtons();
-  setupSmoothScroll();
+  setupSearch();
+  setupThemeToggle();
+  setupKeyboardNavigation();
 });
 
 /* =========================
-   RENDER FUNCTIONS
+   RENDER WORKFLOW
 ========================= */
-
 function renderWorkflowSteps() {
-  const container = document.getElementById('workflowContainer');
-  if (!container) return;
-
+  const container = document.getElementById("workflowContainer");
   container.innerHTML = workflowSteps.map(step => `
-    <div class="workflow-step" data-step="${step.id}">
+    <div class="workflow-step" data-step="${step.id}" tabindex="0">
+      <span class="status-badge pending">⏳ Pending</span>
       <div class="workflow-step-number">${step.id}</div>
       <div class="workflow-step-icon">${step.icon}</div>
       <h3>${step.title}</h3>
       <p>${step.description}</p>
 
-      <div class="code-block">
+      <button class="toggle-code">Show Code</button>
+      <div class="code-block hidden">
         <button class="copy-btn">Copy</button>
         <pre>${step.code}</pre>
       </div>
     </div>
-  `).join('');
-}
-
-function renderGuidelines() {
-  renderList('.dos-list', contributionGuidelines.dos, '✓', 'check-icon');
-  renderList('.donts-list', contributionGuidelines.donts, '✕', 'cross-icon');
-}
-
-function renderList(selector, items, symbol, iconClass) {
-  const list = document.querySelector(selector);
-  if (!list) return;
-
-  list.innerHTML = items.map(item => `
-    <li>
-      <span class="${iconClass}">${symbol}</span>
-      <span>${item}</span>
-    </li>
-  `).join('');
+  `).join("");
 }
 
 /* =========================
-   INTERACTIONS
+   PROGRESS (LocalStorage)
 ========================= */
-
 function setupProgressTracking() {
-  const steps = document.querySelectorAll('.workflow-step');
-  const progressFill = document.getElementById('progressFill');
-  if (!steps.length || !progressFill) return;
+  const steps = document.querySelectorAll(".workflow-step");
+  const progressFill = document.getElementById("progressFill");
 
-  steps.forEach((step, index) => {
-    step.addEventListener('click', () => {
-      step.classList.add('completed');
-
-      const completed = document.querySelectorAll('.workflow-step.completed').length;
-      progressFill.style.width = `${(completed / steps.length) * 100}%`;
-
-      highlightNextStep(steps, index);
-    });
+  steps.forEach(step => {
+    step.addEventListener("click", () => markCompleted(step, steps, progressFill));
   });
 }
 
-function highlightNextStep(steps, index) {
-  if (index >= steps.length - 1) return;
+function markCompleted(step, steps, progressFill) {
+  const id = step.dataset.step;
+  step.classList.add("completed");
+  updateBadge(step, "completed");
 
-  const next = steps[index + 1];
-  next.classList.add('highlight');
-  next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const completed = getCompletedSteps();
+  if (!completed.includes(id)) {
+    completed.push(id);
+    localStorage.setItem(STORAGE_KEYS.COMPLETED_STEPS, JSON.stringify(completed));
+  }
 
-  setTimeout(() => next.classList.remove('highlight'), 2000);
+  progressFill.style.width = `${(completed.length / steps.length) * 100}%`;
 }
 
-function setupCopyButtons() {
-  document.addEventListener('click', e => {
-    if (!e.target.classList.contains('copy-btn')) return;
+function restoreProgress() {
+  const completed = getCompletedSteps();
+  const steps = document.querySelectorAll(".workflow-step");
+  const progressFill = document.getElementById("progressFill");
 
+  steps.forEach(step => {
+    if (completed.includes(step.dataset.step)) {
+      step.classList.add("completed");
+      updateBadge(step, "completed");
+    }
+  });
+
+  progressFill.style.width = `${(completed.length / steps.length) * 100}%`;
+}
+
+function getCompletedSteps() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_STEPS)) || [];
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+function updateBadge(step, status) {
+  const badge = step.querySelector(".status-badge");
+  badge.className = `status-badge ${status}`;
+  badge.textContent = status === "completed" ? "✅ Completed" : "🔥 Current";
+}
+
+/* =========================
+   CODE TOGGLE & COPY
+========================= */
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("toggle-code")) {
+    const block = e.target.nextElementSibling;
+    block.classList.toggle("hidden");
+    e.target.textContent = block.classList.contains("hidden") ? "Show Code" : "Hide Code";
+  }
+
+  if (e.target.classList.contains("copy-btn")) {
     const pre = e.target.nextElementSibling;
-    if (!pre) return;
+    navigator.clipboard.writeText(pre.innerText);
+    e.target.textContent = "Copied!";
+    setTimeout(() => e.target.textContent = "Copy", 1500);
+  }
+});
 
-    navigator.clipboard.writeText(pre.innerText).then(() => {
-      e.target.textContent = 'Copied!';
-      e.target.classList.add('copied');
+/* =========================
+   SEARCH FILTER
+========================= */
+function setupSearch() {
+  const search = document.getElementById("stepSearch");
+  if (!search) return;
 
-      setTimeout(() => {
-        e.target.textContent = 'Copy';
-        e.target.classList.remove('copied');
-      }, 2000);
-    });
-  });
-}
-
-function setupSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(anchor.getAttribute('href'))?.scrollIntoView({
-        behavior: 'smooth'
-      });
+  search.addEventListener("input", () => {
+    const value = search.value.toLowerCase();
+    document.querySelectorAll(".workflow-step").forEach(step => {
+      step.style.display = step.innerText.toLowerCase().includes(value) ? "block" : "none";
     });
   });
 }
 
 /* =========================
-   DEMO HELP
+   THEME TOGGLE
 ========================= */
+function setupThemeToggle() {
+  const toggle = document.getElementById("themeToggle");
+  if (!toggle) return;
 
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(STORAGE_KEYS.THEME,
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  });
+}
+
+function applySavedTheme() {
+  const theme = localStorage.getItem(STORAGE_KEYS.THEME);
+  if (theme === "dark") document.body.classList.add("dark");
+}
+
+/* =========================
+   KEYBOARD NAVIGATION
+========================= */
+function setupKeyboardNavigation() {
+  const steps = [...document.querySelectorAll(".workflow-step")];
+
+  document.addEventListener("keydown", e => {
+    const active = document.activeElement;
+    const index = steps.indexOf(active);
+
+    if (e.key === "ArrowRight" && index < steps.length - 1) steps[index + 1].focus();
+    if (e.key === "ArrowLeft" && index > 0) steps[index - 1].focus();
+    if (e.key === "Enter" && active.classList.contains("workflow-step")) active.click();
+  });
+}
+
+/* =========================
+   DEMO PR SIMULATION
+========================= */
 function simulatePR() {
-  alert(
-    "🎉 Great job!\n\nNext steps on GitHub:\n" +
-    "1. Open your fork\n" +
-    "2. Click 'Compare & pull request'\n" +
-    "3. Fill PR details\n" +
-    "4. Submit for review"
-  );
+  alert("🎉 PR Simulation Complete!\nYou're now Open Source Ready 🚀");
 }
