@@ -2,1710 +2,221 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>OpenSource Compass - Classic Edition</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;500&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap"
-      rel="stylesheet"
+    <meta property="og:title" content="OpenSource Compass" />
+    <meta property="og:description" content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
+    <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
+    <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
+    <meta property="og:type" content="website" />
+    <title>OpenSource Compass</title>
+    <meta
+      name="description"
+      content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources."
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <style>
-      :root {
-        --primary-gold: #d4af37;
-        --secondary-gold: #b8860b;
-        --deep-navy: #1b263b;
-        --warm-cream: #fdf4e3;
-        --light-parchment: #fff8e7;
-        --charcoal-dark: #2c2c2c;
-        --text-secondary: #5a5a5a;
-        --success-emerald: #2e8b57;
-        --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
-        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Crimson Text", Georgia, serif;
-        font-size: 15px; /* Base font smaller */
-        line-height: 1.7;
-        background: linear-gradient(
-          135deg,
-          var(--light-parchment) 0%,
-          var(--warm-cream) 100%
-        );
-        color: var(--charcoal-dark);
-        overflow-x: hidden;
-      }
-
-      /* Navbar - Smaller & Balanced */
-      header {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 3px solid var(--primary-gold);
-        padding: 1rem 6%;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: var(--shadow-main);
-      }
-
-      .navbar-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      header h1 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(1.6rem, 3vw, 1.9rem); /* Smaller logo */
-        font-weight: 700;
-        background: linear-gradient(
-          135deg,
-          var(--deep-navy) 0%,
-          var(--primary-gold) 70%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -0.01em;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--charcoal-dark) !important;
-        font-family: "Inter", -apple-system, sans-serif;
-        font-weight: 500;
-        font-size: 0.95rem; /* Smaller nav links */
-        padding: 0.4rem 0;
-        position: relative;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-
-      .nav-links a::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px; /* Thinner underline */
-        background: linear-gradient(
-          90deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateX(-50%);
-        border-radius: 1px;
-      }
-
-      .nav-links a:hover {
-        color: var(--deep-navy) !important;
-        transform: translateY(-1px);
-      }
-
-      .nav-links a:hover::before {
-        width: 70%;
-      }
-     .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1100; /* 🔥 FIX */
-}
-
-
-.hamburger span {
-  width: 24px;
-  height: 2.5px;
-  background: var(--deep-navy);
-  transition: 0.3s;
-}
-
-
-      /* Hero - Smaller Typography */
-      .hero {
-        min-height: 90vh;
-        background: radial-gradient(
-            ellipse at center,
-            rgba(253, 246, 227, 0.8) 0%,
-            transparent 70%
-          ),
-          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23D4AF37" stop-opacity="0.3"/><stop offset="50%" stop-color="%23FDF6E3"/><stop offset="100%" stop-color="%23B8860B" stop-opacity="0.2"/></linearGradient></defs><rect width="1200" height="700" fill="url(%23g)"/><path d="M0 300Q300 150 600 280Q900 400 1200 280L1200 700L0 700Z" fill="%23D4AF37" opacity="0.15"/></svg>')
-            center/cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 3rem 6%;
-        position: relative;
-      }
-
-      .hero-content {
-        max-width: 850px;
-        width: 100%;
-      }
-
-      .hero h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(2.4rem, 6vw, 3.8rem); /* Smaller hero */
-        font-weight: 700;
-        background: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          rgba(255, 255, 255, 0.9) 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 1.5rem;
-        line-height: 1.15;
-        text-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-      }
-
-      .hero p {
-        font-size: clamp(1rem, 2.2vw, 1.2rem); /* Smaller hero text */
-        color: #2c2c2c;
-        margin-bottom: 3rem;
-        max-width: 650px;
-        font-weight: 400;
-        line-height: 1.75;
-      }
-
-      .hero button {
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          var(--primary-gold) 0%,
-          var(--secondary-gold) 100%
-        );
-        color: var(--deep-navy);
-        border: none;
-        padding: 1.1rem 2.8rem;
-        font-size: 1rem;
-        font-weight: 600;
-        font-family: "Inter", sans-serif;
-        border-radius: 50px;
-        cursor: pointer;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        box-shadow:
-          0 8px 20px rgba(212, 175, 55, 0.25),
-          0 4px 10px rgba(0, 0, 0, 0.08);
-        transition:
-          transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-          box-shadow 0.35s ease,
-          filter 0.35s ease;
-      }
-
-      @keyframes bounce {
-        0% { transform: translateY(0); }
-        30% { transform: translateY(-8px); }
-        50% { transform: translateY(0); }
-        70% { transform: translateY(-4px); }
-        100% { transform: translateY(0); }
-      }
-
-      .hero button:hover {
-        animation: bounce 0.6s ease;
-        transform: translateY(-3px);
-        box-shadow:
-          0 16px 40px rgba(212, 175, 55, 0.45),
-          0 8px 18px rgba(0, 0, 0, 0.12);
-        filter: brightness(1.05);
-      }
-
-      .hero button:active {
-        transform: translateY(2px) scale(0.97);
-        box-shadow:
-          0 6px 14px rgba(212, 175, 55, 0.25),
-          0 3px 6px rgba(0, 0, 0, 0.15);
-      }
-
-      .hero button::after {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -120%;
-        width: 60%;
-        height: 200%;
-        background: linear-gradient(
-          120deg,
-          transparent,
-          rgba(255, 255, 255, 0.25),
-          rgba(255, 255, 255, 0.45),
-          rgba(255, 255, 255, 0.25),
-          transparent
-        );
-        transform: skewX(-20deg);
-        opacity: 0;
-        transition: left 0.6s ease, opacity 0.3s ease;
-      }
-
-      .hero button:hover::after {
-        left: 140%;
-        opacity: 1;
-      }
-
-
-      /* Sections - Smaller Typography */
-      section {
-        padding: 5rem 6%;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      section h3 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(2.2rem, 4.5vw, 2.9rem); /* Smaller section titles */
-        font-weight: 700;
-        color: var(--deep-navy);
-        text-align: center;
-        margin-bottom: 1.2rem;
-        position: relative;
-        line-height: 1.2;
-      }
-
-      section h3::after {
-        content: "";
-        display: block;
-        width: 90px;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        margin: 1.2rem auto 0;
-        border-radius: 2px;
-      }
-
-      section p {
-        font-size: 1.05rem; /* Smaller section text */
-        text-align: center;
-        max-width: 750px;
-        margin: 0 auto 3.5rem;
-        color: var(--text-secondary);
-        line-height: 1.75;
-      }
-
-      /* Cards - Smaller Content */
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2.5rem;
-        justify-items: center;
-      }
-
-      .card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-        padding: 2.2rem 2rem;
-        border-radius: 20px;
-        box-shadow: var(--shadow-main);
-        border: 2px solid rgba(212, 175, 55, 0.1);
-        transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        max-width: 360px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .card h4 {
-        font-family: "Playfair Display", serif;
-        font-size: 1.45rem; /* Smaller card titles */
-        color: var(--deep-navy);
-        margin-bottom: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-        line-height: 1.3;
-      }
-
-      .card h4 i {
-        color: var(--primary-gold);
-        font-size: 1.3rem;
-        width: 1.8rem;
-      }
-
-      .card p {
-        color: var(--text-secondary);
-        font-size: 0.98rem; /* Smaller card text */
-        line-height: 1.65;
-      }
-
-      .badge {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--success-emerald), #32cd32);
-        color: white;
-        padding: 0.45rem 1.2rem;
-        border-radius: 25px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin-top: 1.2rem;
-        box-shadow: 0 5px 15px rgba(46, 139, 87, 0.25);
-        letter-spacing: 0.3px;
-      }
-
-      /* Stats - Smaller Numbers */
-      .stats {
-        background: linear-gradient(
-          135deg,
-          var(--primary-gold) 0%,
-          var(--secondary-gold) 50%,
-          var(--primary-gold) 100%
-        );
-        color: var(--deep-navy);
-        text-align: center;
-        padding: 6rem 6%;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 3rem;
-        max-width: 1000px;
-        margin: 3.5rem auto 0;
-      }
-
-      .stat-item h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(2.5rem, 6vw, 3.5rem); /* Smaller stats */
-        font-weight: 700;
-        margin-bottom: 0.6rem;
-        line-height: 1;
-      }
-
-      .stat-item p {
-        font-size: 1rem;
-        font-weight: 500;
-        color: rgba(27, 38, 59, 0.9);
-        font-family: "Inter", sans-serif;
-        letter-spacing: 0.3px;
-      }
-
-      /* Programs Section */
-      .programs {
-        background: linear-gradient(135deg, var(--deep-navy) 0%, #2c3e50 100%);
-        color: white;
-      }
-
-      .programs .card {
-        background: rgba(255, 255, 255, 0.12);
-        color: white;
-        border: 2px solid rgba(255, 255, 255, 0.15);
-      }
-
-      .programs .card h4 {
-        color: var(--warm-cream);
-      }
-
-      .programs .card p {
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      /* Newsletter - Smaller */
-      .newsletter {
-        background: var(--deep-navy);
-        color: white;
-        text-align: center;
-        padding: 6rem 6%;
-      }
-
-      .newsletter h3 {
-        color: white;
-      }
-
-      .newsletter p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.05rem;
-      }
-
-      .newsletter form {
-        max-width: 550px;
-        margin: 2.5rem auto 0;
-        display: flex;
-        gap: 1.2rem;
-        justify-content: center;
-      }
-
-      .newsletter input {
-        flex: 1;
-        max-width: 320px;
-        padding: 1rem 1.8rem;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50px;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        font-size: 0.98rem;
-        font-family: "Inter", sans-serif;
-      }
-
-      .newsletter input::placeholder {
-        color: rgba(255, 255, 255, 0.7);
-      }
-
-      .newsletter button {
-        background: linear-gradient(
-          135deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        color: var(--deep-navy);
-        border: none;
-        padding: 1rem 2.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 0.98rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: "Inter", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-
-      /* Footer - Smaller */
-      footer {
-        background: var(--deep-navy);
-        color: var(--warm-cream);
-        text-align: center;
-        padding: 3rem 6% 2.5rem;
-        font-size: 0.95rem;
-      }
-
-      footer a {
-        color: var(--primary-gold);
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      /* Scroll Button Smaller */
-      #scrollTopBtn {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: linear-gradient(
-          135deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        color: var(--deep-navy);
-        border: none;
-        border-radius: 50%;
-        width: 55px;
-        height: 55px;
-        font-size: 1.1rem;
-        cursor: pointer;
-        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
-        display: none;
-        transition: all 0.35s ease;
-        z-index: 999;
-      }
-
-      /* show translate button smaller */
-      #showTranslateBtn {
-        position: fixed;
-        bottom: 6rem;
-        right: 2rem;
-        background: linear-gradient(
-          135deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        color: var(--deep-navy);
-        border: none;
-        border-radius: 50%;
-        width: 55px;
-        height: 55px;
-        font-size: 1.1rem;
-        cursor: pointer;
-        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
-        display: none;
-        transition: all 0.35s ease;
-        z-index: 999;
-      }
-
-      /* Responsive Adjustments */
-      @media (max-width: 1024px) {
-        .nav-links {
-          gap: 1.5rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        header {
-          padding: 0.9rem 5%;
-        }
-
-        .navbar-container {
-          flex-direction: column;
-          gap: 1.2rem;
-        }
-
-        .nav-links {
-          gap: 1.2rem;
-        }
-
-        section {
-          padding: 4rem 5%;
-        }
-
-        .hero {
-          padding: 2.5rem 5%;
-          min-height: 85vh;
-        }
-      }
-      @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .navbar-container {
-    flex-direction: row;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    display: none;
-    border-bottom: 3px solid var(--primary-gold);
-     transform: translateY(-120%);
-    transition: transform 0.35s ease;
-    z-index: 1000;
-  }
-   .nav-links.active {
-    transform: translateY(0);
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-
-      @media (max-width: 480px) {
-        body {
-          font-size: 14.5px;
-        }
-
-        .nav-links a {
-          font-size: 0.92rem;
-        }
-      }
-
-      #google_translate_element {
-        height: 26px !important;
-        overflow: hidden !important;
-      }
-      /* make class goog-te-combo*/
-      .goog-te-combo {
-        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcZ8Pe2Lye0bUzx3IqnKSmKdBABDRhdKdhuQ&s");
-        background-size: cover;
-        width: 25px !important;
-        height: 25px !important;
-        border: none !important;
-        box-shadow: none !important;
-        cursor: pointer !important;
-        padding: 0px !important;
-        background-position: center !important;
-      }
-
-      /* Hide the "Select Language" option with dropdown */
-      .goog-te-combo option[value=""] select {
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" href="frontend/css/style.css"/>
+    <link rel="stylesheet" href="frontend/css/home.css" />
   </head>
   <body>
-    <!-- Same HTML structure as before, no changes needed -->
-    <header>
-  <div class="navbar-container">
-    <h1>
-      <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
-      OpenSource Compass
-    </h1>
+    <div id="navbar"></div>
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="nav-links" id="nav-links">
-      <a href="home.html">Home</a>
-      <a href="./frontend/pages/guides.html">Guides</a>
-      <a href="./frontend/pages/programs.html">Programs</a>
-      <a href="./frontend/pages/Resources.html">Resources</a>
-      <a href="./frontend/pages/contributors.html">Contributors</a>
-      <a href="./frontend/pages/faq.html">FAQ</a>
-      <a href="./frontend/pages/Contribute.html">Contribute</a>
-    </div>
-  </div>
-</header>
-
-
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Navigate Your Open Source Odyssey</h2>
-        <p>
-          Discover timeless wisdom for open source mastery. From first commit to
-          maintainer status, chart your course with proven guides and legendary
-          programs.
-        </p>
-        <button
-          onclick="document.querySelector('#programs').scrollIntoView({behavior: 'smooth'})"
-        >
-          <i class="fas fa-rocket" style="margin-right: 0.4rem"></i>Launch
-          Journey
-        </button>
-      </div>
-    </section>
-
-    <section id="why">
-      <h3>Why OpenSource Compass?</h3>
-      <p>
-        Timeless principles meet modern open source. Structured paths built from
-        decades of collective wisdom.
-      </p>
-      <div class="card-grid">
-        <div class="card fade-in">
-          <h4><i class="fas fa-seedling"></i> Timeless Foundations</h4>
-          <p>
-            Proven methodologies refined over 20+ years of open source
-            evolution.
-          </p>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fas fa-scroll"></i> Code of Conduct Mastery</h4>
-          <p>Navigate community norms with confidence and cultural fluency.</p>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fas fa-users"></i> Mentor Network</h4>
-          <p>Connect with maintainers who guide thousands annually.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats">
-      <h3>Open Source Impact</h3>
-      <div class="stats-grid">
-        <div class="stat-item fade-in">
-          <h2>50K+</h2>
-          <p>First Contributions</p>
-        </div>
-        <div class="stat-item fade-in">
-          <h2>200+</h2>
-          <p>Programs Tracked</p>
-        </div>
-        <div class="stat-item fade-in">
-          <h2>10K+</h2>
-          <p>Active Mentors</p>
-        </div>
-        <div class="stat-item fade-in">
-          <h2>5Y+</h2>
-          <p>Proven Track Record</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="programs" id="programs">
-      <h3>Legendary Open Source Programs</h3>
-      <p>
-        Curated programs with historical success rates and maintainer insights.
-      </p>
-      <div class="card-grid">
-        <div class="card fade-in">
-          <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
-          <p>
-            India's premier winter program. 85% acceptance for quality
-            proposals.
-          </p>
-          <span class="badge">Jan 2026</span>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
-          <p>3,000+ students mentored. Industry partner stipends.</p>
-          <span class="badge">Summer 2026</span>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
-          <p>Global standard. $3K+ stipends. 20+ years running.</p>
-          <span class="badge">Advanced</span>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fas fa-leaf"></i> Outreachy</h4>
-          <p>Underrepresented voices. Paid internships. 90% retention.</p>
-          <span class="badge">Internship</span>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fas fa-mountain"></i> MLH Season of Code</h4>
-          <p>Hackathon network. Portfolio projects. Live mentorship.</p>
-          <span class="badge">Spring 2026</span>
-        </div>
-        <div class="card fade-in">
-          <h4><i class="fas fa-globe"></i> Linux Foundation Mentorship</h4>
-          <p>Enterprise backing. Kubernetes, LF projects. Paid.</p>
-          <span class="badge">Professional</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="newsletter">
-      <h3>Stay Ahead of Open Source</h3>
-      <p>
-        Weekly dispatches: program deadlines, maintainer AMAs, contribution
-        strategies.
-      </p>
-      <form>
-        <input type="email" placeholder="Your dev email..." required />
-        <button type="submit">
-          <i class="fas fa-paper-plane" style="margin-right: 0.4rem"></i
-          >Subscribe
-        </button>
-      </form>
-    </section>
-
-    <footer>
-      <p>
-        <i
-          class="fas fa-heart"
-          style="color: var(--primary-gold); margin-right: 0.4rem"
-        ></i
-        >© 2026 OpenSource Compass
-        <a
-          href="https://github.com/sayeeg-11/opensource-compass"
-          target="_blank"
-          >GitHub</a
-        >
-      </p>
-    </footer>
-
-    <button id="scrollTopBtn" title="Back to Top">
-      <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- scroll translate top button -->
-    <button id="showTranslateBtn" title="Translate Page">
-      <i id="google_translate_element"></i>
-    </button>
-
-    <script>
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("nav-links");
-  const navItems = navLinks.querySelectorAll("a");
-
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-
-  // 🔥 Close menu when link is clicked
-  navItems.forEach(item => {
-    item.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  });
-
-  // 🔥 Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-      navLinks.classList.remove("active");
-    }
-  });
-</script>
-
-
-    
-
-
-    <script>
-      // Smooth scroll animations (unchanged)
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: "0px 0px -100px 0px" }
-      );
-
-      document
-        .querySelectorAll(".fade-in")
-        .forEach((el) => observer.observe(el));
-
-      const scrollTopBtn = document.getElementById("scrollTopBtn");
-      window.addEventListener("scroll", () => {
-        scrollTopBtn.style.display = window.scrollY > 600 ? "flex" : "none";
-        scrollTopBtn.style.alignItems = "center";
-        scrollTopBtn.style.justifyContent = "center";
-      });
-      scrollTopBtn.addEventListener("click", () =>
-        window.scrollTo({ top: 0, behavior: "smooth" })
-      );
-
-      //  show translate button
-      const showTranslateBtn = document.getElementById("showTranslateBtn");
-      window.addEventListener("scroll", () => {
-        showTranslateBtn.style.display = window.scrollY > 600 ? "flex" : "none";
-        showTranslateBtn.style.alignItems = "center";
-        showTranslateBtn.style.justifyContent = "center";
-      });
-      showTranslateBtn.addEventListener("click", () => {
-        const translateElement = document.querySelector(".goog-te-combo");
-        if (translateElement) {
-          translateElement.focus();
-          translateElement.click();
-        }
-      });
-
-      document
-        .querySelector(".newsletter form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          const email = e.target.querySelector("input").value;
-          alert(`Welcome aboard, ${email.split("@")[0]}! 🌟 Check your inbox.`);
-          e.target.reset();
-        });
-
-      window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset * 0.3;
-        document.querySelector(
-          ".hero"
-        ).style.transform = `translateY(${scrolled}px)`;
-      });
-
-      // translate function to english, deutsch, indonesian, and hindi
-      window.googleTranslateElementInit = () => {
-        if (!window.google?.translate?.TranslateElement) {
-          console.log("Google Translate not loaded yet");
-          return;
-        }
-
-        new window.google.translate.TranslateElement(
-          {
-            pageLanguage: "en",
-            includedLanguages: "en,hi,de,id",
-            autoDisplay: false,
-          },
-          "google_translate_element"
-        );
-      };
-
-      // Load Google Translate script only once
-      if (!document.getElementById("google-translate-element")) {
-        const script = document.createElement("script");
-        script.id = "google-translate-element";
-        script.src =
-          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        script.async = true;
-        document.body.appendChild(script);
-      }
-
-      const languages = {
-        en: { name: "English", flag: "🇬🇧" },
-        hi: { name: "Hindi (हिंदी)", flag: "🇮🇳" },
-        id: { name: "Indonesian (Bahasa Indonesia)", flag: "🇮🇩" },
-        de: { name: "German (Deutsch)", flag: "🇩🇪" },
-      };
-    </script>
-  </body>
-=======
-<head>
-    <meta charset="UTF-8">
-    <title>OpenSource Compass - Classic Edition</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-
-<!-- Navbar -->
-<header>
-    <h1>OpenSource Compass</h1>
-    <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <nav>
-        <div class="close-icon">X</div>
-        <a href="#">Home</a>
-        <a href="#">Guides</a>
-        <a href="#">Programs</a>
-        <a href="#">Resources</a>
-        <a href="#">Contribute</a>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<section class="hero">
-    <h2>Navigate Your Open Source Journey</h2>
-    <p>
-        OpenSource Compass helps beginners understand open source,
-        make their first meaningful contributions, and explore
-        open-source programs with confidence.
-    </p>
-    <button>Get Started</button>
-</section>
-
-<!-- Why Section -->
-<section>
-    <h3>Why OpenSource Compass?</h3>
-    <p>
-        Starting open source can be overwhelming. This platform simplifies
-        the process with structured guidance, best practices, and a
-        centralized program hub.
-    </p>
-
-    <div class="card-container">
-        <div class="card">
-            <h4>Beginner Friendly</h4>
-            <p>Clear explanations and simple steps for first-time contributors.</p>
-        </div>
-
-        <div class="card">
-            <h4>Best Practices</h4>
-            <p>Learn do’s, don’ts, and how to contribute the right way.</p>
-        </div>
-
-        <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Programs Section -->
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
-
-    <div class="card-container">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
-        </div>
-
-        <div class="card">
-            <h4>GirlScript Summer of Code</h4>
-            <p>Large-scale open-source program for students.</p>
-            <span class="badge">Annual</span>
-        </div>
-
-        <div class="card">
-            <h4>Google Summer of Code</h4>
-            <p>Global program for advanced contributors.</p>
-            <span class="badge">Advanced</span>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-</footer>
-
-<script>
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
-    const closeIcon = document.querySelector('.close-icon');
-
-    hamburger.addEventListener('click', () => {
-        nav.classList.add('active');
-        hamburger.classList.add('active');
-    });
-
-    closeIcon.addEventListener('click', () => {
-        nav.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
-    });
-</script>
-
-</body>
-</html>
-<ink href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        :root {
-            --primary-gold: #D4AF37;
-            --secondary-gold: #B8860B;
-            --deep-navy: #1B263B;
-            --warm-cream: #FDF4E3;
-            --light-parchment: #FFF8E7;
-            --charcoal-dark: #2C2C2C;
-            --text-secondary: #5A5A5A;
-            --success-emerald: #2E8B57;
-            --shadow-main: 0 8px 32px rgba(0,0,0,0.12);
-            --shadow-hover: 0 20px 40px rgba(0,0,0,0.18);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Crimson Text', Georgia, serif;
-            font-size: 15px; /* Base font smaller */
-            line-height: 1.7;
-            background: linear-gradient(135deg, var(--light-parchment) 0%, var(--warm-cream) 100%);
-            color: var(--charcoal-dark);
-            overflow-x: hidden;
-        }
-
-        /* Navbar - Smaller & Balanced */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 3px solid var(--primary-gold);
-            padding: 1rem 6%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-main);
-        }
-
-        .navbar-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.6rem, 3vw, 1.9rem); /* Smaller logo */
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--primary-gold) 70%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--charcoal-dark) !important;
-            font-family: 'Inter', -apple-system, sans-serif;
-            font-weight: 500;
-            font-size: 0.95rem; /* Smaller nav links */
-            padding: 0.4rem 0;
-            position: relative;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px; /* Thinner underline */
-            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-50%);
-            border-radius: 1px;
-        }
-
-        .nav-links a:hover {
-            color: var(--deep-navy) !important;
-            transform: translateY(-1px);
-        }
-
-        .nav-links a:hover::before {
-            width: 70%;
-        }
-
-        /* Hero - Smaller Typography */
-        .hero {
-            min-height: 90vh;
-            background: 
-                radial-gradient(ellipse at center, rgba(253,246,227,0.8) 0%, transparent 70%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23D4AF37" stop-opacity="0.3"/><stop offset="50%" stop-color="%23FDF6E3"/><stop offset="100%" stop-color="%23B8860B" stop-opacity="0.2"/></linearGradient></defs><rect width="1200" height="700" fill="url(%23g)"/><path d="M0 300Q300 150 600 280Q900 400 1200 280L1200 700L0 700Z" fill="%23D4AF37" opacity="0.15"/></svg>') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 3rem 6%;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 850px;
-            width: 100%;
-        }
-
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 6vw, 3.8rem); /* Smaller hero */
-            font-weight: 700;
-            background: linear-gradient(135deg, #3E2A14 0%, #6B4A2D 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            line-height: 1.15;
-            text-shadow: 0 6px 24px rgba(0,0,0,0.25);
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2.2vw, 1.2rem); /* Smaller hero text */
-            color: #2C2C2C;
-            margin-bottom: 3rem;
-            max-width: 650px;
-            font-weight: 400;
-            line-height: 1.75;
-        }
-
-        .hero button {
-            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
-            color: var(--deep-navy);
-            border: none;
-            padding: 1.1rem 2.8rem;
-            font-size: 1rem; /* Smaller button */
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 35px rgba(212,175,55,0.35);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        /* Sections - Smaller Typography */
-        section {
-            padding: 5rem 6%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 4.5vw, 2.9rem); /* Smaller section titles */
-            font-weight: 700;
-            color:#7A6A58
-;
-            text-align: center;
-            margin-bottom: 1.2rem;
-            position: relative;
-            line-height: 1.2;
-        }
-
-        section h3::after {
-            content: '';
-            display: block;
-            width: 90px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
-            margin: 1.2rem auto 0;
-            border-radius: 2px;
-        }
-
-        section p {
-            font-size: 1.05rem; /* Smaller section text */
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 3.5rem;
-            color: var(--text-secondary);
-            line-height: 1.75;
-        }
-
-        /* Cards - Smaller Content */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            justify-items: center;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 2.2rem 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-main);
-            border: 2px solid rgba(212,175,55,0.1);
-            transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            max-width: 360px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.45rem; /* Smaller card titles */
-            color: var(--deep-navy);
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            line-height: 1.3;
-        }
-
-        .card h4 i {
-            color: var(--primary-gold);
-            font-size: 1.3rem;
-            width: 1.8rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.98rem; /* Smaller card text */
-            line-height: 1.65;
-        }
-
-        .badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--success-emerald), #32CD32);
-            color: white;
-            padding: 0.45rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 1.2rem;
-            box-shadow: 0 5px 15px rgba(46,139,87,0.25);
-            letter-spacing: 0.3px;
-        }
-
-        /* Stats - Smaller Numbers */
-        .stats {
-            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 50%, var(--primary-gold) 100%);
-            color: var(--deep-navy);
-            text-align: center;
-            padding: 6rem 6%;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 3.5rem auto 0;
-        }
-
-        .stat-item h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem); /* Smaller stats */
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            line-height: 1;
-        }
-
-        .stat-item p {
-            font-size: 1rem;
-            font-weight: 500;
-            color: rgba(27,38,59,0.9);
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.3px;
-        }
-
-        /* Programs Section */
-        .programs {
-            background: linear-gradient(135deg, var(--deep-navy) 0%, #2C3E50 100%);
-            color: white;
-        }
-
-        .programs .card {
-            background: rgba(255,255,255,0.12);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.15);
-        }
-
-        .programs .card h4 {
-            color: var(--warm-cream);
-        }
-
-        .programs .card p {
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Newsletter - Smaller */
-        .newsletter {
-            background: var(--deep-navy);
-            color: white;
-            text-align: center;
-            padding: 6rem 6%;
-        }
-
-        .newsletter h3 {
-            color: white;
-        }
-
-        .newsletter p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.05rem;
-        }
-
-        .newsletter form {
-            max-width: 550px;
-            margin: 2.5rem auto 0;
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-        }
-
-        .newsletter input {
-            flex: 1;
-            max-width: 320px;
-            padding: 1rem 1.8rem;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 0.98rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .newsletter input::placeholder {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .newsletter button {
-            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-            color: var(--deep-navy);
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.98rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        /* Footer - Smaller */
-        footer {
-            background: var(--deep-navy);
-            color: var(--warm-cream);
-            text-align: center;
-            padding: 3rem 6% 2.5rem;
-            font-size: 0.95rem;
-        }
-
-        footer a {
-            color: var(--primary-gold);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Scroll Button Smaller */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-            color: var(--deep-navy);
-            border: none;
-            border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(212,175,55,0.35);
-            display: none;
-            transition: all 0.35s ease;
-            z-index: 999;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 0.9rem 5%;
-            }
-
-.footer-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 32px;
-    margin-bottom: 24px;
-}
-
-.footer-section h3,
-.footer-section h4 {
-    margin-bottom: 12px;
-    font-size: 18px;
-    color: var(--white);
-}
-
-.footer-section p {
-    font-size: 14px;
-    opacity: 0.9;
-    max-width: 280px;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 8px;
-}
-
-.footer-section ul li a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-.footer-section ul li a:hover {
-    text-decoration: underline;
-    opacity: 1;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 16px;
-    text-align: center;
-    font-size: 13px;
-    opacity: 0.85;
-}
-
-/* ---------- Footer Responsive ---------- */
-@media (max-width: 600px) {
-    .footer {
-        padding: 40px 6% 20px;
-    }
-
-    .footer-section p {
-        max-width: 100%;
-    }
-}
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 14.5px;
-            }
-            
-            .nav-links a {
-                font-size: 0.92rem;
-            }
-        }
-
-     /* ===============================
-   PROGRAMS CARD HOVER (GSSoC, SWoC etc.)
-   =============================== */
-
-.programs .card {
-  transition: 
-    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.45s ease;
-  will-change: transform;
-}
-
-.programs .card:hover {
-  transform: scale(1.06) translateY(-10px);
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.45);
-}
-
-/* ===============================
-   BADGE (Jan 2026) – EXTRA GLOW
-   =============================== */
-
-.programs .badge {
-  transition:
-    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.35s ease,
-    filter 0.35s ease;
-  cursor: pointer;
-}
-
-.programs .badge:hover {
-  transform: scale(1.3) translateY(-6px);
-  box-shadow:
-    0 0 15px rgba(212, 175, 55, 0.8),
-    0 0 30px rgba(212, 175, 55, 0.6),
-    0 0 45px rgba(212, 175, 55, 0.4);
-  filter: brightness(1.2);
-}
-   
-    </style>
-</head>
-<body>
-    <!-- Same HTML structure as before, no changes needed -->
-
-
-    <section class="hero">
+    <section class="hero" aria-label="OpenSource Compass hero">
+      <div class="hero-inner">
         <div class="hero-content">
-            <h2>Navigate Your Open Source Odyssey</h2>
-            <p>Discover timeless wisdom for open source mastery. From first commit to maintainer status, chart your course with proven guides and legendary programs.</p>
-            <button onclick="document.querySelector('#programs').scrollIntoView({behavior: 'smooth'})">
-                <i class="fas fa-rocket" style="margin-right: 0.4rem;"></i>Launch Journey
+          <div class="hero-eyebrow">
+            <span class="hero-dot" aria-hidden="true"></span>
+            Your map to open source
+          </div>
+
+          <h2>Navigate Your Open Source Odyssey</h2>
+          <p>
+            Discover timeless wisdom for open source mastery. From first commit to
+            maintainer status, chart your course with proven guides and legendary
+            programs.
+          </p>
+
+          <div class="hero-actions">
+            <button
+              class="hero-btn hero-btn-primary"
+              type="button"
+              onclick="document.querySelector('#programs').scrollIntoView({behavior: 'smooth'})"
+            >
+              <i class="fas fa-rocket" aria-hidden="true"></i>
+              Launch Journey
             </button>
+            <a class="hero-btn hero-btn-secondary" href="frontend/pages/guides.html">
+              <i class="fas fa-book-open" aria-hidden="true"></i>
+              Browse Guides
+            </a>
+          </div>
+
+          <div class="hero-chips" aria-label="Highlights">
+            <span class="hero-chip"
+              ><i class="fas fa-seedling" aria-hidden="true"></i>
+              Beginner-friendly</span
+            >
+            <span class="hero-chip"
+              ><i class="fas fa-compass" aria-hidden="true"></i> Curated
+              paths</span
+            >
+            <span class="hero-chip"
+              ><i class="fas fa-code-branch" aria-hidden="true"></i> Real
+              programs</span
+            >
+          </div>
         </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orb">
+            <div class="hero-orb-ring"></div>
+            <div class="hero-orb-core">
+              <i class="fas fa-compass"></i>
+            </div>
+            <div class="hero-orb-needle"></div>
+          </div>
+
+          <svg
+            class="hero-route"
+            viewBox="0 0 520 320"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="hero-route-path"
+              d="M30 250 C130 140, 190 290, 280 190 C350 110, 420 160, 490 70"
+            />
+            <circle class="hero-route-dot" cx="30" cy="250" r="6" />
+            <circle class="hero-route-dot" cx="280" cy="190" r="6" />
+            <circle class="hero-route-dot" cx="490" cy="70" r="6" />
+          </svg>
+
+          <div class="hero-floats">
+            <div class="hero-float hero-float-1">
+              <i class="fas fa-list-check" aria-hidden="true"></i>
+              Good first issues
+            </div>
+            <div class="hero-float hero-float-2">
+              <i class="fas fa-people-group" aria-hidden="true"></i>
+              Community-first
+            </div>
+            <div class="hero-float hero-float-3">
+              <i class="fas fa-award" aria-hidden="true"></i>
+              Programs hub
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="why">
+    <main>
+      <section id="why">
         <h3>Why OpenSource Compass?</h3>
-        <p>Timeless principles meet modern open source. Structured paths built from decades of collective wisdom.</p>
-        <div class="card-grid">
-            <div class="card fade-in">
-                <h4><i class="fas fa-seedling"></i> Timeless Foundations</h4>
-                <p>Proven methodologies refined over 20+ years of open source evolution.</p>
-            </div>
-            <div class="card fade-in">
-                <h4><i class="fas fa-scroll"></i> Code of Conduct Mastery</h4>
-                <p>Navigate community norms with confidence and cultural fluency.</p>
-            </div>
-            <div class="card fade-in">
-                <h4><i class="fas fa-users"></i> Mentor Network</h4>
-                <p>Connect with maintainers who guide thousands annually.</p>
-            </div>
-        </div>
-    </section>
+        <p>
+          Timeless principles meet modern open source. Structured paths built from
+          decades of collective wisdom.
+        </p>
 
-    <section class="stats">
+        <div class="card-grid">
+          <div class="card fade-in">
+            <h4><i class="fas fa-seedling"></i> Timeless Foundations</h4>
+            <p>Proven methodologies refined over years of open source evolution.</p>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-scroll"></i> Code of Conduct Mastery</h4>
+            <p>Navigate community norms with confidence and cultural fluency.</p>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-users"></i> Mentor Network</h4>
+            <p>Connect with maintainers and peers who help you level up.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
         <h3>Open Source Impact</h3>
         <div class="stats-grid">
-            <div class="stat-item fade-in">
-                <h2>50K+</h2>
-                <p>First Contributions</p>
-            </div>
-            <div class="stat-item fade-in">
-                <h2>200+</h2>
-                <p>Programs Tracked</p>
-            </div>
-            <div class="stat-item fade-in">
-                <h2>10K+</h2>
-                <p>Active Mentors</p>
-            </div>
-            <div class="stat-item fade-in">
-                <h2>5Y+</h2>
-                <p>Proven Track Record</p>
-            </div>
+          <div class="stat-item fade-in">
+            <h2>50K+</h2>
+            <p>First Contributions</p>
+          </div>
+          <div class="stat-item fade-in">
+            <h2>200+</h2>
+            <p>Programs Tracked</p>
+          </div>
+          <div class="stat-item fade-in">
+            <h2>10K+</h2>
+            <p>Active Mentors</p>
+          </div>
+          <div class="stat-item fade-in">
+            <h2>5Y+</h2>
+            <p>Proven Track Record</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section class="programs" id="programs">
+      <section class="programs" id="programs">
         <h3>Legendary Open Source Programs</h3>
         <p>Curated programs with historical success rates and maintainer insights.</p>
-        <div class="card-grid">
-            <div class="card fade-in"><h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4><p>India's premier winter program. 85% acceptance for quality proposals.</p><span class="badge">Jan 2026</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4><p>3,000+ students mentored. Industry partner stipends.</p><span class="badge">Summer 2026</span></div>
-            <div class="card fade-in"><h4><i class="fab fa-google"></i> Google Summer of Code</h4><p>Global standard. $3K+ stipends. 20+ years running.</p><span class="badge">Advanced</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-leaf"></i> Outreachy</h4><p>Underrepresented voices. Paid internships. 90% retention.</p><span class="badge">Internship</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-mountain"></i> MLH Season of Code</h4><p>Hackathon network. Portfolio projects. Live mentorship.</p><span class="badge">Spring 2026</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-globe"></i> Linux Foundation Mentorship</h4><p>Enterprise backing. Kubernetes, LF projects. Paid.</p><span class="badge">Professional</span></div>
-        </div>
-    </section>
 
-    <section class="newsletter">
+        <div class="card-grid">
+          <div class="card fade-in">
+            <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
+            <p>India's premier winter program with strong mentorship culture.</p>
+            <span class="badge">Jan 2026</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
+            <p>Large-scale program with mentors, tasks, and community learning.</p>
+            <span class="badge">Summer 2026</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
+            <p>Global standard for student contributors and open source orgs.</p>
+            <span class="badge">Advanced</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-leaf"></i> Outreachy</h4>
+            <p>Paid internships supporting underrepresented people in tech.</p>
+            <span class="badge">Internship</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
+            <p>Work in pods on real projects with guided mentorship.</p>
+            <span class="badge">Spring</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
+            <p>Paid mentorships across major Linux Foundation projects.</p>
+            <span class="badge">Professional</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter">
         <h3>Stay Ahead of Open Source</h3>
-        <p>Weekly dispatches: program deadlines, maintainer AMAs, contribution strategies.</p>
+        <p>Weekly dispatches: deadlines, AMAs, and contribution strategies.</p>
         <form>
-            <input type="email" placeholder="Your dev email..." required>
-            <button type="submit"><i class="fas fa-paper-plane" style="margin-right: 0.4rem;"></i>Subscribe</button>
+          <input type="email" placeholder="Your dev email..." required />
+          <button type="submit">
+            <i class="fas fa-paper-plane" style="margin-right: 0.4rem"></i>
+            Subscribe
+          </button>
         </form>
-    </section>
+      </section>
+    </main>
 
     <div id="footer"></div>
 
-    <button id="scrollTopBtn" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
+    <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <script>
-        // Smooth scroll animations (unchanged)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        window.addEventListener('scroll', () => {
-            scrollTopBtn.style.display = window.scrollY > 600 ? 'flex' : 'none';
-            scrollTopBtn.style.alignItems = 'center';
-            scrollTopBtn.style.justifyContent = 'center';
-        });
-        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        document.querySelector('.newsletter form').addEventListener('submit', e => {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            alert(`Welcome aboard, ${email.split('@')[0]}! 🌟 Check your inbox.`);
-            e.target.reset();
-        });
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset * 0.3;
-            document.querySelector('.hero').style.transform = `translateY(${scrolled}px)`;
-        });
-    </script>
-    <script src="/frontend/js/components.js"></script>
-    <script src="/frontend/js/theme.js"></script>
-</body>
+    <script src="frontend/js/components.js"></script>
+    <script src="frontend/js/theme.js"></script>
+    <script src="frontend/js/home.js"></script>
+  </body>
 </html>

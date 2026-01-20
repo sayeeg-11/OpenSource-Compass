@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OpenSource Compass</title>
+    <title>Social Summer of Code (SSoC) - OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete guide to Social Summer of Code (SSoC) - Learn about registration, contribution process, points system, rewards, and how to participate.">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+    <!-- Core Styles -->
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigation.css">
 
     <style>
         :root {
@@ -28,10 +30,27 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--white);
             color: var(--text-dark);
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        body.dark-mode header,
+        body.dark-mode footer {
+            background: #121212;
         }
 
         /* ---------- Navbar ---------- */
@@ -42,11 +61,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         header h1 {
             color: var(--primary-blue);
             font-size: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        header h1:hover {
+            color: var(--secondary-blue);
+            transform: translateX(2px);
         }
 
         nav a {
@@ -54,95 +85,823 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-blue);
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: var(--secondary-blue);
         }
 
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background-color: var(--light-gray);
-            padding: 80px 8%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        nav a:hover::after {
+            width: 100%;
         }
 
-        .hero h2 {
-            font-size: 42px;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
+        /* ---------- Hero Section ---------- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #2a4fa0 30%, #3d6bc0 60%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 140px 8% 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(77, 150, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(-30px, -30px) scale(1.1) rotate(5deg); }
+            66% { transform: translate(20px, -20px) scale(0.9) rotate(-5deg); }
+        }
+
+        /* Animated particles background */
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 50px;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 8px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            animation: logoFloat 3s ease-in-out infinite, logoGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-logo::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            opacity: 0.3;
+            z-index: -1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 8px rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 25px 70px rgba(77, 150, 255, 0.5), 0 0 0 12px rgba(255, 255, 255, 0.2); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .hero-logo:hover {
+            transform: translateY(-10px) scale(1.08) rotate(5deg);
+            box-shadow: 0 30px 80px rgba(77, 150, 255, 0.6), 0 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-logo img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-logo:hover img {
+            transform: scale(1.1);
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 28px;
+            color: var(--white);
+            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(77, 150, 255, 0.3);
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease-out 0.2s both, titleShine 3s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.9) 50%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+        }
+
+        @keyframes titleShine {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
         .hero p {
-            max-width: 600px;
-            font-size: 18px;
-            margin-bottom: 32px;
+            font-size: 26px;
+            margin-bottom: 48px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 400;
+            line-height: 1.6;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
-        .hero button {
-            background-color: var(--secondary-blue);
-            color: var(--white);
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 36px;
             border: none;
-            padding: 14px 28px;
+            border-radius: 12px;
             font-size: 16px;
-            border-radius: 6px;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            z-index: 10;
+            pointer-events: auto;
         }
 
-        .hero button:hover {
-            background-color: var(--primary-blue);
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
         }
 
         /* ---------- Section Common ---------- */
         section {
-            padding: 64px 8%;
+            padding: 80px 8%;
+            position: relative;
+        }
+
+        section:last-of-type {
+            padding-bottom: 80px;
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            font-size: 48px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(31, 60, 136, 0.1);
+        }
+
+        section h2::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(77, 150, 255, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--secondary-blue), var(--primary-blue), transparent);
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(77, 150, 255, 0.4);
         }
 
         section h3 {
             font-size: 28px;
             color: var(--primary-blue);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            font-weight: 600;
         }
 
         section p {
             max-width: 700px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-dark);
         }
 
-        /* ---------- Cards ---------- */
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
+        /* ---------- Intro Section ---------- */
+        .intro {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            text-align: center;
         }
 
-        .card {
-            background-color: var(--white);
+        .intro h2 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .intro-logo {
+            flex-shrink: 0;
+            background: var(--white);
             padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .card h4 {
-            margin-bottom: 10px;
-            color: var(--secondary-blue);
+        .intro-logo:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         }
 
-        /* ---------- Programs Section ---------- */
-        .programs {
+        .intro-logo img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-text p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* ---------- Overview Section ---------- */
+        .overview-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .overview-section h2,
+        .overview-section p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px auto 0;
+            max-width: 1000px;
+            justify-items: center;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid transparent;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .overview-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .overview-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            border-color: var(--secondary-blue);
+            box-shadow: 0 20px 50px rgba(77, 150, 255, 0.3), 0 0 0 4px rgba(77, 150, 255, 0.1);
+        }
+
+        .overview-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .overview-card:hover .overview-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .overview-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        .overview-card p {
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        /* ---------- Process Stepper ---------- */
+        .process-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .process-section h2,
+        .process-section p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stepper {
+            max-width: 900px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+
+        .stepper::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+        }
+
+        .step {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(77, 150, 255, 0.5), inset 0 2px 10px rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            opacity: 0.4;
+            z-index: -1;
+            transition: all 0.4s ease;
+            animation: pulseRing 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 12px 40px rgba(77, 150, 255, 0.6), inset 0 2px 15px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .step:hover .step-number::before {
+            opacity: 0.6;
+            transform: scale(1.3);
+        }
+
+        .step-content {
+            flex: 1;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            padding: 36px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .step-content:hover::before {
+            transform: scaleY(1);
+        }
+
+        .step-content:hover {
+            transform: translateX(12px) translateY(-4px);
+            box-shadow: 0 15px 40px rgba(77, 150, 255, 0.2), 0 0 0 4px rgba(77, 150, 255, 0.1);
+            border-left-color: var(--secondary-blue);
+        }
+
+        .step-content h4 {
+            color: var(--primary-blue);
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .step-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-content li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .step-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* ---------- Points Table Section ---------- */
+        .points-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .points-section h2,
+        .points-section p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .points-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto 0;
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .points-table:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .points-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .points-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .points-table td {
+            padding: 20px 16px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s ease;
+        }
+
+        .points-table tr:hover td {
+            background-color: rgba(77, 150, 255, 0.05);
+        }
+
+        .points-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .points-table tr:nth-child(even) {
             background-color: var(--light-gray);
         }
 
-        .badge {
-            display: inline-block;
-            background-color: var(--success-green);
-            color: var(--white);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-top: 10px;
+        .points-amount {
+            font-weight: 700;
+            color: var(--secondary-blue);
+            font-size: 18px;
+        }
+
+        /* ---------- Rewards Section ---------- */
+        .rewards-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .rewards-section h2,
+        .rewards-section p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rewards-grid {
+            display: flex;          /* Changed from grid to flex */
+            flex-wrap: wrap;        /* Allows cards to move to the next line */
+            justify-content: center; /* This centers the cards in every row */
+            gap: 24px;
+            margin: 32px auto 0;
+            max-width: 1000px;
+        }
+
+        .reward-card {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            padding: 45px 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid transparent;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 280px;
+        }
+
+        .reward-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .reward-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .reward-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            border-color: var(--secondary-blue);
+            box-shadow: 0 20px 50px rgba(77, 150, 255, 0.3), 0 0 0 4px rgba(77, 150, 255, 0.1);
+        }
+
+        .reward-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .reward-card:hover .reward-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .reward-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        .reward-card p {
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        /* ---------- Pro Tips Section ---------- */
+        .tips-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .tips-section h2,
+        .tips-section p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tips-list {
+            max-width: 700px;
+            margin: 32px auto 0;
+        }
+
+        .tip-item {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            padding: 32px;
+            margin-bottom: 24px;
+            border-radius: 16px;
+            border-left: 6px solid var(--secondary-blue);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .tip-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .tip-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .tip-item:hover {
+            transform: translateX(12px) translateY(-4px);
+            box-shadow: 0 12px 32px rgba(77, 150, 255, 0.25), 0 0 0 4px rgba(77, 150, 255, 0.1);
+            border-left-width: 8px;
+        }
+
+        .tip-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
         }
 
         /* ---------- Footer ---------- */
@@ -151,26 +910,120 @@
             color: var(--white);
             text-align: center;
             padding: 24px;
-            margin-top: 40px;
+            margin-top: 0;
+            position: relative;
+            padding-top: 50px;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpolygon points='0,20 5,0 10,20 15,0 20,20 25,0 30,20 35,0 40,20 45,0 50,20 55,0 60,20 65,0 70,20 75,0 80,20 85,0 90,20 95,0 100,20 100,20 0,20' fill='%231F3C88'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: top;
         }
 
         footer p {
             font-size: 14px;
+            margin: 0;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
         }
-
+      
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
-            .hero h2 {
+            .hero {
+                padding: 60px 8%;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            section h2 {
                 font-size: 32px;
             }
+
+            .hero p {
+                font-size: 20px;
+                color: var(--white);
+                opacity: 1;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .intro-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stepper::before {
+                left: 30px;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
+
+            .points-table {
+                font-size: 14px;
+            }
+
+            .points-table th,
+            .points-table td {
+                padding: 12px;
+            }
+        }
+
+        body.dark-mode .intro,
+        body.dark-mode .process-section,
+        body.dark-mode .rewards-section {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .step-content,
+        body.dark-mode .overview-card,
+        body.dark-mode .reward-card,
+        body.dark-mode .tip-item {
+            background: #2a2a2a;
+            color: #fff;
+        }
+
+        body.dark-mode .points-table {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .points-table th {
+            background: #1F3C88;
+        }
+
+        body.dark-mode .points-table tr:nth-child(even) {
+            background: #333;
         }
     </style>
 </head>
 
 <body>
-<!-- Navbar -->
+
+<!-- ================= HEADER ================= -->
 <header>
-    <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
+    <h1 onclick="window.location.href='../../../index.html'">OpenSource Compass</h1>
     <nav>
         <a href="../../../index.html">Home</a>
         <a href="../guides.html">Guides</a>
@@ -180,28 +1033,272 @@
     </nav>
 </header>
 
-<div class="py-5"> 
-    <h1 class="display-5 fw-bold text-center" style="color: #1F3C88;">Social Summer of Code (SSoC)</h1><br>
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+        <div class="hero-logo">
+            <img src="../../library/assets/program_logo/ssoc.webp" alt="SSoC Logo">
+        </div>
+        <h1>Social Summer of Code</h1>
+        <p>Community-driven program for open-source beginners</p>
+        <div class="hero-cta">
+            <a href="https://reskilll.com/hack/ssoc4" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span>Official Website</span></a>
+            <a href="https://reskilll.com/hack/ssoc4#schedule-area" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span>Full Schedule</span></a>
+        </div>
+    </div>
+</section>
 
-    <div class="col-lg-6 mx-auto"> 
-        <p class="fs-5 mb-4 text-center">
-  Community-driven program for open-source beginners.
-</p>
+<!-- ================= INTRO SECTION ================= -->
+<section class="intro">
+    <div class="intro-content">
+        <div class="intro-logo">
+            <img src="../../library/assets/program_logo/ssoc.webp" alt="SSoC Logo">
+        </div>
+        <div class="intro-text">
+            <h2>About Social Summer of Code</h2>
+            <p>
+                Social Summer of Code (SSoC) is an open-source program that focuses on creating a positive social impact. Much like GSSoC, it is designed to be beginner-friendly, allowing students to contribute to real-world projects while earning rewards and building a strong professional portfolio.
+            </p>
+        </div>
+    </div>
+</section>
 
-    </div> 
-</div>
+<!-- ================= OVERVIEW SECTION ================= -->
+<section class="overview-section">
+    <h2>📋 Program Overview</h2>
+    <p>SSoC is organized with a mission to promote open-source culture among students of all skill levels. It follows a gamified approach where your contributions translate into points on a global leaderboard.</p>
+    
+    <div class="overview-grid">
+        <div class="overview-card">
+            <div class="overview-icon">⏱️</div>
+            <h4>Duration</h4>
+            <p>Typically 2–3 months (Summer season)</p>
+        </div>
+        
+        <div class="overview-card">
+            <div class="overview-icon">👥</div>
+            <h4>Target Audience</h4>
+            <p>Open to everyone, but specifically tailored for students and open-source beginners</p>
+        </div>
+        
+        <div class="overview-card">
+            <div class="overview-icon">🎯</div>
+            <h4>Key Focus</h4>
+            <p>Promoting collaboration and learning through active contribution</p>
+        </div>
+    </div>
+</section>
 
-<iframe 
-  src="../../library/guides_pdf/SSoC.pdf" 
-  width="1000" 
-  height="600" 
-  style="border:1px solid #ccc; width: 100%;"
-  title="Embedded PDF">
-</iframe>
+<!-- ================= PROCESS STEPPER SECTION ================= -->
+<section class="process-section">
+    <h2>🛤️ Step-by-Step Process for SSoC</h2>
+    <p>Follow these steps to successfully participate in Social Summer of Code.</p>
+    
+    <div class="stepper">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>Registration (Early Summer)</h4>
+                <p>Keep an eye on the official SSoC website or social media. You will need to register as a Contributor. Projects and Mentors also register during this phase.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>Project Exploration</h4>
+                <p>Once the list of participating projects is released:</p>
+                <ul>
+                    <li>Browse the repositories based on your tech stack (HTML/CSS, JavaScript, Python, Java, etc.)</li>
+                    <li>Read the project descriptions to understand which social or technical problem they are solving</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>Community Interaction</h4>
+                <p>Join the official Discord or Slack workspace. This is where you can:</p>
+                <ul>
+                    <li>Introduce yourself to Project Admins</li>
+                    <li>Ask questions about the codebase</li>
+                    <li>Stay updated on workshops and speaker sessions hosted by the organizers</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h4>Contributing (The Coding Phase)</h4>
+                <p>This is the core of the program. The workflow is similar to standard open-source practices:</p>
+                <ul>
+                    <li><strong>Find an Issue:</strong> Look for issues labeled with SSoC26 or good-first-issue</li>
+                    <li><strong>Get Assigned:</strong> Comment on the issue to request assignment. Wait for the tag before you start coding</li>
+                    <li><strong>Fork & Branch:</strong> Create a copy of the repo and a new feature branch</li>
+                    <li><strong>Submit PR:</strong> Raise a Pull Request (PR) once your work is complete</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
-<footer>
-    <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-</footer>
+<!-- ================= POINTS TABLE SECTION ================= -->
+<section class="points-section">
+    <h2>🏆 Points and Leaderboard</h2>
+    <p>SSoC uses a tiered system to reward effort and complexity:</p>
+    
+    <div class="points-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue Level</th>
+                    <th>Points</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Level 0</strong></td>
+                    <td><span class="points-amount">5 Points</span></td>
+                    <td>Documentation, typos, or README updates</td>
+                </tr>
+                <tr>
+                    <td><strong>Level 1</strong></td>
+                    <td><span class="points-amount">10 Points</span></td>
+                    <td>Minor UI changes or small bug fixes</td>
+                </tr>
+                <tr>
+                    <td><strong>Level 2</strong></td>
+                    <td><span class="points-amount">25 Points</span></td>
+                    <td>New components or logic enhancements</td>
+                </tr>
+                <tr>
+                    <td><strong>Level 3</strong></td>
+                    <td><span class="points-amount">45+ Points</span></td>
+                    <td>Complex features, major refactors, or core logic</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ================= REWARDS SECTION ================= -->
+<section class="rewards-section">
+    <h2>🎁 Perks and Rewards</h2>
+    <p>Earn rewards and recognition for your contributions to open-source projects.</p>
+    
+    <div class="rewards-grid">
+        <div class="reward-card">
+            <div class="reward-icon">📜</div>
+            <h4>Certificates</h4>
+            <p>All participants with at least one merged PR receive a certificate</p>
+        </div>
+        
+        <div class="reward-card">
+            <div class="reward-icon">🤝</div>
+            <h4>Mentorship</h4>
+            <p>Direct access to experienced developers who can guide your career path</p>
+        </div>
+        
+        <div class="reward-card">
+            <div class="reward-icon">🏅</div>
+            <h4>Digital Badges</h4>
+            <p>Exclusive badges to showcase on LinkedIn or GitHub</p>
+        </div>
+        
+        <div class="reward-card">
+            <div class="reward-icon">🎁</div>
+            <h4>Goodies & Swag</h4>
+            <p>Top performers on the leaderboard are eligible for T-shirts, stickers, and other tech merchandise</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PRO TIPS SECTION ================= -->
+<section class="tips-section">
+    <h2>💡 Pro-Tips for SSoC Success</h2>
+    <p>Make the most out of your Social Summer of Code experience with these tips.</p>
+    
+    <div class="tips-list">
+        <div class="tip-item">
+            <h4>Don't "Issue-Hog"</h4>
+            <p>Only ask for an issue if you are confident you can solve it within 2–3 days. This keeps the program fair for everyone.</p>
+        </div>
+        
+        <div class="tip-item">
+            <h4>Document Everything</h4>
+            <p>Write clear PR descriptions. Explain what you changed and why.</p>
+        </div>
+        
+        <div class="tip-item">
+            <h4>Engage in Workshops</h4>
+            <p>SSoC often hosts sessions on Resume Building, Open Source, and Career Advice. These are often as valuable as the coding itself.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<div id="footer"></div>
+
+<script src="../../js/components.js"></script>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+    // Theme toggle functionality (if needed)
+    const themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent =
+                document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+        });
+    }
+
+    // Create animated particles
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        if (!particlesContainer) return;
+
+        const particleCount = 30;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Initialize particles on page load
+    window.addEventListener('DOMContentLoaded', createParticles);
+
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.overview-card, .reward-card, .step-content, .tip-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
 
 </body>
 </html>

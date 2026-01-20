@@ -1,542 +1,150 @@
-:root {
-    --primary-blue: #1F3C88;
-    --secondary-blue: #4D96FF;
-    --light-gray: #F5F7FA;
-    --text-dark: #2E2E2E;
-    --success-green: #3CCF91;
-    --warning-orange: #FFA726;
-    --danger-red: #EF5350;
-    --white: #FFF;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    background-color: var(--light-gray);
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-/* ---------- Navbar ---------- */
-header {
-    background-color: var(--white);
-    border-bottom: 2px solid #eaeaea;
-    padding: 16px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
-}
-
-header h1 {
-    color: var(--primary-blue);
-    font-size: 22px;
-    cursor: pointer;
-}
-
-header h1:hover {
-    color: var(--secondary-blue);
-}
-
-nav a {
-    margin-left: 24px;
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--secondary-blue);
-}
-
-/* ---------- Dashboard Header ---------- */
-.dashboard-header {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-    color: var(--white);
-    padding: 40px 8%;
-    margin-bottom: 40px;
-}
-
-.dashboard-header h2 {
-    font-size: 36px;
-    margin-bottom: 12px;
-}
-
-.dashboard-header p {
-    font-size: 18px;
-    opacity: 90%;
-}
-
-/* ---------- Filter Section ---------- */
-.filter-section {
-    background-color: var(--white);
-    padding: 24px 8%;
-    margin-bottom: 32px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
-}
-
-.filter-section label {
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.filter-section select {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: var(--white);
-    cursor: pointer;
-}
-
-.search-box {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 250px;
-}
-
-/* ---------- Programs Container ---------- */
-.programs-container {
-    padding: 0 8%;
-    margin-bottom: 40px;
-}
-
-/* Update the card to handle a side-by-side layout */
+/* -------------------------
+  Program Card Container
+------------------------- */
 .program-card {
-    background-color: var(--white);
-    border-radius: 8px;
-    padding: 32px; /* Increased padding for better spacing */
-    margin-bottom: 24px;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    
-    /* Add Flexbox to align content and logo */
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 400px;
+  margin: 16px;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Ensure the text container takes up the remaining space */
-.program-card > div:not(.program-logo) {
-    flex: 1;
+.program-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Make the images significantly bigger and positioned at the right */
-.program-card img {
-    max-width: 120px; /* Increased from 60px */
-    width: 120px;
-    height: 120px;
-    object-fit: contain; /* Keeps logo proportions */
-    display: block;
-    border-radius: 8px;
-    background: #fcfcfc; /* Optional: light background for transparency */
-    padding: 5px;
+/* Accent bar for difficulty */
+.card-accent {
+  height: 6px;
+  width: 100%;
 }
 
-/* Ensure the header doesn't conflict with the new layout */
-.program-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+/* -------------------------
+  Card Content
+------------------------- */
+.card-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.program-status {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--white);
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
 }
 
-.status-active {
-    background-color: var(--success-green);
+.card-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
 }
 
-.status-upcoming {
-    background-color: var(--warning-orange);
+/* -------------------------
+  Meta Information Grid
+------------------------- */
+.card-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px 16px;
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 8px;
 }
 
-.status-completed {
-    background-color: #9C27B0;
+.card-meta-grid div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.program-description {
-    color: #666;
-    margin-bottom: 16px;
-    line-height: 1.5;
+/* -------------------------
+  Skills / Contributions Tags
+------------------------- */
+.card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 
-.program-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 16px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #eee;
+.skill-tag {
+  background: #f5f5f5;
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-.detail-item {
-    display: flex;
-    flex-direction: column;
+/* -------------------------
+  Stats (Contributors, Issues, Orgs)
+------------------------- */
+.card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 12px;
 }
 
-.detail-label {
-    font-weight: 600;
-    color: var(--primary-blue);
-    font-size: 12px;
-    margin-bottom: 4px;
+.card-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.detail-value {
-    color: var(--text-dark);
-    font-size: 14px;
+/* -------------------------
+  Card Link Button
+------------------------- */
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: var(--primary-gold, #f39c12);
+  text-decoration: none;
+  transition: background 0.2s;
 }
 
-.program-badges {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
+.card-link:hover {
+  background-color: #e08e0b;
 }
 
-.badge {
-    display: inline-block;
-    background-color: #E3F2FD;
-    color: var(--primary-blue);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 500;
+/* -------------------------
+  Icons
+------------------------- */
+.card-meta-grid i,
+.card-stats i {
+  color: #888;
 }
 
-.badge.difficulty-beginner {
-    background-color: #C8E6C9;
-    color: #2E7D32;
+/* -------------------------
+  Responsive
+------------------------- */
+@media (max-width: 768px) {
+  .card-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.badge.difficulty-intermediate {
-    background-color: #FFF9C4;
-    color: #F57F17;
-}
-
-.badge.difficulty-advanced {
-    background-color: #FFCCBC;
-    color: #D84315;
-}
-
-/* ---------- Stats Grid ---------- */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-}
-
-.stat {
-    background-color: var(--light-gray);
-    padding: 12px;
-    border-radius: 6px;
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--secondary-blue);
-}
-
-.stat-label {
-    font-size: 12px;
-    color: #666;
-    margin-top: 4px;
-}
-
-/* ---------- Action Buttons ---------- */
-.program-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.btn {
-    flex: 1;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--secondary-blue);
-    color: var(--white);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-blue);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--secondary-blue);
-    border: 2px solid var(--secondary-blue);
-}
-
-.btn-secondary:hover {
-    background-color: var(--secondary-blue);
-    color: var(--white);
-}
-
-/* ---------- Modal ---------- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0 0 0 / 50%);
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0%; }
-    to { opacity: 100%; }
-}
-
-.modal-content {
-    background-color: var(--white);
-    margin: 5% auto;
-    padding: 32px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
-    animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0%;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 100%;
-    }
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-    color: var(--primary-blue);
-}
-
-.modal h2 {
-    color: var(--primary-blue);
-    margin-bottom: 16px;
-    margin-top: 16px;
-}
-
-.modal-section {
-    margin-bottom: 24px;
-}
-
-.modal-section h3 {
-    color: var(--secondary-blue);
-    font-size: 18px;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 8px;
-}
-
-.contributions-list, .issues-list {
-    list-style: none;
-}
-
-.contributions-list li, .issues-list li {
-    padding: 10px;
-    margin-bottom: 8px;
-    background-color: var(--light-gray);
-    border-left: 4px solid var(--secondary-blue);
-    border-radius: 4px;
-}
-
-/* ---------- No Results ---------- */
-.no-results {
-    text-align: center;
-    padding: 60px 8%;
-    color: #999;
-}
-
-.no-results h3 {
-    color: var(--text-dark);
-    margin-bottom: 12px;
-}
-
-/* ---------- Footer ---------- */
-footer {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    text-align: center;
-    padding: 24px;
-    margin-top: 40px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-footer p {
-    font-size: 14px;
-}
-
-/* ---------- Responsive ---------- */
-@media (width <= 768px) {
-    header {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    nav {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        margin-left: 0;
-    }
-
-    .dashboard-header h2 {
-        font-size: 28px;
-    }
-
-    .filter-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-
-    .program-card {
-        padding: 16px;
-    }
-
-    .program-details {
-        grid-template-columns: 1fr;
-    }
-
-    .program-actions {
-        flex-direction: column;
-    }
-
-    .modal-content {
-        width: 95%;
-        margin: 20% auto;
-    }
-}
-
-@media (width <= 768px) {
-    .program-card {
-        flex-direction: column-reverse; /* Put logo at the top on small screens */
-        align-items: center;
-        text-align: center;
-    }
-
-    .program-card img {
-        max-width: 100px;
-        height: 100px;
-        margin-bottom: 20px;
-    }
-}
-
-/* ---------- Subscription Section ---------- */
-.subscription-section {
-    background-color: var(--white);
-    padding: 60px 8%;
-    text-align: center;
-    margin-top: 40px;
-    border-top: 1px solid #eaeaea;
-}
-
-.subscription-content h3 {
-    font-size: 28px;
-    color: var(--primary-blue);
-    margin-bottom: 12px;
-}
-
-.subscription-content p {
-    color: #666;
-    margin-bottom: 24px;
-}
-
-.subscribe-form {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.subscribe-form input {
-    flex: 1;
-    padding: 12px 16px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.subscribe-form input:focus {
-    border-color: var(--secondary-blue);
-}
-
-.subscription-message {
-    margin-top: 16px;
-    font-size: 14px;
-    font-weight: 600;
-    min-height: 20px;
-}
-
-.message-success {
-    color: var(--success-green);
-}
-
-.message-error {
-    color: var(--danger-red);
-}
-
-/* Responsive adjustment for small screens */
-@media (width <= 768px) {
-    .subscribe-form {
-        flex-direction: column;
-    }
-    .subscribe-form button {
-        width: 100%;
-    }
+@media (max-width: 500px) {
+  .program-card {
+    max-width: 100%;
+    margin: 12px 0;
+  }
 }
