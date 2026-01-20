@@ -47,38 +47,129 @@
       </p>
 
       <div class="card-grid">
-        <div class="card">
-          <h4>How to Contribute to Open Source</h4>
-          <p>
-            A step-by-step guide for finding beginner-friendly issues, opening
-            pull requests, and communicating with maintainers.
-          </p>
-        </div>
 
-        <div class="card">
-          <h4>Git and GitHub Essentials</h4>
-          <p>
-            Learn Git basics including forking repositories, creating
-            branches, writing commits, and opening pull requests on GitHub.
-          </p>
-        </div>
+  <!-- Card 1 -->
+  <div class="card">
+    <h4>How to Contribute to Open Source</h4>
+    <p>
+      A step-by-step guide for finding beginner-friendly issues, opening
+      pull requests, and communicating with maintainers.
+    </p>
 
-        <div class="card">
-          <h4>Open Source Licensing Explained</h4>
-          <p>
-            Understand common open source licenses and how to choose the right
-            one for your project.
-          </p>
-        </div>
+    <div class="resource-link-wrapper">
+      <a
+        href="https://opensource.guide/how-to-contribute/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
 
-        <div class="card">
-          <h4>Finding Good First Issues</h4>
-          <p>
-            Tips and tools to discover beginner-friendly issues across open
-            source repositories.
-          </p>
-        </div>
-      </div>
+      <button
+        class="copy-btn"
+        data-link="https://opensource.guide/how-to-contribute/"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <h4>Git and GitHub Essentials</h4>
+    <p>
+      Learn Git basics including forking repositories, creating branches,
+      writing commits, and opening pull requests on GitHub.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://docs.github.com/en/get-started"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://docs.github.com/en/get-started"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <h4>Open Source Licensing Explained</h4>
+    <p>
+      Understand common open source licenses and how to choose the right
+      one for your project.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://choosealicense.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://choosealicense.com/"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <h4>Finding Good First Issues</h4>
+    <p>
+      Tips and tools to discover beginner-friendly issues across open
+      source repositories.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://goodfirstissue.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://goodfirstissue.dev/"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+</div>
+
     </section>
 
     <section id="quiz-section">
@@ -423,6 +514,37 @@
       <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
     </p>
   </footer>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copy-btn");
+
+    copyButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const link = btn.getAttribute("data-link");
+        const feedback = btn.nextElementSibling;
+        const icon = btn.querySelector("i");
+
+        navigator.clipboard.writeText(link).then(() => {
+          // Show feedback
+          feedback.style.display = "inline";
+
+          // Change icon to tick
+          icon.classList.remove("fa-copy");
+          icon.classList.add("fa-check");
+
+          // Reset after 1.5 sec
+          setTimeout(() => {
+            feedback.style.display = "none";
+            icon.classList.remove("fa-check");
+            icon.classList.add("fa-copy");
+          }, 1500);
+        });
+      });
+    });
+  });
+</script>
+
+
 
   <script src="../js/components.js"></script>
 

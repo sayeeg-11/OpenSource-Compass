@@ -285,4 +285,38 @@ footer a {
 #level-chain-wrapper::-webkit-scrollbar {
   display: none;
 }
-    
+    .resource-link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.8rem;
+}
+
+.resource-link {
+  color: var(--primary-gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.resource-link:hover {
+  text-decoration: underline;
+}
+
+.copy-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--deep-navy);
+  font-size: 1rem;
+}
+
+.copy-btn:hover {
+  color: var(--primary-gold);
+  transform: scale(1.1);
+}
+
+.copy-feedback {
+  font-size: 0.8rem;
+  color: green;
+  display: none;
+}
