@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Page Not Found - OpenSource Compass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;500&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="icon" href="frontend/library/assets/favicon.png" type="image/png" />
+
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --secondary-gold: #b8860b;
+            --deep-navy: #1b263b;
+            --warm-cream: #fdf4e3;
+            --light-parchment: #fff8e7;
+            --charcoal-dark: #2c2c2c;
+            --text-secondary: #5a5a5a;
+            --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 15px;
+            line-height: 1.7;
+            background: linear-gradient(
+                135deg,
+                var(--light-parchment) 0%,
+                var(--warm-cream) 100%
+            );
+            color: var(--charcoal-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 3px solid var(--primary-gold);
+            padding: 1rem 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-main);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.6rem, 3vw, 1.9rem);
+            font-weight: 700;
+            background: linear-gradient(
+                135deg,
+                var(--deep-navy) 0%,
+                var(--primary-gold) 70%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal-dark) !important;
+            font-family: "Inter", -apple-system, sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-navy) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-links a:hover::before {
+            width: 70%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--deep-navy);
+            transition: 0.3s;
+        }
+
+        .error-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 6%;
+            position: relative;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(253, 246, 227, 0.6) 0%,
+                transparent 70%
+            );
+        }
+
+        .error-content {
+            max-width: 800px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .error-code {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(
+                135deg,
+                var(--deep-navy) 20%,
+                var(--primary-gold) 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.2s forwards;
+            position: relative;
+        }
+        
+        .error-code::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .error-message {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-family: "Playfair Display", serif;
+            color: var(--charcoal-dark);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .error-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.5s forwards;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.6s forwards;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold) 0%,
+                var(--secondary-gold) 100%
+            );
+            color: var(--deep-navy);
+            border: none;
+            box-shadow: 
+                0 8px 20px rgba(212, 175, 55, 0.25),
+                0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--deep-navy);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 16px 40px rgba(212, 175, 55, 0.45),
+                0 8px 18px rgba(0, 0, 0, 0.12);
+            filter: brightness(1.05);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--deep-navy);
+            color: var(--warm-cream);
+            text-align: center;
+            padding: 3rem 6% 2.5rem;
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0.9rem 5%; }
+            .navbar-container { flex-direction: row; }
+            
+            .hamburger { display: flex; }
+
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 1.5rem 0;
+                display: none;
+                border-bottom: 3px solid var(--primary-gold);
+                transform: translateY(-120%);
+                transition: transform 0.35s ease;
+                z-index: 1000;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+            }
+            
+            .error-code { font-size: 5rem; }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold);"></i>
+                OpenSource Compass
+            </h1>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="frontend/pages/guides.html">Guides</a>
+                <a href="frontend/pages/programs.html">Programs</a>
+                <a href="frontend/pages/Resources.html">Resources</a>
+                <a href="frontend/pages/contributors.html">Contributors</a>
+                <a href="frontend/pages/faq.html">FAQ</a>
+                <a href="frontend/pages/Contribute.html">Contribute</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="error-section">
+        <div class="error-content">
+            <h2 class="error-code">404</h2>
+            <h3 class="error-message">Oops — the page you’re looking for can’t be found.</h3>
+            <p class="error-description">
+                It seems you've ventured into uncharted territory. The coordinates you entered don't lead to a known destination in our open source galaxy.
+            </p>
+            
+            <div class="btn-group">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home"></i> Go Home
+                </a>
+                <a href="frontend/pages/programs.html" class="btn-secondary">
+                    <i class="fas fa-compass"></i> Explore Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <i class="fas fa-heart" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+            © <span id="year">2026</span> OpenSource Compass
+            <a href="https://github.com/sayeeg-11/opensource-compass" target="_blank" style="margin-left: 0.5rem">GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
+        const navItems = navLinks.querySelectorAll("a");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            
+            const spans = hamburger.querySelectorAll('span');
+            if (navLinks.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                spans.forEach(span => span.style.transform = 'none');
+                spans[1].style.opacity = '1';
+            }
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                const spans = hamburger.querySelectorAll('span');
+                spans.forEach(span => span.style.transform = 'none');
+                spans[1].style.opacity = '1';
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove("active");
+                const spans = hamburger.querySelectorAll('span');
+                spans.forEach(span => span.style.transform = 'none');
+                spans[1].style.opacity = '1';
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const bg = document.querySelector('.error-section');
+            bg.style.backgroundPosition = `${50 + (x * 10)}% ${50 + (y * 10)}%`;
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
