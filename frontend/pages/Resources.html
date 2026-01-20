@@ -55,29 +55,30 @@
           </p>
         </div>
 
-        <div class="card">
-          <h4>Git and GitHub Essentials</h4>
-          <p>
-            Learn Git basics including forking repositories, creating
-            branches, writing commits, and opening pull requests on GitHub.
-          </p>
-        </div>
+        <div class="resource-card" data-difficulty="Beginner">
+  <h4>Git and GitHub Essentials</h4>
+  <p>
+    Learn Git basics including forking repositories, creating
+    branches, writing commits, and opening pull requests on GitHub.
+  </p>
+</div>
 
-        <div class="card">
-          <h4>Open Source Licensing Explained</h4>
-          <p>
-            Understand common open source licenses and how to choose the right
-            one for your project.
-          </p>
-        </div>
+<div class="resource-card" data-difficulty="Intermediate">
+  <h4>Open Source Licensing Explained</h4>
+  <p>
+    Understand common open source licenses and how to choose the right
+    one for your project.
+  </p>
+</div>
 
-        <div class="card">
-          <h4>Finding Good First Issues</h4>
-          <p>
-            Tips and tools to discover beginner-friendly issues across open
-            source repositories.
-          </p>
-        </div>
+<div class="resource-card" data-difficulty="Beginner">
+  <h4>Finding Good First Issues</h4>
+  <p>
+    Tips and tools to discover beginner-friendly issues across open
+    source repositories.
+  </p>
+</div>
+
       </div>
     </section>
 
@@ -423,8 +424,28 @@
       <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
     </p>
   </footer>
+  </footer>
+
+  <!-- Difficulty Badge Script (add below) -->
+  <script>
+    document.querySelectorAll('.resource-card').forEach(card => {
+      const difficulty = card.dataset.difficulty;
+      if (!difficulty) return;
+
+      const badge = document.createElement('span');
+      badge.classList.add('badge', `difficulty-${difficulty.toLowerCase()}`);
+      badge.textContent = difficulty;
+      card.insertBefore(badge, card.firstChild);
+    });
+  </script>
 
   <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/chatbot.js"></script>
+
+
+ <script src="../js/components.js"></script>
+
 
   <script src="../js/theme.js"></script>
 

@@ -15,3 +15,27 @@ document.querySelectorAll('.filter-pill').forEach(button => {
     });
   });
 });
+document.querySelectorAll('.resource-card').forEach(card => {
+  const difficulty = card.dataset.difficulty; // read data-difficulty
+  if (!difficulty) return;
+
+  // Create badge element
+  const badge = document.createElement('span');
+  badge.classList.add('badge', `difficulty-${difficulty.toLowerCase()}`);
+  badge.textContent = difficulty;
+
+  // Insert the badge at the top of the card
+  card.insertBefore(badge, card.firstChild);
+});
+document.querySelectorAll('.resource-card').forEach(card => {
+  const difficulty = card.dataset.difficulty; // Read the difficulty
+
+  if (!difficulty) return; // Skip if no difficulty found
+
+  const badge = document.createElement('span');
+  badge.classList.add('badge', `difficulty-${difficulty.toLowerCase()}`);
+  badge.textContent = difficulty;
+
+  // Add badge at the top of the card
+  card.insertBefore(badge, card.firstChild);
+});
