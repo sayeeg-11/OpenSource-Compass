@@ -13,16 +13,33 @@ body.dark-mode .guides-section {
     color: #e0e0e0 !important;
 }
 
-/* 2. NAVBAR */
+/* 2. NAVBAR & NAVIGATION LINKS */
 body.dark-mode .navbar, 
 body.dark-mode header,
 body.dark-mode nav {
     background-color: #1a1a1a !important; 
     border-bottom: 1px solid #333;
 }
-body.dark-mode .nav-link,
+
+/* Default Link Color -> White */
+body.dark-mode .nav-links a,
 body.dark-mode .navbar a {
-    color: #ffffff !important;
+    color: #ffffff !important; /* Text is White */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* Active Page & Hover State -> Golden */
+/* This highlights the page you are currently on */
+body.dark-mode .nav-links a.active,
+body.dark-mode .nav-links a:hover,
+body.dark-mode .navbar a:hover {
+    color: #d4af37 !important; /* Golden */
+}
+
+/* Fix the Compass Icon color if needed */
+body.dark-mode .fa-compass {
+    color: #d4af37 !important;
 }
 
 /* 3. CARDS (Fixing the Guide Step Cards) */

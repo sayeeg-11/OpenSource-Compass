@@ -22,6 +22,66 @@
   
 </head>
 
+<style>
+/* =========================================
+   RESOURCES PAGE DARK MODE FIXES
+========================================= */
+
+/* 1. Fix Section Backgrounds */
+body.dark-mode .resources-section,
+body.dark-mode .templates-section,
+body.dark-mode .checklists-section,
+body.dark-mode .tools-section,
+body.dark-mode .beginner-issues-section {
+    background-color: #121212 !important; /* Cold Gray */
+    color: #e0e0e0 !important;
+}
+
+/* 2. Fix Cards (Tiles) Background */
+/* Targets all the different tile classes used in your HTML */
+body.dark-mode .resource-tile,
+body.dark-mode .template-tile,
+body.dark-mode .checklist-tile,
+body.dark-mode .tool-tile,
+body.dark-mode .beginner-tile {
+    background-color: #1e1e1e !important; /* Dark Grey Card */
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* 3. Fix Text Colors (The Golden Fix) */
+/* Targets the <h5> titles inside the tiles */
+body.dark-mode .resource-tile h5,
+body.dark-mode .template-tile h5,
+body.dark-mode .checklist-tile h5,
+body.dark-mode .tool-tile h5,
+body.dark-mode .beginner-tile h5,
+body.dark-mode .tile-content h5 {
+    color: #b8860b !important; /* Dark Golden (or use #d4af37 for lighter gold) */
+}
+
+/* 4. Fix Links & Icons */
+body.dark-mode .tile-content a,
+body.dark-mode .tile-icon {
+    color: #d4af37 !important; /* Lighter Gold for links/icons */
+}
+
+/* 5. Fix Body Text */
+body.dark-mode .tile-content p,
+body.dark-mode .checklist-tile li {
+    color: #cccccc !important; /* Readable Light Grey */
+}
+
+/* 6. Hover Effects */
+body.dark-mode .resource-tile:hover,
+body.dark-mode .template-tile:hover,
+body.dark-mode .checklist-tile:hover,
+body.dark-mode .tool-tile:hover,
+body.dark-mode .beginner-tile:hover {
+    border-color: #d4af37 !important;
+    transform: translateY(-5px);
+}
+</style>
 
 <body>
   <!-- Navbar copied EXACTLY from home.html -->

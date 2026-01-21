@@ -20,6 +20,66 @@
   <link rel="stylesheet" href="../css/contribute.css" />
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
 </head>
+<style>
+/* =========================================
+   CONTRIBUTE PAGE DARK MODE FIXES
+========================================= */
+
+/* 1. Page Background - Cold Gray */
+body.dark-mode main,
+body.dark-mode section {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+/* 2. Card Backgrounds - Dark Grey */
+/* Targets step cards, tip cards, and practice items */
+body.dark-mode .step-card,
+body.dark-mode .tip-card,
+body.dark-mode .practice-item,
+body.dark-mode .card {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* 3. GOLDEN TEXT FIX (For specific headers & list titles) */
+/* Targets: "Fork the Repository", "Write clear commit messages", etc. */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode .step-number,   /* The number 1, 2, 3... */
+body.dark-mode .tip-icon,      /* Icons in tips */
+body.dark-mode strong,         /* Bold text like "Write clear commit messages:" */
+body.dark-mode b {
+    color: #d4af37 !important; /* Primary Gold */
+}
+
+/* 4. Description Text - Readable Light Grey */
+body.dark-mode p,
+body.dark-mode li {
+    color: #cccccc !important;
+}
+
+/* 5. Hover Effects */
+body.dark-mode .step-card:hover,
+body.dark-mode .tip-card:hover,
+body.dark-mode .practice-item:hover {
+    border-color: #d4af37 !important;
+    transform: translateY(-5px);
+}
+
+/* 6. Code Snippet Backgrounds (if any) */
+body.dark-mode pre,
+body.dark-mode code {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    color: #f8f8f2 !important;
+}
+</style>
+
 
 <body>
   <!-- Navbar -->
