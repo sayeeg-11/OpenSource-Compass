@@ -1,638 +1,214 @@
-/* contributors.css (page-specific)
-   Matches the classic cream/gold theme defined in style.css.
-*/
+/* =========================================
+   CONTRIBUTORS PAGE STYLES
+========================================= */
 
-.contributors-page .contributors-section {
-  padding-top: 4.25rem;
+/* 1. Main Grid Layout */
+#contributors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+    width: 100%;
 }
 
-.contributors-page .contributors-section > p {
-  margin-bottom: 2.1rem;
+/* 2. Card Design (Light Mode Default) */
+.contributor-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    opacity: 0; /* For fade-in animation */
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
 }
 
-.contributors-status {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--text-secondary);
-  font-family: "Inter", -apple-system, sans-serif;
-  font-size: 0.98rem;
-  min-height: 1.5rem;
-}
-
-.contributors-status.is-error {
-  color: #a12b2b;
-}
-
-.contributors-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.4rem;
-}
-
-@media (min-width: 1100px) {
-  .contributors-grid {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  }
-}
-
-@keyframes oscFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
+/* Animation trigger */
+.contributor-card.is-visible {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-.contributor-card {
-  position: relative;
-  border-radius: 18px;
-  padding: 1.35rem 1.35rem 1.15rem;
-  background: rgb(255 255 255 / 92%);
-  box-shadow: var(--shadow-main);
-  border: 1px solid rgb(212 175 55 / 22%);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.contributor-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(900px circle at 0% 0%, rgb(212 175 55 / 14%), transparent 45%),
-    radial-gradient(700px circle at 100% 0%, rgb(27 38 59 / 10%), transparent 45%);
-  pointer-events: none;
-}
-
-.contributor-card.is-visible {
-  animation: oscFadeUp 0.5s ease both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contributor-card {
-    transition: none;
-  }
-  .contributor-card.is-visible {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .contributor-skeleton .sk {
-    animation: none;
-  }
 }
 
 .contributor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #d4af37; /* Gold border on hover */
 }
 
+/* 3. Inner Layout */
 .contributor-card-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
+/* 4. Avatar */
 .contributor-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgb(212 175 55 / 55%);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 10%);
-  flex: 0 0 auto;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+    flex-shrink: 0;
 }
 
+/* 5. Main Content Area */
 .contributor-main {
-  flex: 1;
-  min-width: 0;
+    flex: 1;
+    min-width: 0; /* Prevents text overflow */
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
+/* 6. Name */
 .contributor-name {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  color: var(--deep-navy);
-  font-size: 1.25rem;
-  line-height: 1.15;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1b263b; /* Deep Navy */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
+/* 7. Meta Tags (Merged PRs count) */
 .contributor-meta {
-  margin-top: 0.35rem;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .contributor-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  font-family: "Inter", -apple-system, sans-serif;
-  font-size: 0.82rem;
-  color: var(--deep-navy);
-  background: linear-gradient(135deg, rgb(212 175 55 / 14%), rgb(184 134 11 / 10%));
-  border: 1px solid rgb(212 175 55 / 24%);
-  white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    background-color: #fdf4e3; /* Warm Cream */
+    color: #b8860b; /* Dark Gold */
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
 }
 
+.contributor-chip i {
+    font-size: 0.7rem;
+}
+
+/* Bot Badge Style */
 .contributor-chip.is-bot {
-  background: linear-gradient(135deg, rgb(27 38 59 / 12%), rgb(212 175 55 / 10%));
+    background-color: #e0e0e0;
+    color: #555;
 }
 
+/* 8. Action Buttons (GitHub Link) */
 .contributor-actions {
-  flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .contributor-github {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--deep-navy);
-  background: rgb(255 255 255 / 90%);
-  border: 1px solid rgb(212 175 55 / 24%);
-  transition: transform 0.2s ease, background 0.2s ease;
+    font-size: 1.5rem;
+    color: #1b263b;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contributor-github:hover {
-  transform: scale(1.06);
-  background: rgb(255 248 231 / 95%);
+    color: #d4af37; /* Gold */
 }
 
-/* Skeleton loading */
-@keyframes oscShimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
+/* =========================================
+   SKELETON LOADING ANIMATION
+========================================= */
 .contributor-skeleton {
-  border-radius: 18px;
-  padding: 1.35rem;
-  background: rgb(255 255 255 / 92%);
-  box-shadow: var(--shadow-main);
-  border: 1px solid rgb(212 175 55 / 22%);
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.25rem;
+    height: 106px; /* Approx height of real card */
 }
 
-.contributor-skeleton .sk {
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    rgb(212 175 55 / 10%) 25%,
-    rgb(212 175 55 / 18%) 37%,
-    rgb(212 175 55 / 10%) 63%
-  );
-  background-size: 400% 100%;
-  animation: oscShimmer 1.1s ease infinite;
+.sk {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
 }
 
-.contributor-skeleton .sk.avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
+.sk.avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
 }
 
-.contributor-skeleton .sk.line1 {
-  height: 14px;
-  width: 65%;
-  margin: 0.25rem 0 0.7rem;
+.sk.line1 {
+    height: 16px;
+    width: 70%;
+    margin-bottom: 8px;
 }
 
-.contributor-skeleton .sk.line2 {
-  height: 12px;
-  width: 45%;
+.sk.line2 {
+    height: 12px;
+    width: 40%;
 }
 
-@media (max-width: 720px) {
-  .contributors-page .contributors-section {
-    padding-top: 3.5rem;
-  }
-  .contributors-grid {
-    gap: 1rem;
-  }
-  .contributor-card {
-    padding: 1.1rem;
-  }
-  .contributor-card-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-  .contributor-name {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-    overflow-wrap: anywhere;
-  }
-  .contributor-meta {
-    justify-content: center;
-  }
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
-@media (max-width: 420px) {
-  .contributor-avatar {
-    width: 58px;
-    height: 58px;
-  }
-  .contributor-name {
-    font-size: 1.15rem;
-  }
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.hero h1 {
-  font-family: 'Orbitron', monospace;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--glow);
-  text-shadow: 0 0 10px rgb(0 247 255 / 50%);
+/* =========================================
+   DARK MODE OVERRIDES (The Fix)
+========================================= */
+body.dark-mode .contributor-card {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-.hero p {
-  color: var(--muted);
-  font-size: 1.1rem;
+body.dark-mode .contributor-card:hover {
+    border-color: #d4af37 !important;
+    background-color: #252525 !important;
 }
 
-.stats-dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+body.dark-mode .contributor-name {
+    color: #ffffff !important; /* White Name */
 }
 
-.stat-card {
-  background: var(--secondary);
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid var(--border);
-  transition: transform 0.3s ease;
+body.dark-mode .contributor-chip {
+    background-color: #333;
+    color: #d4af37; /* Gold text on dark chip */
+    border: 1px solid #444;
 }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgb(0 247 255 / 10%);
+body.dark-mode .contributor-chip.is-bot {
+    background-color: #444;
+    color: #aaa;
 }
 
-.stat-card h3 {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
+body.dark-mode .contributor-github {
+    color: #e0e0e0 !important; /* White/Light Grey Icon */
 }
 
-.stat-value {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--glow);
-  font-family: 'Orbitron', monospace;
+body.dark-mode .contributor-github:hover {
+    color: #d4af37 !important; /* Gold on Hover */
 }
 
-.project-lead {
-  position: relative;
-  background: var(--secondary);
-  padding: 2rem;
-  border-radius: 12px;
-  border: 2px solid var(--glow);
-  margin: 2rem 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+/* Skeleton Dark Mode */
+body.dark-mode .contributor-skeleton {
+    background-color: #1e1e1e;
+    border-color: #333;
 }
 
-.lead-badge {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ffc107;
-  color: #000;
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  box-shadow: 0 0 10px rgb(255 193 7 / 50%);
-}
-
-.lead-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--glow);
-  box-shadow: 0 0 20px rgb(0 247 255 / 30%);
-}
-
-.project-lead h2 {
-  font-size: 1.8rem;
-  margin: 0.5rem 0;
-}
-
-.project-lead p {
-  color: var(--muted);
-  max-width: 400px;
-}
-
-.top-contributors {
-  margin: 2rem 0;
-}
-
-.top-contributors h2 {
-  font-family: 'Orbitron', monospace;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--glow);
-  position: relative;
-}
-
-.top-contributors h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--glow);
-  border-radius: 2px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.contributor-card {
-  background: var(--secondary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.contributor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgb(0 247 255 / 10%);
-  border-color: var(--glow);
-}
-
-.contributor-card.highlighted {
-  border: 2px solid #ffc107;
-  box-shadow: 0 0 20px rgb(255 193 7 / 50%);
-}
-
-.contributor-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 2px solid var(--glow);
-}
-
-.contributor-card .username {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.contributor-card .stats {
-  background: rgb(0 247 255 / 10%);
-  padding: 0.5rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-family: 'Orbitron', monospace;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.pagination button {
-  background: var(--secondary);
-  border: 1px solid var(--border);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.pagination button:hover {
-  background: rgb(0 247 255 / 10%);
-  color: var(--glow);
-}
-
-.pagination button:disabled {
-  opacity: 50%;
-  cursor: not-allowed;
-}
-
-.recent-activity {
-  margin: 2rem 0;
-}
-
-.recent-activity h2 {
-  font-family: 'Orbitron', monospace;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--glow);
-  position: relative;
-}
-
-.recent-activity h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--glow);
-  border-radius: 2px;
-}
-
-.activity-container {
-  background: var(--secondary);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-}
-
-.activity-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: flex-start;
-}
-
-.activity-item:last-child {
-  border-bottom: none;
-}
-
-.activity-item .avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  object-fit: cover;
-}
-
-.activity-item .details {
-  flex: 1;
-}
-
-.activity-item .author {
-  font-weight: bold;
-  color: var(--glow);
-  margin-right: 0.5rem;
-}
-
-.activity-item .date {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.contribute-section {
-  margin: 3rem 0;
-  text-align: center;
-}
-
-.contribute-section h2 {
-  font-family: 'Orbitron', monospace;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--glow);
-  position: relative;
-}
-
-.contribute-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--glow);
-  border-radius: 2px;
-}
-
-.contribute-section p {
-  color: var(--muted);
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contribute-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.step-card {
-  background: var(--secondary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.step-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgb(0 247 255 / 10%);
-}
-
-.step-card .icon {
-  font-size: 2.5rem;
-  color: var(--glow);
-  margin-bottom: 1rem;
-}
-
-.step-card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.step-card p {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/* Responsive */
-@media (width <= 768px) {
-  .header {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .stat-card {
-    padding: 1rem;
-  }
-
-  .stat-value {
-    font-size: 1.5rem;
-  }
-
-  .contributor-card {
-    padding: 1rem;
-  }
-
-  .contributor-card img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .activity-item {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .activity-item .avatar {
-    margin-right: 0;
-  }
-
-  .contribute-steps {
-    grid-template-columns: 1fr;
-  }
+body.dark-mode .sk {
+    background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+    background-size: 200% 100%;
 }
