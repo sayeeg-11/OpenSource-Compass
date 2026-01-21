@@ -10,16 +10,25 @@
 }
 
 /* Guide list items */
+
 .guide-list li {
-  display: flex;
-  align-items: flex-start;
   gap: 1.5rem;
-  padding: 2rem 2.2rem;
+  padding: 4rem 2.2rem;
   background: linear-gradient(145deg, var(--light-parchment), var(--warm-cream));
   border-radius: 20px;
   box-shadow: var(--shadow-main);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
+
+.guide-list li {
+  display: flex;
+  align-items: center; /* aligns step and h4 nicely */
+  gap: 12px;
+  flex-wrap: wrap;         /* allows <p> to move to next line */
+}
+
+
+
 
 .guide-list li:hover {
   transform: translateY(-5px);
@@ -27,7 +36,7 @@
 }
 
 /* Step number */
-.guide-list .step {
+ .guide-list .step {
   counter-increment: step-counter;
   font-family: "Playfair Display", serif;
   font-weight: 700;
@@ -41,7 +50,9 @@
   background: var(--deep-navy);
   color: var(--warm-cream);
   flex-shrink: 0;
-}
+} 
+
+
 
 /* Guide titles */
 .guide-list h4 {
@@ -49,6 +60,8 @@
   font-size: 1.5rem;
   color: var(--deep-navy);
   margin-bottom: 0.6rem;
+  margin-top: 10px;
+  
 }
 
 /* Guide descriptions - improved readability */
@@ -57,6 +70,10 @@
   color: var(--charcoal-dark); /* higher contrast */
   line-height: 1.75;       /* more spacing for readability */
   margin: 0;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 /* =========================
@@ -79,6 +96,7 @@
   .guide-list .step {
     margin-bottom: 0.8rem;
   }
+
 }
 
 @media (width <= 480px) {
