@@ -1,0 +1,610 @@
+/* Git Playground Redesign - Navy & Gold Theme */
+:root {
+    --bg-dark: #0b111a;
+    /* Very dark navy for background */
+    --card-bg: #161b22;
+    /* Slightly lighter for panels */
+    --border-color: #30363d;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --primary-gold: #d4af37;
+    --primary-gold-dim: rgba(212, 175, 55, 0.2);
+    --accent-blue: #58a6ff;
+    --terminal-black: #0d1117;
+}
+
+body.playground-page {
+    background-color: var(--bg-dark) !important;
+    background-image: none !important;
+    /* Override global style.css gradient */
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom Nav for Playground */
+.playground-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+}
+
+.nav-back {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-back:hover {
+    color: var(--primary-gold);
+}
+
+/* Layout */
+.playground-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 1rem;
+    height: 100%;
+    /* Dynamic height to fit viewport */
+    min-height: 0;
+}
+
+/* Terminal Section Wrapper */
+.terminal-section {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Terminal Section */
+.terminal-window {
+    background: var(--terminal-black);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    flex: 1;
+    /* Ensure it takes full space of section */
+}
+
+.terminal-bar {
+    background: var(--card-bg);
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.control.red {
+    background: #ff5f56;
+}
+
+.control.yellow {
+    background: #ffbd2e;
+}
+
+.control.green {
+    background: #27c93f;
+}
+
+.window-title {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.window-actions {
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.window-actions i:hover {
+    color: var(--text-primary);
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    min-height: 0;
+    /* Critical for nested flex scrolling */
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e6edf3;
+}
+
+.welcome-msg {
+    margin-bottom: 1.5rem;
+}
+
+.warning-box {
+    margin-top: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #ffd700;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: start;
+}
+
+/* Input Area */
+.terminal-input-area {
+    padding: 0.8rem;
+    background: var(--card-bg);
+    /* Match header/footer color */
+    border-top: 1px solid var(--border-color);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: var(--terminal-black);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.4rem;
+    transition: border-color 0.3s;
+}
+
+.input-group:focus-within {
+    border-color: var(--primary-gold);
+}
+
+.prompt-pill {
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.prompt-pill.user {
+    background: var(--primary-gold);
+    color: #0b111a;
+}
+
+.prompt-pill.dir {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--primary-gold);
+}
+
+.prompt-symbol {
+    color: var(--primary-gold);
+    margin-right: 0.8rem;
+    font-weight: bold;
+}
+
+#command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    outline: none;
+}
+
+#send-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-gold);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+    transition: transform 0.2s;
+}
+
+#send-btn:hover {
+    transform: translateX(2px) scale(1.1);
+}
+
+/* Cheat Sheet Section */
+.cheatsheet-section {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Ensure self-scroll works */
+}
+
+.cheatsheet-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.cheatsheet-header h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    color: #e6edf3;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 3px var(--primary-gold-dim);
+}
+
+.cheat-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Scrollbar for cheat list, terminal, and modals */
+.cheat-list::-webkit-scrollbar,
+.terminal-body::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cheat-list::-webkit-scrollbar-thumb,
+.terminal-body::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.cheat-list::-webkit-scrollbar-track,
+.terminal-body::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.group-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin: 1.2rem 0 0.8rem 0;
+}
+
+.group-title:first-child {
+    margin-top: 0;
+}
+
+.cheat-item {
+    margin-bottom: 0.8rem;
+}
+
+.cheat-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.cheat-toggle:hover {
+    border-color: var(--primary-gold);
+}
+
+.cheat-toggle code {
+    font-family: 'Fira Code', monospace;
+    color: var(--primary-gold);
+    font-weight: 500;
+}
+
+.cheat-toggle i {
+    color: var(--text-secondary);
+    transition: transform 0.3s;
+}
+
+.cheat-item.active .cheat-toggle i {
+    transform: rotate(180deg);
+}
+
+.cheat-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 0 8px 8px;
+    margin-top: -4px;
+    /* Slight overlap visually */
+}
+
+.cheat-item.active .cheat-details {
+    max-height: 100px;
+    /* Adjust if content is larger */
+    border: 1px solid var(--border-color);
+    border-top: none;
+}
+
+.cheat-details p {
+    padding: 0.8rem;
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow-y: auto;
+        /* Allow layout to scroll if stacked */
+    }
+
+    .terminal-section {
+        height: 500px;
+    }
+
+    .cheatsheet-section {
+        height: 500px;
+    }
+
+    .playground-wrapper {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .playground-wrapper {
+        padding: 0.5rem;
+    }
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+
+.modal {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+}
+
+.modal-header {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    color: var(--text-primary);
+}
+
+.setting-item {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting-item label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.setting-item select {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.6rem;
+    border-radius: 6px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.setting-item select:focus {
+    border-color: var(--primary-gold);
+}
+
+.danger-btn {
+    background: rgba(255, 95, 86, 0.1);
+    color: #ff5f56;
+    border: 1px solid rgba(255, 95, 86, 0.3);
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.danger-btn:hover {
+    background: rgba(255, 95, 86, 0.2);
+}
+
+/* Help Content */
+.help-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.help-list li {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    color: #e6edf3;
+    align-items: center;
+    /* Align icon vertically */
+}
+
+.help-list li i {
+    color: var(--primary-gold);
+    width: 16px;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Themes */
+body.theme-matrix {
+    --bg-dark: #000000;
+    --card-bg: #111111;
+    --border-color: #003300;
+    --text-primary: #00ff00;
+    --text-secondary: #008f11;
+    --primary-gold: #00ff00;
+    --primary-gold-dim: rgba(0, 255, 0, 0.1);
+    --accent-blue: #00aa00;
+    --terminal-black: #000000;
+}
+
+body.theme-matrix .window-controls .control {
+    background: #005500;
+    /* Dim controls for matrix */
+}
+
+body.theme-matrix .cheat-details {
+    background: rgba(0, 50, 0, 0.1);
+}

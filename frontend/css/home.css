@@ -448,19 +448,26 @@ main section {
 }
 
 .newsletter {
-  max-width: none;
-  background: var(--deep-navy);
-  color: white;
-  text-align: center;
+  background: #f8fbff;
+  border: 1px solid #cbd5e1;
+  padding: 24px;
+  border-radius: 12px;
+  color: #0f172a;
+  width: 100% ;
+  max-width: 100% ;
+  padding: 80px 20px ;
+  box-sizing: border-box;
+
 }
 
 .newsletter h3 {
-  color: white;
+  color: #0b1320;
+  font-weight: 700;
 }
 
 .newsletter p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.05rem;
+  color: #1e293b;
+  font-size: 15px;
 }
 
 .newsletter form {
@@ -481,10 +488,13 @@ main section {
   color: white;
   font-size: 0.98rem;
   font-family: "Inter", -apple-system, sans-serif;
+  border: 2px solid #94a3b8;         
+  background: #ffffff;              
+  color: #0f172a; 
 }
 
 .newsletter input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+   color: #475569;
 }
 
 .newsletter button {
@@ -506,6 +516,40 @@ main section {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
+
+body.dark-mode .newsletter {
+  background: linear-gradient(135deg, #131d35, #030822);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .newsletter h3 {
+  color: #f1f5f9;
+}
+
+body.dark-mode .newsletter p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .newsletter input {
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+body.dark-mode .newsletter button {
+  background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
 
 #scrollTopBtn {
   position: fixed;
@@ -584,6 +628,40 @@ body.dark-mode .hero-btn-secondary {
   background: rgba(22, 27, 34, 0.78);
   color: rgba(240, 246, 252, 0.92);
 }
+
+/* =========================
+   DARK MODE FIXES
+========================= */
+
+/* Fix Navbar Background in Dark Mode */
+body.dark-mode .navbar, 
+body.dark-mode header {
+    background-color: #1a1a1a; /* Dark Grey instead of White */
+    border-bottom: 1px solid #333;
+}
+
+/* Fix Navbar Links Color */
+body.dark-mode .nav-link,
+body.dark-mode .navbar a {
+    color: #ffffff; /* White text */
+}
+
+/* Fix Cards or Containers that remain white */
+body.dark-mode .card,
+body.dark-mode .container-box {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* Darker shadow */
+}
+
+/* Fix Inputs and Forms */
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
 
 /* =========================
    RESPONSIVE

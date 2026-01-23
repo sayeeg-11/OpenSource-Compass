@@ -42,6 +42,140 @@
   </header>
 
   <main>
+
+    <section>
+      <h3>Resources</h3>
+      <p>
+        Tutorials, tools, and references to help you start and grow in open
+        source.
+      </p>
+
+      <div class="card-grid">
+
+  <!-- Card 1 -->
+  <div class="card">
+    <h4>How to Contribute to Open Source</h4>
+    <p>
+      A step-by-step guide for finding beginner-friendly issues, opening
+      pull requests, and communicating with maintainers.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://opensource.guide/how-to-contribute/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://opensource.guide/how-to-contribute/"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <h4>Git and GitHub Essentials</h4>
+    <p>
+      Learn Git basics including forking repositories, creating branches,
+      writing commits, and opening pull requests on GitHub.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://docs.github.com/en/get-started"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://docs.github.com/en/get-started"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <h4>Open Source Licensing Explained</h4>
+    <p>
+      Understand common open source licenses and how to choose the right
+      one for your project.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://choosealicense.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://choosealicense.com/"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <h4>Finding Good First Issues</h4>
+    <p>
+      Tips and tools to discover beginner-friendly issues across open
+      source repositories.
+    </p>
+
+    <div class="resource-link-wrapper">
+      <a
+        href="https://goodfirstissue.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resource-link"
+      >
+        Visit Resource
+      </a>
+
+      <button
+        class="copy-btn"
+        data-link="https://goodfirstissue.dev/"
+        title="Copy link"
+      >
+        <i class="fas fa-copy"></i>
+      </button>
+
+      <span class="copy-feedback">Copied!</span>
+    </div>
+  </div>
+
+</div>
+
+    </section>
+=======
 <section class="resources-section">
   <header class="resources-header">
     <h3>Learning Resources</h3>
@@ -49,7 +183,12 @@
   </header>
 
   <div class="resources-list">
-    <div class="resource-tile">
+   <div class="empty-state" id="resources-empty" style="display: none;">
+  <div class="empty-icon">📭</div>
+  <h4>No resources available</h4>
+  <p>Resources will appear here once they are added.</p>
+</div>
+<div class="resource-tile">
       <div class="tile-accent" style="background-color: #d4af37;"></div>
       <div class="tile-icon">📚</div>
       <div class="tile-content">
@@ -71,6 +210,16 @@
       </div>
     </div>
 
+
+    <div class="template-tile">
+      <div class="tile-icon">🐛</div>
+      <div class="tile-content">
+        <h5>Issue Templates</h5>
+        <p>Predefined bug report and feature request formats to save time and ensure clarity.</p>
+        <a href="../assets/templates/issue-template.md" target="_blank" rel="noopener">View Templates →</a>
+      </div>
+    </div>
+
     <div class="resource-tile">
       <div class="tile-accent" style="background-color: #4ecdc4;"></div>
       <div class="tile-icon">✏️</div>
@@ -80,7 +229,7 @@
         <p>Learn Markdown syntax, formatting rules, and best practices for clean documentation.</p>
         <a href="https://www.markdownguide.org" target="_blank" rel="noopener">Read guide →</a>
       </div>
-    </div>
+    </div> 
   </div>
 </section>
 <section class="templates-section">
@@ -107,6 +256,7 @@
         <a href="../assets/templates/issue-template.md" target="_blank" rel="noopener">View Templates →</a>
       </div>
     </div>
+ main
 
     <div class="template-tile">
       <div class="tile-icon">📘</div>
@@ -229,6 +379,7 @@
 
 
 
+ main
 
     <section id="quiz-section">
       <div
@@ -566,18 +717,68 @@
     </script>
   </main>
 
+  <footer>
+    <p>
+      © 2026 OpenSource Compass ·
+      <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
+    </p>
+  </footer>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copy-btn");
+
+    copyButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const link = btn.getAttribute("data-link");
+        const feedback = btn.nextElementSibling;
+        const icon = btn.querySelector("i");
+
+        navigator.clipboard.writeText(link).then(() => {
+          // Show feedback
+          feedback.style.display = "inline";
+
+          // Change icon to tick
+          icon.classList.remove("fa-copy");
+          icon.classList.add("fa-check");
+
+          // Reset after 1.5 sec
+          setTimeout(() => {
+            feedback.style.display = "none";
+            icon.classList.remove("fa-check");
+            icon.classList.add("fa-copy");
+          }, 1500);
+        });
+      });
+    });
+  });
+</script>
+
+
+
   <div id="footer"></div>
+ main
 
   <script src="../js/components.js"></script>
 
   <script src="../js/theme.js"></script>
 
+
+  <script src="../js/cChatbot.js"></script>
+  <script src="../js/recommendations.js"></script>
+
+      <section id="recommended-resources"></section>
+
+
   <script src="../js/chatbot.js"></script>
+
+  <script src="../js/resources.js"></script>
+
   <script src="../js/main.js"></script>
 
   <button id="scrollTopBtn" title="Back to Top">
    <i class="fas fa-chevron-up"></i>
   </button>
+ main
 </body>
 
 </html>

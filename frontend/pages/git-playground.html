@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Playground | OpenSource Compass</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/git-playground.css?v=1.0.3">
+</head>
+
+<body class="playground-page">
+    <!-- Navbar (Simplified) -->
+    <nav class="playground-nav">
+        <div class="nav-brand">
+            <i class="fas fa-compass"></i>
+            <span>Git Playground</span>
+        </div>
+        <a href="guides.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i> Back to Guides
+        </a>
+    </nav>
+
+    <div class="playground-wrapper">
+
+
+        <div class="main-layout">
+            <!-- Left Panel: Terminal -->
+            <section class="terminal-section">
+                <div class="terminal-window">
+                    <div class="terminal-bar">
+                        <div class="window-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <div class="window-title">Git Terminal (Interactive Mode)</div>
+                        <div class="window-actions">
+                            <i class="fas fa-cog" id="settings-btn" title="Settings"></i>
+                            <i class="far fa-question-circle" id="help-btn" title="Help"></i>
+                        </div>
+                    </div>
+
+                    <div class="terminal-body" id="terminal-output">
+                        <div class="welcome-msg">
+                            <p>Welcome to the Git Terminal Simulator!</p>
+                            <p>Playground mode activated. Freely experiment with Git commands. Type 'help' for help.</p>
+                            <div class="warning-box">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Note: This is a simplified Git simulation for learning purposes. Some commands may
+                                    behave differently than in real Git.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="terminal-input-area">
+                        <div class="input-group">
+                            <span class="prompt-pill user">user@compass</span>
+                            <span class="prompt-pill dir">~/projects</span>
+                            <span class="prompt-symbol">λ</span>
+                            <input type="text" id="command-input" placeholder="Enter a command..." autocomplete="off">
+                            <button id="send-btn" title="Run Command"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Cheat Sheet -->
+            <section class="cheatsheet-section">
+                <div class="cheatsheet-card">
+                    <div class="cheatsheet-header">
+                        <h2><i class="fas fa-book-open"></i> Git Cheat Sheet</h2>
+                    </div>
+
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="cheat-search" placeholder="Search Git commands...">
+                    </div>
+
+                    <div class="cheat-list" id="cheat-list">
+                        <!-- Cheat items will be populated/managed here -->
+
+                        <div class="cheat-group">
+                            <h3 class="group-title">Basics</h3>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git init</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Initialize a new Git repository.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git clone [url]</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Clone a repository into a new directory.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git status</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Show the working tree status.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git add [file]</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Add file contents to the index.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git commit -m "[msg]"</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Record changes to the repository.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cheat-group">
+                            <h3 class="group-title">Branching & Merging</h3>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git branch</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>List, create, or delete branches.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git checkout [branch]</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Switch branches or restore working tree files.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git checkout -b [new]</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Create a new branch and switch to it immediately.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git merge [branch]</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Join two or more development histories together.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cheat-group">
+                            <h3 class="group-title">Sharing & Update</h3>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git push</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Update remote refs along with associated objects.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git pull</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Fetch from and integrate with another repository.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git remote -v</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Show the remote URLs.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cheat-group">
+                            <h3 class="group-title">Inspection</h3>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git log</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Show commit logs.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git diff</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Show changes between commits, commit and working tree, etc.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git show [commit]</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Show various types of objects.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cheat-group">
+                            <h3 class="group-title">Advanced</h3>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git stash</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Stash the changes in a dirty working directory away.</p>
+                                </div>
+                            </div>
+                            <div class="cheat-item">
+                                <button class="cheat-toggle">
+                                    <code>git reset</code>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="cheat-details">
+                                    <p>Reset current HEAD to the specified state.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="modal-close-btn" data-modal="settings-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label for="theme-select">Theme</label>
+                    <select id="theme-select">
+                        <option value="default" selected>Navy & Gold (Default)</option>
+                        <option value="matrix">Matrix (Green & Black)</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="speed-select">Response Speed</label>
+                    <select id="speed-select">
+                        <option value="instant">Instant (0ms)</option>
+                        <option value="fast">Fast (100ms)</option>
+                        <option value="normal" selected>Normal (300ms)</option>
+                        <option value="realistic">Realistic (800ms)</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="font-size-select">Terminal Font Size</label>
+                    <select id="font-size-select">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <button id="clear-history-btn" class="danger-btn">Clear History & Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>How It Works</h3>
+                <button class="modal-close-btn" data-modal="help-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Welcome to Git Playground!</strong></p>
+                <p>This tool is designed to help you practice Git commands in a safe, simulated environment. You can
+                    type commands in the terminal on the left and see the results instantly, without worrying about
+                    breaking anything.</p>
+
+                <h4><i class="fas fa-desktop"></i> Interface Guide</h4>
+                <ul class="help-list">
+                    <li><strong>Terminal:</strong> The main area where you type and execute Git commands.</li>
+                    <li><strong>Cheat Sheet:</strong> Click on any command in the right panel to see what it does.</li>
+                    <li><strong>Status Bar:</strong> Shows your current user (<code>user@compass</code>) and branch.
+                    </li>
+                </ul>
+
+                <h4><i class="fas fa-stream"></i> How to Use</h4>
+                <ul class="help-list">
+                    <li><i class="fas fa-chevron-right"></i> Type <code>git init</code> to start a new project.</li>
+                    <li><i class="fas fa-chevron-right"></i> Use <code>git status</code> to check for changes.</li>
+                    <li><i class="fas fa-chevron-right"></i> Type <code>git add .</code> to stage all your files.</li>
+                    <li><i class="fas fa-chevron-right"></i> Type <code>git commit -m "message"</code> to save changes.
+                    </li>
+                </ul>
+
+                <h4><i class="fas fa-lightbulb"></i> Handy Tips</h4>
+                <ul class="help-list">
+                    <li><i class="fas fa-info-circle"></i> Press the <strong>Up Arrow</strong> key to repeat your last
+                        command.</li>
+                    <li><i class="fas fa-info-circle"></i> Type <code>clear</code> to wipe the terminal screen clean.
+                    </li>
+                    <li><i class="fas fa-info-circle"></i> Check <strong>Settings</strong> to change the theme or font
+                        size.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/git-playground.js?v=1.0.3"></script>
+</body>
+
+</html>

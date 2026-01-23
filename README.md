@@ -3,16 +3,36 @@
 # 🌍 OpenSource Compass  
 ### Navigate Your Open Source Journey with Confidence
 
-<img src="frontend/library/assets/swoc_banner.png" alt="OpenSource Compass – SWOC'26 Banner" width="100%" />
+<img src="frontend/library/assets/swoc_banner.png" alt="OpenSource Compass – SWOC'26 Banner" width="40%" />
 
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/sayeeg-11/OpenSource-Compass)
 [![GitHub Issues](https://img.shields.io/github/issues/sayeeg-11/OpenSource-Compass)](https://github.com/sayeeg-11/OpenSource-Compass/issues)
 [![GitHub License](https://img.shields.io/github/license/sayeeg-11/OpenSource-Compass)](LICENSE)
+
+<img src="https://img.shields.io/badge/SWOC-2026-blueviolet?style=for-the-badge&logo=rocket" alt="SWOC 2026">
+<img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge&logo=github" alt="PRs Welcome">
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
+
 </div>
 
 ## ❄️ Social Winter of Code (SWOC) 2026
 
 **Social Winter of Code (SWOC)** is a winter-long open-source program that mentors students through meaningful, real-world contributions.
+
+---
+## 📍 Table of Contents
+<div align="left">
+  
+- [📖 About the Project](#-about-opensource-compass)
+- [🎯 Vision & Objectives](#-project-vision--objectives)
+- [✨ Key Features & Learning Paths](#-key-features--learning-paths)
+- [🛠 Tech Stack](#-tech-stack)
+- [📂 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [👥 Team & Mentors](#-team--swoc26)
+- [📜 License](#-license)
+
+</div>
 
 ---
 
@@ -35,154 +55,149 @@ No jargon. No confusion. Just clear steps to help you start contributing with co
 
 ---
 
-## 📖 What You’ll Learn
+## ✨ Key Features & Learning Paths
 
-| 📖 Guides | 🎥 Resources | 💬 Community |
-|---------|-------------|-------------|
-| Step-by-step tutorials | Video lessons | Peer support |
-| Do’s & Don’ts | Articles & tips | Mentorship |
-| Real examples | Learning paths | Collaboration |
-
----
-
-## ✨ Key Features
-
-- 🔰 **Beginner-friendly guides**  
-- 🚀 **Quick start in under 5 minutes**  
-- 🎓 **Git & GitHub from basics to confidence**  
-- 📚 **Curated videos & articles**  
-- 🌟 **Program info (SWOC, GSSoC, GSoC, etc.)**  
-- 🤝 **Supportive community**
+| Feature | Description | Benefit |
+| :--- | :--- | :--- |
+| 🔰 **Beginner Guides** | Step-by-step Git & GitHub tutorials | Build confidence from scratch |
+| 🚀 **Quick Start** | Setup guide in under 5 minutes | Start contributing immediately |
+| 🎓 **Program Info** | Roadmap for GSoC, SWOC, GSSoC | Find your next big opportunity |
+| 🤝 **Supportive Community** | Peer support and mentor reviews | Never get stuck alone |
 
 ---
 
 ## 🛠 Tech Stack
 
-- **HTML5** – Clean & semantic structure  
-- **CSS3** – Modern, responsive styling  
-- **JavaScript** – Interactive functionality  
-- **JSON** – Lightweight data handling  
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-47A033?style=for-the-badge&logo=mongodb&logoColor=white" />
+</p>
 
 ---
 
 ## 📂 Project Structure
+<div align="left">
 
 
 
 ```
-OpenSource-Compass/
-│
-├── .github/                         # GitHub-specific configs
-│   ├── ISSUE_TEMPLATE/              # Issue templates
+OPENSOURCE-COMPASS/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.yml
 │   │   ├── documentation_update.yml
 │   │   ├── feature_request.yml
 │   │   ├── guide_proposal.yml
 │   │   └── program_addition.yml
-│   │
-│   ├── workflows/                   # GitHub Actions (CI/CD)
+│   ├── workflows/
 │   │   ├── issue-auto-comment.yml
 │   │   ├── jekyll-gh-pages.yml
 │   │   ├── pr-review.yml
 │   │   └── static.yml
-│   │
-│   └── PULL_REQUEST_TEMPLATE.md     # PR template
-│
-├── backend/                         # Backend (Node + Express)
-│   ├── config/                      # Configuration files
-│   │   └── db.js                    
-│   │
-│   ├── controllers/                 # Request handling logic
-│   │   └── authController.js
-│   │
-│   ├── middleware/                  # Custom middlewares
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .vscode/
+│   └── settings.json
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   └── contributorProgressController.js
+│   ├── middleware/
 │   │   └── authMiddleware.js
-│   │
-│   ├── models/                      # Database Models
+│   ├── models/
 │   │   └── User.js
-│   │
-│   ├── routes/                      # API routes
-│   │   └── authRoutes.js
-│   │
-│   ├── server.js                    # Backend entry point
-│   ├── package.json
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   └── contributorProgressRoutes.js
+│   ├── .gitignore
 │   ├── package-lock.json
-│   └── .gitignore
-│
-├── frontend/                        # Frontend resources 
-│   ├── css/                         # Stylesheets
+│   ├── package.json
+│   └── server.js
+├── frontend/
+│   ├── assets/templates/
+│   │   ├── contributing.md
+│   │   ├── issue-template.md
+│   │   ├── pr-template.md
+│   │   └── readme.md
+│   ├── css/
 │   │   ├── auth.css
 │   │   ├── beginners-guide.css
 │   │   ├── chatbot.css
 │   │   ├── contribute.css
 │   │   ├── contributors.css
 │   │   ├── guides.css
+│   │   ├── home.css
 │   │   ├── navigation.css
+│   │   ├── pdf_guide.css
 │   │   ├── program.css
 │   │   ├── resources.css
+│   │   ├── sitemap.css
 │   │   └── style.css
-│   │
-│   ├── js/                          # Client-side Scripts
+│   ├── data/
+│   │   ├── chatbot_data.json
+│   │   ├── programs.json
+│   │   └── quiz_data.json
+│   ├── js/
 │   │   ├── auth.js
 │   │   ├── chatbot.js
+│   │   ├── components.js
 │   │   ├── contribute.js
 │   │   ├── contributors.js
 │   │   ├── guides.js
+│   │   ├── home.js
 │   │   ├── main.js
 │   │   ├── profile.js
+│   │   ├── profile2.js
+│   │   ├── programs-page.js
 │   │   ├── programs.js
 │   │   ├── resources.js
 │   │   ├── search.js
+│   │   ├── sitemap.js
 │   │   └── theme.js
-│   │
-│   ├── data/                        # Static JSON data
-│   │   ├── chatbot_data.json
-│   │   └── programs.json
-│   │
-│   ├── pages/                       # All HTML pages
+│   ├── library/
+│   │   ├── assets/
+│   │   └── guides_pdf/
+│   │       ├── GSoC.pdf
+│   │       ├── GSSOC.pdf
+│   │       ├── Hacktoberfest.pdf
+│   │       ├── LFX Mentorship.pdf
+│   │       ├── Outreachy.pdf
+│   │       └── SSoC.pdf
+│   ├── pages/
 │   │   ├── Event/
 │   │   │   ├── gsoc.html
 │   │   │   ├── gssoc.html
 │   │   │   ├── hacktober.html
 │   │   │   ├── linux.html
-|   |   |   ├── ssoc.html
-│   │   │   └── outreachy.html
-│   │   │    
-│   │   ├── contribute.html
-│   │   ├── contributors.html
-│   │   ├── faq.html
-│   │   ├── guides.html
-│   │   ├── programs.html
-│   │   ├── resources.html
-│   │   
-│   │
-│   └── library/                     # Frontend reusable assets
-│       ├── assets/
-│       │   ├── program_logo/
-│       │   │   ├── gsoc.webp
-│       │   │   ├── gssoc.webp
-│       │   │   ├── hacktober.webp
-│       │   │   ├── linux.webp
-│       │   │   ├── outreachy.webp
-│       │   │   └── ssoc.webp
-│       │   │
-│       │   ├── logo.png
-│       │   └── swoc_banner.png
-│       │
-│       └── guides_pdf/
-│           ├── GSOC.pdf
-│           ├── GSSOC.pdf
-│           ├── Hacktoberfest.pdf
-│           ├── LFX_Mentorship.pdf
-│           ├── Outreachy.pdf
-│           └── SSoC.pdf
-│
-├── home.html                       # Main landing page (GitHub Pages entry)
-├── CODE_OF_CONDUCT.md              # Community Guidelines
-├── CONTRIBUTING.md                 # Contributing Guidelines
-├── LICENSE                         # OpenSource License
-└── README.md                       # Project Overview
-
+│   │   │   ├── outreachy.html
+│   │   │   └── ssoc.html
+│   │   └── guides/
+│   │       ├── ethics-licensing.html
+│   │       ├── Contribute.html
+│   │       ├── contributors.html
+│   │       ├── faq.html
+│   │       ├── glossary.html
+│   │       ├── guides.html
+│   │       ├── pdf_guide.html
+│   │       ├── profile.html
+│   │       ├── programs.html
+│   │       ├── Resources.html
+│   │       └── sitemap.html
+│   └── node_modules/
+├── public/
+├── .stylelintrc.json
+├── 404.html
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── index.html
+├── LICENSE
+├── package-lock.json
+└── README.md
 ```
 
 ---
@@ -200,7 +215,6 @@ OpenSource-Compass/
 ---
 
 ### 🧑‍🏫 Mentors
-##
 
 | Name | Role | GitHub | LinkedIn |
 |----|----|------|---------|
@@ -219,9 +233,11 @@ OpenSource-Compass/
 ### 💖 Contributors  
 Thanks to these amazing people who have contributed to **OpenSource Compass** ✨  
 
-<a href="https://github.com/sayeeg-11/OpenSource-Compass/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sayeeg-11/OpenSource-Compass" alt="Contributors" />
-</a>
+<div align="center"> 
+  <a href="https://github.com/sayeeg-11/OpenSource-Compass/graphs/contributors"> 
+    <img src="https://contrib.rocks/image?repo=sayeeg-11/OpenSource-Compass" /> 
+  </a> 
+</div>
 
 <br/><br/>
 
@@ -236,7 +252,8 @@ Thanks to these amazing people who have contributed to **OpenSource Compass** �
 ## 🤝 Contribution Guidelines (SWOC’26)
 
 ### How to Contribute
-
+<div align="left">
+  
 1. Browse the **Issues** section  
 2. Comment on the issue you want to work on  
 3. Wait for assignment  
@@ -456,6 +473,8 @@ Big thanks to everyone contributing! You make this awesome! 💖
 ## 🚀 Quick Links
 
 [Repository](https://github.com/sayeeg-11/OpenSource-Compass) | [Issues](https://github.com/sayeeg-11/OpenSource-Compass/issues) | [Pull Requests](https://github.com/sayeeg-11/OpenSource-Compass/pulls)
+
+</div>
 
 ---
 

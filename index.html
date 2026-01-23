@@ -17,7 +17,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
+    <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
     <link rel="stylesheet" href="frontend/css/style.css"/>
     <link rel="stylesheet" href="frontend/css/home.css" />
   </head>
@@ -177,33 +177,33 @@
         </div>
       </section>
 
+      <!-- Replace the existing stats section with this updated version -->
       <section class="stats">
         <h3>Open Source Impact</h3>
         <div class="stats-grid">
           <div class="stat-item fade-in">
-            <h2>50K+</h2>
+            <h2 data-target="50" data-suffix="K+">0</h2>
             <p>First Contributions</p>
           </div>
           <div class="stat-item fade-in">
-            <h2>200+</h2>
+            <h2 data-target="200" data-suffix="+">0</h2>
             <p>Programs Tracked</p>
           </div>
           <div class="stat-item fade-in">
-            <h2>10K+</h2>
+            <h2 data-target="10" data-suffix="K+">0</h2>
             <p>Active Mentors</p>
           </div>
           <div class="stat-item fade-in">
-            <h2>5Y+</h2>
+            <h2 data-target="5" data-suffix="Y+">0</h2>
             <p>Proven Track Record</p>
           </div>
         </div>
       </section>
-
       <section class="programs" id="programs">
         <h3>Legendary Open Source Programs</h3>
         <p>Curated programs with historical success rates and maintainer insights.</p>
 
-        <div class="card-grid">
+        <div class="card-grid" class="program-card">
           <div class="card fade-in">
             <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
             <p>India's premier winter program with strong mentorship culture.</p>
