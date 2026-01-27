@@ -31,11 +31,27 @@
       <section class="contributors-section">
         <h3>Contributors</h3>
         <p>People who have helped build and improve OpenSource Compass.</p>
+         <div class="contributors-stats" id="contributors-stats"></div>
+
+  <div class="contributors-controls">
+    <input
+      id="contributor-search"
+      type="search"
+      placeholder="Search contributors…"
+      aria-label="Search contributors"
+    />
+
+    <label class="bot-toggle">
+      <input type="checkbox" id="toggle-bots" checked />
+      Show bots
+    </label>
+  </div>
 
         <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
 
         <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
       </section>
+      
     </main>
 
     <div id="footer"></div>

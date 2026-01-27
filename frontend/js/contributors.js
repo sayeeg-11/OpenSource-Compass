@@ -36,6 +36,7 @@ async function initContributorsPage() {
     visibleContributors = cached;
     setStatus('');
     renderContributorsGrid(grid, visibleContributors);
+    updateStats(visibleContributors);
     void refreshInBackground();
   } else {
     await loadAndRender();
@@ -77,6 +78,7 @@ async function loadAndRender() {
 
     setStatus('');
     renderContributorsGrid(grid, visibleContributors);
+    updateStats(visibleContributors);
   } catch (err) {
     renderEmptyState(grid);
     setStatus(formatError(err), true);
@@ -342,4 +344,56 @@ function escapeHtml(str) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function applyFilters() {
+  const searchInput = document.getElementById('contributor-search');
+  const botToggle = document.getElementById('toggle-bots');
+
+  if (!searchInput || !botToggle) return;
+
+  const query = searchInput.value.trim().toLowerCase();
+  const showBots = botToggle.checked;
+
+  visibleContributors = allContributors.filter((c) => {
+    const login = c.login.toLowerCase();
+
+    if (!showBots && /\[bot\]$/i.test(login)) return false;
+    if (query && !login.includes(query)) return false;
+
+    return true;
+  });
+
+  const grid = document.getElementById('contributors-grid');
+  renderContributorsGrid(grid, visibleContributors);
+  updateStats(visibleContributors);
+}
+function debounce(fn, delay = 150) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), delay);
+  };
+}
+const searchInput = document.getElementById('contributor-search');
+const botToggle = document.getElementById('toggle-bots');
+
+searchInput?.addEventListener('input', debounce(applyFilters));
+botToggle?.addEventListener('change', applyFilters);
+
+function updateStats(list) {
+  const stats = document.getElementById('contributors-stats');
+  if (!stats) return;
+
+  const total = list.length;
+  const humans = list.filter(c => !/\[bot\]$/i.test(c.login)).length;
+  const mergedPRs = list.reduce((sum, c) => sum + (c.merged_prs || 0), 0);
+  const top = list[0];
+
+  stats.innerHTML = `
+    <span><strong>${total}</strong> contributors</span>
+    <span><strong>${humans}</strong> people</span>
+    <span><strong>${mergedPRs}</strong> merged PRs</span>
+    ${top ? `<span>🏆 Top: <strong>${top.login}</strong></span>` : ''}
+  `;
 }
