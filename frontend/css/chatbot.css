@@ -22,8 +22,8 @@ body.dark-mode {
 /* Floating Chat Button */
 .chat-widget-btn {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 7rem;
+    right: 1rem;
     /* CHANGE: Blue -> Golden Gradient */
     background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
     color: var(--deep-navy);
