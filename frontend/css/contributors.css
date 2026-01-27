@@ -24,13 +24,6 @@
   color: #a12b2b;
 }
 
-.contributors-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.4rem;
-}
 
 @media (min-width: 1100px) {
   .contributors-grid {
@@ -49,18 +42,6 @@
   }
 }
 
-.contributor-card {
-  position: relative;
-  border-radius: 18px;
-  padding: 1.35rem 1.35rem 1.15rem;
-  background: rgb(255 255 255 / 92%);
-  box-shadow: var(--shadow-main);
-  border: 1px solid rgb(212 175 55 / 22%);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
 
 .contributor-card::before {
   content: "";
@@ -102,54 +83,6 @@
   min-width: 0;
 }
 
-.contributor-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgb(212 175 55 / 55%);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 10%);
-  flex: 0 0 auto;
-}
-
-.contributor-main {
-  flex: 1;
-  min-width: 0;
-}
-
-.contributor-name {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  color: var(--deep-navy);
-  font-size: 1.25rem;
-  line-height: 1.15;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.contributor-meta {
-  margin-top: 0.35rem;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-
-.contributor-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  font-family: "Inter", -apple-system, sans-serif;
-  font-size: 0.82rem;
-  color: var(--deep-navy);
-  background: linear-gradient(135deg, rgb(212 175 55 / 14%), rgb(184 134 11 / 10%));
-  border: 1px solid rgb(212 175 55 / 24%);
-  white-space: nowrap;
-}
-
 .contributor-chip.is-bot {
   background: linear-gradient(135deg, rgb(27 38 59 / 12%), rgb(212 175 55 / 10%));
 }
@@ -175,6 +108,118 @@
 .contributor-github:hover {
   transform: scale(1.06);
   background: rgb(255 248 231 / 95%);
+}
+
+.contributor-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  max-width: 460px;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.contributor-card:hover {
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.15);
+  transform: translateY(-4px);
+}
+
+.contributor-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.12);
+  border: 3px solid #d4af37; /* subtle gold */
+  flex-shrink: 0;
+}
+
+.contributor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contributor-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a2433; /* dark navy */
+  margin: 0;
+}
+
+.contributor-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contributor-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0e3d2e; /* dark green */
+  background: #d7f0e1; /* light green */
+  border: 1px solid #a7d9bb;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+}
+
+.contributor-chip.is-first {
+  background: #d7f0e1;
+  color: #0e3d2e;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgb(14 61 46 / 0.25);
+}
+
+.contributor-meta .merged-prs {
+  background: #f8eacb;
+  color: #5f4600;
+  border: 1px solid #e3d49a;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+  padding: 0.35rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.contributor-actions {
+  flex-shrink: 0;
+}
+
+.contributor-github {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a2433;
+  background: #f9f9f9;
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.07);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.contributor-github:hover {
+  background: #fff8dc;
+  transform: scale(1.12);
+  box-shadow: 0 4px 10px rgb(212 175 55 / 0.5);
 }
 
 /* Skeleton loading */
@@ -635,4 +680,226 @@
   .contribute-steps {
     grid-template-columns: 1fr;
   }
+}
+.contributor-chip.is-first {
+  background: #eafaf1;
+  color: #137333;
+  font-weight: 600;
+}
+/* ================================
+   Contributors UI – Polished Layer
+   ================================ */
+
+/* Better section rhythm */
+.contributors-page .contributors-section {
+  padding-top: 4.5rem;
+  padding-bottom: 3rem;
+}
+
+.contributors-page .contributors-section > p {
+  margin-bottom: 2.6rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.contributors-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem 3rem; /* more space */
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  .contributors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .contributors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.contributor-card {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 1.8rem 1.8rem 1.5rem;
+}
+
+
+/* Tablet */
+@media (min-width: 640px) {
+  .contributors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large desktop only */
+@media (min-width: 1400px) {
+  .contributors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1300px;
+  }
+}
+
+/* Card refinement */
+.contributor-card {
+  padding: 1.5rem 1.55rem 1.35rem;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 96%),
+    rgb(255 255 255 / 88%)
+  );
+  box-shadow:
+    0 12px 30px rgb(0 0 0 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 60%);
+}
+
+/* Hover feels lighter */
+.contributor-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 18px 40px rgb(0 0 0 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 65%);
+}
+
+/* Inner layout spacing */
+.contributor-card-inner {
+  gap: 1.15rem;
+}
+
+/* Avatar polish */
+.contributor-avatar {
+  width: 66px;
+  height: 66px;
+  border: 2px solid rgb(212 175 55 / 65%);
+  box-shadow:
+    0 10px 22px rgb(0 0 0 / 12%);
+}
+
+/* Name clarity */
+.contributor-name {
+  font-size: 1.28rem;
+  letter-spacing: 0.2px;
+}
+
+/* Meta spacing */
+.contributor-meta {
+  margin-top: 0.45rem;
+  gap: 0.5rem 0.55rem;
+}
+
+/* Base chip polish */
+.contributor-chip {
+  padding: 0.38rem 0.72rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgb(212 175 55 / 22%);
+}
+
+/* First-time contributor badge */
+.contributor-chip.is-first {
+  background: linear-gradient(
+    135deg,
+    #e6f4ea,
+    #d7f0e3
+  );
+  color: #137333;
+  font-weight: 600;
+  border-color: rgb(19 115 51 / 25%);
+}
+
+/* Tier badges */
+.contributor-chip.tier-gold {
+  background: linear-gradient(135deg, #fff6d6, #ffefad);
+  color: #8a6a00;
+  border-color: rgb(212 175 55 / 55%);
+}
+
+.contributor-chip.tier-silver {
+  background: linear-gradient(135deg, #f3f5f7, #e6eaee);
+  color: #5f6b76;
+  border-color: rgb(120 130 140 / 35%);
+}
+
+.contributor-chip.tier-bronze {
+  background: linear-gradient(135deg, #f7e8dd, #f0d8c6);
+  color: #7a4a1f;
+  border-color: rgb(160 100 50 / 35%);
+}
+
+/* Bot badge – quieter */
+.contributor-chip.is-bot {
+  background: linear-gradient(
+    135deg,
+    rgb(27 38 59 / 10%),
+    rgb(27 38 59 / 6%)
+  );
+  color: var(--text-secondary);
+}
+
+/* GitHub action button */
+.contributor-github {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 95%),
+    rgb(248 248 248 / 90%)
+  );
+}
+
+.contributor-github:hover {
+  background: rgb(255 250 235);
+}
+
+/* Mobile tuning */
+@media (max-width: 720px) {
+  .contributors-grid {
+    gap: 1.1rem;
+  }
+
+  .contributor-card {
+    padding: 1.2rem;
+  }
+
+  .contributor-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .contributor-name {
+    font-size: 1.15rem;
+  }
+}
+
+.contributor-main {
+  flex: 1 1 auto;       
+  min-width: 0;         
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contributor-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a2433;
+  margin: 0;
+  white-space: nowrap;         
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+}
+
+.contributor-actions {
+  flex-shrink: 0;  
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
 }

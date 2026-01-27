@@ -2,13 +2,13 @@
 // GitHub Contributors – OpenSource Compass (UI page)
 // ======================================================
 
-const REPO_OWNER = 'sayeeg-11';
-const REPO_NAME = 'OpenSource-Compass';
+const REPO_OWNER = "sayeeg-11";
+const REPO_NAME = "OpenSource-Compass";
 const REPO_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}`;
 
 const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 
-const CACHE_KEY = 'osc_contributors_cache_v1';
+const CACHE_KEY = "osc_contributors_cache_v1";
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 const PER_PAGE = 100;
@@ -18,23 +18,23 @@ let allContributors = [];
 let visibleContributors = [];
 let observer;
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initContributorsPage();
 });
 
 async function initContributorsPage() {
-  const grid = document.getElementById('contributors-grid');
+  const grid = document.getElementById("contributors-grid");
 
   if (!grid) return;
 
   renderSkeletons(grid, 12);
-  setStatus('Loading contributors…');
+  setStatus("Loading contributors…");
 
   const cached = readCache();
   if (cached?.length) {
     allContributors = cached;
     visibleContributors = cached;
-    setStatus('');
+    setStatus("");
     renderContributorsGrid(grid, visibleContributors);
     void refreshInBackground();
   } else {
@@ -46,7 +46,7 @@ async function refreshInBackground() {
   try {
     const [freshContributors, mergedPrCounts] = await Promise.all([
       fetchAllContributors(),
-      fetchMergedPrCounts()
+      fetchMergedPrCounts(),
     ]);
     if (!freshContributors?.length) return;
     const enriched = attachMergedPrCounts(freshContributors, mergedPrCounts);
@@ -54,7 +54,7 @@ async function refreshInBackground() {
     visibleContributors = enriched;
     writeCache(enriched);
 
-    const grid = document.getElementById('contributors-grid');
+    const grid = document.getElementById("contributors-grid");
     if (grid) renderContributorsGrid(grid, visibleContributors);
   } catch {
     // Silent background refresh failure.
@@ -62,20 +62,20 @@ async function refreshInBackground() {
 }
 
 async function loadAndRender() {
-  const grid = document.getElementById('contributors-grid');
+  const grid = document.getElementById("contributors-grid");
   if (!grid) return;
 
   try {
     const [contributors, mergedPrCounts] = await Promise.all([
       fetchAllContributors(),
-      fetchMergedPrCounts()
+      fetchMergedPrCounts(),
     ]);
     const enriched = attachMergedPrCounts(contributors, mergedPrCounts);
     allContributors = enriched;
     visibleContributors = enriched;
     writeCache(enriched);
 
-    setStatus('');
+    setStatus("");
     renderContributorsGrid(grid, visibleContributors);
   } catch (err) {
     renderEmptyState(grid);
@@ -84,10 +84,10 @@ async function loadAndRender() {
 }
 
 function setStatus(message, isError = false) {
-  const el = document.getElementById('contributors-status');
+  const el = document.getElementById("contributors-status");
   if (!el) return;
-  el.textContent = message || '';
-  el.classList.toggle('is-error', Boolean(isError));
+  el.textContent = message || "";
+  el.classList.toggle("is-error", Boolean(isError));
 }
 
 function renderEmptyState(grid) {
@@ -106,8 +106,8 @@ function renderEmptyState(grid) {
 function renderSkeletons(grid, count) {
   const frag = document.createDocumentFragment();
   for (let i = 0; i < count; i++) {
-    const sk = document.createElement('div');
-    sk.className = 'contributor-skeleton';
+    const sk = document.createElement("div");
+    sk.className = "contributor-skeleton";
     sk.innerHTML = `
       <div style="display:flex;align-items:center;gap:1rem;">
         <div class="sk avatar"></div>
@@ -119,7 +119,7 @@ function renderSkeletons(grid, count) {
     `;
     frag.appendChild(sk);
   }
-  grid.innerHTML = '';
+  grid.innerHTML = "";
   grid.appendChild(frag);
 }
 
@@ -129,18 +129,18 @@ function setupObserver() {
     (entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
+          e.target.classList.add("is-visible");
           observer.unobserve(e.target);
         }
       });
     },
-    { root: null, threshold: 0.12 }
+    { root: null, threshold: 0.12 },
   );
 }
 
 function renderContributorsGrid(grid, list) {
   setupObserver();
-  grid.innerHTML = '';
+  grid.innerHTML = "";
 
   if (!list?.length) {
     renderEmptyState(grid);
@@ -148,28 +148,68 @@ function renderContributorsGrid(grid, list) {
   }
 
   const frag = document.createDocumentFragment();
+ 
 
   list.forEach((c) => {
-    const login = c?.login || c?.name || 'Anonymous';
+    const login = c?.login || c?.name || "Anonymous";
     const mergedPrs = Number.isFinite(c?.merged_prs) ? c.merged_prs : 0;
-    const avatar = c?.avatar_url ? `${c.avatar_url}&s=160` : fallbackAvatar(login);
-    const profileUrl = c?.html_url || '';
-    const isBot = (c?.type || '').toLowerCase() === 'bot' || /\[bot\]$/i.test(login);
+    const avatar = c?.avatar_url
+      ? `${c.avatar_url}&s=160`
+      : fallbackAvatar(login);
+    const profileUrl = c?.html_url || "";
+    const isBot =
+      (c?.type || "").toLowerCase() === "bot" || /\[bot\]$/i.test(login);
+    const isFirstTime = isFirstTimeContributor(c);
+    const tier = getContributorTier(mergedPrs); // ✅ MOVE HERE
 
-    const card = document.createElement('div');
-    card.className = 'contributor-card';
+    const card = document.createElement("div");
+    card.className = "contributor-card";
     card.innerHTML = `
       <div class="contributor-card-inner">
         <img class="contributor-avatar" src="${avatar}" alt="${escapeHtml(login)} avatar" loading="lazy" />
         <div class="contributor-main">
           <div class="contributor-name" title="${escapeHtml(login)}">${escapeHtml(login)}</div>
           <div class="contributor-meta">
-            <span class="contributor-chip"><i class=\"fas fa-code-merge\" aria-hidden=\"true\"></i>${mergedPrs} merged PR${mergedPrs === 1 ? '' : 's'}</span>
-            ${isBot ? `<span class="contributor-chip is-bot"><i class=\"fas fa-robot\" aria-hidden=\"true\"></i>Bot</span>` : ''}
-          </div>
+  <span class="contributor-chip">
+    <i class="fas fa-code-merge" aria-hidden="true"></i>
+    ${mergedPrs} merged PR${mergedPrs === 1 ? "" : "s"}
+  </span>
+
+  ${
+    isFirstTime
+      ? `
+    <span class="contributor-chip is-first">
+      🏅 First-time contributor
+    </span>
+  `
+      : ""
+  }
+
+  ${
+    tier
+      ? `
+    <span class="contributor-chip tier-${tier}">
+      ${tier === "gold" ? "🥇 Gold" : tier === "silver" ? "🥈 Silver" : "🥉 Bronze"}
+    </span>
+  `
+      : ""
+  }
+
+  ${
+    isBot
+      ? `
+    <span class="contributor-chip is-bot">
+      <i class="fas fa-robot" aria-hidden="true"></i> Bot
+    </span>
+  `
+      : ""
+  }
+</div>
+
+         
         </div>
         <div class="contributor-actions">
-          ${profileUrl ? `<a class="contributor-github" href="${profileUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(login)} on GitHub"><i class=\"fab fa-github\" aria-hidden=\"true\"></i></a>` : ''}
+          ${profileUrl ? `<a class="contributor-github" href="${profileUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(login)} on GitHub"><i class=\"fab fa-github\" aria-hidden=\"true\"></i></a>` : ""}
         </div>
       </div>
     `;
@@ -183,8 +223,12 @@ function renderContributorsGrid(grid, list) {
 
 function fallbackAvatar(seed) {
   // Inline SVG fallback so we never show a broken image.
-  const initial = String(seed || '?').trim().slice(0, 1).toUpperCase() || '?';
-  const hue = hashToHue(String(seed || 'osc'));
+  const initial =
+    String(seed || "?")
+      .trim()
+      .slice(0, 1)
+      .toUpperCase() || "?";
+  const hue = hashToHue(String(seed || "osc"));
   const bg1 = `hsl(${hue} 60% 78%)`;
   const bg2 = `hsl(${(hue + 28) % 360} 65% 72%)`;
   const svg = `
@@ -222,16 +266,21 @@ async function fetchAllContributors() {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?per_page=${PER_PAGE}&page=${page}`;
     const res = await fetch(url, {
       headers: {
-        'Accept': 'application/vnd.github+json'
-      }
+        Accept: "application/vnd.github+json",
+      },
     });
 
-    if (res.status === 403 && res.headers.get('X-RateLimit-Remaining') === '0') {
-      const reset = Number(res.headers.get('X-RateLimit-Reset'));
+    if (
+      res.status === 403 &&
+      res.headers.get("X-RateLimit-Remaining") === "0"
+    ) {
+      const reset = Number(res.headers.get("X-RateLimit-Reset"));
       const resetAt = reset ? new Date(reset * 1000) : null;
-      const msg = resetAt ? `GitHub rate limit hit. Try again after ${resetAt.toLocaleTimeString()}.` : 'GitHub rate limit hit. Try again later.';
+      const msg = resetAt
+        ? `GitHub rate limit hit. Try again after ${resetAt.toLocaleTimeString()}.`
+        : "GitHub rate limit hit. Try again later.";
       const err = new Error(msg);
-      err.name = 'RateLimitError';
+      err.name = "RateLimitError";
       throw err;
     }
 
@@ -242,7 +291,9 @@ async function fetchAllContributors() {
     const data = await res.json();
     if (!Array.isArray(data)) break;
     all.push(
-      ...data.filter((c) => Boolean(c && c.login && c.html_url && c.avatar_url))
+      ...data.filter((c) =>
+        Boolean(c && c.login && c.html_url && c.avatar_url),
+      ),
     );
 
     if (data.length < PER_PAGE) break;
@@ -258,16 +309,21 @@ async function fetchMergedPrCounts() {
     const url = `${API_BASE}/pulls?state=closed&per_page=${PER_PAGE}&page=${page}`;
     const res = await fetch(url, {
       headers: {
-        'Accept': 'application/vnd.github+json'
-      }
+        Accept: "application/vnd.github+json",
+      },
     });
 
-    if (res.status === 403 && res.headers.get('X-RateLimit-Remaining') === '0') {
-      const reset = Number(res.headers.get('X-RateLimit-Reset'));
+    if (
+      res.status === 403 &&
+      res.headers.get("X-RateLimit-Remaining") === "0"
+    ) {
+      const reset = Number(res.headers.get("X-RateLimit-Reset"));
       const resetAt = reset ? new Date(reset * 1000) : null;
-      const msg = resetAt ? `GitHub rate limit hit. Try again after ${resetAt.toLocaleTimeString()}.` : 'GitHub rate limit hit. Try again later.';
+      const msg = resetAt
+        ? `GitHub rate limit hit. Try again after ${resetAt.toLocaleTimeString()}.`
+        : "GitHub rate limit hit. Try again later.";
       const err = new Error(msg);
-      err.name = 'RateLimitError';
+      err.name = "RateLimitError";
       throw err;
     }
 
@@ -294,7 +350,7 @@ async function fetchMergedPrCounts() {
 function attachMergedPrCounts(contributors, mergedCounts) {
   const enriched = (contributors || []).map((c) => {
     const login = c?.login;
-    const merged_prs = login ? (mergedCounts.get(login) || 0) : 0;
+    const merged_prs = login ? mergedCounts.get(login) || 0 : 0;
     return { ...c, merged_prs };
   });
 
@@ -303,7 +359,7 @@ function attachMergedPrCounts(contributors, mergedCounts) {
     const ap = Number.isFinite(a?.merged_prs) ? a.merged_prs : 0;
     const bp = Number.isFinite(b?.merged_prs) ? b.merged_prs : 0;
     if (bp !== ap) return bp - ap;
-    return String(a?.login || '').localeCompare(String(b?.login || ''));
+    return String(a?.login || "").localeCompare(String(b?.login || ""));
   });
 
   return enriched;
@@ -314,7 +370,8 @@ function readCache() {
     const raw = localStorage.getItem(CACHE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    if (!parsed || !Array.isArray(parsed.data) || typeof parsed.at !== 'number') return null;
+    if (!parsed || !Array.isArray(parsed.data) || typeof parsed.at !== "number")
+      return null;
     if (Date.now() - parsed.at > CACHE_TTL_MS) return null;
     return parsed.data;
   } catch {
@@ -331,15 +388,27 @@ function writeCache(data) {
 }
 
 function formatError(err) {
-  const msg = (err && err.message) ? String(err.message) : 'Something went wrong.';
+  const msg =
+    err && err.message ? String(err.message) : "Something went wrong.";
   return `${msg} You can still view contributors on GitHub.`;
 }
 
 function escapeHtml(str) {
   return String(str)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function isFirstTimeContributor(c) {
+  return Number(c.merged_prs) === 1;
+}
+
+function getContributorTier(mergedPrs) {
+  if (mergedPrs >= 10) return "gold";
+  if (mergedPrs >= 5) return "silver";
+  if (mergedPrs >= 2) return "bronze";
+  return null;
 }
