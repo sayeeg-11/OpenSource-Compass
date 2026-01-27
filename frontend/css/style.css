@@ -137,6 +137,7 @@ body.dark-mode header {
 }
 
 body.dark-mode header h1 {
+  filter: invert(1);
   color: var(--warm-cream);
   background: none;
   -webkit-text-fill-color: var(--warm-cream);
