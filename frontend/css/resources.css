@@ -521,3 +521,30 @@
     margin-right: 0.8rem;
   }
 }
+/* Empty State UI */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  color: #555;
+  margin-top: 2rem;
+}
+
+.empty-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+}
+
+.empty-state h4 {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  color: var(--deep-navy);
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  color: #777;
+}
+

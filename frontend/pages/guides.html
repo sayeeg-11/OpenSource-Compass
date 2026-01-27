@@ -22,203 +22,175 @@
 
 <body>
 
-  <!-- Navbar copied EXACTLY from home.html -->
-  <header>
-    <div class="navbar-container">
-      <h1>
-        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
-        OpenSource Compass
-      </h1>
-      <div class="nav-links">
-        <a href="../../index.html">Home</a>
-        <a href="./guides.html">Guides</a>
-        <a href="./programs.html">Programs</a>
-        <a href="./Resources.html">Resources</a>
-        <a href="./contributors.html">Contributors</a>
-        <a href="./faq.html">FAQ</a>
-        <a href="./Contribute.html">Contribute</a>
+  <div id="navbar"></div>
+
+<main>
+ <section class="guide">
+  <h3>Beginner Open Source Guide</h3>
+  <p>Open source is a way to collaborate on projects where the code is publicly available. Contributing helps you learn, gain experience, and give back to the community.</p>
+
+  <ul class="guide-list">
+    <li>
+      <span class="step">1</span>
+      <h4>Learn Git & GitHub basics</h4>
+      <p>Start by understanding Git version control and creating repositories on GitHub. This is the foundation for contributing to open source projects.</p>
+    </li>
+      <li>
+      <span class="step">2</span>
+      <h4>Explore small projects</h4>
+      <p>Contribute to beginner-friendly projects to build confidence and experience. Look for tags like “good first issue.”</p>
+    </li>
+    <li>
+      <span class="step">3</span>
+      <h4>Understand issues & labels</h4>
+      <p>Learn how to read issues, use labels, and understand project workflows to know where you can contribute effectively.</p>
+    </li>
+    <li>
+      <span class="step">4</span>
+      <h4>Make your first pull request</h4>
+      <p>Submit your first PR to fix a bug or add a small feature. This helps you practice collaboration and the contribution process.</p>
+    </li>
+  </ul>
+</section>
+<section class="pull-request-guide">
+  <h3>Step-by-Step Guide to Your First Pull Request</h3>
+  <ul class="pr-steps">
+    <li>
+      <span class="step">1</span>
+      <i class="fa-solid fa-code-branch icon"></i>
+      <h4>Fork the repository</h4>
+      <p>Create your own copy of the repository to work on without affecting the original project.</p>
+    </li>
+    <li>
+      <span class="step">2</span>
+      <i class="fa-solid fa-download icon"></i>
+      <h4>Clone it locally on your computer</h4>
+      <p>Download the repository to your computer using Git to start making changes.</p>
+    </li>
+    <li>
+      <span class="step">3</span>
+      <i class="fa-solid fa-plus icon"></i>
+      <h4>Create a new branch for your changes</h4>
+      <p>Use a descriptive branch name to organize your work and keep main safe.</p>
+    </li>
+    <li>
+      <span class="step">4</span>
+      <i class="fa-solid fa-pencil icon"></i>
+      <h4>Make your changes and commit them</h4>
+      <p>Edit the code, add features or fixes, and commit your changes with clear messages.</p>
+    </li>
+    <li>
+      <span class="step">5</span>
+      <i class="fa-solid fa-upload icon"></i>
+      <h4>Push the branch to GitHub and open a pull request</h4>
+      <p>Send your branch to GitHub and create a pull request to propose your changes.</p>
+    </li>
+    <li>
+      <span class="step">6</span>
+      <i class="fa-solid fa-check icon"></i>
+      <h4>Review feedback and merge once approved</h4>
+      <p>Respond to comments, make any requested edits, and merge once maintainers approve.</p>
+    </li>
+  </ul>
+</section>
+<section class="github-guide-timeline">
+  <h3>Understanding GitHub Issues, Labels, and Workflows</h3>
+  <p>Mastering GitHub issues and workflows helps you contribute effectively and communicate clearly with project maintainers.</p>
+
+  <ol class="timeline-list">
+    <li>
+      <div class="icon">🔍</div>
+      <div class="content">
+        <h4>How to find issues to work on</h4>
+        <p>Learn to identify beginner-friendly issues or areas of the project that match your skills and interest.</p>
       </div>
+    </li>
+    <li>
+      <div class="icon">🏷️</div>
+      <div class="content">
+        <h4>Understanding issue labels</h4>
+        <p>Recognize labels like “good first issue” or “help wanted” to know what the project expects and where you can contribute.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">💬</div>
+      <div class="content">
+        <h4>How to comment effectively and ask for clarification</h4>
+        <p>Communicate clearly in issue threads to ask questions, offer help, or provide updates on your work.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">✅</div>
+      <div class="content">
+        <h4>How maintainers review contributions and merge PRs</h4>
+        <p>Understand the review process, how maintainers provide feedback, and the workflow for merging your pull requests.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+<section class="contributing-best-practices">
+  <h3>Best Practices for Contributing</h3>
+  <p>Follow these best practices to make your contributions effective, professional, and easy for maintainers to review.</p>
+
+  <div class="practices-grid">
+    <div class="practice-item">
+      <div class="icon">📝</div>
+      <h4>Write clear, concise commits</h4>
+      <p>Meaningful commit messages make it easier for others to understand your changes.</p>
     </div>
-  </header>
+    <div class="practice-item">
+      <div class="icon">📚</div>
+      <h4>Follow contribution guidelines</h4>
+      <p>Adhering to project guidelines ensures your PR meets expectations and saves time for maintainers.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">🎨</div>
+      <h4>Maintain code style and formatting</h4>
+      <p>Keep your code consistent with the project’s style and formatting conventions.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">🤝</div>
+      <h4>Communicate professionally</h4>
+      <p>Be polite, constructive, and respectful when discussing changes or providing feedback.</p>
+    </div>
+  </div>
+</section>
+<section class="common-mistakes">
+  <h2>Common Mistakes Beginners Should Avoid</h2>
+  <ul class="mistakes-list">
+    <li>
+      <span class="mistake-icon">1</span>
+      <p>Not reading the README</p>
+    </li>
+    <li>
+      <span class="mistake-icon">2</span>
+      <p>Skipping contributing guidelines</p>
+    </li>
+    <li>
+      <span class="mistake-icon">3</span>
+      <p>Making large or unclear pull requests</p>
+    </li>
+    <li>
+      <span class="mistake-icon">4</span>
+      <p>Not testing changes before submitting</p>
+    </li>
+  </ul>
+</section>
 
-  <main>
-    <section class="guide">
-      <h3>Beginner Open Source Guide</h3>
-      <p>Open source is a way to collaborate on projects where the code is publicly available. Contributing helps you
-        learn, gain experience, and give back to the community.</p>
+</main>
 
-      <ul class="guide-list">
-        <li>
-          <span class="step">1</span>
-          <h4><a href="git-playground.html" style="text-decoration: none; color: inherit;">Learn Git & GitHub basics</a>
-          </h4>
-          <p>Start by understanding Git version control and creating repositories on GitHub. This is the foundation for
-            contributing to open source projects.</p>
-        </li>
-        <li>
-          <span class="step">2</span>
-          <h4>Explore small projects</h4>
-          <p>Contribute to beginner-friendly projects to build confidence and experience. Look for tags like “good first
-            issue.”</p>
-        </li>
-        <li>
-          <span class="step">3</span>
-          <h4>Understand issues & labels</h4>
-          <p>Learn how to read issues, use labels, and understand project workflows to know where you can contribute
-            effectively.</p>
-        </li>
-        <li>
-          <span class="step">4</span>
-          <h4>Make your first pull request</h4>
-          <p>Submit your first PR to fix a bug or add a small feature. This helps you practice collaboration and the
-            contribution process.</p>
-        </li>
-      </ul>
-    </section>
-    <section class="pull-request-guide">
-      <h3>Step-by-Step Guide to Your First Pull Request</h3>
-      <ul class="pr-steps">
-        <li>
-          <span class="step">1</span>
-          <i class="fa-solid fa-code-branch icon"></i>
-          <h4>Fork the repository</h4>
-          <p>Create your own copy of the repository to work on without affecting the original project.</p>
-        </li>
-        <li>
-          <span class="step">2</span>
-          <i class="fa-solid fa-download icon"></i>
-          <h4>Clone it locally on your computer</h4>
-          <p>Download the repository to your computer using Git to start making changes.</p>
-        </li>
-        <li>
-          <span class="step">3</span>
-          <i class="fa-solid fa-plus icon"></i>
-          <h4>Create a new branch for your changes</h4>
-          <p>Use a descriptive branch name to organize your work and keep main safe.</p>
-        </li>
-        <li>
-          <span class="step">4</span>
-          <i class="fa-solid fa-pencil icon"></i>
-          <h4>Make your changes and commit them</h4>
-          <p>Edit the code, add features or fixes, and commit your changes with clear messages.</p>
-        </li>
-        <li>
-          <span class="step">5</span>
-          <i class="fa-solid fa-upload icon"></i>
-          <h4>Push the branch to GitHub and open a pull request</h4>
-          <p>Send your branch to GitHub and create a pull request to propose your changes.</p>
-        </li>
-        <li>
-          <span class="step">6</span>
-          <i class="fa-solid fa-check icon"></i>
-          <h4>Review feedback and merge once approved</h4>
-          <p>Respond to comments, make any requested edits, and merge once maintainers approve.</p>
-        </li>
-      </ul>
-    </section>
-    <section class="github-guide-timeline">
-      <h3>Understanding GitHub Issues, Labels, and Workflows</h3>
-      <p>Mastering GitHub issues and workflows helps you contribute effectively and communicate clearly with project
-        maintainers.</p>
+<div id="footer"></div>
 
-      <ol class="timeline-list">
-        <li>
-          <div class="icon">🔍</div>
-          <div class="content">
-            <h4>How to find issues to work on</h4>
-            <p>Learn to identify beginner-friendly issues or areas of the project that match your skills and interest.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">🏷️</div>
-          <div class="content">
-            <h4>Understanding issue labels</h4>
-            <p>Recognize labels like “good first issue” or “help wanted” to know what the project expects and where you
-              can contribute.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">💬</div>
-          <div class="content">
-            <h4>How to comment effectively and ask for clarification</h4>
-            <p>Communicate clearly in issue threads to ask questions, offer help, or provide updates on your work.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">✅</div>
-          <div class="content">
-            <h4>How maintainers review contributions and merge PRs</h4>
-            <p>Understand the review process, how maintainers provide feedback, and the workflow for merging your pull
-              requests.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-    <section class="contributing-best-practices">
-      <h3>Best Practices for Contributing</h3>
-      <p>Follow these best practices to make your contributions effective, professional, and easy for maintainers to
-        review.</p>
-
-      <div class="practices-grid">
-        <div class="practice-item">
-          <div class="icon">📝</div>
-          <h4>Write clear, concise commits</h4>
-          <p>Meaningful commit messages make it easier for others to understand your changes.</p>
-        </div>
-        <div class="practice-item">
-          <div class="icon">📚</div>
-          <h4>Follow contribution guidelines</h4>
-          <p>Adhering to project guidelines ensures your PR meets expectations and saves time for maintainers.</p>
-        </div>
-        <div class="practice-item">
-          <div class="icon">🎨</div>
-          <h4>Maintain code style and formatting</h4>
-          <p>Keep your code consistent with the project’s style and formatting conventions.</p>
-        </div>
-        <div class="practice-item">
-          <div class="icon">🤝</div>
-          <h4>Communicate professionally</h4>
-          <p>Be polite, constructive, and respectful when discussing changes or providing feedback.</p>
-        </div>
-      </div>
-    </section>
-    <section class="common-mistakes">
-      <h2>Common Mistakes Beginners Should Avoid</h2>
-      <ul class="mistakes-list">
-        <li>
-          <span class="mistake-icon">1</span>
-          <p>Not reading the README</p>
-        </li>
-        <li>
-          <span class="mistake-icon">2</span>
-          <p>Skipping contributing guidelines</p>
-        </li>
-        <li>
-          <span class="mistake-icon">3</span>
-          <p>Making large or unclear pull requests</p>
-        </li>
-        <li>
-          <span class="mistake-icon">4</span>
-          <p>Not testing changes before submitting</p>
-        </li>
-      </ul>
-    </section>
-
-  </main>
-
-  <div id="footer"></div>
-
-  <script src="../js/components.js"></script>
+<script src="../js/components.js"></script>
 
   <script src="../js/theme.js"></script>
 
 
-  <script src="../js/chatbot.js"></script>
-  <script src="../js/main.js"></script>
+<script src="../js/chatbot.js"></script>
+<script src="../js/main.js"></script>
 
   <button id="scrollTopBtn" title="Back to Top">
-    <i class="fas fa-chevron-up"></i>
+   <i class="fas fa-chevron-up"></i>
   </button>
 </body>
 

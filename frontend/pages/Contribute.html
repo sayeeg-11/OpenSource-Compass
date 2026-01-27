@@ -15,8 +15,22 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
+  
+  <!-- Font Awesome (REQUIRED for logo) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
   <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contribute.css" />
   <link rel="stylesheet" href="../css/chatbot.css">
   <link rel="stylesheet" href="../css/style.css" />
@@ -24,23 +38,7 @@
 
 <body>
   <!-- Navbar -->
-  <header>
-    <div class="navbar-container">
-      <h1>
-        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
-        OpenSource Compass
-      </h1>
-      <div class="nav-links">
-        <a href="../../index.html">Home</a>
-        <a href="./guides.html">Guides</a>
-        <a href="./programs.html">Programs</a>
-        <a href="./Resources.html">Resources</a>
-        <a href="./contributors.html">Contributors</a>
-        <a href="./faq.html">FAQ</a>
-        <a href="./Contribute.html">Contribute</a>
-      </div>
-    </div>
-  </header>
+  <div id="navbar"></div>
 
   <!-- Main Content -->
   <main>
@@ -309,6 +307,7 @@ git push origin feature/add-new-feature
 
   <div id="footer"></div>
 
+  <script src="../js/main.js"></script>
   <script src="../js/components.js"></script>
   <script src="../js/theme.js"></script>
   <script src="../js/chatbot.js"></script>

@@ -1108,11 +1108,181 @@
             ]
         },
         {
+            "tag": "pull_request",
+            "patterns": [
+                "pull request",
+                "pr",
+                "how to make a pr",
+                "submit pr",
+                "create pull request",
+                "what is a pull request"
+            ],
+            "responses": [
+                "A pull request (PR) is a way to propose changes to a repository. Fork the repo, create a branch, make changes, commit them, and push to your fork, then open a PR on GitHub.",
+                "Pull requests allow maintainers to review your code before merging it. They're the standard way to contribute to open source projects.",
+                "Steps: 1) Fork the repo 2) Clone to your machine 3) Create a branch 4) Make your changes 5) Push to your fork 6) Open a PR with a clear description."
+            ]
+        },
+        {
+            "tag": "fork_repository",
+            "patterns": [
+                "fork",
+                "forking",
+                "how to fork",
+                "fork a repo",
+                "what is fork"
+            ],
+            "responses": [
+                "Forking creates a personal copy of someone else's repository under your GitHub account. You can then make changes without affecting the original project.",
+                "Click the 'Fork' button on GitHub's repository page. This creates a copy you own, allowing you to freely experiment."
+            ]
+        },
+        {
+            "tag": "code_of_conduct",
+            "patterns": [
+                "code of conduct",
+                "community guidelines",
+                "behavior policy",
+                "community standards"
+            ],
+            "responses": [
+                "A code of conduct is a set of rules and guidelines that define acceptable behavior in a community. Always read the project's code of conduct before contributing.",
+                "Most open source projects have a CODE_OF_CONDUCT.md file. It promotes inclusivity and respect among contributors."
+            ]
+        },
+        {
+            "tag": "issue_tracker",
+            "patterns": [
+                "issue tracker",
+                "github issues",
+                "how to report a bug",
+                "report issue",
+                "create issue"
+            ],
+            "responses": [
+                "Use the project's issue tracker (usually GitHub Issues) to report bugs, suggest features, or ask questions. Before creating an issue, check if a similar one already exists.",
+                "A good issue includes: a clear title, detailed description, steps to reproduce (for bugs), and your environment details."
+            ]
+        },
+        {
+            "tag": "commit_message",
+            "patterns": [
+                "commit message",
+                "good commit message",
+                "how to write commit",
+                "commit convention",
+                "conventional commits"
+            ],
+            "responses": [
+                "Write clear, concise commit messages in imperative mood (e.g., 'Add feature' not 'Added feature'). Include what and why, not just what changed.",
+                "Example: 'Fix login timeout issue by increasing session duration' is better than 'Fix bug'. Conventional Commits format is becoming standard: type(scope): description."
+            ]
+        },
+        {
+            "tag": "contributor_workflow",
+            "patterns": [
+                "contributor workflow",
+                "how do maintainers work",
+                "open source workflow",
+                "development process",
+                "issue to merge workflow"
+            ],
+            "responses": [
+                "Typical workflow: 1) Find an open issue 2) Express interest in the issue 3) Create a branch and work on the fix 4) Submit a PR 5) Respond to reviews 6) Get merged!",
+                "Always communicate with maintainers. Some projects require issue assignment before you start coding."
+            ]
+        },
+        {
+            "tag": "code_review",
+            "patterns": [
+                "code review",
+                "pr review",
+                "review feedback",
+                "how to handle feedback",
+                "code review comments"
+            ],
+            "responses": [
+                "Code reviews help maintain quality. Be open to feedback—it's not personal criticism, it's improvement for the project.",
+                "When you get review comments: 1) Read carefully 2) Discuss if you disagree 3) Make requested changes 4) Push updates 5) Reply to comments."
+            ]
+        },
+        {
+            "tag": "documentation_contribution",
+            "patterns": [
+                "contribute documentation",
+                "documentation",
+                "docs contribution",
+                "write docs",
+                "improve readme"
+            ],
+            "responses": [
+                "Documentation contributions are valuable! Fix typos, improve clarity, add examples, or write tutorials. Many projects welcome documentation PRs.",
+                "Start by improving the README, fixing typos, or adding examples. Good documentation is often overlooked but hugely appreciated."
+            ]
+        },
+        {
+            "tag": "first_issue_tips",
+            "patterns": [
+                "first issue",
+                "beginner issue",
+                "good first issue",
+                "easy issue",
+                "help wanted"
+            ],
+            "responses": [
+                "Look for issues labeled 'good first issue', 'beginner-friendly', or 'help wanted'. These are specifically curated for newcomers.",
+                "Don't worry if you can't code yet! Many projects need help with documentation, testing, design, or bug reports."
+            ]
+        },
+        {
+            "tag": "license_types",
+            "patterns": [
+                "license types",
+                "which license to use",
+                "choose license",
+                "license comparison",
+                "mit vs apache vs gpl"
+            ],
+            "responses": [
+                "Popular licenses: MIT (permissive), Apache 2.0 (permissive with patent clause), GPL (copyleft), BSD (similar to MIT). Choose based on your needs.",
+                "Visit choosealicense.com for help picking a license. Most beginner projects use MIT or Apache 2.0."
+            ]
+        },
+        {
+            "tag": "contributor_etiquette",
+            "patterns": [
+                "contributor etiquette",
+                "how to behave",
+                "communication tips",
+                "respectful contribution",
+                "community respect"
+            ],
+            "responses": [
+                "Be respectful, patient, and kind. Read the CONTRIBUTING.md file. Ask questions if unsure, and thank people for their help.",
+                "Remember: maintainers are often volunteers. Be understanding if responses are slow, and never demand features or priority."
+            ]
+        },
+        {
+            "tag": "test_contribution",
+            "patterns": [
+                "write tests",
+                "testing contribution",
+                "add tests",
+                "unit tests",
+                "test code"
+            ],
+            "responses": [
+                "Tests ensure code quality and prevent regressions. Contributing tests is a great way to help! Most projects have testing guidelines in their docs.",
+                "If a project lacks tests, writing tests for bugs or new features can be a valuable contribution."
+            ]
+        },
+        {
             "tag": "unknown",
             "patterns": [],
             "responses": [
-                "You're testing the limits of my knowledge! Try asking about git commands, specific languages, or community terms.",
-                "I might not know that one yet. Ask me about 'forking', 'npm', 'flamewars', or 'MIT license'!"
+                "You're testing the limits of my knowledge! Try asking about git commands, pull requests, licenses, or community terms.",
+                "I might not know that one yet. Ask me about 'forking', 'npm', 'code of conduct', or 'conventional commits'!",
+                "Not sure about that. Check the project's documentation or ask on their discussion board. Maintainers are usually helpful!"
             ]
         },
         {

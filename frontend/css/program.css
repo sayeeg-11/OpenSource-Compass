@@ -1,150 +1,184 @@
 /* -------------------------
-  Program Card Container
+   Global Page Layout
+------------------------- */
+:root {
+  --primary-gold: #b59d5c;
+  --hover-gold: #967e45;
+  --bg-cream: #fffdf6;
+  --text-dark: #1a1a1a;
+  --text-gray: #555;
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 12px 25px rgba(181, 157, 92, 0.2);
+}
+
+.programs-container {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background: var(--primary-gold);
+  margin: 0 auto 20px;
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-gray);
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* -------------------------
+   Grid Layout (Centered)
+------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 20px;
+  justify-items: center; /* Ensures cards are centered in their grid cells */
+  justify-content: center; /* Centers the entire grid on the page */
+}
+
+/* -------------------------
+   Enhanced Program Card
 ------------------------- */
 .program-card {
-  display: flex;
-  flex-direction: column;
   background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-  max-width: 400px;
-  margin: 16px;
-  font-family: 'Inter', sans-serif;
-}
-
-.program-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* Accent bar for difficulty */
-.card-accent {
-  height: 6px;
-  width: 100%;
-}
-
-/* -------------------------
-  Card Content
-------------------------- */
-.card-content {
-  padding: 16px 20px;
+  border: 1px solid #e2d1a8;
+  padding: 40px 30px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center; /* Centers all content inside the card */
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  overflow: hidden;
 }
 
-.card-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #222;
+/* Hover Effect */
+.program-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--hover-shadow);
+  border-color: var(--primary-gold);
 }
 
-.card-desc {
-  margin: 0;
+/* Icon Styling */
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.program-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+/* Typography */
+.program-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.program-card p {
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
-  line-height: 1.5;
-  color: #555;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin-bottom: 30px;
+  flex-grow: 1; /* Pushes the button to the bottom */
 }
 
 /* -------------------------
-  Meta Information Grid
+   Card Meta & Stats (Optional)
 ------------------------- */
 .card-meta-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 8px 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   font-size: 0.85rem;
-  color: #444;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
-.card-meta-grid div {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* -------------------------
-  Skills / Contributions Tags
-------------------------- */
 .card-skills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .skill-tag {
-  background: #f5f5f5;
-  color: #333;
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-/* -------------------------
-  Stats (Contributors, Issues, Orgs)
-------------------------- */
-.card-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-size: 0.8rem;
-  color: #666;
-  margin-bottom: 12px;
-}
-
-.card-stats span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* -------------------------
-  Card Link Button
-------------------------- */
-.card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
+  background: #f9f6f0;
+  color: var(--primary-gold);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
-  font-size: 0.85rem;
-  color: #fff;
-  background-color: var(--primary-gold, #f39c12);
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.card-link:hover {
-  background-color: #e08e0b;
+  border: 1px solid #e2d1a8;
 }
 
 /* -------------------------
-  Icons
+   Action Button
 ------------------------- */
-.card-meta-grid i,
-.card-stats i {
-  color: #888;
+.card-btn {
+  text-decoration: none;
+  background: var(--primary-gold);
+  color: white;
+  padding: 12px 35px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(181, 157, 92, 0.3);
+}
+
+.card-btn:hover {
+  background: var(--hover-gold);
+  box-shadow: 0 6px 15px rgba(181, 157, 92, 0.4);
+  transform: scale(1.05);
 }
 
 /* -------------------------
-  Responsive
+   Responsive Design
 ------------------------- */
 @media (max-width: 768px) {
-  .card-meta-grid {
-    grid-template-columns: 1fr 1fr;
+  .page-title {
+    font-size: 2rem;
   }
-}
-
-@media (max-width: 500px) {
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
   .program-card {
     max-width: 100%;
-    margin: 12px 0;
   }
 }

@@ -15,3 +15,16 @@ document.querySelectorAll('.filter-pill').forEach(button => {
     });
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const resourcesList = document.querySelector(".resources-list");
+  const emptyState = document.getElementById("resources-empty");
+
+  if (resourcesList && emptyState) {
+    const hasResources = resourcesList.querySelector(".resource-tile");
+
+    if (!hasResources) {
+  emptyState.style.display = "block";
+}
+
+  }
+});

@@ -7,23 +7,268 @@
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Awesome (REQUIRED for logo) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!-- Global CSS -->
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/resources.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
-  
+
+  <style>
+    /* Roadmap Container */
+    #level-chain-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      padding: 5rem 0 3rem 0; /* Extra top padding for floating XP pills */
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    #level-chain-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* The Flex Container */
+    #level-chain-container {
+      display: flex;
+      align-items: flex-start;
+      min-width: max-content;
+      padding: 0 4rem;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    /* The Background Track (Grey Line) */
+    .roadmap-track {
+      position: absolute;
+      top: 30px;
+      left: 3rem;
+      right: 3rem;
+      height: 4px;
+      background: #e0e0e0;
+      z-index: 0;
+      border-radius: 4px;
+    }
+
+    /* The Active Progress Track (Gold Line) */
+    .roadmap-progress {
+      position: absolute;
+      top: 30px;
+      left: 3rem;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-gold), #ffd700);
+      z-index: 0;
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Individual Level Item Wrapper */
+    .level-item {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 4.5rem;
+      cursor: pointer;
+      width: 120px;
+      /* Staggered Entrance Animation */
+      opacity: 0; 
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    .level-item:last-child {
+        margin-right: 0;
+    }
+
+    /* Hover Float Effect */
+    .level-item:not(.locked):hover {
+      transform: translateY(-8px);
+    }
+
+    /* ENTRANCE ANIMATION */
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SHAKE ANIMATION (For Locked Items) */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    
+    .level-item.shake-animation {
+      animation: shake 0.3s ease-in-out !important;
+    }
+
+    /* The Circular Node */
+    .level-node {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      background: white;
+      border: 3px solid #e0e0e0;
+      color: #999;
+      position: relative;
+      /* overflow: hidden; Removed overflow hidden to allow Aura to spill out if needed, handled via z-index */
+    }
+
+    /* STATUS: LOCKED */
+    .level-item.locked .level-node {
+      background: #f5f5f5;
+      border-color: #d1d1d1;
+      color: #aaa;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* STATUS: COMPLETED */
+    .level-item.completed .level-node {
+      background: var(--primary-gold);
+      border-color: var(--primary-gold);
+      color: white;
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+      overflow: hidden; /* Keep shimmer inside */
+    }
+
+    /* Shimmer for Completed Nodes */
+    .level-item.completed .level-node::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    /* --- THE AURA EFFECT (Current/Unlocked) --- */
+    .level-item.unlocked .level-node {
+      background: white;
+      border-color: var(--primary-gold);
+      color: var(--primary-gold);
+      transform: scale(1.25);
+      /* Static Glow */
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); 
+      z-index: 5;
+    }
+
+    /* The Pulse Ring (Aura Animation) */
+    .level-item.unlocked .level-node::after {
+      content: '';
+      position: absolute;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-gold);
+      animation: pulse-aura 2s infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse-aura {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    /* Text Styling */
+    .level-meta {
+      text-align: center;
+      margin-top: 1.2rem;
+      transition: opacity 0.3s;
+    }
+
+    .level-id {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .level-item.unlocked .level-id {
+        color: var(--primary-gold);
+        font-weight: 800;
+    }
+
+    .level-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      line-height: 1.2;
+    }
+    
+    .level-item.locked .level-title {
+        color: #aaa;
+    }
+
+    /* --- DARK XP INFO (Badge) --- */
+    .xp-pill {
+      position: absolute;
+      top: -3rem; /* Float above */
+      background: var(--deep-navy); /* Dark Background */
+      color: var(--primary-gold);   /* Gold Text */
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      white-space: nowrap;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Little arrow pointing down */
+    .xp-pill::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px 5px 0;
+        border-style: solid;
+        border-color: var(--deep-navy) transparent transparent transparent;
+    }
+
+    /* Show badge on hover */
+    .level-item:hover .xp-pill {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Optional: Always show badge for Current Level */
+    .level-item.unlocked .xp-pill {
+        opacity: 1;
+        transform: translateY(0);
+        top: -3.5rem; /* Slightly higher for the larger node */
+    }
+  </style>
 </head>
 
-
 <body>
-  <!-- Navbar copied EXACTLY from home.html -->
   <header>
     <div class="navbar-container">
       <h1>
@@ -42,228 +287,224 @@
   </header>
 
   <main>
-<section class="resources-section">
-  <header class="resources-header">
-    <h3>Learning Resources</h3>
-    <p>Official documentation and trusted guides to help you work efficiently.</p>
-  </header>
+    <section class="resources-section">
+      <header class="resources-header">
+        <h3>Learning Resources</h3>
+        <p>Official documentation and trusted guides to help you work efficiently.</p>
+      </header>
 
-  <div class="resources-list">
-    <div class="resource-tile">
-      <div class="tile-accent" style="background-color: #d4af37;"></div>
-      <div class="tile-icon">📚</div>
-      <div class="tile-content">
-        <span class="tile-meta">Official Docs</span>
-        <h5>GitHub Documentation</h5>
-        <p>Explore GitHub features, workflows, and platform capabilities directly from the source.</p>
-        <a href="https://docs.github.com" target="_blank" rel="noopener">Visit documentation →</a>
-      </div>
-    </div>
+      <div class="resources-list">
+        <div class="resource-tile">
+          <div class="tile-accent" style="background-color: #d4af37;"></div>
+          <div class="tile-icon">📚</div>
+          <div class="tile-content">
+            <span class="tile-meta">Official Docs</span>
+            <h5>GitHub Documentation</h5>
+            <p>Explore GitHub features, workflows, and platform capabilities directly from the source.</p>
+            <a href="https://docs.github.com" target="_blank" rel="noopener">Visit documentation →</a>
+          </div>
+        </div>
 
-    <div class="resource-tile">
-      <div class="tile-accent" style="background-color: #1f78b4;"></div>
-      <div class="tile-icon">🗂️</div>
-      <div class="tile-content">
-        <span class="tile-meta">Reference</span>
-        <h5>Git Documentation</h5>
-        <p>A complete and authoritative reference for Git commands and internal concepts.</p>
-        <a href="https://git-scm.com/docs" target="_blank" rel="noopener">View Git docs →</a>
-      </div>
-    </div>
+        <div class="resource-tile">
+          <div class="tile-accent" style="background-color: #1f78b4;"></div>
+          <div class="tile-icon">🗂️</div>
+          <div class="tile-content">
+            <span class="tile-meta">Reference</span>
+            <h5>Git Documentation</h5>
+            <p>A complete and authoritative reference for Git commands and internal concepts.</p>
+            <a href="https://git-scm.com/docs" target="_blank" rel="noopener">View Git docs →</a>
+          </div>
+        </div>
 
-    <div class="resource-tile">
-      <div class="tile-accent" style="background-color: #4ecdc4;"></div>
-      <div class="tile-icon">✏️</div>
-      <div class="tile-content">
-        <span class="tile-meta">Guide</span>
-        <h5>Markdown Guide</h5>
-        <p>Learn Markdown syntax, formatting rules, and best practices for clean documentation.</p>
-        <a href="https://www.markdownguide.org" target="_blank" rel="noopener">Read guide →</a>
+        <div class="resource-tile">
+          <div class="tile-accent" style="background-color: #4ecdc4;"></div>
+          <div class="tile-icon">✏️</div>
+          <div class="tile-content">
+            <span class="tile-meta">Guide</span>
+            <h5>Markdown Guide</h5>
+            <p>Learn Markdown syntax, formatting rules, and best practices for clean documentation.</p>
+            <a href="https://www.markdownguide.org" target="_blank" rel="noopener">Read guide →</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+    <section class="templates-section">
+      <header class="templates-header">
+        <h3>Templates & Assets</h3>
+        <p>Pre-made templates and assets to streamline contributions and documentation. Click any tile to view the
+          template.</p>
+      </header>
+
+      <div class="templates-grid">
+        <div class="template-tile">
+          <div class="tile-icon">📄</div>
+          <div class="tile-content">
+            <h5>Pull Request Template</h5>
+            <p>Standard PR structure for clean, consistent submissions.</p>
+            <a href="../assets/templates/pr-template.md" target="_blank" rel="noopener">View Template →</a>
+          </div>
+        </div>
+
+        <div class="template-tile">
+          <div class="tile-icon">🐛</div>
+          <div class="tile-content">
+            <h5>Issue Templates</h5>
+            <p>Predefined bug report and feature request formats to save time and ensure clarity.</p>
+            <a href="../assets/templates/issue-template.md" target="_blank" rel="noopener">View Templates →</a>
+          </div>
+        </div>
+
+        <div class="template-tile">
+          <div class="tile-icon">📘</div>
+          <div class="tile-content">
+            <h5>README Structure</h5>
+            <p>Minimal, effective README layout to guide new contributors and users.</p>
+            <a href="../assets/templates/readme.md" target="_blank" rel="noopener">View Template →</a>
+          </div>
+        </div>
+
+        <div class="template-tile">
+          <div class="tile-icon">🤝</div>
+          <div class="tile-content">
+            <h5>CONTRIBUTING.md</h5>
+            <p>Sample contribution guidelines to make contributing simple and clear.</p>
+            <a href="../assets/templates/contributing.md" target="_blank" rel="noopener">View Template →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="checklists-section">
+      <header class="checklists-header">
+        <h3>Quick Checklists</h3>
+        <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
+      </header>
+
+      <div class="checklists-grid">
+        <div class="checklist-tile">
+          <div class="tile-icon">📝</div>
+          <div class="tile-content">
+            <h5>Before Opening a PR</h5>
+            <ul>
+              <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
+              <li><span class="checkmark">✔</span> Linked issue referenced</li>
+              <li><span class="checkmark">✔</span> PR title is clear</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checklist-tile">
+          <div class="tile-icon">📂</div>
+          <div class="tile-content">
+            <h5>Before Choosing a Repo</h5>
+            <ul>
+              <li><span class="checkmark">✔</span> Recent commits</li>
+              <li><span class="checkmark">✔</span> Maintainer responses</li>
+              <li><span class="checkmark">✔</span> Beginner labels</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="tools-section">
+      <header class="tools-header">
+        <h3>Contributor Tools</h3>
+        <p>Essential tools to streamline your workflow and improve contributions.</p>
+      </header>
+
+      <div class="tools-grid">
+        <a class="tool-tile" href="https://code.visualstudio.com" target="_blank" rel="noopener">
+          <div class="tile-icon">💻</div>
+          <div class="tile-content">
+            <h5>VS Code</h5>
+            <p>Popular code editor for efficient development.</p>
+          </div>
+        </a>
+
+        <a class="tool-tile" href="https://cli.github.com" target="_blank" rel="noopener">
+          <div class="tile-icon">🛠️</div>
+          <div class="tile-content">
+            <h5>GitHub CLI</h5>
+            <p>Command-line GitHub workflow for quick operations.</p>
+          </div>
+        </a>
+
+        <a class="tool-tile" href="https://www.diffchecker.com" target="_blank" rel="noopener">
+          <div class="tile-icon">🔍</div>
+          <div class="tile-content">
+            <h5>Diff Checker</h5>
+            <p>Compare code changes visually and catch errors quickly.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section class="beginner-issues-section">
+      <header class="beginner-header">
+        <h3>Find Beginner-Friendly Issues</h3>
+        <p>Discover repositories and issues curated for first-time contributors.</p>
+      </header>
+
+      <div class="beginner-grid">
+        <a class="beginner-tile" href="https://goodfirstissue.dev" target="_blank" rel="noopener">
+          <div class="tile-icon">🎯</div>
+          <div class="tile-content">
+            <h5>Good First Issue</h5>
+            <p>Curated beginner-friendly issues across open-source projects.</p>
+          </div>
+        </a>
+
+        <a class="beginner-tile" href="https://up-for-grabs.net" target="_blank" rel="noopener">
+          <div class="tile-icon">🚀</div>
+          <div class="tile-content">
+            <h5>Up For Grabs</h5>
+            <p>Projects actively welcoming new contributors to join.</p>
+          </div>
+        </a>
+
+        <a class="beginner-tile" href="https://www.firsttimersonly.com" target="_blank" rel="noopener">
+          <div class="tile-icon">👶</div>
+          <div class="tile-content">
+            <h5>First Timers Only</h5>
+            <p>Repositories specifically made for first-time contributors.</p>
+          </div>
+        </a>
+      </div>
+    </a>
   </div>
 </section>
-<section class="templates-section">
-  <header class="templates-header">
-    <h3>Templates & Assets</h3>
-    <p>Pre-made templates and assets to streamline contributions and documentation. Click any tile to view the template.</p>
-  </header>
-
-  <div class="templates-grid">
-    <div class="template-tile">
-      <div class="tile-icon">📄</div>
-      <div class="tile-content">
-        <h5>Pull Request Template</h5>
-        <p>Standard PR structure for clean, consistent submissions.</p>
-        <a href="../assets/templates/pr-template.md" target="_blank" rel="noopener">View Template →</a>
-      </div>
-    </div>
-
-    <div class="template-tile">
-      <div class="tile-icon">🐛</div>
-      <div class="tile-content">
-        <h5>Issue Templates</h5>
-        <p>Predefined bug report and feature request formats to save time and ensure clarity.</p>
-        <a href="../assets/templates/issue-template.md" target="_blank" rel="noopener">View Templates →</a>
-      </div>
-    </div>
-
-    <div class="template-tile">
-      <div class="tile-icon">📘</div>
-      <div class="tile-content">
-        <h5>README Structure</h5>
-        <p>Minimal, effective README layout to guide new contributors and users.</p>
-        <a href="../assets/templates/readme.md" target="_blank" rel="noopener">View Template →</a>
-      </div>
-    </div>
-
-    <div class="template-tile">
-      <div class="tile-icon">🤝</div>
-      <div class="tile-content">
-        <h5>CONTRIBUTING.md</h5>
-        <p>Sample contribution guidelines to make contributing simple and clear.</p>
-        <a href="../assets/templates/contributing.md" target="_blank" rel="noopener">View Template →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="checklists-section">
-  <header class="checklists-header">
-    <h3>Quick Checklists</h3>
-    <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
-  </header>
-
-  <div class="checklists-grid">
-    <div class="checklist-tile">
-      <div class="tile-icon">📝</div>
-      <div class="tile-content">
-        <h5>Before Opening a PR</h5>
-        <ul>
-          <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
-          <li><span class="checkmark">✔</span> Linked issue referenced</li>
-          <li><span class="checkmark">✔</span> PR title is clear</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="checklist-tile">
-      <div class="tile-icon">📂</div>
-      <div class="tile-content">
-        <h5>Before Choosing a Repo</h5>
-        <ul>
-          <li><span class="checkmark">✔</span> Recent commits</li>
-          <li><span class="checkmark">✔</span> Maintainer responses</li>
-          <li><span class="checkmark">✔</span> Beginner labels</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="tools-section">
-  <header class="tools-header">
-    <h3>Contributor Tools</h3>
-    <p>Essential tools to streamline your workflow and improve contributions.</p>
-  </header>
-
-  <div class="tools-grid">
-    <a class="tool-tile" href="https://code.visualstudio.com" target="_blank" rel="noopener">
-      <div class="tile-icon">💻</div>
-      <div class="tile-content">
-        <h5>VS Code</h5>
-        <p>Popular code editor for efficient development.</p>
-      </div>
-    </a>
-
-    <a class="tool-tile" href="https://cli.github.com" target="_blank" rel="noopener">
-      <div class="tile-icon">🛠️</div>
-      <div class="tile-content">
-        <h5>GitHub CLI</h5>
-        <p>Command-line GitHub workflow for quick operations.</p>
-      </div>
-    </a>
-
-    <a class="tool-tile" href="https://www.diffchecker.com" target="_blank" rel="noopener">
-      <div class="tile-icon">🔍</div>
-      <div class="tile-content">
-        <h5>Diff Checker</h5>
-        <p>Compare code changes visually and catch errors quickly.</p>
-      </div>
-    </a>
-  </div>
-</section>
-<section class="beginner-issues-section">
-  <header class="beginner-header">
-    <h3>Find Beginner-Friendly Issues</h3>
-    <p>Discover repositories and issues curated for first-time contributors.</p>
-  </header>
-
-  <div class="beginner-grid">
-    <a class="beginner-tile" href="https://goodfirstissue.dev" target="_blank" rel="noopener">
-      <div class="tile-icon">🎯</div>
-      <div class="tile-content">
-        <h5>Good First Issue</h5>
-        <p>Curated beginner-friendly issues across open-source projects.</p>
-      </div>
-    </a>
-
-    <a class="beginner-tile" href="https://up-for-grabs.net" target="_blank" rel="noopener">
-      <div class="tile-icon">🚀</div>
-      <div class="tile-content">
-        <h5>Up For Grabs</h5>
-        <p>Projects actively welcoming new contributors to join.</p>
-      </div>
-    </a>
-
-    <a class="beginner-tile" href="https://www.firsttimersonly.com" target="_blank" rel="noopener">
-      <div class="tile-icon">👶</div>
-      <div class="tile-content">
-        <h5>First Timers Only</h5>
-        <p>Repositories specifically made for first-time contributors.</p>
-      </div>
-    </a>
-  </div>
-</section>
 
 
 
 
 
+ main
 
     <section id="quiz-section">
       <div
-        style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 2rem; position: relative;">
+        style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 1rem; position: relative;">
         <div style="position: relative; display: inline-block;">
-          <h3 style="margin: 0;">Mastery Levels</h3>
+          <h3 style="margin: 0;">Mastery Path</h3>
           <div
             style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px; background: var(--deep-navy); color: var(--primary-gold); padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
             <i class="fas fa-star" style="margin-right: 5px;"></i> <span id="total-xp">0</span> XP
           </div>
         </div>
-        <p style="margin-top: 0.5rem;">Complete levels to earn XP and unlock your journey.</p>
+        <p style="margin-top: 0.5rem; color: #666;">Your journey to open source mastery.</p>
       </div>
 
-      <!-- Horizontal Chain Container -->
-      <!-- Added styles to hide scrollbar but keep functionality -->
-
-      <div id="level-chain-wrapper"
-        style="width: 100%; overflow-x: auto; padding: 2rem 0; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;">
-        <div id="level-chain-container"
-          style="display: flex; align-items: center; min-width: max-content; padding: 0 2rem; position: relative;">
-          <!-- Horizontal line background will be drawn by JS or CSS on the container -->
-          <div
-            style="position: absolute; left: 0; right: 0; top: 50%; height: 4px; background: #e0e0e0; z-index: 0; transform: translateY(-50%);">
-          </div>
-          <!-- Levels injected here -->
-        </div>
+      <div id="level-chain-wrapper">
+        <div id="level-chain-container">
+            <div class="roadmap-track"></div>
+            <div id="roadmap-progress-line" class="roadmap-progress"></div>
+            
+            </div>
       </div>
 
-      <!-- Quiz Container -->
       <div id="quiz-container"
         style="max-width: 700px; margin: 2rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-main); display: none; position: relative; z-index: 10;">
         <button id="back-to-levels"
           style="background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; position: absolute; top: 1.5rem; left: 1.5rem;">
-          <i class="fas fa-arrow-left"></i> Back to the Path
+          <i class="fas fa-arrow-left"></i> Back to Roadmap
         </button>
 
         <div id="quiz-header" style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
@@ -280,7 +521,6 @@
           <h5 id="question-text"
             style="font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; font-weight: 500;">Question text</h5>
           <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
-          <!-- Explanation Box -->
           <div id="explanation-box"
             style="display: none; background: #e3f2fd; border-left: 4px solid #2196f3; padding: 1rem; margin-top: 1.5rem; border-radius: 4px;">
             <strong style="color: #0d47a1;"><i class="fas fa-info-circle"></i> Insight:</strong>
@@ -335,6 +575,7 @@
         const explanationBox = document.getElementById('explanation-box');
         const explanationText = document.getElementById('explanation-text');
         const nextQBtn = document.getElementById('next-question-btn');
+        const roadmapProgressLine = document.getElementById('roadmap-progress-line');
 
         // Initial Render
         xpDisplay.innerText = totalXP;
@@ -347,79 +588,80 @@
             renderLevels();
           } catch (error) {
             console.error("Failed to load quiz data", error);
-            levelContainer.innerHTML = '<p>Error loading quests. Please try again later.</p>';
+            const errorMsg = document.createElement('p');
+            errorMsg.innerText = "Error loading roadmap.";
+            errorMsg.style.margin = "2rem";
+            levelContainer.appendChild(errorMsg);
           }
         }
 
+        // --- ENHANCED ROADMAP RENDERER (Mixed Features) ---
         function renderLevels() {
-          // Keep line div
-          const line = levelContainer.firstElementChild;
-          levelContainer.innerHTML = '';
-          levelContainer.appendChild(line);
+          // Remove old nodes but keep tracks
+          const childrenToRemove = [];
+          for (let i = 2; i < levelContainer.children.length; i++) {
+             childrenToRemove.push(levelContainer.children[i]);
+          }
+          childrenToRemove.forEach(child => child.remove());
+
+          // Calculate and animate progress line width
+          const totalLevels = levels.length;
+          if(totalLevels > 1) {
+            // Delay the line animation slightly so it follows the nodes appearing
+            setTimeout(() => {
+                const progressPct = ((unlockedLevel - 1) / (totalLevels - 1)) * 100;
+                roadmapProgressLine.style.width = `${Math.min(progressPct, 100)}%`;
+            }, 300);
+          }
 
           levels.forEach((level, index) => {
             const isLocked = level.id > unlockedLevel;
             const isCompleted = level.id < unlockedLevel;
 
-            // Node Container (Vertical stack: Node + Title)
-            const nodeWrapper = document.createElement('div');
-            nodeWrapper.style.cssText = `
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 0 2.5rem;
-                position: relative;
-                z-index: 2;
-                min-width: 120px;
-            `;
-
-            // Node Circle
-            const node = document.createElement('div');
-            let nodeBg = 'white';
-            let nodeBorder = '#ffc107';
-            let nodeColor = '#333';
-            let cursor = 'pointer';
-            let icon = level.icon;
+            const item = document.createElement('div');
+            let statusClass = '';
+            let iconClass = level.icon;
 
             if (isLocked) {
-              nodeBg = '#f5f5f5'; nodeBorder = '#ccc'; nodeColor = '#999'; cursor = 'not-allowed'; icon = 'fas fa-lock';
+              statusClass = 'locked';
+              iconClass = 'fas fa-lock';
             } else if (isCompleted) {
-              nodeBg = '#e8f5e9'; nodeBorder = '#2ecc71'; nodeColor = '#2ecc71';
+              statusClass = 'completed';
+              iconClass = 'fas fa-check';
             } else {
-              nodeBg = '#fff9c4'; nodeBorder = '#D4AF37'; nodeColor = '#D4AF37';
+              statusClass = 'unlocked';
             }
 
-            node.style.cssText = `
-                width: 65px; height: 65px;
-                background: ${nodeBg};
-                border: 3px solid ${nodeBorder};
-                border-radius: 50%;
-                display: flex; align-items: center; justify-content: center;
-                font-size: 1.4rem; color: ${nodeColor};
-                cursor: ${cursor};
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                transition: transform 0.3s ease;
-                margin-bottom: 1rem;
-            `;
+            item.className = `level-item ${statusClass}`;
+            
+            // Staggered Animation Delay
+            item.style.animationDelay = `${index * 0.1}s`;
 
+            // Interaction
             if (!isLocked) {
-              node.onmouseover = () => node.style.transform = 'scale(1.1)';
-              node.onmouseout = () => node.style.transform = 'scale(1)';
-              node.onclick = () => startLevel(level.id);
+              item.onclick = () => startLevel(level.id);
+            } else {
+              // Shake animation on click for locked items
+              item.onclick = () => {
+                  item.classList.remove('shake-animation');
+                  void item.offsetWidth; // trigger reflow
+                  item.classList.add('shake-animation');
+              }
             }
-            node.innerHTML = `<i class="${icon}"></i>`;
 
-            // Text Label
-            const label = document.createElement('div');
-            label.style.textAlign = 'center';
-            label.innerHTML = `
-                <h5 style="margin: 0; font-size: 0.95rem; color: ${isLocked ? '#999' : 'var(--deep-navy)'};">Lvl ${level.id}</h5>
-                <p style="margin: 0; font-size: 0.85rem; font-weight: 600; color: ${isLocked ? '#aaa' : 'var(--primary-gold)'}; width: 100px; line-height: 1.3;">${level.title}</p>
+            // HTML Structure: Dark XP Pill + Node + Meta
+            item.innerHTML = `
+                <div class="xp-pill"><i class="fas fa-bolt" style="margin-right:4px;"></i>${level.questions ? level.questions.length * 10 : 50} XP</div>
+                <div class="level-node">
+                   <i class="${iconClass}"></i>
+                </div>
+                <div class="level-meta">
+                   <span class="level-id">Level ${level.id}</span>
+                   <div class="level-title">${level.title}</div>
+                </div>
             `;
 
-            nodeWrapper.appendChild(node);
-            nodeWrapper.appendChild(label);
-            levelContainer.appendChild(nodeWrapper);
+            levelContainer.appendChild(item);
           });
         }
 
@@ -434,7 +676,7 @@
           document.getElementById('quiz-result').style.display = 'none';
           document.getElementById('quiz-question').style.display = 'block';
           document.getElementById('quiz-header').style.display = 'block';
-          explanationBox.style.display = 'none'; // Hide explanation initially
+          explanationBox.style.display = 'none';
 
           quizTitle.innerText = `Level ${id}: ${levels[currentLevelIndex].title}`;
           loadQuestion();
@@ -444,10 +686,9 @@
           const qData = levels[currentLevelIndex].questions[currentQuestionIndex];
           questionText.innerText = qData.q;
           optionsContainer.innerHTML = '';
-          optionsContainer.style.display = 'flex'; // Show options
-          explanationBox.style.display = 'none'; // Hide explanation
+          optionsContainer.style.display = 'flex';
+          explanationBox.style.display = 'none';
 
-          // Update progress
           const progressPercent = (currentQuestionIndex / 5) * 100;
           progressBar.style.width = `${progressPercent}%`;
 
@@ -465,7 +706,6 @@
         }
 
         function handleAnswer(selectedIndex, selectedBtn, qData) {
-          // Disable all buttons
           const allBtns = optionsContainer.querySelectorAll('button');
           allBtns.forEach(b => b.disabled = true);
 
@@ -481,16 +721,13 @@
             selectedBtn.style.background = '#ffebee';
             selectedBtn.style.borderColor = '#e74c3c';
             selectedBtn.innerHTML += ' <i class="fas fa-times" style="color: #e74c3c;"></i>';
-            // Highlight correct
             allBtns[correctIndex].style.background = '#e8f5e9';
             allBtns[correctIndex].style.borderColor = '#2ecc71';
           }
 
-          // Show explanation
           explanationText.innerText = qData.explanation;
           explanationBox.style.display = 'block';
 
-          // Setup Next Button
           nextQBtn.onclick = () => {
             currentQuestionIndex++;
             if (currentQuestionIndex < 5) {
@@ -523,14 +760,12 @@
             resultMsg.innerText = "Great job! You've mastered this topic.";
             resultIcon.innerHTML = '<i class="fas fa-trophy" style="color: var(--primary-gold);"></i>';
 
-            // Update Total XP
-            if (levels[currentLevelIndex].id === unlockedLevel) { // Only award XP first time? Or always? Let's say always for fun, or just on success.
+            if (levels[currentLevelIndex].id === unlockedLevel) {
               totalXP += currentLevelXP;
               localStorage.setItem('osc_totalXP', totalXP);
               xpDisplay.innerText = totalXP;
             }
 
-            // Unlock next level logic
             if (levels[currentLevelIndex].id === unlockedLevel && unlockedLevel < levels.length) {
               unlockedLevel++;
               localStorage.setItem('osc_unlockedLevel', unlockedLevel);
@@ -559,25 +794,74 @@
         document.getElementById('back-to-levels').onclick = () => {
           quizContainer.style.display = 'none';
           levelWrapper.style.display = 'block';
-          // Re-render to show updated locks/XP
           renderLevels();
         };
       });
     </script>
   </main>
 
+  <footer>
+    <p>
+      © 2026 OpenSource Compass ·
+      <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
+    </p>
+  </footer>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copy-btn");
+
+    copyButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const link = btn.getAttribute("data-link");
+        const feedback = btn.nextElementSibling;
+        const icon = btn.querySelector("i");
+
+        navigator.clipboard.writeText(link).then(() => {
+          // Show feedback
+          feedback.style.display = "inline";
+
+          // Change icon to tick
+          icon.classList.remove("fa-copy");
+          icon.classList.add("fa-check");
+
+          // Reset after 1.5 sec
+          setTimeout(() => {
+            feedback.style.display = "none";
+            icon.classList.remove("fa-check");
+            icon.classList.add("fa-copy");
+          }, 1500);
+        });
+      });
+    });
+  });
+</script>
+
+
+
   <div id="footer"></div>
+ main
 
   <script src="../js/components.js"></script>
 
   <script src="../js/theme.js"></script>
 
+
+  <script src="../js/cChatbot.js"></script>
+  <script src="../js/recommendations.js"></script>
+
+      <section id="recommended-resources"></section>
+
+
   <script src="../js/chatbot.js"></script>
+
+  <script src="../js/resources.js"></script>
+
   <script src="../js/main.js"></script>
 
   <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
   </button>
+ main
 </body>
 
 </html>

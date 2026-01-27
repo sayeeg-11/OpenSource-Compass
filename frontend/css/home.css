@@ -352,6 +352,155 @@
   bottom: 35px;
   animation: heroFloat 7.6s ease-in-out infinite;
 }
+.compass-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Vertical line */
+.compass-timeline::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--secondary-gold),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+/* ---------- STEP ---------- */
+
+.compass-step {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Icon */
+.compass-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  color: var(--deep-navy);
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-main);
+  flex-shrink: 0;
+  transition: transform 0.4s var(--bounce-curve);
+}
+
+.compass-step:hover .compass-icon {
+  transform: scale(1.1) rotate(4deg);
+}
+
+/* Content */
+.compass-content h4 {
+  font-size: 1.3rem;
+  color: var(--deep-navy);
+  margin-bottom: 0.5rem;
+}
+
+.compass-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 640px) {
+  .compass-timeline::before {
+    left: 28px;
+  }
+
+  .compass-header h3 {
+    font-size: 2.2rem;
+  }
+}
+.stats {
+  background-color: var(--light-parchment);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stats-header {
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.stats-eyebrow {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--secondary-gold);
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.stats-header h3 {
+  font-size: 2.4rem;
+  color: var(--deep-navy);
+  margin-bottom: 1rem;
+}
+
+.stats-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+.stat-card {
+  background: var(--warm-cream);
+  border-radius: 16px;
+  border: 2px solid var(--primary-gold); /* Gold border */
+  padding: 40px 20px;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.5s var(--bounce-curve), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-hover);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+}
+
+.stat-card h2 {
+  font-size: 2rem;
+  color: var(--deep-navy);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
 
 /* =========================
    HOME SECTIONS
@@ -361,150 +510,226 @@ main section {
   max-width: 1400px;
   margin: 0 auto;
 }
-
-.stats {
-  max-width: none;
-  background: linear-gradient(
-    135deg,
-    var(--primary-gold) 0%,
-    var(--secondary-gold) 50%,
-    var(--primary-gold) 100%
-  );
-  color: var(--deep-navy);
+.programs {
+  background-color: var(--warm-cream);
+  padding: 100px 20px;
   text-align: center;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-  max-width: 1000px;
-  margin: 3.5rem auto 0;
+.programs-header {
+  max-width: 750px;
+  margin: 0 auto 70px;
 }
 
-.stat-item h2 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 0.6rem;
-  line-height: 1;
-}
-
-.stat-item p {
-  font-family: "Inter", -apple-system, sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgba(27, 38, 59, 0.9);
-  letter-spacing: 0.3px;
-}
-
-.programs {
-  max-width: none;
-  background: linear-gradient(135deg, var(--deep-navy) 0%, #2c3e50 100%);
-  color: white;
-}
-
-.programs h3 {
-  color: white;
-}
-
-.programs p {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.programs .card {
-  background: rgba(255, 255, 255, 0.12);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-}
-
-.programs .card h4 {
-  color: var(--warm-cream);
-  display: flex;
-  gap: 0.8rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.programs .card h4 i {
-  color: var(--primary-gold);
-}
-
-.programs .card p {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.badge {
+.programs-eyebrow {
   display: inline-block;
-  background: linear-gradient(135deg, #2e8b57, #32cd32);
-  color: white;
-  padding: 0.45rem 1.2rem;
-  border-radius: 25px;
-  font-size: 0.8rem;
   font-weight: 700;
-  margin-top: 1.2rem;
-  box-shadow: 0 5px 15px rgba(46, 139, 87, 0.25);
-  letter-spacing: 0.3px;
+  color: var(--secondary-gold);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.programs-header h3 {
+  font-size: 2.6rem;
+  color: var(--deep-navy);
+  margin-bottom: 1rem;
+}
+
+.programs-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+}
+
+/* Program Card Styling */
+.program-card {
+  background: linear-gradient(145deg, var(--light-parchment), #fff8e7);
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.6s var(--bounce-curve), box-shadow 0.4s ease, background 0.4s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.program-card:hover {
+  transform: translateY(-12px) scale(1.03) rotateX(1.5deg);
+  box-shadow: var(--shadow-hover);
+  background: linear-gradient(145deg, var(--primary-gold), var(--secondary-gold));
+  color: var(--warm-cream);
+}
+
+/* Icon */
+.program-icon {
+  font-size: 2.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+  transition: transform 0.5s, color 0.4s;
+}
+
+.program-card:hover .program-icon {
+  color: var(--warm-cream);
+  transform: scale(1.4) rotate(10deg);
+}
+
+.program-card h4 {
+  font-size: 1.4rem;
+  color: var(--deep-navy);
+  margin-bottom: 0.6rem;
+  transition: color 0.4s;
+}
+
+.program-card:hover h4 {
+  color: var(--warm-cream);
+}
+
+.program-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  transition: color 0.4s;
+}
+
+.program-card:hover p {
+  color: var(--warm-cream);
+}
+
+/* Badge Styling */
+.program-card .badge {
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background-color: var(--secondary-gold);
+  color: var(--warm-cream);
+  transition: background 0.4s;
+}
+
+.program-card:hover .badge {
+  background-color: var(--warm-cream);
+  color: var(--deep-navy);
 }
 
 .newsletter {
-  max-width: none;
-  background: var(--deep-navy);
-  color: white;
+  background-color: #ffff; /* Light cream base */
+  padding: 80px 20px;
   text-align: center;
+  color: var(--charcoal-dark); /* Dark text for readability */
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 60px auto;
+  max-width: 900px;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
 }
 
+.newsletter:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  background-color: #fff7e6; /* slightly brighter on hover */
+}
+
+/* Headings */
 .newsletter h3 {
-  color: white;
+  font-size: 2.2rem;
+  color: var(--secondary-gold); /* keep gold as highlight */
+  margin-bottom: 1rem;
 }
 
 .newsletter p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.05rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-.newsletter form {
-  max-width: 550px;
-  margin: 2.5rem auto 0;
+/* Form layout */
+.newsletter-form {
   display: flex;
-  gap: 1.2rem;
   justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.newsletter input {
-  flex: 1;
-  max-width: 320px;
-  padding: 1rem 1.8rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 0.98rem;
-  font-family: "Inter", -apple-system, sans-serif;
+.newsletter-form input[type="email"] {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--primary-gold);
+  outline: none;
+  font-size: 1rem;
+  width: 280px;
+  max-width: 100%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
-.newsletter input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+.newsletter-form input[type="email"]:focus {
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); /* soft gold glow */
+  transform: scale(1.02);
+  border-color: var(--secondary-gold);
 }
 
-.newsletter button {
-  background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-  color: var(--deep-navy);
+/* Button */
+.newsletter-form button {
+  background: var(--primary-gold);
+  color: var(--light-parchment);
+  padding: 14px 30px;
+  font-size: 1rem;
   border: none;
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.98rem;
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  font-family: "Inter", -apple-system, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: background 0.4s, transform 0.3s, box-shadow 0.3s;
 }
 
-.newsletter button:hover {
-  transform: translateY(-2px);
+.newsletter-form button:hover {
+  background: var(--secondary-gold);
+  transform: translateY(-3px) scale(1.05);
   box-shadow: var(--shadow-hover);
+}
+
+.newsletter-form button i {
+  transition: transform 0.3s;
+}
+
+.newsletter-form button:hover i {
+  transform: translateX(3px) rotate(15deg);
+}
+
+/* Optional subtle floating accents for light theme */
+.newsletter::before,
+.newsletter::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1); /* soft gold circles */
+  width: 150px;
+  height: 150px;
+  z-index: 0;
+}
+
+.newsletter::before {
+  top: -40px;
+  left: -40px;
+}
+
+.newsletter::after {
+  bottom: -50px;
+  right: -50px;
 }
 
 #scrollTopBtn {
@@ -584,6 +809,40 @@ body.dark-mode .hero-btn-secondary {
   background: rgba(22, 27, 34, 0.78);
   color: rgba(240, 246, 252, 0.92);
 }
+
+/* =========================
+   DARK MODE FIXES
+========================= */
+
+/* Fix Navbar Background in Dark Mode */
+body.dark-mode .navbar, 
+body.dark-mode header {
+    background-color: #1a1a1a; /* Dark Grey instead of White */
+    border-bottom: 1px solid #333;
+}
+
+/* Fix Navbar Links Color */
+body.dark-mode .nav-link,
+body.dark-mode .navbar a {
+    color: #ffffff; /* White text */
+}
+
+/* Fix Cards or Containers that remain white */
+body.dark-mode .card,
+body.dark-mode .container-box {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* Darker shadow */
+}
+
+/* Fix Inputs and Forms */
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
 
 /* =========================
    RESPONSIVE
