@@ -44,3 +44,44 @@
     display: none;
     z-index: 1001;
 }
+
+/* ===== Dark mode navigation fixes ===== */
+
+.dark-mode .nav-sidebar {
+    background: #0f172a;           /* dark slate */
+    border-right: 1px solid #1e293b;
+}
+
+.dark-mode .nav-sidebar a {
+    color: #e5e7eb;                /* readable light gray */
+    opacity: 1;
+}
+
+.dark-mode .nav-sidebar a:hover {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.dark-mode .nav-sidebar a.active {
+    background: #1e293b;
+    color: #60a5fa;                /* soft blue accent */
+    font-weight: 600;
+}
+
+/* Breadcrumbs in dark mode */
+
+.dark-mode .breadcrumb {
+    color: #9ca3af;
+}
+
+.dark-mode .breadcrumb a {
+    color: #93c5fd;
+}
+
+/* Search dropdown dark mode */
+
+.dark-mode #searchResults {
+    background: #0f172a;
+    color: #e5e7eb;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 40%);
+}
