@@ -741,3 +741,198 @@ body.dark-mode .newsletter-section input {
   margin: 0;
   padding: 0;
 }
+
+/* =========================
+   UPCOMING BADGE DESIGN
+========================= */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 50px;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* Animated Pulsing Dot */
+.badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: inline-block;
+  margin-right: 0.3rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Shimmer Effect */
+.badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.badge:hover::after {
+  left: 100%;
+}
+
+/* =========================
+   DARK MODE STYLING
+========================= */
+
+/* Default Dark Mode Look */
+body.dark-mode .badge,
+.badge {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover State - Dark Mode */
+body.dark-mode .badge:hover,
+.badge:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 
+    0 8px 25px rgba(46, 204, 113, 0.5),
+    0 0 40px rgba(46, 204, 113, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #2ecc71 0%, #1fa855 100%);
+}
+
+/* Active/Click State */
+body.dark-mode .badge:active,
+.badge:active {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+}
+
+/* =========================
+   ALTERNATIVE GLASS STYLE (Optional)
+========================= */
+
+.badge.glass-style {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.25) 0%,
+    rgba(39, 174, 96, 0.3) 100%
+  );
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(46, 204, 113, 0.5);
+  color: #2ecc71;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+  box-shadow: 
+    0 4px 20px rgba(46, 204, 113, 0.2),
+    inset 0 1px 0 rgba(46, 204, 113, 0.3);
+}
+
+.badge.glass-style::before {
+  background-color: #2ecc71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+}
+
+.badge.glass-style:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.35) 0%,
+    rgba(39, 174, 96, 0.4) 100%
+  );
+  border-color: rgba(46, 204, 113, 0.8);
+  color: #3be682;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 
+    0 8px 30px rgba(46, 204, 113, 0.4),
+    0 0 50px rgba(46, 204, 113, 0.3),
+    inset 0 1px 0 rgba(46, 204, 113, 0.4);
+}
+
+/* =========================
+   NEON GLOW STYLE (Optional)
+========================= */
+
+.badge.neon-style {
+  background: transparent;
+  border: 2px solid #2ecc71;
+  color: #2ecc71;
+  text-shadow: 
+    0 0 5px rgba(46, 204, 113, 0.5),
+    0 0 10px rgba(46, 204, 113, 0.3);
+  box-shadow: 
+    0 0 10px rgba(46, 204, 113, 0.4),
+    inset 0 0 10px rgba(46, 204, 113, 0.1);
+}
+
+.badge.neon-style::before {
+  background-color: #2ecc71;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 1);
+}
+
+.badge.neon-style:hover {
+  background: rgba(46, 204, 113, 0.1);
+  border-color: #3be682;
+  color: #3be682;
+  text-shadow: 
+    0 0 10px rgba(46, 204, 113, 0.8),
+    0 0 20px rgba(46, 204, 113, 0.5);
+  box-shadow: 
+    0 0 20px rgba(46, 204, 113, 0.6),
+    0 0 40px rgba(46, 204, 113, 0.4),
+    inset 0 0 15px rgba(46, 204, 113, 0.2);
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+  .badge {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .badge::before {
+    width: 6px;
+    height: 6px;
+  }
+}
