@@ -21,34 +21,144 @@
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contributors.css" />
   <link rel="stylesheet" href="../css/chatbot.css" /> 
+  
+  <!-- Inline CSS to fix button overlap immediately -->
+  <style>
+    /* Back to Top Button - Fixed positioning */
+    #scrollTopBtn {
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgb(212 175 55), rgb(184 134 11));
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+      transition: all 0.3s ease;
+      z-index: 997 !important;
+    }
+
+    #scrollTopBtn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgb(0 0 0 / 30%);
+      background: linear-gradient(135deg, rgb(184 134 11), rgb(212 175 55));
+    }
+
+    #scrollTopBtn.show {
+      display: flex !important;
+    }
+
+    /* Chatbot button positioning - adjust based on your chatbot implementation */
+    .chatbot-container,
+    .chatbot-widget,
+    #chatbot-toggle,
+    .chat-widget-container {
+      position: fixed !important;
+      bottom: 90px !important;
+      right: 20px !important;
+      z-index: 1000 !important;
+    }
+  </style>
 </head>
 
+<body class="contributors-page">
+  <div id="navbar"></div>
 
-  <body class="contributors-page">
-    <div id="navbar"></div>
+  <main>
+    <section class="contributors-section">
+      <h3>Contributors</h3>
+      <p>People who have helped build and improve OpenSource Compass.</p>
 
-    <main>
-      <section class="contributors-section">
-        <h3>Contributors</h3>
-        <p>People who have helped build and improve OpenSource Compass.</p>
+      <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
 
-        <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
+      <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
+    </section>
+  </main>
 
-        <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
-      </section>
-    </main>
+  <div id="footer"></div>
 
-    <div id="footer"></div>
-
-    <script src="../js/components.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/contributors.js"></script>
-  
+  <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/contributors.js"></script>
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
 
   <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
   </button>
-  </body>
+
+  <!-- Inline script to fix chatbot button overlap -->
+  <script>
+    (function fixChatbotOverlap() {
+      function adjustChatbotPosition() {
+        // Wait for DOM to be fully loaded
+        if (document.readyState !== 'complete') {
+          window.addEventListener('load', adjustChatbotPosition);
+          return;
+        }
+
+        // Find the chatbot button by checking all fixed elements
+        const allElements = document.querySelectorAll('*');
+        
+        for (const el of allElements) {
+          // Skip scroll button and footer elements
+          if (el.id === 'scrollTopBtn' || 
+              el.closest('footer') || 
+              el.closest('#footer') ||
+              el.classList.contains('contributor-card')) {
+            continue;
+          }
+
+          const styles = window.getComputedStyle(el);
+          
+          if (styles.position === 'fixed') {
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight;
+            const vw = window.innerWidth;
+            
+            // Check if element is in bottom-right corner (chatbot position)
+            const isBottomRight = 
+              rect.bottom > vh - 150 && 
+              rect.right > vw - 150 &&
+              rect.width > 30 && 
+              rect.width < 150 &&
+              rect.height > 30 && 
+              rect.height < 150;
+            
+            if (isBottomRight) {
+              // Apply positioning fix
+              el.style.setProperty('bottom', '90px', 'important');
+              el.style.setProperty('right', '20px', 'important');
+              el.style.setProperty('z-index', '1000', 'important');
+              console.log('✅ Chatbot button repositioned to avoid overlap');
+            }
+          }
+        }
+      }
+
+      // Run multiple times to catch lazy-loaded chatbots
+      setTimeout(adjustChatbotPosition, 100);
+      setTimeout(adjustChatbotPosition, 500);
+      setTimeout(adjustChatbotPosition, 1000);
+      setTimeout(adjustChatbotPosition, 2000);
+
+      // Watch for new elements being added
+      const observer = new MutationObserver(() => {
+        adjustChatbotPosition();
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+</body>
 </html>
