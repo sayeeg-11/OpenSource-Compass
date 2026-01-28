@@ -769,80 +769,6 @@ main section {
   transform: translateY(0);
 }
 
-/* =========================
-   DARK MODE
-========================= */
-body.dark-mode {
-  --warm-cream: #0d1117;
-  --light-parchment: #161b22;
-  --charcoal-dark: #f0f6fc;
-  --text-secondary: #8b949e;
-  --deep-navy: #ecf0f1;
-  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-  color: var(--charcoal-dark);
-}
-
-body.dark-mode .hero {
-  background:
-    radial-gradient(900px circle at 12% 20%, rgba(212, 175, 55, 0.16) 0%, transparent 55%),
-    radial-gradient(800px circle at 85% 15%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
-    linear-gradient(135deg, rgba(13, 17, 23, 0.96) 0%, rgba(22, 27, 34, 0.96) 100%);
-}
-
-body.dark-mode .hero-eyebrow,
-body.dark-mode .hero-chip,
-body.dark-mode .hero-float {
-  background: rgba(22, 27, 34, 0.78);
-  color: rgba(240, 246, 252, 0.92);
-  border-color: rgba(212, 175, 55, 0.22);
-}
-
-body.dark-mode .hero h2 {
-  color: rgba(240, 246, 252, 0.98);
-}
-
-body.dark-mode .hero p {
-  color: rgba(240, 246, 252, 0.78);
-}
-
-body.dark-mode .hero-btn-secondary {
-  background: rgba(22, 27, 34, 0.78);
-  color: rgba(240, 246, 252, 0.92);
-}
-
-/* =========================
-   DARK MODE FIXES
-========================= */
-
-/* Fix Navbar Background in Dark Mode */
-body.dark-mode .navbar, 
-body.dark-mode header {
-    background-color: #1a1a1a; /* Dark Grey instead of White */
-    border-bottom: 1px solid #333;
-}
-
-/* Fix Navbar Links Color */
-body.dark-mode .nav-link,
-body.dark-mode .navbar a {
-    color: #ffffff; /* White text */
-}
-
-/* Fix Cards or Containers that remain white */
-body.dark-mode .card,
-body.dark-mode .container-box {
-    background-color: #2d2d2d;
-    color: #e0e0e0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* Darker shadow */
-}
-
-/* Fix Inputs and Forms */
-body.dark-mode input, 
-body.dark-mode textarea {
-    background-color: #333;
-    color: #fff;
-    border-color: #555;
-}
-
 
 /* =========================
    RESPONSIVE
@@ -915,4 +841,288 @@ body.dark-mode textarea {
   .fade-in {
     transition: none;
   }
+}
+
+body.dark-mode .hero {
+  background:
+    radial-gradient(900px circle at 12% 20%, rgba(228, 199, 106, 0.12) 0%, transparent 55%),
+    radial-gradient(700px circle at 90% 10%, rgba(15, 23, 42, 0.8) 0%, transparent 55%),
+    linear-gradient(135deg, #0b1220 0%, #10182d 100%);
+}
+
+body.dark-mode .hero::before {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(228, 199, 106, 0.08) 0,
+      rgba(228, 199, 106, 0.08) 1px,
+      transparent 1px,
+      transparent 26px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.04) 0,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent 26px
+    );
+  opacity: 0.35;
+}
+
+body.dark-mode .hero h2 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .hero p {
+  color: var(--text-secondary);
+}
+body.dark-mode .hero-eyebrow,
+body.dark-mode .hero-chip,
+body.dark-mode .hero-float {
+  background: rgba(20, 26, 43, 0.8);
+  color: var(--text-primary);
+  border: 1px solid rgba(228, 199, 106, 0.25);
+  backdrop-filter: blur(14px);
+}
+body.dark-mode .hero-orb {
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(27, 34, 53, 0.95) 55%,
+    rgba(228, 199, 106, 0.18) 100%
+  );
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .hero-orb-core {
+  background: linear-gradient(135deg, #070b14, #0f172a);
+}
+body.dark-mode .compass-content h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .compass-content p {
+  color: var(--text-secondary);
+}
+body.dark-mode .stats {
+  position: relative;
+  background:
+    radial-gradient(
+      900px circle at 50% -20%,
+      rgba(228, 199, 106, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+  overflow: hidden;
+}
+body.dark-mode .stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(228, 199, 106, 0.06) 0,
+      rgba(228, 199, 106, 0.06) 1px,
+      transparent 1px,
+      transparent 32px
+    );
+  opacity: 0.25;
+  pointer-events: none;
+}
+body.dark-mode .stat-card {
+  background: linear-gradient(
+    145deg,
+    rgba(20, 26, 43, 0.95),
+    rgba(27, 34, 53, 0.95)
+  );
+  border: 1px solid rgba(228, 199, 106, 0.35);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+body.dark-mode .stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    transparent 40%,
+    transparent 70%,
+    rgba(228, 199, 106, 0.08)
+  );
+  pointer-events: none;
+}
+body.dark-mode .stat-card:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow:
+    0 38px 90px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(228, 199, 106, 0.6);
+}
+body.dark-mode .stat-card h2 {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-shadow:
+    0 0 16px rgba(228, 199, 106, 0.25),
+    0 0 28px rgba(228, 199, 106, 0.12);
+}
+body.dark-mode .stat-card p {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+body.dark-mode .stat-icon {
+  color: var(--primary-gold);
+  filter: drop-shadow(0 6px 18px rgba(228, 199, 106, 0.35));
+}
+
+body.dark-mode .program-card {
+  background: linear-gradient(145deg, #141a2b, #1b2235);
+}
+
+body.dark-mode .program-card h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .program-card p {
+  color: var(--text-secondary);
+}
+body.dark-mode .program-card:hover {
+  background: linear-gradient(
+    145deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  transform: translateY(-14px) scale(1.05) rotateX(2deg);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(228, 199, 106, 0.65),
+    0 0 40px rgba(228, 199, 106, 0.45);
+}
+body.dark-mode .program-card:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22),
+    transparent 70%
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+body.dark-mode .program-card:hover h4,
+body.dark-mode .program-card:hover p {
+  color: #0b1220;
+}
+body.dark-mode .program-card:hover .program-icon {
+  color: #0b1220;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+}
+
+body.dark-mode .program-card:hover .badge {
+  background: rgba(11, 18, 32, 0.9);
+  color: var(--primary-gold);
+}
+body.dark-mode .newsletter {
+  background:
+    radial-gradient(
+      600px circle at 50% -30%,
+      rgba(228, 199, 106, 0.15),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(28, 38, 66, 0.918),
+      rgba(30, 38, 59, 0.932)
+    );
+  color: var(--text-primary);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+}
+body.dark-mode .newsletter:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 45px 110px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(228, 199, 106, 0.55);
+}
+body.dark-mode .newsletter h3 {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--primary-gold) 60%,
+    var(--secondary-gold) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 18px rgba(228, 199, 106, 0.25),
+    0 0 32px rgba(228, 199, 106, 0.12);
+}
+body.dark-mode .newsletter p {
+  color: var(--text-secondary);
+}
+body.dark-mode .newsletter-form input[type="email"] {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-primary);
+  border: 1px solid rgba(228, 199, 106, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .newsletter-form input[type="email"]:focus {
+  box-shadow:
+    0 0 0 4px rgba(228, 199, 106, 0.35),
+    inset 0 0 0 1px rgba(228, 199, 106, 0.45);
+}
+body.dark-mode .newsletter-form button {
+  background: linear-gradient(
+    135deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  color: #0b1220;
+  box-shadow:
+    0 18px 45px rgba(228, 199, 106, 0.45);
+}
+
+body.dark-mode .newsletter-form button:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow:
+    0 28px 70px rgba(228, 199, 106, 0.65);
+}
+body.dark-mode .newsletter::before,
+body.dark-mode .newsletter::after {
+  background: radial-gradient(
+    circle,
+    rgba(228, 199, 106, 0.18),
+    transparent 70%
+  );
+  opacity: 0.6;
+}
+
+body.dark-mode b,
+body.dark-mode strong {
+  color: #ffffff;
+}
+body.dark-mode section h3 {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--primary-gold) 55%,
+    var(--secondary-gold) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.015em;
 }

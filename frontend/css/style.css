@@ -28,6 +28,27 @@ body {
   --shadow-hover: 0 20px 40px rgb(0 0 0 / 18%);
   --bounce-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+body.dark-mode {
+  /* Backgrounds */
+  --deep-navy: #0b1220;
+  --warm-cream: #141a2b;
+  --light-parchment: #1b2235;
+  --charcoal-dark: #070b14;
+
+  /* Golds (slightly softer glow) */
+  --primary-gold: #e4c76a;
+  --secondary-gold: #c9a43b;
+
+  /* Text */
+  --text-primary: #f5f4f0;
+  --text-secondary: #b9bfd1;
+
+  /* Shadows */
+  --shadow-main: 0 12px 40px rgba(0, 0, 0, 0.65);
+  --shadow-hover: 0 28px 70px rgba(0, 0, 0, 0.85);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
 
 /* =========================
    BASE STYLES
@@ -76,6 +97,17 @@ header h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.01em;
+}
+body.dark-mode header h1 {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--primary-gold) 55%,
+    var(--secondary-gold) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
@@ -136,11 +168,6 @@ body.dark-mode header {
   background: rgba(27, 38, 59, 0.98);
 }
 
-body.dark-mode header h1 {
-  color: var(--warm-cream);
-  background: none;
-  -webkit-text-fill-color: var(--warm-cream);
-}
 
 body.dark-mode .nav-links a {
   color: rgba(253, 244, 227, 0.95) !important;
@@ -274,6 +301,64 @@ section p {
   color: var(--text-secondary);
   line-height: 1.65;
 }
+body.dark-mode .card {
+  background: linear-gradient(
+    145deg,
+    rgba(20, 26, 43, 0.95),
+    rgba(27, 34, 53, 0.95)
+  );
+  border: 1px solid rgba(228, 199, 106, 0.18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
+  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+}
+body.dark-mode .card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(228, 199, 106, 0.35);
+  border-color: rgba(228, 199, 106, 0.55);
+}
+body.dark-mode .card h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .card p {
+  color: var(--text-secondary);
+}
+body.dark-mode .card i {
+  color: var(--primary-gold);
+  filter: drop-shadow(0 6px 18px rgba(228, 199, 106, 0.35));
+}
+
+body.dark-mode .card:hover i {
+  color: var(--secondary-gold);
+}
+body.dark-mode .card .badge {
+  background: rgba(228, 199, 106, 0.15);
+  color: var(--primary-gold);
+  border: 1px solid rgba(228, 199, 106, 0.35);
+  box-shadow: none;
+}
+
+body.dark-mode .card:hover .badge {
+  box-shadow: 0 0 18px rgba(228, 199, 106, 0.35);
+}
+body.dark-mode .card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    transparent 35%,
+    transparent 65%,
+    rgba(228, 199, 106, 0.08)
+  );
+  pointer-events: none;
+}
+
 
 /* =========================
    FOOTER (GLOBAL)
@@ -562,70 +647,6 @@ body.dark-mode footer.site-footer {
   font-size: 0.8rem;
   color: green;
   display: none;
-}
-
-/* =========================
-   DARK MODE FIXES
-========================= */
-body.dark-mode .navbar,
-body.dark-mode header {
-  background-color: rgba(27, 38, 59, 0.98);
-  border-bottom: 1px solid #333;
-}
-
-body.dark-mode .nav-link,
-body.dark-mode .navbar a {
-  color: rgba(253, 244, 227, 0.95);
-}
-
-body.dark-mode .card,
-body.dark-mode .container-box {
-  background-color: #2d2d2d;
-  color: #e0e0e0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode input,
-body.dark-mode textarea {
-  background-color: #333;
-  color: #fff;
-  border-color: #555;
-}
-
-body.dark-mode .program-card h3,
-body.dark-mode .program-card h4,
-body.dark-mode .program-card h2,
-body.dark-mode .card h3,
-body.dark-mode .card h4,
-body.dark-mode .card i,
-body.dark-mode .program-card i {
-  color: #ffffff !important;
-}
-
-body.dark-mode .program-card p,
-body.dark-mode .card p {
-  color: #e0e0e0;
-}
-
-body.dark-mode .newsletter,
-body.dark-mode .newsletter-section {
-  background-color: #1a1a1a !important;
-  color: #ffffff !important;
-  border-top: 1px solid #333;
-}
-
-body.dark-mode .newsletter h2,
-body.dark-mode .newsletter h3,
-body.dark-mode .newsletter p,
-body.dark-mode .newsletter-section h2 {
-  color: #ffffff !important;
-}
-
-body.dark-mode .newsletter input,
-body.dark-mode .newsletter-section input {
-  background-color: #333 !important;
-  color: #ffffff !important;
-  border: 1px solid #555 !important;
 }
 
 /* =========================
