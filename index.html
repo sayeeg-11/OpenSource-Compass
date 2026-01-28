@@ -20,12 +20,12 @@
     <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
     <link rel="stylesheet" href="frontend/css/style.css"/>
     <link rel="stylesheet" href="frontend/css/home.css" />
-    
+
     <style>
       /* --- FIX 1: Legendary Programs Section (Dark Mode) --- */
       body.dark-mode #programs {
-        background: #0f0f0f !important; /* Deep dark background */
-        color: #ffffff !important;      /* Base text white */
+        background: #0f0f0f !important;
+        color: #ffffff !important;
       }
 
       body.dark-mode #programs > h3, 
@@ -33,13 +33,11 @@
         color: #ffffff !important;
       }
 
-      /* Cards in Dark Mode */
       body.dark-mode #programs .card {
         background-color: #1a1a1a !important; 
         border: 1px solid #333333 !important; 
       }
 
-      /* Text inside Cards */
       body.dark-mode #programs .card h4,
       body.dark-mode #programs .card p,
       body.dark-mode #programs .card i,
@@ -57,11 +55,11 @@
 
       /* --- FIX 3: Perfectly Align Upscroll Arrow --- */
       #scrollTopBtn {
-        display: flex !important;       /* Enables Flexbox centering */
-        justify-content: center !important; /* Horizontally center */
-        align-items: center !important;     /* Vertically center */
-        padding: 0 !important;          /* Remove padding that offsets the icon */
-        line-height: 0 !important;      /* Reset line height for precise icons */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+        line-height: 0 !important;
       }
 
       /* --- FEATURE: Golden Glow Hover Effect for Legendary Cards --- */
@@ -70,11 +68,8 @@
       }
 
       #programs .card:hover {
-        /* Golden/Yellow Glow */
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important; 
-        /* Lift effect */
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important;
         transform: translateY(-5px); 
-        /* Gold border */
         border-color: rgba(255, 215, 0, 0.8) !important; 
       }
     </style>
@@ -82,6 +77,9 @@
   <body>
     <div id="navbar"></div>
 
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
     <section class="hero" aria-label="OpenSource Compass hero">
       <div class="hero-inner">
         <div class="hero-content">
@@ -167,231 +165,257 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="card">
-            <h4>Community Driven</h4>
-            <p>Built by contributors, improved by contributors.</p>
-        </div>
-    </div>
-</section>
-<section id="opensource-video" style="padding: 60px 20px; text-align: center;">
- 
-<b>🎥Video for Beginners 🌟 "Start" your First Contribution</b>
- 
+    <!-- ============================================
+         VIDEO SECTION
+         ============================================ -->
+    <section id="opensource-video" style="padding: 60px 20px; text-align: center;">
+      <b>🎥 Video for Beginners 🌟 "Start" your First Contribution</b>
 
-  <div style="
-    max-width: 900px;
-    margin: 30px auto;
-    aspect-ratio: 16 / 9;
-  ">
-    <iframe
-      src="https://www.youtube.com/embed/3dGzOWWb0Eo"
-      style="width:100%; height:100%;"
-      title="Open Source Contribution for Beginners"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
-<section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
-
-    <div class="card-container">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
+      <div style="
+        max-width: 900px;
+        margin: 30px auto;
+        aspect-ratio: 16 / 9;
+      ">
+        <iframe
+          src="https://www.youtube.com/embed/3dGzOWWb0Eo"
+          style="width:100%; height:100%;"
+          title="Open Source Contribution for Beginners"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </section>
 
     <main>
-      <section id="why">
-        <h3>Why OpenSource Compass?</h3>
-        <p>
-          Timeless principles meet modern open source. Structured paths built from
-          decades of collective wisdom.
-        </p>
+      <!-- ============================================
+           WHY OPENSOURCE COMPASS? - REDESIGNED SECTION
+           ============================================ -->
+      <section id="why" class="why-section">
+        <div class="why-container">
+          <!-- Section Header -->
+          <div class="why-header">
+            <span class="why-eyebrow">
+              <i class="fas fa-star"></i>
+              Why Choose Us
+            </span>
+            <h3>Why OpenSource Compass?</h3>
+            <p>
+              Timeless principles meet modern open source. Structured paths built from
+              decades of collective wisdom.
+            </p>
+          </div>
 
-        <div class="compass-timeline">
+          <!-- Feature Cards Grid -->
+          <div class="why-grid">
 
-      <div class="compass-step">
-        <div class="compass-icon">
-          <i class="fas fa-seedling"></i>
+            <!-- Card 1: Timeless Foundations -->
+            <div class="why-card" data-aos="fade-up" data-aos-delay="0">
+              <div class="why-card-icon">
+                <div class="icon-glow"></div>
+                <i class="fas fa-landmark"></i>
+              </div>
+              <div class="why-card-content">
+                <h4>Timeless Foundations</h4>
+                <p>
+                  Proven methodologies refined over years of open source evolution.
+                  Build your journey on battle-tested principles.
+                </p>
+              </div>
+              <div class="why-card-decoration"></div>
+            </div>
+
+            <!-- Card 2: Cultural Mastery -->
+            <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="why-card-icon">
+                <div class="icon-glow"></div>
+                <i class="fas fa-book-open"></i>
+              </div>
+              <div class="why-card-content">
+                <h4>Cultural Mastery</h4>
+                <p>
+                  Navigate community norms with confidence and cultural fluency.
+                  Learn the unwritten rules that matter.
+                </p>
+              </div>
+              <div class="why-card-decoration"></div>
+            </div>
+
+            <!-- Card 3: Mentor Network -->
+            <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="why-card-icon">
+                <div class="icon-glow"></div>
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="why-card-content">
+                <h4>Mentor Network</h4>
+                <p>
+                  Connect with maintainers and peers who help you level up.
+                  Growth accelerates with the right guidance.
+                </p>
+              </div>
+              <div class="why-card-decoration"></div>
+            </div>
+
+          </div>
+
+          <!-- Journey Timeline -->
+          <div class="why-journey">
+            <div class="journey-line"></div>
+            <div class="journey-steps">
+              <div class="journey-step" data-aos="zoom-in" data-aos-delay="300">
+                <div class="journey-icon">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <span>Start</span>
+              </div>
+              <div class="journey-step" data-aos="zoom-in" data-aos-delay="400">
+                <div class="journey-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <span>Contribute</span>
+              </div>
+              <div class="journey-step" data-aos="zoom-in" data-aos-delay="500">
+                <div class="journey-icon">
+                  <i class="fas fa-trophy"></i>
+                </div>
+                <span>Master</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="compass-content">
-          <h4>Start with Strong Foundations</h4>
-          <p>
-            Learn the timeless principles that successful open-source projects
-            are built upon — long before your first pull request.
-          </p>
-        </div>
-      </div>
+      </section>
 
+      <!-- ============================================
+           STATS SECTION
+           ============================================ -->
       <section class="stats">
-        <h3>Open Source Impact</h3>
+        <div class="stats-header">
+          <span class="stats-eyebrow">Impactful Contributions</span>
+          <h3>Open Source Milestones</h3>
+          <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
+        </div>
+
         <div class="stats-grid">
-          <div class="stat-item fade-in">
-            <h2 data-target="50" data-suffix="K+">0</h2>
+          <div class="stat-card fade-in">
+            <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+            <h2>50K+</h2>
             <p>First Contributions</p>
           </div>
-          <div class="stat-item fade-in">
-            <h2 data-target="200" data-suffix="+">0</h2>
+
+          <div class="stat-card fade-in">
+            <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+            <h2>200+</h2>
             <p>Programs Tracked</p>
           </div>
-          <div class="stat-item fade-in">
-            <h2 data-target="10" data-suffix="K+">0</h2>
+
+          <div class="stat-card fade-in">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <h2>10K+</h2>
             <p>Active Mentors</p>
           </div>
-          <div class="stat-item fade-in">
-            <h2 data-target="5" data-suffix="Y+">0</h2>
+
+          <div class="stat-card fade-in">
+            <div class="stat-icon"><i class="fas fa-award"></i></div>
+            <h2>5Y+</h2>
             <p>Proven Track Record</p>
           </div>
         </div>
       </section>
-      
+
+      <!-- ============================================
+           LEGENDARY PROGRAMS SECTION
+           ============================================ -->
       <section class="programs" id="programs">
-        <h3>Legendary Open Source Programs</h3>
-        <p>Curated programs with historical success rates and maintainer insights.</p>
-      <div class="compass-step">
-        <div class="compass-icon">
-          <i class="fas fa-scroll"></i>
+        <div class="programs-header">
+          <span class="programs-eyebrow">Legendary Programs</span>
+          <h3>Open Source Opportunities</h3>
+          <p>Curated programs with historical success rates and maintainer insights.</p>
         </div>
-        <div class="compass-content">
-          <h4>Navigate Community & Culture</h4>
-          <p>
-            Understand codes of conduct, collaboration etiquette, and how
-            contributors earn trust and respect.
-          </p>
-        </div>
-      </div>
 
-      <div class="compass-step">
-        <div class="compass-icon">
-          <i class="fas fa-users"></i>
-        </div>
-        <div class="compass-content">
-          <h4>Grow with Mentorship</h4>
-          <p>
-            Learn alongside maintainers and contributors who’ve already walked
-            the path you’re starting today.
-          </p>
-        </div>
-      </div>
+        <div class="card-grid">
+          <div class="program-card fade-in">
+            <div class="program-icon"><i class="fas fa-snowflake"></i></div>
+            <h4>Social Winter of Code</h4>
+            <p>India's premier winter program with strong mentorship culture.</p>
+            <span class="badge">Jan 2026</span>
+          </div>
 
-    </div>
+          <div class="program-card fade-in">
+            <div class="program-icon"><i class="fas fa-sun"></i></div>
+            <h4>GirlScript Summer of Code</h4>
+            <p>Large-scale program with mentors, tasks, and community learning.</p>
+            <span class="badge">Summer 2026</span>
+          </div>
+
+          <div class="program-card fade-in">
+            <div class="program-icon"><i class="fab fa-google"></i></div>
+            <h4>Google Summer of Code</h4>
+            <p>Global standard for student contributors and open source orgs.</p>
+            <span class="badge">Advanced</span>
+          </div>
+
+          <div class="program-card fade-in">
+            <div class="program-icon"><i class="fas fa-leaf"></i></div>
+            <h4>Outreachy</h4>
+            <p>Paid internships supporting underrepresented people in tech.</p>
+            <span class="badge">Internship</span>
+          </div>
+
+          <div class="program-card fade-in">
+            <div class="program-icon"><i class="fas fa-mountain"></i></div>
+            <h4>MLH Fellowship</h4>
+            <p>Work in pods on real projects with guided mentorship.</p>
+            <span class="badge">Spring</span>
+          </div>
+
+          <div class="program-card fade-in">
+            <div class="program-icon"><i class="fab fa-linux"></i></div>
+            <h4>Linux Foundation Mentorship</h4>
+            <p>Paid mentorships across major Linux Foundation projects.</p>
+            <span class="badge">Professional</span>
+          </div>
+        </div>
       </section>
-     <section class="stats">
-  <div class="stats-header">
-    <span class="stats-eyebrow">Impactful Contributions</span>
-    <h3>Open Source Milestones</h3>
-    <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
-  </div>
 
-  <div class="stats-grid">
-    <div class="stat-card fade-in">
-      <div class="stat-icon"><i class="fas fa-rocket"></i></div>
-      <h2>50K+</h2>
-      <p>First Contributions</p>
-    </div>
-
-    <div class="stat-card fade-in">
-      <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
-      <h2>200+</h2>
-      <p>Programs Tracked</p>
-    </div>
-
-    <div class="stat-card fade-in">
-      <div class="stat-icon"><i class="fas fa-users"></i></div>
-      <h2>10K+</h2>
-      <p>Active Mentors</p>
-    </div>
-
-    <div class="stat-card fade-in">
-      <div class="stat-icon"><i class="fas fa-award"></i></div>
-      <h2>5Y+</h2>
-      <p>Proven Track Record</p>
-    </div>
-  </div>
-</section>
-<section class="programs" id="programs">
-  <div class="programs-header">
-    <span class="programs-eyebrow">Legendary Programs</span>
-    <h3>Open Source Opportunities</h3>
-    <p>Curated programs with historical success rates and maintainer insights.</p>
-  </div>
-
-  <div class="card-grid">
-    <div class="program-card fade-in">
-      <div class="program-icon"><i class="fas fa-snowflake"></i></div>
-      <h4>Social Winter of Code</h4>
-      <p>India's premier winter program with strong mentorship culture.</p>
-      <span class="badge">Jan 2026</span>
-    </div>
-
-    <div class="program-card fade-in">
-      <div class="program-icon"><i class="fas fa-sun"></i></div>
-      <h4>GirlScript Summer of Code</h4>
-      <p>Large-scale program with mentors, tasks, and community learning.</p>
-      <span class="badge">Summer 2026</span>
-    </div>
-
-    <div class="program-card fade-in">
-      <div class="program-icon"><i class="fab fa-google"></i></div>
-      <h4>Google Summer of Code</h4>
-      <p>Global standard for student contributors and open source orgs.</p>
-      <span class="badge">Advanced</span>
-    </div>
-
-    <div class="program-card fade-in">
-      <div class="program-icon"><i class="fas fa-leaf"></i></div>
-      <h4>Outreachy</h4>
-      <p>Paid internships supporting underrepresented people in tech.</p>
-      <span class="badge">Internship</span>
-    </div>
-
-    <div class="program-card fade-in">
-      <div class="program-icon"><i class="fas fa-mountain"></i></div>
-      <h4>MLH Fellowship</h4>
-      <p>Work in pods on real projects with guided mentorship.</p>
-      <span class="badge">Spring</span>
-    </div>
-
-    <div class="program-card fade-in">
-      <div class="program-icon"><i class="fab fa-linux"></i></div>
-      <h4>Linux Foundation Mentorship</h4>
-      <p>Paid mentorships across major Linux Foundation projects.</p>
-      <span class="badge">Professional</span>
-    </div>
-  </div>
-</section>
-<section class="newsletter">
-  <div class="newsletter-container">
-    <h3>Stay Ahead of Open Source</h3>
-    <p>Weekly dispatches: deadlines, AMAs, and contribution strategies.</p>
-    <form class="newsletter-form">
-      <input type="email" placeholder="Your dev email..." required />
-      <button type="submit">
-        <i class="fas fa-paper-plane"></i>
-        Subscribe
-      </button>
-    </form>
-  </div>
-</section>
+      <!-- ============================================
+           NEWSLETTER SECTION
+           ============================================ -->
+      <section class="newsletter">
+        <div class="newsletter-container">
+          <h3>Stay Ahead of Open Source</h3>
+          <p>Weekly dispatches: deadlines, AMAs, and contribution strategies.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your dev email..." required />
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i>
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
 
     </main>
 
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <div id="footer"></div>
 
+    <!-- ============================================
+         SCROLL TO TOP BUTTON
+         ============================================ -->
     <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
       <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
     <script src="frontend/js/components.js"></script>
     <script src="frontend/js/theme.js"></script>
     <script src="frontend/js/home.js"></script>
