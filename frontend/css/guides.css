@@ -389,11 +389,14 @@
   max-width: 700px;
   margin: 1rem auto 3rem;
 }
+
 .practices-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr)); /* Minimum width so cards don’t shrink too much */
-  gap: 2.5rem;
-  text-align: left;
+  grid-template-columns: repeat(4, 1fr); /* force single row */
+  gap:20px;
+  width: 100%;   /* adjust if needed */
+  margin: 0 auto;     /* center horizontally */
+  align-items: stretch;
 }
 
 
@@ -418,10 +421,16 @@
   padding: 2rem;
   box-shadow: var(--shadow-main);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  gap: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* equal vertical spacing */
+  text-align: center;
   align-items: center;
-  gap: 1rem;
+  padding: 2rem;
+
+  /* 🔥 force equal size */
+  height: 100%;
 }
 
 .practice-item:hover {
