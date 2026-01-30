@@ -4,106 +4,413 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glossary | OpenSource Compass</title>
-  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/navigation.css" />
     <link rel="stylesheet" href="../css/resources.css" />
     <style>
-        /* Enhanced Glossary-Specific Styles */
-        .glossary-search {
-            max-width: 640px;
-            margin: -24px auto 48px;
-            padding: 0 16px;
+        /* Enhanced Glossary Styles - Classic Theme */
+        
+        .glossary-hero {
+            background: linear-gradient(135deg, 
+                var(--deep-navy) 0%, 
+                #243447 50%,
+                var(--deep-navy) 100%);
+            padding: 5rem 6% 8rem;
+            text-align: center;
             position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-gold);
         }
 
-        .glossary-search input {
+        .glossary-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            opacity: 0.6;
+        }
+
+        .glossary-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.08) 0,
+                    rgba(212, 175, 55, 0.08) 1px,
+                    transparent 1px,
+                    transparent 40px);
+            opacity: 0.3;
+        }
+
+        .glossary-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .glossary-hero h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--warm-cream);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .glossary-hero p {
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 1.3rem;
+            color: rgba(253, 244, 227, 0.9);
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Search Section - Elegant Card */
+        .glossary-search-section {
+            max-width: 1000px;
+            margin: -4rem auto 5rem;
+            padding: 0 6%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .glossary-search-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 
+                0 20px 60px rgba(27, 38, 59, 0.15),
+                0 0 0 1px rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            pointer-events: none;
+        }
+
+        .glossary-search-input {
             width: 100%;
-            padding: 16px 24px;
-            border-radius: 48px;
-            border: 2px solid #e2e8f0;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
+            padding: 1.2rem 1.5rem 1.2rem 4rem;
+            border-radius: 16px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 1.1rem;
             outline: none;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            background: linear-gradient(135deg, 
+                var(--light-parchment) 0%, 
+                var(--warm-cream) 100%);
+            color: var(--charcoal-dark);
         }
 
-        .glossary-search input:focus {
-            border-color: var(--secondary-blue);
-            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.15);
+        .glossary-search-input:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+            background: white;
         }
 
+        .glossary-search-input::placeholder {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Filter Tabs - Classic Style */
+        .filter-tabs {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 0.7rem 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: white;
+            color: var(--deep-navy);
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(212, 175, 55, 0.2), 
+                transparent);
+            transition: left 0.5s ease;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .filter-tab:hover::before {
+            left: 100%;
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, 
+                var(--primary-gold) 0%, 
+                var(--secondary-gold) 100%);
+            color: var(--deep-navy);
+            border-color: var(--secondary-gold);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+            font-weight: 800;
+        }
+
+        /* Stats Display */
+        .glossary-stats {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: "Inter", sans-serif;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .glossary-stats strong {
+            color: var(--primary-gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* Main Grid */
+        .glossary-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 6% 6rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Term Cards - Classic Elegant Style */
         .term-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-main);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            overflow: hidden;
             opacity: 0;
-            transform: translateY(12px);
-            animation: fadeInUp 0.4s ease forwards;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            will-change: transform;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .term-card.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .term-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                var(--primary-gold) 0%, 
+                var(--secondary-gold) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .term-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-gold);
         }
 
-        .term-card h4 {
-            color: var(--primary-blue);
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
+        .term-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .term-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
         }
 
         .term-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background: #eef6ff;
-            color: #3b82f6;
-            padding: 4px 10px;
+            display: inline-flex;
+            align-items: center;
+            font-family: "Inter", sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.15), 
+                rgba(184, 134, 11, 0.15));
+            color: var(--secondary-gold);
+            padding: 0.5rem 1rem;
             border-radius: 20px;
-            margin-bottom: 12px;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .term-card:hover .term-tag {
+            background: linear-gradient(135deg, 
+                var(--primary-gold), 
+                var(--secondary-gold));
+            color: var(--deep-navy);
+            transform: scale(1.05);
+        }
+
+        .term-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.95), 
+                rgba(184, 134, 11, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-navy);
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s var(--bounce-curve);
+        }
+
+        .term-card:hover .term-icon {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.45);
+        }
+
+        .term-card h4 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin: 1.2rem 0 0.8rem;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
         }
 
         .term-card p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #334155;
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin: 0;
         }
 
-        /* Empty state */
+        /* Empty State - Elegant */
         .glossary-empty {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 48px 16px;
+            padding: 5rem 2rem;
             opacity: 0;
-            animation: fadeIn 0.4s ease forwards;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .empty-icon-wrapper {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.1), 
+                rgba(184, 134, 11, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .empty-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, 
+                var(--primary-gold), 
+                var(--secondary-gold));
+            opacity: 0.2;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.05); opacity: 0.3; }
+        }
+
+        .empty-icon {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            position: relative;
+            z-index: 1;
         }
 
         .glossary-empty h3 {
-            color: #64748b;
-            margin-bottom: 8px;
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .glossary-empty h3::after {
+            display: none;
         }
 
         .glossary-empty p {
-            color: #94a3b8;
-            max-width: 400px;
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 550px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(12px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -116,110 +423,380 @@
             to { opacity: 1; }
         }
 
-        /* Responsive spacing */
+        /* Dark Mode Support */
+        body.dark-mode .glossary-hero {
+            background: linear-gradient(135deg, 
+                rgba(13, 17, 23, 0.98) 0%, 
+                rgba(22, 27, 34, 0.98) 100%);
+        }
+
+        body.dark-mode .glossary-search-card {
+            background: rgba(45, 45, 45, 0.98);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        body.dark-mode .glossary-search-input {
+            background: #333;
+            color: #fff;
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        body.dark-mode .glossary-search-input:focus {
+            background: #3a3a3a;
+        }
+
+        body.dark-mode .filter-tab {
+            background: #2d2d2d;
+            color: rgba(253, 244, 227, 0.95);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        body.dark-mode .filter-tab:hover {
+            background: #3a3a3a;
+        }
+
+        body.dark-mode .term-card {
+            background: #2d2d2d;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        body.dark-mode .term-card h4 {
+            color: #ffffff;
+        }
+
+        body.dark-mode .term-card p {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .glossary-empty h3 {
+            color: #ffffff;
+        }
+
+        body.dark-mode .glossary-stats {
+            color: rgba(253, 244, 227, 0.8);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .glossary-search {
-                margin-top: -16px;
-                margin-bottom: 32px;
+            .glossary-hero {
+                padding: 4rem 5% 6rem;
             }
-            .resources-hero h2 {
+
+            .glossary-hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .glossary-hero p {
+                font-size: 1.1rem;
+            }
+
+            .glossary-search-section {
+                margin: -3rem auto 3rem;
+            }
+
+            .glossary-search-card {
+                padding: 1.8rem;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 5% 4rem;
+            }
+
+            .filter-tabs {
+                gap: 0.6rem;
+            }
+
+            .filter-tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.75rem;
+            }
+
+            .term-card {
+                padding: 1.5rem;
+            }
+
+            .term-card h4 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glossary-hero h2 {
                 font-size: 1.8rem;
+            }
+
+            .term-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .term-card h4 {
+                font-size: 1.3rem;
+            }
+
+            .glossary-search-input {
+                font-size: 1rem;
+                padding: 1rem 1.2rem 1rem 3.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>OpenSource Compass</h1>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="guides.html">Guides</a>
-            <a href="programs.html">Programs</a>
-            <a href="Resources.html" class="active">Resources</a>
-            <a href="Contribute.html">Contribute</a>
-        </nav>
+        <div class="navbar-container">
+            <h1><i class="fas fa-compass"></i> OpenSource Compass</h1>
+            <nav class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="guides.html">Guides</a>
+                <a href="programs.html">Programs</a>
+                <a href="Resources.html" class="active">Resources</a>
+                <a href="Contribute.html">Contribute</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section class="resources-hero">
-            <h2>Glossary of Terms</h2>
-            <p>Demystifying open source jargon so you can contribute with confidence.</p>
+        <section class="glossary-hero">
+            <div class="glossary-hero-content">
+                <h2>Glossary of Terms</h2>
+                <p>Demystifying open source jargon so you can contribute with confidence and clarity.</p>
+            </div>
         </section>
 
-        <div class="glossary-search">
-            <input type="text" id="glossarySearch" placeholder="Search for a term (e.g., 'Rebase', 'Fork')…" autocomplete="off" />
+        <div class="glossary-search-section">
+            <div class="glossary-search-card">
+                <div class="search-box-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="glossarySearch" 
+                        class="glossary-search-input"
+                        placeholder="Search for a term (e.g., 'Rebase', 'Fork', 'Commit')…" 
+                        autocomplete="off" 
+                    />
+                </div>
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-tab active" data-filter="all">All Terms</button>
+                    <button class="filter-tab" data-filter="Basics">Basics</button>
+                    <button class="filter-tab" data-filter="Git">Git</button>
+                    <button class="filter-tab" data-filter="Workflow">Workflow</button>
+                    <button class="filter-tab" data-filter="Advanced">Advanced</button>
+                    <button class="filter-tab" data-filter="Roles">Roles</button>
+                </div>
+            </div>
         </div>
 
-        <section class="resources-grid" id="glossaryGrid">
-            <!-- Cards will be rendered here dynamically for better control -->
+        <div class="glossary-stats" id="glossaryStats">
+            Showing <strong id="termCount">12</strong> terms
+        </div>
+
+        <section class="glossary-grid" id="glossaryGrid">
+            <!-- Cards will be rendered here dynamically -->
         </section>
     </main>
 
     <div id="footer"></div>
 
     <script>
-        // Glossary data — structured for maintainability and future expansion
+        // Enhanced Glossary Data - Comprehensive Collection
         const glossaryData = [
-            { tag: "Workflow", term: "Upstream", def: "The original repository that you 'forked' from. When you fetch updates from upstream, you are getting the latest work from the official project." },
-            { tag: "Git", term: "Fork", def: "A personal copy of another user's repository that lives on your account. Forks allow you to freely make changes without affecting the original project." },
-            { tag: "Git", term: "Squash", def: "The process of combining multiple commit messages into one. This is often requested by maintainers to keep the project history clean and readable." },
-            { tag: "Advanced", term: "Rebase", def: "A way to integrate changes from one branch into another by moving the entire sequence of your commits to a new base commit. It helps keep a linear project history." },
-            { tag: "Basics", term: "Pull Request (PR)", def: "A formal way to propose your changes to a project. Once opened, maintainers can review your work, discuss improvements, and eventually merge it." },
-            { tag: "Roles", term: "Maintainer", def: "The person or group responsible for managing a project. They review PRs, manage issues, and steer the project's direction." }
+            { 
+                tag: "Workflow", 
+                term: "Upstream", 
+                def: "The original repository that you 'forked' from. When you fetch updates from upstream, you are getting the latest work from the official project.",
+                icon: "↑"
+            },
+            { 
+                tag: "Git", 
+                term: "Fork", 
+                def: "A personal copy of another user's repository that lives on your account. Forks allow you to freely make changes without affecting the original project.",
+                icon: "⑂"
+            },
+            { 
+                tag: "Git", 
+                term: "Squash", 
+                def: "The process of combining multiple commit messages into one. This is often requested by maintainers to keep the project history clean and readable.",
+                icon: "⊕"
+            },
+            { 
+                tag: "Advanced", 
+                term: "Rebase", 
+                def: "A way to integrate changes from one branch into another by moving the entire sequence of your commits to a new base commit. It helps keep a linear project history.",
+                icon: "⤴"
+            },
+            { 
+                tag: "Basics", 
+                term: "Pull Request (PR)", 
+                def: "A formal way to propose your changes to a project. Once opened, maintainers can review your work, discuss improvements, and eventually merge it.",
+                icon: "⇄"
+            },
+            { 
+                tag: "Roles", 
+                term: "Maintainer", 
+                def: "The person or group responsible for managing a project. They review PRs, manage issues, and steer the project's direction.",
+                icon: "★"
+            },
+            { 
+                tag: "Git", 
+                term: "Commit", 
+                def: "A snapshot of your repository at a specific point in time. Each commit has a unique ID and includes a message describing what changed.",
+                icon: "✓"
+            },
+            { 
+                tag: "Basics", 
+                term: "Repository", 
+                def: "A storage location for your project that contains all files, folders, and the entire revision history. Often shortened to 'repo'.",
+                icon: "▦"
+            },
+            { 
+                tag: "Workflow", 
+                term: "Branch", 
+                def: "A parallel version of your repository that allows you to work on features without affecting the main codebase. Think of it as a workspace.",
+                icon: "⑃"
+            },
+            { 
+                tag: "Git", 
+                term: "Merge", 
+                def: "The process of combining changes from one branch into another. This integrates your work back into the main project.",
+                icon: "⋈"
+            },
+            { 
+                tag: "Advanced", 
+                term: "Cherry-pick", 
+                def: "Selecting specific commits from one branch and applying them to another. Useful when you only need particular changes.",
+                icon: "🍒"
+            },
+            { 
+                tag: "Roles", 
+                term: "Contributor", 
+                def: "Anyone who helps improve a project by submitting code, documentation, bug reports, or other valuable input.",
+                icon: "👤"
+            },
+            { 
+                tag: "Basics", 
+                term: "Clone", 
+                def: "Creating a local copy of a repository on your computer. This allows you to work on the project offline and push changes later.",
+                icon: "⎘"
+            },
+            { 
+                tag: "Git", 
+                term: "Push", 
+                def: "Sending your committed changes from your local repository to a remote repository, making them available to others.",
+                icon: "↗"
+            },
+            { 
+                tag: "Git", 
+                term: "Pull", 
+                def: "Fetching and integrating changes from a remote repository into your local repository to stay up-to-date.",
+                icon: "↙"
+            },
+            { 
+                tag: "Workflow", 
+                term: "Issue", 
+                def: "A way to track bugs, enhancements, or tasks for a project. Issues facilitate discussion and planning among contributors.",
+                icon: "⚠"
+            },
+            { 
+                tag: "Advanced", 
+                term: "Stash", 
+                def: "Temporarily shelving changes you've made to your working directory so you can work on something else, then come back and re-apply them later.",
+                icon: "📦"
+            },
+            { 
+                tag: "Roles", 
+                term: "Reviewer", 
+                def: "Someone who examines pull requests, providing feedback and suggestions to ensure code quality before merging.",
+                icon: "👁"
+            }
         ];
 
         const glossaryGrid = document.getElementById('glossaryGrid');
         const searchInput = document.getElementById('glossarySearch');
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const termCount = document.getElementById('termCount');
 
-        // Render all cards with staggered animation
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        // Render cards with elegant animations
         function renderCards(terms = glossaryData) {
             glossaryGrid.innerHTML = '';
+            
             if (terms.length === 0) {
                 glossaryGrid.innerHTML = `
                     <div class="glossary-empty">
-                        <h3>No matching terms</h3>
-                        <p>Try a different keyword like “commit”, “branch”, or “merge”.</p>
+                        <div class="empty-icon-wrapper">
+                            <i class="fas fa-search empty-icon"></i>
+                        </div>
+                        <h3>No Matching Terms Found</h3>
+                        <p>Try adjusting your search or filter. Browse popular terms like "commit", "branch", "fork", or "merge" to get started.</p>
                     </div>
                 `;
+                termCount.textContent = '0';
                 return;
             }
 
             terms.forEach((item, index) => {
                 const card = document.createElement('article');
-                card.className = 'resource-card term-card';
-                card.style.animationDelay = `${index * 0.08}s`; // Staggered entrance
+                card.className = 'card term-card';
+                card.style.animationDelay = `${index * 0.08}s`;
                 card.innerHTML = `
-                    <span class="term-tag">${item.tag}</span>
+                    <div class="term-header">
+                        <span class="term-tag">${item.tag}</span>
+                        <div class="term-icon">${item.icon}</div>
+                    </div>
                     <h4>${item.term}</h4>
                     <p>${item.def}</p>
                 `;
                 glossaryGrid.appendChild(card);
             });
 
-            // Trigger initial visibility
-            setTimeout(() => {
-                document.querySelectorAll('.term-card').forEach(card => card.classList.add('visible'));
-            }, 100);
+            termCount.textContent = terms.length;
         }
 
-        // Debounced search handler
+        // Filter and search logic
+        function updateDisplay() {
+            let filtered = glossaryData;
+
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(item => item.tag === currentFilter);
+            }
+
+            // Apply search
+            if (currentSearch) {
+                filtered = filtered.filter(item =>
+                    item.term.toLowerCase().includes(currentSearch) ||
+                    item.def.toLowerCase().includes(currentSearch) ||
+                    item.tag.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            renderCards(filtered);
+        }
+
+        // Search handler with debounce
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
-            const query = e.target.value.trim().toLowerCase();
+            currentSearch = e.target.value.trim().toLowerCase();
 
             searchTimeout = setTimeout(() => {
-                if (query === '') {
-                    renderCards();
-                } else {
-                    const filtered = glossaryData.filter(item =>
-                        item.term.toLowerCase().includes(query) ||
-                        item.def.toLowerCase().includes(query) ||
-                        item.tag.toLowerCase().includes(query)
-                    );
-                    renderCards(filtered);
-                }
-            }, 150); // Slight debounce for performance
+                updateDisplay();
+            }, 250);
+        });
+
+        // Filter tab handlers
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentFilter = tab.dataset.filter;
+                updateDisplay();
+            });
         });
 
         // Initial render
@@ -228,12 +805,11 @@
 
     <script src="../js/main.js"></script>
 
-  <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
-  </button>
+    <button id="scrollTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <script src="../js/components.js"></script>
     <script src="../js/theme.js"></script>
-
 </body>
 </html>
