@@ -1,3 +1,5 @@
+document.body.classList.add("has-chatbot");
+
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements - Create dynamically to be less intrusive
     document.body.classList.add("has-chatbot");

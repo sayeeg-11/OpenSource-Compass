@@ -69,3 +69,17 @@ function updateThemeIcon(isDark) {
         }
     }
 }
+
+// 5. Cursor Highlight Logic
+const cursor = document.getElementById('cursor-highlight');
+
+if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        cursor.style.opacity = '1';
+    });
+
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+}

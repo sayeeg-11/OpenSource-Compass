@@ -790,7 +790,7 @@ body.has-chatbot #scrollTopBtn {
 }
 
 /* =========================
-   CURSOR HIGHLIGHT (FEATURE #495)
+   CURSOR HIGHLIGHT (FEATURE #495)*/
 #cursor-highlight {
   position: fixed;
   top: 0;
