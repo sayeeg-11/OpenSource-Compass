@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Success Stories - OpenSource Compass</title>
+    <meta name="description"
+        content="Read inspiring success stories from our community members who started their open source journey with OpenSource Compass." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/success-stories-page.css" />
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <!-- Hero Section -->
+    <section class="stories-hero">
+        <div class="stories-hero-content">
+            <div class="section-eyebrow">
+                <span class="section-dot" aria-hidden="true"></span>
+                Community Achievements
+            </div>
+            <h1>
+                <i class="fas fa-chart-line"></i>
+                Success Stories
+            </h1>
+            <p>
+                Real journeys from beginners to open source champions. Get inspired by our community's achievements and
+                share your own story!
+            </p>
+        </div>
+    </section>
+
+    <!-- Submit Story CTA -->
+    <section class="submit-story-banner">
+        <div class="submit-banner-content">
+            <div class="submit-banner-text">
+                <h3>📝 Have Your Own Success Story?</h3>
+                <p>Share your journey and inspire others in the community!</p>
+            </div>
+            <button class="submit-story-btn" onclick="openSubmitModal()">
+                <i class="fas fa-plus"></i>
+                Share Your Story
+            </button>
+        </div>
+    </section>
+
+    <!-- Stories Grid -->
+    <main class="stories-main">
+        <div class="stories-container" id="storiesContainer">
+            <!-- Stories will be loaded here dynamically -->
+        </div>
+    </main>
+
+    <!-- Submit Story Modal -->
+    <div id="submitModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-pen"></i>
+                    Share Your Success Story
+                </h2>
+                <button class="modal-close" onclick="closeSubmitModal()" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="submitStoryForm" class="story-form">
+                <div class="form-group">
+                    <label for="storyName">Your Name *</label>
+                    <input type="text" id="storyName" name="name" required placeholder="e.g., Sarah Chen" />
+                </div>
+
+                <div class="form-group">
+                    <label for="storyRole">Your Journey *</label>
+                    <input type="text" id="storyRole" name="role" required
+                        placeholder="e.g., First-time Contributor → GSoC Participant" />
+                </div>
+
+                <div class="form-group">
+                    <label for="storyText">Your Story * (Max 300 characters)</label>
+                    <textarea id="storyText" name="story" required maxlength="300" rows="5"
+                        placeholder="Share your journey, challenges, and achievements..."></textarea>
+                    <span class="char-count">0/300</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="storyPRs">Total PRs</label>
+                        <input type="number" id="storyPRs" name="prs" min="1" max="10000" placeholder="e.g., 150" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyYear">Year Started</label>
+                        <input type="number" id="storyYear" name="year" min="2015" max="2026"
+                            placeholder="e.g., 2024" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="storyAvatar">Avatar URL (Optional)</label>
+                    <input type="url" id="storyAvatar" name="avatar" placeholder="https://example.com/avatar.jpg" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeSubmitModal()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Story
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-comments"></i>
+                    Comments
+                </h2>
+                <button class="modal-close" onclick="closeCommentModal()" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="comments-section">
+                <div id="commentsList" class="comments-list">
+                    <!-- Comments will be loaded here -->
+                </div>
+                <form id="commentForm" class="comment-form">
+                    <textarea id="commentText" placeholder="Write a comment..." rows="3" required></textarea>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Post Comment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/success-stories.js"></script>
+</body>
+
+</html>

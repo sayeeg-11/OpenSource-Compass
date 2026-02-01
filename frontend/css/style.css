@@ -13,9 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   THEME VARIABLES (CLASSIC)
-========================= */
 :root {
   --primary-gold: #d4af37;
   --secondary-gold: #b8860b;
@@ -39,12 +36,10 @@ body.dark-mode {
   /* Golds (slightly softer glow) */
   --primary-gold: #e4c76a;
   --secondary-gold: #c9a43b;
-
-  /* Text */
   --text-primary: #f5f4f0;
   --text-secondary: #b9bfd1;
 
-  /* Shadows */
+ 
   --shadow-main: 0 12px 40px rgba(0, 0, 0, 0.65);
   --shadow-hover: 0 28px 70px rgba(0, 0, 0, 0.85);
 
@@ -239,141 +234,6 @@ section p {
 /* =========================
    CARD GRID & BOUNCY HOVER
 ========================= */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  justify-items: center;
-}
-
-.card {
-  width: 100%;
-  max-width: 360px;
-  padding: 2.2rem;
-  border-radius: 20px;
-  background: rgb(255 255 255 / 95%);
-  box-shadow: var(--shadow-main);
-  text-align: center;
-  position: relative;
-  border: 1px solid transparent;
-  transition:
-    transform 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6),
-    box-shadow 0.4s ease;
-  will-change: transform;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-15px) scale(1.05);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-  border-color: rgba(212, 175, 55, 0.3);
-  cursor: pointer;
-}
-
-.card:hover i,
-.card:hover h4 i {
-  transform: scale(1.2) rotate(8deg);
-  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  color: var(--secondary-gold);
-}
-
-.card i,
-.card img {
-  transition: transform 0.5s var(--bounce-curve);
-}
-
-.card:hover img {
-  transform: scale(1.15) rotate(3deg);
-}
-
-.card .badge {
-  transition: all 0.4s var(--bounce-curve);
-}
-
-.card:hover .badge {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
-}
-
-.card h4 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.45rem;
-  color: var(--deep-navy);
-  margin-bottom: 1.1rem;
-}
-
-.card p {
-  font-size: 0.98rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-}
-
-body.dark-mode .card {
-  background: linear-gradient(
-    145deg,
-    rgba(20, 26, 43, 0.95),
-    rgba(27, 34, 53, 0.95)
-  );
-  border: 1px solid rgba(228, 199, 106, 0.18);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
-  color: var(--text-primary);
-  backdrop-filter: blur(12px);
-}
-
-body.dark-mode .card:hover {
-  transform: translateY(-15px) scale(1.05);
-  box-shadow:
-    0 35px 80px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(228, 199, 106, 0.35);
-  border-color: rgba(228, 199, 106, 0.55);
-}
-
-body.dark-mode .card h4 {
-  color: var(--text-primary);
-}
-
-body.dark-mode .card p {
-  color: var(--text-secondary);
-}
-
-body.dark-mode .card i {
-  color: var(--primary-gold);
-  filter: drop-shadow(0 6px 18px rgba(228, 199, 106, 0.35));
-}
-
-body.dark-mode .card:hover i {
-  color: var(--secondary-gold);
-}
-
-body.dark-mode .card .badge {
-  background: rgba(228, 199, 106, 0.15);
-  color: var(--primary-gold);
-  border: 1px solid rgba(228, 199, 106, 0.35);
-  box-shadow: none;
-}
-
-body.dark-mode .card:hover .badge {
-  box-shadow: 0 0 18px rgba(228, 199, 106, 0.35);
-}
-
-body.dark-mode .card::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06),
-    transparent 35%,
-    transparent 65%,
-    rgba(228, 199, 106, 0.08)
-  );
-  pointer-events: none;
-}
-
-/* ============================================
-   REDESIGNED "WHY OPENSOURCE COMPASS?" SECTION
-   ============================================ */
 
 .why-section {
   position: relative;
@@ -706,6 +566,138 @@ body.dark-mode .card::before {
     0 8px 30px rgba(212, 175, 55, 0.5),
     0 0 0 8px rgba(255, 255, 255, 0.9),
     0 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  padding: 2.2rem;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 95%);
+  box-shadow: var(--shadow-main);
+  text-align: center;
+  position: relative;
+  border: 1px solid transparent;
+  transition:
+    transform 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+    box-shadow 0.4s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  border-color: rgba(212, 175, 55, 0.3);
+  cursor: pointer;
+}
+
+.card:hover i,
+.card:hover h4 i {
+  transform: scale(1.2) rotate(8deg);
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  color: var(--secondary-gold);
+}
+
+.card i,
+.card img {
+  transition: transform 0.5s var(--bounce-curve);
+}
+
+.card:hover img {
+  transform: scale(1.15) rotate(3deg);
+}
+
+.card .badge {
+  transition: all 0.4s var(--bounce-curve);
+}
+
+.card:hover .badge {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+}
+
+.card h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  color: var(--deep-navy);
+  margin-bottom: 1.1rem;
+}
+
+.card p {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+body.dark-mode .card {
+  background: linear-gradient(
+    145deg,
+    rgba(20, 26, 43, 0.95),
+    rgba(27, 34, 53, 0.95)
+  );
+  border: 1px solid rgba(228, 199, 106, 0.18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
+  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+}
+
+body.dark-mode .card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(228, 199, 106, 0.35);
+  border-color: rgba(228, 199, 106, 0.55);
+}
+
+body.dark-mode .card h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .card p {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .card i {
+  color: var(--primary-gold);
+  filter: drop-shadow(0 6px 18px rgba(228, 199, 106, 0.35));
+}
+
+body.dark-mode .card:hover i {
+  color: var(--secondary-gold);
+}
+
+body.dark-mode .card .badge {
+  background: rgba(228, 199, 106, 0.15);
+  color: var(--primary-gold);
+  border: 1px solid rgba(228, 199, 106, 0.35);
+  box-shadow: none;
+}
+
+body.dark-mode .card:hover .badge {
+  box-shadow: 0 0 18px rgba(228, 199, 106, 0.35);
+}
+
+body.dark-mode .card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    transparent 35%,
+    transparent 65%,
+    rgba(228, 199, 106, 0.08)
+  );
+  pointer-events: none;
 }
 
 /* ========== DARK MODE STYLES FOR WHY SECTION ========== */
@@ -1211,8 +1203,8 @@ body.has-chatbot #scrollTopBtn {
 }
 
 /* =========================
+   CURSOR HIGHLIGHT (FEATURE #495)*/
    CURSOR HIGHLIGHT (FEATURE #495)
-========================= */
 #cursor-highlight {
   position: fixed;
   top: 0;

@@ -1,143 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glossary | OpenSource Compass</title>
-  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/navigation.css" />
-    <link rel="stylesheet" href="../css/resources.css" />
-    <style>
-        /* Enhanced Glossary-Specific Styles */
-        .glossary-search {
-            max-width: 640px;
-            margin: -24px auto 48px;
-            padding: 0 16px;
-            position: relative;
-        }
+    <!-- Font Awesome (REQUIRED for logo) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-        .glossary-search input {
-            width: 100%;
-            padding: 16px 24px;
-            border-radius: 48px;
-            border: 2px solid #e2e8f0;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
 
-        .glossary-search input:focus {
-            border-color: var(--secondary-blue);
-            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.15);
-        }
 
-        .term-card {
-            opacity: 0;
-            transform: translateY(12px);
-            animation: fadeInUp 0.4s ease forwards;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            will-change: transform;
-        }
-
-        .term-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .term-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .term-card h4 {
-            color: var(--primary-blue);
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .term-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background: #eef6ff;
-            color: #3b82f6;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            letter-spacing: 0.3px;
-        }
-
-        .term-card p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #334155;
-        }
-
-        /* Empty state */
-        .glossary-empty {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 48px 16px;
-            opacity: 0;
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        .glossary-empty h3 {
-            color: #64748b;
-            margin-bottom: 8px;
-        }
-
-        .glossary-empty p {
-            color: #94a3b8;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive spacing */
-        @media (max-width: 768px) {
-            .glossary-search {
-                margin-top: -16px;
-                margin-bottom: 32px;
-            }
-            .resources-hero h2 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
 </head>
+
 <body>
     <header>
-        <h1>OpenSource Compass</h1>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="guides.html">Guides</a>
-            <a href="programs.html">Programs</a>
-            <a href="Resources.html" class="active">Resources</a>
-            <a href="Contribute.html">Contribute</a>
-        </nav>
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+                OpenSource Compass
+            </h1>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="./guides.html">Guides</a>
+                <a href="./programs.html">Programs</a>
+                <a href="./Resources.html">Resources</a>
+                <a href="./contributors.html">Contributors</a>
+                <a href="./faq.html">FAQ</a>
+                <a href="./Contribute.html">Contribute</a>
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -147,7 +49,8 @@
         </section>
 
         <div class="glossary-search">
-            <input type="text" id="glossarySearch" placeholder="Search for a term (e.g., 'Rebase', 'Fork')…" autocomplete="off" />
+            <input type="text" id="glossarySearch" placeholder="Search for a term (e.g., 'Rebase', 'Fork')…"
+                autocomplete="off" />
         </div>
 
         <section class="resources-grid" id="glossaryGrid">
@@ -228,12 +131,14 @@
 
     <script src="../js/main.js"></script>
 
-  <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
-  </button>
+    <button id="scrollTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <script src="/frontend/js/DMtheme.js"></script>
 
     <script src="../js/components.js"></script>
     <script src="../js/theme.js"></script>
 
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +17,8 @@
   <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
   <link rel="stylesheet" href="frontend/css/style.css" />
   <link rel="stylesheet" href="frontend/css/home.css" />
+</head>
+
 
   <style>
     #scrollTopBtn {
@@ -214,6 +217,10 @@
             <i class="fas fa-book-open" aria-hidden="true"></i>
             Browse Guides
           </a>
+          <a class="hero-btn hero-btn-secondary" href="frontend/pages/success-stories.html">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
+            Success Stories
+          </a>
         </div>
 
         <div class="hero-chips" aria-label="Highlights">
@@ -226,6 +233,11 @@
         </div>
       </div>
 
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-orb">
+          <div class="hero-orb-ring"></div>
+          <div class="hero-orb-core">
+            <i class="fas fa-compass"></i>
           <div class="hero-chips" aria-label="Highlights">
             <span class="hero-chip"><i class="fas fa-seedling" aria-hidden="true"></i>
               Beginner-friendly</span>
@@ -234,17 +246,38 @@
             <span class="hero-chip"><i class="fas fa-code-branch" aria-hidden="true"></i> Real
               programs</span>
           </div>
+          <div class="hero-orb-needle"></div>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hero-orb">
-            <div class="hero-orb-ring"></div>
-            <div class="hero-orb-core">
-              <i class="fas fa-compass"></i>
-            </div>
-            <div class="hero-orb-needle"></div>
-          </div>
+        <svg class="hero-route" viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="hero-route-path" d="M30 250 C130 140, 190 290, 280 190 C350 110, 420 160, 490 70" />
+          <circle class="hero-route-dot" cx="30" cy="250" r="6" />
+          <circle class="hero-route-dot" cx="280" cy="190" r="6" />
+          <circle class="hero-route-dot" cx="490" cy="70" r="6" />
+        </svg>
 
+        <div class="hero-floats">
+          <div class="hero-float hero-float-1">
+            <i class="fas fa-list-check" aria-hidden="true"></i>
+            Good first issues
+          </div>
+          <div class="hero-float hero-float-2">
+            <i class="fas fa-people-group" aria-hidden="true"></i>
+            Community-first
+          </div>
+          <div class="hero-float hero-float-3">
+            <i class="fas fa-award" aria-hidden="true"></i>
+            Programs hub
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Community Driven</h4>
+        <p>Built by contributors, improved by contributors.</p>
+      </div>
+    </div>
+  </section>
           <svg class="hero-route" viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path class="hero-route-path" d="M30 250 C130 140, 190 290, 280 190 C350 110, 420 160, 490 70" />
             <circle class="hero-route-dot" cx="30" cy="250" r="6" />
@@ -252,21 +285,131 @@
             <circle class="hero-route-dot" cx="490" cy="70" r="6" />
           </svg>
 
-          <div class="hero-floats">
-            <div class="hero-float hero-float-1">
-              <i class="fas fa-list-check" aria-hidden="true"></i>
-              Good first issues
-            </div>
-            <div class="hero-float hero-float-2">
-              <i class="fas fa-people-group" aria-hidden="true"></i>
-              Community-first
-            </div>
-            <div class="hero-float hero-float-3">
-              <i class="fas fa-award" aria-hidden="true"></i>
-              Programs hub
+  <!-- Success Stories Section -->
+  <section class="success-stories" id="success-stories">
+    <div class="success-stories-header">
+      <div class="section-eyebrow">
+        <span class="section-dot" aria-hidden="true"></span>
+        Community Achievements
+      </div>
+      <h3>
+        <i class="fas fa-chart-line" aria-hidden="true"></i>
+        Success Stories
+      </h3>
+      <p class="success-stories-subtitle">
+        Real journeys from beginners to open source champions. Your story could be next! 🚀
+      </p>
+    </div>
+
+    <div class="success-stories-grid">
+      <!-- Story Card 1 -->
+      <div class="story-card fade-in">
+        <div class="story-header">
+          <div class="story-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Chen" />
+            <div class="story-badge">
+              <i class="fas fa-trophy"></i>
             </div>
           </div>
+          <div class="story-meta">
+            <h4>Sarah Chen</h4>
+            <p class="story-role">GSoC Contributor → Maintainer</p>
+          </div>
         </div>
+        <p class="story-text">
+          "Started with fixing typos during SWOC. Six months later, I was accepted into Google Summer of Code and now
+          I'm a core maintainer of the project!"
+        </p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <i class="fas fa-code-branch"></i>
+            <span>150+ PRs</span>
+          </div>
+          <div class="story-stat">
+            <i class="fas fa-calendar"></i>
+            <span>2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Card 2 -->
+      <div class="story-card fade-in">
+        <div class="story-header">
+          <div class="story-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Raj" alt="Raj Patel" />
+            <div class="story-badge">
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="story-meta">
+            <h4>Raj Patel</h4>
+            <p class="story-role">First-time Contributor → Outreachy Intern</p>
+          </div>
+        </div>
+        <p class="story-text">
+          "OpenSource Compass gave me the confidence to make my first PR. Now I'm a paid Outreachy intern working on
+          projects I love!"
+        </p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <i class="fas fa-code-branch"></i>
+            <span>80+ PRs</span>
+          </div>
+          <div class="story-stat">
+            <i class="fas fa-calendar"></i>
+            <span>2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Card 3 -->
+      <div class="story-card fade-in">
+        <div class="story-header">
+          <div class="story-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" alt="Maria Garcia" />
+            <div class="story-badge">
+              <i class="fas fa-rocket"></i>
+            </div>
+          </div>
+          <div class="story-meta">
+            <h4>Maria Garcia</h4>
+            <p class="story-role">Student → Full-time Developer</p>
+          </div>
+        </div>
+        <p class="story-text">
+          "My open source contributions through GSSoC landed me my dream job! Employers love seeing real-world
+          collaboration skills."
+        </p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <i class="fas fa-code-branch"></i>
+            <span>200+ PRs</span>
+          </div>
+          <div class="story-stat">
+            <i class="fas fa-calendar"></i>
+            <span>2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Card 4 - Removed, will show on dedicated page -->
+    </div>
+
+    <div class="success-stories-cta">
+      <p>Want to read more inspiring stories?</p>
+      <a class="cta-button" href="frontend/pages/success-stories.html">
+        <i class="fas fa-arrow-right"></i>
+        View All Stories
+      </a>
+    </div>
+  </section>
+
+  <section id="opensource-video" style="padding: 60px 20px; text-align: center;">
+
+    <b>🎥Video for Beginners 🌟 "Start" your First Contribution</b>
+
+
+    <div style="
       </div>
     </section>
 
@@ -284,6 +427,17 @@
     margin: 30px auto;
     position: relative;
     aspect-ratio: 16 / 9;
+  ">
+      <iframe src="https://www.youtube.com/embed/3dGzOWWb0Eo" style="width:100%; height:100%;"
+        title="Open Source Contribution for Beginners" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="programs">
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 15px 45px rgba(0,0,0,0.6);
@@ -327,11 +481,37 @@
 <section class="programs">
     <h3>Open Source Programs</h3>
     <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
+      Explore ongoing and upcoming open-source programs with timelines,
+      prerequisites, and official resources.
     </p>
     <div class="card-container">
       <div class="card">
+        <h4>Social Winter of Code</h4>
+        <p>Beginner-focused winter open-source program.</p>
+        <span class="badge">Upcoming</span>
+      </div>
+  </section>
+
+  <main>
+    <section id="why">
+      <h3>Why OpenSource Compass?</h3>
+      <p>
+        Timeless principles meet modern open source. Structured paths built from
+        decades of collective wisdom.
+      </p>
+
+      <div class="card-grid">
+        <div class="card fade-in">
+          <h4><i class="fas fa-seedling"></i> Timeless Foundations</h4>
+          <p>Proven methodologies refined over years of open source evolution.</p>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-scroll"></i> Code of Conduct Mastery</h4>
+          <p>Navigate community norms with confidence and cultural fluency.</p>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-users"></i> Mentor Network</h4>
+          <p>Connect with maintainers and peers who help you level up.</p>
           <div class="card-icon"><i class="fas fa-code"></i></div>
           <h4>Google Summer of Code</h4>
           <p>A global program focused on bringing new contributors into open source software development.</p>
@@ -473,8 +653,65 @@
           </div>
 
         </div>
-      </section>
+      </div>
+    </section>
 
+    <!-- Replace the existing stats section with this updated version -->
+    <section class="stats">
+      <h3>Open Source Impact</h3>
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <h2 data-target="50" data-suffix="K+">0</h2>
+          <p>First Contributions</p>
+        </div>
+        <div class="stat-item fade-in">
+          <h2 data-target="200" data-suffix="+">0</h2>
+          <p>Programs Tracked</p>
+        </div>
+        <div class="stat-item fade-in">
+          <h2 data-target="10" data-suffix="K+">0</h2>
+          <p>Active Mentors</p>
+        </div>
+        <div class="stat-item fade-in">
+          <h2 data-target="5" data-suffix="Y+">0</h2>
+          <p>Proven Track Record</p>
+        </div>
+      </div>
+    </section>
+    <section class="programs" id="programs">
+      <h3>Legendary Open Source Programs</h3>
+      <p>Curated programs with historical success rates and maintainer insights.</p>
+
+      <div class="card-grid" class="program-card">
+        <div class="card fade-in">
+          <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
+          <p>India's premier winter program with strong mentorship culture.</p>
+          <span class="badge">Jan 2026</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
+          <p>Large-scale program with mentors, tasks, and community learning.</p>
+          <span class="badge">Summer 2026</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
+          <p>Global standard for student contributors and open source orgs.</p>
+          <span class="badge">Advanced</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-leaf"></i> Outreachy</h4>
+          <p>Paid internships supporting underrepresented people in tech.</p>
+          <span class="badge">Internship</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
+          <p>Work in pods on real projects with guided mentorship.</p>
+          <span class="badge">Spring</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
+          <p>Paid mentorships across major Linux Foundation projects.</p>
+          <span class="badge">Professional</span>
       <!-- ============================================
            STATS SECTION
            ============================================ -->
@@ -579,7 +816,32 @@
             <span class="badge">Paid Mentorship</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h3>Stay Ahead of Open Source</h3>
+      <p>Weekly dispatches: deadlines, AMAs, and contribution strategies.</p>
+      <form>
+        <input type="email" placeholder="Your dev email..." required />
+        <button type="submit">
+          <i class="fas fa-paper-plane" style="margin-right: 0.4rem"></i>
+          Subscribe
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="frontend/js/components.js"></script>
+  <script src="frontend/js/theme.js"></script>
+  <script src="frontend/js/home.js"></script>
+</body>
 
       <!-- ============================================
            NEWSLETTER SECTION
