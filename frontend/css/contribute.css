@@ -579,3 +579,32 @@ font-size: 1.3rem;
 padding: 1.6rem 1.3rem;
 }
 }
+
+/* Back to Top Button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary-gold);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+#scrollTopBtn:hover {
+  transform: translateY(-4px);
+}
+
+#scrollTopBtn.show {
+  display: flex;
+}

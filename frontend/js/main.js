@@ -44,29 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Load Programs from JSON (Solves Issue #64)
     loadHomePagePrograms();
-    
-      // Back to Top Button
-     // Back to Top Button
-   const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-    window.addEventListener("scroll", () => {
-      if (!scrollTopBtn) return;
-
-      if (window.scrollY > 200) {
-         scrollTopBtn.style.display = "block";
-      } else {
-          scrollTopBtn.style.display = "none";
-      }
-    });
-    
-   if (scrollTopBtn) {
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
-}     
+       
 });
 
 // Function to fetch and render programs on the home page
@@ -100,6 +78,28 @@ function loadHomePagePrograms() {
                 </div>
             `;
         });
+}
+
+// ===============================
+// Back to Top Button (Contribute)
+// ===============================
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+if (scrollTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 }
 
 console.log("Progress tracker JS loaded");

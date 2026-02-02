@@ -1,239 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glossary | OpenSource Compass</title>
-  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/navigation.css" />
     <link rel="stylesheet" href="../css/resources.css" />
-    <style>
-        /* Enhanced Glossary-Specific Styles */
-        .glossary-search {
-            max-width: 640px;
-            margin: -24px auto 48px;
-            padding: 0 16px;
-            position: relative;
-        }
+    <link rel="stylesheet" href="../css/glossary.css" />
 
-        .glossary-search input {
-            width: 100%;
-            padding: 16px 24px;
-            border-radius: 48px;
-            border: 2px solid #e2e8f0;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
+    <!-- Font Awesome (REQUIRED for logo) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-        .glossary-search input:focus {
-            border-color: var(--secondary-blue);
-            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.15);
-        }
-
-        .term-card {
-            opacity: 0;
-            transform: translateY(12px);
-            animation: fadeInUp 0.4s ease forwards;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            will-change: transform;
-        }
-
-        .term-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .term-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .term-card h4 {
-            color: var(--primary-blue);
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .term-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background: #eef6ff;
-            color: #3b82f6;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            letter-spacing: 0.3px;
-        }
-
-        .term-card p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #334155;
-        }
-
-        /* Empty state */
-        .glossary-empty {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 48px 16px;
-            opacity: 0;
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        .glossary-empty h3 {
-            color: #64748b;
-            margin-bottom: 8px;
-        }
-
-        .glossary-empty p {
-            color: #94a3b8;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive spacing */
-        @media (max-width: 768px) {
-            .glossary-search {
-                margin-top: -16px;
-                margin-bottom: 32px;
-            }
-            .resources-hero h2 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
 </head>
+
 <body>
     <header>
-        <h1>OpenSource Compass</h1>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="guides.html">Guides</a>
-            <a href="programs.html">Programs</a>
-            <a href="Resources.html" class="active">Resources</a>
-            <a href="Contribute.html">Contribute</a>
-        </nav>
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+                OpenSource Compass
+            </h1>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="./guides.html">Guides</a>
+                <a href="./programs.html">Programs</a>
+                <a href="./Resources.html">Resources</a>
+                <a href="./contributors.html">Contributors</a>
+                <a href="./faq.html">FAQ</a>
+                <a href="./Contribute.html">Contribute</a>
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <section class="resources-hero">
-            <h2>Glossary of Terms</h2>
-            <p>Demystifying open source jargon so you can contribute with confidence.</p>
+        <section class="glossary-hero">
+            <div class="hero-content">
+                <span class="hero-eyebrow">Open Source Knowledge Base</span>
+                <h1>Glossary of Open-Source Terms</h1>
+                <p>
+                    Understand the language of open source — from Git workflows
+                    to contributor roles — explained clearly and beautifully.
+                </p>
+            </div>
         </section>
-
-        <div class="glossary-search">
-            <input type="text" id="glossarySearch" placeholder="Search for a term (e.g., 'Rebase', 'Fork')…" autocomplete="off" />
+        <div class="glossary-search-wrapper">
+            <input type="text" id="glossarySearch" placeholder="Search terms like “Rebase”, “Fork”, “Maintainer”…" />
         </div>
+        <section class="glossary-explorer">
+            <div class="explorer-header">
+                <h2>Explore by Concept</h2>
+                <p>
+                    Start with a category, or dive straight into individual terms.
+                    Each concept builds confidence step by step.
+                </p>
+            </div>
 
-        <section class="resources-grid" id="glossaryGrid">
-            <!-- Cards will be rendered here dynamically for better control -->
+            <div class="explorer-grid">
+                <button class="explorer-card" data-filter="Git">
+                    <span class="icon">⎇</span>
+                    <h3>Git Essentials</h3>
+                    <p>Commits, branches, rebasing, merging, and version control basics.</p>
+                    <span class="count">12 Terms</span>
+                </button>
+
+                <button class="explorer-card" data-filter="Workflow">
+                    <span class="icon">⇄</span>
+                    <h3>Contribution Workflow</h3>
+                    <p>Forks, upstreams, pull requests, and collaboration flow.</p>
+                    <span class="count">9 Terms</span>
+                </button>
+
+                <button class="explorer-card" data-filter="Roles">
+                    <span class="icon">👥</span>
+                    <h3>Project Roles</h3>
+                    <p>Maintainers, contributors, reviewers, and governance.</p>
+                    <span class="count">6 Terms</span>
+                </button>
+
+                <button class="explorer-card" data-filter="Advanced">
+                    <span class="icon">⚙️</span>
+                    <h3>Advanced Concepts</h3>
+                    <p>Rebasing strategies, squashing, CI/CD, and automation.</p>
+                    <span class="count">8 Terms</span>
+                </button>
+            </div>
         </section>
+        <section class="glossary-library" id="glossary">
+            <header class="library-header">
+                <h2>All Glossary Terms</h2>
+                <p>
+                    Browse the complete collection of open-source terminology.
+                    Clear explanations, practical context, zero confusion.
+                </p>
+            </header>
+
+            <div class="glossary-grid" id="glossaryGrid">
+                <!-- Glossary cards rendered here -->
+            </div>
+        </section>
+
+
+
     </main>
 
     <div id="footer"></div>
 
     <script>
-        // Glossary data — structured for maintainability and future expansion
+        /* ===============================
+       GLOSSARY DATA
+    ================================= */
+
         const glossaryData = [
-            { tag: "Workflow", term: "Upstream", def: "The original repository that you 'forked' from. When you fetch updates from upstream, you are getting the latest work from the official project." },
-            { tag: "Git", term: "Fork", def: "A personal copy of another user's repository that lives on your account. Forks allow you to freely make changes without affecting the original project." },
-            { tag: "Git", term: "Squash", def: "The process of combining multiple commit messages into one. This is often requested by maintainers to keep the project history clean and readable." },
-            { tag: "Advanced", term: "Rebase", def: "A way to integrate changes from one branch into another by moving the entire sequence of your commits to a new base commit. It helps keep a linear project history." },
-            { tag: "Basics", term: "Pull Request (PR)", def: "A formal way to propose your changes to a project. Once opened, maintainers can review your work, discuss improvements, and eventually merge it." },
-            { tag: "Roles", term: "Maintainer", def: "The person or group responsible for managing a project. They review PRs, manage issues, and steer the project's direction." }
+            {
+                term: "Fork",
+                tag: "Git",
+                level: "Beginner",
+                category: "Workflow",
+                def: "A fork is your own copy of another repository. It allows you to freely experiment with changes without affecting the original project.",
+                example: "Fork the repository to your GitHub account before making changes."
+            },
+            {
+                term: "Upstream",
+                tag: "Workflow",
+                level: "Beginner",
+                category: "Workflow",
+                def: "Upstream refers to the original repository that you forked from. Keeping your fork in sync with upstream ensures you have the latest updates.",
+                example: "Fetch changes from upstream to stay up to date."
+            },
+            {
+                term: "Pull Request (PR)",
+                tag: "Workflow",
+                level: "Beginner",
+                category: "Workflow",
+                def: "A pull request is a formal proposal to merge your changes into a project. It enables discussion, review, and collaboration before merging.",
+                example: "Open a pull request once your feature is ready for review."
+            },
+            {
+                term: "Commit",
+                tag: "Git",
+                level: "Beginner",
+                category: "Git",
+                def: "A commit is a snapshot of your changes recorded in the repository’s history. Each commit represents a logical unit of work.",
+                example: "Make small, meaningful commits with clear messages."
+            },
+            {
+                term: "Rebase",
+                tag: "Git",
+                level: "Advanced",
+                category: "Advanced",
+                def: "Rebase reapplies your commits on top of another base branch, helping maintain a clean and linear project history.",
+                example: "Rebase your branch onto main before opening a pull request."
+            },
+            {
+                term: "Squash",
+                tag: "Git",
+                level: "Advanced",
+                category: "Advanced",
+                def: "Squashing combines multiple commits into a single commit, making the project history easier to read and maintain.",
+                example: "Squash commits before merging to keep history clean."
+            },
+            {
+                term: "Maintainer",
+                tag: "Roles",
+                level: "Beginner",
+                category: "Roles",
+                def: "A maintainer manages the project, reviews pull requests, merges contributions, and guides the overall direction of the codebase.",
+                example: "Maintainers ensure contributions meet project standards."
+            }
         ];
 
-        const glossaryGrid = document.getElementById('glossaryGrid');
-        const searchInput = document.getElementById('glossarySearch');
 
-        // Render all cards with staggered animation
-        function renderCards(terms = glossaryData) {
-            glossaryGrid.innerHTML = '';
+        /* ===============================
+           DOM ELEMENTS
+        ================================= */
+
+        const glossaryGrid = document.getElementById("glossaryGrid");
+        const searchInput = document.getElementById("glossarySearch");
+        const explorerCards = document.querySelectorAll(".explorer-card");
+
+
+        /* ===============================
+           STATE
+        ================================= */
+
+        let activeFilter = null;
+
+
+        /* ===============================
+           RENDER FUNCTIONS
+        ================================= */
+
+        function renderGlossary(terms) {
+            glossaryGrid.innerHTML = "";
+
             if (terms.length === 0) {
                 glossaryGrid.innerHTML = `
-                    <div class="glossary-empty">
-                        <h3>No matching terms</h3>
-                        <p>Try a different keyword like “commit”, “branch”, or “merge”.</p>
-                    </div>
-                `;
+      <div class="glossary-empty">
+        <h3>No matching terms</h3>
+        <p>Try a different keyword or explore another category.</p>
+      </div>
+    `;
                 return;
             }
 
             terms.forEach((item, index) => {
-                const card = document.createElement('article');
-                card.className = 'resource-card term-card';
-                card.style.animationDelay = `${index * 0.08}s`; // Staggered entrance
+                const card = document.createElement("article");
+                card.className = "glossary-card";
+                card.style.animationDelay = `${index * 0.05}s`;
+
                 card.innerHTML = `
-                    <span class="term-tag">${item.tag}</span>
-                    <h4>${item.term}</h4>
-                    <p>${item.def}</p>
-                `;
+      <div class="card-top">
+        <span class="term-tag">${item.tag}</span>
+        <span class="term-level">${item.level}</span>
+      </div>
+
+      <h3 class="term-title">${item.term}</h3>
+
+      <p class="term-definition">
+        ${item.def}
+      </p>
+
+      <details class="term-example">
+        <summary>Example usage</summary>
+        <code>${item.example}</code>
+      </details>
+    `;
+
                 glossaryGrid.appendChild(card);
             });
-
-            // Trigger initial visibility
-            setTimeout(() => {
-                document.querySelectorAll('.term-card').forEach(card => card.classList.add('visible'));
-            }, 100);
         }
 
-        // Debounced search handler
-        let searchTimeout;
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            const query = e.target.value.trim().toLowerCase();
 
-            searchTimeout = setTimeout(() => {
-                if (query === '') {
-                    renderCards();
-                } else {
-                    const filtered = glossaryData.filter(item =>
-                        item.term.toLowerCase().includes(query) ||
-                        item.def.toLowerCase().includes(query) ||
-                        item.tag.toLowerCase().includes(query)
-                    );
-                    renderCards(filtered);
-                }
-            }, 150); // Slight debounce for performance
+        /* ===============================
+           FILTERING LOGIC
+        ================================= */
+
+        function applyFilters() {
+            const query = searchInput.value.trim().toLowerCase();
+
+            let filtered = glossaryData;
+
+            if (activeFilter) {
+                filtered = filtered.filter(
+                    item =>
+                        item.category === activeFilter ||
+                        item.tag === activeFilter
+                );
+            }
+
+            if (query) {
+                filtered = filtered.filter(item =>
+                    item.term.toLowerCase().includes(query) ||
+                    item.def.toLowerCase().includes(query) ||
+                    item.tag.toLowerCase().includes(query)
+                );
+            }
+
+            renderGlossary(filtered);
+        }
+
+
+        /* ===============================
+           SEARCH (DEBOUNCED)
+        ================================= */
+
+        let searchTimeout;
+
+        searchInput.addEventListener("input", () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(applyFilters, 150);
         });
 
-        // Initial render
-        renderCards();
-    </script>
 
+        /* ===============================
+           EXPLORER CATEGORY FILTER
+        ================================= */
+
+        explorerCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const filter = card.dataset.filter;
+
+                // Toggle behavior
+                if (activeFilter === filter) {
+                    activeFilter = null;
+                    card.classList.remove("active");
+                } else {
+                    activeFilter = filter;
+                    explorerCards.forEach(c => c.classList.remove("active"));
+                    card.classList.add("active");
+
+                    // Scroll to glossary smoothly
+                    document
+                        .getElementById("glossary")
+                        .scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+
+                applyFilters();
+            });
+        });
+
+
+        /* ===============================
+           INITIAL LOAD
+        ================================= */
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderGlossary(glossaryData);
+        });
+    </script>
     <script src="../js/main.js"></script>
 
-  <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
-  </button>
+    <button id="scrollTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <script src="../js/components.js"></script>
     <script src="../js/theme.js"></script>
 
 </body>
+
 </html>

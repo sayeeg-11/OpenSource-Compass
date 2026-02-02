@@ -1,3 +1,49 @@
+/* Entrance Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* Applying entrance animation to all cards */
+.guide-list li, 
+.pr-steps li, 
+.practice-item, 
+.mistakes-list li {
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+/* Staggering the entrance (delaying each item) */
+.guide-list li:nth-child(1) { animation-delay: 0.1s; }
+.guide-list li:nth-child(2) { animation-delay: 0.2s; }
+.guide-list li:nth-child(3) { animation-delay: 0.3s; }
+.guide-list li:nth-child(4) { animation-delay: 0.4s; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll Top Button Hover */
+#scrollTopBtn {
+  transition: all 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background-color: var(--deep-navy);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
 /* =========================
    GUIDE LIST - TWO COLUMNS
 ========================= */
@@ -20,6 +66,168 @@
   box-shadow: var(--shadow-main);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
+.guide-list li, .mistakes-list li {
+  transition: all 0.3s ease;
+  border-left: 0px solid var(--primary-gold);
+}
+
+.guide-list li:hover, .mistakes-list li:hover {
+  transform: translateX(10px);
+  border-left: 6px solid var(--primary-gold);
+  background: #ffffff;
+  box-shadow: var(--shadow-hover);
+}
+/* ============================================================
+   GLOBAL SECTION CENTERING
+   ============================================================ */
+   .github-guide-timeline,
+   .contributing-best-practices {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;      /* Centers headings & containers horizontally */
+     justify-content: center;
+     text-align: center;       /* Centers the text content */
+     margin: 5rem auto;
+     padding: 0 5%;
+     box-sizing: border-box;
+   }
+   
+   /* Constrain headers so they don't look lost on wide screens */
+   .github-guide-timeline h3,
+   .contributing-best-practices h3 {
+     max-width: 800px;
+     margin-bottom: 1.5rem;
+   }
+   /* Fix for the "left center" paragraph */
+.github-guide-timeline p {
+  text-align: left;       /* Keeps text readable */
+  max-width: 800px;       /* Prevents the line from being too long */
+  margin: 1rem auto 3rem; /* "auto" centers the block itself on the page */
+  line-height: 1.6;
+  color: var(--charcoal-dark);
+}
+   /* ============================================================
+      1. GITHUB WORKFLOW TIMELINE (CENTERED)
+      ============================================================ */
+   .timeline-list {
+     list-style: none;
+     position: relative;
+     max-width: 700px;         /* Prevents timeline from stretching too wide */
+     width: 100%;
+     margin: 3rem auto 0;      /* Auto margins center the whole list block */
+     padding: 2rem 0 2rem 5rem;
+     text-align: left;         /* Keeps text readable */
+   }
+   
+   /* The Vertical Line */
+   .timeline-list::before {
+     content: "";
+     position: absolute;
+     left: 1.25rem;
+     top: 0;
+     bottom: 0;
+     width: 4px;
+     background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
+     border-radius: 10px;
+   }
+   
+   .timeline-list li .icon {
+     width: 2.8rem;
+     height: 2.8rem;
+     background: var(--primary-gold);
+     color: var(--deep-navy);
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     left: -5.15rem;           /* Adjust this based on your padding to center on line */
+     z-index: 2;
+     box-shadow: 0 0 0 8px var(--warm-cream); /* Masks the line behind the icon */
+     font-size: 1.3rem;
+   }
+   .timeline-list li {
+    transition: all 0.3s ease;
+  }
+  
+  /* When you hover the list item, make the icon glow */
+  .timeline-list li:hover .icon {
+    animation: pulse-glow 1.5s infinite;
+    background: var(--deep-navy);
+    color: var(--primary-gold);
+  }
+  
+  .timeline-list li .content {
+    transition: transform 0.3s ease;
+  }
+  
+  .timeline-list li:hover .content {
+    transform: translateX(5px);
+  }
+   /* ============================================================
+      2. BEST PRACTICES GRID (CENTERED)
+      ============================================================ */
+   .practices-grid {
+     display: grid;
+     /* repeat(auto-fit) can cause left-alignment if not centered */
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+     justify-content: center;   /* Centers the grid items if there is extra space */
+     gap: 2.5rem;
+     margin-top: 4rem;
+     width: 100%;
+     max-width: 1200px;         /* Limits the max width of the grid */
+   }
+   
+   .practice-item {
+     background: #ffffff;
+     border: 1px solid rgba(0, 0, 0, 0.06);
+     border-radius: 28px;
+     padding: 3rem 2rem;
+     display: flex;
+     flex-direction: column;
+     align-items: center;       /* Centers content inside the card */
+     justify-content: center;
+     transition: transform 0.4s ease, box-shadow 0.4s ease;
+     height: 100%;              /* Ensures cards in a row are equal height */
+     box-shadow: var(--shadow-main);
+   }
+   
+   .practice-item:hover {
+     transform: translateY(-12px);
+     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+   }
+   .practice-item, .pr-steps li {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Professional easing */
+  }
+  
+  .practice-item:hover, .pr-steps li:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: #ffffff; /* Brighter on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-gold);
+  }
+  
+  /* Icon rotation on hover */
+  .practice-item:hover .icon, .pr-steps li:hover .icon {
+    transform: rotate(-5deg) scale(1.1);
+    transition: transform 0.3s ease;
+  }
+   /* ============================================================
+      RESPONSIVE OVERRIDES
+      ============================================================ */
+   @media (max-width: 768px) {
+     .timeline-list {
+       padding-left: 4rem;
+       margin-left: 0;          /* Reset margin for small screens */
+     }
+     
+     .timeline-list li .icon {
+       left: -4rem;
+       width: 2.2rem;
+       height: 2.2rem;
+     }
+   }
 
 .guide-list li:hover {
   transform: translateY(-5px);

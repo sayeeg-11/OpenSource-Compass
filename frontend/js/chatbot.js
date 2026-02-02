@@ -1,5 +1,9 @@
+document.body.classList.add("has-chatbot");
+
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements - Create dynamically to be less intrusive
+    document.body.classList.add("has-chatbot");
+
     const chatBtn = document.createElement('button');
     chatBtn.className = 'chat-widget-btn';
     chatBtn.innerHTML = '💬';

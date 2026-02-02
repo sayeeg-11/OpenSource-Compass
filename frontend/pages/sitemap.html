@@ -13,108 +13,125 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/sitemap.css">
 </head>
 
 <body>
+ <div id="navbar"></div>
+ <main class="roadmap-container">
+  <nav class="roadmap-nav">
+  <ul>
+    <li><a href="#beginner">🌱 Beginner</a></li>
+    <li><a href="#intermediate">🚀 Intermediate</a></li>
+    <li><a href="#advanced">🧠 Advanced</a></li>
+    <li><a href="#community">🤝 Community</a></li>
+  </ul>
+</nav>
 
-<!-- NAVBAR -->
-<header>
-  <div class="navbar-container">
-    <h1>
-      <i class="fas fa-compass"></i>
-      OpenSource Compass
-    </h1>
 
-    <nav class="nav-links">
-      <a href="../../index.html">Home</a>
-      <a href="guides.html">Guides</a>
-      <a href="programs.html">Programs</a>
-      <a href="resources.html">Resources</a>
-      <a href="contributors.html">Contributors</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contribute.html">Contribute</a>
-    </nav>
-  </div>
-</header>
+  <!-- HEADER -->
+  <header class="roadmap-header">
+    <h1>🚀 Developer Roadmap</h1>
+    <p>Your guided journey from beginner to open-source contributor</p>
+  </header>
 
-<!-- MAIN -->
-<main class="container">
+  <!-- TIMELINE -->
+  <div class="roadmap">
 
-  <!-- TITLE -->
-  <div class="sitemap-header">
-    <h1><i class="fa-solid fa-sitemap"></i> Sitemap</h1>
-    <p>Explore all pages, programs, and resources in one place</p>
-  </div>
-
-  <!-- SEARCH -->
-  <div class="search-box">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" id="searchInput" placeholder="Search pages..." />
-  </div>
-
-  <!-- CARDS -->
-  <div class="sitemap-grid">
-
-    <section class="section">
-      <h2><i class="fa-solid fa-file-lines"></i> Pages</h2>
-      <ul>
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="resources.html">Resources</a></li>
-      </ul>
+    <!-- STEP 1 -->
+    <section class="roadmap-step" id="beginner">
+      <div class="step-icon">🌱</div>
+      <div class="step-content">
+        <h2>Beginner Phase</h2>
+        <p>Build strong fundamentals and understand the ecosystem.</p>
+        <ul>
+          <li>✔ HTML, CSS & JavaScript Basics</li>
+          <li>✔ Git & GitHub Essentials</li>
+          <li>✔ Beginner Guides</li>
+        </ul>
+        <a href="guides.html" class="btn">Start Learning</a>
+      </div>
     </section>
 
-    <section class="section">
-      <h2><i class="fa-solid fa-chart-line"></i> Most Visited</h2>
-      <ul>
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="guides.html">Beginner Guides</a></li>
-        <li><a href="programs.html">Programs Hub</a></li>
-        <li><a href="contribute.html">Contribute</a></li>
-      </ul>
+    <!-- STEP 2 -->
+    <section class="roadmap-step" id="intermediate">
+      <div class="step-icon">🚀</div>
+      <div class="step-content">
+        <h2>Intermediate Phase</h2>
+        <p>Apply skills through real programs and projects.</p>
+        <ul>
+          <li>✔ Open Source Programs</li>
+          <li>✔ Project-based Learning</li>
+          <li>✔ Collaboration Skills</li>
+        </ul>
+        <a href="programs.html" class="btn">Explore Programs</a>
+      </div>
     </section>
 
-    <section class="section">
-      <h2><i class="fa-solid fa-rocket"></i> Programs</h2>
-      <ul>
-        <li><a href="Event/gsoc.html">GSoC</a></li>
-        <li><a href="Event/gssoc.html">GSSoC</a></li>
-        <li><a href="Event/ssoc.html">SSOC</a></li>
-        <li><a href="Event/hacktober.html">Hacktoberfest</a></li>
-      </ul>
+    <!-- STEP 3 -->
+    <section class="roadmap-step" id="advanced">
+      <div class="step-icon">🧠</div>
+      <div class="step-content">
+        <h2>Advanced Phase</h2>
+        <p>Deep dive into advanced topics and leadership roles.</p>
+        <ul>
+          <li>✔ System Design Basics</li>
+          <li>✔ Mentorship & Reviews</li>
+          <li>✔ Advanced Guides</li>
+        </ul>
+        <a href="resources.html" class="btn">Advanced Resources</a>
+      </div>
     </section>
 
-    <section class="section">
-      <h2><i class="fa-solid fa-book"></i> Resources</h2>
-      <ul>
-        <li><a href="resources.html">Articles & Videos</a></li>
-        <li><a href="pdf_guide.html">PDF Guides</a></li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2><i class="fa-solid fa-users"></i> Community</h2>
-      <ul>
-        <li><a href="contributors.html">Contributors</a></li>
-        <li><a href="../../CONTRIBUTING.md">Contributing</a></li>
-        <li><a href="../../CODE_OF_CONDUCT.md">Code of Conduct</a></li>
-      </ul>
+    <!-- STEP 4 -->
+    <section class="roadmap-step" id="community">
+      <div class="step-icon">🤝</div>
+      <div class="step-content">
+        <h2>Community & Contribution</h2>
+        <p>Give back, collaborate, and grow together.</p>
+        <ul>
+          <li>✔ Contribute to Projects</li>
+          <li>✔ Follow Code of Conduct</li>
+          <li>✔ Join the Community</li>
+        </ul>
+        <a href="contributors.html" class="btn">Join Community</a>
+      </div>
     </section>
 
   </div>
 </main>
 
-<div id="footer"></div>
-
-
-<script src="../js/components.js"></script>
-<script src="../js/sitemap.js"></script>
-<script src="../js/main.js"></script>
-
   <button id="scrollTopBtn" title="Back to Top">
    <i class="fas fa-chevron-up"></i>
   </button>
+
+<div id="footer"></div>
+<script src="../js/components.js"></script>
+<script src="../js/sitemap.js"></script>
+<script src="../js/main.js"></script>
+ <script src="../js/theme.js"></script>
+ <script>
+  const sections = document.querySelectorAll(".roadmap-step");
+  const navLinks = document.querySelectorAll(".roadmap-nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 </body>
 </html>
