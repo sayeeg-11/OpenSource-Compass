@@ -190,4 +190,50 @@ if (scrollProgressBar) {
     cursor.style.opacity = '';
   });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".stat-number");
+
+  const animateCounter = (el) => {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || "";
+    const duration = 1500;
+    const startTime = performance.now();
+
+    const update = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const value = Math.floor(progress * target);
+
+      if (target >= 1000) {
+        el.textContent = `${Math.floor(value / 1000)}K${suffix}`;
+      } else {
+        el.textContent = `${value}${suffix}`;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent =
+          target >= 1000
+            ? `${target / 1000}K${suffix}`
+            : `${target}${suffix}`;
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
 });

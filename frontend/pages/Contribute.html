@@ -5,34 +5,48 @@
   <title>How to Contribute - OpenSource Compass</title>
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
-  
-  <!-- Font Awesome (REQUIRED for logo) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Global CSS -->
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contribute.css" />
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
 </head>
 <style>
+/* =========================================
+   NAVBAR FIXED POSITION FIX
+========================================= */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+}
+
+header {
+    position: fixed !important; /* Locks the navbar to the viewport */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000;
+    /* Ensure it has a background so content doesn't show through */
+    background-color: #0F172A; /* Dark Blue matching your theme */
+}
+
+/* Push main content down so it doesn't hide behind the fixed navbar */
+main {
+    padding-top: 100px !important; 
+}
+
 /* =========================================
    CONTRIBUTE PAGE DARK MODE FIXES
 ========================================= */
@@ -44,8 +58,14 @@ body.dark-mode section {
     color: #e0e0e0 !important;
 }
 
+/* Ensure header background updates in dark mode */
+body.dark-mode header {
+    background-color: #121212 !important;
+    border-bottom: 1px solid #333;
+}
+
 /* 2. Card Backgrounds - Dark Grey */
-/* Targets step cards, tip cards, and practice items */
+body.dark-mode .step,
 body.dark-mode .step-card,
 body.dark-mode .tip-card,
 body.dark-mode .practice-item,
@@ -55,27 +75,32 @@ body.dark-mode .card {
     box-shadow: 0 4px 6px rgba(0,0,0,0.5);
 }
 
-/* 3. GOLDEN TEXT FIX (For specific headers & list titles) */
-/* Targets: "Fork the Repository", "Write clear commit messages", etc. */
+/* 3. GOLDEN TEXT FIX (Titles & Icons) */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode h5,
-body.dark-mode .step-number,   /* The number 1, 2, 3... */
-body.dark-mode .tip-icon,      /* Icons in tips */
-body.dark-mode strong,         /* Bold text like "Write clear commit messages:" */
+body.dark-mode .tip-icon,
+body.dark-mode strong,
 body.dark-mode b {
     color: #d4af37 !important; /* Primary Gold */
 }
 
-/* 4. Description Text - Readable Light Grey */
+/* 4. STEP NUMBER VISIBILITY FIX */
+/* Forces the number inside the yellow circle to be white */
+body.dark-mode .step-number {
+    color: #ffffff !important; 
+}
+
+/* 5. Description Text - Readable Light Grey (Global) */
 body.dark-mode p,
 body.dark-mode li {
     color: #cccccc !important;
 }
 
-/* 5. Hover Effects */
+/* 6. Hover Effects */
+body.dark-mode .step:hover,
 body.dark-mode .step-card:hover,
 body.dark-mode .tip-card:hover,
 body.dark-mode .practice-item:hover {
@@ -83,18 +108,47 @@ body.dark-mode .practice-item:hover {
     transform: translateY(-5px);
 }
 
-/* 6. Code Snippet Backgrounds (if any) */
-body.dark-mode pre,
+/* 7. Code Snippet Backgrounds - FORCED LIGHT THEME */
+/* This keeps code blocks white even in dark mode */
+body.dark-mode .code-block,
+body.dark-mode pre {
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #333333 !important; /* Dark grey text */
+}
+
+/* Inline code (like 'git push' in notes) is now White with Dark Text */
 body.dark-mode code {
-    background-color: #2d2d2d !important;
-    border: 1px solid #444 !important;
-    color: #f8f8f2 !important;
+    background-color: #ffffff !important; /* White background */
+    color: #333333 !important; /* Dark Text */
+    padding: 0.1rem 0.3rem; 
+    border-radius: 3px;
+}
+
+/* Ensure comments inside code are visible */
+body.dark-mode .code-comment {
+    color: #6a737d !important;
+}
+
+/* 8. BEST PRACTICES SECTION VISIBILITY FIX */
+/* Forces dark text on the light background for this specific section */
+body.dark-mode .practices-container {
+    background-color: #ffffff !important; /* Keep white background */
+    border: 1px solid #e0e0e0 !important;
+}
+
+body.dark-mode .practices-container li,
+body.dark-mode .practices-container span,
+body.dark-mode .practices-container p {
+    color: #333333 !important; /* Dark Grey Text */
+}
+
+body.dark-mode .practices-container strong {
+    color: #000000 !important; /* Black for bold text */
 }
 </style>
 
-
 <body>
-  <!-- Navbar -->
   <header>
     <div class="navbar-container">
       <h1>
@@ -110,30 +164,26 @@ body.dark-mode code {
         <a href="./faq.html">FAQ</a>
         <a href="./Contribute.html">Contribute</a>
         <button
-  id="themeToggle"
-  aria-label="Toggle dark mode"
-  title="Toggle dark mode"
-  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
->
-  <i class="fas fa-moon" aria-hidden="true"></i>
-</button>
+          id="themeToggle"
+          aria-label="Toggle dark mode"
+          title="Toggle dark mode"
+          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+        >
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
     <div class="hero-section">
       <h2>Your Journey to Open Source Contribution</h2>
       <p>Master the art of contributing to open source projects with our comprehensive step-by-step guide. From forking your first repository to submitting pull requests like a seasoned developer.</p>
     </div>
 
-    <!-- Steps Section -->
     <div class="steps-container">
       <h2 class="section-title">Complete Contribution Workflow</h2>
 
-      <!-- Step 1 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">1</div>
@@ -152,7 +202,6 @@ https://github.com/your-username/project-name</pre>
         </div>
       </div>
 
-      <!-- Step 2 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">2</div>
@@ -174,7 +223,6 @@ git remote add upstream https://github.com/original-owner/project-name.git</pre>
         </div>
       </div>
 
-      <!-- Step 3 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">3</div>
@@ -196,7 +244,6 @@ git branch</pre>
         </div>
       </div>
 
-      <!-- Step 4 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">4</div>
@@ -220,7 +267,6 @@ git add .</pre>
         </div>
       </div>
 
-      <!-- Step 5 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">5</div>
@@ -239,7 +285,6 @@ git commit -m "Fix: Resolve login redirect issue" -m "Users were being redirecte
         </div>
       </div>
 
-      <!-- Step 6 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">6</div>
@@ -258,7 +303,6 @@ git push -u origin feature/add-new-feature</pre>
         </div>
       </div>
 
-      <!-- Step 7 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">7</div>
@@ -285,7 +329,6 @@ Fixes #123</pre>
         </div>
       </div>
 
-      <!-- Step 8 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">8</div>
@@ -306,7 +349,6 @@ git push origin feature/add-new-feature
       </div>
     </div>
 
-    <!-- Tips Section -->
     <div class="tips-section">
       <h2 class="section-title">Essential Tips for Success</h2>
       <div class="tips-grid">
@@ -348,7 +390,6 @@ git push origin feature/add-new-feature
       </div>
     </div>
 
-    <!-- Best Practices -->
     <div class="best-practices">
       <div class="practices-container">
         <h3>Contribution Best Practices</h3>
