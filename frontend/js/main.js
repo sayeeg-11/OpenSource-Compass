@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Load Programs from JSON (Solves Issue #64)
     loadHomePagePrograms();
+       
 });
 
 // Function to fetch and render programs on the home page
@@ -78,3 +79,83 @@ function loadHomePagePrograms() {
             `;
         });
 }
+
+// ===============================
+// Back to Top Button (Contribute)
+// ===============================
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+if (scrollTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
+console.log("Progress tracker JS loaded");
+// STEP 5: Progress Tracker - Save Done State
+
+const STORAGE_KEY = "resourcesProgress";
+
+// load saved progress
+function loadProgress() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  return saved ? JSON.parse(saved) : {};
+}
+
+// save progress
+function saveProgress(progress) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+}
+
+const progress = loadProgress();
+
+document.querySelectorAll(".mark-done-btn").forEach((btn) => {
+  const id = btn.getAttribute("data-id");
+
+  // if already done, update UI
+  if (progress[id]) {
+    btn.innerText = "Completed";
+    btn.disabled = true;
+  }
+
+  btn.addEventListener("click", () => {
+    progress[id] = true;
+    saveProgress(progress);
+
+    btn.innerText = "Completed";
+    btn.disabled = true;
+    updateProgressBar();
+
+  });
+});
+// STEP 6: Update progress bar and percentage
+
+function updateProgressBar() {
+  const allButtons = document.querySelectorAll(".mark-done-btn");
+  const total = allButtons.length;
+  const completed = Object.keys(progress).length;
+
+  const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+  const bar = document.getElementById("progress-bar");
+  const text = document.getElementById("progress-text");
+
+  if (bar) bar.style.width = percent + "%";
+  if (text) text.innerText = percent + "% completed";
+}
+
+// update on page load
+updateProgressBar();
+ main
+

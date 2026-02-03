@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback | OpenSource Compass</title>
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/feedback.css">
+</head>
+
+<body>
+
+  <!-- 🔹 Shared Navbar (Injected by components.js) -->
+  <div id="navbar"></div>
+
+  <!-- Page Header -->
+  <section class="feedback-header">
+    <h1>We’d Love Your Feedback</h1>
+    <p>Your feedback helps improve OpenSource Compass for everyone.</p>
+  </section>
+
+  <!-- Feedback Form -->
+  <section class="feedback-container">
+    <form id="feedbackForm">
+
+      <label for="name">Name (optional)</label>
+      <input id="name" type="text" placeholder="Your name">
+
+      <label for="email">Email (optional)</label>
+      <input id="email" type="email" placeholder="Your email">
+
+      <label for="type">Feedback Type</label>
+      <select id="type" required>
+        <option value="">Select an option</option>
+        <option>Bug Report</option>
+        <option>Feature Request</option>
+        <option>UI / UX Feedback</option>
+        <option>Content Improvement</option>
+        <option>General Feedback</option>
+      </select>
+
+      <label for="message">Feedback Message *</label>
+      <textarea
+        id="message"
+        required
+        placeholder="Write your feedback here..."
+      ></textarea>
+
+      <button type="submit">Submit Feedback</button>
+
+      <p id="successMessage">Thank you! Your feedback has been submitted.</p>
+
+    </form>
+  </section>
+
+  <!-- 🔹 Shared Components + Page Logic -->
+  <script src="../js/components.js"></script>
+  <script src="../js/feedback.js"></script>
+
+</body>
+</html>

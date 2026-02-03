@@ -874,6 +874,7 @@
             outline-offset: 2px;
         }
     </style>
+  <link rel='manifest' href='../../../manifest.json' />
 </head>
 
 <body>
@@ -1059,10 +1060,9 @@
         </div>
     </section>
 
-    <footer>
-        <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
-    </footer>
+    <div id="footer"></div>
 
+    <script src="../../js/components.js"></script>
     <script>
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1113,5 +1113,6 @@
             }
         });
     </script>
+  <script src='../../js/pwa.js'></script>
 </body>
 </html>

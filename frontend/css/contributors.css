@@ -1,97 +1,87 @@
-/* contributors.css (page-specific)
-   Matches the classic cream/gold theme defined in style.css.
-*/
-
-.contributors-page .contributors-section {
-  padding-top: 4.25rem;
-}
-
-.contributors-page .contributors-section > p {
-  margin-bottom: 2.1rem;
-}
-
-.contributors-status {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--text-secondary);
-  font-family: "Inter", -apple-system, sans-serif;
-  font-size: 0.98rem;
-  min-height: 1.5rem;
-}
-
-.contributors-status.is-error {
-  color: #a12b2b;
-}
-
-.contributors-grid {
+/* =========================================
+   CONTRIBUTORS PAGE STYLES
+========================================= */
+.contributors-section {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.4rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
 }
 
-@media (min-width: 1100px) {
-  .contributors-grid {
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  }
+.contributors-section h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
+  color: var(--deep-navy);
 }
 
-@keyframes oscFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+body.dark-mode .contributors-section h1 {
+  color: #d2c917;
 }
 
-.contributor-card {
-  position: relative;
-  border-radius: 18px;
-  padding: 1.35rem 1.35rem 1.15rem;
-  background: rgb(255 255 255 / 92%);
-  box-shadow: var(--shadow-main);
-  border: 1px solid rgb(212 175 55 / 22%);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.contributors-section p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 620px;
 }
 
-.contributor-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(900px circle at 0% 0%, rgb(212 175 55 / 14%), transparent 45%),
-    radial-gradient(700px circle at 100% 0%, rgb(27 38 59 / 10%), transparent 45%);
-  pointer-events: none;
+body.dark-mode .contributors-section p {
+  color: #9ca3af;
+}
+
+/* ---------- Stats ---------- */
+.contributors-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.contributors-stats span {
+  background: #f5f7fb;
+  padding: 0.8rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+/* ---------- Controls ---------- */
+.contributors-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#contributor-search {
+  flex: 1;
+  max-width: 250px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #e1e4ea;
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+}
+
+#contributor-search:focus {
+  outline: none;
+  border-color: var(--deep-navy);
+}
+
+.bot-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--contributors-text);
+  cursor: pointer;
 }
 
 .contributor-card.is-visible {
-  animation: oscFadeUp 0.5s ease both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contributor-card {
-    transition: none;
-  }
-  .contributor-card.is-visible {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .contributor-skeleton .sk {
-    animation: none;
-  }
-}
-
-.contributor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .contributor-card-inner {
@@ -100,56 +90,13 @@
   align-items: center;
   gap: 1rem;
   min-width: 0;
+.contributor-card:hover {
+  transform: translateY(-2px);
 }
 
 .contributor-avatar {
-  width: 64px;
-  height: 64px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgb(212 175 55 / 55%);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 10%);
-  flex: 0 0 auto;
 }
-
-.contributor-main {
-  flex: 1;
-  min-width: 0;
-}
-
-.contributor-name {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  color: var(--deep-navy);
-  font-size: 1.25rem;
-  line-height: 1.15;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.contributor-meta {
-  margin-top: 0.35rem;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-
-.contributor-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  font-family: "Inter", -apple-system, sans-serif;
-  font-size: 0.82rem;
-  color: var(--deep-navy);
-  background: linear-gradient(135deg, rgb(212 175 55 / 14%), rgb(184 134 11 / 10%));
-  border: 1px solid rgb(212 175 55 / 24%);
-  white-space: nowrap;
-}
-
 .contributor-chip.is-bot {
   background: linear-gradient(135deg, rgb(27 38 59 / 12%), rgb(212 175 55 / 10%));
 }
@@ -175,6 +122,134 @@
 .contributor-github:hover {
   transform: scale(1.06);
   background: rgb(255 248 231 / 95%);
+}
+.contributor-card {
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 96%),
+    rgb(255 255 255 / 88%)
+  );
+  border-radius: 20px;
+  padding: 1.5rem 1.55rem 1.35rem;
+  box-shadow:
+    0 6px 16px rgb(0 0 0 / 6%)
+    inset 0 1px 0 rgb(255 255 255 / 60%);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 360px;
+  margin: 0 auto;
+  position: relative;
+
+  /* 🔹 REQUIRED for issue */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+.contributor-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 45px rgb(0 0 0 / 14%),
+    0 0 0 2px rgb(212 175 55 / 45%);
+}
+
+
+.contributor-avatar {
+ 
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.12);
+  border: 3px solid #d4af37; /* subtle gold */
+  flex-shrink: 0;
+}
+
+.contributor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contributor-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a2433; /* dark navy */
+  margin: 0;
+}
+
+.contributor-meta {
+  
+  display: flex;
+ 
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.contributor-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0e3d2e; /* dark green */
+  background: #d7f0e1; /* light green */
+  border: 1px solid #a7d9bb;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+}
+
+
+.contributor-chip.is-first {
+  background: #d7f0e1;
+  color: #0e3d2e;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgb(14 61 46 / 0.25);
+}
+
+.contributor-meta .merged-prs {
+  background: #f8eacb;
+  color: #5f4600;
+  border: 1px solid #e3d49a;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+  padding: 0.35rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.contributor-actions {
+  
+  flex-shrink: 0;
+}
+
+.contributor-github {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a2433;
+  background: #f9f9f9;
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.07);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.contributor-github:hover {
+  background: #fff8dc;
+  transform: scale(1.12);
+  box-shadow: 0 4px 10px rgb(212 175 55 / 0.5);
 }
 
 /* Skeleton loading */
@@ -231,9 +306,7 @@
   .contributors-grid {
     gap: 1rem;
   }
-  .contributor-card {
-    padding: 1.1rem;
-  }
+ 
   .contributor-card-inner {
     flex-direction: column;
     text-align: center;
@@ -385,22 +458,7 @@
   margin-bottom: 2rem;
 }
 
-.contributor-card {
-  background: var(--secondary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
 
-.contributor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgb(0 247 255 / 10%);
-  border-color: var(--glow);
-}
 
 .contributor-card.highlighted {
   border: 2px solid #ffc107;
@@ -614,9 +672,7 @@
     font-size: 1.5rem;
   }
 
-  .contributor-card {
-    padding: 1rem;
-  }
+
 
   .contributor-card img {
     width: 60px;
@@ -634,5 +690,619 @@
 
   .contribute-steps {
     grid-template-columns: 1fr;
+  }
+}
+.contributor-chip.is-first {
+  background: #eafaf1;
+  color: #137333;
+  font-weight: 600;
+}
+/* ================================
+   Contributors UI – Polished Layer
+   ================================ */
+
+/* Better section rhythm */
+.contributors-page .contributors-section {
+  padding-top: 4.5rem;
+  padding-bottom: 3rem;
+}
+
+.contributors-page .contributors-section > p {
+  margin-bottom: 2.6rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.contributors-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem 3rem; /* more space */
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 600px) {
+  .contributors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .contributors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+
+/* Tablet */
+@media (min-width: 640px) {
+  .contributors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large desktop only */
+@media (min-width: 1400px) {
+  .contributors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1300px;
+  }
+}
+
+/* Card refinement */
+.contributor-card {
+  padding: 1.5rem 1.55rem 1.35rem;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+   #dfc981fb,
+    rgb(255 255 255 / 88%)
+  );
+  box-shadow:
+    0 12px 30px rgb(0 0 0 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 60%);
+}
+
+/* Hover feels lighter */
+.contributor-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 18px 40px rgb(0 0 0 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 65%);
+}
+
+/* Inner layout spacing */
+.contributor-card-inner {
+  gap: 1.15rem;
+}
+
+/* Avatar polish */
+.contributor-avatar {
+  width: 66px;
+  height: 66px;
+  border: 2px solid rgb(212 175 55 / 65%);
+  box-shadow:
+    0 10px 22px rgb(0 0 0 / 12%);
+}
+
+/* Name clarity */
+.contributor-name {
+  font-size: 1.28rem;
+  letter-spacing: 0.2px;
+}
+
+/* Meta spacing */
+.contributor-meta {
+  margin-top: 0.45rem;
+  gap: 0.5rem 0.55rem;
+}
+
+/* Base chip polish */
+.contributor-chip {
+  padding: 0.38rem 0.72rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgb(212 175 55 / 22%);
+}
+
+/* First-time contributor badge */
+.contributor-chip.is-first {
+  background: linear-gradient(
+    135deg,
+    #e6f4ea,
+    #d7f0e3
+  );
+  color: #137333;
+  font-weight: 600;
+  border-color: rgb(19 115 51 / 25%);
+}
+
+/* Tier badges */
+.contributor-chip.tier-gold {
+  background: linear-gradient(135deg, #fff6d6, #ffefad);
+  color: #8a6a00;
+  border-color: rgb(212 175 55 / 55%);
+}
+
+.contributor-chip.tier-silver {
+  background: linear-gradient(135deg, #f3f5f7, #e6eaee);
+  color: #5f6b76;
+  border-color: rgb(120 130 140 / 35%);
+}
+
+.contributor-chip.tier-bronze {
+  background: linear-gradient(135deg, #f7e8dd, #f0d8c6);
+  color: #7a4a1f;
+  border-color: rgb(160 100 50 / 35%);
+}
+
+/* Bot badge – quieter */
+.contributor-chip.is-bot {
+  background: linear-gradient(
+    135deg,
+    rgb(27 38 59 / 10%),
+    rgb(27 38 59 / 6%)
+  );
+  color: var(--text-secondary);
+}
+
+/* GitHub action button */
+.contributor-github {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 95%),
+    rgb(248 248 248 / 90%)
+  );
+}
+
+.contributor-github:hover {
+  background: rgb(255 250 235);
+}
+
+/* Mobile tuning */
+@media (max-width: 720px) {
+  .contributors-grid {
+    gap: 1.1rem;
+  }
+
+  .contributor-card {
+    padding: 1.2rem;
+  }
+
+  .contributor-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .contributor-name {
+    font-size: 1.15rem;
+  }
+}
+
+.contributor-main {
+  flex: 1 1 auto;       
+  min-width: 0;         
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contributor-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a2433;
+  margin: 0;
+  white-space: nowrap;         
+  overflow: hidden;           
+  text-overflow: ellipsis;    
+}
+
+.contributor-actions {
+  flex-shrink: 0;  
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Animation trigger */
+.contributor-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contributor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #d4af37; /* Gold border on hover */
+}
+
+/* 3. Inner Layout */
+.contributor-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* 4. Avatar */
+.contributor-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+    flex-shrink: 0;
+}
+
+/* 5. Main Content Area */
+.contributor-main {
+    flex: 1;
+    min-width: 0; /* Prevents text overflow */
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* 6. Name */
+.contributor-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1b263b; /* Deep Navy */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 7. Meta Tags (Merged PRs count) */
+.contributor-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.contributor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    background-color: #fdf4e3; /* Warm Cream */
+    color: #b8860b; /* Dark Gold */
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.contributor-chip i {
+    font-size: 0.7rem;
+}
+
+/* Bot Badge Style */
+.contributor-chip.is-bot {
+    background-color: #e0e0e0;
+    color: #555;
+}
+
+/* 8. Action Buttons (GitHub Link) */
+.contributor-actions {
+    margin-left: auto;
+}
+
+.contributor-github {
+    font-size: 1.5rem;
+    color: #1b263b;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contributor-github:hover {
+    color: #d4af37; /* Gold */
+}
+
+/* =========================================
+   SKELETON LOADING ANIMATION
+========================================= */
+.contributor-skeleton {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.25rem;
+    height: 106px; /* Approx height of real card */
+}
+
+.sk {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.sk.avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.sk.line1 {
+    height: 16px;
+    width: 70%;
+    margin-bottom: 8px;
+}
+
+.sk.line2 {
+    height: 12px;
+    width: 40%;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   DARK MODE OVERRIDES (The Fix)
+========================================= */
+body.dark-mode .contributor-card {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .contributor-card:hover {
+    border-color: #d4af37 !important;
+    background-color: #252525 !important;
+}
+
+body.dark-mode .contributor-name {
+    color: #ffffff !important; /* White Name */
+}
+
+body.dark-mode .contributor-chip {
+    background-color: #333;
+    color: #d4af37; /* Gold text on dark chip */
+    border: 1px solid #444;
+}
+
+body.dark-mode .contributor-chip.is-bot {
+    background-color: #444;
+    color: #aaa;
+}
+
+body.dark-mode .contributor-github {
+    color: #e0e0e0 !important; /* White/Light Grey Icon */
+}
+
+body.dark-mode .contributor-github:hover {
+    color: #d4af37 !important; /* Gold on Hover */
+}
+
+/* Skeleton Dark Mode */
+body.dark-mode .contributor-skeleton {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark-mode .sk {
+    background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+    background-size: 200% 100%;
+}
+
+/* =========================================
+   CONTRIBUTORS STATS
+========================================= */
+
+.contributors-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0 2.5rem;
+  padding: 0 1rem;
+}
+
+/* Base Stat Pill */
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.2rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--contributors-border);
+  color: var(--contributors-text);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  /* load animation */
+  opacity: 0;
+  transform: translateY(8px);
+  animation: statFadeUp 0.45s ease forwards;
+}
+
+/* Staggered appearance */
+.stat-pill:nth-child(1) { animation-delay: 0.05s; }
+.stat-pill:nth-child(2) { animation-delay: 0.1s; }
+.stat-pill:nth-child(3) { animation-delay: 0.15s; }
+.stat-pill.stat-top     { animation-delay: 0.25s; }
+
+/* Label */
+.contributors-stats .stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1b263b;
+  padding: 0.5rem;
+}
+
+/* 🔥 GOLD NUMBER BADGE */
+.contributors-stats .stat-count {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background-color: #d4af37; 
+  color: #3a2a00;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* =========================================
+   TOP CONTRIBUTOR – ENHANCED
+========================================= */
+
+.stat-pill.stat-top {
+  background: linear-gradient(180deg, #e6c453, #fdeeb5);
+  border-color: #d4af37;
+  color: #634c00;
+  font-weight: 700;
+  box-shadow:
+    0 10px 24px rgba(212, 175, 55, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.stat-pill.stat-top .trophy {
+  font-size: 1rem;
+}
+
+.stat-pill.stat-top .stat-label,
+.stat-pill.stat-top strong {
+  font-size: 0.85rem;
+}
+
+/* =========================================
+   CONTRIBUTORS CONTROLS
+========================================= */
+
+.contributors-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+/* Search Input */
+#contributor-search {
+  width: 100%;
+  max-width: 360px;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ✨ GOLD FOCUS */
+#contributor-search:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+/* Checkbox */
+.bot-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1b263b;
+  white-space: nowrap;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .contributors-stats {
+    gap: 0.75rem;
+  }
+
+  .stat-pill {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contributors-stats {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stat-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contributors-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  #contributor-search {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode .stat-pill {
+  background: linear-gradient(180deg, #ffffff, #ffe9a9);
+  border-color: #d5c63e;
+  color: #a13636;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .stat-label {
+  color: #000000;
+}
+
+/* Gold still pops in dark mode */
+body.dark-mode .stat-count {
+  background: linear-gradient(180deg, #f5d77a, #d4af37);
+  color: #2a1f00;
+}
+
+body.dark-mode .stat-pill.stat-top {
+  background: linear-gradient(180deg, #2a2414, #1f1a10);
+  border-color: #d4af37;
+  color: #f5d77a;
+}
+
+body.dark-mode .bot-toggle {
+  color: #f5d77a;
+}
+
+body.dark-mode #contributor-search {
+  background-color: #1e1e1e;
+  border-color: #333;
+  color: #ffffff;
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes statFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

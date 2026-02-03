@@ -1,0 +1,436 @@
+/* =========================
+   COMPASS DASHBOARD (RECOMMENDATIONS)
+   ========================= */
+
+.recommendations-section {
+    padding: 6rem 1.5rem;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(27, 38, 59, 0.05) 0%, transparent 40%),
+        linear-gradient(180deg, var(--light-parchment) 0%, var(--warm-cream) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle Map Grid Background */
+.recommendations-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, transparent 80%);
+    pointer-events: none;
+}
+
+.compass-dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 20px 50px rgba(27, 38, 59, 0.1),
+        0 0 0 1px rgba(212, 175, 55, 0.15) inset;
+    padding: 3rem 2rem;
+    overflow: hidden;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.compass-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--deep-navy), #24344d);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(27, 38, 59, 0.25);
+    border: 2px solid var(--primary-gold);
+}
+
+.compass-icon-wrapper i {
+    font-size: 1.8rem;
+    color: var(--primary-gold);
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spin-slow {
+    animation: spinSlow 8s linear infinite;
+}
+
+.dashboard-header h3 {
+    font-size: 2.2rem;
+    color: var(--deep-navy);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    font-family: "Crimson Text", serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* Form Styling */
+.compass-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.input-group {
+    position: relative;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--deep-navy);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group label i {
+    color: var(--primary-gold);
+    margin-right: 0.4rem;
+}
+
+.input-wrapper,
+.select-wrapper {
+    position: relative;
+}
+
+/* Inputs */
+.compass-form input,
+.compass-form select {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    color: var(--charcoal-dark);
+    transition: all 0.3s ease;
+    appearance: none;
+    /* for select */
+}
+
+.select-wrapper::after {
+    content: "\f0d7";
+    /* FontAwesome Caret Down */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.compass-form input:focus,
+.compass-form select:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+}
+
+.compass-form input::placeholder {
+    color: #a0a0a0;
+    font-style: italic;
+}
+
+.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gold);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.compass-form input:focus~.focus-border {
+    width: 100%;
+    left: 0;
+}
+
+.input-group small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Compass Button */
+.compass-btn {
+    background: linear-gradient(135deg, var(--deep-navy) 0%, #2a3b55 100%);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 20px rgba(27, 38, 59, 0.2);
+    align-self: center;
+    margin-top: 1rem;
+    min-width: 280px;
+    position: relative;
+    overflow: hidden;
+}
+
+.compass-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.compass-btn:hover::before {
+    left: 100%;
+}
+
+.compass-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(27, 38, 59, 0.3);
+    background: linear-gradient(135deg, #24344d 0%, var(--deep-navy) 100%);
+}
+
+.compass-btn .btn-icon {
+    background: rgba(255, 255, 255, 0.1);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+/* =================================
+   RESULT CARDS (New Creative Style)
+   ================================= */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+}
+
+.project-result-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.8rem;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-result-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(27, 38, 59, 0.15);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Header */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.result-header h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.result-header h4 a {
+    text-decoration: none;
+    color: var(--deep-navy);
+    transition: color 0.2s;
+}
+
+.result-header h4 a:hover {
+    color: var(--primary-gold);
+}
+
+.result-header h4 i {
+    font-size: 0.7em;
+    opacity: 0.5;
+    margin-left: 0.3rem;
+    vertical-align: super;
+}
+
+.stat-pill {
+    font-size: 0.8rem;
+    background: #fff9e6;
+    color: #b8860b;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Description */
+.result-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.2rem;
+}
+
+/* Tags */
+.result-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.tag.difficulty-beginner {
+    background: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.tag.difficulty-intermediate {
+    background: rgba(243, 156, 18, 0.1);
+    color: #d35400;
+}
+
+.tag.difficulty-advanced {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+}
+
+.tag.program-tag {
+    background: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Meta Footer */
+.result-meta {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.meta-item i {
+    margin-right: 0.4rem;
+    color: #ccc;
+}
+
+.match-score {
+    color: var(--primary-gold);
+    font-weight: 700;
+}
+
+.match-score i {
+    color: var(--primary-gold);
+}
+
+/* Dark Mode Results */
+body.dark-mode .project-result-card {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .result-header h4 a {
+    color: #f1f5f9;
+}
+
+body.dark-mode .result-header h4 a:hover {
+    color: var(--primary-gold);
+}
+
+body.dark-mode .stat-pill {
+    background: rgba(212, 175, 55, 0.2);
+    color: #fcd34d;
+}
+
+body.dark-mode .result-desc {
+    color: #94a3b8;
+}
+
+body.dark-mode .result-meta {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #64748b;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      button {
+        margin-top: 10px;
+        padding: 10px 16px;
+        background: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .reply {
+        margin-top: 16px;
+        padding: 12px;
+        background: #f3f3f3;
+        border-radius: 6px;
+      }
+    </style>
+    <link rel='manifest' href='../../manifest.json' />
+</head>
+
+  <body>
+    <h2>Chat with AI</h2>
+
+    <textarea
+      id="prompt"
+      rows="4"
+      placeholder="Ask something..."
+    ></textarea>
+
+    <br />
+
+    <button onclick="handleSend()">Ask AI</button>
+
+    <div id="replyBox" class="reply" style="display: none;">
+      <b>AI:</b> <span id="replyText"></span>
+    </div>
+
+    <script>
+      async function handleSend() {
+        const prompt = document.getElementById("prompt").value;
+        const replyBox = document.getElementById("replyBox");
+        const replyText = document.getElementById("replyText");
+
+        try {
+          const res = await fetch("http://localhost:8000/api/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt }),
+          });
+
+          const data = await res.json();
+          replyText.innerText = data.reply;
+          replyBox.style.display = "block";
+        } catch (err) {
+          console.error(err);
+          alert("AI Error");
+        }
+      }
+    </script>
+    <script src='../js/pwa.js'></script>
+</body>
+</html>

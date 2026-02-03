@@ -18,9 +18,71 @@
   <link rel="stylesheet" href="../css/guides.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="/frontend/css/dark-mode.css">
+  <link rel='manifest' href='../../manifest.json' />
 </head>
+<style>
+/* =========================================
+   GUIDES PAGE DARK MODE FIXES (Corrected)
+========================================= */
 
+/* 1. Force Main Backgrounds */
+body.dark-mode .guide,
+body.dark-mode .pull-request-guide,
+body.dark-mode .github-guide-timeline,
+body.dark-mode .contributing-best-practices,
+body.dark-mode .common-mistakes {
+    background-color: #121212 !important; /* Cold Dark Gray */
+    color: #e0e0e0 !important;
+}
+
+/* 2. Fix Card Backgrounds */
+/* Targets all the different cards in your HTML */
+body.dark-mode .guide-list li,
+body.dark-mode .pr-steps li,
+body.dark-mode .timeline-list li,
+body.dark-mode .practice-item,
+body.dark-mode .mistakes-list li {
+    background-color: #1e1e1e !important; /* Dark Card Bg */
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* 3. GOLD TEXT FIX */
+/* Applies Dark Golden color to the specific headlines you asked for */
+body.dark-mode .guide-list h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .timeline-list h4,
+body.dark-mode .practice-item h4 {
+    color: #b8860b !important; /* Dark Golden */
+}
+
+/* 4. Fix Icons & Step Numbers to Match */
+body.dark-mode .step,
+body.dark-mode .icon,
+body.dark-mode .mistake-icon {
+    color: #d4af37 !important; /* Lighter Gold for icons */
+    border-color: #d4af37 !important;
+}
+
+/* 5. Fix Body Text (Descriptions) */
+body.dark-mode .guide-list p,
+body.dark-mode .pr-steps p,
+body.dark-mode .timeline-list p,
+body.dark-mode .practice-item p {
+    color: #cccccc !important; /* Light Grey */
+}
+
+/* 6. Hover Effects */
+body.dark-mode .guide-list li:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .practice-item:hover {
+    border-color: #d4af37 !important;
+    transform: translateY(-5px);
+}
+</style>
 <body>
+  <div id="cursor-highlight" aria-hidden="true"></div>
 
 <!-- Navbar copied EXACTLY from home.html -->
 <header>
@@ -37,6 +99,14 @@
       <a href="./contributors.html">Contributors</a>
       <a href="./faq.html">FAQ</a>
       <a href="./Contribute.html">Contribute</a>
+      <button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+>
+  <i class="fas fa-moon" aria-hidden="true"></i>
+</button>
     </div>
   </div>
 </header>
@@ -170,6 +240,41 @@
       <h4>Communicate professionally</h4>
       <p>Be polite, constructive, and respectful when discussing changes or providing feedback.</p>
     </div>
+    <div class="practice-item">
+  <div class="icon">🔍</div>
+  <h4>Read and understand existing issues</h4>
+  <p>
+    Review open and closed issues to avoid duplicate efforts and to understand
+    current discussions or decisions.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">💬</div>
+  <h4>Ask before working on large or breaking changes</h4>
+  <p>
+    Discuss major changes with maintainers beforehand to ensure alignment with
+    the project’s direction.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">🧩</div>
+  <h4>Keep pull requests small and focused</h4>
+  <p>
+    Small, well-scoped pull requests are easier to review, test, and merge.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">📄</div>
+  <h4>Update documentation when behavior changes</h4>
+  <p>
+    Make sure README files or guides reflect any changes introduced by your
+    contribution.
+  </p>
+</div>
+
   </div>
 </section>
 <section class="common-mistakes">
@@ -191,15 +296,41 @@
       <span class="mistake-icon">4</span>
       <p>Not testing changes before submitting</p>
     </li>
+        <li>
+      <span class="mistake-icon">5</span>
+      <p>Opening issues or pull requests without checking for duplicates</p>
+    </li>
+    <li>
+      <span class="mistake-icon">6</span>
+      <p>Ignoring or misunderstanding maintainers’ feedback</p>
+    </li>
+    <li>
+      <span class="mistake-icon">7</span>
+      <p>Making large or breaking changes without prior discussion</p>
+    </li>
+    <li>
+      <span class="mistake-icon">8</span>
+      <p>Poor or unclear pull request descriptions</p>
+    </li>
   </ul>
 </section>
 
 </main>
 
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+
   <script src="../js/theme.js"></script>
 
 
 <script src="../js/chatbot.js"></script>
+<script src="../js/main.js"></script>
+<script src="/frontend/js/DMtheme.js"></script>
+  <button id="scrollTopBtn" title="Back to Top">
+   <i class="fas fa-chevron-up"></i>
+  </button>
+  <script src='../js/pwa.js'></script>
 </body>
 
 </html>

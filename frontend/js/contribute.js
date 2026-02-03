@@ -179,3 +179,4 @@ function addEventListeners() {
 function simulatePR() {
     alert("Great job! You've completed all the steps to contribute to open source.\n\nIn a real scenario, you would now:\n1. Navigate to your fork on GitHub\n2. Click 'Compare & pull request'\n3. Fill out the PR template with your changes\n4. Submit your PR for review");
 }
+

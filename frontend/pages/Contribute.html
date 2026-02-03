@@ -5,10 +5,12 @@
   <title>How to Contribute - OpenSource Compass</title>
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -16,12 +18,10 @@
     rel="stylesheet"
   />
 
-  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contribute.css" />
 </head>
-
 <body>
-  <!-- Navbar -->
   <header>
     <div class="navbar-container">
       <h1>
@@ -36,23 +36,27 @@
         <a href="./contributors.html">Contributors</a>
         <a href="./faq.html">FAQ</a>
         <a href="./Contribute.html">Contribute</a>
+        <button
+          id="themeToggle"
+          aria-label="Toggle dark mode"
+          title="Toggle dark mode"
+          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+        >
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
     <div class="hero-section">
       <h2>Your Journey to Open Source Contribution</h2>
       <p>Master the art of contributing to open source projects with our comprehensive step-by-step guide. From forking your first repository to submitting pull requests like a seasoned developer.</p>
     </div>
 
-    <!-- Steps Section -->
     <div class="steps-container">
       <h2 class="section-title">Complete Contribution Workflow</h2>
 
-      <!-- Step 1 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">1</div>
@@ -71,7 +75,6 @@ https://github.com/your-username/project-name</pre>
         </div>
       </div>
 
-      <!-- Step 2 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">2</div>
@@ -93,7 +96,6 @@ git remote add upstream https://github.com/original-owner/project-name.git</pre>
         </div>
       </div>
 
-      <!-- Step 3 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">3</div>
@@ -115,7 +117,6 @@ git branch</pre>
         </div>
       </div>
 
-      <!-- Step 4 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">4</div>
@@ -139,7 +140,6 @@ git add .</pre>
         </div>
       </div>
 
-      <!-- Step 5 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">5</div>
@@ -158,7 +158,6 @@ git commit -m "Fix: Resolve login redirect issue" -m "Users were being redirecte
         </div>
       </div>
 
-      <!-- Step 6 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">6</div>
@@ -177,7 +176,6 @@ git push -u origin feature/add-new-feature</pre>
         </div>
       </div>
 
-      <!-- Step 7 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">7</div>
@@ -204,7 +202,6 @@ Fixes #123</pre>
         </div>
       </div>
 
-      <!-- Step 8 -->
       <div class="step">
         <div class="step-header">
           <div class="step-number">8</div>
@@ -225,7 +222,6 @@ git push origin feature/add-new-feature
       </div>
     </div>
 
-    <!-- Tips Section -->
     <div class="tips-section">
       <h2 class="section-title">Essential Tips for Success</h2>
       <div class="tips-grid">
@@ -267,7 +263,6 @@ git push origin feature/add-new-feature
       </div>
     </div>
 
-    <!-- Best Practices -->
     <div class="best-practices">
       <div class="practices-container">
         <h3>Contribution Best Practices</h3>
@@ -301,12 +296,17 @@ git push origin feature/add-new-feature
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      © 2026 OpenSource Compass ·
-      <a href="https://github.com/sayeeg-11/opensource-compass">GitHub</a>
-    </p>
-  </footer>
+  <button id="scrollTopBtn" title="Back to Top">
+   <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <div id="footer"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="/frontend/js/DMtheme.js"></script>
+
+  <script src='../js/pwa.js'></script>
 </body>
 </html>

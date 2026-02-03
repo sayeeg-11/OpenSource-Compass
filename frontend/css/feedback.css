@@ -1,0 +1,63 @@
+.feedback-header {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.feedback-header h1 {
+  font-size: 2.5rem;
+  color: var(--deep-navy);
+}
+
+.feedback-header p {
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+
+.feedback-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  background-color: var(--primary-gold);
+  color: #000;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#successMessage {
+  display: none;
+  color: green;
+  margin-top: 10px;
+  font-weight: 600;
+}
