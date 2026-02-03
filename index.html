@@ -14,19 +14,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      :root {
-        --primary-gold: #d4af37;
-        --secondary-gold: #b8860b;
-        --deep-navy: #1b263b;
-        --warm-cream: #fdf4e3;
-        --light-parchment: #fff8e7;
-        --charcoal-dark: #2c2c2c;
-        --text-secondary: #5a5a5a;
-        --success-emerald: #2e8b57;
-        --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
-        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
-      }
-
       * {
         margin: 0;
         padding: 0;
@@ -822,11 +809,11 @@
     </button>
 
     <script>
-  const hamburger = document.getElementById("hamburger");
+  const hamburge = document.getElementById("hamburger");
   const navLinks = document.getElementById("nav-links");
   const navItems = navLinks.querySelectorAll("a");
 
-  hamburger.addEventListener("click", () => {
+  hamburge.addEventListener("click", () => {
     navLinks.classList.toggle("active");
   });
 
@@ -839,7 +826,7 @@
 
   // 🔥 Close menu when clicking outside
   document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+    if (!navLinks.contains(e.target) && !hamburge.contains(e.target)) {
       navLinks.classList.remove("active");
     }
   });
@@ -942,36 +929,7 @@
       };
     </script>
   </body>
-=======
-<head>
-    <meta charset="UTF-8">
-    <title>OpenSource Compass - Classic Edition</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-
-<!-- Navbar -->
-<header>
-    <h1>OpenSource Compass</h1>
-    <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <nav>
-        <div class="close-icon">X</div>
-        <a href="#">Home</a>
-        <a href="#">Guides</a>
-        <a href="#">Programs</a>
-        <a href="#">Resources</a>
-        <a href="#">Contribute</a>
-    </nav>
-</header>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -1483,6 +1441,7 @@
             header {
                 padding: 0.9rem 5%;
             }
+          }
 
 .footer-container {
     display: grid;
@@ -1592,121 +1551,3 @@
 }
    
     </style>
-</head>
-<body>
-    <!-- Same HTML structure as before, no changes needed -->
-
-
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Navigate Your Open Source Odyssey</h2>
-            <p>Discover timeless wisdom for open source mastery. From first commit to maintainer status, chart your course with proven guides and legendary programs.</p>
-            <button onclick="document.querySelector('#programs').scrollIntoView({behavior: 'smooth'})">
-                <i class="fas fa-rocket" style="margin-right: 0.4rem;"></i>Launch Journey
-            </button>
-        </div>
-    </section>
-
-    <section id="why">
-        <h3>Why OpenSource Compass?</h3>
-        <p>Timeless principles meet modern open source. Structured paths built from decades of collective wisdom.</p>
-        <div class="card-grid">
-            <div class="card fade-in">
-                <h4><i class="fas fa-seedling"></i> Timeless Foundations</h4>
-                <p>Proven methodologies refined over 20+ years of open source evolution.</p>
-            </div>
-            <div class="card fade-in">
-                <h4><i class="fas fa-scroll"></i> Code of Conduct Mastery</h4>
-                <p>Navigate community norms with confidence and cultural fluency.</p>
-            </div>
-            <div class="card fade-in">
-                <h4><i class="fas fa-users"></i> Mentor Network</h4>
-                <p>Connect with maintainers who guide thousands annually.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <h3>Open Source Impact</h3>
-        <div class="stats-grid">
-            <div class="stat-item fade-in">
-                <h2>50K+</h2>
-                <p>First Contributions</p>
-            </div>
-            <div class="stat-item fade-in">
-                <h2>200+</h2>
-                <p>Programs Tracked</p>
-            </div>
-            <div class="stat-item fade-in">
-                <h2>10K+</h2>
-                <p>Active Mentors</p>
-            </div>
-            <div class="stat-item fade-in">
-                <h2>5Y+</h2>
-                <p>Proven Track Record</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="programs" id="programs">
-        <h3>Legendary Open Source Programs</h3>
-        <p>Curated programs with historical success rates and maintainer insights.</p>
-        <div class="card-grid">
-            <div class="card fade-in"><h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4><p>India's premier winter program. 85% acceptance for quality proposals.</p><span class="badge">Jan 2026</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4><p>3,000+ students mentored. Industry partner stipends.</p><span class="badge">Summer 2026</span></div>
-            <div class="card fade-in"><h4><i class="fab fa-google"></i> Google Summer of Code</h4><p>Global standard. $3K+ stipends. 20+ years running.</p><span class="badge">Advanced</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-leaf"></i> Outreachy</h4><p>Underrepresented voices. Paid internships. 90% retention.</p><span class="badge">Internship</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-mountain"></i> MLH Season of Code</h4><p>Hackathon network. Portfolio projects. Live mentorship.</p><span class="badge">Spring 2026</span></div>
-            <div class="card fade-in"><h4><i class="fas fa-globe"></i> Linux Foundation Mentorship</h4><p>Enterprise backing. Kubernetes, LF projects. Paid.</p><span class="badge">Professional</span></div>
-        </div>
-    </section>
-
-    <section class="newsletter">
-        <h3>Stay Ahead of Open Source</h3>
-        <p>Weekly dispatches: program deadlines, maintainer AMAs, contribution strategies.</p>
-        <form>
-            <input type="email" placeholder="Your dev email..." required>
-            <button type="submit"><i class="fas fa-paper-plane" style="margin-right: 0.4rem;"></i>Subscribe</button>
-        </form>
-    </section>
-
-    <div id="footer"></div>
-
-    <button id="scrollTopBtn" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
-
-    <script>
-        // Smooth scroll animations (unchanged)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        window.addEventListener('scroll', () => {
-            scrollTopBtn.style.display = window.scrollY > 600 ? 'flex' : 'none';
-            scrollTopBtn.style.alignItems = 'center';
-            scrollTopBtn.style.justifyContent = 'center';
-        });
-        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        document.querySelector('.newsletter form').addEventListener('submit', e => {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            alert(`Welcome aboard, ${email.split('@')[0]}! 🌟 Check your inbox.`);
-            e.target.reset();
-        });
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset * 0.3;
-            document.querySelector('.hero').style.transform = `translateY(${scrolled}px)`;
-        });
-    </script>
-    <script src="/frontend/js/components.js"></script>
-    <script src="/frontend/js/theme.js"></script>
-</body>
-</html>
