@@ -113,6 +113,12 @@ OPENSOURCE-COMPASS/
 
 ---
 ## 🖼️ Screenshots
+
+<a href="frontend/assets/templates/Home.png" target="_blank">
+  View Home Page
+</a>
+
+
 ![Home Page](frontend\assets\templates\Home.png)
 
 ![guide Page](frontend\assets\templates\guides.png)
