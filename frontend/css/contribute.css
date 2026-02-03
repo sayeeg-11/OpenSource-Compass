@@ -37,15 +37,16 @@ body {
   color: var(--charcoal-dark);
 }
 
-
 header {
+  position: fixed !important; /* Locks the navbar to the viewport */
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 3px solid var(--primary-gold);
   padding: 1rem 6%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   box-shadow: var(--shadow-main);
 }
 
@@ -607,4 +608,68 @@ padding: 1.6rem 1.3rem;
 
 #scrollTopBtn.show {
   display: flex;
+}
+
+/* Dark mode fixes scoped to Contribute page */
+body.dark-mode main,
+body.dark-mode section {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background-color: #121212;
+  border-bottom: 1px solid #333;
+}
+
+/* Cards in dark mode */
+body.dark-mode .step,
+body.dark-mode .tip-card,
+body.dark-mode .practices-container {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+/* Headings + emphasis */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode strong,
+body.dark-mode b {
+  color: var(--primary-gold);
+}
+
+/* Step number contrast */
+body.dark-mode .step-number {
+  color: #ffffff;
+}
+
+/* Body text readability */
+body.dark-mode p,
+body.dark-mode li {
+  color: #cccccc;
+}
+
+/* Code blocks remain readable */
+body.dark-mode .code-block,
+body.dark-mode pre {
+  background-color: #ffffff;
+  color: #333333;
+  border-color: #e0e0e0;
+}
+
+body.dark-mode code {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* Best practices section stays light */
+body.dark-mode .practices-container {
+  background-color: #ffffff;
+}
+
+body.dark-mode .practices-container * {
+  color: #333333;
 }

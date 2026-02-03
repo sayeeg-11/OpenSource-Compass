@@ -1,63 +1,71 @@
 :root {
-      --osc-navy: #0a192f;
-      --osc-gold: #d4af37;
-      --osc-gold-dark: #b8860b;
-      --osc-cream: #fdfbf5;
-      --osc-white: #ffffff;
-      --osc-text-main: #1d2129;
-      --osc-text-sub: #57606a;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  --osc-navy: #0a192f;
+  --osc-gold: #d4af37;
+  --osc-gold-dark: #b8860b;
+  --osc-cream: #fdfbf5;
+  --osc-white: #ffffff;
+  --osc-text-main: #1d2129;
+  --osc-text-sub: #57606a;
+  
+  /* Color Mappings */
+  --primary-gold: var(--osc-gold);
+  --deep-navy: var(--osc-navy);
+  --warm-cream: var(--osc-cream);
+  --text-secondary: var(--osc-text-sub);
+  --light-parchment: #ffffff; 
+  --shadow-main: 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-hover: 0 10px 15px rgba(0,0,0,0.1);
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  body {
-      background-color: var(--osc-cream);
-      color: var(--osc-text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-    }
+body {
+  background-color: var(--osc-cream);
+  color: var(--osc-text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 .container {
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
-
-
-/* Section */
+/* --- Section: Resources --- */
 .resources-section {
   padding: 4rem 1rem;
- 
 }
+
 .resources-header {
   max-width: 700px;
   margin: 0 auto 4rem;
   text-align: center;
-  padding: 4rem 1rem 6rem; /* extra bottom padding for curve */
+  padding: 4rem 1rem 6rem;
   position: relative;
-  background: var(--primary-gold); /* gold header background */
+  background: var(--primary-gold);
   color: var(--warm-cream);
-  border-radius: 0 0 50% 50% / 0 0 20% 20%; /* bottom curve */
+  border-radius: 0 0 50% 50% / 0 0 20% 20%;
   overflow: hidden;
+  transition: background 0.3s ease, border 0.3s ease;
 }
 
-/* Main Title */
 .resources-header h3 {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
 }
 
-/* Subtitle / Description */
 .resources-header p {
   font-size: 1rem;
-  color: var(--warm-cream);
+  color: inherit;
   line-height: 1.6;
   max-width: 520px;
   margin: 0 auto 0;
 }
 
-/* Optional: small wave overlay with pseudo-element */
 .resources-header::after {
   content: "";
   position: absolute;
@@ -67,16 +75,15 @@
   height: 60px;
   background: var(--warm-cream);
   border-radius: 50% 50% 0 0;
+  transition: background 0.3s ease;
 }
 
-/* Resource List */
 .resources-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-/* Resource Tile */
 .resource-tile {
   display: flex;
   align-items: flex-start;
@@ -85,7 +92,7 @@
   padding: 1.8rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
   cursor: pointer;
 }
 
@@ -94,27 +101,19 @@
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Accent Bar */
-.tile-accent {
-  width: 6px;
-  border-radius: 3px;
-  margin-right: 1rem;
-}
-
-/* Icon */
 .tile-icon {
   font-size: 2rem;
   margin-right: 1rem;
   flex-shrink: 0;
+  color: var(--primary-gold);
 }
 
-/* Content */
 .tile-meta {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: var(--primary-gold);
   margin-bottom: 0.5rem;
   display: block;
 }
@@ -122,122 +121,17 @@
 .tile-content h5 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1f1f3d;
+  color: var(--deep-navy);
   margin-bottom: 0.6rem;
 }
 
 .tile-content p {
   font-size: 0.95rem;
-  color: #555555;
+  color: var(--text-secondary);
   margin-bottom: 1.2rem;
   line-height: 1.5;
 }
 
-/* Links */
-.tile-content a {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #1f1f3d;
-  text-decoration: none;
-  position: relative;
-}
-
-.tile-content a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #d4af37;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.tile-content a:hover::after {
-  transform: scaleX(1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .resource-tile {
-    flex-direction: row;
-  }
-}
-/* Section */
-.templates-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
-}
-
-/* Header */
-.templates-header {
- max-width: 700px; margin: 0 auto 4rem; /* more breathing space */ text-align: center; padding: 0 1rem; position: relative;
-}
-
-.templates-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.templates-header p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Grid Layout */
-.templates-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-/* Tile */
-.template-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background: var(--light-parchment);
-  border-radius: 16px;
-  padding: 2rem 1.8rem;
-  box-shadow: var(--shadow-main);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
-  border-left: 6px solid var(--primary-gold);
-}
-
-.template-tile:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-gold);
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.tile-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.4rem;
-}
-
-/* Link */
 .tile-content a {
   font-size: 0.9rem;
   font-weight: 600;
@@ -246,6 +140,7 @@
   position: relative;
 }
 
+/* Gold underline effect on links */
 .tile-content a::after {
   content: "";
   position: absolute;
@@ -263,100 +158,22 @@
   transform: scaleX(1);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .template-tile {
-    padding: 1.6rem 1.4rem;
-  }
-  .tile-icon {
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
+  .resource-tile {
+    flex-direction: row;
   }
 }
 
-    /* --- Checklists --- */
-    .checklists-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .checklist-tile {
-      background: var(--osc-white);
-      padding: 2.5rem;
-      border-radius: 16px;
-      border-top: 4px solid var(--osc-gold);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .checklist-tile ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 1.5rem;
-    }
-
-    .checklist-tile li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-      color: var(--osc-text-main);
-    }
-
-    .checkmark { color: #2ecc71; font-weight: bold; }
-
-.checklist-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-right: 1rem;
-  color: var(--primary-gold);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 1rem;
-}
-
-
-.tile-content li {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .checklist-tile {
-    padding: 1.5rem;
-  }
-
-  .tile-icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-  }
-}
-/* Section */
-.tools-section {
+/* --- Shared Styles for Templates, Tools, Beginner Sections --- */
+.templates-section, 
+.tools-section, 
+.beginner-issues-section {
   padding: 4rem 1rem;
   background: var(--warm-cream);
+  transition: background 0.3s ease;
 }
 
-/* Header */
-.tools-header {
+.templates-header, .tools-header, .beginner-header {
   max-width: 700px;
   margin: 0 auto 4rem;
   text-align: center;
@@ -364,168 +181,90 @@
   position: relative;
 }
 
-.tools-header h3 {
+.templates-header h3, .tools-header h3, .beginner-header h3 {
   font-size: 2rem;
   font-weight: 700;
   color: var(--deep-navy);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
 }
 
-.tools-header p {
+.templates-header p, .tools-header p, .beginner-header p {
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Grid Layout */
-.tools-grid {
+.templates-grid, .tools-grid, .beginner-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  justify-items: center;
 }
 
-/* Tool Tile */
-.tool-tile {
+/* Generic Tile Style */
+.template-tile, .tool-tile, .beginner-tile {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   background: var(--light-parchment);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 2rem 1.8rem;
   box-shadow: var(--shadow-main);
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+  cursor: pointer;
   border-left: 6px solid var(--primary-gold);
   width: 100%;
+  box-sizing: border-box;
 }
 
-.tool-tile:hover {
-  transform: translateY(-5px);
+.tool-tile, .beginner-tile {
+  flex-direction: row;
+}
+
+.template-tile:hover, .tool-tile:hover, .beginner-tile:hover {
+  transform: translateY(-6px);
   box-shadow: var(--shadow-hover);
 }
 
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-right: 1rem;
-  color: var(--primary-gold);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.tile-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .tool-tile {
-    padding: 1.6rem;
-  }
-
-  .tile-icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-  }
-}
-/* Section */
-.beginner-issues-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
-}
-
-/* Header */
-.beginner-header {
-  max-width: 700px; margin: 0 auto 4rem; 
-  margin: 0 auto 4rem;
-  text-align: center;
-  padding: 0 1rem;
-  position: relative;
-}
-
-.beginner-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 0.5rem;
-}
-
-.beginner-header p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Grid Layout */
-.beginner-grid {
+/* --- Checklists --- */
+.checklists-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  justify-items: center;
 }
 
-/* Tile */
-.beginner-tile {
-  display: flex;
-  align-items: flex-start;
-  background: var(--light-parchment);
+.checklist-tile {
+  background: var(--osc-white);
+  padding: 2.5rem;
   border-radius: 16px;
-  padding: 2rem;
-  box-shadow: var(--shadow-main);
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border-left: 6px solid var(--secondary-gold);
-  width: 100%;
+  border-top: 4px solid var(--osc-gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: background 0.3s ease;
 }
 
-.beginner-tile:hover {
+.checklist-tile ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.checklist-tile li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--osc-text-main);
+}
+
+.checkmark { color: #2ecc71; font-weight: bold; }
+
+.checklist-tile:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
 }
 
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-right: 1rem;
-  color: var(--primary-gold);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.tile-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .beginner-tile {
-    padding: 1.6rem;
-  }
-
-  .tile-icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-  }
-}
-/* Empty State UI */
+/* --- Empty State --- */
 .empty-state {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -534,21 +273,81 @@
   background-color: #fafafa;
   color: #555;
   margin-top: 2rem;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
-.empty-state .empty-icon {
-  font-size: 3rem;
-  margin-bottom: 0.8rem;
+/* ========================================= */
+/* DARK MODE CONFIGURATION                   */
+/* ========================================= */
+
+body.dark-mode {
+  background-color: var(--osc-navy);
+  color: var(--osc-white);
 }
 
-.empty-state h4 {
-  margin-bottom: 0.4rem;
-  font-size: 1.2rem;
-  color: var(--deep-navy);
+/* 1. Update Section Backgrounds */
+body.dark-mode .templates-section,
+body.dark-mode .tools-section,
+body.dark-mode .beginner-issues-section,
+body.dark-mode .resources-section {
+  background-color: var(--osc-navy);
 }
 
-.empty-state p {
-  font-size: 0.95rem;
-  color: #777;
+/* 2. FIX FOR RESOURCES HEADER */
+/* Make background transparent so gold text is visible, remove the solid gold block */
+body.dark-mode .resources-header {
+  background: transparent;
+  border: 1px solid var(--osc-gold); /* Add gold border to maintain shape */
 }
 
+/* Update the curve at the bottom to match the dark body */
+body.dark-mode .resources-header::after {
+  background: var(--osc-navy); 
+}
+
+/* 3. GOLD HEADINGS (The Fix) */
+/* Forces these specific headings to use the Gold color in Dark Mode */
+body.dark-mode .resources-header h3,
+body.dark-mode .templates-header h3,
+body.dark-mode .tools-header h3,
+body.dark-mode .beginner-header h3,
+body.dark-mode .checklist-tile h5,
+body.dark-mode .empty-state h4 {
+  color: var(--osc-gold) !important;
+}
+
+/* 4. Subtext Coloring */
+body.dark-mode .resources-header p,
+body.dark-mode .templates-header p,
+body.dark-mode .tools-header p,
+body.dark-mode .beginner-header p {
+  color: #a8b2d1; /* Light grey/blue for readability */
+}
+
+/* 5. Card/Tile Styling in Dark Mode */
+body.dark-mode .resource-tile,
+body.dark-mode .template-tile,
+body.dark-mode .tool-tile,
+body.dark-mode .beginner-tile,
+body.dark-mode .checklist-tile {
+  background-color: #112240; /* Darker navy for cards */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Text inside cards */
+body.dark-mode .tile-content h5,
+body.dark-mode .tile-content a,
+body.dark-mode .checklist-tile li {
+  color: var(--osc-white);
+}
+
+body.dark-mode .tile-content p {
+  color: #a8b2d1;
+}
+
+/* Empty State Dark Mode */
+body.dark-mode .empty-state {
+  background-color: #112240;
+  border-color: #233554;
+  color: #a8b2d1;
+}

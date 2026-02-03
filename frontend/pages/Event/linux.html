@@ -1,1168 +1,1403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Linux Foundation Mentorship - OpenSource Compass</title>
     <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete guide to Linux Foundation Mentorship Program (LFX) - Learn about program structure, benefits, and how to apply for industry-backed open source mentorship.">
+    <meta name="description"
+        content="Complete guide to Linux Foundation Mentorship Program (LFX) - Learn about program structure, benefits, and how to apply for industry-backed open source mentorship.">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../../css/style.css">
-
     <style>
-        :root {
-            --primary-blue: #1F3C88;
-            --secondary-blue: #4D96FF;
-            --light-gray: #F5F7FA;
-            --text-dark: #2E2E2E;
-            --success-green: #3CCF91;
-            --white: #FFFFFF;
-            --accent-orange: #FF6B35;
-            --accent-purple: #9B59B6;
-        }
+        .home-hero {
+            background:
+                radial-gradient(1200px 600px at top right,
+                    rgba(212, 175, 55, 0.15),
+                    transparent 60%),
+                linear-gradient(135deg,
+                    var(--warm-cream),
+                    var(--light-parchment));
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 4px 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background: linear-gradient(135deg, #0d1f4d 0%, #1F3C88 50%, #2a4a9e 100%);
-            color: var(--white);
-            padding: 100px 8% 80px;
-            text-align: center;
-            position: relative;
+            padding: 6rem 2rem;
+            color: var(--text-primary);
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            opacity: 0.4;
+        .btn.secondary {
+            border: 1px solid var(--border-subtle);
+            color: var(--primary-gold);
+            background: transparent;
         }
 
-        .hero::after {
-            content: '';
+        .glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.25);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
+            inset: -40px;
+            background: radial-gradient(circle,
+                    rgba(212, 175, 55, 0.18),
+                    transparent 70%);
+            filter: blur(50px);
             z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+      
+        .hero-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 4rem;
         }
 
-        .hero .subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            margin-bottom: 16px;
-            font-weight: 500;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.3s both;
+        /* ---------------- CONTENT ---------------- */
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--primary-gold);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            animation: fadeSlideDown 1s ease forwards;
         }
 
-        .hero .intro {
-            font-size: clamp(1rem, 1.5vw, 1.15rem);
-            max-width: 750px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+        .hero-content h1 {
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            animation: fadeSlideUp 1.1s ease forwards;
         }
 
-        .hero .intro strong {
-            color: #FFD700;
-            font-weight: 600;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+        .hero-content h1 span {
+            color: var(--primary-gold);
         }
 
-        .hero .cta-buttons {
+        .hero-content p {
+            max-width: 520px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            animation: fadeSlideUp 1.3s ease forwards;
+        }
+
+        /* ---------------- BUTTONS ---------------- */
+
+        .hero-actions {
             display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
         .btn {
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 0.85rem 1.8rem;
             border-radius: 10px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
-            cursor: pointer;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            will-change: transform, box-shadow;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
-            transform: skewX(-20deg);
-            transition: transform 0.45s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.26);
-        }
-
-        .btn:hover::before {
-            transform: translateX(240%) skewX(-20deg);
-        }
-
-        /* ---------- About Section ---------- */
-        .about-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
-            position: relative;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .about-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .about-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .about-section p {
-            text-align: center;
-            max-width: 800px;
-            margin: 40px auto 50px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        /* ---------- Mentorship Tracks Section ---------- */
-        .tracks-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--light-gray) 0%, rgba(245, 247, 250, 0.5) 50%, var(--light-gray) 100%);
-            position: relative;
-        }
-
-        .tracks-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .tracks-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .tracks-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .tracks-section p {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-        }
-
-        .tracks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .track-card {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out both;
-            border: 1px solid rgba(77, 150, 255, 0.1);
-        }
-
-        .track-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(77, 150, 255, 0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.45s ease;
-        }
-
-        .track-card:hover::after {
-            opacity: 1;
-        }
-
-        .track-card:nth-child(1) { animation-delay: 0.1s; }
-        .track-card:nth-child(2) { animation-delay: 0.2s; }
-        .track-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .track-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            transition: height 0.3s ease;
-        }
-
-        .track-card:hover {
-            transform: translateY(-12px) scale(1.025);
-            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
-        }
-
-        .track-card:hover::before {
-            height: 6px;
-        }
-
-        .track-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 20px rgba(31, 60, 136, 0.3);
-            position: relative;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .track-icon::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .track-card:hover .track-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .track-card:hover .track-icon::before {
-            opacity: 0.3;
-        }
-
-        .track-card h3 {
-            font-size: 1.6rem;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .track-card p {
-            text-align: left;
-            color: var(--text-dark);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .track-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .track-card ul li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .track-card ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success-green);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* ---------- Benefits & Stipend Section ---------- */
-        .benefits-section {
-            padding: 80px 8%;
-            background: linear-gradient(135deg, #0d1f4d 0%, var(--primary-blue) 50%, #2C4A8F 100%);
-            color: var(--white);
-        }
-
-        .benefits-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .benefits-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
-            border-radius: 2px;
-        }
-
-        .benefits-section p {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            font-size: 1.1rem;
-            color: var(--white);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefit-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 32px;
-            border-radius: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease, border-color 0.35s ease;
-            color: var(--text-dark);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            animation: fadeInScale 0.6s ease-out both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
-        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
-        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
-        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
-        .benefit-card:nth-child(5) { animation-delay: 0.5s; }
-        .benefit-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .benefit-card:hover {
-            background-color: rgba(255, 255, 255, 1);
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
-            border-color: rgba(255, 215, 0, 0.7);
-        }
-
-        .benefit-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,255,255,0));
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-
-        .benefit-card:hover::after {
-            opacity: 1;
-        }
-
-        .benefit-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            position: relative;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(31, 60, 136, 0.25);
-        }
-
-        .benefit-icon::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .benefit-card:hover .benefit-icon {
-            transform: scale(1.15) rotate(-5deg);
-        }
-
-        .benefit-card:hover .benefit-icon::after {
-            opacity: 0.4;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--primary-blue);
             font-weight: 600;
+            text-decoration: none;
+            transition: all 0.35s var(--bounce-curve);
         }
 
-        .benefit-card .stipend-amount {
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 12px 0;
-            color: var(--primary-blue);
+        .btn.primary {
+            background: linear-gradient(135deg,
+                    var(--primary-gold),
+                    var(--secondary-gold));
+            color: #000;
+            box-shadow: var(--shadow-main);
         }
 
-        .benefit-card p {
-            text-align: left;
-            color: var(--text-dark);
-            line-height: 1.7;
-            margin: 0;
+        .btn.primary:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
-        /* ---------- Process Section ---------- */
-        .process-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
-            position: relative;
+        .btn.secondary {
+            border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.15));
+            color: var(--primary-gold);
+            background: transparent;
         }
 
-        .process-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
+        .btn.secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        .process-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
+        /* ---------------- STATS ---------------- */
 
-        .process-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .process-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .process-line {
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--secondary-blue), var(--success-green));
-            z-index: 0;
-        }
-
-        .process-steps {
+        .hero-stats {
             display: flex;
-            flex-direction: column;
-            gap: 40px;
+            gap: 2.5rem;
+        }
+
+        .hero-stats h3 {
+            color: var(--primary-gold);
+            font-size: 1.6rem;
+        }
+
+        .hero-stats span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ---------------- VISUAL ---------------- */
+
+        .hero-visual {
             position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            max-width: 420px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .glow {
+            position: absolute;
+            inset: -40px;
+            background: radial-gradient(circle,
+                    rgba(212, 175, 55, 0.25),
+                    transparent 70%);
+            filter: blur(60px);
             z-index: 1;
         }
 
-        .process-step {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
+        /* ---------------- ANIMATIONS ---------------- */
 
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(31, 60, 136, 0.3);
-            position: relative;
-            border: 3px solid var(--white);
-        }
-
-        .step-number::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .process-step:hover .step-number::before {
-            opacity: 0.3;
-        }
-
-        .step-content {
-            flex: 1;
-            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
-            padding: 28px;
-            border-radius: 12px;
-            border-left: 4px solid var(--secondary-blue);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-            animation: fadeInLeft 0.6s ease-out both;
-        }
-
-        .process-step:nth-child(1) .step-content { animation-delay: 0.1s; }
-        .process-step:nth-child(2) .step-content { animation-delay: 0.2s; }
-        .process-step:nth-child(3) .step-content { animation-delay: 0.3s; }
-        .process-step:nth-child(4) .step-content { animation-delay: 0.4s; }
-
-        .step-content:hover {
-            transform: translateX(10px) scale(1.01);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-            border-left-width: 6px;
-        }
-
-        .step-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .step-content p {
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        /* ---------- CTA Section ---------- */
-        .cta-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--light-gray) 0%, var(--white) 100%);
-            text-align: center;
-            position: relative;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .cta-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            font-weight: 700;
-            animation: fadeInUp 0.6s ease-out;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .cta-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-        }
-
-        .cta-buttons-large {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.4s both;
-        }
-
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 18px;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a3566 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 32px 8%;
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        }
-
-        footer p {
-            font-size: 15px;
-            opacity: 0.9;
-        }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 16px;
-                padding: 16px 5%;
-            }
-
-            nav {
-                justify-content: center;
-                gap: 16px;
-            }
-
-            .hero {
-                padding: 60px 5% 50px;
-            }
-
-            .hero .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                justify-content: center;
-            }
-
-            .about-section,
-            .tracks-section,
-            .benefits-section,
-            .process-section,
-            .cta-section {
-                padding: 60px 5%;
-            }
-
-            .process-line {
-                left: 20px;
-            }
-
-            .step-number {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            .step-content {
-                padding: 20px;
-            }
-
-            .tracks-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .cta-buttons-large {
-                flex-direction: column;
-            }
-
-            .btn-large {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 14px;
-            }
-
-            .step-content h3,
-            .track-card h3,
-            .benefit-card h3 {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
+        @keyframes fadeSlideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(25px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes fadeInLeft {
+        @keyframes fadeSlideDown {
             from {
                 opacity: 0;
-                transform: translateX(-30px);
+                transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
         }
 
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
-            to {
-                opacity: 1;
-                transform: scale(1);
+
+            50% {
+                transform: translateY(-12px);
             }
         }
 
-        /* Smooth transitions for interactive elements */
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                margin-top: 3rem;
+            }
+        }
+
+        .about-program {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                    var(--light-parchment),
+                    var(--warm-cream));
+            color: var(--text-primary, #1b1b1b);
+        }
+
+      .about-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .about-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 4rem;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .section-badge {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 0.4rem 1.1rem;
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--primary-gold);
+            font-size: 0.85rem;
+        }
+
+        .about-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .about-header h2 span {
+            color: var(--primary-gold);
+        }
+
+        .about-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- GRID ---------- */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* ---------- CARDS ---------- */
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 18px;
+            padding: 2.2rem 2rem;
+            box-shadow: var(--shadow-main);
+            transition: transform 0.4s var(--bounce-curve),
+                box-shadow 0.4s ease;
+            animation: fadeSlideUp 1.2s ease forwards;
+        }
+
+       
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-card h3 {
+            color: var(--primary-gold);
+            margin-bottom: 0.6rem;
+            font-size: 1.25rem;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card {
+                text-align: center;
+            }
+        }
+
+        .program-tracks {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                    var(--warm-cream),
+                    var(--light-parchment));
+            color: var(--text-primary, #1b1b1b);
+        }
+
+        /* ---------- CONTAINER ---------- */
+
+        .tracks-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .tracks-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 4.5rem;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .tracks-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .tracks-header h2 span {
+            color: var(--primary-gold);
+        }
+
+        .tracks-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- GRID ---------- */
+
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.2rem;
+        }
+
+        /* ---------- CARD ---------- */
+
+        .track-card {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 20px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: var(--shadow-main);
+            transition: transform 0.45s var(--bounce-curve),
+                box-shadow 0.45s ease;
+            animation: fadeSlideUp 1.2s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    transparent,
+                    rgba(212, 175, 55, 0.15),
+                    transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .track-card:hover::before {
+            opacity: 1;
+        }
+
+        .track-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ---------- ICON ---------- */
+
+        .track-icon {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- TEXT ---------- */
+
+        .track-card h3 {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .track-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 1000px) {
+            .tracks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tracks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .track-card {
+                text-align: center;
+            }
+        }
+
+        .eligibility {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                    var(--light-parchment),
+                    var(--warm-cream));
+            color: var(--text-primary, #1b1b1b);
+        }
+
+
+
+        /* ---------- CONTAINER ---------- */
+
+        .eligibility-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .eligibility-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 4rem;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .eligibility-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .eligibility-header h2 span {
+            color: var(--primary-gold);
+        }
+
+        .eligibility-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- GRID ---------- */
+
+        .eligibility-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        /* ---------- CARD ---------- */
+
+        .eligibility-card {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 20px;
+            padding: 2.3rem 2rem;
+            box-shadow: var(--shadow-main);
+            text-align: center;
+            transition: transform 0.45s var(--bounce-curve),
+                box-shadow 0.45s ease;
+            animation: fadeSlideUp 1.2s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+      
+
+        .eligibility-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    transparent,
+                    rgba(212, 175, 55, 0.15),
+                    transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .eligibility-card:hover::after {
+            opacity: 1;
+        }
+
+        .eligibility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ---------- ICON ---------- */
+
+        .eligibility-icon {
+            font-size: 2.3rem;
+            margin-bottom: 0.9rem;
+        }
+
+        /* ---------- TEXT ---------- */
+
+        .eligibility-card h3 {
+            color: var(--primary-gold);
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .eligibility-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 1000px) {
+            .eligibility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .eligibility-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mentorship {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                    var(--warm-cream),
+                    var(--light-parchment));
+            color: var(--text-primary, #1b1b1b);
+        }
+
+
+
+        /* ---------- CONTAINER ---------- */
+
+        .mentorship-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .mentorship-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 4.5rem;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .mentorship-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .mentorship-header h2 span {
+            color: var(--primary-gold);
+        }
+
+        .mentorship-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- FLOW LAYOUT ---------- */
+
+        .mentorship-flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        /* ---------- STEP CARD ---------- */
+
+        .mentorship-step {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 22px;
+            padding: 2.6rem 2.2rem;
+            text-align: center;
+            box-shadow: var(--shadow-main);
+            transition: transform 0.45s var(--bounce-curve),
+                box-shadow 0.45s ease;
+            animation: fadeSlideUp 1.2s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mentorship-step::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    transparent,
+                    rgba(212, 175, 55, 0.18),
+                    transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .mentorship-step:hover::before {
+            opacity: 1;
+        }
+
+        .mentorship-step:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ---------- ICON ---------- */
+
+        .step-icon {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- TEXT ---------- */
+
+        .mentorship-step h3 {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .mentorship-step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 1000px) {
+            .mentorship-flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .mentorship-flow {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .learning-outcomes {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                    var(--light-parchment),
+                    var(--warm-cream));
+            color: var(--text-primary, #1b1b1b);
+        }
+
+        /* ---------- CONTAINER ---------- */
+
+        .outcomes-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .outcomes-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 4.5rem;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .outcomes-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .outcomes-header h2 span {
+            color: var(--primary-gold);
+        }
+
+        .outcomes-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- GRID ---------- */
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.4rem;
+        }
+
+        /* ---------- CARD ---------- */
+
+        .outcome-card {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 22px;
+            padding: 2.6rem 2.4rem;
+            box-shadow: var(--shadow-main);
+            transition: transform 0.45s var(--bounce-curve),
+                box-shadow 0.45s ease;
+            animation: fadeSlideUp 1.2s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .outcome-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    transparent,
+                    rgba(212, 175, 55, 0.18),
+                    transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .outcome-card:hover::before {
+            opacity: 1;
+        }
+
+        .outcome-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ---------- ICON ---------- */
+
+        .outcome-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- TEXT ---------- */
+
+        .outcome-card h3 {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .outcome-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 1000px) {
+            .outcomes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .apply {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg,
+                    var(--warm-cream),
+                    var(--light-parchment));
+            color: var(--text-primary, #1b1b1b);
+        }
+
+        /* ---------- CONTAINER ---------- */
+
+        .apply-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .apply-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 4rem;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        .apply-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 1rem;
+        }
+
+        .apply-header h2 span {
+            color: var(--primary-gold);
+        }
+
+        .apply-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- STEPS GRID ---------- */
+
+        .apply-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .apply-step {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 22px;
+            padding: 2.4rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-main);
+            transition: transform 0.45s var(--bounce-curve),
+                box-shadow 0.45s ease;
+            animation: fadeSlideUp 1.2s ease forwards;
+            position: relative;
+        }
+
+
+        .apply-step:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ---------- STEP NUMBER ---------- */
+
         .step-number {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
         }
 
-        .process-step:hover .step-number {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 20px rgba(31, 60, 136, 0.4);
+        /* ---------- TEXT ---------- */
+
+        .apply-step h3 {
+            font-size: 1.3rem;
+            color: var(--primary-gold);
+            margin-bottom: 0.6rem;
         }
 
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+        .apply-step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- CTA BUTTONS ---------- */
+
+        .apply-cta {
+            text-align: center;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            flex-wrap: wrap;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg,
+                    var(--primary-gold),
+                    var(--secondary-gold));
+            color: #000;
+            box-shadow: var(--shadow-main);
+        }
+
+        .btn.secondary {
+            border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.15));
+            color: var(--primary-gold);
+            background: transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 1000px) {
+            .apply-steps {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Focus styles for accessibility */
-        a:focus,
-        button:focus {
-            outline: 3px solid var(--secondary-blue);
-            outline-offset: 2px;
+        @media (max-width: 600px) {
+            .apply-steps {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-  <link rel='manifest' href='../../../manifest.json' />
+
+
 </head>
 
 <body>
-    <!-- Navbar -->
     <header>
-        <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
-        <nav>
-            <a href="../../../index.html">Home</a>
-            <a href="../guides.html">Guides</a>
-            <a href="../programs.html">Programs</a>
-            <a href="../Resources.html">Resources</a>
-            <a href="../Contribute.html">Contribute</a>
-        </nav>
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+                OpenSource Compass
+            </h1>
+            <div class="nav-links">
+                <a href="../../../index.html">Home</a>
+                <a href="../guides.html">Guides</a>
+                <a href="../programs.html">Programs</a>
+                <a href="../Resources.html">Resources</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../Contribute.html">Contribute</a>
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </header>
+    <section class="home-hero">
+        <div class="hero-container">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Linux Foundation Mentorship Program</h1>
-            <p class="subtitle">Industry-backed program for open-source development</p>
-            <p class="intro">
-                The Linux Foundation Mentorship Program (LFX Mentorship) offers <strong>paid, structured mentorship opportunities</strong> for developers to work on cutting-edge open source projects. Work with industry leaders on projects like Kubernetes, CNCF, and other Linux Foundation initiatives.
-            </p>
-            <div class="cta-buttons">
-                <a href="https://mentorship.lfx.linuxfoundation.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i>
-                    Official LFX Portal
-                </a>
+            <div class="hero-content">
+                <span class="hero-badge">Linux Foundation Mentorship Program</span>
+
+                <h1>
+                    Build Your Future in
+                    <span>Open Source</span>
+                </h1>
+
+                <p>
+                    Learn directly from industry experts, contribute to real-world Linux
+                    projects, and become part of the global open-source ecosystem.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#apply" class="btn primary">Apply Now</a>
+                    <a href="#about" class="btn secondary">Explore Program</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div>
+                        <h3>150+</h3>
+                        <span>Mentors</span>
+                    </div>
+                    <div>
+                        <h3>300+</h3>
+                        <span>Projects</span>
+                    </div>
+                    <div>
+                        <h3>10K+</h3>
+                        <span>Contributors</span>
+                    </div>
+                </div>
             </div>
+
+            <div class="hero-visual">
+                <div class="glow"></div>
+                <img src="https://training.linuxfoundation.org/wp-content/uploads/2020/03/lfcd-badge-500x500.png" alt="Linux Open Source" />
+            </div>
+
+        </div>
+    </section>
+    <section class="about-program" id="about">
+        <div class="about-container">
+
+            <div class="about-header">
+                <span class="section-badge">About the Program</span>
+                <h2>
+                    Empowering the Next Generation of
+                    <span>Open Source Leaders</span>
+                </h2>
+                <p>
+                    The Linux Foundation Mentorship Program bridges the gap between learning
+                    and real-world open source contribution by connecting aspiring developers
+                    with experienced industry mentors.
+                </p>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-card">
+                    <h3>Real-World Projects</h3>
+                    <p>
+                        Work on production-grade open source projects used by millions
+                        worldwide, gaining hands-on experience that truly matters.
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Expert Mentorship</h3>
+                    <p>
+                        Learn directly from Linux Foundation contributors and industry experts
+                        through structured guidance and regular feedback.
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Career Growth</h3>
+                    <p>
+                        Build a strong open source portfolio, improve collaboration skills,
+                        and gain recognition within the global Linux ecosystem.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <h2>About the Program</h2>
-        <p>
-            The Linux Foundation Mentorship Program connects aspiring developers with experienced mentors to work on real-world open source projects. This program runs year-round with different terms (Spring, Summer, Fall), providing flexible opportunities for contributors worldwide.
-        </p>
-    </section>
+    <section class="program-tracks" id="tracks">
+        <div class="tracks-container">
 
-    <!-- Mentorship Tracks Section -->
-    <section class="tracks-section">
-        <h2>Mentorship Tracks</h2>
-        <p>Explore the diverse technology tracks available in the Linux Foundation Mentorship Program</p>
-        <div class="tracks-grid">
-            <div class="track-card">
-                <div class="track-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3>Kernel Development</h3>
-                <p>Work on the Linux kernel, the core of the operating system. Contribute to device drivers, file systems, networking stack, and core kernel features.</p>
-                <ul>
-                    <li>Linux kernel internals</li>
-                    <li>Device driver development</li>
-                    <li>System programming</li>
-                    <li>Performance optimization</li>
-                </ul>
+            <div class="tracks-header">
+                <span class="section-badge">Program Tracks</span>
+                <h2>
+                    Choose Your Path in
+                    <span>Open Source Innovation</span>
+                </h2>
+                <p>
+                    Each mentorship track is designed to provide deep, hands-on experience
+                    in critical open-source domains backed by the Linux Foundation ecosystem.
+                </p>
             </div>
-            <div class="track-card">
-                <div class="track-icon">
-                    <i class="fas fa-cloud"></i>
+
+            <div class="tracks-grid">
+
+                <div class="track-card">
+                    <div class="track-icon">🐧</div>
+                    <h3>Linux Kernel Development</h3>
+                    <p>
+                        Work closely with kernel maintainers and learn low-level system
+                        programming, memory management, and performance optimization.
+                    </p>
                 </div>
-                <h3>Cloud Native</h3>
-                <p>Build and maintain cloud-native technologies including Kubernetes, container orchestration, microservices, and cloud infrastructure tools.</p>
-                <ul>
-                    <li>Kubernetes & containerization</li>
-                    <li>CNCF projects</li>
-                    <li>Microservices architecture</li>
-                    <li>DevOps & CI/CD</li>
-                </ul>
-            </div>
-            <div class="track-card">
-                <div class="track-icon">
-                    <i class="fas fa-network-wired"></i>
+
+                <div class="track-card">
+                    <div class="track-icon">☁️</div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>
+                        Build and deploy scalable systems using containers, Kubernetes,
+                        CI/CD pipelines, and modern cloud-native technologies.
+                    </p>
                 </div>
-                <h3>Networking</h3>
-                <p>Develop networking protocols, security tools, and infrastructure software. Work on projects that power the internet and enterprise networks.</p>
-                <ul>
-                    <li>Network protocols</li>
-                    <li>Security & encryption</li>
-                    <li>SDN & NFV</li>
-                    <li>Network monitoring</li>
-                </ul>
+
+                <div class="track-card">
+                    <div class="track-icon">🔐</div>
+                    <h3>Security & Compliance</h3>
+                    <p>
+                        Learn secure system design, vulnerability analysis, and open-source
+                        security practices used in enterprise environments.
+                    </p>
+                </div>
+
+                <div class="track-card">
+                    <div class="track-icon">🌐</div>
+                    <h3>Networking</h3>
+                    <p>
+                        Explore modern networking stacks, protocols, and software-defined
+                        networking in real Linux-based infrastructure.
+                    </p>
+                </div>
+
+                <div class="track-card">
+                    <div class="track-icon">📦</div>
+                    <h3>Embedded & IoT</h3>
+                    <p>
+                        Develop Linux-powered embedded systems for IoT devices, edge
+                        computing, and hardware-level integrations.
+                    </p>
+                </div>
+
+                <div class="track-card">
+                    <div class="track-icon">🛠️</div>
+                    <h3>Open Source Tooling</h3>
+                    <p>
+                        Contribute to essential open-source tools, improving developer
+                        workflows, automation, and collaboration.
+                    </p>
+                </div>
+
             </div>
+
         </div>
     </section>
 
-    <!-- Benefits & Stipend Section -->
-    <section class="benefits-section">
-        <h2>Benefits & Stipend</h2>
-        <p>Comprehensive benefits package designed to support your growth and contributions</p>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
-                <h3>Competitive Stipend</h3>
-                <div class="stipend-amount"></div>
-                <p>Receive financial compensation that varies based on project complexity, duration, and your location. Stipends are designed to support your full-time commitment to the mentorship.</p>
+    <section class="eligibility" id="eligibility">
+        <div class="eligibility-container">
+
+            <div class="eligibility-header">
+                <span class="section-badge">Eligibility Criteria</span>
+                <h2>
+                    Who Can
+                    <span>Apply?</span>
+                </h2>
+                <p>
+                    The Linux Foundation Mentorship Program is open to passionate learners
+                    who are eager to contribute to open source and grow through real-world
+                    collaboration.
+                </p>
             </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-certificate"></i>
+
+            <div class="eligibility-grid">
+
+                <div class="eligibility-card">
+                    <div class="eligibility-icon">🎓</div>
+                    <h3>Background</h3>
+                    <p>
+                        Open to students, graduates, and early-career professionals from
+                        technical or related disciplines.
+                    </p>
                 </div>
-                <h3>Industry Certification</h3>
-                <p>Earn recognized certificates from the Linux Foundation upon successful completion. These credentials are highly valued by employers in the tech industry.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-users"></i>
+
+                <div class="eligibility-card">
+                    <div class="eligibility-icon">💻</div>
+                    <h3>Technical Basics</h3>
+                    <p>
+                        Familiarity with Linux, Git, and at least one programming language
+                        such as C, Python, or JavaScript.
+                    </p>
                 </div>
-                <h3>Expert Mentorship</h3>
-                <p>Work one-on-one with experienced mentors from leading tech companies. Get personalized guidance on code quality, best practices, and career development.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-code-branch"></i>
+
+                <div class="eligibility-card">
+                    <div class="eligibility-icon">🧠</div>
+                    <h3>Learning Mindset</h3>
+                    <p>
+                        A strong desire to learn, accept feedback, and collaborate in a
+                        global open-source community.
+                    </p>
                 </div>
-                <h3>Real Project Experience</h3>
-                <p>Contribute to production-grade projects used by millions. Build a portfolio of meaningful contributions that demonstrate your skills to potential employers.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-globe"></i>
+
+                <div class="eligibility-card">
+                    <div class="eligibility-icon">⏱️</div>
+                    <h3>Time Commitment</h3>
+                    <p>
+                        Ability to dedicate consistent weekly hours throughout the program
+                        duration to tasks and mentor interactions.
+                    </p>
                 </div>
-                <h3>Remote & Flexible</h3>
-                <p>Work remotely from anywhere in the world. The program offers flexible scheduling to accommodate students, working professionals, and different time zones.</p>
+
             </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3>Professional Network</h3>
-                <p>Connect with maintainers, contributors, and industry leaders. Build relationships that can lead to job opportunities, collaborations, and long-term career growth.</p>
-            </div>
+
         </div>
     </section>
 
-    <!-- Application Roadmap Section -->
-    <section class="process-section">
-        <h2>Application Roadmap</h2>
-        <div class="process-container">
-            <div class="process-line"></div>
-            <div class="process-steps">
-                <div class="process-step">
+    <section class="mentorship" id="mentorship">
+        <div class="mentorship-container">
+
+            <div class="mentorship-header">
+                <span class="section-badge">Mentorship Structure</span>
+                <h2>
+                    Guided by
+                    <span>Industry Experts</span>
+                </h2>
+                <p>
+                    Our mentorship model is designed to provide consistent guidance,
+                    real-world exposure, and meaningful feedback throughout your journey
+                    in open source.
+                </p>
+            </div>
+
+            <div class="mentorship-flow">
+
+                <div class="mentorship-step">
+                    <div class="step-icon">🤝</div>
+                    <h3>Mentor Matching</h3>
+                    <p>
+                        Participants are matched with experienced mentors based on skills,
+                        interests, and chosen program tracks.
+                    </p>
+                </div>
+
+                <div class="mentorship-step">
+                    <div class="step-icon">📅</div>
+                    <h3>Weekly Check-ins</h3>
+                    <p>
+                        Regular one-on-one sessions to review progress, clarify concepts,
+                        and receive personalized guidance.
+                    </p>
+                </div>
+
+                <div class="mentorship-step">
+                    <div class="step-icon">🧑‍💻</div>
+                    <h3>Code Reviews</h3>
+                    <p>
+                        Learn industry-standard practices through structured code reviews
+                        and collaborative feedback.
+                    </p>
+                </div>
+
+                <div class="mentorship-step">
+                    <div class="step-icon">🌍</div>
+                    <h3>Community Engagement</h3>
+                    <p>
+                        Participate in open-source discussions, mailing lists, and community
+                        calls within the Linux ecosystem.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="learning-outcomes" id="outcomes">
+        <div class="outcomes-container">
+
+            <div class="outcomes-header">
+                <span class="section-badge">Learning Outcomes</span>
+                <h2>
+                    What You Will
+                    <span>Achieve</span>
+                </h2>
+                <p>
+                    By the end of the Linux Foundation Mentorship Program, participants
+                    graduate with real-world skills, open-source experience, and
+                    industry-ready confidence.
+                </p>
+            </div>
+
+            <div class="outcomes-grid">
+
+                <div class="outcome-card">
+                    <div class="outcome-icon">🧑‍💻</div>
+                    <h3>Hands-on Open Source Experience</h3>
+                    <p>
+                        Contribute meaningful code to real Linux Foundation projects and
+                        collaborate with global open-source communities.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-icon">📂</div>
+                    <h3>Strong Technical Portfolio</h3>
+                    <p>
+                        Build a public portfolio with documented contributions, pull
+                        requests, and issue tracking experience.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-icon">🔍</div>
+                    <h3>Industry Best Practices</h3>
+                    <p>
+                        Learn professional workflows including version control, code
+                        reviews, testing, and release management.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-icon">🤝</div>
+                    <h3>Collaboration & Communication</h3>
+                    <p>
+                        Work effectively in distributed teams while improving technical
+                        communication and problem-solving skills.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-icon">🏆</div>
+                    <h3>Recognition & Certification</h3>
+                    <p>
+                        Receive official recognition for successful completion and become
+                        part of the Linux Foundation contributor network.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <div class="outcome-icon">🚀</div>
+                    <h3>Career Readiness</h3>
+                    <p>
+                        Gain the confidence and credibility needed to pursue roles in open
+                        source, DevOps, cloud, and systems engineering.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="apply" id="apply">
+        <div class="apply-container">
+
+            <div class="apply-header">
+                <span class="section-badge">Apply Now</span>
+                <h2>
+                    How to
+                    <span>Join the Program</span>
+                </h2>
+                <p>
+                    Follow these simple steps to submit your application and start your
+                    mentorship journey with the Linux Foundation.
+                </p>
+            </div>
+
+            <div class="apply-steps">
+
+                <div class="apply-step">
                     <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Create Profile</h3>
-                        <p>Sign up on the LFX Mentorship portal and create your profile. Add your skills, experience, GitHub profile, and portfolio to help mentors understand your background.</p>
-                    </div>
+                    <h3>Create Your Profile</h3>
+                    <p>
+                        Sign up on our portal and complete your profile with your education,
+                        skills, and experience.
+                    </p>
                 </div>
-                <div class="process-step">
+
+                <div class="apply-step">
                     <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Browse Projects</h3>
-                        <p>Explore available mentorship opportunities across different tracks. Filter by technology stack, project type, or term. Read project descriptions, requirements, and mentor information carefully.</p>
-                    </div>
+                    <h3>Choose a Track</h3>
+                    <p>
+                        Select your preferred program track based on your interests and goals,
+                        such as Linux Kernel, DevOps, or Cloud Infrastructure.
+                    </p>
                 </div>
-                <div class="process-step">
+
+                <div class="apply-step">
                     <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Submit Application</h3>
-                        <p>Complete the application form with your background, relevant experience, and motivation. Some projects may require code samples, a proposal, or additional materials. Submit before the deadline.</p>
-                    </div>
+                    <h3>Submit Your Application</h3>
+                    <p>
+                        Fill out the application form and provide relevant details about your
+                        past contributions or projects.
+                    </p>
                 </div>
-                <div class="process-step">
+
+                <div class="apply-step">
                     <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Begin Mentorship</h3>
-                        <p>If selected, you'll be paired with a mentor and begin your 12-16 week mentorship journey. Set up your development environment, establish communication channels, and start making meaningful contributions.</p>
-                    </div>
+                    <h3>Get Matched</h3>
+                    <p>
+                        After review, you will be matched with a mentor and notified of your
+                        acceptance.
+                    </p>
                 </div>
+
+                <div class="apply-step">
+                    <div class="step-number">5</div>
+                    <h3>Start Your Mentorship</h3>
+                    <p>
+                        Begin working on real-world projects under the guidance of your
+                        mentor and join the global open-source community.
+                    </p>
+                </div>
+
             </div>
+
+            <div class="apply-cta">
+                <a href="#apply-form" class="btn primary">Apply Now</a>
+                <a href="#contact" class="btn secondary">Contact Support</a>
+            </div>
+
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Start Your Mentorship Journey?</h2>
-        <p>Take the first step today. Explore available projects, build your skills, and apply for the Linux Foundation Mentorship Program.</p>
-        <div class="cta-buttons-large">
-            <a href="https://mentorship.lfx.linuxfoundation.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
-                <i class="fas fa-external-link-alt"></i>
-                Visit LFX Portal
-            </a>
-            <a href="https://www.linuxfoundation.org/about/mentorship/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large" style="background-color: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue);">
-                <i class="fas fa-book"></i>
-                Read Official Guidelines
-            </a>
-        </div>
-    </section>
 
     <div id="footer"></div>
 
     <script src="../../js/components.js"></script>
+
     <script>
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1215,4 +1450,5 @@
     </script>
   <script src='../../js/pwa.js'></script>
 </body>
+
 </html>

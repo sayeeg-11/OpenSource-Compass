@@ -5,18 +5,29 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
+  text-align: center;
 }
 
-.contributors-section h3 {
+.contributors-section h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
+  color: var(--deep-navy);
+}
+
+body.dark-mode .contributors-section h1 {
+  color: #d2c917;
 }
 
 .contributors-section p {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   max-width: 620px;
+}
+
+body.dark-mode .contributors-section p {
+  color: #9ca3af;
 }
 
 /* ---------- Stats ---------- */
@@ -64,7 +75,7 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--contributors-text);
   cursor: pointer;
 }
 
@@ -1106,14 +1117,14 @@ body.dark-mode .sk {
   gap: 0.6rem;
   padding: 0.65rem 1.2rem;
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff, #fafafa);
-  border: 1px solid #e6e6e6;
+  background: #ffffff;
+  border: 1px solid var(--contributors-border);
+  color: var(--contributors-text);
   box-shadow:
     0 6px 14px rgba(0, 0, 0, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
   font-size: 0.85rem;
   font-weight: 600;
-  color: #1b263b;
   white-space: nowrap;
 
   /* load animation */
@@ -1129,17 +1140,18 @@ body.dark-mode .sk {
 .stat-pill.stat-top     { animation-delay: 0.25s; }
 
 /* Label */
-.stat-label {
+.contributors-stats .stat-label {
   font-size: 0.8rem;
   font-weight: 600;
   color: #1b263b;
+  padding: 0.5rem;
 }
 
-/* 🔥 GOLD NUMBER BADGE (replaces blue) */
-.stat-count {
+/* 🔥 GOLD NUMBER BADGE */
+.contributors-stats .stat-count {
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  background-color: #f4d49a; 
+  background-color: #d4af37; 
   color: #3a2a00;
   font-size: 0.75rem;
   font-weight: 700;
@@ -1151,9 +1163,9 @@ body.dark-mode .sk {
 ========================================= */
 
 .stat-pill.stat-top {
-  background: linear-gradient(180deg, #fff7dd, #fdeeb5);
+  background: linear-gradient(180deg, #e6c453, #fdeeb5);
   border-color: #d4af37;
-  color: #8a6a00;
+  color: #634c00;
   font-weight: 700;
   box-shadow:
     0 10px 24px rgba(212, 175, 55, 0.35),
@@ -1252,14 +1264,14 @@ body.dark-mode .sk {
 ========================================= */
 
 body.dark-mode .stat-pill {
-  background: linear-gradient(180deg, #1e1e1e, #191919);
-  border-color: #333;
-  color: #e6e6e6;
+  background: linear-gradient(180deg, #ffffff, #ffe9a9);
+  border-color: #d5c63e;
+  color: #a13636;
   box-shadow: 0 6px 14px rgba(0,0,0,0.5);
 }
 
 body.dark-mode .stat-label {
-  color: #e6e6e6;
+  color: #000000;
 }
 
 /* Gold still pops in dark mode */
@@ -1275,7 +1287,7 @@ body.dark-mode .stat-pill.stat-top {
 }
 
 body.dark-mode .bot-toggle {
-  color: #e0e0e0;
+  color: #f5d77a;
 }
 
 body.dark-mode #contributor-search {

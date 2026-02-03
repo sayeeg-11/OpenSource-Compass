@@ -41,16 +41,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-        }
-
-        body.dark-mode {
-            background: #1a1a1a;
-            color: #fff;
-        }
-
-        body.dark-mode header,
-        body.dark-mode footer {
-            background: #121212;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* ---------- Navbar ---------- */
@@ -78,6 +69,11 @@
         header h1:hover {
             color: var(--secondary-blue);
             transform: translateX(2px);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
@@ -108,6 +104,28 @@
             width: 100%;
         }
 
+        /* ---------- Dark Mode Toggle Button ---------- */
+        .theme-toggle {
+            margin-left: 24px;
+            background: var(--secondary-blue);
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(77, 150, 255, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.5);
+        }
+
         /* ---------- Hero Section ---------- */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #2a4fa0 30%, #3d6bc0 60%, var(--secondary-blue) 100%);
@@ -116,6 +134,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease;
         }
 
         .hero::before {
@@ -777,9 +796,9 @@
         }
 
         .rewards-grid {
-            display: flex;          /* Changed from grid to flex */
-            flex-wrap: wrap;        /* Allows cards to move to the next line */
-            justify-content: center; /* This centers the cards in every row */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 24px;
             margin: 32px auto 0;
             max-width: 1000px;
@@ -909,23 +928,9 @@
             background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
-            padding: 24px;
+            padding: 40px 24px;
             margin-top: 0;
             position: relative;
-            padding-top: 50px;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpolygon points='0,20 5,0 10,20 15,0 20,20 25,0 30,20 35,0 40,20 45,0 50,20 55,0 60,20 65,0 70,20 75,0 80,20 85,0 90,20 95,0 100,20 100,20 0,20' fill='%231F3C88'/%3E%3C/svg%3E");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: top;
         }
 
         footer p {
@@ -935,7 +940,130 @@
             position: relative;
             z-index: 1;
         }
-      
+
+        /* ---------- DARK MODE STYLES ---------- */
+        body.dark-mode {
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        body.dark-mode header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        body.dark-mode header h1 {
+            color: #58a6ff;
+        }
+
+        body.dark-mode nav a {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #58a6ff;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: #58a6ff;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #58a6ff;
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.5);
+        }
+
+        /* Dark mode hero section */
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #1a1f35 0%, #1e2a47 30%, #243554 60%, #2a4365 100%);
+        }
+
+        body.dark-mode .intro,
+        body.dark-mode .process-section,
+        body.dark-mode .rewards-section {
+            background: #0d1117;
+        }
+
+        body.dark-mode .overview-section,
+        body.dark-mode .points-section,
+        body.dark-mode .tips-section {
+            background: #161b22;
+        }
+
+        body.dark-mode section h2 {
+            color: #58a6ff;
+            text-shadow: 0 2px 10px rgba(88, 166, 255, 0.3);
+        }
+
+        body.dark-mode section h3,
+        body.dark-mode section h4 {
+            color: #58a6ff;
+        }
+
+        body.dark-mode section p {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .step-content,
+        body.dark-mode .overview-card,
+        body.dark-mode .reward-card,
+        body.dark-mode .tip-item {
+            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+            color: #c9d1d9;
+            border-color: #30363d;
+        }
+
+        body.dark-mode .step-content h4,
+        body.dark-mode .overview-card h4,
+        body.dark-mode .reward-card h4,
+        body.dark-mode .tip-item h4 {
+            color: #58a6ff;
+        }
+
+        body.dark-mode .step-content p,
+        body.dark-mode .overview-card p,
+        body.dark-mode .reward-card p,
+        body.dark-mode .tip-item p {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .step-content li {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .points-table {
+            background: #161b22;
+            border: 1px solid #30363d;
+        }
+
+        body.dark-mode .points-table th {
+            background: #1F3C88;
+            color: #fff;
+        }
+
+        body.dark-mode .points-table td {
+            color: #c9d1d9;
+            border-bottom: 1px solid #30363d;
+        }
+
+        body.dark-mode .points-table tr:nth-child(even) {
+            background: #1c2128;
+        }
+
+        body.dark-mode .points-table tr:hover td {
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        body.dark-mode .intro-logo {
+            background: #161b22;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode footer {
+            background: #0d1117;
+            border-top: 1px solid #30363d;
+        }
+
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
             .hero {
@@ -989,32 +1117,14 @@
             .points-table td {
                 padding: 12px;
             }
-        }
 
-        body.dark-mode .intro,
-        body.dark-mode .process-section,
-        body.dark-mode .rewards-section {
-            background: #2a2a2a;
-        }
+            nav {
+                flex-wrap: wrap;
+            }
 
-        body.dark-mode .step-content,
-        body.dark-mode .overview-card,
-        body.dark-mode .reward-card,
-        body.dark-mode .tip-item {
-            background: #2a2a2a;
-            color: #fff;
-        }
-
-        body.dark-mode .points-table {
-            background: #2a2a2a;
-        }
-
-        body.dark-mode .points-table th {
-            background: #1F3C88;
-        }
-
-        body.dark-mode .points-table tr:nth-child(even) {
-            background: #333;
+            .theme-toggle {
+                margin-left: 12px;
+            }
         }
     </style>
   <link rel='manifest' href='../../../manifest.json' />
@@ -1031,6 +1141,7 @@
         <a href="../programs.html">Programs</a>
         <a href="../Resources.html">Resources</a>
         <a href="../Contribute.html">Contribute</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </nav>
 </header>
 
@@ -1069,20 +1180,20 @@
 <section class="overview-section">
     <h2>📋 Program Overview</h2>
     <p>SSoC is organized with a mission to promote open-source culture among students of all skill levels. It follows a gamified approach where your contributions translate into points on a global leaderboard.</p>
-    
+
     <div class="overview-grid">
         <div class="overview-card">
             <div class="overview-icon">⏱️</div>
             <h4>Duration</h4>
             <p>Typically 2–3 months (Summer season)</p>
         </div>
-        
+
         <div class="overview-card">
             <div class="overview-icon">👥</div>
             <h4>Target Audience</h4>
             <p>Open to everyone, but specifically tailored for students and open-source beginners</p>
         </div>
-        
+
         <div class="overview-card">
             <div class="overview-icon">🎯</div>
             <h4>Key Focus</h4>
@@ -1095,7 +1206,7 @@
 <section class="process-section">
     <h2>🛤️ Step-by-Step Process for SSoC</h2>
     <p>Follow these steps to successfully participate in Social Summer of Code.</p>
-    
+
     <div class="stepper">
         <div class="step">
             <div class="step-number">1</div>
@@ -1104,7 +1215,7 @@
                 <p>Keep an eye on the official SSoC website or social media. You will need to register as a Contributor. Projects and Mentors also register during this phase.</p>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">2</div>
             <div class="step-content">
@@ -1116,7 +1227,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">3</div>
             <div class="step-content">
@@ -1129,7 +1240,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">4</div>
             <div class="step-content">
@@ -1150,7 +1261,7 @@
 <section class="points-section">
     <h2>🏆 Points and Leaderboard</h2>
     <p>SSoC uses a tiered system to reward effort and complexity:</p>
-    
+
     <div class="points-table">
         <table>
             <thead>
@@ -1190,26 +1301,26 @@
 <section class="rewards-section">
     <h2>🎁 Perks and Rewards</h2>
     <p>Earn rewards and recognition for your contributions to open-source projects.</p>
-    
+
     <div class="rewards-grid">
         <div class="reward-card">
             <div class="reward-icon">📜</div>
             <h4>Certificates</h4>
             <p>All participants with at least one merged PR receive a certificate</p>
         </div>
-        
+
         <div class="reward-card">
             <div class="reward-icon">🤝</div>
             <h4>Mentorship</h4>
             <p>Direct access to experienced developers who can guide your career path</p>
         </div>
-        
+
         <div class="reward-card">
             <div class="reward-icon">🏅</div>
             <h4>Digital Badges</h4>
             <p>Exclusive badges to showcase on LinkedIn or GitHub</p>
         </div>
-        
+
         <div class="reward-card">
             <div class="reward-icon">🎁</div>
             <h4>Goodies & Swag</h4>
@@ -1222,18 +1333,18 @@
 <section class="tips-section">
     <h2>💡 Pro-Tips for SSoC Success</h2>
     <p>Make the most out of your Social Summer of Code experience with these tips.</p>
-    
+
     <div class="tips-list">
         <div class="tip-item">
             <h4>Don't "Issue-Hog"</h4>
             <p>Only ask for an issue if you are confident you can solve it within 2–3 days. This keeps the program fair for everyone.</p>
         </div>
-        
+
         <div class="tip-item">
             <h4>Document Everything</h4>
             <p>Write clear PR descriptions. Explain what you changed and why.</p>
         </div>
-        
+
         <div class="tip-item">
             <h4>Engage in Workshops</h4>
             <p>SSoC often hosts sessions on Resume Building, Open Source, and Career Advice. These are often as valuable as the coding itself.</p>
@@ -1242,23 +1353,46 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<div id="footer"></div>
-
-<script src="../../js/components.js"></script>
+<footer>
+    <p>&copy; 2026 OpenSource Compass. All rights reserved.</p>
+</footer>
 
 <!-- ================= SCRIPTS ================= -->
 <script>
-    // Theme toggle functionality (if needed)
+    // ================= DARK MODE TOGGLE =================
     const themeToggle = document.getElementById("themeToggle");
+    const body = document.body;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem("theme") || "light";
+
+    // Apply saved theme on page load
+    if (currentTheme === "dark") {
+        body.classList.add("dark-mode");
+        if (themeToggle) themeToggle.textContent = "☀️";
+    }
+
+    // Toggle theme on button click
     if (themeToggle) {
         themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            themeToggle.textContent =
-                document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+            body.classList.toggle("dark-mode");
+
+            // Update button icon
+            const isDarkMode = body.classList.contains("dark-mode");
+            themeToggle.textContent = isDarkMode ? "☀️" : "🌙";
+
+            // Save theme preference
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+            // Add animation feedback
+            themeToggle.style.transform = "rotate(360deg) scale(1.2)";
+            setTimeout(() => {
+                themeToggle.style.transform = "";
+            }, 300);
         });
     }
 
-    // Create animated particles
+    // ================= ANIMATED PARTICLES =================
     function createParticles() {
         const particlesContainer = document.getElementById('particles');
         if (!particlesContainer) return;
@@ -1277,7 +1411,7 @@
     // Initialize particles on page load
     window.addEventListener('DOMContentLoaded', createParticles);
 
-    // Add scroll animations
+    // ================= SCROLL ANIMATIONS =================
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -1298,6 +1432,20 @@
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+
+    // ================= SMOOTH SCROLL FOR NAVIGATION =================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 </script>
 

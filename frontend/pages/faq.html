@@ -21,32 +21,86 @@
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
 
   <style>
-    /* =========================================
-       CARD HOVER EFFECTS - GOLDEN GLOW
-    ========================================= */
-    .card {
-      /* Smooth transition for movement and glow */
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      /* Ensure border is present (transparent initially) to prevent layout jump */
-      border: 1px solid transparent; 
-      border-radius: 8px; 
+    /* =========================
+      FAQ ACCORDION (VERTICAL)
+    ========================= */
+
+    .faq-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    /* LIGHT MODE HOVER */
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); /* Gold Glow */
+    .faq-item {
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .faq-item:hover {
       border-color: #d4af37;
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.25);
     }
 
-    /* DARK MODE HOVER */
-    /* Uses !important to ensure it overrides standard dark mode styles */
-    body.dark-mode .card:hover {
-      transform: translateY(-8px) !important;
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6) !important; /* Slightly brighter glow for dark bg */
-      border-color: #d4af37 !important;
-      background-color: #1e1e1e !important; /* Maintains dark card bg */
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
     }
+
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+
+    /* Answer animation */
+    .faq-answer {
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      text-align: left;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* DARK MODE */
+    body.dark-mode .faq-item {
+      background-color: #1e1e1e;
+      border-color: #333;
+    }
+
+    body.dark-mode .faq-item:hover {
+      border-color: #d4af37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    body.dark-mode .faq-answer,
+    body.dark-mode .faq-question {
+      color: #d4af37;
+    }
+
+    body.dark-mode main section h3 {
+      color: #d4af37;
+    }
+
   </style>
 
   <link rel='manifest' href='../../manifest.json' />
@@ -72,11 +126,11 @@
           <a href="./faq.html">FAQ</a>
           <a href="./Contribute.html">Contribute</a>
           <button
-  id="themeToggle"
-  aria-label="Toggle dark mode"
-  title="Toggle dark mode"
-  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
->
+            id="themeToggle"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+            style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+          >
   <i class="fas fa-moon" aria-hidden="true"></i>
 </button>
         </div>
@@ -87,85 +141,118 @@
       <h3>Frequently Asked Questions</h3>
       <p>Common questions about OpenSource Compass and open source contributions.</p>
 
-      <div class="card-grid">
-        <div class="card">
-          <h4>What is OpenSource Compass?</h4>
-          <p>OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information.</p>
+      <div class="faq-container">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is OpenSource Compass?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              OpenSource Compass is a platform that helps beginners navigate open source
+              by providing structured guides, resources, and program information.
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <h4>Do I need programming experience?</h4>
-          <p>No. You can contribute to open source through documentation, design, testing, community support, and many other non-coding roles.</p>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do I need programming experience?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              No. You can contribute to open source through documentation, design,
+              testing, community support, and many other non-coding roles.
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <h4>How do I get started with open source?</h4>
-          <p>Start by reading contribution guides, choosing a beginner-friendly project, and working on small issues such as documentation or bug fixes.</p>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I get started with open source?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Start by reading contribution guides, choosing a beginner-friendly
+              project, and working on small issues such as documentation or bug fixes.
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <h4>How do I choose a project to contribute to?</h4>
-          <p>Pick projects that match your interests and skill level. Look for repositories with labels like “good first issue” or “help wanted”.</p>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I choose a project to contribute to?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Pick projects that match your interests and skill level. Look for
+              repositories with labels like “good first issue” or “help wanted”.
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <h4>What are the benefits of contributing to open source?</h4>
-          <p>Contributing helps you build a portfolio, improve technical skills, collaborate globally, and gain real-world development experience.</p>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What are the benefits of contributing to open source?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Contributing helps you build a portfolio, improve technical skills,
+              collaborate globally, and gain real-world development experience.
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <h4>Where can I ask for help?</h4>
-          <p>Most projects have active communities on GitHub, Discord, or Slack. Asking questions is encouraged and is part of open-source culture.</p>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Where can I ask for help?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Most projects have active communities on GitHub, Discord, or Slack.
+              Asking questions is encouraged and is part of open-source culture.
+            </p>
+          </div>
         </div>
-        <div class="card">
-  <h4>How do I find beginner-friendly issues?</h4>
-  <p>
-    Look for repositories with labels like <strong>good first issue</strong>,
-    <strong>beginner</strong>, or <strong>help wanted</strong>. These issues are
-    specifically curated for new contributors.
-  </p>
-</div>
 
-<div class="card">
-  <h4>What is a “good first issue”?</h4>
-  <p>
-    A good first issue is a small, well-defined task that helps beginners
-    understand the project without deep knowledge of the entire codebase.
-  </p>
-</div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I find beginner-friendly issues?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Look for labels like <strong>good first issue</strong>,
+              <strong>beginner</strong>, or <strong>help wanted</strong>.
+            </p>
+          </div>
+        </div>
 
-<div class="card">
-  <h4>Do I need to know Git before contributing?</h4>
-  <p>
-    Basic Git knowledge is helpful, but not mandatory. Many projects provide
-    step-by-step contribution guides, and you can learn Git basics as you go.
-  </p>
-</div>
-
-<div class="card">
-  <h4>How should I communicate with maintainers?</h4>
-  <p>
-    Be polite, clear, and patient. Use GitHub issues or discussions to ask
-    questions, describe your approach, and seek feedback before starting work.
-  </p>
-</div>
-
-<div class="card">
-  <h4>What should I do if my pull request is rejected?</h4>
-  <p>
-    Don’t be discouraged. Read the feedback carefully, make the suggested
-    changes, or ask for clarification. Rejections are a normal part of learning
-    open source.
-  </p>
-</div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What should I do if my pull request is rejected?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Don’t be discouraged. Review the feedback carefully, make changes,
+              and learn from the process — rejections are part of open source.
+            </p>
+          </div>
+        </div>
 
       </div>
+
     </section>
   </main>
 
-<div id="footer"></div>
-
-
+  <div id="footer"></div>
 
   <script src="../js/components.js"></script>
   
@@ -178,6 +265,24 @@
    <i class="fas fa-chevron-up"></i>
   </button>
   <script src="/frontend/js/DMtheme.js"></script>
+
+  <script>
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+      const btn = item.querySelector(".faq-question");
+
+      btn.addEventListener("click", () => {
+        faqItems.forEach(other => {
+          if (other !== item) {
+            other.classList.remove("active");
+          }
+        });
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+
   <script src='../js/pwa.js'></script>
 </body>
 </html>
