@@ -886,10 +886,10 @@
 
   /* =========================
    DARK MODE
+ ========================= */
 body.dark-mode {
   --warm-cream: #0d1117;
   --light-parchment: #161b22;
-  --charcoal-dark: #f0f6fc;
   --text-secondary: #8b949e;
   --deep-navy: #ecf0f1;
   background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
