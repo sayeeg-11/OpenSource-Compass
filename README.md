@@ -124,6 +124,17 @@ OPENSOURCE-COMPASS/
 [![Programs Page](frontend/assets/templates/Programs.png)](frontend/assets/templates/Programs.png)
 
 
+## 📸 Screenshots
+
+#### Home Page
+[![Home Page](frontend/assets/templates/Home.png)](frontend/assets/templates/Home.png)
+
+#### Guide Page
+[![Guide Page](frontend/assets/templates/guides.png)](frontend/assets/templates/guides.png)
+
+#### Programs Page
+[![Programs Page](frontend/assets/templates/Programs.png)](frontend/assets/templates/Programs.png)
+
 ## 👥 Team — SWOC’26
 
 ### 🛠 Project Admin
@@ -385,6 +396,24 @@ Big thanks to everyone contributing! You make this awesome! 💖
 ## 🚀 Quick Links
 
 [Repository](https://github.com/sayeeg-11/OpenSource-Compass) | [Issues](https://github.com/sayeeg-11/OpenSource-Compass/issues) | [Pull Requests](https://github.com/sayeeg-11/OpenSource-Compass/pulls)
+
+---
+
+## 🌐 Connect With Us
+
+Join our growing community! Connect with us on **Discord** for:
+
+- 💬 Real-time discussions and support  
+- 🚀 Project updates and announcements  
+- 💡 Feature suggestions and feedback  
+- 🤝 Collaboration opportunities  
+
+<p align="start">
+  <a href="https://discord.gg/mdQh6XNU7">
+    <img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white" height="30"/>
+  </a>
+</p>
+
 
 </div>
 
