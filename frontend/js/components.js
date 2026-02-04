@@ -62,7 +62,12 @@ const footerHTML = `
         <div>
           <div class="footer-title">OpenSource Compass</div>
           <div class="footer-tagline">
-            Curated routes, real programs, and community-first growth.
+             OpenSource Compass is a beginner-friendly, 
+             community-driven platform that guides students 
+             and first-time contributors in open source. 
+             It offers Git/GitHub basics, contribution best practices, 
+             do’s and don’ts, and a hub for programs
+             like SWOsC, GSSoC, GSoC, Hacktoberfest, etc
           </div>
         </div>
       </div>
