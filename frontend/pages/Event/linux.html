@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Linux Foundation Mentorship - OpenSource Compass</title>
     <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete guide to Linux Foundation Mentorship Program (LFX) - Learn about program structure, benefits, and how to apply for industry-backed open source mentorship.">
+    <meta name="description"
+        content="Complete guide to Linux Foundation Mentorship Program (LFX) - Learn about program structure, benefits, and how to apply for industry-backed open source mentorship.">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -203,7 +205,7 @@
             left: -120%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
             transform: skewX(-20deg);
             transition: transform 0.45s ease;
         }
@@ -370,9 +372,17 @@
             opacity: 1;
         }
 
-        .track-card:nth-child(1) { animation-delay: 0.1s; }
-        .track-card:nth-child(2) { animation-delay: 0.2s; }
-        .track-card:nth-child(3) { animation-delay: 0.3s; }
+        .track-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .track-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .track-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
 
         .track-card::before {
             content: '';
@@ -527,12 +537,29 @@
             overflow: hidden;
         }
 
-        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
-        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
-        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
-        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
-        .benefit-card:nth-child(5) { animation-delay: 0.5s; }
-        .benefit-card:nth-child(6) { animation-delay: 0.6s; }
+        .benefit-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .benefit-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .benefit-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .benefit-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .benefit-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
 
         .benefit-card:hover {
             background-color: rgba(255, 255, 255, 1);
@@ -545,7 +572,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,255,255,0));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 255, 255, 0));
             opacity: 0;
             transition: opacity 0.35s ease;
         }
@@ -714,7 +741,7 @@
 
         .step-content {
             flex: 1;
-            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
+            background: linear-gradient(135deg, rgba(77, 150, 255, 0.1), rgba(60, 207, 145, 0.08));
             padding: 28px;
             border-radius: 12px;
             border-left: 4px solid var(--secondary-blue);
@@ -722,10 +749,21 @@
             animation: fadeInLeft 0.6s ease-out both;
         }
 
-        .process-step:nth-child(1) .step-content { animation-delay: 0.1s; }
-        .process-step:nth-child(2) .step-content { animation-delay: 0.2s; }
-        .process-step:nth-child(3) .step-content { animation-delay: 0.3s; }
-        .process-step:nth-child(4) .step-content { animation-delay: 0.4s; }
+        .process-step:nth-child(1) .step-content {
+            animation-delay: 0.1s;
+        }
+
+        .process-step:nth-child(2) .step-content {
+            animation-delay: 0.2s;
+        }
+
+        .process-step:nth-child(3) .step-content {
+            animation-delay: 0.3s;
+        }
+
+        .process-step:nth-child(4) .step-content {
+            animation-delay: 0.4s;
+        }
 
         .step-content:hover {
             transform: translateX(10px) scale(1.01);
@@ -913,6 +951,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -924,6 +963,7 @@
                 opacity: 0;
                 transform: translateX(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -935,6 +975,7 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -966,6 +1007,19 @@
             outline: 3px solid var(--secondary-blue);
             outline-offset: 2px;
         }
+
+        /* Scroll Animation Classes */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     </style>
 </head>
 
@@ -988,10 +1042,13 @@
             <h1>Linux Foundation Mentorship Program</h1>
             <p class="subtitle">Industry-backed program for open-source development</p>
             <p class="intro">
-                The Linux Foundation Mentorship Program (LFX Mentorship) offers <strong>paid, structured mentorship opportunities</strong> for developers to work on cutting-edge open source projects. Work with industry leaders on projects like Kubernetes, CNCF, and other Linux Foundation initiatives.
+                The Linux Foundation Mentorship Program (LFX Mentorship) offers <strong>paid, structured mentorship
+                    opportunities</strong> for developers to work on cutting-edge open source projects. Work with
+                industry leaders on projects like Kubernetes, CNCF, and other Linux Foundation initiatives.
             </p>
             <div class="cta-buttons">
-                <a href="https://mentorship.lfx.linuxfoundation.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <a href="https://mentorship.lfx.linuxfoundation.org/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary">
                     <i class="fas fa-external-link-alt"></i>
                     Official LFX Portal
                 </a>
@@ -1003,7 +1060,9 @@
     <section class="about-section">
         <h2>About the Program</h2>
         <p>
-            The Linux Foundation Mentorship Program connects aspiring developers with experienced mentors to work on real-world open source projects. This program runs year-round with different terms (Spring, Summer, Fall), providing flexible opportunities for contributors worldwide.
+            The Linux Foundation Mentorship Program connects aspiring developers with experienced mentors to work on
+            real-world open source projects. This program runs year-round with different terms (Spring, Summer, Fall),
+            providing flexible opportunities for contributors worldwide.
         </p>
     </section>
 
@@ -1017,7 +1076,8 @@
                     <i class="fas fa-microchip"></i>
                 </div>
                 <h3>Kernel Development</h3>
-                <p>Work on the Linux kernel, the core of the operating system. Contribute to device drivers, file systems, networking stack, and core kernel features.</p>
+                <p>Work on the Linux kernel, the core of the operating system. Contribute to device drivers, file
+                    systems, networking stack, and core kernel features.</p>
                 <ul>
                     <li>Linux kernel internals</li>
                     <li>Device driver development</li>
@@ -1030,7 +1090,8 @@
                     <i class="fas fa-cloud"></i>
                 </div>
                 <h3>Cloud Native</h3>
-                <p>Build and maintain cloud-native technologies including Kubernetes, container orchestration, microservices, and cloud infrastructure tools.</p>
+                <p>Build and maintain cloud-native technologies including Kubernetes, container orchestration,
+                    microservices, and cloud infrastructure tools.</p>
                 <ul>
                     <li>Kubernetes & containerization</li>
                     <li>CNCF projects</li>
@@ -1043,7 +1104,8 @@
                     <i class="fas fa-network-wired"></i>
                 </div>
                 <h3>Networking</h3>
-                <p>Develop networking protocols, security tools, and infrastructure software. Work on projects that power the internet and enterprise networks.</p>
+                <p>Develop networking protocols, security tools, and infrastructure software. Work on projects that
+                    power the internet and enterprise networks.</p>
                 <ul>
                     <li>Network protocols</li>
                     <li>Security & encryption</li>
@@ -1065,42 +1127,48 @@
                 </div>
                 <h3>Competitive Stipend</h3>
                 <div class="stipend-amount"></div>
-                <p>Receive financial compensation that varies based on project complexity, duration, and your location. Stipends are designed to support your full-time commitment to the mentorship.</p>
+                <p>Receive financial compensation that varies based on project complexity, duration, and your location.
+                    Stipends are designed to support your full-time commitment to the mentorship.</p>
             </div>
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-certificate"></i>
                 </div>
                 <h3>Industry Certification</h3>
-                <p>Earn recognized certificates from the Linux Foundation upon successful completion. These credentials are highly valued by employers in the tech industry.</p>
+                <p>Earn recognized certificates from the Linux Foundation upon successful completion. These credentials
+                    are highly valued by employers in the tech industry.</p>
             </div>
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-users"></i>
                 </div>
                 <h3>Expert Mentorship</h3>
-                <p>Work one-on-one with experienced mentors from leading tech companies. Get personalized guidance on code quality, best practices, and career development.</p>
+                <p>Work one-on-one with experienced mentors from leading tech companies. Get personalized guidance on
+                    code quality, best practices, and career development.</p>
             </div>
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-code-branch"></i>
                 </div>
                 <h3>Real Project Experience</h3>
-                <p>Contribute to production-grade projects used by millions. Build a portfolio of meaningful contributions that demonstrate your skills to potential employers.</p>
+                <p>Contribute to production-grade projects used by millions. Build a portfolio of meaningful
+                    contributions that demonstrate your skills to potential employers.</p>
             </div>
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-globe"></i>
                 </div>
                 <h3>Remote & Flexible</h3>
-                <p>Work remotely from anywhere in the world. The program offers flexible scheduling to accommodate students, working professionals, and different time zones.</p>
+                <p>Work remotely from anywhere in the world. The program offers flexible scheduling to accommodate
+                    students, working professionals, and different time zones.</p>
             </div>
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-handshake"></i>
                 </div>
                 <h3>Professional Network</h3>
-                <p>Connect with maintainers, contributors, and industry leaders. Build relationships that can lead to job opportunities, collaborations, and long-term career growth.</p>
+                <p>Connect with maintainers, contributors, and industry leaders. Build relationships that can lead to
+                    job opportunities, collaborations, and long-term career growth.</p>
             </div>
         </div>
     </section>
@@ -1115,28 +1183,35 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Create Profile</h3>
-                        <p>Sign up on the LFX Mentorship portal and create your profile. Add your skills, experience, GitHub profile, and portfolio to help mentors understand your background.</p>
+                        <p>Sign up on the LFX Mentorship portal and create your profile. Add your skills, experience,
+                            GitHub profile, and portfolio to help mentors understand your background.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Browse Projects</h3>
-                        <p>Explore available mentorship opportunities across different tracks. Filter by technology stack, project type, or term. Read project descriptions, requirements, and mentor information carefully.</p>
+                        <p>Explore available mentorship opportunities across different tracks. Filter by technology
+                            stack, project type, or term. Read project descriptions, requirements, and mentor
+                            information carefully.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Submit Application</h3>
-                        <p>Complete the application form with your background, relevant experience, and motivation. Some projects may require code samples, a proposal, or additional materials. Submit before the deadline.</p>
+                        <p>Complete the application form with your background, relevant experience, and motivation. Some
+                            projects may require code samples, a proposal, or additional materials. Submit before the
+                            deadline.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h3>Begin Mentorship</h3>
-                        <p>If selected, you'll be paired with a mentor and begin your 12-16 week mentorship journey. Set up your development environment, establish communication channels, and start making meaningful contributions.</p>
+                        <p>If selected, you'll be paired with a mentor and begin your 12-16 week mentorship journey. Set
+                            up your development environment, establish communication channels, and start making
+                            meaningful contributions.</p>
                     </div>
                 </div>
             </div>
@@ -1146,13 +1221,16 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <h2>Ready to Start Your Mentorship Journey?</h2>
-        <p>Take the first step today. Explore available projects, build your skills, and apply for the Linux Foundation Mentorship Program.</p>
+        <p>Take the first step today. Explore available projects, build your skills, and apply for the Linux Foundation
+            Mentorship Program.</p>
         <div class="cta-buttons-large">
-            <a href="https://mentorship.lfx.linuxfoundation.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
+            <a href="https://mentorship.lfx.linuxfoundation.org/" target="_blank" rel="noopener noreferrer"
+                class="btn btn-primary btn-large">
                 <i class="fas fa-external-link-alt"></i>
                 Visit LFX Portal
             </a>
-            <a href="https://www.linuxfoundation.org/about/mentorship/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large" style="background-color: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue);">
+            <a href="https://www.linuxfoundation.org/about/mentorship/" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary btn-large">
                 <i class="fas fa-book"></i>
                 Read Official Guidelines
             </a>
@@ -1177,40 +1255,40 @@
             });
         });
 
-        // Enhanced scroll animations with staggered delays
+        // Enhanced scroll animations using classes to preserve hover effects
         const observerOptions = {
             threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
+                    // Add delay based on index for staggered effect
                     setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
+                        entry.target.classList.add('visible');
                     }, index * 100);
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe elements with enhanced animations
-        document.querySelectorAll('.track-card, .process-step, .benefit-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px) scale(0.95)';
-            el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        // Observe elements
+        document.querySelectorAll('.track-card, .process-step, .benefit-card').forEach((el) => {
+            el.classList.add('scroll-animate');
             observer.observe(el);
         });
 
-        // Add parallax effect to hero section
+        // Parallax effect for Hero Content only (prevents layout gaps)
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < hero.offsetHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent && scrolled < 600) {
+                heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
+                heroContent.style.opacity = 1 - (scrolled / 600);
             }
         });
     </script>
 </body>
+
 </html>
