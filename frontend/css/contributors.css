@@ -24,10 +24,12 @@ body.dark-mode .contributors-section h1 {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   max-width: 620px;
+  margin-left: 25%;
 }
 
 body.dark-mode .contributors-section p {
   color: #9ca3af;
+
 }
 
 /* ---------- Stats ---------- */
