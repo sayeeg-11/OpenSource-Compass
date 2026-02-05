@@ -13,10 +13,35 @@ if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register(swPath)
             .then(registration => {
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+                // Handle updates
+                registration.onupdatefound = () => {
+                    const installingWorker = registration.installing;
+                    installingWorker.onstatechange = () => {
+                        if (installingWorker.state === 'installed') {
+                            if (navigator.serviceWorker.controller) {
+                                // New content is available, skipWaiting() in sw.js will trigger controllerchange
+                                console.log('New content available, refreshing...');
+                            } else {
+                                // Content is cached for offline use
+                                console.log('Content is cached for offline use.');
+                            }
+                        }
+                    };
+                };
             })
             .catch(err => {
                 console.log('ServiceWorker registration failed: ', err);
             });
+    });
+
+    // Reload the page when the new service worker takes over
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+            window.location.reload();
+            refreshing = true;
+        }
     });
 }
 

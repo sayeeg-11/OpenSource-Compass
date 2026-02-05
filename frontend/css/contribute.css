@@ -445,16 +445,37 @@ code {
 }
 
 .practice-list li {
-  padding: 1.5rem 0;
+  position: relative;
+  padding: 1.5rem 1rem;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
   color: var(--text-secondary);
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
-  transition: all 0.3s ease;
-  animation: fadeInLeft 0.6s ease-out backwards;
   font-size: clamp(1.05rem, 2vw, 1.15rem);
   line-height: 1.8;
+  transition: transform 0.25s ease;
+  animation: fadeInLeft 0.6s ease-out backwards;
+}
+
+/* Invisible border layer */
+.practice-list li::before {
+  content: "";
+  position: absolute;
+  inset: -6px -10px;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  transition: border-color 0.25s ease;
+  pointer-events: none;
+}
+
+/* Hover = golden border only */
+.practice-list li:hover::before {
+  border-color: var(--primary-gold);
+}
+
+.practice-list li:hover {
+  transform: translateX(6px);
 }
 
 .practice-list li:nth-child(1) { animation-delay: 0.1s; }
@@ -468,34 +489,35 @@ code {
   from {
     opacity: 0;
     transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-to {
-opacity: 1;
-transform: translateX(0);
-}
-}
+
 .practice-list li:last-child {
-border-bottom: none;
+  border-bottom: none;
 }
-.practice-list li:hover {
-transform: translateX(8px);
-color: var(--charcoal-dark);
-}
+
 .practice-list i {
-color: var(--primary-gold);
-font-size: clamp(1.4rem, 2.5vw, 1.6rem);
-margin-top: 0.2rem;
-flex-shrink: 0;
-transition: transform 0.3s ease;
+  color: var(--primary-gold);
+  font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
 }
+
 .practice-list li:hover i {
-transform: scale(1.2);
+  transform: scale(1.15);
 }
+
 .practice-list strong {
-color: var(--deep-navy);
-font-weight: 600;
-font-size: clamp(1.1rem, 2.2vw, 1.2rem);
+  color: var(--deep-navy);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.2vw, 1.2rem);
 }
+
 /* Footer */
 footer {
 background: var(--deep-navy);

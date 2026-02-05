@@ -29,6 +29,16 @@
             overflow: hidden;
         }
 
+        body.dark-mode .home-hero {
+            background:
+                radial-gradient(1200px 600px at top right,
+                    rgba(212, 175, 55, 0.18),
+                    transparent 60%),
+                linear-gradient(135deg,
+                    var(--deep-navy),
+                    var(--charcoal-dark));
+        }
+
         .btn.secondary {
             border: 1px solid var(--border-subtle);
             color: var(--primary-gold);
@@ -45,7 +55,18 @@
             z-index: 1;
         }
 
-      
+        body.dark-mode .glow {
+            background: radial-gradient(circle,
+                    rgba(212, 175, 55, 0.28),
+                    transparent 70%);
+            filter: blur(70px);
+        }
+
+
+        body.dark-mode .hero-stats>div {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
         .hero-container {
             max-width: 1200px;
             margin: auto;
@@ -235,7 +256,15 @@
             color: var(--text-primary, #1b1b1b);
         }
 
-      .about-container {
+        body.dark-mode .about-program {
+            background: linear-gradient(180deg,
+                    var(--charcoal-dark),
+                    var(--deep-navy));
+        }
+
+        /* ---------- CONTAINER ---------- */
+
+        .about-container {
             max-width: 1100px;
             margin: auto;
         }
@@ -294,7 +323,10 @@
             animation: fadeSlideUp 1.2s ease forwards;
         }
 
-       
+        body.dark-mode .about-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
         .about-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
@@ -330,6 +362,12 @@
                     var(--warm-cream),
                     var(--light-parchment));
             color: var(--text-primary, #1b1b1b);
+        }
+
+        body.dark-mode .program-tracks {
+            background: linear-gradient(180deg,
+                    var(--deep-navy),
+                    var(--charcoal-dark));
         }
 
         /* ---------- CONTAINER ---------- */
@@ -382,6 +420,10 @@
             animation: fadeSlideUp 1.2s ease forwards;
             position: relative;
             overflow: hidden;
+        }
+
+        body.dark-mode .track-card {
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .track-card::before {
@@ -452,7 +494,11 @@
             color: var(--text-primary, #1b1b1b);
         }
 
-
+        body.dark-mode .eligibility {
+            background: linear-gradient(180deg,
+                    var(--charcoal-dark),
+                    var(--deep-navy));
+        }
 
         /* ---------- CONTAINER ---------- */
 
@@ -507,7 +553,9 @@
             overflow: hidden;
         }
 
-      
+        body.dark-mode .eligibility-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
 
         .eligibility-card::after {
             content: "";
@@ -573,7 +621,11 @@
             color: var(--text-primary, #1b1b1b);
         }
 
-
+        body.dark-mode .mentorship {
+            background: linear-gradient(180deg,
+                    var(--deep-navy),
+                    var(--charcoal-dark));
+        }
 
         /* ---------- CONTAINER ---------- */
 
@@ -626,6 +678,10 @@
             animation: fadeSlideUp 1.2s ease forwards;
             position: relative;
             overflow: hidden;
+        }
+
+        body.dark-mode .mentorship-step {
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .mentorship-step::before {
@@ -692,6 +748,12 @@
             color: var(--text-primary, #1b1b1b);
         }
 
+        body.dark-mode .learning-outcomes {
+            background: linear-gradient(180deg,
+                    var(--charcoal-dark),
+                    var(--deep-navy));
+        }
+
         /* ---------- CONTAINER ---------- */
 
         .outcomes-container {
@@ -744,6 +806,9 @@
             overflow: hidden;
         }
 
+        body.dark-mode .outcome-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
 
         .outcome-card::before {
             content: "";
@@ -810,6 +875,12 @@
             color: var(--text-primary, #1b1b1b);
         }
 
+        body.dark-mode .apply {
+            background: linear-gradient(180deg,
+                    var(--deep-navy),
+                    var(--charcoal-dark));
+        }
+
         /* ---------- CONTAINER ---------- */
 
         .apply-container {
@@ -861,6 +932,9 @@
             position: relative;
         }
 
+        body.dark-mode .apply-step {
+            background: rgba(255, 255, 255, 0.05);
+        }
 
         .apply-step:hover {
             transform: translateY(-12px);
@@ -999,7 +1073,7 @@
 
             <div class="hero-visual">
                 <div class="glow"></div>
-                <img src="https://training.linuxfoundation.org/wp-content/uploads/2020/03/lfcd-badge-500x500.png" alt="Linux Open Source" />
+                <img src="linux-hero.svg" alt="Linux Open Source" />
             </div>
 
         </div>
@@ -1397,6 +1471,16 @@
     <div id="footer"></div>
 
     <script src="../../js/components.js"></script>
+    <script src="../../js/main.js"></script>
+
+    <button id="scrollTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <script src="../../js/DMtheme.js"></script>
+
+
+    <script src="../../js/theme.js"></script>
+
 
     <script>
         // Smooth scroll for anchor links
@@ -1448,7 +1532,6 @@
             }
         });
     </script>
-  <script src='../../js/pwa.js'></script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/git-playground.css?v=1.0.3">
-  <link rel='manifest' href='../../manifest.json' />
+    <link rel='manifest' href='../../manifest.json' />
 </head>
 
 <body class="playground-page">
@@ -350,7 +350,15 @@
     </div>
 
     <script src="../js/git-playground.js?v=1.0.3"></script>
-  <script src='../js/pwa.js'></script>
+    <script>
+        // Check if page is embedded in an iframe
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('embedded') === 'true') {
+            document.querySelector('.playground-nav').style.display = 'none';
+            document.body.style.paddingTop = '0';
+        }
+    </script>
+    <script src='../js/pwa.js'></script>
 </body>
 
 </html>

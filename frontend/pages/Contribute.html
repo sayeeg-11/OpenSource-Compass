@@ -1,26 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>How to Contribute - OpenSource Compass</title>
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contribute.css" />
+<<<<<<< descriptionGenerator
+  <link rel="stylesheet" href="../css/pr-generator.css" />
+  <link rel="stylesheet" href="/frontend/css/dark-mode.css">
+  <link rel='manifest' href='../../manifest.json' />
 </head>
+<style>
+  /* =========================================
+   NAVBAR FIXED POSITION FIX
+========================================= */
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  header {
+    position: fixed !important;
+    /* Locks the navbar to the viewport */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000;
+    /* Ensure it has a background so content doesn't show through */
+    background-color: #0F172A;
+    /* Dark Blue matching your theme */
+  }
+
+  /* Push main content down so it doesn't hide behind the fixed navbar */
+  main {
+    padding-top: 100px !important;
+  }
+
+  /* =========================================
+   CONTRIBUTE PAGE DARK MODE FIXES
+========================================= */
+
+  /* 1. Page Background - Cold Gray */
+  body.dark-mode main,
+  body.dark-mode section {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+  }
+
+  /* Ensure header background updates in dark mode */
+  body.dark-mode header {
+    background-color: #121212 !important;
+    border-bottom: 1px solid #333;
+  }
+
+  /* 2. Card Backgrounds - Dark Grey */
+  body.dark-mode .step,
+  body.dark-mode .step-card,
+  body.dark-mode .tip-card,
+  body.dark-mode .practice-item,
+  body.dark-mode .card {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  /* 3. GOLDEN TEXT FIX (Titles & Icons) */
+  body.dark-mode h1,
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode h4,
+  body.dark-mode h5,
+  body.dark-mode .tip-icon,
+  body.dark-mode strong,
+  body.dark-mode b {
+    color: #d4af37 !important;
+    /* Primary Gold */
+  }
+
+  /* 4. STEP NUMBER VISIBILITY FIX */
+  /* Forces the number inside the yellow circle to be white */
+  body.dark-mode .step-number {
+    color: #ffffff !important;
+  }
+
+  /* 5. Description Text - Readable Light Grey (Global) */
+  body.dark-mode p,
+  body.dark-mode li {
+    color: #cccccc !important;
+  }
+
+  /* 6. Hover Effects */
+  body.dark-mode .step:hover,
+  body.dark-mode .step-card:hover,
+  body.dark-mode .tip-card:hover,
+  body.dark-mode .practice-item:hover {
+    border-color: #d4af37 !important;
+    transform: translateY(-5px);
+  }
+
+  /* 7. Code Snippet Backgrounds - FORCED LIGHT THEME */
+  /* This keeps code blocks white even in dark mode */
+  body.dark-mode .code-block,
+  body.dark-mode pre {
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #333333 !important;
+    /* Dark grey text */
+  }
+
+  /* Inline code (like 'git push' in notes) is now White with Dark Text */
+  body.dark-mode code {
+    background-color: #ffffff !important;
+    /* White background */
+    color: #333333 !important;
+    /* Dark Text */
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+
+  /* Ensure comments inside code are visible */
+  body.dark-mode .code-comment {
+    color: #6a737d !important;
+  }
+
+  /* 8. BEST PRACTICES SECTION VISIBILITY FIX */
+  /* Forces dark text on the light background for this specific section */
+  body.dark-mode .practices-container {
+    background-color: #ffffff !important;
+    /* Keep white background */
+    border: 1px solid #e0e0e0 !important;
+  }
+
+  body.dark-mode .practices-container li,
+  body.dark-mode .practices-container span,
+  body.dark-mode .practices-container p {
+    color: #333333 !important;
+    /* Dark Grey Text */
+  }
+
+  body.dark-mode .practices-container strong {
+    color: #000000 !important;
+    /* Black for bold text */
+  }
+</style>
+
+=======
+</head>
+>>>>>>> main
 <body>
   <header>
     <div class="navbar-container">
@@ -36,12 +176,8 @@
         <a href="./contributors.html">Contributors</a>
         <a href="./faq.html">FAQ</a>
         <a href="./Contribute.html">Contribute</a>
-        <button
-          id="themeToggle"
-          aria-label="Toggle dark mode"
-          title="Toggle dark mode"
-          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
-        >
+        <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
           <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
       </div>
@@ -51,7 +187,8 @@
   <main>
     <div class="hero-section">
       <h2>Your Journey to Open Source Contribution</h2>
-      <p>Master the art of contributing to open source projects with our comprehensive step-by-step guide. From forking your first repository to submitting pull requests like a seasoned developer.</p>
+      <p>Master the art of contributing to open source projects with our comprehensive step-by-step guide. From forking
+        your first repository to submitting pull requests like a seasoned developer.</p>
     </div>
 
     <div class="steps-container">
@@ -63,7 +200,8 @@
           <h3>Fork the Repository</h3>
         </div>
         <div class="step-content">
-          <p>Forking creates your own copy of someone else's project. This allows you to freely experiment with changes without affecting the original project.</p>
+          <p>Forking creates your own copy of someone else's project. This allows you to freely experiment with changes
+            without affecting the original project.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Navigate to the repository on GitHub and click the "Fork" button</span>
 <span class="code-comment"># This creates a copy under your GitHub account</span>
@@ -71,7 +209,10 @@ https://github.com/original-owner/project-name
   ↓
 https://github.com/your-username/project-name</pre>
           </div>
-          <p><strong>Example:</strong> If you want to contribute to a project like <code>awesome-readme</code>, visit the repository page and click the Fork button in the top-right corner. This creates <code>https://github.com/your-username/awesome-readme</code>.</p>
+          <p><strong>Example:</strong> If you want to contribute to a project like <code>awesome-readme</code>, visit
+            the repository page and click the Fork button in the top-right corner. This creates
+            <code>https://github.com/your-username/awesome-readme</code>.
+          </p>
         </div>
       </div>
 
@@ -81,7 +222,8 @@ https://github.com/your-username/project-name</pre>
           <h3>Clone the Repository Locally</h3>
         </div>
         <div class="step-content">
-          <p>Cloning downloads the forked repository to your local machine so you can work on it offline with your favorite code editor.</p>
+          <p>Cloning downloads the forked repository to your local machine so you can work on it offline with your
+            favorite code editor.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Clone your forked repository</span>
 git clone https://github.com/your-username/project-name.git
@@ -92,7 +234,8 @@ cd project-name
 <span class="code-comment"># Add the original repository as upstream (to sync later)</span>
 git remote add upstream https://github.com/original-owner/project-name.git</pre>
           </div>
-          <p><strong>Pro Tip:</strong> Adding the upstream remote allows you to pull the latest changes from the original repository and keep your fork up to date.</p>
+          <p><strong>Pro Tip:</strong> Adding the upstream remote allows you to pull the latest changes from the
+            original repository and keep your fork up to date.</p>
         </div>
       </div>
 
@@ -102,7 +245,8 @@ git remote add upstream https://github.com/original-owner/project-name.git</pre>
           <h3>Create a New Branch</h3>
         </div>
         <div class="step-content">
-          <p>Always create a new branch for your changes. This keeps your work organized and makes it easier for maintainers to review specific features or fixes.</p>
+          <p>Always create a new branch for your changes. This keeps your work organized and makes it easier for
+            maintainers to review specific features or fixes.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Create and switch to a new branch</span>
 git checkout -b feature/add-new-feature
@@ -113,7 +257,10 @@ git checkout -b fix/fix-bug-description
 <span class="code-comment"># Verify you're on the new branch</span>
 git branch</pre>
           </div>
-          <p><strong>Naming Convention:</strong> Use descriptive names like <code>feature/user-authentication</code>, <code>fix/login-bug</code>, or <code>docs/update-readme</code>. This helps maintainers understand your contribution at a glance.</p>
+          <p><strong>Naming Convention:</strong> Use descriptive names like <code>feature/user-authentication</code>,
+            <code>fix/login-bug</code>, or <code>docs/update-readme</code>. This helps maintainers understand your
+            contribution at a glance.
+          </p>
         </div>
       </div>
 
@@ -123,7 +270,8 @@ git branch</pre>
           <h3>Make Your Changes</h3>
         </div>
         <div class="step-content">
-          <p>Now it's time to write code, fix bugs, or update documentation. Follow the project's contribution guidelines and coding standards.</p>
+          <p>Now it's time to write code, fix bugs, or update documentation. Follow the project's contribution
+            guidelines and coding standards.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Edit files using your preferred code editor</span>
 <span class="code-comment"># Example: Adding a new feature to index.js</span>
@@ -136,7 +284,8 @@ git add filename.js
 <span class="code-comment"># Or stage all changes</span>
 git add .</pre>
           </div>
-          <p><strong>Best Practice:</strong> Make small, focused commits. Each commit should represent a single logical change. This makes it easier to review and revert if needed.</p>
+          <p><strong>Best Practice:</strong> Make small, focused commits. Each commit should represent a single logical
+            change. This makes it easier to review and revert if needed.</p>
         </div>
       </div>
 
@@ -146,7 +295,8 @@ git add .</pre>
           <h3>Commit Your Changes</h3>
         </div>
         <div class="step-content">
-          <p>Write clear, descriptive commit messages that explain what you changed and why. Good commit messages help maintainers understand your contribution.</p>
+          <p>Write clear, descriptive commit messages that explain what you changed and why. Good commit messages help
+            maintainers understand your contribution.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Commit with a descriptive message</span>
 git commit -m "Add user authentication feature with JWT"
@@ -154,7 +304,8 @@ git commit -m "Add user authentication feature with JWT"
 <span class="code-comment"># For multiple line commits (more detailed)</span>
 git commit -m "Fix: Resolve login redirect issue" -m "Users were being redirected to the wrong page after login. Updated the routing logic to fix this."</pre>
           </div>
-          <p><strong>Commit Message Format:</strong> Start with a verb (Add, Fix, Update, Remove) and keep the first line under 50 characters. Add a detailed description if needed.</p>
+          <p><strong>Commit Message Format:</strong> Start with a verb (Add, Fix, Update, Remove) and keep the first
+            line under 50 characters. Add a detailed description if needed.</p>
         </div>
       </div>
 
@@ -164,7 +315,8 @@ git commit -m "Fix: Resolve login redirect issue" -m "Users were being redirecte
           <h3>Push to Your Fork</h3>
         </div>
         <div class="step-content">
-          <p>Upload your local changes to your forked repository on GitHub. This prepares your changes for the pull request.</p>
+          <p>Upload your local changes to your forked repository on GitHub. This prepares your changes for the pull
+            request.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Push your branch to your forked repository</span>
 git push origin feature/add-new-feature
@@ -172,7 +324,9 @@ git push origin feature/add-new-feature
 <span class="code-comment"># If this is your first push on this branch</span>
 git push -u origin feature/add-new-feature</pre>
           </div>
-          <p><strong>Note:</strong> The <code>-u</code> flag sets up tracking, so future pushes can simply use <code>git push</code> without specifying the branch.</p>
+          <p><strong>Note:</strong> The <code>-u</code> flag sets up tracking, so future pushes can simply use
+            <code>git push</code> without specifying the branch.
+          </p>
         </div>
       </div>
 
@@ -182,7 +336,8 @@ git push -u origin feature/add-new-feature</pre>
           <h3>Create a Pull Request</h3>
         </div>
         <div class="step-content">
-          <p>A Pull Request (PR) is how you propose your changes to the original project. Visit your forked repository on GitHub and you'll see a prompt to create a PR.</p>
+          <p>A Pull Request (PR) is how you propose your changes to the original project. Visit your forked repository
+            on GitHub and you'll see a prompt to create a PR.</p>
           <div class="code-block">
             <pre><span class="code-comment"># On GitHub, navigate to your forked repository</span>
 <span class="code-comment"># Click "Compare & pull request" button</span>
@@ -198,7 +353,9 @@ Description:
 
 Fixes #123</pre>
           </div>
-          <p><strong>PR Best Practices:</strong> Reference related issues using keywords like "Fixes #123" or "Closes #456". This automatically links and closes issues when your PR is merged. Include screenshots for UI changes.</p>
+          <p><strong>PR Best Practices:</strong> Reference related issues using keywords like "Fixes #123" or "Closes
+            #456". This automatically links and closes issues when your PR is merged. Include screenshots for UI
+            changes.</p>
         </div>
       </div>
 
@@ -208,7 +365,8 @@ Fixes #123</pre>
           <h3>Respond to Feedback</h3>
         </div>
         <div class="step-content">
-          <p>Maintainers will review your PR and may request changes. Be responsive, polite, and open to feedback. This is a collaborative process.</p>
+          <p>Maintainers will review your PR and may request changes. Be responsive, polite, and open to feedback. This
+            is a collaborative process.</p>
           <div class="code-block">
             <pre><span class="code-comment"># Make requested changes locally</span>
 git add .
@@ -217,7 +375,9 @@ git push origin feature/add-new-feature
 
 <span class="code-comment"># The PR will automatically update with your new commits</span></pre>
           </div>
-          <p><strong>Communication Tips:</strong> Thank reviewers for their time, ask questions if feedback is unclear, and explain your reasoning for implementation choices. Remember, everyone is working toward the same goal of improving the project.</p>
+          <p><strong>Communication Tips:</strong> Thank reviewers for their time, ask questions if feedback is unclear,
+            and explain your reasoning for implementation choices. Remember, everyone is working toward the same goal of
+            improving the project.</p>
         </div>
       </div>
     </div>
@@ -228,37 +388,43 @@ git push origin feature/add-new-feature
         <div class="tip-card">
           <div class="tip-icon"><i class="fas fa-book-open"></i></div>
           <h4>Read the Documentation</h4>
-          <p>Always read CONTRIBUTING.md, README.md, and CODE_OF_CONDUCT.md before starting. These files contain project-specific guidelines and expectations.</p>
+          <p>Always read CONTRIBUTING.md, README.md, and CODE_OF_CONDUCT.md before starting. These files contain
+            project-specific guidelines and expectations.</p>
         </div>
 
         <div class="tip-card">
           <div class="tip-icon"><i class="fas fa-search"></i></div>
           <h4>Find Good First Issues</h4>
-          <p>Look for labels like "good first issue", "beginner-friendly", or "help wanted". These are perfect for newcomers and are often well-documented.</p>
+          <p>Look for labels like "good first issue", "beginner-friendly", or "help wanted". These are perfect for
+            newcomers and are often well-documented.</p>
         </div>
 
         <div class="tip-card">
           <div class="tip-icon"><i class="fas fa-sync-alt"></i></div>
           <h4>Keep Your Fork Updated</h4>
-          <p>Regularly sync your fork with the upstream repository to avoid merge conflicts and stay current with the latest changes.</p>
+          <p>Regularly sync your fork with the upstream repository to avoid merge conflicts and stay current with the
+            latest changes.</p>
         </div>
 
         <div class="tip-card">
           <div class="tip-icon"><i class="fas fa-check-circle"></i></div>
           <h4>Test Your Changes</h4>
-          <p>Always test your code thoroughly before submitting a PR. Run existing tests and add new ones if you're adding features.</p>
+          <p>Always test your code thoroughly before submitting a PR. Run existing tests and add new ones if you're
+            adding features.</p>
         </div>
 
         <div class="tip-card">
           <div class="tip-icon"><i class="fas fa-comments"></i></div>
           <h4>Engage with the Community</h4>
-          <p>Join project discussions, ask questions, and help others. Being an active community member makes contributing more enjoyable and effective.</p>
+          <p>Join project discussions, ask questions, and help others. Being an active community member makes
+            contributing more enjoyable and effective.</p>
         </div>
 
         <div class="tip-card">
           <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
           <h4>Start Small</h4>
-          <p>Don't try to rewrite entire features initially. Start with documentation fixes, typos, or small bug fixes to learn the workflow.</p>
+          <p>Don't try to rewrite entire features initially. Start with documentation fixes, typos, or small bug fixes
+            to learn the workflow.</p>
         </div>
       </div>
     </div>
@@ -269,27 +435,33 @@ git push origin feature/add-new-feature
         <ul class="practice-list">
           <li>
             <i class="fas fa-check"></i>
-            <span><strong>Write clear commit messages:</strong> Use present tense ("Add feature" not "Added feature") and be specific about what changed and why.</span>
+            <span><strong>Write clear commit messages:</strong> Use present tense ("Add feature" not "Added feature")
+              and be specific about what changed and why.</span>
           </li>
           <li>
             <i class="fas fa-check"></i>
-            <span><strong>Follow coding standards:</strong> Use the same code style, indentation, and naming conventions as the existing codebase. Many projects use linters to enforce this.</span>
+            <span><strong>Follow coding standards:</strong> Use the same code style, indentation, and naming conventions
+              as the existing codebase. Many projects use linters to enforce this.</span>
           </li>
           <li>
             <i class="fas fa-check"></i>
-            <span><strong>Keep PRs focused:</strong> One PR should address one issue or feature. Avoid mixing unrelated changes in the same pull request.</span>
+            <span><strong>Keep PRs focused:</strong> One PR should address one issue or feature. Avoid mixing unrelated
+              changes in the same pull request.</span>
           </li>
           <li>
             <i class="fas fa-check"></i>
-            <span><strong>Update documentation:</strong> If your change affects how users interact with the project, update the relevant documentation files.</span>
+            <span><strong>Update documentation:</strong> If your change affects how users interact with the project,
+              update the relevant documentation files.</span>
           </li>
           <li>
             <i class="fas fa-check"></i>
-            <span><strong>Be patient and respectful:</strong> Maintainers are often volunteers. It may take time to review your PR. Be courteous in all interactions.</span>
+            <span><strong>Be patient and respectful:</strong> Maintainers are often volunteers. It may take time to
+              review your PR. Be courteous in all interactions.</span>
           </li>
           <li>
             <i class="fas fa-check"></i>
-            <span><strong>Learn from feedback:</strong> Code reviews are learning opportunities. Don't take criticism personally—use it to improve your skills.</span>
+            <span><strong>Learn from feedback:</strong> Code reviews are learning opportunities. Don't take criticism
+              personally—use it to improve your skills.</span>
           </li>
         </ul>
       </div>
@@ -297,7 +469,7 @@ git push origin feature/add-new-feature
   </main>
 
   <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
   </button>
 
   <div id="footer"></div>
@@ -308,5 +480,7 @@ git push origin feature/add-new-feature
   <script src="/frontend/js/DMtheme.js"></script>
 
   <script src='../js/pwa.js'></script>
+  <script src="../js/pr-generator.js"></script>
 </body>
+
 </html>

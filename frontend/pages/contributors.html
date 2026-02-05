@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>OpenSource Compass</title>
@@ -12,13 +13,12 @@
   />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
-  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contributors.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
-  
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/pr-generator.css" />
+
   <link rel='manifest' href='../../manifest.json' />
 </head>
 
@@ -33,12 +33,8 @@
       <div class="contributors-stats" id="contributors-stats"></div>
 
       <div class="contributors-controls">
-        <input
-          id="contributor-search"
-          type="search"
-          placeholder="Search contributors…"
-          aria-label="Search contributors"
-        />
+        <input id="contributor-search" type="search" placeholder="Search contributors…"
+          aria-label="Search contributors" />
 
         <label class="bot-toggle">
           <input type="checkbox" id="toggle-bots" checked />
@@ -59,7 +55,7 @@
   <script src="../js/contributors.js"></script>
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
-<script src="/frontend/js/DMtheme.js"></script>
+  <script src="/frontend/js/DMtheme.js"></script>
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
@@ -76,32 +72,32 @@
 
         // Find the chatbot button by checking all fixed elements
         const allElements = document.querySelectorAll('*');
-        
+
         for (const el of allElements) {
           // Skip scroll button and footer elements
-          if (el.id === 'scrollTopBtn' || 
-              el.closest('footer') || 
-              el.closest('#footer') ||
-              el.classList.contains('contributor-card')) {
+          if (el.id === 'scrollTopBtn' ||
+            el.closest('footer') ||
+            el.closest('#footer') ||
+            el.classList.contains('contributor-card')) {
             continue;
           }
 
           const styles = window.getComputedStyle(el);
-          
+
           if (styles.position === 'fixed') {
             const rect = el.getBoundingClientRect();
             const vh = window.innerHeight;
             const vw = window.innerWidth;
-            
+
             // Check if element is in bottom-right corner (chatbot position)
-            const isBottomRight = 
-              rect.bottom > vh - 150 && 
+            const isBottomRight =
+              rect.bottom > vh - 150 &&
               rect.right > vw - 150 &&
-              rect.width > 30 && 
+              rect.width > 30 &&
               rect.width < 150 &&
-              rect.height > 30 && 
+              rect.height > 30 &&
               rect.height < 150;
-            
+
             if (isBottomRight) {
               // Apply positioning fix
               el.style.setProperty('bottom', '90px', 'important');
@@ -131,5 +127,7 @@
     })();
   </script>
   <script src='../js/pwa.js'></script>
+  <script src="../js/pr-generator.js"></script>
 </body>
+
 </html>

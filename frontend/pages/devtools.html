@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" class="devtools-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Tools | OpenSource Compass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pr-generator.css">
+    <style>
+        /* Force Reset and Overrides for Global Styles */
+        html.devtools-page,
+        html.devtools-page body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 100vh !important;
+            width: 100vw !important;
+            overflow: hidden !important;
+            background: #0f172a !important;
+        }
+
+        body.devtools-body {
+            display: flex;
+            flex-direction: column;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            padding-top: 0 !important;
+            /* Remove style.css 90px padding */
+        }
+
+        /* Modern Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+
+        /* Integrated Header */
+        .tools-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            background: #1e293b;
+            border-bottom: 2px solid #d4af37;
+            height: 64px;
+            z-index: 1000;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tools-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #d4af37;
+            white-space: nowrap;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            height: 100%;
+        }
+
+        .header-tabs {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            padding: 0 1.2rem;
+            height: 100%;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+            position: relative;
+            top: 1px;
+            /* Visual alignment with header border */
+        }
+
+        .tab-btn:hover {
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .tools-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #d4af37;
+            white-space: nowrap;
+        }
+
+        .tools-back {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 1.5rem;
+            height: 30px;
+            /* Centered height */
+        }
+
+        .tools-back:hover {
+            color: #d4af37;
+        }
+
+        /* Content Area */
+        .tools-main-content {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: #0f172a;
+        }
+
+        .tool-panel {
+            display: none;
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .tool-panel.active {
+            display: block;
+        }
+
+        /* Iframe styling */
+        .playground-wrapper-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #0b111a;
+        }
+
+        /* Footer */
+        .tools-footer {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+            color: #64748b;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .active {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+
+<body class="devtools-body">
+
+    <nav class="tools-nav">
+        <div class="tools-brand">
+            <i class="fas fa-toolbox"></i>
+            <span>Compass DevTools</span>
+        </div>
+        <div class="nav-right">
+            <div class="header-tabs">
+                <button class="tab-btn active" onclick="switchTab('pr-gen')">
+                    <i class="fas fa-magic"></i> PR Generator
+                </button>
+                <button class="tab-btn" onclick="switchTab('playground')">
+                    <i class="fas fa-terminal"></i> Git Playground
+                </button>
+            </div>
+            <a href="../../index.html" class="tools-back">
+                <i class="fas fa-arrow-left"></i> Back Home
+            </a>
+        </div>
+    </nav>
+
+    <main class="tools-main-content">
+        <!-- PR GENERATOR PANEL -->
+        <div id="pr-gen" class="tool-panel active">
+            <div class="pr-embedded-container">
+                <div class="pr-form-header">
+                    <h2>Magic PR Generator</h2>
+                    <p>Provide details about your contribution to generate a professional description.</p>
+                </div>
+
+                <form id="prGeneratorForm">
+                    <div class="pr-form-group">
+                        <label for="prLink">Issue or PR Link (Optional)</label>
+                        <input type="url" id="prLink" placeholder="e.g., https://github.com/user/repo/issues/123">
+                    </div>
+
+                    <div class="pr-form-group">
+                        <label for="prProblem">Problem Statement</label>
+                        <textarea id="prProblem" placeholder="What issue are you solving?"></textarea>
+                    </div>
+
+                    <div class="pr-form-group">
+                        <label for="prChanges">Changes Implemented</label>
+                        <textarea id="prChanges" placeholder="Describe your code changes..."></textarea>
+                    </div>
+
+                    <div class="pr-form-group">
+                        <label for="prTesting">Testing Evidence</label>
+                        <input type="text" id="prTesting" placeholder="How was this verified?">
+                    </div>
+
+                    <div class="pr-form-group">
+                        <label for="prLimitations">Limitations / Notes</label>
+                        <input type="text" id="prLimitations" placeholder="Any known bottlenecks?">
+                    </div>
+
+                    <button type="submit" id="prSubmitBtn" class="pr-submit-btn">
+                        <span class="btn-text">Generate Description ✨</span>
+                        <div class="pr-loader"></div>
+                    </button>
+                </form>
+
+                <div id="prPreviewSection" class="pr-preview-section">
+                    <div class="pr-preview-header">
+                        <h3>Markdown Preview</h3>
+                        <button id="prCopyBtn" class="pr-copy-btn">
+                            <i class="far fa-copy"></i> Copy to Clipboard
+                        </button>
+                    </div>
+                    <div id="prPreviewContent" class="pr-preview-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PLAYGROUND PANEL -->
+        <div id="playground" class="tool-panel" style="padding: 0;">
+            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe"
+                title="Git Playground"></iframe>
+        </div>
+    </main>
+
+    <footer class="tools-footer">
+        OpenSource Compass Developer Workspace &copy; 2026
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Update Panels
+            document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+
+    <script src="../js/pr-generator.js?v=${new Date().getTime()}"></script>
+</body>
+
+</html>

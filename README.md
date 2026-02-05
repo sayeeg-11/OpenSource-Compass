@@ -112,6 +112,17 @@ OPENSOURCE-COMPASS/
 </details>
 
 ---
+### Screenshots
+
+#### Home Page
+[![Home Page](frontend/assets/templates/Home.png)](frontend/assets/templates/Home.png)
+
+#### Guide Page
+[![Guide Page](frontend/assets/templates/guides.png)](frontend/assets/templates/guides.png)
+
+#### Programs Page
+[![Programs Page](frontend/assets/templates/Programs.png)](frontend/assets/templates/Programs.png)
+
 
 ## 👥 Team — SWOC’26
 

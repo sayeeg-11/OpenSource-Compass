@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../css/resources.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/pr-generator.css" />
 
   <style>
     /* ========================================= */
@@ -250,9 +251,9 @@
       transform: translateY(20px);
       animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
-    
+
     .level-item:last-child {
-        margin-right: 0;
+      margin-right: 0;
     }
 
     .level-item:not(.locked):hover {
@@ -260,7 +261,10 @@
     }
 
     @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .level-node {
@@ -271,7 +275,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       background: white;
       border: 3px solid #e0e0e0;
@@ -304,15 +308,26 @@
     .level-item.completed .level-node::before {
       content: '';
       position: absolute;
-      top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
       animation: shimmer 3s infinite;
     }
 
     @keyframes shimmer {
-      0% { left: -100%; }
-      20% { left: 100%; }
-      100% { left: 100%; }
+      0% {
+        left: -100%;
+      }
+
+      20% {
+        left: 100%;
+      }
+
+      100% {
+        left: 100%;
+      }
     }
 
     .level-item.unlocked .level-node {
@@ -327,7 +342,10 @@
     .level-item.unlocked .level-node::after {
       content: '';
       position: absolute;
-      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
       border-radius: 50%;
       border: 2px solid var(--primary-gold, #D4AF37);
       animation: pulse-aura 2s infinite;
@@ -335,8 +353,15 @@
     }
 
     @keyframes pulse-aura {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(1.6); opacity: 0; }
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
     }
 
     .level-meta {
@@ -370,12 +395,12 @@
       color: var(--deep-navy, #0a192f);
       line-height: 1.2;
       display: block;
-      min-height: 2.4em; 
+      min-height: 2.4em;
       margin-top: 0.2rem;
     }
-    
+
     .level-item.locked .level-title {
-        color: #aaa;
+      color: #aaa;
     }
 
     .xp-pill {
@@ -391,7 +416,7 @@
       opacity: 0;
       transform: translateY(10px);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       white-space: nowrap;
       border: 1px solid rgba(212, 175, 55, 0.3);
     }
@@ -526,15 +551,53 @@
             <li><span class="checkmark">✔</span> PR title is clear</li>
           </ul>
         </div>
+      </article>
 
-        <div class="checklist-tile">
-          <h4>Before Choosing a Repo</h4>
-          <ul>
-            <li><span class="checkmark">✔</span> Recent commits</li>
-            <li><span class="checkmark">✔</span> Maintainer responses</li>
-            <li><span class="checkmark">✔</span> Beginner labels</li>
-          </ul>
+      <article class="card">
+        <div class="tile-icon">🐛</div>
+        <h4>Issue Templates</h4>
+        <p>Formats for bug reports and features.</p>
+        <div class="resource-link-wrapper">
+          <a href="../assets/templates/issue-template.md" target="_blank" class="resource-link">Visit Template <i
+              class="fas fa-arrow-right"></i></a>
         </div>
+      </article>
+
+      <article class="card">
+        <div class="tile-icon">📘</div>
+        <h4>README Structure</h4>
+        <p>Layout to guide new contributors.</p>
+        <div class="resource-link-wrapper">
+          <a href="../assets/templates/readme.md" target="_blank" class="resource-link">Visit Template <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="tile-icon">🤝</div>
+        <h4>CONTRIBUTING.md</h4>
+        <p>Sample guidelines for project onboarding.</p>
+        <div class="resource-link-wrapper">
+          <a href="../assets/templates/contributing.md" target="_blank" class="resource-link">Visit Template <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Templates & Assets Section -->
+  <section>
+    <h3>Quick Checklists</h3>
+    <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
+
+    <div class="checklists-grid">
+      <div class="checklist-tile">
+        <h4>Before Opening a PR</h4>
+        <ul>
+          <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
+          <li><span class="checkmark">✔</span> Linked issue referenced</li>
+          <li><span class="checkmark">✔</span> PR title is clear</li>
+        </ul>
       </div>
     </section>
 
@@ -618,7 +681,6 @@
             <i class="fas fa-star" style="margin-right: 5px;"></i> <span id="total-xp">0</span> XP
           </div>
         </div>
-        <p style="margin-top: 0.5rem;">Complete levels to earn XP and unlock your journey.</p>
       </div>
 
       <div id="level-chain-wrapper"
@@ -647,6 +709,7 @@
               style="width: 0%; background: var(--primary-gold, #D4AF37); height: 100%; transition: width 0.3s ease;"></div>
           </div>
         </div>
+      </div>
 
         <div id="quiz-question">
           <h5 id="question-text"
@@ -661,6 +724,7 @@
               Question <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
+      </div>
 
         <div id="quiz-result" style="display: none; text-align: center;">
           <div id="result-icon" style="font-size: 3rem; margin-bottom: 1rem;"></div>
@@ -680,61 +744,62 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        let levels = []; // Will be fetched
-        let currentLevelIndex = 0;
-        let currentQuestionIndex = 0;
-        let currentScore = 0;
-        let currentLevelXP = 0;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let levels = []; // Will be fetched
+      let currentLevelIndex = 0;
+      let currentQuestionIndex = 0;
+      let currentScore = 0;
+      let currentLevelXP = 0;
 
-        // Persistent State
-        let unlockedLevel = parseInt(localStorage.getItem('osc_unlockedLevel') || 1);
-        let totalXP = parseInt(localStorage.getItem('osc_totalXP') || 0);
+      // Persistent State
+      let unlockedLevel = parseInt(localStorage.getItem('osc_unlockedLevel') || 1);
+      let totalXP = parseInt(localStorage.getItem('osc_totalXP') || 0);
 
-        // Elements
-        const levelContainer = document.getElementById('level-chain-container');
-        const levelWrapper = document.getElementById('level-chain-wrapper');
-        const quizContainer = document.getElementById('quiz-container');
-        const quizTitle = document.getElementById('level-title');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const progressBar = document.getElementById('progress-bar');
-        const xpDisplay = document.getElementById('total-xp');
-        const explanationBox = document.getElementById('explanation-box');
-        const explanationText = document.getElementById('explanation-text');
-        const nextQBtn = document.getElementById('next-question-btn');
+      // Elements
+      const levelContainer = document.getElementById('level-chain-container');
+      const levelWrapper = document.getElementById('level-chain-wrapper');
+      const quizContainer = document.getElementById('quiz-container');
+      const quizTitle = document.getElementById('level-title');
+      const questionText = document.getElementById('question-text');
+      const optionsContainer = document.getElementById('options-container');
+      const progressBar = document.getElementById('progress-bar');
+      const xpDisplay = document.getElementById('total-xp');
+      const explanationBox = document.getElementById('explanation-box');
+      const explanationText = document.getElementById('explanation-text');
+      const nextQBtn = document.getElementById('next-question-btn');
 
-        // Initial Render
-        xpDisplay.innerText = totalXP;
-        fetchLevels();
+      // Initial Render
+      xpDisplay.innerText = totalXP;
+      fetchLevels();
 
-        async function fetchLevels() {
-          try {
-            const response = await fetch('../data/quiz_data.json');
-            levels = await response.json();
-            renderLevels();
-          } catch (error) {
-            console.error("Failed to load quiz data", error);
-            levelContainer.innerHTML = '<p>Error loading quests. Please try again later.</p>';
-          }
+      async function fetchLevels() {
+        try {
+          const response = await fetch('../data/quiz_data.json');
+          levels = await response.json();
+          renderLevels();
+        } catch (error) {
+          console.error("Failed to load quiz data", error);
+          levelContainer.innerHTML = '<p>Error loading quests. Please try again later.</p>';
         }
+      }
 
-        function renderLevels() {
-          // Keep line div
-          const line = levelContainer.firstElementChild;
-          levelContainer.innerHTML = '';
-          levelContainer.appendChild(line);
+      function renderLevels() {
+        // Keep line div
+        const line = levelContainer.firstElementChild;
+        levelContainer.innerHTML = '';
+        levelContainer.appendChild(line);
 
-          levels.forEach((level, index) => {
-            const isLocked = level.id > unlockedLevel;
-            const isCompleted = level.id < unlockedLevel;
+        levels.forEach((level, index) => {
+          const isLocked = level.id > unlockedLevel;
+          const isCompleted = level.id < unlockedLevel;
 
-            // Node Container (Vertical stack: Node + Title)
-            const nodeWrapper = document.createElement('div');
-            nodeWrapper.style.cssText = `
+          // Node Container (Vertical stack: Node + Title)
+          const nodeWrapper = document.createElement('div');
+          nodeWrapper.style.cssText = `
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -744,23 +809,23 @@
                 min-width: 120px;
             `;
 
-            // Node Circle
-            const node = document.createElement('div');
-            let nodeBg = 'white';
-            let nodeBorder = '#ffc107';
-            let nodeColor = '#333';
-            let cursor = 'pointer';
-            let icon = level.icon;
+          // Node Circle
+          const node = document.createElement('div');
+          let nodeBg = 'white';
+          let nodeBorder = '#ffc107';
+          let nodeColor = '#333';
+          let cursor = 'pointer';
+          let icon = level.icon;
 
-            if (isLocked) {
-              nodeBg = '#f5f5f5'; nodeBorder = '#ccc'; nodeColor = '#999'; cursor = 'not-allowed'; icon = 'fas fa-lock';
-            } else if (isCompleted) {
-              nodeBg = '#e8f5e9'; nodeBorder = '#2ecc71'; nodeColor = '#2ecc71';
-            } else {
-              nodeBg = '#fff9c4'; nodeBorder = '#D4AF37'; nodeColor = '#D4AF37';
-            }
+          if (isLocked) {
+            nodeBg = '#f5f5f5'; nodeBorder = '#ccc'; nodeColor = '#999'; cursor = 'not-allowed'; icon = 'fas fa-lock';
+          } else if (isCompleted) {
+            nodeBg = '#e8f5e9'; nodeBorder = '#2ecc71'; nodeColor = '#2ecc71';
+          } else {
+            nodeBg = '#fff9c4'; nodeBorder = '#D4AF37'; nodeColor = '#D4AF37';
+          }
 
-            node.style.cssText = `
+          node.style.cssText = `
                 width: 65px; height: 65px;
                 background: ${nodeBg};
                 border: 3px solid ${nodeBorder};
@@ -773,104 +838,140 @@
                 margin-bottom: 1rem;
             `;
 
-            if (!isLocked) {
-              node.onmouseover = () => node.style.transform = 'scale(1.1)';
-              node.onmouseout = () => node.style.transform = 'scale(1)';
-              node.onclick = () => startLevel(level.id);
-            }
-            node.innerHTML = `<i class="${icon}"></i>`;
+          if (!isLocked) {
+            node.onmouseover = () => node.style.transform = 'scale(1.1)';
+            node.onmouseout = () => node.style.transform = 'scale(1)';
+            node.onclick = () => startLevel(level.id);
+          }
+          node.innerHTML = `<i class="${icon}"></i>`;
 
-            // Text Label
-            const label = document.createElement('div');
-            label.style.textAlign = 'center';
-            label.innerHTML = `
+          // Text Label
+          const label = document.createElement('div');
+          label.style.textAlign = 'center';
+          label.innerHTML = `
                 <h5 style="margin: 0; font-size: 0.95rem; color: ${isLocked ? '#999' : 'var(--deep-navy)'};">Lvl ${level.id}</h5>
                 <p style="margin: 0; font-size: 0.85rem; font-weight: 600; color: ${isLocked ? '#aaa' : 'var(--primary-gold)'}; width: 100px; line-height: 1.3;">${level.title}</p>
             `;
 
-            nodeWrapper.appendChild(node);
-            nodeWrapper.appendChild(label);
-            levelContainer.appendChild(nodeWrapper);
-          });
+          nodeWrapper.appendChild(node);
+          nodeWrapper.appendChild(label);
+          levelContainer.appendChild(nodeWrapper);
+        });
+      }
+
+      function startLevel(id) {
+        currentLevelIndex = id - 1;
+        currentQuestionIndex = 0;
+        currentScore = 0;
+        currentLevelXP = 0;
+
+        levelWrapper.style.display = 'none';
+        quizContainer.style.display = 'block';
+        document.getElementById('quiz-result').style.display = 'none';
+        document.getElementById('quiz-question').style.display = 'block';
+        document.getElementById('quiz-header').style.display = 'block';
+        explanationBox.style.display = 'none'; // Hide explanation initially
+
+        quizTitle.innerText = `Level ${id}: ${levels[currentLevelIndex].title}`;
+        loadQuestion();
+      }
+
+      function loadQuestion() {
+        const qData = levels[currentLevelIndex].questions[currentQuestionIndex];
+        questionText.innerText = qData.q;
+        optionsContainer.innerHTML = '';
+        optionsContainer.style.display = 'flex'; // Show options
+        explanationBox.style.display = 'none'; // Hide explanation
+
+        // Update progress
+        const progressPercent = (currentQuestionIndex / 5) * 100;
+        progressBar.style.width = `${progressPercent}%`;
+
+        qData.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.innerText = opt;
+          btn.style.cssText = "padding: 1rem; border: 2px solid #eee; background: white; border-radius: 8px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--charcoal-dark); transition: all 0.2s;";
+
+          btn.onmouseover = () => { if (!btn.disabled) { btn.style.background = '#fffbf0'; btn.style.borderColor = 'var(--primary-gold)'; } }
+          btn.onmouseout = () => { if (!btn.disabled) { btn.style.background = 'white'; btn.style.borderColor = '#eee'; } }
+
+          btn.onclick = () => handleAnswer(idx, btn, qData);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function handleAnswer(selectedIndex, selectedBtn, qData) {
+        // Disable all buttons
+        const allBtns = optionsContainer.querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+
+        const correctIndex = qData.a;
+
+        if (selectedIndex === correctIndex) {
+          selectedBtn.style.background = '#e8f5e9';
+          selectedBtn.style.borderColor = '#2ecc71';
+          selectedBtn.innerHTML += ' <i class="fas fa-check" style="color: #2ecc71;"></i>';
+          currentScore++;
+          currentLevelXP += (qData.xp || 10);
+        } else {
+          selectedBtn.style.background = '#ffebee';
+          selectedBtn.style.borderColor = '#e74c3c';
+          selectedBtn.innerHTML += ' <i class="fas fa-times" style="color: #e74c3c;"></i>';
+          // Highlight correct
+          allBtns[correctIndex].style.background = '#e8f5e9';
+          allBtns[correctIndex].style.borderColor = '#2ecc71';
         }
 
-        function startLevel(id) {
-          currentLevelIndex = id - 1;
-          currentQuestionIndex = 0;
-          currentScore = 0;
-          currentLevelXP = 0;
+        // Show explanation
+        explanationText.innerText = qData.explanation;
+        explanationBox.style.display = 'block';
 
-          levelWrapper.style.display = 'none';
-          quizContainer.style.display = 'block';
-          document.getElementById('quiz-result').style.display = 'none';
-          document.getElementById('quiz-question').style.display = 'block';
-          document.getElementById('quiz-header').style.display = 'block';
-          explanationBox.style.display = 'none'; // Hide explanation initially
-
-          quizTitle.innerText = `Level ${id}: ${levels[currentLevelIndex].title}`;
-          loadQuestion();
-        }
-
-        function loadQuestion() {
-          const qData = levels[currentLevelIndex].questions[currentQuestionIndex];
-          questionText.innerText = qData.q;
-          optionsContainer.innerHTML = '';
-          optionsContainer.style.display = 'flex'; // Show options
-          explanationBox.style.display = 'none'; // Hide explanation
-
-          // Update progress
-          const progressPercent = (currentQuestionIndex / 5) * 100;
-          progressBar.style.width = `${progressPercent}%`;
-
-          qData.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.innerText = opt;
-            btn.style.cssText = "padding: 1rem; border: 2px solid #eee; background: white; border-radius: 8px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--charcoal-dark); transition: all 0.2s;";
-
-            btn.onmouseover = () => { if (!btn.disabled) { btn.style.background = '#fffbf0'; btn.style.borderColor = 'var(--primary-gold)'; } }
-            btn.onmouseout = () => { if (!btn.disabled) { btn.style.background = 'white'; btn.style.borderColor = '#eee'; } }
-
-            btn.onclick = () => handleAnswer(idx, btn, qData);
-            optionsContainer.appendChild(btn);
-          });
-        }
-
-        function handleAnswer(selectedIndex, selectedBtn, qData) {
-          // Disable all buttons
-          const allBtns = optionsContainer.querySelectorAll('button');
-          allBtns.forEach(b => b.disabled = true);
-
-          const correctIndex = qData.a;
-
-          if (selectedIndex === correctIndex) {
-            selectedBtn.style.background = '#e8f5e9';
-            selectedBtn.style.borderColor = '#2ecc71';
-            selectedBtn.innerHTML += ' <i class="fas fa-check" style="color: #2ecc71;"></i>';
-            currentScore++;
-            currentLevelXP += (qData.xp || 10);
+        // Setup Next Button
+        nextQBtn.onclick = () => {
+          currentQuestionIndex++;
+          if (currentQuestionIndex < 5) {
+            loadQuestion();
           } else {
-            selectedBtn.style.background = '#ffebee';
-            selectedBtn.style.borderColor = '#e74c3c';
-            selectedBtn.innerHTML += ' <i class="fas fa-times" style="color: #e74c3c;"></i>';
-            // Highlight correct
-            allBtns[correctIndex].style.background = '#e8f5e9';
-            allBtns[correctIndex].style.borderColor = '#2ecc71';
+            showResult();
+          }
+        };
+      }
+
+      function showResult() {
+        document.getElementById('quiz-question').style.display = 'none';
+        document.getElementById('quiz-header').style.display = 'none';
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.style.display = 'block';
+
+        const scoreSpan = document.getElementById('score');
+        const resultTitle = document.getElementById('result-title');
+        const resultMsg = document.getElementById('result-message');
+        const nextBtn = document.getElementById('next-level-btn');
+        const resultIcon = document.getElementById('result-icon');
+        const earnedXPDisplay = document.getElementById('earned-xp');
+
+        scoreSpan.innerText = currentScore;
+        earnedXPDisplay.innerText = currentScore >= 3 ? currentLevelXP : 0;
+
+        if (currentScore >= 3) {
+          resultTitle.innerText = "Level Complete!";
+          resultTitle.style.color = "var(--success-emerald)";
+          resultMsg.innerText = "Great job! You've mastered this topic.";
+          resultIcon.innerHTML = '<i class="fas fa-trophy" style="color: var(--primary-gold);"></i>';
+
+          // Update Total XP
+          if (levels[currentLevelIndex].id === unlockedLevel) { // Only award XP first time? Or always? Let's say always for fun, or just on success.
+            totalXP += currentLevelXP;
+            localStorage.setItem('osc_totalXP', totalXP);
+            xpDisplay.innerText = totalXP;
           }
 
-          // Show explanation
-          explanationText.innerText = qData.explanation;
-          explanationBox.style.display = 'block';
-
-          // Setup Next Button
-          nextQBtn.onclick = () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < 5) {
-              loadQuestion();
-            } else {
-              showResult();
-            }
-          };
-        }
+          // Unlock next level logic
+          if (levels[currentLevelIndex].id === unlockedLevel && unlockedLevel < levels.length) {
+            unlockedLevel++;
+            localStorage.setItem('osc_unlockedLevel', unlockedLevel);
+            resultMsg.innerText += " Next level unlocked!";
+          }
 
         function showResult() {
           document.getElementById('quiz-question').style.display = 'none';
@@ -916,56 +1017,60 @@
               resultMsg.innerText = "Congratulations! You have completed all levels!";
             }
           } else {
-            resultTitle.innerText = "Level Failed";
-            resultTitle.style.color = "#e74c3c";
-            resultMsg.innerText = "You need at least 3 correct answers to proceed.";
-            resultIcon.innerHTML = '<i class="far fa-face-frown" style="color: #e74c3c;"></i>';
             nextBtn.style.display = 'none';
-            earnedXPDisplay.innerText = 0;
+            resultMsg.innerText = "Congratulations! You have completed all levels!";
           }
-
-          document.getElementById('restart-btn').onclick = () => startLevel(levels[currentLevelIndex].id);
+        } else {
+          resultTitle.innerText = "Level Failed";
+          resultTitle.style.color = "#e74c3c";
+          resultMsg.innerText = "You need at least 3 correct answers to proceed.";
+          resultIcon.innerHTML = '<i class="far fa-face-frown" style="color: #e74c3c;"></i>';
+          nextBtn.style.display = 'none';
+          earnedXPDisplay.innerText = 0;
         }
 
-        document.getElementById('back-to-levels').onclick = () => {
-          quizContainer.style.display = 'none';
-          levelWrapper.style.display = 'block';
-          // Re-render to show updated locks/XP
-          renderLevels();
-        };
-      });
-    </script>
+        document.getElementById('restart-btn').onclick = () => startLevel(levels[currentLevelIndex].id);
+      }
+
+      document.getElementById('back-to-levels').onclick = () => {
+        quizContainer.style.display = 'none';
+        levelWrapper.style.display = 'block';
+        // Re-render to show updated locks/XP
+        renderLevels();
+      };
+    });
+  </script>
   </main>
 
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const copyButtons = document.querySelectorAll(".copy-btn");
+    document.addEventListener("DOMContentLoaded", () => {
+      const copyButtons = document.querySelectorAll(".copy-btn");
 
-    copyButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const link = btn.getAttribute("data-link");
-        const feedback = btn.nextElementSibling;
-        const icon = btn.querySelector("i");
+      copyButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const link = btn.getAttribute("data-link");
+          const feedback = btn.nextElementSibling;
+          const icon = btn.querySelector("i");
 
-        navigator.clipboard.writeText(link).then(() => {
-          // Show feedback
-          feedback.style.display = "inline";
+          navigator.clipboard.writeText(link).then(() => {
+            // Show feedback
+            feedback.style.display = "inline";
 
-          // Change icon to tick
-          icon.classList.remove("fa-copy");
-          icon.classList.add("fa-check");
+            // Change icon to tick
+            icon.classList.remove("fa-copy");
+            icon.classList.add("fa-check");
 
-          // Reset after 1.5 sec
-          setTimeout(() => {
-            feedback.style.display = "none";
-            icon.classList.remove("fa-check");
-            icon.classList.add("fa-copy");
-          }, 1500);
+            // Reset after 1.5 sec
+            setTimeout(() => {
+              feedback.style.display = "none";
+              icon.classList.remove("fa-check");
+              icon.classList.add("fa-copy");
+            }, 1500);
+          });
         });
       });
     });
-  });
-</script>
+  </script>
 
   <section id="recommended-resources"></section>
 
@@ -981,8 +1086,9 @@
   <script src="../js/main.js"></script>
 
   <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
   </button>
   <script src='../js/pwa.js'></script>
+  <script src="../js/pr-generator.js"></script>
 </body>
 </html>

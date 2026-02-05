@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>OpenSource Compass</title>
@@ -7,20 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Font Awesome (REQUIRED for logo) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
   <!-- Global CSS -->
-   <link rel="stylesheet" href="../css/program.css">
+  <link rel="stylesheet" href="../css/program.css">
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/pr-generator.css" />
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
   <link rel='manifest' href='../../manifest.json' />
 </head>
@@ -30,72 +28,74 @@
 
   <div id="navbar"></div>
 
-<main>
-  <section>
-    <h3>Open Source Programs</h3>
-    <p>
-      Explore popular open source programs that help students and developers
-      gain real-world experience through contributions.
-    </p>
+  <main>
+    <section>
+      <h3>Open Source Programs</h3>
+      <p>
+        Explore popular open source programs that help students and developers
+        gain real-world experience through contributions.
+      </p>
 
-    <div class="card-grid" id="programs-grid">
-      <div class="program-card">
-        <div class="card-icon"><i class="fas fa-code"></i></div>
-        <h3>Google Summer of Code</h3>
-        <p>A global program focused on bringing new contributors into open source software development.</p>
-        <a href="Event/gsoc.html" class="card-btn">View Details</a>
+      <div class="card-grid" id="programs-grid">
+        <div class="program-card">
+          <div class="card-icon"><i class="fas fa-code"></i></div>
+          <h3>Google Summer of Code</h3>
+          <p>A global program focused on bringing new contributors into open source software development.</p>
+          <a href="Event/gsoc.html" class="card-btn">View Details</a>
+        </div>
+
+        <div class="program-card">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
+          <h3>GSSoC</h3>
+          <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
+          <a href="Event/gssoc.html" class="card-btn">View Details</a>
+        </div>
+
+        <div class="program-card">
+          <div class="card-icon"><i class="fas fa-terminal"></i></div>
+          <h3>Hacktoberfest</h3>
+          <p>A month-long celebration of open-source software run by DigitalOcean.</p>
+          <a href="Event/hacktober.html" class="card-btn">View Details</a>
+        </div>
+
+        <div class="program-card">
+          <div class="card-icon"><i class="fas fa-linux"></i></div>
+          <h3>Linux Foundation</h3>
+          <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
+          <a href="Event/linux.html" class="card-btn">View Details</a>
+        </div>
+
+        <div class="program-card">
+          <div class="card-icon"><i class="fas fa-globe"></i></div>
+          <h3>Outreachy</h3>
+          <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
+          <a href="Event/outreachy.html" class="card-btn">View Details</a>
+        </div>
+
+        <div class="program-card">
+          <div class="card-icon"><i class="fas fa-heart"></i></div>
+          <h3>Social Summer of Code</h3>
+          <p>A program to promote open source and encourage student developers to build for social good.</p>
+          <a href="Event/ssoc.html" class="card-btn">View Details</a>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div class="program-card">
-        <div class="card-icon"><i class="fas fa-users"></i></div>
-        <h3>GSSoC</h3>
-        <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
-        <a href="Event/gssoc.html" class="card-btn">View Details</a>
-      </div>
+  <div id="footer"></div>
 
-      <div class="program-card">
-        <div class="card-icon"><i class="fas fa-terminal"></i></div>
-        <h3>Hacktoberfest</h3>
-        <p>A month-long celebration of open-source software run by DigitalOcean.</p>
-        <a href="Event/hacktober.html" class="card-btn">View Details</a>
-      </div>
+  <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/contributors.js"></script>
 
-      <div class="program-card">
-        <div class="card-icon"><i class="fas fa-linux"></i></div>
-        <h3>Linux Foundation</h3>
-        <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
-        <a href="Event/linux.html" class="card-btn">View Details</a>
-      </div>
-
-      <div class="program-card">
-        <div class="card-icon"><i class="fas fa-globe"></i></div>
-        <h3>Outreachy</h3>
-        <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
-        <a href="Event/outreachy.html" class="card-btn">View Details</a>
-      </div>
-
-      <div class="program-card">
-        <div class="card-icon"><i class="fas fa-heart"></i></div>
-        <h3>Social Summer of Code</h3>
-        <p>A program to promote open source and encourage student developers to build for social good.</p>
-        <a href="Event/ssoc.html" class="card-btn">View Details</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div id="footer"></div>
-
-    <script src="../js/components.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/contributors.js"></script>
-  
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
-<script src="/frontend/js/DMtheme.js"></script>
+  <script src="/frontend/js/DMtheme.js"></script>
   <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
   </button>
   <script src='../js/pwa.js'></script>
+  <script src="../js/pr-generator.js"></script>
 </body>
+
 </html>
