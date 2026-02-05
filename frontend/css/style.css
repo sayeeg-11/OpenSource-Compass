@@ -1208,6 +1208,7 @@ body.dark-mode .newsletter-section input {
 /* When chatbot is present, keep scroll button below it */
 body.has-chatbot #scrollTopBtn {
   bottom: 20px;
+  z-index: 9999;
 }
 
 #scrollTopBtn:hover {
@@ -1638,8 +1639,54 @@ body.dark-mode .badge:active,
 }
 
 /* =========================
+   OPENSOURCE GUIDE CHATBOT
+
+#opensource-chatbot {
+  position: fixed;
+  bottom: 90px; /* stays above scroll button */
+  right: 24px;
+  z-index: 99999;
+}
+
+.chat-widget-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  color: #0b1220;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(212, 175, 55, 0.35);
+
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+}
+
+.chat-widget-btn:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 2px rgba(212, 175, 55, 0.55);
+}
+
+body.dark-mode .chat-widget-btn {
+
+  color: #0b1220;
+}
+
    ACCESSIBILITY
-========================= */
 @media (prefers-reduced-motion: reduce) {
   footer.site-footer::after,
   .footer-mark,
@@ -1656,14 +1703,12 @@ body.dark-mode .badge:active,
 
 /* =========================
    QUIZ SECTION SCROLLBAR
-========================= */
 #level-chain-wrapper::-webkit-scrollbar {
   display: none;
 }
 
 /* =========================
    PRINT STYLES
-========================= */
 @media print {
   .why-section::before,
   .why-section::after,
