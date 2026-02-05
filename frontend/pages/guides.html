@@ -21,73 +21,839 @@
   <link rel="stylesheet" href="../css/chatbot.css" />
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
   <link rel='manifest' href='../../manifest.json' />
+
+<style>
+/* =========================================
+   GUIDES PAGE DARK MODE FIXES (Corrected)
+========================================= */
+/* --- Global Smooth Transition --- */
+body.dark-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+body.dark-mode {
+    background-color: #121212 !important;
+}
+
+/* 1. Force Main Backgrounds */
+body.dark-mode .guide,
+body.dark-mode .pull-request-guide,
+body.dark-mode .github-guide-timeline,
+body.dark-mode .contributing-best-practices,
+body.dark-mode .common-mistakes {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+/* 2. Enhanced Card Backgrounds */
+body.dark-mode .guide-list li,
+body.dark-mode .pr-steps li,
+body.dark-mode .timeline-list li,
+body.dark-mode .practice-item,
+body.dark-mode .mistakes-list li {
+    background-color: #1e1e1e !important;
+    border: 1px solid #2a2a2a !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. Golden Headlines */
+body.dark-mode .guide-list h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .timeline-list h4,
+body.dark-mode .practice-item h4 {
+    color: #b8860b !important;
+}
+
+/* 4. Icons & Steps */
+body.dark-mode .step,
+body.dark-mode .icon,
+body.dark-mode .mistake-icon {
+    color: #d4af37 !important;
+    border-color: #d4af37 !important;
+}
+
+/* 5. Descriptions */
+body.dark-mode .guide-list p,
+body.dark-mode .pr-steps p,
+body.dark-mode .timeline-list p,
+body.dark-mode .practice-item p {
+    color: #b0b0b0 !important;
+}
+
+/* 6. ADVANCED HOVER EFFECTS */
+body.dark-mode .guide-list li:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .timeline-list li:hover,
+body.dark-mode .practice-item:hover,
+body.dark-mode .mistakes-list li:hover {
+    /* Lift effect with elastic curve */
+    transform: translateY(-8px) scale(1.02);
+    
+    /* Gold Border Glow */
+    border-color: #d4af37 !important;
+    
+    /* Deep Shadow & Outer Glow */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2) !important;
+    
+    /* Slight background highlight */
+    background-color: #252525 !important;
+}
+
+/* Subtle Shimmer Overlay on Hover */
+body.dark-mode .guide-list li::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+    transition: 0.5s;
+}
+
+body.dark-mode .guide-list li:hover::after {
+    left: 100%;
+}
+</style>
 </head>
+<body>
+  <div id="cursor-highlight" aria-hidden="true"></div>
+
+<!-- Navbar copied EXACTLY from home.html -->
+<header>
+  <div class="navbar-container">
+    <h1>
+      <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+      OpenSource Compass
+    </h1>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="./guides.html">Guides</a>
+      <a href="./programs.html">Programs</a>
+      <a href="./Resources.html">Resources</a>
+      <a href="./contributors.html">Contributors</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./Contribute.html">Contribute</a>
+      <button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+>
+  <i class="fas fa-moon" aria-hidden="true"></i>
+</button>
+    </div>
+  </div>
+</header>
+
+<main>
+ <section class="guide">
+  <h3>Beginner Open Source Guide</h3>
+  <p>Open source is a way to collaborate on projects where the code is publicly available. Contributing helps you learn, gain experience, and give back to the community.</p>
+
+  <ul class="guide-list">
+    <li>
+      <span class="step">1</span>
+      <h4>Learn Git & GitHub basics</h4>
+      <p>Start by understanding Git version control and creating repositories on GitHub. This is the foundation for contributing to open source projects.</p>
+    </li>
+      <li>
+      <span class="step">2</span>
+      <h4>Explore small projects</h4>
+      <p>Contribute to beginner-friendly projects to build confidence and experience. Look for tags like “good first issue.”</p>
+    </li>
+    <li>
+      <span class="step">3</span>
+      <h4>Understand issues & labels</h4>
+      <p>Learn how to read issues, use labels, and understand project workflows to know where you can contribute effectively.</p>
+    </li>
+    <li>
+      <span class="step">4</span>
+      <h4>Make your first pull request</h4>
+      <p>Submit your first PR to fix a bug or add a small feature. This helps you practice collaboration and the contribution process.</p>
+    </li>
+  </ul>
+</section>
+<section class="pull-request-guide">
+  <h3>Step-by-Step Guide to Your First Pull Request</h3>
+  <ul class="pr-steps">
+    <li>
+      <span class="step">1</span>
+      <i class="fa-solid fa-code-branch icon"></i>
+      <h4>Fork the repository</h4>
+      <p>Create your own copy of the repository to work on without affecting the original project.</p>
+    </li>
+    <li>
+      <span class="step">2</span>
+      <i class="fa-solid fa-download icon"></i>
+      <h4>Clone it locally on your computer</h4>
+      <p>Download the repository to your computer using Git to start making changes.</p>
+    </li>
+    <li>
+      <span class="step">3</span>
+      <i class="fa-solid fa-plus icon"></i>
+      <h4>Create a new branch for your changes</h4>
+      <p>Use a descriptive branch name to organize your work and keep main safe.</p>
+    </li>
+    <li>
+      <span class="step">4</span>
+      <i class="fa-solid fa-pencil icon"></i>
+      <h4>Make your changes and commit them</h4>
+      <p>Edit the code, add features or fixes, and commit your changes with clear messages.</p>
+    </li>
+    <li>
+      <span class="step">5</span>
+      <i class="fa-solid fa-upload icon"></i>
+      <h4>Push the branch to GitHub and open a pull request</h4>
+      <p>Send your branch to GitHub and create a pull request to propose your changes.</p>
+    </li>
+    <li>
+      <span class="step">6</span>
+      <i class="fa-solid fa-check icon"></i>
+      <h4>Review feedback and merge once approved</h4>
+      <p>Respond to comments, make any requested edits, and merge once maintainers approve.</p>
+    </li>
+  </ul>
+</section>
+<section class="github-guide-timeline">
+  <h3>Understanding GitHub Issues, Labels, and Workflows</h3>
+  <p>Mastering GitHub issues and workflows helps you contribute effectively and communicate clearly with project maintainers.</p>
+
+  <ol class="timeline-list">
+    <li>
+      <div class="icon">🔍</div>
+      <div class="content">
+        <h4>How to find issues to work on</h4>
+        <p>Learn to identify beginner-friendly issues or areas of the project that match your skills and interest.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">🏷️</div>
+      <div class="content">
+        <h4>Understanding issue labels</h4>
+        <p>Recognize labels like “good first issue” or “help wanted” to know what the project expects and where you can contribute.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">💬</div>
+      <div class="content">
+        <h4>How to comment effectively and ask for clarification</h4>
+        <p>Communicate clearly in issue threads to ask questions, offer help, or provide updates on your work.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">✅</div>
+      <div class="content">
+        <h4>How maintainers review contributions and merge PRs</h4>
+        <p>Understand the review process, how maintainers provide feedback, and the workflow for merging your pull requests.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+<section class="contributing-best-practices">
+  <h3>Best Practices for Contributing</h3>
+  <p>Follow these best practices to make your contributions effective, professional, and easy for maintainers to review.</p>
+
+  <div class="practices-grid">
+    <div class="practice-item">
+      <div class="icon">📝</div>
+      <h4>Write clear, concise commits</h4>
+      <p>Meaningful commit messages make it easier for others to understand your changes.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">📚</div>
+      <h4>Follow contribution guidelines</h4>
+      <p>Adhering to project guidelines ensures your PR meets expectations and saves time for maintainers.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">🎨</div>
+      <h4>Maintain code style and formatting</h4>
+      <p>Keep your code consistent with the project’s style and formatting conventions.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">🤝</div>
+      <h4>Communicate professionally</h4>
+      <p>Be polite, constructive, and respectful when discussing changes or providing feedback.</p>
+    </div>
+    <div class="practice-item">
+  <div class="icon">🔍</div>
+  <h4>Read and understand existing issues</h4>
+  <p>
+    Review open and closed issues to avoid duplicate efforts and to understand
+    current discussions or decisions.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">💬</div>
+  <h4>Ask before working on large or breaking changes</h4>
+  <p>
+    Discuss major changes with maintainers beforehand to ensure alignment with
+    the project’s direction.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">🧩</div>
+  <h4>Keep pull requests small and focused</h4>
+  <p>
+    Small, well-scoped pull requests are easier to review, test, and merge.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">📄</div>
+  <h4>Update documentation when behavior changes</h4>
+  <p>
+    Make sure README files or guides reflect any changes introduced by your
+    contribution.
+  </p>
+</div>
+
+  </div>
+</section>
+<section class="common-mistakes">
+  <h2>Common Mistakes Beginners Should Avoid</h2>
+  <ul class="mistakes-list">
+    <li>
+      <span class="mistake-icon">1</span>
+      <p>Not reading the README</p>
+    </li>
+    <li>
+      <span class="mistake-icon">2</span>
+      <p>Skipping contributing guidelines</p>
+    </li>
+    <li>
+      <span class="mistake-icon">3</span>
+      <p>Making large or unclear pull requests</p>
+    </li>
+    <li>
+      <span class="mistake-icon">4</span>
+      <p>Not testing changes before submitting</p>
+    </li>
+        <li>
+      <span class="mistake-icon">5</span>
+      <p>Opening issues or pull requests without checking for duplicates</p>
+    </li>
+    <li>
+      <span class="mistake-icon">6</span>
+      <p>Ignoring or misunderstanding maintainers’ feedback</p>
+    </li>
+    <li>
+      <span class="mistake-icon">7</span>
+      <p>Making large or breaking changes without prior discussion</p>
+    </li>
+    <li>
+      <span class="mistake-icon">8</span>
+      <p>Poor or unclear pull request descriptions</p>
+    </li>
+  </ul>
+</section>
+
+</main>
+
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+
+  <script src="../js/theme.js"></script>
+
+
+<script src="../js/chatbot.js"></script>
+<script src="../js/main.js"></script>
+<script src="/frontend/js/DMtheme.js"></script>
+  <button id="scrollTopBtn" title="Back to Top">
+   <i class="fas fa-chevron-up"></i>
+  </button>
+  <script src='../js/pwa.js'></script>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>OpenSource Compass</title>
+  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome (REQUIRED for logo) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/guides.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="/frontend/css/dark-mode.css">
+  <link rel='manifest' href='../../manifest.json' />
+
+<style>
+/* =========================================
+   GUIDES PAGE DARK MODE FIXES (Corrected)
+========================================= */
+/* --- Global Smooth Transition --- */
+body.dark-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+body.dark-mode {
+    background-color: #121212 !important;
+}
+
+/* 1. Force Main Backgrounds */
+body.dark-mode .guide,
+body.dark-mode .pull-request-guide,
+body.dark-mode .github-guide-timeline,
+body.dark-mode .contributing-best-practices,
+body.dark-mode .common-mistakes {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+/* 2. Enhanced Card Backgrounds */
+body.dark-mode .guide-list li,
+body.dark-mode .pr-steps li,
+body.dark-mode .timeline-list li,
+body.dark-mode .practice-item,
+body.dark-mode .mistakes-list li {
+    background-color: #1e1e1e !important;
+    border: 1px solid #2a2a2a !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. Golden Headlines */
+body.dark-mode .guide-list h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .timeline-list h4,
+body.dark-mode .practice-item h4 {
+    color: #b8860b !important;
+}
+
+/* 4. Icons & Steps */
+body.dark-mode .step,
+body.dark-mode .icon,
+body.dark-mode .mistake-icon {
+    color: #d4af37 !important;
+    border-color: #d4af37 !important;
+}
+
+/* 5. Descriptions */
+body.dark-mode .guide-list p,
+body.dark-mode .pr-steps p,
+body.dark-mode .timeline-list p,
+body.dark-mode .practice-item p {
+    color: #b0b0b0 !important;
+}
+
+/* 6. ADVANCED HOVER EFFECTS */
+body.dark-mode .guide-list li:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .timeline-list li:hover,
+body.dark-mode .practice-item:hover,
+body.dark-mode .mistakes-list li:hover {
+    /* Lift effect with elastic curve */
+    transform: translateY(-8px) scale(1.02);
+    
+    /* Gold Border Glow */
+    border-color: #d4af37 !important;
+    
+    /* Deep Shadow & Outer Glow */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2) !important;
+    
+    /* Slight background highlight */
+    background-color: #252525 !important;
+}
+
+/* Subtle Shimmer Overlay on Hover */
+body.dark-mode .guide-list li::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+    transition: 0.5s;
+}
+
+body.dark-mode .guide-list li:hover::after {
+    left: 100%;
+}
+</style>
+</head>
+<body>
+  <div id="cursor-highlight" aria-hidden="true"></div>
+
+<!-- Navbar copied EXACTLY from home.html -->
+<header>
+  <div class="navbar-container">
+    <h1>
+      <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+      OpenSource Compass
+    </h1>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="./guides.html">Guides</a>
+      <a href="./programs.html">Programs</a>
+      <a href="./Resources.html">Resources</a>
+      <a href="./contributors.html">Contributors</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./Contribute.html">Contribute</a>
+      <button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+>
+  <i class="fas fa-moon" aria-hidden="true"></i>
+</button>
+    </div>
+  </div>
+</header>
+
+<main>
+ <section class="guide">
+  <h3>Beginner Open Source Guide</h3>
+  <p>Open source is a way to collaborate on projects where the code is publicly available. Contributing helps you learn, gain experience, and give back to the community.</p>
+
+  <ul class="guide-list">
+    <li>
+      <span class="step">1</span>
+      <h4>Learn Git & GitHub basics</h4>
+      <p>Start by understanding Git version control and creating repositories on GitHub. This is the foundation for contributing to open source projects.</p>
+    </li>
+      <li>
+      <span class="step">2</span>
+      <h4>Explore small projects</h4>
+      <p>Contribute to beginner-friendly projects to build confidence and experience. Look for tags like “good first issue.”</p>
+    </li>
+    <li>
+      <span class="step">3</span>
+      <h4>Understand issues & labels</h4>
+      <p>Learn how to read issues, use labels, and understand project workflows to know where you can contribute effectively.</p>
+    </li>
+    <li>
+      <span class="step">4</span>
+      <h4>Make your first pull request</h4>
+      <p>Submit your first PR to fix a bug or add a small feature. This helps you practice collaboration and the contribution process.</p>
+    </li>
+  </ul>
+</section>
+<section class="pull-request-guide">
+  <h3>Step-by-Step Guide to Your First Pull Request</h3>
+  <ul class="pr-steps">
+    <li>
+      <span class="step">1</span>
+      <i class="fa-solid fa-code-branch icon"></i>
+      <h4>Fork the repository</h4>
+      <p>Create your own copy of the repository to work on without affecting the original project.</p>
+    </li>
+    <li>
+      <span class="step">2</span>
+      <i class="fa-solid fa-download icon"></i>
+      <h4>Clone it locally on your computer</h4>
+      <p>Download the repository to your computer using Git to start making changes.</p>
+    </li>
+    <li>
+      <span class="step">3</span>
+      <i class="fa-solid fa-plus icon"></i>
+      <h4>Create a new branch for your changes</h4>
+      <p>Use a descriptive branch name to organize your work and keep main safe.</p>
+    </li>
+    <li>
+      <span class="step">4</span>
+      <i class="fa-solid fa-pencil icon"></i>
+      <h4>Make your changes and commit them</h4>
+      <p>Edit the code, add features or fixes, and commit your changes with clear messages.</p>
+    </li>
+    <li>
+      <span class="step">5</span>
+      <i class="fa-solid fa-upload icon"></i>
+      <h4>Push the branch to GitHub and open a pull request</h4>
+      <p>Send your branch to GitHub and create a pull request to propose your changes.</p>
+    </li>
+    <li>
+      <span class="step">6</span>
+      <i class="fa-solid fa-check icon"></i>
+      <h4>Review feedback and merge once approved</h4>
+      <p>Respond to comments, make any requested edits, and merge once maintainers approve.</p>
+    </li>
+  </ul>
+</section>
+<section class="github-guide-timeline">
+  <h3>Understanding GitHub Issues, Labels, and Workflows</h3>
+  <p>Mastering GitHub issues and workflows helps you contribute effectively and communicate clearly with project maintainers.</p>
+
+  <ol class="timeline-list">
+    <li>
+      <div class="icon">🔍</div>
+      <div class="content">
+        <h4>How to find issues to work on</h4>
+        <p>Learn to identify beginner-friendly issues or areas of the project that match your skills and interest.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">🏷️</div>
+      <div class="content">
+        <h4>Understanding issue labels</h4>
+        <p>Recognize labels like “good first issue” or “help wanted” to know what the project expects and where you can contribute.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">💬</div>
+      <div class="content">
+        <h4>How to comment effectively and ask for clarification</h4>
+        <p>Communicate clearly in issue threads to ask questions, offer help, or provide updates on your work.</p>
+      </div>
+    </li>
+    <li>
+      <div class="icon">✅</div>
+      <div class="content">
+        <h4>How maintainers review contributions and merge PRs</h4>
+        <p>Understand the review process, how maintainers provide feedback, and the workflow for merging your pull requests.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+<section class="contributing-best-practices">
+  <h3>Best Practices for Contributing</h3>
+  <p>Follow these best practices to make your contributions effective, professional, and easy for maintainers to review.</p>
+
+  <div class="practices-grid">
+    <div class="practice-item">
+      <div class="icon">📝</div>
+      <h4>Write clear, concise commits</h4>
+      <p>Meaningful commit messages make it easier for others to understand your changes.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">📚</div>
+      <h4>Follow contribution guidelines</h4>
+      <p>Adhering to project guidelines ensures your PR meets expectations and saves time for maintainers.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">🎨</div>
+      <h4>Maintain code style and formatting</h4>
+      <p>Keep your code consistent with the project’s style and formatting conventions.</p>
+    </div>
+    <div class="practice-item">
+      <div class="icon">🤝</div>
+      <h4>Communicate professionally</h4>
+      <p>Be polite, constructive, and respectful when discussing changes or providing feedback.</p>
+    </div>
+    <div class="practice-item">
+  <div class="icon">🔍</div>
+  <h4>Read and understand existing issues</h4>
+  <p>
+    Review open and closed issues to avoid duplicate efforts and to understand
+    current discussions or decisions.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">💬</div>
+  <h4>Ask before working on large or breaking changes</h4>
+  <p>
+    Discuss major changes with maintainers beforehand to ensure alignment with
+    the project’s direction.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">🧩</div>
+  <h4>Keep pull requests small and focused</h4>
+  <p>
+    Small, well-scoped pull requests are easier to review, test, and merge.
+  </p>
+</div>
+
+<div class="practice-item">
+  <div class="icon">📄</div>
+  <h4>Update documentation when behavior changes</h4>
+  <p>
+    Make sure README files or guides reflect any changes introduced by your
+    contribution.
+  </p>
+</div>
+
+  </div>
+</section>
+<section class="common-mistakes">
+  <h2>Common Mistakes Beginners Should Avoid</h2>
+  <ul class="mistakes-list">
+    <li>
+      <span class="mistake-icon">1</span>
+      <p>Not reading the README</p>
+    </li>
+    <li>
+      <span class="mistake-icon">2</span>
+      <p>Skipping contributing guidelines</p>
+    </li>
+    <li>
+      <span class="mistake-icon">3</span>
+      <p>Making large or unclear pull requests</p>
+    </li>
+    <li>
+      <span class="mistake-icon">4</span>
+      <p>Not testing changes before submitting</p>
+    </li>
+        <li>
+      <span class="mistake-icon">5</span>
+      <p>Opening issues or pull requests without checking for duplicates</p>
+    </li>
+    <li>
+      <span class="mistake-icon">6</span>
+      <p>Ignoring or misunderstanding maintainers’ feedback</p>
+    </li>
+    <li>
+      <span class="mistake-icon">7</span>
+      <p>Making large or breaking changes without prior discussion</p>
+    </li>
+    <li>
+      <span class="mistake-icon">8</span>
+      <p>Poor or unclear pull request descriptions</p>
+    </li>
+  </ul>
+</section>
+
+</main>
+
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+
+  <script src="../js/theme.js"></script>
+
+
+<script src="../js/chatbot.js"></script>
+<script src="../js/main.js"></script>
+<script src="/frontend/js/DMtheme.js"></script>
+  <button id="scrollTopBtn" title="Back to Top">
+   <i class="fas fa-chevron-up"></i>
+  </button>
+  <script src='../js/pwa.js'></script>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>OpenSource Compass</title>
+  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome (REQUIRED for logo) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/guides.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="/frontend/css/dark-mode.css">
+  <link rel='manifest' href='../../manifest.json' />
+
 <style>
   /* =========================================
    GUIDES PAGE DARK MODE FIXES (Corrected)
 ========================================= */
+/* --- Global Smooth Transition --- */
+body.dark-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
 
-  /* 1. Force Main Backgrounds */
-  body.dark-mode .guide,
-  body.dark-mode .pull-request-guide,
-  body.dark-mode .github-guide-timeline,
-  body.dark-mode .contributing-best-practices,
-  body.dark-mode .common-mistakes {
+body.dark-mode {
     background-color: #121212 !important;
-    /* Cold Dark Gray */
+}
+
+/* 1. Force Main Backgrounds */
+body.dark-mode .guide,
+body.dark-mode .pull-request-guide,
+body.dark-mode .github-guide-timeline,
+body.dark-mode .contributing-best-practices,
+body.dark-mode .common-mistakes {
+    background-color: #121212 !important;
     color: #e0e0e0 !important;
   }
 
-  /* 2. Fix Card Backgrounds */
-  /* Targets all the different cards in your HTML */
-  body.dark-mode .guide-list li,
-  body.dark-mode .pr-steps li,
-  body.dark-mode .timeline-list li,
-  body.dark-mode .practice-item,
-  body.dark-mode .mistakes-list li {
+/* 2. Enhanced Card Backgrounds */
+body.dark-mode .guide-list li,
+body.dark-mode .pr-steps li,
+body.dark-mode .timeline-list li,
+body.dark-mode .practice-item,
+body.dark-mode .mistakes-list li {
     background-color: #1e1e1e !important;
-    /* Dark Card Bg */
-    border: 1px solid #333 !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-  }
+    border: 1px solid #2a2a2a !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
 
-  /* 3. GOLD TEXT FIX */
-  /* Applies Dark Golden color to the specific headlines you asked for */
-  body.dark-mode .guide-list h4,
-  body.dark-mode .pr-steps h4,
-  body.dark-mode .timeline-list h4,
-  body.dark-mode .practice-item h4 {
+/* 3. Golden Headlines */
+body.dark-mode .guide-list h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .timeline-list h4,
+body.dark-mode .practice-item h4 {
     color: #b8860b !important;
-    /* Dark Golden */
-  }
+}
 
-  /* 4. Fix Icons & Step Numbers to Match */
-  body.dark-mode .step,
-  body.dark-mode .icon,
-  body.dark-mode .mistake-icon {
+/* 4. Icons & Steps */
+body.dark-mode .step,
+body.dark-mode .icon,
+body.dark-mode .mistake-icon {
     color: #d4af37 !important;
-    /* Lighter Gold for icons */
     border-color: #d4af37 !important;
   }
 
-  /* 5. Fix Body Text (Descriptions) */
-  body.dark-mode .guide-list p,
-  body.dark-mode .pr-steps p,
-  body.dark-mode .timeline-list p,
-  body.dark-mode .practice-item p {
-    color: #cccccc !important;
-    /* Light Grey */
-  }
+/* 5. Descriptions */
+body.dark-mode .guide-list p,
+body.dark-mode .pr-steps p,
+body.dark-mode .timeline-list p,
+body.dark-mode .practice-item p {
+    color: #b0b0b0 !important;
+}
 
-  /* 6. Hover Effects */
-  body.dark-mode .guide-list li:hover,
-  body.dark-mode .pr-steps li:hover,
-  body.dark-mode .practice-item:hover {
+/* 6. ADVANCED HOVER EFFECTS */
+body.dark-mode .guide-list li:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .timeline-list li:hover,
+body.dark-mode .practice-item:hover,
+body.dark-mode .mistakes-list li:hover {
+    /* Lift effect with elastic curve */
+    transform: translateY(-8px) scale(1.02);
+    
+    /* Gold Border Glow */
     border-color: #d4af37 !important;
-    transform: translateY(-5px);
-  }
+    
+    /* Deep Shadow & Outer Glow */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2) !important;
+    
+    /* Slight background highlight */
+    background-color: #252525 !important;
+}
+
+/* Subtle Shimmer Overlay on Hover */
+body.dark-mode .guide-list li::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+    transition: 0.5s;
+}
+
+body.dark-mode .guide-list li:hover::after {
+    left: 100%;
+}
 </style>
-
+</head>
 <body>
   <div id="cursor-highlight" aria-hidden="true"></div>
 
