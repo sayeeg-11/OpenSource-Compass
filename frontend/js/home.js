@@ -190,6 +190,28 @@ if (scrollProgressBar) {
     cursor.style.opacity = '';
   });
 })();
+// ===============================
+// Back to Top Button (Mobile Fix)
+// ===============================
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+if (scrollTopBtn) {
+  const scrollToTop = () => {
+    // Mobile fallback
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    // Desktop smooth scroll
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  scrollTopBtn.addEventListener('click', scrollToTop);
+  scrollTopBtn.addEventListener('touchstart', scrollToTop, { passive: true });
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll(".stat-number");
