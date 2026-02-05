@@ -7,1061 +7,1616 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Complete guide to GirlScript Summer of Code (GSSOC) - Learn about program structure, benefits, and how to apply for this beginner-friendly open source program.">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="../../css/style.css">
 
     <style>
-        :root {
-            --primary-blue: #1F3C88;
-            --secondary-blue: #4D96FF;
-            --light-gray: #F5F7FA;
-            --text-dark: #2E2E2E;
-            --success-green: #3CCF91;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 4px 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background: linear-gradient(135deg, #0d1f4d 0%, #1F3C88 50%, #2a4a9e 100%);
-            color: var(--white);
-            padding: 100px 8% 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            opacity: 0.4;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.25);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            margin-bottom: 16px;
-            font-weight: 500;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .hero .intro {
-            font-size: clamp(1rem, 1.5vw, 1.15rem);
-            max-width: 750px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        .hero .intro strong {
-            color: #FFD700;
-            font-weight: 600;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
-            cursor: pointer;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            will-change: transform, box-shadow;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
-            transform: skewX(-20deg);
-            transition: transform 0.45s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
-        }
-
-        .btn:hover::before {
-            transform: translateX(240%) skewX(-20deg);
-        }
-
-        /* ---------- About Section ---------- */
-        .about-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
-            position: relative;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .about-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .about-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .about-section p {
-            text-align: center;
-            max-width: 800px;
-            margin: 40px auto 50px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        /* ---------- Features Section ---------- */
-        .features-section {
-            padding: 80px 8%;
-            background-color: var(--light-gray);
-            position: relative;
-        }
-
-        .features-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .features-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .features-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .features-section p {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background-color: var(--white);
-            padding: 36px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out both;
-            border: 2px solid transparent;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:nth-child(4) { animation-delay: 0.4s; }
-        /* Added animation delays for the new cards */
-        .feature-card:nth-child(5) { animation-delay: 0.5s; }
-        .feature-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 0;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px) rotate(1deg);
-            box-shadow: 0 25px 60px rgba(31, 60, 136, 0.25);
-            border-color: var(--secondary-blue);
-        }
-
-        .feature-card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 20px rgba(77, 150, 255, 0.3);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(-10deg);
-            box-shadow: 0 12px 30px rgba(77, 150, 255, 0.4);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            text-align: left;
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        /* ---------- Benefits Section ---------- */
-        .benefits-section {
-            padding: 80px 8%;
-            background: linear-gradient(135deg, #0d1f4d 0%, var(--primary-blue) 50%, #2C4A8F 100%);
-            color: var(--white);
-        }
-
-        .benefits-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .benefits-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
-            border-radius: 2px;
-        }
-
-        .benefits-section p {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            font-size: 1.1rem;
-            color: var(--white);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 28px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefit-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 18px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--text-dark);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: fadeInScale 0.6s ease-out both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
-        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
-        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
-        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .benefit-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .benefit-card:hover {
-            background-color: rgba(255, 255, 255, 1);
-            transform: translateY(-12px) rotate(-1deg);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-            border-color: rgba(255, 215, 0, 0.8);
-        }
-
-        .benefit-card:hover::after {
-            opacity: 1;
-        }
-
-        .benefit-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-bottom: 18px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .benefit-card:hover .benefit-icon {
-            transform: scale(1.25) rotate(10deg);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        .benefit-card p {
-            text-align: left;
-            color: var(--text-dark);
-            line-height: 1.7;
-            margin: 0;
-            font-size: 0.95rem;
-        }
-
-        /* ---------- Timeline Section ---------- */
-        .timeline-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
-            position: relative;
-        }
-
-        .timeline-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .timeline-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .timeline-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .timeline-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--secondary-blue), var(--success-green));
-            z-index: 0;
-        }
-
-        .timeline-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .timeline-step {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-
-        .step-marker {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(31, 60, 136, 0.3);
-            position: relative;
-            border: 3px solid var(--white);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .timeline-step:hover .step-marker {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 8px 25px rgba(31, 60, 136, 0.5);
-        }
-
-        .step-info {
-            flex: 1;
-            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
-            padding: 28px;
-            border-radius: 16px;
-            border-left: 5px solid var(--secondary-blue);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeInLeft 0.6s ease-out both;
-        }
-
-        .timeline-step:nth-child(1) .step-info { animation-delay: 0.1s; }
-        .timeline-step:nth-child(2) .step-info { animation-delay: 0.2s; }
-        .timeline-step:nth-child(3) .step-info { animation-delay: 0.3s; }
-        .timeline-step:nth-child(4) .step-info { animation-delay: 0.4s; }
-
-        .step-info:hover {
-            transform: translateX(12px) scale(1.02);
-            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
-            border-left-width: 8px;
-        }
-
-        .step-info h3 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .step-info .step-date {
-            color: var(--secondary-blue);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .step-info p {
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        /* ---------- CTA Section ---------- */
-        .cta-section {
-            padding: 80px 8%;
-            background: linear-gradient(180deg, var(--light-gray) 0%, var(--white) 100%);
-            text-align: center;
-            position: relative;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
-        }
-
-        .cta-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            font-weight: 700;
-            animation: fadeInUp 0.6s ease-out;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .cta-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            border-radius: 2px;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-        }
-
-        .cta-buttons-large {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.4s both;
-        }
-
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 18px;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a3566 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 32px 8%;
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        }
-
-        footer p {
-            font-size: 15px;
-            opacity: 0.9;
-        }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 16px;
-                padding: 16px 5%;
-            }
-
-            nav {
-                justify-content: center;
-                gap: 16px;
-            }
-
-            .hero {
-                padding: 60px 5% 50px;
-            }
-
-            .hero .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                justify-content: center;
-            }
-
-            .about-section,
-            .features-section,
-            .benefits-section,
-            .timeline-section,
-            .cta-section {
-                padding: 60px 5%;
-            }
-
-            .timeline-line {
-                left: 20px;
-            }
-
-            .step-marker {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            .step-info {
-                padding: 20px;
-            }
-
-            .features-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .cta-buttons-large {
-                flex-direction: column;
-            }
-
-            .btn-large {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 14px;
-            }
-
-            .step-info h3,
-            .feature-card h3,
-            .benefit-card h3 {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles for accessibility */
-        a:focus,
-        button:focus {
-            outline: 3px solid var(--secondary-blue);
-            outline-offset: 2px;
-        }
+        /* Hero Section */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--warm-cream), var(--light-parchment));
+  transition: background 0.5s ease;
+}
+
+/* Overlay for subtle depth */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.03);
+  pointer-events: none;
+}
+
+/* Container */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+/* Text content */
+.hero-text {
+  flex: 1 1 500px;
+  animation: fadeInUp 1s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal-dark);
+  margin-bottom: 1rem;
+  transition: color 0.5s;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  transition: color 0.5s;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: var(--shadow-main);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary-gold);
+  color: var(--charcoal-dark);
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--primary-gold);
+  color: var(--primary-gold);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-gold);
+  color: var(--charcoal-dark);
+  transform: translateY(-5px);
+}
+
+/* Illustration */
+.hero-illustration {
+  flex: 1 1 400px;
+  text-align: center;
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+.hero-illustration img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: var(--shadow-main);
+}
+
+/* Floating decorative circles */
+.hero-floating .float-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  opacity: 0.2;
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-circle.small { width: 40px; height: 40px; top: 15%; left: 10%; animation-duration: 4s; }
+.float-circle.medium { width: 80px; height: 80px; bottom: 20%; right: 15%; animation-duration: 7s; }
+.float-circle.large { width: 120px; height: 120px; top: 50%; right: 40%; animation-duration: 10s; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(15px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-container { flex-direction: column; text-align: center; }
+  .hero-illustration { margin-top: 2rem; }
+}
+
+@media (max-width: 576px) {
+  .hero-title { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1.2rem; }
+  .btn { width: 100%; text-align: center; }
+}
+/* About Section */
+.about {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--light-parchment);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Text */
+.about-text {
+  flex: 1 1 500px;
+  animation: fadeInLeft 1s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.about-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--charcoal-dark);
+  margin-bottom: 1rem;
+  transition: color 0.5s;
+}
+
+.about-description {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  transition: color 0.5s;
+}
+
+.about-btn {
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+}
+
+/* Illustration */
+.about-illustration {
+  flex: 1 1 400px;
+  text-align: center;
+  animation: fadeInRight 1.2s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.about-illustration img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: var(--shadow-main);
+  transition: box-shadow 0.3s;
+}
+
+.about-illustration img:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Floating decorative shapes */
+.about-floating .float-square,
+.about-floating .float-triangle,
+.about-floating .float-circle {
+  position: absolute;
+  opacity: 0.2;
+  animation: floatShape 6s ease-in-out infinite;
+}
+
+.float-square {
+  width: 50px; height: 50px;
+  top: 10%; left: 15%;
+  background: var(--primary-gold);
+}
+
+.float-triangle {
+  width: 0; height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--secondary-gold);
+  top: 50%; right: 10%;
+}
+
+.float-circle {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  bottom: 15%; left: 25%;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-container { flex-direction: column; text-align: center; }
+  .about-illustration { margin-top: 2rem; }
+}
+
+@media (max-width: 576px) {
+  .about-title { font-size: 2rem; }
+  .about-description { font-size: 1rem; }
+  .about-btn { width: 100%; }
+}
+/* How It Works Section */
+.how-it-works {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--warm-cream);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--charcoal-dark);
+  margin-bottom: 0.5rem;
+  transition: color 0.5s;
+}
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: color 0.5s;
+}
+
+/* Steps Container */
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Step Card */
+.step-card {
+  background: var(--light-parchment);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  position: relative;
+  animation: fadeInUp 1s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Step Icon */
+.step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  color: var(--charcoal-dark);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: var(--shadow-main);
+}
+
+/* Step Title */
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal-dark);
+  transition: color 0.5s;
+}
+/* Step Description */
+.step-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.5s;
+}
+/* Floating Decorative Shapes */
+.how-floating .float-diamond,
+.how-floating .float-circle,
+.how-floating .float-triangle {
+  position: absolute;
+  opacity: 0.15;
+  animation: floatShape 6s ease-in-out infinite;
+}
+
+.float-diamond {
+  width: 40px; height: 40px;
+  background: var(--primary-gold);
+  transform: rotate(45deg);
+  top: 10%; left: 15%;
+}
+
+.float-circle {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--secondary-gold);
+  bottom: 15%; left: 20%;
+}
+
+.float-triangle {
+  width: 0; height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--primary-gold);
+  top: 50%; right: 10%;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .steps-container { gap: 2rem; }
+}
+
+@media (max-width: 576px) {
+  .section-title { font-size: 2rem; }
+  .section-subtitle { font-size: 1rem; }
+  .step-title { font-size: 1.25rem; }
+  .step-description { font-size: 0.9rem; }
+}
+/* Why Join Section */
+.why-join {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--light-parchment);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* Section Header */
+.why-join .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.why-join .section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--charcoal-dark);
+  margin-bottom: 0.5rem;
+  transition: color 0.5s;
+}
+
+.why-join .section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: color 0.5s;
+}
+
+/* Features Container */
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Feature Card */
+.feature-card {
+  background: var(--warm-cream);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  position: relative;
+  animation: fadeInUp 1s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Feature Icon */
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Feature Title */
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal-dark);
+  transition: color 0.5s;
+}
+
+/* Feature Description */
+.feature-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.5s;
+}
+
+/* Floating Decorative Shapes */
+.why-floating .float-star,
+.why-floating .float-circle,
+.why-floating .float-hexagon {
+  position: absolute;
+  opacity: 0.15;
+  animation: floatShape 6s ease-in-out infinite;
+}
+
+.float-star {
+  width: 40px; height: 40px;
+  top: 10%; left: 10%;
+  background: var(--primary-gold);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.float-circle {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--secondary-gold);
+  bottom: 10%; right: 15%;
+}
+
+.float-hexagon {
+  width: 50px; height: 50px;
+  background: var(--primary-gold);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  top: 40%; left: 70%;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-15px) translateX(10px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .features-container { gap: 2rem; }
+}
+
+@media (max-width: 576px) {
+  .section-title { font-size: 2rem; }
+  .section-subtitle { font-size: 1rem; }
+  .feature-title { font-size: 1.25rem; }
+  .feature-description { font-size: 0.95rem; }
+}
+
+ /* Tracks / Domains Section */
+.tracks {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--warm-cream);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* Section Header */
+.tracks .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.tracks .section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--charcoal-dark);
+  margin-bottom: 0.5rem;
+  transition: color 0.5s;
+}
+
+.tracks .section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: color 0.5s;
+}
+
+/* Tracks Container */
+.tracks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Track Card */
+.track-card {
+  background: var(--light-parchment);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: default;
+  animation: fadeInUp 1s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.track-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Track Icon */
+.track-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.track-card:hover .track-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Track Title */
+.track-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal-dark);
+  transition: color 0.5s;
+}
+/* Track Description */
+.track-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.5s;
+}
+/* Floating Decorative Shapes */
+.tracks-floating .float-circle,
+.tracks-floating .float-hexagon,
+.tracks-floating .float-star {
+  position: absolute;
+  opacity: 0.15;
+  animation: floatShape 6s ease-in-out infinite;
+}
+
+.tracks-floating .float-circle {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  top: 15%; left: 10%;
+}
+
+.tracks-floating .float-hexagon {
+  width: 50px; height: 50px;
+  background: var(--secondary-gold);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  top: 50%; right: 10%;
+}
+
+.tracks-floating .float-star {
+  width: 40px; height: 40px;
+  background: var(--primary-gold);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  bottom: 10%; left: 20%;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-15px) translateX(10px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .tracks-container { gap: 2rem; }
+}
+
+@media (max-width: 576px) {
+  .section-title { font-size: 2rem; }
+  .section-subtitle { font-size: 1rem; }
+  .track-title { font-size: 1.25rem; }
+  .track-description { font-size: 0.95rem; }
+}
+     
+/* Projects Section */
+.projects {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--light-parchment);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+/* Section Header */
+.projects .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.projects .section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--charcoal-dark);
+  margin-bottom: 0.5rem;
+  transition: color 0.5s;
+}
+
+.projects .section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: color 0.5s;
+}
+
+/* Projects Container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Project Card */
+.project-card {
+  background: var(--warm-cream);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  animation: fadeInUp 1s var(--bounce-curve) forwards;
+  opacity: 0;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Project Image */
+.project-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.05);
+}
+
+/* Project Content */
+.project-content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal-dark);
+  transition: color 0.5s;
+}
+
+.project-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  transition: color 0.5s;
+}
+/* Buttons inside cards */
+.project-content .btn-primary {
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-content .btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Floating Decorative Shapes */
+.projects-floating .float-circle,
+.projects-floating .float-hexagon,
+.projects-floating .float-star {
+  position: absolute;
+  opacity: 0.15;
+  animation: floatShape 6s ease-in-out infinite;
+}
+
+.projects-floating .float-circle {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  top: 10%; left: 15%;
+}
+
+.projects-floating .float-hexagon {
+  width: 50px; height: 50px;
+  background: var(--secondary-gold);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  bottom: 15%; right: 10%;
+}
+
+.projects-floating .float-star {
+  width: 40px; height: 40px;
+  background: var(--primary-gold);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  top: 40%; left: 70%;
+}
+
+/* Reuse Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-15px) translateX(10px); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .projects-container { gap: 2rem; }
+}
+
+@media (max-width: 576px) {
+  .section-title { font-size: 2rem; }
+  .section-subtitle { font-size: 1rem; }
+  .project-title { font-size: 1.25rem; }
+  .project-description { font-size: 0.95rem; }
+}
+
+/* Timeline Section */
+.timeline {
+  padding: 6rem 2rem;
+  background: var(--light-parchment);
+  transition: background 0.5s ease;
+  position: relative;
+}
+/* Section Header */
+.timeline .section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.timeline .section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--charcoal-dark);
+  margin-bottom: 0.5rem;
+  transition: color 0.5s;
+}
+
+.timeline .section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: color 0.5s;
+}
+/* Timeline Wrapper */
+.timeline-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary-gold);
+  transform: translateX(-50%);
+  transition: background 0.5s;
+}
+
+/* Timeline Cards */
+.timeline-card {
+  position: relative;
+  width: 45%;
+  padding: 1.5rem 2rem;
+  background: var(--warm-cream);
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.5s;
+  opacity: 0;
+  animation: fadeInUp 1s var(--bounce-curve) forwards;
+}
+.timeline-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.timeline-card.left {
+  left: 0;
+  margin-left: 0;
+}
+
+.timeline-card.right {
+  left: 55%;
+}
+
+/* Timeline Icon */
+.timeline-icon {
+  position: absolute;
+  top: 1rem;
+  left: -40px;
+  background: var(--primary-gold);
+  color: var(--deep-navy);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-main);
+  transition: background 0.5s, color 0.5s;
+}
+.timeline-card.right .timeline-icon {
+  left: -40px;
+}
+
+/* Timeline Content */
+.timeline-date {
+  display: block;
+  font-weight: 600;
+  color: var(--charcoal-dark);
+  margin-bottom: 0.5rem;
+  transition: color 0.5s;
+}
+
+.timeline-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal-dark);
+  transition: color 0.5s;
+}
+.timeline-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.5s;
+}
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .timeline-card {
+    width: 90%;
+    left: 5% !important;
+  }
+
+  .timeline-card.right {
+    left: 5% !important;
+  }
+
+  .timeline-icon {
+    left: -30px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title { font-size: 2rem; }
+  .section-subtitle { font-size: 1rem; }
+  .timeline-card h3 { font-size: 1.25rem; }
+  .timeline-date { font-size: 0.95rem; }
+}
+.ssoc-eligibility {
+  padding: 6rem 1.5rem;
+  background: linear-gradient(
+    180deg,
+    var(--light-parchment),
+    var(--warm-cream)
+  );
+}
+.eligibility-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+.eligibility-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4.5rem;
+}
+
+/* Grid */
+.eligibility-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+/* Card */
+.eligibility-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.55)
+  );
+  backdrop-filter: blur(16px);
+  padding: 2.8rem 2.6rem;
+  border-radius: 26px;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.6s var(--bounce-curve),
+              box-shadow 0.6s ease;
+}
+
+.eligibility-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Card Title */
+.eligibility-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.4rem;
+  color: var(--primary-gold);
+}
+
+/* List */
+.eligibility-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eligibility-card li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.eligibility-card li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-size: 0.8rem;
+  color: var(--primary-gold);
+}
+
+/* Animation */
+.ssoc-eligibility {
+  animation: fadeSection 1.2s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .eligibility-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eligibility-card {
+    padding: 2.2rem;
+  }
+}
+
+.ssoc-protips {
+  padding: 6rem 1.5rem;
+  background: linear-gradient(
+    180deg,
+    var(--warm-cream),
+    var(--light-parchment)
+  );
+}
+.protips-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+.protips-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4.5rem;
+}
+
+/* Grid */
+.protips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+
+/* Card */
+.protip-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.55)
+  );
+  backdrop-filter: blur(14px);
+  border-radius: 26px;
+  padding: 3rem 2.4rem 2.6rem;
+  box-shadow: var(--shadow-main);
+  transition: transform 0.6s var(--bounce-curve),
+              box-shadow 0.6s ease;
+}
+
+.protip-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Index Bubble */
+.protip-index {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  color: #000;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-main);
+}
+
+/* Text */
+.protip-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+  color: var(--charcoal-dark);
+}
+.protip-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Animation */
+.ssoc-protips {
+  animation: fadeSection 1.2s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .protips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .protips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .protip-card {
+    padding-top: 3.4rem;
+  }
+}
+
     </style>
   <link rel='manifest' href='../../../manifest.json' />
 </head>
 
 <body>
-    <header>
-        <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
-        <nav>
-            <a href="../../../index.html">Home</a>
-            <a href="../guides.html">Guides</a>
-            <a href="../programs.html">Programs</a>
-            <a href="../Resources.html">Resources</a>
-            <a href="../Contribute.html">Contribute</a>
-        </nav>
+     <header>
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+                OpenSource Compass
+            </h1>
+            <div class="nav-links">
+                <a href="../../../index.html">Home</a>
+                <a href="../guides.html">Guides</a>
+                <a href="../programs.html">Programs</a>
+                <a href="../Resources.html">Resources</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../Contribute.html">Contribute</a>
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </header>
-
     <section class="hero">
-        <div class="hero-content">
-            <h1>GirlScript Summer of Code</h1>
-            <p class="subtitle">Large-scale open-source program for students</p>
-            <p class="intro">
-                GirlScript Summer of Code (GSSOC) is a <strong>3-month long open source program</strong> designed to inspire students to explore technology and make their first meaningful open-source contribution. Despite the name, GSSOC is open to <strong>all genders</strong> and welcomes beginners and experts alike.
-            </p>
-            <div class="cta-buttons">
-                <a href="https://gssoc.girlscript.tech/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i>
-                    Official GSSOC Portal
-                </a>
-            </div>
-        </div>
-    </section>
+  <div class="hero-overlay"></div> <!-- Gradient overlay -->
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1 class="hero-title">GirlScript Summer of Code 2026</h1>
+      <p class="hero-subtitle">Empowering Women to Code, Contribute, and Innovate</p>
+      <div class="hero-buttons">
+        <a href="#apply" class="btn btn-primary">Apply Now</a>
+        <a href="#about" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <img src="https://th.bing.com/th/id/OIP.9j5hUcgE8GeeIwyoFyOjVgHaDq?w=330&h=173&c=7&r=0&o=7&pid=1.7&rm=3" alt="Coding illustration" />
+    </div>
+  </div>
+  <!-- Animated floating elements -->
+  <div class="hero-floating">
+    <span class="float-circle small"></span>
+    <span class="float-circle medium"></span>
+    <span class="float-circle large"></span>
+  </div>
+</section>
 
-    <section class="about-section">
-        <h2>About the Program</h2>
+<section class="about" id="about">
+  <div class="about-container">
+    <div class="about-text">
+      <h2 class="about-title">About GirlScript Summer of Code</h2>
+      <p class="about-description">
+        GirlScript Summer of Code (GSSoC) is an initiative to empower women developers by providing
+        mentorship, real-world open-source projects, and a platform to enhance coding skills while
+        contributing to impactful software. Join us to learn, code, and make a difference in the
+        tech community.
+      </p>
+      <a href="#apply" class="btn btn-primary about-btn">Get Started</a>
+    </div>
+    <div class="about-illustration">
+      <img src="data:image/webp;base64,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" alt="About Illustration">
+    </div>
+  </div>
+  <!-- Decorative shapes -->
+  <div class="about-floating">
+    <span class="float-square"></span>
+    <span class="float-triangle"></span>
+    <span class="float-circle"></span>
+  </div>
+</section>
+<section class="how-it-works" id="how-it-works">
+  <div class="section-header">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Follow these simple steps to become a contributor in GSSoC</p>
+  </div>
+  
+  <div class="steps-container">
+    <div class="step-card">
+      <div class="step-icon">1</div>
+      <h3 class="step-title">Apply Online</h3>
+      <p class="step-description">Fill out your application to join GSSoC and get access to projects and mentors.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-icon">2</div>
+      <h3 class="step-title">Get Mentored</h3>
+      <p class="step-description">Our experienced mentors will guide you through projects and help you grow your skills.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-icon">3</div>
+      <h3 class="step-title">Contribute to Projects</h3>
+      <p class="step-description">Start contributing to real-world open-source projects and build your portfolio.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-icon">4</div>
+      <h3 class="step-title">Showcase Your Work</h3>
+      <p class="step-description">Get recognition, certificates, and display your contributions to the tech community.</p>
+    </div>
+  </div>
+
+  <!-- Decorative shapes -->
+  <div class="how-floating">
+    <span class="float-diamond"></span>
+    <span class="float-circle"></span>
+    <span class="float-triangle"></span>
+  </div>
+</section>
+<section class="why-join" id="why-join">
+  <div class="section-header">
+    <h2 class="section-title">Why Join GSSoC?</h2>
+    <p class="section-subtitle">Empowering women in tech through mentorship, learning, and contribution</p>
+  </div>
+
+  <div class="features-container">
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3 class="feature-title">Real-World Projects</h3>
+      <p class="feature-description">Work on live open-source projects to gain practical experience and skills.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🎓</div>
+      <h3 class="feature-title">Mentorship</h3>
+      <p class="feature-description">Learn from experienced mentors who guide you through your coding journey.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <h3 class="feature-title">Community Support</h3>
+      <p class="feature-description">Join a supportive global community of women developers and contributors.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3 class="feature-title">Recognition & Rewards</h3>
+      <p class="feature-description">Earn certificates, showcase your work, and get recognized for your contributions.</p>
+    </div>
+  </div>
+
+  <!-- Decorative shapes -->
+  <div class="why-floating">
+    <span class="float-star"></span>
+    <span class="float-circle"></span>
+    <span class="float-hexagon"></span>
+  </div>
+</section>
+
+<section class="tracks" id="tracks">
+  <div class="section-header">
+    <h2 class="section-title">Tracks & Domains</h2>
+    <p class="section-subtitle">Choose your preferred domain and contribute to impactful projects</p>
+  </div>
+
+  <div class="tracks-container">
+    <div class="track-card">
+      <div class="track-icon">💻</div>
+      <h3 class="track-title">Web Development</h3>
+      <p class="track-description">Frontend, Backend, Full Stack – build amazing websites and web apps.</p>
+    </div>
+
+    <div class="track-card">
+      <div class="track-icon">📱</div>
+      <h3 class="track-title">Mobile Development</h3>
+      <p class="track-description">Android, iOS, Flutter, React Native – create apps for millions of users.</p>
+    </div>
+
+    <div class="track-card">
+      <div class="track-icon">🛠️</div>
+      <h3 class="track-title">DevOps & Tools</h3>
+      <p class="track-description">CI/CD, Cloud, Automation – streamline software development and deployment.</p>
+    </div>
+
+    <div class="track-card">
+      <div class="track-icon">🤖</div>
+      <h3 class="track-title">AI & Machine Learning</h3>
+      <p class="track-description">Build smart systems, ML models, and AI-powered applications.</p>
+    </div>
+
+    <div class="track-card">
+      <div class="track-icon">🎨</div>
+      <h3 class="track-title">Design & UI/UX</h3>
+      <p class="track-description">Wireframes, mockups, and user-friendly designs to enhance digital experiences.</p>
+    </div>
+
+    <div class="track-card">
+      <div class="track-icon">🔒</div>
+      <h3 class="track-title">Cybersecurity</h3>
+      <p class="track-description">Protect systems and data through ethical hacking and security best practices.</p>
+    </div>
+  </div>
+
+  <!-- Decorative floating shapes -->
+  <div class="tracks-floating">
+    <span class="float-circle"></span>
+    <span class="float-hexagon"></span>
+    <span class="float-star"></span>
+  </div>
+</section>
+<section class="projects" id="projects">
+  <div class="section-header">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">Explore exciting projects and start contributing to open-source</p>
+  </div>
+
+  <div class="projects-container">
+    <div class="project-card">
+      <div class="project-img">
+        
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Open-Source Web App</h3>
+        <p class="project-description">Build scalable web applications using modern technologies and frameworks.</p>
+        <a href="#apply" class="btn btn-primary">Contribute</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Mobile App Development</h3>
+        <p class="project-description">Create intuitive mobile apps for Android and iOS platforms.</p>
+        <a href="#apply" class="btn btn-primary">Contribute</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">AI & Machine Learning</h3>
+        <p class="project-description">Develop intelligent systems and predictive models for real-world problems.</p>
+        <a href="#apply" class="btn btn-primary">Contribute</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating shapes for effect -->
+  <div class="projects-floating">
+    <span class="float-circle"></span>
+    <span class="float-star"></span>
+    <span class="float-hexagon"></span>
+  </div>
+</section>
+
+<section class="timeline" id="timeline">
+  <div class="section-header">
+    <h2 class="section-title">Program Timeline</h2>
+    <p class="section-subtitle">Follow the journey from application to contribution</p>
+  </div>
+
+  <div class="timeline-wrapper">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-card left">
+      <div class="timeline-icon">📄</div>
+      <div class="timeline-content">
+        <span class="timeline-date">Mar 1 - Mar 15</span>
+        <h3>Applications Open</h3>
+        <p>Submit your applications to join GSSoC 2026 and start your coding journey!</p>
+      </div>
+    </div>
+
+    <div class="timeline-card right">
+      <div class="timeline-icon">🛠️</div>
+      <div class="timeline-content">
+        <span class="timeline-date">Mar 20</span>
+        <h3>Project Selection</h3>
+        <p>Choose the project you want to contribute to and get assigned a mentor.</p>
+      </div>
+    </div>
+
+    <div class="timeline-card left">
+      <div class="timeline-icon">💻</div>
+      <div class="timeline-content">
+        <span class="timeline-date">Apr 1 - Jul 15</span>
+        <h3>Coding Period</h3>
+        <p>Work on your projects, submit contributions, and collaborate with mentors.</p>
+      </div>
+    </div>
+
+    <div class="timeline-card right">
+      <div class="timeline-icon">🔍</div>
+      <div class="timeline-content">
+        <span class="timeline-date">Jul 20</span>
+        <h3>Final Evaluations</h3>
+        <p>Mentors review submissions and provide feedback for final evaluation.</p>
+      </div>
+    </div>
+
+    <div class="timeline-card left">
+      <div class="timeline-icon">🏆</div>
+      <div class="timeline-content">
+        <span class="timeline-date">Aug 1</span>
+        <h3>Winners Announced</h3>
+        <p>Recognize contributors and celebrate their achievements in GSSoC 2026!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ssoc-eligibility">
+  <div class="eligibility-container">
+
+    <div class="eligibility-header">
+      <span class="section-badge">Guidelines</span>
+      <h2 class="section-title">
+        Eligibility &
+        <span>Program Rules</span>
+      </h2>
+      <p class="section-subtitle">
+        Please review the eligibility criteria and rules before applying
+        to SSOC.
+      </p>
+    </div>
+
+    <div class="eligibility-grid">
+
+      <!-- Eligibility Card -->
+      <div class="eligibility-card">
+        <h3>🎓 Eligibility</h3>
+        <ul>
+          <li>Open to students from any college or university</li>
+          <li>Beginners and experienced developers are welcome</li>
+          <li>Basic knowledge of Git & GitHub is recommended</li>
+          <li>Must be able to commit time during the program duration</li>
+          <li>Strong interest in open-source contribution</li>
+        </ul>
+      </div>
+
+      <!-- Rules Card -->
+      <div class="eligibility-card">
+        <h3>📜 Program Rules</h3>
+        <ul>
+          <li>All contributions must be original and plagiarism-free</li>
+          <li>Respect mentors, peers, and community guidelines</li>
+          <li>Follow open-source ethics and best practices</li>
+          <li>Regular participation and updates are expected</li>
+          <li>Violation of rules may lead to disqualification</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section class="ssoc-protips">
+  <div class="protips-container">
+
+    <div class="protips-header">
+      <span class="section-badge">Pro Tips</span>
+      <h2 class="section-title">
+        How to Succeed in
+        <span>GSSoC</span>
+      </h2>
+      <p class="section-subtitle">
+        Follow these expert tips to make the most out of your GSSoC journey.
+      </p>
+    </div>
+
+    <div class="protips-grid">
+
+      <div class="protip-card">
+        <div class="protip-index">01</div>
+        <h3>Start Small, Stay Consistent</h3>
         <p>
-            GirlScript Summer of Code is a nationwide summer program that connects students with mentors and projects to help them get started in open source. The program runs for 3 months (typically March - May) and features a vast selection of projects across various technologies, making it perfect for beginners and experienced contributors alike.
+          Begin with small issues, understand the codebase, and contribute
+          regularly instead of rushing.
         </p>
-    </section>
+      </div>
 
-    <section class="features-section">
-        <h2>Why Choose GSSOC?</h2>
-        <p>Discover what makes GirlScript Summer of Code the perfect starting point for your open source journey</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-card-content">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Beginner-Friendly</h3>
-                    <p>Perfect for newcomers! GSSOC is designed to help students take their first steps in open source with guidance from experienced mentors and a supportive community.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card-content">
-                    <div class="feature-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>Vast Project Selection</h3>
-                    <p>Choose from hundreds of projects across web development, mobile apps, AI/ML, blockchain, and more. Find the perfect project that matches your interests and skills.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card-content">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Mentorship Support</h3>
-                    <p>Get personalized guidance from experienced mentors throughout the program. Learn best practices, code review, and professional development from industry experts.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card-content">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Real Contributions</h3>
-                    <p>Make meaningful contributions to real-world projects. Build your portfolio, improve your coding skills, and gain experience that employers value.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card-content">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Gamified Experience</h3>
-                    <p>Stay motivated with a real-time leaderboard. Earn points for every successful pull request based on the complexity of the task, fostering a healthy competitive spirit.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card-content">
-                    <div class="feature-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Technical Workshops</h3>
-                    <p>Access exclusive live sessions and webinars conducted by industry experts. Learn about Git, GitHub, and various modern tech stacks to boost your development journey.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="protip-card">
+        <div class="protip-index">02</div>
+        <h3>Communicate Clearly</h3>
+        <p>
+          Ask questions, discuss ideas, and keep mentors updated on your
+          progress through proper channels.
+        </p>
+      </div>
 
-    <section class="benefits-section">
-        <h2>Program Benefits</h2>
-        <p>Rewards and opportunities that await you in GirlScript Summer of Code</p>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Certificate of Appreciation</h3>
-                <p>Earn a recognized certificate upon successful completion, showcasing your contribution to open source projects.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <h3>Swag Kits</h3>
-                <p>Top performers receive exclusive swag kits including T-shirts, stickers, and other cool merchandise.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Internship Opportunities</h3>
-                <p>Top contributors may receive internship opportunities with partner companies, kickstarting your tech career.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3>Community Network</h3>
-                <p>Connect with fellow contributors, mentors, and industry professionals. Build lasting relationships in the tech community.</p>
-            </div>
-        </div>
-    </section>
+      <div class="protip-card">
+        <div class="protip-index">03</div>
+        <h3>Follow Open-Source Practices</h3>
+        <p>
+          Write clean commits, descriptive PRs, and respect project
+          contribution guidelines.
+        </p>
+      </div>
 
-    <section class="timeline-section">
-        <h2>Program Timeline</h2>
-        <div class="timeline-container">
-            <div class="timeline-line"></div>
-            <div class="timeline-steps">
-                <div class="timeline-step">
-                    <div class="step-marker">1</div>
-                    <div class="step-info">
-                        <h3>Registration Opens</h3>
-                        <div class="step-date">February - March</div>
-                        <p>Register on the official GSSOC portal. Create your profile, explore available projects, and start connecting with project maintainers. This is your time to research and find the perfect project.</p>
-                    </div>
-                </div>
-                <div class="timeline-step">
-                    <div class="step-marker">2</div>
-                    <div class="step-info">
-                        <h3>Project Selection & Application</h3>
-                        <div class="step-date">March</div>
-                        <p>Browse through hundreds of projects and apply to the ones that interest you. Make initial contributions to show your interest and get selected by project maintainers.</p>
-                    </div>
-                </div>
-                <div class="timeline-step">
-                    <div class="step-marker">3</div>
-                    <div class="step-info">
-                        <h3>Coding Period</h3>
-                        <div class="step-date">March - May</div>
-                        <p>The main coding phase begins! Work on your selected projects, make contributions, and collaborate with mentors. Regular evaluations ensure you're on the right track.</p>
-                    </div>
-                </div>
-                <div class="timeline-step">
-                    <div class="step-marker">4</div>
-                    <div class="step-info">
-                        <h3>Evaluation & Results</h3>
-                        <div class="step-date">May - June</div>
-                        <p>Final evaluations take place based on your contributions throughout the program. Top performers receive certificates, swag, and internship opportunities.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="protip-card">
+        <div class="protip-index">04</div>
+        <h3>Take Feedback Positively</h3>
+        <p>
+          Code reviews are learning opportunities — improve based on
+          mentor feedback and suggestions.
+        </p>
+      </div>
 
-    <section class="cta-section">
-        <h2>Ready to Start Your Open Source Journey?</h2>
-        <p>Join thousands of students in making meaningful contributions to open source projects. Register for GirlScript Summer of Code and take your first step today!</p>
-        <div class="cta-buttons-large">
-            <a href="https://gssoc.girlscript.tech/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
-                <i class="fas fa-external-link-alt"></i>
-                Visit GSSOC Portal
-            </a>
-        </div>
-    </section>
+      <div class="protip-card">
+        <div class="protip-index">05</div>
+        <h3>Document Your Work</h3>
+        <p>
+          Maintain proper documentation and comments so your contributions
+          remain valuable and reusable.
+        </p>
+      </div>
+
+      <div class="protip-card">
+        <div class="protip-index">06</div>
+        <h3>Engage With the Community</h3>
+        <p>
+          Participate in discussions, help others, and build meaningful
+          connections within the SSOC community.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
     <div id="footer"></div>
-
     <script src="../../js/components.js"></script>
     <script>
         // Smooth scroll for anchor links
