@@ -41,16 +41,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-        }
-
-        body.dark-mode {
-            background: #1a1a1a;
-            color: #fff;
-        }
-
-        body.dark-mode header,
-        body.dark-mode footer {
-            background: #121212;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* ---------- Navbar ---------- */
@@ -78,6 +69,11 @@
         header h1:hover {
             color: var(--secondary-blue);
             transform: translateX(2px);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
@@ -108,6 +104,28 @@
             width: 100%;
         }
 
+        /* ---------- Dark Mode Toggle Button ---------- */
+        .theme-toggle {
+            margin-left: 24px;
+            background: var(--secondary-blue);
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(77, 150, 255, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(77, 150, 255, 0.5);
+        }
+
         /* ---------- Hero Section ---------- */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #2a4fa0 30%, #3d6bc0 60%, var(--secondary-blue) 100%);
@@ -116,6 +134,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease;
         }
 
         .hero::before {
@@ -777,9 +796,9 @@
         }
 
         .rewards-grid {
-            display: flex;          /* Changed from grid to flex */
-            flex-wrap: wrap;        /* Allows cards to move to the next line */
-            justify-content: center; /* This centers the cards in every row */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 24px;
             margin: 32px auto 0;
             max-width: 1000px;
@@ -847,85 +866,297 @@
             font-size: 16px;
         }
 
-        /* ---------- Pro Tips Section ---------- */
-        .tips-section {
-            background-color: var(--white);
-            text-align: center;
-        }
+       /* ---------- Pro Tips Carousel Section (FINAL OPTIMIZED) ---------- */
+.tips-section {
+    background-color: var(--white);
+    text-align: center;
+    padding: 80px 8%;
+}
 
-        .tips-section h2,
-        .tips-section p {
-            margin-left: auto;
-            margin-right: auto;
-        }
+.tips-section h2,
+.tips-section > p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
 
-        .tips-list {
-            max-width: 700px;
-            margin: 32px auto 0;
-        }
+.carousel-container {
+    max-width: 1000px; /* Increased width */
+    margin: 50px auto 0;
+    position: relative;
+    padding: 0 80px; /* More space for buttons */
+}
 
-        .tip-item {
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
-            padding: 32px;
-            margin-bottom: 24px;
-            border-radius: 16px;
-            border-left: 6px solid var(--secondary-blue);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-        }
+.carousel-wrapper {
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+}
 
-        .tip-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-            background: linear-gradient(180deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
-            transform: scaleY(0);
-            transition: transform 0.4s ease;
-        }
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .tip-item:hover::before {
-            transform: scaleY(1);
-        }
+.carousel-slide {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
 
-        .tip-item:hover {
-            transform: translateX(12px) translateY(-4px);
-            box-shadow: 0 12px 32px rgba(77, 150, 255, 0.25), 0 0 0 4px rgba(77, 150, 255, 0.1);
-            border-left-width: 8px;
-        }
+.tip-item {
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+    padding: 50px 50px; /* Generous padding */
+    border-radius: 20px;
+    border-left: 6px solid var(--secondary-blue);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center; /* Center align for better appearance */
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        .tip-item h4 {
-            color: var(--primary-blue);
-            margin-bottom: 8px;
-        }
+.tip-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+    transform: scaleY(0);
+    transition: transform 0.4s ease;
+}
+
+.tip-item:hover::before {
+    transform: scaleY(1);
+}
+
+.tip-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(77, 150, 255, 0.3);
+    border-left-width: 8px;
+}
+
+.tip-item h4 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    font-size: 28px; /* Larger heading */
+    font-weight: 700;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.tip-item p {
+    color: var(--text-dark);
+    font-size: 18px; /* Larger text */
+    line-height: 1.8;
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 800px; /* Limit width for better readability */
+}
+
+.carousel-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(77, 150, 255, 0.4);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+.carousel-btn:hover {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 24px rgba(77, 150, 255, 0.6);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn svg {
+    width: 26px;
+    height: 26px;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 45px;
+}
+
+.indicator-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: none;
+}
+
+.indicator-dot:hover {
+    background-color: #9ca3af;
+    transform: scale(1.3);
+}
+
+.indicator-dot.active {
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+    width: 40px;
+    border-radius: 7px;
+    box-shadow: 0 2px 10px rgba(77, 150, 255, 0.5);
+}
+
+/* Dark mode styles for carousel */
+body.dark-mode .tip-item {
+    background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+    border-color: #58a6ff;
+}
+
+body.dark-mode .tip-item h4 {
+    color: #58a6ff;
+}
+
+body.dark-mode .tip-item p {
+    color: #c9d1d9;
+}
+
+body.dark-mode .carousel-btn {
+    background: linear-gradient(135deg, #58a6ff 0%, #1F3C88 100%);
+}
+
+body.dark-mode .indicator-dot {
+    background-color: #30363d;
+}
+
+body.dark-mode .indicator-dot:hover {
+    background-color: #484f58;
+}
+
+body.dark-mode .indicator-dot.active {
+    background: linear-gradient(135deg, #58a6ff 0%, #1F3C88 100%);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .carousel-container {
+        max-width: 900px;
+    }
+    
+    .tip-item {
+        padding: 45px 40px;
+    }
+    
+    .tip-item h4 {
+        font-size: 26px;
+    }
+    
+    .tip-item p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 0 65px;
+        max-width: 700px;
+    }
+
+    .carousel-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .carousel-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .tip-item {
+        padding: 40px 35px;
+        min-height: 220px;
+    }
+
+    .tip-item h4 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .tip-item p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        padding: 0 55px;
+        max-width: 100%;
+    }
+
+    .carousel-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .carousel-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .tip-item {
+        padding: 35px 25px;
+        min-height: 240px;
+    }
+
+    .tip-item h4 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .tip-item p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+}
+
 
         /* ---------- Footer ---------- */
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
-            padding: 24px;
+            padding: 40px 24px;
             margin-top: 0;
             position: relative;
-            padding-top: 50px;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpolygon points='0,20 5,0 10,20 15,0 20,20 25,0 30,20 35,0 40,20 45,0 50,20 55,0 60,20 65,0 70,20 75,0 80,20 85,0 90,20 95,0 100,20 100,20 0,20' fill='%231F3C88'/%3E%3C/svg%3E");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: top;
         }
 
         footer p {
@@ -935,7 +1166,145 @@
             position: relative;
             z-index: 1;
         }
-      
+
+        /* ---------- DARK MODE STYLES ---------- */
+        body.dark-mode {
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        body.dark-mode header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        body.dark-mode header h1 {
+            color: #58a6ff;
+        }
+
+        body.dark-mode nav a {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #58a6ff;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: #58a6ff;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #58a6ff;
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.5);
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #1a1f35 0%, #1e2a47 30%, #243554 60%, #2a4365 100%);
+        }
+
+        body.dark-mode .intro,
+        body.dark-mode .process-section,
+        body.dark-mode .rewards-section {
+            background: #0d1117;
+        }
+
+        body.dark-mode .overview-section,
+        body.dark-mode .points-section,
+        body.dark-mode .tips-section {
+            background: #161b22;
+        }
+
+        body.dark-mode section h2 {
+            color: #58a6ff;
+            text-shadow: 0 2px 10px rgba(88, 166, 255, 0.3);
+        }
+
+        body.dark-mode section h3,
+        body.dark-mode section h4 {
+            color: #58a6ff;
+        }
+
+        body.dark-mode section p {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .step-content,
+        body.dark-mode .overview-card,
+        body.dark-mode .reward-card,
+        body.dark-mode .tip-item {
+            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+            color: #c9d1d9;
+            border-color: #58a6ff;
+        }
+
+        body.dark-mode .step-content h4,
+        body.dark-mode .overview-card h4,
+        body.dark-mode .reward-card h4,
+        body.dark-mode .tip-item h4 {
+            color: #58a6ff;
+        }
+
+        body.dark-mode .step-content p,
+        body.dark-mode .overview-card p,
+        body.dark-mode .reward-card p,
+        body.dark-mode .tip-item p {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .step-content li {
+            color: #c9d1d9;
+        }
+
+        body.dark-mode .points-table {
+            background: #161b22;
+            border: 1px solid #30363d;
+        }
+
+        body.dark-mode .points-table th {
+            background: #1F3C88;
+            color: #fff;
+        }
+
+        body.dark-mode .points-table td {
+            color: #c9d1d9;
+            border-bottom: 1px solid #30363d;
+        }
+
+        body.dark-mode .points-table tr:nth-child(even) {
+            background: #1c2128;
+        }
+
+        body.dark-mode .points-table tr:hover td {
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        body.dark-mode .intro-logo {
+            background: #161b22;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode .carousel-btn {
+            background: linear-gradient(135deg, #58a6ff 0%, #1F3C88 100%);
+        }
+
+        body.dark-mode .indicator-dot {
+            background-color: #30363d;
+        }
+
+        body.dark-mode .indicator-dot:hover {
+            background-color: #484f58;
+        }
+
+        body.dark-mode .indicator-dot.active {
+            background: linear-gradient(135deg, #58a6ff 0%, #1F3C88 100%);
+        }
+
+        body.dark-mode footer {
+            background: #0d1117;
+            border-top: 1px solid #30363d;
+        }
+
         /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
             .hero {
@@ -989,34 +1358,69 @@
             .points-table td {
                 padding: 12px;
             }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .theme-toggle {
+                margin-left: 12px;
+            }
+
+            .carousel-container {
+                padding: 0 55px;
+            }
+
+            .carousel-btn {
+                width: 42px;
+                height: 42px;
+            }
+
+            .carousel-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .tip-item {
+                padding: 35px 25px;
+                min-height: 230px;
+            }
+
+            .tip-item h4 {
+                font-size: 20px;
+            }
+
+            .tip-item p {
+                font-size: 15px;
+            }
         }
 
-        body.dark-mode .intro,
-        body.dark-mode .process-section,
-        body.dark-mode .rewards-section {
-            background: #2a2a2a;
-        }
+        @media (max-width: 480px) {
+            .carousel-container {
+                padding: 0 50px;
+            }
 
-        body.dark-mode .step-content,
-        body.dark-mode .overview-card,
-        body.dark-mode .reward-card,
-        body.dark-mode .tip-item {
-            background: #2a2a2a;
-            color: #fff;
-        }
+            .carousel-btn {
+                width: 38px;
+                height: 38px;
+            }
 
-        body.dark-mode .points-table {
-            background: #2a2a2a;
-        }
+            .tip-item {
+                padding: 30px 20px;
+                min-height: 250px;
+            }
 
-        body.dark-mode .points-table th {
-            background: #1F3C88;
-        }
+            .tip-item h4 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
 
-        body.dark-mode .points-table tr:nth-child(even) {
-            background: #333;
+            .tip-item p {
+                font-size: 14px;
+            }
         }
     </style>
+    <link rel='manifest' href='../../../manifest.json' />
 </head>
 
 <body>
@@ -1030,6 +1434,7 @@
         <a href="../programs.html">Programs</a>
         <a href="../Resources.html">Resources</a>
         <a href="../Contribute.html">Contribute</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </nav>
 </header>
 
@@ -1068,20 +1473,20 @@
 <section class="overview-section">
     <h2>📋 Program Overview</h2>
     <p>SSoC is organized with a mission to promote open-source culture among students of all skill levels. It follows a gamified approach where your contributions translate into points on a global leaderboard.</p>
-    
+
     <div class="overview-grid">
         <div class="overview-card">
             <div class="overview-icon">⏱️</div>
             <h4>Duration</h4>
             <p>Typically 2–3 months (Summer season)</p>
         </div>
-        
+
         <div class="overview-card">
             <div class="overview-icon">👥</div>
             <h4>Target Audience</h4>
             <p>Open to everyone, but specifically tailored for students and open-source beginners</p>
         </div>
-        
+
         <div class="overview-card">
             <div class="overview-icon">🎯</div>
             <h4>Key Focus</h4>
@@ -1094,7 +1499,7 @@
 <section class="process-section">
     <h2>🛤️ Step-by-Step Process for SSoC</h2>
     <p>Follow these steps to successfully participate in Social Summer of Code.</p>
-    
+
     <div class="stepper">
         <div class="step">
             <div class="step-number">1</div>
@@ -1103,7 +1508,7 @@
                 <p>Keep an eye on the official SSoC website or social media. You will need to register as a Contributor. Projects and Mentors also register during this phase.</p>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">2</div>
             <div class="step-content">
@@ -1115,7 +1520,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">3</div>
             <div class="step-content">
@@ -1128,7 +1533,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="step">
             <div class="step-number">4</div>
             <div class="step-content">
@@ -1149,7 +1554,7 @@
 <section class="points-section">
     <h2>🏆 Points and Leaderboard</h2>
     <p>SSoC uses a tiered system to reward effort and complexity:</p>
-    
+
     <div class="points-table">
         <table>
             <thead>
@@ -1187,85 +1592,117 @@
 
 <!-- ================= REWARDS SECTION ================= -->
 <section class="rewards-section">
-    <h2>🎁 Perks and Rewards</h2>
-    <p>Earn rewards and recognition for your contributions to open-source projects.</p>
-    
+    <h2>🎁 Rewards & Incentives</h2>
+    <p>Contributors who participate actively in SSoC can earn a variety of exciting rewards based on their performance.</p>
+
     <div class="rewards-grid">
         <div class="reward-card">
-            <div class="reward-icon">📜</div>
+            <div class="reward-icon">🏆</div>
             <h4>Certificates</h4>
-            <p>All participants with at least one merged PR receive a certificate</p>
+            <p>All participants receive certificates of completion</p>
         </div>
-        
+
         <div class="reward-card">
-            <div class="reward-icon">🤝</div>
-            <h4>Mentorship</h4>
-            <p>Direct access to experienced developers who can guide your career path</p>
+            <div class="reward-icon">💼</div>
+            <h4>Swag & Goodies</h4>
+            <p>Top contributors receive exclusive SSoC merchandise</p>
         </div>
-        
+
         <div class="reward-card">
-            <div class="reward-icon">🏅</div>
-            <h4>Digital Badges</h4>
-            <p>Exclusive badges to showcase on LinkedIn or GitHub</p>
-        </div>
-        
-        <div class="reward-card">
-            <div class="reward-icon">🎁</div>
-            <h4>Goodies & Swag</h4>
-            <p>Top performers on the leaderboard are eligible for T-shirts, stickers, and other tech merchandise</p>
+            <div class="reward-icon">🌟</div>
+            <h4>Leaderboard Recognition</h4>
+            <p>Get featured on the official SSoC leaderboard</p>
         </div>
     </div>
 </section>
 
-<!-- ================= PRO TIPS SECTION ================= -->
+<!-- ================= PRO TIPS CAROUSEL SECTION ================= -->
 <section class="tips-section">
     <h2>💡 Pro-Tips for SSoC Success</h2>
     <p>Make the most out of your Social Summer of Code experience with these tips.</p>
     
-    <div class="tips-list">
-        <div class="tip-item">
-            <h4>Don't "Issue-Hog"</h4>
-            <p>Only ask for an issue if you are confident you can solve it within 2–3 days. This keeps the program fair for everyone.</p>
+    <div class="carousel-container">
+        <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous tip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Tip 1 -->
+                <div class="carousel-slide">
+                    <div class="tip-item">
+                        <h4>💡 Don't "Issue-Hog"</h4>
+                        <p>Only ask for an issue if you are confident you can solve it within 2–3 days. This keeps the program fair for everyone.</p>
+                    </div>
+                </div>
+                
+                <!-- Tip 2 -->
+                <div class="carousel-slide">
+                    <div class="tip-item">
+                        <h4>📝 Document Everything</h4>
+                        <p>Write clear PR descriptions. Explain what you changed and why. Good documentation makes code review smoother and shows professionalism.</p>
+                    </div>
+                </div>
+                
+                <!-- Tip 3 -->
+                <div class="carousel-slide">
+                    <div class="tip-item">
+                        <h4>🤝 Engage with the Community</h4>
+                        <p>Active participation in Discord/Slack discussions helps you learn faster and build valuable connections with mentors and peers.</p>
+                    </div>
+                </div>
+                
+                <!-- Tip 4 -->
+                <div class="carousel-slide">
+                    <div class="tip-item">
+                        <h4>🔍 Read the Code First</h4>
+                        <p>Before starting work, spend time understanding the existing codebase. This prevents duplicate work and helps you write consistent code.</p>
+                    </div>
+                </div>
+                
+                <!-- Tip 5 -->
+                <div class="carousel-slide">
+                    <div class="tip-item">
+                        <h4>⚡ Start Small, Think Big</h4>
+                        <p>Begin with Level 0-1 issues to understand the workflow, then gradually tackle more complex challenges as you gain confidence.</p>
+                    </div>
+                </div>
+                
+                <!-- Tip 6 -->
+                <div class="carousel-slide">
+                    <div class="tip-item">
+                        <h4>🎯 Quality Over Quantity</h4>
+                        <p>Focus on submitting well-tested, quality PRs rather than rushing through multiple issues. This builds your reputation and skills.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="tip-item">
-            <h4>Document Everything</h4>
-            <p>Write clear PR descriptions. Explain what you changed and why.</p>
-        </div>
-        
-        <div class="tip-item">
-            <h4>Engage in Workshops</h4>
-            <p>SSoC often hosts sessions on Resume Building, Open Source, and Career Advice. These are often as valuable as the coding itself.</p>
-        </div>
+        <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next tip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
     </div>
+    
+    <div class="carousel-indicators" id="indicators"></div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<div id="footer"></div>
+<footer>
+    <p>&copy; 2026 OpenSource Compass. All rights reserved.</p>
+</footer>
 
-<script src="../../js/components.js"></script>
-
-<!-- ================= SCRIPTS ================= -->
+<!-- ================= JAVASCRIPT ================= -->
 <script>
-    // Theme toggle functionality (if needed)
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            themeToggle.textContent =
-                document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-        });
-    }
-
-    // Create animated particles
-    function createParticles() {
-        const particlesContainer = document.getElementById('particles');
-        if (!particlesContainer) return;
-
-        const particleCount = 30;
-        for (let i = 0; i < particleCount; i++) {
+    // Hero Particles
+    const particlesContainer = document.getElementById('particles');
+    if (particlesContainer) {
+        for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
-            particle.className = 'particle';
+            particle.classList.add('particle');
             particle.style.left = Math.random() * 100 + '%';
             particle.style.animationDelay = Math.random() * 15 + 's';
             particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
@@ -1273,30 +1710,187 @@
         }
     }
 
-    // Initialize particles on page load
-    window.addEventListener('DOMContentLoaded', createParticles);
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+        document.body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.textContent = '☀️';
+    }
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            let theme = 'light';
+            if (document.body.classList.contains('dark-mode')) {
+                theme = 'dark';
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+            localStorage.setItem('theme', theme);
+        });
+    }
 
-    // Add scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicatorsContainer = document.getElementById('indicators');
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        if (!track || !prevBtn || !nextBtn || !indicatorsContainer || slides.length === 0) {
+            return;
+        }
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoPlayInterval;
+        let isTransitioning = false;
+        
+        // Create indicator dots
+        function createIndicators() {
+            indicatorsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('indicator-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(dot);
+            }
+        }
+        
+        // Update indicators
+        function updateIndicators() {
+            const dots = document.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            if (isTransitioning || index === currentIndex) return;
+            currentIndex = index;
+            updateCarousel();
+            resetAutoPlay();
+        }
+        
+        // Update carousel position
+        function updateCarousel() {
+            isTransitioning = true;
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            updateIndicators();
+            
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 600);
+        }
+        
+        // Next slide
+        function nextSlide() {
+            if (isTransitioning) return;
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            if (isTransitioning) return;
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+        
+        // Auto-play functionality
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
+        
+        function resetAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoPlay();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+        
+        // Pause auto-play on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+        carouselContainer.addEventListener('mouseleave', startAutoPlay);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetAutoPlay();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetAutoPlay();
             }
         });
-    }, observerOptions);
-
-    // Observe all cards and sections
-    document.querySelectorAll('.overview-card, .reward-card, .step-content, .tip-item').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+        
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carouselContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoPlay();
+        }, { passive: true });
+        
+        carouselContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoPlay();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+        
+        // Initialize
+        createIndicators();
+        startAutoPlay();
+        
+        // Pause on page visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoPlay();
+            } else {
+                startAutoPlay();
+            }
+        });
     });
 </script>
 

@@ -1,0 +1,354 @@
+/* PR Generator Premium Styles */
+
+:root {
+    --pr-gold-primary: #d4af37;
+    --pr-gold-secondary: #f4d03f;
+    --pr-navy: #0f172a;
+    --pr-glass-bg: rgba(255, 255, 255, 0.05);
+    --pr-glass-border: rgba(212, 175, 55, 0.3);
+    --pr-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Floating Action Button - Premium Redesign */
+.pr-gen-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 6.5rem;
+    /* Offset to the left of scroll-top button */
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    /* Squircle/Modern rounded square */
+    background: rgba(212, 175, 55, 0.15);
+    /* Glass base */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 0 15px rgba(212, 175, 55, 0.2);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    animation: prFloat 3s ease-in-out infinite, prPulse 2s infinite;
+}
+
+.pr-gen-fab:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(212, 175, 55, 0.25);
+    border-color: #d4af37;
+    box-shadow:
+        0 12px 40px rgba(212, 175, 55, 0.3),
+        inset 0 0 20px rgba(212, 175, 55, 0.3);
+    color: #fff;
+    animation: none;
+    /* Stop float on hover for stability */
+}
+
+/* Label Tooltip */
+.pr-gen-fab::after {
+    content: "Developer Tools ✨";
+    position: absolute;
+    right: 80px;
+    background: #1e293b;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateX(10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pr-gen-fab:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animations */
+@keyframes prFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes prPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* Modal Overlay */
+.pr-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.pr-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Container */
+.pr-modal-container {
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    background: var(--pr-navy);
+    border: 1px solid var(--pr-glass-border);
+    border-radius: 20px;
+    overflow-y: auto;
+    position: relative;
+    padding: 2.5rem;
+    box-shadow: var(--pr-shadow);
+    transform: translateY(30px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pr-modal-overlay.active .pr-modal-container {
+    transform: translateY(0);
+}
+
+.pr-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.pr-modal-close:hover {
+    color: var(--pr-gold-primary);
+}
+
+/* Form Styles */
+.pr-form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pr-form-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--pr-gold-primary);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.pr-form-header p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.pr-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.pr-form-group label {
+    display: block;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.pr-form-group textarea,
+.pr-form-group input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.pr-form-group textarea:focus,
+.pr-form-group input:focus {
+    outline: none;
+    border-color: var(--pr-gold-primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.pr-form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.pr-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(90deg, var(--pr-gold-primary), var(--pr-gold-secondary));
+    color: var(--pr-navy);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.pr-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.pr-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Preview Area */
+.pr-preview-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
+}
+
+.pr-preview-section.active {
+    display: block;
+}
+
+.pr-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.pr-preview-header h3 {
+    color: var(--pr-gold-primary);
+    font-size: 1.2rem;
+}
+
+.pr-copy-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pr-copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--pr-gold-primary);
+}
+
+.pr-preview-content {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* Loading Spinner */
+.pr-loader {
+    display: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--pr-navy);
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading .pr-loader {
+    display: block;
+}
+
+.loading .btn-text {
+    display: none;
+}
+
+/* Embedded Mode (for DevTools Page) */
+.pr-embedded-container {
+    background: var(--pr-navy);
+    border: 1px solid var(--pr-glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--pr-shadow);
+    max-width: 900px;
+    margin: 2rem auto;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pr-embedded-container .pr-form-header {
+    margin-bottom: 2.5rem;
+}
+
+.pr-embedded-container .pr-form-group label {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: #cbd5e1;
+}
+
+.pr-embedded-container input,
+.pr-embedded-container textarea {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.pr-embedded-container input:focus,
+.pr-embedded-container textarea:focus {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: var(--pr-gold-primary);
+}

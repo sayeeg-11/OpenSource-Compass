@@ -1,0 +1,226 @@
+/* =========================
+   Global Variables
+========================= */
+:root {
+  --primary-blue: #1f3c88;
+  --secondary-blue: #4d96ff;
+  --light-gray: #f5f7fa;
+  --text-dark: #2e2e2e;
+  --success-green: #3ccf91;
+  --white: #ffffff;
+}
+
+/* =========================
+   Reset & Base Styles
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* =========================
+   Layout Helpers
+========================= */
+.container {
+  width: 84%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-light {
+  background-color: var(--light-gray);
+}
+
+/* =========================
+   Header / Navbar
+========================= */
+header {
+  background-color: var(--white);
+  border-bottom: 1px solid #eaeaea;
+  padding: 16px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 22px;
+  color: var(--primary-blue);
+  font-weight: 700;
+}
+
+nav a {
+  margin-left: 24px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+nav a:hover {
+  color: var(--secondary-blue);
+}
+
+/* =========================
+   Hero Section
+========================= */
+.hero {
+  background-color: var(--light-gray);
+  padding: 80px 8%;
+}
+
+.hero h2 {
+  font-size: 42px;
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 620px;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.hero .btn {
+  background-color: var(--secondary-blue);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.hero .btn:hover {
+  background-color: var(--primary-blue);
+}
+
+/* =========================
+   Section Titles
+========================= */
+.section-title {
+  font-size: 28px;
+  color: var(--primary-blue);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+/* =========================
+   Cards
+========================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background-color: var(--white);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+  color: var(--secondary-blue);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 15px;
+}
+
+/* =========================
+   Program Badge
+========================= */
+.badge {
+  display: inline-block;
+  background-color: var(--success-green);
+  color: var(--white);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn-primary {
+  background-color: var(--secondary-blue);
+  color: var(--white);
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-blue);
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 24px;
+  margin-top: 48px;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}

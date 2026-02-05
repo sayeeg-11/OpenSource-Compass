@@ -1,0 +1,93 @@
+/* =========================================
+   DARK MODE THEME (Cold Gray Edition)
+========================================= */
+
+/* 1. GLOBAL BACKGROUNDS (The "Cold Gray" Fix) */
+body.dark-mode,
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode .hero, 
+body.dark-mode .guides-section {
+    background-color: #121212 !important; /* Cold Dark Gray */
+    background-image: none !important;    /* Remove any cream gradients */
+    color: #e0e0e0 !important;
+}
+
+/* 2. NAVBAR & NAVIGATION LINKS */
+body.dark-mode .navbar, 
+body.dark-mode header,
+body.dark-mode nav {
+    background-color: #1a1a1a !important; 
+    border-bottom: 1px solid #333;
+}
+
+/* Default Link Color -> White */
+body.dark-mode .nav-links a,
+body.dark-mode .navbar a {
+    color: #ffffff !important; /* Text is White */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* Active Page & Hover State -> Golden */
+/* This highlights the page you are currently on */
+body.dark-mode .nav-links a.active,
+body.dark-mode .nav-links a:hover,
+body.dark-mode .navbar a:hover {
+    color: #d4af37 !important; /* Golden */
+}
+
+/* Fix the Compass Icon color if needed */
+body.dark-mode .fa-compass {
+    color: #d4af37 !important;
+}
+
+/* 3. CARDS (Fixing the Guide Step Cards) */
+body.dark-mode .card,
+body.dark-mode .program-card,
+body.dark-mode .guide-card,
+body.dark-mode .step-card,      /* If you use this class */
+body.dark-mode .guide-list li { /* Specific fix for the Guide Steps list */
+    background-color: #1e1e1e !important; /* Dark Grey Card */
+    border: 1px solid #333 !important;
+    color: #e0e0e0 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* 4. TEXT COLORS */
+/* General Headings turn White */
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6,
+body.dark-mode strong {
+    color: #ffffff !important;
+}
+
+/* 5. SPECIAL: KEEP MAIN HEADLINES GOLD (As requested) */
+/* Targets the big titles on the Guide page */
+body.dark-mode h1, 
+body.dark-mode h2,
+body.dark-mode .section-title {
+    color: #d4af37 !important; /* Primary Gold Color */
+}
+
+/* 6. INPUTS & FORMS */
+body.dark-mode input, 
+body.dark-mode textarea, 
+body.dark-mode select {
+    background-color: #2d2d2d !important;
+    color: #fff !important;
+    border: 1px solid #555 !important;
+}
+
+/* 7. FOOTER */
+body.dark-mode footer, 
+body.dark-mode #footer {
+    background-color: #0f0f0f !important;
+    color: #aaa !important;
+    border-top: 1px solid #333;
+}
+body.dark-mode footer a {
+    color: #d4af37 !important;
+}

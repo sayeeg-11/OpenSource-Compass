@@ -3,26 +3,222 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass</title>
+  <title>Resources | OpenSource Compass</title>
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/resources.css" />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/pr-generator.css" />
 
   <style>
-    /* Roadmap Container */
+    /* ========================================= */
+    /* GAP FIX: Hide empty sections             */
+    /* ========================================= */
+    #recommended-resources:empty {
+        display: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 0 !important;
+    }
+
+    /* Ensure footer sits flush */
+    #footer {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    /* ========================================= */
+    /* Existing Styles Preserved                */
+    /* ========================================= */
+
+    section {
+      padding: 3rem 1rem;
+      text-align: center; 
+      max-width: 1450px; 
+      margin: 0 auto;
+    }
+
+    /* Main Heading Styling */
+    section h3 {
+      margin-bottom: 1rem;
+      font-size: 2.8rem;    
+      font-weight: 800;     
+      color: var(--deep-navy, #0a192f);
+      letter-spacing: -0.5px; 
+      transition: color 0.3s ease;
+      text-align: center;
+      width: 100%;
+      display: block;
+    }
+
+    /* Subtitle Styling */
+    section > p {
+      margin-bottom: 3rem;
+      color: #666;
+      max-width: 600px;
+      font-size: 1.1rem; 
+      transition: color 0.3s ease;
+      margin-left: auto;  
+      margin-right: auto; 
+      text-align: center; 
+      display: block;
+    }
+
+    /* ========================================= */
+    /* DARK MODE OVERRIDES                       */
+    /* ========================================= */
+    
+    body.dark-mode section h3 {
+      color: #D4AF37 !important;
+    }
+
+    body.dark-mode section > p {
+      color: #d1d1d1 !important;
+    }
+
+    body.dark-mode .checklist-tile h4 {
+      color: #ffffff !important;
+    }
+
+    /* Dark Mode Card Glow */
+    body.dark-mode .card:hover,
+    body.dark-mode .checklist-tile:hover {
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.5) !important;
+      border-color: #D4AF37 !important;
+    }
+
+    /* ========================================= */
+
+    .card-grid, 
+    .tools-grid, 
+    .beginner-grid, 
+    .checklists-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; 
+      gap: 2.5rem; 
+      margin-bottom: 2rem;
+    }
+
+    .card, 
+    .checklist-tile {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 2rem;  
+      width: 300px;   
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    /* Hover Effect (Light Mode) */
+    .card:hover, 
+    .checklist-tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3); 
+      border-color: var(--primary-gold, #D4AF37);
+    }
+
+    .tile-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card h4, 
+    .checklist-tile h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: #333;
+    }
+
+    .card > p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1; 
+    }
+
+    .card > p:first-of-type {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-link-wrapper {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .resource-link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-gold, #D4AF37);
+      text-decoration: none;
+      border: 1px solid var(--primary-gold, #D4AF37);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .resource-link:hover {
+      background: var(--primary-gold, #D4AF37);
+      color: white;
+    }
+
+    .checklist-tile {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .checklist-tile h4 {
+      text-align: center;
+      width: 100%;
+    }
+    .checklist-tile ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .checklist-tile li {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+    }
+    .checkmark {
+      color: #2ecc71;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  </style>
+
+  <style>
+    /* Roadmap Container Styles */
     #level-chain-wrapper {
       width: 100%;
       overflow-x: auto;
-      padding: 5rem 0 3rem 0; /* Extra top padding for floating XP pills */
+      padding: 5rem 0 3rem 0;
       scroll-behavior: smooth;
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -32,7 +228,6 @@
       display: none;
     }
 
-    /* The Flex Container */
     #level-chain-container {
       display: flex;
       align-items: flex-start;
@@ -42,33 +237,6 @@
       margin: 0 auto;
     }
 
-    /* The Background Track (Grey Line) */
-    .roadmap-track {
-      position: absolute;
-      top: 30px;
-      left: 3rem;
-      right: 3rem;
-      height: 4px;
-      background: #e0e0e0;
-      z-index: 0;
-      border-radius: 4px;
-    }
-
-    /* The Active Progress Track (Gold Line) */
-    .roadmap-progress {
-      position: absolute;
-      top: 30px;
-      left: 3rem;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-gold), #ffd700);
-      z-index: 0;
-      border-radius: 4px;
-      width: 0%;
-      transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    }
-
-    /* Individual Level Item Wrapper */
     .level-item {
       position: relative;
       z-index: 2;
@@ -78,38 +246,27 @@
       margin-right: 4.5rem;
       cursor: pointer;
       width: 120px;
-      /* Staggered Entrance Animation */
+      height: 180px; 
       opacity: 0; 
       transform: translateY(20px);
       animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
-    
+
     .level-item:last-child {
-        margin-right: 0;
+      margin-right: 0;
     }
 
-    /* Hover Float Effect */
     .level-item:not(.locked):hover {
       transform: translateY(-8px);
     }
 
-    /* ENTRANCE ANIMATION */
     @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* SHAKE ANIMATION (For Locked Items) */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
-    
-    .level-item.shake-animation {
-      animation: shake 0.3s ease-in-out !important;
-    }
-
-    /* The Circular Node */
     .level-node {
       width: 60px;
       height: 60px;
@@ -118,13 +275,14 @@
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       background: white;
       border: 3px solid #e0e0e0;
       color: #999;
       position: relative;
-      /* overflow: hidden; Removed overflow hidden to allow Aura to spill out if needed, handled via z-index */
+      flex-shrink: 0;
+      margin-bottom: 20px;
     }
 
     /* STATUS: LOCKED */
@@ -134,63 +292,83 @@
       color: #aaa;
       cursor: not-allowed;
       box-shadow: none;
+      transform: scale(1.25);
+      margin-bottom: 28px;
     }
 
     /* STATUS: COMPLETED */
     .level-item.completed .level-node {
-      background: var(--primary-gold);
-      border-color: var(--primary-gold);
+      background: var(--primary-gold, #D4AF37);
+      border-color: var(--primary-gold, #D4AF37);
       color: white;
       box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
-      overflow: hidden; /* Keep shimmer inside */
+      overflow: hidden; 
     }
 
-    /* Shimmer for Completed Nodes */
     .level-item.completed .level-node::before {
       content: '';
       position: absolute;
-      top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
       animation: shimmer 3s infinite;
     }
 
     @keyframes shimmer {
-      0% { left: -100%; }
-      20% { left: 100%; }
-      100% { left: 100%; }
+      0% {
+        left: -100%;
+      }
+
+      20% {
+        left: 100%;
+      }
+
+      100% {
+        left: 100%;
+      }
     }
 
-    /* --- THE AURA EFFECT (Current/Unlocked) --- */
     .level-item.unlocked .level-node {
       background: white;
-      border-color: var(--primary-gold);
-      color: var(--primary-gold);
+      border-color: var(--primary-gold, #D4AF37);
+      color: var(--primary-gold, #D4AF37);
       transform: scale(1.25);
-      /* Static Glow */
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); 
       z-index: 5;
     }
 
-    /* The Pulse Ring (Aura Animation) */
     .level-item.unlocked .level-node::after {
       content: '';
       position: absolute;
-      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
       border-radius: 50%;
-      border: 2px solid var(--primary-gold);
+      border: 2px solid var(--primary-gold, #D4AF37);
       animation: pulse-aura 2s infinite;
       z-index: -1;
     }
 
     @keyframes pulse-aura {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(1.6); opacity: 0; }
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
     }
 
-    /* Text Styling */
     .level-meta {
       text-align: center;
-      margin-top: 1.2rem;
+      position: absolute;
+      top: 95px;
+      width: 100%;
       transition: opacity 0.3s;
     }
 
@@ -206,7 +384,7 @@
     }
 
     .level-item.unlocked .level-id {
-        color: var(--primary-gold);
+        color: var(--primary-gold, #D4AF37);
         font-weight: 800;
     }
 
@@ -214,20 +392,22 @@
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
       font-weight: 600;
-      color: var(--deep-navy);
+      color: var(--deep-navy, #0a192f);
       line-height: 1.2;
-    }
-    
-    .level-item.locked .level-title {
-        color: #aaa;
+      display: block;
+      min-height: 2.4em;
+      margin-top: 0.2rem;
     }
 
-    /* --- DARK XP INFO (Badge) --- */
+    .level-item.locked .level-title {
+      color: #aaa;
+    }
+
     .xp-pill {
       position: absolute;
-      top: -3rem; /* Float above */
-      background: var(--deep-navy); /* Dark Background */
-      color: var(--primary-gold);   /* Gold Text */
+      top: -3rem; 
+      background: var(--deep-navy, #0a192f); 
+      color: var(--primary-gold, #D4AF37);  
       font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 0.75rem;
@@ -236,12 +416,11 @@
       opacity: 0;
       transform: translateY(10px);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       white-space: nowrap;
       border: 1px solid rgba(212, 175, 55, 0.3);
     }
     
-    /* Little arrow pointing down */
     .xp-pill::after {
         content: '';
         position: absolute;
@@ -250,255 +429,287 @@
         transform: translateX(-50%);
         border-width: 5px 5px 0;
         border-style: solid;
-        border-color: var(--deep-navy) transparent transparent transparent;
+        border-color: var(--deep-navy, #0a192f) transparent transparent transparent;
     }
 
-    /* Show badge on hover */
     .level-item:hover .xp-pill {
       opacity: 1;
       transform: translateY(0);
     }
     
-    /* Optional: Always show badge for Current Level */
     .level-item.unlocked .xp-pill {
         opacity: 1;
         transform: translateY(0);
-        top: -3.5rem; /* Slightly higher for the larger node */
+        top: -3.5rem; 
     }
   </style>
+  <link rel='manifest' href='../../manifest.json' />
 </head>
 
 <body>
   <div id="navbar"></div>
 
-  <main>
-    <section class="resources-section">
-      <header class="resources-header">
-        <h3>Learning Resources</h3>
-        <p>Official documentation and trusted guides to help you work efficiently.</p>
-      </header>
+<section>
+      <h3>Learning Resources</h3>
+      <p>Official documentation and trusted guides to help you start and grow in open source.</p>
 
-      <div class="resources-list">
-        <div class="resource-tile">
-          <div class="tile-accent" style="background-color: #d4af37;"></div>
+      <div class="card-grid">
+        <article class="card">
+          <p>OFFICIAL DOCS</p>
           <div class="tile-icon">📚</div>
-          <div class="tile-content">
-            <span class="tile-meta">Official Docs</span>
-            <h5>GitHub Documentation</h5>
-            <p>Explore GitHub features, workflows, and platform capabilities directly from the source.</p>
-            <a href="https://docs.github.com" target="_blank" rel="noopener">Visit documentation →</a>
+          <h4>GitHub Docs</h4>
+          <p>Explore workflows and platform capabilities directly from the source.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://docs.github.com" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
+        </article>
 
-        <div class="resource-tile">
-          <div class="tile-accent" style="background-color: #1f78b4;"></div>
+        <article class="card">
+          <p>REFERENCE</p>
           <div class="tile-icon">🗂️</div>
-          <div class="tile-content">
-            <span class="tile-meta">Reference</span>
-            <h5>Git Documentation</h5>
-            <p>A complete and authoritative reference for Git commands and internal concepts.</p>
-            <a href="https://git-scm.com/docs" target="_blank" rel="noopener">View Git docs →</a>
+          <h4>Git Docs</h4>
+          <p>A complete authoritative reference for Git commands and concepts.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://git-scm.com/doc" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
+        </article>
 
-        <div class="resource-tile">
-          <div class="tile-accent" style="background-color: #4ecdc4;"></div>
-          <div class="tile-icon">✏️</div>
-          <div class="tile-content">
-            <span class="tile-meta">Guide</span>
-            <h5>Markdown Guide</h5>
-            <p>Learn Markdown syntax, formatting rules, and best practices for clean documentation.</p>
-            <a href="https://www.markdownguide.org" target="_blank" rel="noopener">Read guide →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="templates-section">
-      <header class="templates-header">
-        <h3>Templates & Assets</h3>
-        <p>Pre-made templates and assets to streamline contributions and documentation. Click any tile to view the
-          template.</p>
-      </header>
-
-      <div class="templates-grid">
-        <div class="template-tile">
-          <div class="tile-icon">📄</div>
-          <div class="tile-content">
-            <h5>Pull Request Template</h5>
-            <p>Standard PR structure for clean, consistent submissions.</p>
-            <a href="../assets/templates/pr-template.md" target="_blank" rel="noopener">View Template →</a>
-          </div>
-        </div>
-
-        <div class="template-tile">
+        <article class="card">
+          <p>REFERENCE</p>
           <div class="tile-icon">🐛</div>
-          <div class="tile-content">
-            <h5>Issue Templates</h5>
-            <p>Predefined bug report and feature request formats to save time and ensure clarity.</p>
-            <a href="../assets/templates/issue-template.md" target="_blank" rel="noopener">View Templates →</a>
+          <h4>Issue Templates</h4>
+          <p>Predefined bug report and feature request formats to save time.</p>
+          <div class="resource-link-wrapper">
+            <a href="../assets/templates/issue-template.md" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
+        </article>
 
-        <div class="template-tile">
-          <div class="tile-icon">📘</div>
-          <div class="tile-content">
-            <h5>README Structure</h5>
-            <p>Minimal, effective README layout to guide new contributors and users.</p>
-            <a href="../assets/templates/readme.md" target="_blank" rel="noopener">View Template →</a>
+        <article class="card">
+          <p>GUIDE</p>
+          <div class="tile-icon">✏️</div>
+          <h4>Markdown Guide</h4>
+          <p>Learn syntax for creating professional READMEs and docs.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://www.markdownguide.org" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
-
-        <div class="template-tile">
-          <div class="tile-icon">🤝</div>
-          <div class="tile-content">
-            <h5>CONTRIBUTING.md</h5>
-            <p>Sample contribution guidelines to make contributing simple and clear.</p>
-            <a href="../assets/templates/contributing.md" target="_blank" rel="noopener">View Template →</a>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="checklists-section">
-      <header class="checklists-header">
-        <h3>Quick Checklists</h3>
-        <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
-      </header>
+<section>
+    <h3>Templates & Assets</h3>
+      <p>Pre-made templates and assets to streamline contributions.</p>
+      <div class="card-grid">
+        <article class="card">
+          <div class="tile-icon">📄</div>
+          <h4>PR Template</h4>
+          <p>Standard structure for clean submissions.</p>
+          <div class="resource-link-wrapper">
+            <a href="../assets/templates/pr-template.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tile-icon">🐛</div>
+          <h4>Issue Templates</h4>
+          <p>Formats for bug reports and features.</p>
+          <div class="resource-link-wrapper">
+            <a href="../assets/templates/issue-template.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tile-icon">📘</div>
+          <h4>README Structure</h4>
+          <p>Layout to guide new contributors.</p>
+          <div class="resource-link-wrapper">
+            <a href="../assets/templates/readme.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="tile-icon">🤝</div>
+          <h4>CONTRIBUTING.md</h4>
+          <p>Sample guidelines for project onboarding.</p>
+          <div class="resource-link-wrapper">
+            <a href="../assets/templates/contributing.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+<section>
+      <h3>Quick Checklists</h3>
+      <p>Essential reminders to ensure smooth contributions.</p>
 
       <div class="checklists-grid">
         <div class="checklist-tile">
-          <div class="tile-icon">📝</div>
-          <div class="tile-content">
-            <h5>Before Opening a PR</h5>
-            <ul>
-              <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
-              <li><span class="checkmark">✔</span> Linked issue referenced</li>
-              <li><span class="checkmark">✔</span> PR title is clear</li>
-            </ul>
-          </div>
+          <h4>Before Opening a PR</h4>
+          <ul>
+            <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
+            <li><span class="checkmark">✔</span> Linked issue referenced</li>
+            <li><span class="checkmark">✔</span> PR title is clear</li>
+          </ul>
         </div>
+      </article>
 
-        <div class="checklist-tile">
-          <div class="tile-icon">📂</div>
-          <div class="tile-content">
-            <h5>Before Choosing a Repo</h5>
-            <ul>
-              <li><span class="checkmark">✔</span> Recent commits</li>
-              <li><span class="checkmark">✔</span> Maintainer responses</li>
-              <li><span class="checkmark">✔</span> Beginner labels</li>
-            </ul>
-          </div>
+      <article class="card">
+        <div class="tile-icon">🐛</div>
+        <h4>Issue Templates</h4>
+        <p>Formats for bug reports and features.</p>
+        <div class="resource-link-wrapper">
+          <a href="../assets/templates/issue-template.md" target="_blank" class="resource-link">Visit Template <i
+              class="fas fa-arrow-right"></i></a>
         </div>
+      </article>
+
+      <article class="card">
+        <div class="tile-icon">📘</div>
+        <h4>README Structure</h4>
+        <p>Layout to guide new contributors.</p>
+        <div class="resource-link-wrapper">
+          <a href="../assets/templates/readme.md" target="_blank" class="resource-link">Visit Template <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="tile-icon">🤝</div>
+        <h4>CONTRIBUTING.md</h4>
+        <p>Sample guidelines for project onboarding.</p>
+        <div class="resource-link-wrapper">
+          <a href="../assets/templates/contributing.md" target="_blank" class="resource-link">Visit Template <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Templates & Assets Section -->
+  <section>
+    <h3>Quick Checklists</h3>
+    <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
+
+    <div class="checklists-grid">
+      <div class="checklist-tile">
+        <h4>Before Opening a PR</h4>
+        <ul>
+          <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
+          <li><span class="checkmark">✔</span> Linked issue referenced</li>
+          <li><span class="checkmark">✔</span> PR title is clear</li>
+        </ul>
       </div>
     </section>
-    <section class="tools-section">
-      <header class="tools-header">
-        <h3>Contributor Tools</h3>
-        <p>Essential tools to streamline your workflow and improve contributions.</p>
-      </header>
+
+<section>
+      <h3>Contributor Tools</h3>
+      <p>Essential tools to streamline your workflow.</p>
 
       <div class="tools-grid">
-        <a class="tool-tile" href="https://code.visualstudio.com" target="_blank" rel="noopener">
+
+        <article class="card">
           <div class="tile-icon">💻</div>
-          <div class="tile-content">
-            <h5>VS Code</h5>
-            <p>Popular code editor for efficient development.</p>
+          <h4>VS Code</h4>
+          <p>Popular editor for efficient development.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://code.visualstudio.com" target="_blank" class="resource-link">Visit Tool <i class="fas fa-arrow-right"></i></a>
           </div>
-        </a>
+        </article>
 
-        <a class="tool-tile" href="https://cli.github.com" target="_blank" rel="noopener">
+        <article class="card">
           <div class="tile-icon">🛠️</div>
-          <div class="tile-content">
-            <h5>GitHub CLI</h5>
-            <p>Command-line GitHub workflow for quick operations.</p>
+          <h4>GitHub CLI</h4>
+          <p>Terminal-based workflow management.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://cli.github.com" target="_blank" class="resource-link">Visit Tool <i class="fas fa-arrow-right"></i></a>
           </div>
-        </a>
+        </article>
 
-        <a class="tool-tile" href="https://www.diffchecker.com" target="_blank" rel="noopener">
+        <article class="card">
           <div class="tile-icon">🔍</div>
-          <div class="tile-content">
-            <h5>Diff Checker</h5>
-            <p>Compare code changes visually and catch errors quickly.</p>
+          <h4>Diff Checker</h4>
+          <p>Compare code changes visually.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://www.diffchecker.com" target="_blank" class="resource-link">Visit Tool <i class="fas fa-arrow-right"></i></a>
           </div>
-        </a>
+        </article>
       </div>
     </section>
-    <section class="beginner-issues-section">
-      <header class="beginner-header">
-        <h3>Find Beginner-Friendly Issues</h3>
-        <p>Discover repositories and issues curated for first-time contributors.</p>
-      </header>
+
+<section>
+      <h3>Find Beginner-Friendly Issues</h3>
+      <p>Discover repositories curated for first-time contributors.</p>
 
       <div class="beginner-grid">
-        <a class="beginner-tile" href="https://goodfirstissue.dev" target="_blank" rel="noopener">
+
+        <article class="card">
           <div class="tile-icon">🎯</div>
-          <div class="tile-content">
-            <h5>Good First Issue</h5>
-            <p>Curated beginner-friendly issues across open-source projects.</p>
+          <h4>Good First Issue</h4>
+          <p>Curated beginner issues across OS projects.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://goodfirstissue.dev" target="_blank" class="resource-link">Visit Site <i class="fas fa-arrow-right"></i></a>
           </div>
-        </a>
+        </article>
 
-        <a class="beginner-tile" href="https://up-for-grabs.net" target="_blank" rel="noopener">
+        <article class="card">
           <div class="tile-icon">🚀</div>
-          <div class="tile-content">
-            <h5>Up For Grabs</h5>
-            <p>Projects actively welcoming new contributors to join.</p>
+          <h4>Up For Grabs</h4>
+          <p>Projects welcoming new contributors.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://up-for-grabs.net" target="_blank" class="resource-link">Visit Site <i class="fas fa-arrow-right"></i></a>
           </div>
-        </a>
+        </article>
 
-        <a class="beginner-tile" href="https://www.firsttimersonly.com" target="_blank" rel="noopener">
+        <article class="card">
           <div class="tile-icon">👶</div>
-          <div class="tile-content">
-            <h5>First Timers Only</h5>
-            <p>Repositories specifically made for first-time contributors.</p>
+          <h4>First Timers Only</h4>
+          <p>Made specifically for first-time contributors.</p>
+          <div class="resource-link-wrapper">
+            <a href="https://www.firsttimersonly.com" target="_blank" class="resource-link">Visit Site <i class="fas fa-arrow-right"></i></a>
           </div>
-        </a>
+        </article>
       </div>
-</section>
+    </section>
 
-
-
-
-
- main
-
-    <section id="quiz-section">
+<section id="quiz-section">
       <div
-        style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 1rem; position: relative;">
+        style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 2rem; position: relative;">
         <div style="position: relative; display: inline-block;">
-          <h3 style="margin: 0;">Mastery Path</h3>
+          <h3 style="margin: 0;">Mastery Levels</h3>
           <div
-            style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px; background: var(--deep-navy); color: var(--primary-gold); padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
+            style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px; background: var(--deep-navy, #0a192f); color: var(--primary-gold, #D4AF37); padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
             <i class="fas fa-star" style="margin-right: 5px;"></i> <span id="total-xp">0</span> XP
           </div>
         </div>
-        <p style="margin-top: 0.5rem; color: #666;">Your journey to open source mastery.</p>
       </div>
 
-      <div id="level-chain-wrapper">
-        <div id="level-chain-container">
-            <div class="roadmap-track"></div>
-            <div id="roadmap-progress-line" class="roadmap-progress"></div>
-            
-            </div>
+      <div id="level-chain-wrapper"
+        style="width: 100%; overflow-x: auto; padding: 2rem 0; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;">
+        <div id="level-chain-container"
+          style="display: flex; align-items: center; min-width: max-content; padding: 0 2rem; position: relative;">
+          <div
+            style="position: absolute; left: 0; right: 0; top: 50%; height: 4px; background: #e0e0e0; z-index: 0; transform: translateY(-50%);">
+          </div>
+          </div>
       </div>
 
       <div id="quiz-container"
-        style="max-width: 700px; margin: 2rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-main); display: none; position: relative; z-index: 10;">
+        style="max-width: 700px; margin: 2rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: none; position: relative; z-index: 10;">
         <button id="back-to-levels"
-          style="background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; position: absolute; top: 1.5rem; left: 1.5rem;">
-          <i class="fas fa-arrow-left"></i> Back to Roadmap
+          style="background: none; border: none; cursor: pointer; color: #666; font-size: 0.9rem; position: absolute; top: 1.5rem; left: 1.5rem;">
+          <i class="fas fa-arrow-left"></i> Back to the Path
         </button>
 
         <div id="quiz-header" style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
           <h4 id="level-title"
-            style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--deep-navy);">Level Title</h4>
+            style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--deep-navy, #0a192f);">Level Title</h4>
           <div
             style="width: 100%; background: #eee; height: 6px; border-radius: 3px; margin-top: 1rem; overflow: hidden;">
             <div id="progress-bar"
-              style="width: 0%; background: var(--primary-gold); height: 100%; transition: width 0.3s ease;"></div>
+              style="width: 0%; background: var(--primary-gold, #D4AF37); height: 100%; transition: width 0.3s ease;"></div>
           </div>
         </div>
+      </div>
 
         <div id="quiz-question">
           <h5 id="question-text"
@@ -509,217 +720,258 @@
             <strong style="color: #0d47a1;"><i class="fas fa-info-circle"></i> Insight:</strong>
             <p id="explanation-text" style="margin: 0.5rem 0 0; font-size: 0.95rem; color: #333;"></p>
             <button id="next-question-btn"
-              style="margin-top: 1rem; background: var(--deep-navy); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer;">Next
+              style="margin-top: 1rem; background: var(--deep-navy, #0a192f); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer;">Next
               Question <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
+      </div>
 
         <div id="quiz-result" style="display: none; text-align: center;">
           <div id="result-icon" style="font-size: 3rem; margin-bottom: 1rem;"></div>
           <h4 id="result-title" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Result</h4>
-          <p id="result-message" style="margin-bottom: 1.5rem; color: var(--text-secondary);">Message</p>
+          <p id="result-message" style="margin-bottom: 1.5rem; color: #666;">Message</p>
           <p style="font-size: 1.1rem; margin-bottom: 2rem;">Score: <span id="score">0</span> / 5</p>
-          <p style="font-size: 1rem; margin-bottom: 2rem; color: var(--primary-gold); font-weight: bold;">+<span
+          <p style="font-size: 1rem; margin-bottom: 2rem; color: var(--primary-gold, #D4AF37); font-weight: bold;">+<span
               id="earned-xp">0</span> XP Earned</p>
 
           <div style="display: flex; gap: 1rem; justify-content: center;">
             <button id="restart-btn"
-              style="background: var(--deep-navy); color: white; padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer;">Try
+              style="background: var(--deep-navy, #0a192f); color: white; padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer;">Try
               Again</button>
             <button id="next-level-btn"
-              style="background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold)); color: var(--deep-navy); padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 600; display: none;">Next
+              style="background: linear-gradient(135deg, var(--primary-gold, #D4AF37), #ffd700); color: var(--deep-navy, #0a192f); padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 600; display: none;">Next
               Level <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i></button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        let levels = []; // Will be fetched
-        let currentLevelIndex = 0;
-        let currentQuestionIndex = 0;
-        let currentScore = 0;
-        let currentLevelXP = 0;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let levels = []; // Will be fetched
+      let currentLevelIndex = 0;
+      let currentQuestionIndex = 0;
+      let currentScore = 0;
+      let currentLevelXP = 0;
 
-        // Persistent State
-        let unlockedLevel = parseInt(localStorage.getItem('osc_unlockedLevel') || 1);
-        let totalXP = parseInt(localStorage.getItem('osc_totalXP') || 0);
+      // Persistent State
+      let unlockedLevel = parseInt(localStorage.getItem('osc_unlockedLevel') || 1);
+      let totalXP = parseInt(localStorage.getItem('osc_totalXP') || 0);
 
-        // Elements
-        const levelContainer = document.getElementById('level-chain-container');
-        const levelWrapper = document.getElementById('level-chain-wrapper');
-        const quizContainer = document.getElementById('quiz-container');
-        const quizTitle = document.getElementById('level-title');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const progressBar = document.getElementById('progress-bar');
-        const xpDisplay = document.getElementById('total-xp');
-        const explanationBox = document.getElementById('explanation-box');
-        const explanationText = document.getElementById('explanation-text');
-        const nextQBtn = document.getElementById('next-question-btn');
-        const roadmapProgressLine = document.getElementById('roadmap-progress-line');
+      // Elements
+      const levelContainer = document.getElementById('level-chain-container');
+      const levelWrapper = document.getElementById('level-chain-wrapper');
+      const quizContainer = document.getElementById('quiz-container');
+      const quizTitle = document.getElementById('level-title');
+      const questionText = document.getElementById('question-text');
+      const optionsContainer = document.getElementById('options-container');
+      const progressBar = document.getElementById('progress-bar');
+      const xpDisplay = document.getElementById('total-xp');
+      const explanationBox = document.getElementById('explanation-box');
+      const explanationText = document.getElementById('explanation-text');
+      const nextQBtn = document.getElementById('next-question-btn');
 
-        // Initial Render
-        xpDisplay.innerText = totalXP;
-        fetchLevels();
+      // Initial Render
+      xpDisplay.innerText = totalXP;
+      fetchLevels();
 
-        async function fetchLevels() {
-          try {
-            const response = await fetch('../data/quiz_data.json');
-            levels = await response.json();
-            renderLevels();
-          } catch (error) {
-            console.error("Failed to load quiz data", error);
-            const errorMsg = document.createElement('p');
-            errorMsg.innerText = "Error loading roadmap.";
-            errorMsg.style.margin = "2rem";
-            levelContainer.appendChild(errorMsg);
-          }
+      async function fetchLevels() {
+        try {
+          const response = await fetch('../data/quiz_data.json');
+          levels = await response.json();
+          renderLevels();
+        } catch (error) {
+          console.error("Failed to load quiz data", error);
+          levelContainer.innerHTML = '<p>Error loading quests. Please try again later.</p>';
         }
+      }
 
-        // --- ENHANCED ROADMAP RENDERER (Mixed Features) ---
-        function renderLevels() {
-          // Remove old nodes but keep tracks
-          const childrenToRemove = [];
-          for (let i = 2; i < levelContainer.children.length; i++) {
-             childrenToRemove.push(levelContainer.children[i]);
-          }
-          childrenToRemove.forEach(child => child.remove());
+      function renderLevels() {
+        // Keep line div
+        const line = levelContainer.firstElementChild;
+        levelContainer.innerHTML = '';
+        levelContainer.appendChild(line);
 
-          // Calculate and animate progress line width
-          const totalLevels = levels.length;
-          if(totalLevels > 1) {
-            // Delay the line animation slightly so it follows the nodes appearing
-            setTimeout(() => {
-                const progressPct = ((unlockedLevel - 1) / (totalLevels - 1)) * 100;
-                roadmapProgressLine.style.width = `${Math.min(progressPct, 100)}%`;
-            }, 300);
-          }
+        levels.forEach((level, index) => {
+          const isLocked = level.id > unlockedLevel;
+          const isCompleted = level.id < unlockedLevel;
 
-          levels.forEach((level, index) => {
-            const isLocked = level.id > unlockedLevel;
-            const isCompleted = level.id < unlockedLevel;
-
-            const item = document.createElement('div');
-            let statusClass = '';
-            let iconClass = level.icon;
-
-            if (isLocked) {
-              statusClass = 'locked';
-              iconClass = 'fas fa-lock';
-            } else if (isCompleted) {
-              statusClass = 'completed';
-              iconClass = 'fas fa-check';
-            } else {
-              statusClass = 'unlocked';
-            }
-
-            item.className = `level-item ${statusClass}`;
-            
-            // Staggered Animation Delay
-            item.style.animationDelay = `${index * 0.1}s`;
-
-            // Interaction
-            if (!isLocked) {
-              item.onclick = () => startLevel(level.id);
-            } else {
-              // Shake animation on click for locked items
-              item.onclick = () => {
-                  item.classList.remove('shake-animation');
-                  void item.offsetWidth; // trigger reflow
-                  item.classList.add('shake-animation');
-              }
-            }
-
-            // HTML Structure: Dark XP Pill + Node + Meta
-            item.innerHTML = `
-                <div class="xp-pill"><i class="fas fa-bolt" style="margin-right:4px;"></i>${level.questions ? level.questions.length * 10 : 50} XP</div>
-                <div class="level-node">
-                   <i class="${iconClass}"></i>
-                </div>
-                <div class="level-meta">
-                   <span class="level-id">Level ${level.id}</span>
-                   <div class="level-title">${level.title}</div>
-                </div>
+          // Node Container (Vertical stack: Node + Title)
+          const nodeWrapper = document.createElement('div');
+          nodeWrapper.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0 2.5rem;
+                position: relative;
+                z-index: 2;
+                min-width: 120px;
             `;
 
-            levelContainer.appendChild(item);
-          });
-        }
+          // Node Circle
+          const node = document.createElement('div');
+          let nodeBg = 'white';
+          let nodeBorder = '#ffc107';
+          let nodeColor = '#333';
+          let cursor = 'pointer';
+          let icon = level.icon;
 
-        function startLevel(id) {
-          currentLevelIndex = id - 1;
-          currentQuestionIndex = 0;
-          currentScore = 0;
-          currentLevelXP = 0;
-
-          levelWrapper.style.display = 'none';
-          quizContainer.style.display = 'block';
-          document.getElementById('quiz-result').style.display = 'none';
-          document.getElementById('quiz-question').style.display = 'block';
-          document.getElementById('quiz-header').style.display = 'block';
-          explanationBox.style.display = 'none';
-
-          quizTitle.innerText = `Level ${id}: ${levels[currentLevelIndex].title}`;
-          loadQuestion();
-        }
-
-        function loadQuestion() {
-          const qData = levels[currentLevelIndex].questions[currentQuestionIndex];
-          questionText.innerText = qData.q;
-          optionsContainer.innerHTML = '';
-          optionsContainer.style.display = 'flex';
-          explanationBox.style.display = 'none';
-
-          const progressPercent = (currentQuestionIndex / 5) * 100;
-          progressBar.style.width = `${progressPercent}%`;
-
-          qData.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.innerText = opt;
-            btn.style.cssText = "padding: 1rem; border: 2px solid #eee; background: white; border-radius: 8px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--charcoal-dark); transition: all 0.2s;";
-
-            btn.onmouseover = () => { if (!btn.disabled) { btn.style.background = '#fffbf0'; btn.style.borderColor = 'var(--primary-gold)'; } }
-            btn.onmouseout = () => { if (!btn.disabled) { btn.style.background = 'white'; btn.style.borderColor = '#eee'; } }
-
-            btn.onclick = () => handleAnswer(idx, btn, qData);
-            optionsContainer.appendChild(btn);
-          });
-        }
-
-        function handleAnswer(selectedIndex, selectedBtn, qData) {
-          const allBtns = optionsContainer.querySelectorAll('button');
-          allBtns.forEach(b => b.disabled = true);
-
-          const correctIndex = qData.a;
-
-          if (selectedIndex === correctIndex) {
-            selectedBtn.style.background = '#e8f5e9';
-            selectedBtn.style.borderColor = '#2ecc71';
-            selectedBtn.innerHTML += ' <i class="fas fa-check" style="color: #2ecc71;"></i>';
-            currentScore++;
-            currentLevelXP += (qData.xp || 10);
+          if (isLocked) {
+            nodeBg = '#f5f5f5'; nodeBorder = '#ccc'; nodeColor = '#999'; cursor = 'not-allowed'; icon = 'fas fa-lock';
+          } else if (isCompleted) {
+            nodeBg = '#e8f5e9'; nodeBorder = '#2ecc71'; nodeColor = '#2ecc71';
           } else {
-            selectedBtn.style.background = '#ffebee';
-            selectedBtn.style.borderColor = '#e74c3c';
-            selectedBtn.innerHTML += ' <i class="fas fa-times" style="color: #e74c3c;"></i>';
-            allBtns[correctIndex].style.background = '#e8f5e9';
-            allBtns[correctIndex].style.borderColor = '#2ecc71';
+            nodeBg = '#fff9c4'; nodeBorder = '#D4AF37'; nodeColor = '#D4AF37';
           }
 
-          explanationText.innerText = qData.explanation;
-          explanationBox.style.display = 'block';
+          node.style.cssText = `
+                width: 65px; height: 65px;
+                background: ${nodeBg};
+                border: 3px solid ${nodeBorder};
+                border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.4rem; color: ${nodeColor};
+                cursor: ${cursor};
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+                margin-bottom: 1rem;
+            `;
 
-          nextQBtn.onclick = () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < 5) {
-              loadQuestion();
-            } else {
-              showResult();
-            }
-          };
+          if (!isLocked) {
+            node.onmouseover = () => node.style.transform = 'scale(1.1)';
+            node.onmouseout = () => node.style.transform = 'scale(1)';
+            node.onclick = () => startLevel(level.id);
+          }
+          node.innerHTML = `<i class="${icon}"></i>`;
+
+          // Text Label
+          const label = document.createElement('div');
+          label.style.textAlign = 'center';
+          label.innerHTML = `
+                <h5 style="margin: 0; font-size: 0.95rem; color: ${isLocked ? '#999' : 'var(--deep-navy)'};">Lvl ${level.id}</h5>
+                <p style="margin: 0; font-size: 0.85rem; font-weight: 600; color: ${isLocked ? '#aaa' : 'var(--primary-gold)'}; width: 100px; line-height: 1.3;">${level.title}</p>
+            `;
+
+          nodeWrapper.appendChild(node);
+          nodeWrapper.appendChild(label);
+          levelContainer.appendChild(nodeWrapper);
+        });
+      }
+
+      function startLevel(id) {
+        currentLevelIndex = id - 1;
+        currentQuestionIndex = 0;
+        currentScore = 0;
+        currentLevelXP = 0;
+
+        levelWrapper.style.display = 'none';
+        quizContainer.style.display = 'block';
+        document.getElementById('quiz-result').style.display = 'none';
+        document.getElementById('quiz-question').style.display = 'block';
+        document.getElementById('quiz-header').style.display = 'block';
+        explanationBox.style.display = 'none'; // Hide explanation initially
+
+        quizTitle.innerText = `Level ${id}: ${levels[currentLevelIndex].title}`;
+        loadQuestion();
+      }
+
+      function loadQuestion() {
+        const qData = levels[currentLevelIndex].questions[currentQuestionIndex];
+        questionText.innerText = qData.q;
+        optionsContainer.innerHTML = '';
+        optionsContainer.style.display = 'flex'; // Show options
+        explanationBox.style.display = 'none'; // Hide explanation
+
+        // Update progress
+        const progressPercent = (currentQuestionIndex / 5) * 100;
+        progressBar.style.width = `${progressPercent}%`;
+
+        qData.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.innerText = opt;
+          btn.style.cssText = "padding: 1rem; border: 2px solid #eee; background: white; border-radius: 8px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--charcoal-dark); transition: all 0.2s;";
+
+          btn.onmouseover = () => { if (!btn.disabled) { btn.style.background = '#fffbf0'; btn.style.borderColor = 'var(--primary-gold)'; } }
+          btn.onmouseout = () => { if (!btn.disabled) { btn.style.background = 'white'; btn.style.borderColor = '#eee'; } }
+
+          btn.onclick = () => handleAnswer(idx, btn, qData);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function handleAnswer(selectedIndex, selectedBtn, qData) {
+        // Disable all buttons
+        const allBtns = optionsContainer.querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+
+        const correctIndex = qData.a;
+
+        if (selectedIndex === correctIndex) {
+          selectedBtn.style.background = '#e8f5e9';
+          selectedBtn.style.borderColor = '#2ecc71';
+          selectedBtn.innerHTML += ' <i class="fas fa-check" style="color: #2ecc71;"></i>';
+          currentScore++;
+          currentLevelXP += (qData.xp || 10);
+        } else {
+          selectedBtn.style.background = '#ffebee';
+          selectedBtn.style.borderColor = '#e74c3c';
+          selectedBtn.innerHTML += ' <i class="fas fa-times" style="color: #e74c3c;"></i>';
+          // Highlight correct
+          allBtns[correctIndex].style.background = '#e8f5e9';
+          allBtns[correctIndex].style.borderColor = '#2ecc71';
         }
+
+        // Show explanation
+        explanationText.innerText = qData.explanation;
+        explanationBox.style.display = 'block';
+
+        // Setup Next Button
+        nextQBtn.onclick = () => {
+          currentQuestionIndex++;
+          if (currentQuestionIndex < 5) {
+            loadQuestion();
+          } else {
+            showResult();
+          }
+        };
+      }
+
+      function showResult() {
+        document.getElementById('quiz-question').style.display = 'none';
+        document.getElementById('quiz-header').style.display = 'none';
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.style.display = 'block';
+
+        const scoreSpan = document.getElementById('score');
+        const resultTitle = document.getElementById('result-title');
+        const resultMsg = document.getElementById('result-message');
+        const nextBtn = document.getElementById('next-level-btn');
+        const resultIcon = document.getElementById('result-icon');
+        const earnedXPDisplay = document.getElementById('earned-xp');
+
+        scoreSpan.innerText = currentScore;
+        earnedXPDisplay.innerText = currentScore >= 3 ? currentLevelXP : 0;
+
+        if (currentScore >= 3) {
+          resultTitle.innerText = "Level Complete!";
+          resultTitle.style.color = "var(--success-emerald)";
+          resultMsg.innerText = "Great job! You've mastered this topic.";
+          resultIcon.innerHTML = '<i class="fas fa-trophy" style="color: var(--primary-gold);"></i>';
+
+          // Update Total XP
+          if (levels[currentLevelIndex].id === unlockedLevel) { // Only award XP first time? Or always? Let's say always for fun, or just on success.
+            totalXP += currentLevelXP;
+            localStorage.setItem('osc_totalXP', totalXP);
+            xpDisplay.innerText = totalXP;
+          }
+
+          // Unlock next level logic
+          if (levels[currentLevelIndex].id === unlockedLevel && unlockedLevel < levels.length) {
+            unlockedLevel++;
+            localStorage.setItem('osc_unlockedLevel', unlockedLevel);
+            resultMsg.innerText += " Next level unlocked!";
+          }
 
         function showResult() {
           document.getElementById('quiz-question').style.display = 'none';
@@ -743,12 +995,14 @@
             resultMsg.innerText = "Great job! You've mastered this topic.";
             resultIcon.innerHTML = '<i class="fas fa-trophy" style="color: var(--primary-gold);"></i>';
 
-            if (levels[currentLevelIndex].id === unlockedLevel) {
+            // Update Total XP
+            if (levels[currentLevelIndex].id === unlockedLevel) { 
               totalXP += currentLevelXP;
               localStorage.setItem('osc_totalXP', totalXP);
               xpDisplay.innerText = totalXP;
             }
 
+            // Unlock next level logic
             if (levels[currentLevelIndex].id === unlockedLevel && unlockedLevel < levels.length) {
               unlockedLevel++;
               localStorage.setItem('osc_unlockedLevel', unlockedLevel);
@@ -763,70 +1017,70 @@
               resultMsg.innerText = "Congratulations! You have completed all levels!";
             }
           } else {
-            resultTitle.innerText = "Level Failed";
-            resultTitle.style.color = "#e74c3c";
-            resultMsg.innerText = "You need at least 3 correct answers to proceed.";
-            resultIcon.innerHTML = '<i class="far fa-face-frown" style="color: #e74c3c;"></i>';
             nextBtn.style.display = 'none';
-            earnedXPDisplay.innerText = 0;
+            resultMsg.innerText = "Congratulations! You have completed all levels!";
           }
-
-          document.getElementById('restart-btn').onclick = () => startLevel(levels[currentLevelIndex].id);
+        } else {
+          resultTitle.innerText = "Level Failed";
+          resultTitle.style.color = "#e74c3c";
+          resultMsg.innerText = "You need at least 3 correct answers to proceed.";
+          resultIcon.innerHTML = '<i class="far fa-face-frown" style="color: #e74c3c;"></i>';
+          nextBtn.style.display = 'none';
+          earnedXPDisplay.innerText = 0;
         }
 
-        document.getElementById('back-to-levels').onclick = () => {
-          quizContainer.style.display = 'none';
-          levelWrapper.style.display = 'block';
-          renderLevels();
-        };
-      });
-    </script>
+        document.getElementById('restart-btn').onclick = () => startLevel(levels[currentLevelIndex].id);
+      }
+
+      document.getElementById('back-to-levels').onclick = () => {
+        quizContainer.style.display = 'none';
+        levelWrapper.style.display = 'block';
+        // Re-render to show updated locks/XP
+        renderLevels();
+      };
+    });
+  </script>
   </main>
 
-  <footer>
-    <p>
-      © 2026 OpenSource Compass ·
-      <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
-    </p>
-  </footer>
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const copyButtons = document.querySelectorAll(".copy-btn");
+    document.addEventListener("DOMContentLoaded", () => {
+      const copyButtons = document.querySelectorAll(".copy-btn");
 
-    copyButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const link = btn.getAttribute("data-link");
-        const feedback = btn.nextElementSibling;
-        const icon = btn.querySelector("i");
+      copyButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const link = btn.getAttribute("data-link");
+          const feedback = btn.nextElementSibling;
+          const icon = btn.querySelector("i");
 
-        navigator.clipboard.writeText(link).then(() => {
-          // Show feedback
-          feedback.style.display = "inline";
+          navigator.clipboard.writeText(link).then(() => {
+            // Show feedback
+            feedback.style.display = "inline";
 
-          // Change icon to tick
-          icon.classList.remove("fa-copy");
-          icon.classList.add("fa-check");
+            // Change icon to tick
+            icon.classList.remove("fa-copy");
+            icon.classList.add("fa-check");
 
-          // Reset after 1.5 sec
-          setTimeout(() => {
-            feedback.style.display = "none";
-            icon.classList.remove("fa-check");
-            icon.classList.add("fa-copy");
-          }, 1500);
+            // Reset after 1.5 sec
+            setTimeout(() => {
+              feedback.style.display = "none";
+              icon.classList.remove("fa-check");
+              icon.classList.add("fa-copy");
+            }, 1500);
+          });
         });
       });
     });
-  });
-</script>
+  </script>
 
-
+  <section id="recommended-resources"></section>
 
   <div id="footer"></div>
+
   <script src="../js/components.js"></script>
   <script src="../js/theme.js"></script>
   <script src="../js/cChatbot.js"></script>
   <script src="../js/recommendations.js"></script>
-      <section id="recommended-resources"></section>
+
   <script src="../js/chatbot.js"></script>
   <script src="../js/resources.js"></script>
   <script src="../js/main.js"></script>
@@ -834,7 +1088,7 @@
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
-
+  <script src='../js/pwa.js'></script>
+  <script src="../js/pr-generator.js"></script>
 </body>
-
 </html>

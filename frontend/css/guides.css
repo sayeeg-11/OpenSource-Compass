@@ -788,3 +788,51 @@ html {
     grid-template-columns: 1fr;
   }
 }
+
+/* =====================================================
+   Dark Mode Refinement – Guides Page (Final Patch)
+   Paste at the bottom of guides.css
+===================================================== */
+
+/* Section surfaces */
+.dark-mode .guides-hero,
+.dark-mode .guides-section {
+  background-color: #020617; /* deep slate for contrast */
+}
+
+/* Headings */
+.dark-mode .guides-section h1,
+.dark-mode .guides-section h2,
+.dark-mode .guides-section h3 {
+  color: #f8fafc;
+}
+
+/* Body text */
+.dark-mode .guides-section p {
+  color: #cbd5f5;
+}
+
+/* Guide cards */
+.dark-mode .guide-card {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65);
+}
+
+/* Card titles & content */
+.dark-mode .guide-card h3,
+.dark-mode .guide-card p {
+  color: #e5e7eb;
+}
+
+/* Number badge / icon */
+.dark-mode .guide-card .number {
+  background-color: #fbbf24;
+  color: #111827;
+}
+
+/* Hover polish */
+.dark-mode .guide-card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75);
+  transform: translateY(-2px);
+}

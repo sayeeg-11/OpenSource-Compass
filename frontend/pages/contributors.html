@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>OpenSource Compass</title>
@@ -10,78 +11,123 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
-
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
-  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contributors.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" /> 
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/pr-generator.css" />
 
-  <style>
-    /* Dynamic Dark Mode Styling for the Heading 
-       Matches the "Why OpenSource Compass" gradient from home.css 
-    */
-    body.dark-mode .contributors-section h3 {
-      background: linear-gradient(
-        135deg,
-        #ffffff 0%,
-        var(--primary-gold) 55%,
-        var(--secondary-gold) 100%
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 800;
-      letter-spacing: -0.015em;
-    }
-  </style>
+  <link rel='manifest' href='../../manifest.json' />
 </head>
 
+<body class="contributors-page">
+  <div id="navbar"></div>
 
-  <body class="contributors-page">
-    <div id="navbar"></div>
+  <main>
+    <section class="contributors-section">
+      <h1>Contributors</h1>
+      <p>People who have helped build and improve OpenSource Compass.</p>
 
-    <main>
-      <section class="contributors-section">
-        <h3>Contributors</h3>
-        <p>People who have helped build and improve OpenSource Compass.</p>
-         <div class="contributors-stats" id="contributors-stats"></div>
+      <div class="contributors-stats" id="contributors-stats"></div>
 
-  <div class="contributors-controls">
-    <input
-      id="contributor-search"
-      type="search"
-      placeholder="Search contributors…"
-      aria-label="Search contributors"
-    />
+      <div class="contributors-controls">
+        <input id="contributor-search" type="search" placeholder="Search contributors…"
+          aria-label="Search contributors" />
 
-    <label class="bot-toggle">
-      <input type="checkbox" id="toggle-bots" checked />
-      Show bots
-    </label>
-  </div>
+        <label class="bot-toggle">
+          <input type="checkbox" id="toggle-bots" checked />
+          Show bots
+        </label>
+      </div>
 
-        <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
+      <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
 
-        <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
-      </section>
-      
-    </main>
+      <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
+    </section>
+  </main>
 
-    <div id="footer"></div>
+  <div id="footer"></div>
 
-    <script src="../js/components.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/contributors.js"></script>
-  
+  <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/contributors.js"></script>
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
-
+  <script src="/frontend/js/DMtheme.js"></script>
   <button id="scrollTopBtn" title="Back to Top">
-   <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
   </button>
-  </body>
+
+  <!-- Inline script to fix chatbot button overlap -->
+  <script>
+    (function fixChatbotOverlap() {
+      function adjustChatbotPosition() {
+        // Wait for DOM to be fully loaded
+        if (document.readyState !== 'complete') {
+          window.addEventListener('load', adjustChatbotPosition);
+          return;
+        }
+
+        // Find the chatbot button by checking all fixed elements
+        const allElements = document.querySelectorAll('*');
+
+        for (const el of allElements) {
+          // Skip scroll button and footer elements
+          if (el.id === 'scrollTopBtn' ||
+            el.closest('footer') ||
+            el.closest('#footer') ||
+            el.classList.contains('contributor-card')) {
+            continue;
+          }
+
+          const styles = window.getComputedStyle(el);
+
+          if (styles.position === 'fixed') {
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight;
+            const vw = window.innerWidth;
+
+            // Check if element is in bottom-right corner (chatbot position)
+            const isBottomRight =
+              rect.bottom > vh - 150 &&
+              rect.right > vw - 150 &&
+              rect.width > 30 &&
+              rect.width < 150 &&
+              rect.height > 30 &&
+              rect.height < 150;
+
+            if (isBottomRight) {
+              // Apply positioning fix
+              el.style.setProperty('bottom', '90px', 'important');
+              el.style.setProperty('right', '20px', 'important');
+              el.style.setProperty('z-index', '1000', 'important');
+              console.log('✅ Chatbot button repositioned to avoid overlap');
+            }
+          }
+        }
+      }
+
+      // Run multiple times to catch lazy-loaded chatbots
+      setTimeout(adjustChatbotPosition, 100);
+      setTimeout(adjustChatbotPosition, 500);
+      setTimeout(adjustChatbotPosition, 1000);
+      setTimeout(adjustChatbotPosition, 2000);
+
+      // Watch for new elements being added
+      const observer = new MutationObserver(() => {
+        adjustChatbotPosition();
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
+  <script src='../js/pwa.js'></script>
+  <script src="../js/pr-generator.js"></script>
+</body>
+
 </html>

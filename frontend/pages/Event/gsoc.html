@@ -1,787 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Google Summer of Code - OpenSource Compass</title>
     <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete guide to Google Summer of Code (GSoC) - Learn about phases, timeline, stipends, and how to apply for GSoC 2026.">
+    <meta name="description"
+        content="Complete guide to Google Summer of Code (GSoC) - Learn about phases, timeline, stipends, and how to apply for GSoC 2026.">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigation.css" />
 
     <style>
+        /* ROOT VARIABLES */
         :root {
-            --primary-blue: #1F3C88;
-            --secondary-blue: #4D96FF;
-            --light-gray: #F5F7FA;
-            --text-dark: #2E2E2E;
-            --success-green: #3CCF91;
-            --white: #FFFFFF;
-            --accent-orange: #FF6B35;
-            --accent-purple: #9B59B6;
+            --primary-gold: #D4AF37;
+            --secondary-gold: #F4C542;
+            --deep-navy: #1a2332;
+            --warm-cream: #FAF8F3;
+            --light-parchment: #F5F1E8;
+            --charcoal-dark: #2C2C2C;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B8B8B8;
+            --text-dark: #1a1a1a;
+            --shadow-main: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.18);
+            --bounce-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
-        /* ---------- Hero Section ---------- */
-        .hero {
-            background: linear-gradient(135deg, #0d1f4d 0%, #1F3C88 50%, #2a4a9e 100%);
-            color: var(--white);
-            padding: 100px 8% 80px;
-            text-align: center;
+        /* HERO SECTION */
+        .gsoc-hero {
             position: relative;
+            padding: 8rem 6% 7rem;
             overflow: hidden;
+            background: linear-gradient(135deg, #FAF8F3 0%, #F0EDE3 100%);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            opacity: 0.4;
+        body.dark-mode .gsoc-hero {
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.25);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        .gsoc-hero-content {
             max-width: 900px;
             margin: 0 auto;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            margin-bottom: 16px;
-            font-weight: 500;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .hero .intro {
-            font-size: clamp(1rem, 1.5vw, 1.15rem);
-            max-width: 750px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        .hero .intro strong {
-            color: #FFD700;
-            font-weight: 600;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
-            cursor: pointer;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            will-change: transform, box-shadow;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
-            transform: skewX(-20deg);
-            transition: transform 0.45s ease;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 45%);
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
-        }
-
-        .btn-primary:hover::after {
-            opacity: 1;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.26);
-        }
-
-        .btn-secondary:hover::after {
-            opacity: 1;
-        }
-
-        .btn:hover::before {
-            transform: translateX(240%) skewX(-20deg);
-        }
-
-        
-
-        /* ---------- Process Stepper ---------- */
-        .process-stepper {
-            padding: 80px 8%;
-            background-color: var(--white);
-        }
-
-        .process-stepper h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
             text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .stepper-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .stepper-line {
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--secondary-blue), var(--success-green));
-            z-index: 0;
-        }
-
-        .stepper-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
             position: relative;
             z-index: 1;
+            animation: heroFadeUp 0.8s ease-out;
         }
 
-        .stepper-step {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(31, 60, 136, 0.3);
-        }
-
-        .step-content {
-            flex: 1;
-            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
-            padding: 28px;
-            border-radius: 12px;
-            border-left: 4px solid var(--secondary-blue);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-left-width 0.3s ease;
-            animation: fadeInLeft 0.6s ease-out both;
-        }
-
-        .stepper-step:nth-child(1) .step-content { animation-delay: 0.1s; }
-        .stepper-step:nth-child(2) .step-content { animation-delay: 0.2s; }
-        .stepper-step:nth-child(3) .step-content { animation-delay: 0.3s; }
-        .stepper-step:nth-child(4) .step-content { animation-delay: 0.4s; }
-
-        .step-content:hover {
-            transform: translateX(10px) scale(1.01);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-            border-left-width: 6px;
-        }
-
-        .step-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .step-content .step-date {
-            color: var(--secondary-blue);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .step-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .step-content ul li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-            color: var(--text-dark);
-        }
-
-        .step-content ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--success-green);
-            font-weight: 700;
-        }
-
-        /* ---------- Timeline Cards ---------- */
-        .timeline-section {
-            padding: 80px 8%;
-            background-color: var(--light-gray);
-        }
-
-        .timeline-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .timeline-section p {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-        }
-
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .timeline-card {
-            background-color: var(--white);
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease, filter 0.35s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out both;
-        }
-
-        .timeline-card:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-card:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-card:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .timeline-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
-            transition: height 0.3s ease;
-        }
-
-        .timeline-card:hover {
-            transform: translateY(-12px) scale(1.025) rotate(-0.25deg);
-            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
-            filter: drop-shadow(0 6px 12px rgba(31, 60, 136, 0.12));
-        }
-
-        .timeline-card:hover::before {
-            height: 6px;
-        }
-
-        .timeline-card .phase-number {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .timeline-card h3 {
-            font-size: 1.6rem;
-            color: var(--primary-blue);
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .timeline-card .card-date {
-            color: var(--secondary-blue);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        .timeline-card p {
-            color: var(--text-dark);
-            margin-bottom: 16px;
-            text-align: left;
-            line-height: 1.7;
-        }
-
-        .timeline-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .timeline-card ul li {
-            padding: 6px 0;
-            padding-left: 24px;
-            position: relative;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .timeline-card ul li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-blue);
-            font-weight: 700;
-        }
-
-        /* ---------- Stipend Section ---------- */
-        .stipend-section {
-            padding: 80px 8%;
-            background: linear-gradient(135deg, #0d1f4d 0%, var(--primary-blue) 50%, #2C4A8F 100%);
-            color: var(--white);
-        }
-
-        .stipend-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--white);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .stipend-section p {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            font-size: 1.1rem;
-            color: var(--white);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .stipend-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            max-width: 900px;
-            margin: 0 auto;
-            justify-items: center;
-        }
-
-        .stipend-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 32px;
-            border-radius: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease, border-color 0.35s ease;
-            color: var(--text-dark);
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            animation: fadeInScale 0.6s ease-out both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stipend-card:nth-child(1) { animation-delay: 0.1s; }
-        .stipend-card:nth-child(2) { animation-delay: 0.2s; }
-        .stipend-card:nth-child(3) { animation-delay: 0.3s; }
-        .stipend-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .stipend-card:hover {
-            background-color: rgba(255, 255, 255, 1);
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
-            border-color: rgba(255, 215, 0, 0.7);
-        }
-
-        .stipend-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,255,255,0));
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-
-        .stipend-card:hover::after {
-            opacity: 1;
-        }
-
-        .stipend-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        .stipend-card h3::after {
-            content: '';
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            margin-left: 12px;
-        }
-
-        .stipend-card .stipend-amount {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary-blue);
-        }
-
-        .stipend-card .stipend-hours {
-            color: var(--text-dark);
-            font-size: 1rem;
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-
-        .stipend-card .stipend-location {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        /* ---------- CTA Section ---------- */
-        .cta-section {
-            padding: 80px 8%;
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            font-weight: 700;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-        }
-
-        .cta-buttons-large {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.4s both;
-        }
-
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 18px;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 32px 8%;
-        }
-
-        footer p {
-            font-size: 15px;
-            opacity: 0.9;
-        }
-
-        .features-section {
-  padding: 80px 8%;
-  background-color: var(--light-gray);
-}
-
-.features-section h2 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  color: var(--primary-blue);
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.features-section p {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 60px;
-  color: var(--text-dark);
-  font-size: 1.1rem;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background-color: var(--white);
-  padding: 36px;
-  border-radius: 20px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  animation: fadeInUp 0.6s ease-out both;
-  border: 2px solid transparent;
-}
-
-.feature-card:hover {
-  transform: translateY(-15px) rotate(1deg);
-  box-shadow: 0 25px 60px rgba(31, 60, 136, 0.25);
-  border-color: var(--secondary-blue);
-}
-
-.feature-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin-bottom: 24px;
-}
-
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 16px;
-                padding: 16px 5%;
-            }
-
-            nav {
-                justify-content: center;
-                gap: 16px;
-            }
-
-            .hero {
-                padding: 60px 5% 50px;
-            }
-
-            .hero .cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                justify-content: center;
-            }
-
-            .process-stepper,
-            .timeline-section,
-            .stipend-section,
-            .cta-section {
-                padding: 60px 5%;
-            }
-
-            .stepper-line {
-                left: 20px;
-            }
-
-            .step-number {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            .step-content {
-                padding: 20px;
-            }
-
-            .timeline-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .stipend-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .cta-buttons-large {
-                flex-direction: column;
-            }
-
-            .btn-large {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 14px;
-            }
-
-            .step-content h3 {
-                font-size: 1.3rem;
-            }
-
-            .timeline-card h3 {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
+        @keyframes heroFadeUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -789,306 +65,1429 @@
             }
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .gsoc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
         }
 
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        body.dark-mode .gsoc-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--secondary-gold);
+            border-color: var(--secondary-gold);
         }
 
-        /* Smooth transitions for interactive elements */
-        .btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .gsoc-title {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
         }
 
-        .btn:hover {
+        body.dark-mode .gsoc-title {
+            color: #FFFFFF;
+        }
+
+        .gsoc-title span {
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gsoc-tagline {
+            margin: 0 auto 3rem;
+            max-width: 700px;
+            font-size: 1.15rem;
+            color: #4a4a4a;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        body.dark-mode .gsoc-tagline {
+            color: #d1d1d1;
+        }
+
+        .gsoc-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .gsoc-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        body.dark-mode .gsoc-cta {
+            color: #0f1419;
+        }
+
+        /* SNAPSHOT SECTION */
+        .gsoc-snapshot {
+            padding: 7rem 6%;
+            background: #FFFFFF;
+        }
+
+        body.dark-mode .gsoc-snapshot {
+            background: #0f1419;
+        }
+
+        .snapshot-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .snapshot-header h2 {
+            color: #FFFFFF;
+        }
+
+        .snapshot-header p {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+        }
+
+        body.dark-mode .snapshot-header p {
+            color: #b8b8b8;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .snapshot-card {
+            background: #FAF8F3;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .snapshot-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .snapshot-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .snapshot-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .snapshot-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        body.dark-mode .snapshot-card h3 {
+            color: #b8b8b8;
+        }
+
+        .snapshot-card p {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .snapshot-card span {
+            display: block;
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        body.dark-mode .snapshot-card span {
+            color: #999;
+        }
+
+        /* FEATURES/WHY CHOOSE SECTION */
+        .features-section {
+            padding: 7rem 6%;
+            background: #FAF8F3;
+        }
+
+        body.dark-mode .features-section {
+            background: #0f1419;
+        }
+
+        .features-section h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .features-section h2 {
+            color: #FFFFFF;
+        }
+
+        .features-section > p {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        body.dark-mode .features-section > p {
+            color: #b8b8b8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .feature-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .feature-card h3 {
+            color: #FFFFFF;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        body.dark-mode .feature-card p {
+            color: #b8b8b8;
+        }
+
+        /* JOURNEY SECTION */
+        .gsoc-journey {
+            padding: 7rem 6%;
+            background: #FFFFFF;
+        }
+
+        body.dark-mode .gsoc-journey {
+            background: #0f1419;
+        }
+
+        .journey-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 5rem;
+        }
+
+        .journey-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .journey-header h2 {
+            color: #FFFFFF;
+        }
+
+        .journey-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .journey-header p {
+            color: #b8b8b8;
+        }
+
+        .journey-stepper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .journey-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .journey-dot {
+            min-width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: #1a1a1a;
+            font-weight: 900;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            flex-shrink: 0;
+        }
+
+        .journey-card {
+            background: #FAF8F3;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .journey-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .journey-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+        }
+
+        body.dark-mode .journey-card h3 {
+            color: #FFFFFF;
+        }
+
+        .journey-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        body.dark-mode .journey-card p {
+            color: #b8b8b8;
+        }
+
+        /* PHASES SECTION */
+        .gsoc-phases {
+            padding: 7rem 6%;
+            background: #FAF8F3;
+        }
+
+        body.dark-mode .gsoc-phases {
+            background: #0f1419;
+        }
+
+        .phases-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 5rem;
+        }
+
+        .phases-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .phases-header h2 {
+            color: #FFFFFF;
+        }
+
+        .phases-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .phases-header p {
+            color: #b8b8b8;
+        }
+
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .phase-card {
+            background: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .phase-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .phase-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary-gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-mode .phase-card h3 {
+            color: #FFFFFF;
+        }
+
+        .phase-time {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .phase-time {
+            color: #999;
+        }
+
+        .phase-card ul {
+            padding-left: 1.2rem;
+            list-style-type: disc;
+        }
+
+        .phase-card li {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        body.dark-mode .phase-card li {
+            color: #b8b8b8;
+        }
+
+        /* STIPEND SECTION */
+        .gsoc-stipend {
+            padding: 7rem 6%;
+            background: #FFFFFF;
+        }
+
+        body.dark-mode .gsoc-stipend {
+            background: #0f1419;
+        }
+
+        .stipend-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 5rem;
+        }
+
+        .stipend-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .stipend-header h2 {
+            color: #FFFFFF;
+        }
+
+        .stipend-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .stipend-header p {
+            color: #b8b8b8;
+        }
+
+        .stipend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stipend-card {
+            background: #FAF8F3;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .stipend-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .stipend-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stipend-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .stipend-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .stipend-card h3 {
+            color: #FFFFFF;
+        }
+
+        .stipend-desc {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .stipend-desc {
+            color: #b8b8b8;
+        }
+
+        .stipend-list {
+            padding-left: 1.2rem;
+        }
+
+        .stipend-list li {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        body.dark-mode .stipend-list li {
+            color: #b8b8b8;
+        }
+
+        /* ELIGIBILITY SECTION */
+        .gsoc-eligibility {
+            padding: 7rem 6%;
+            background: #FAF8F3;
+        }
+
+        body.dark-mode .gsoc-eligibility {
+            background: #0f1419;
+        }
+
+        .eligibility-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .eligibility-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .eligibility-header h2 {
+            color: #FFFFFF;
+        }
+
+        .eligibility-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .eligibility-header p {
+            color: #b8b8b8;
+        }
+
+        .eligibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .eligibility-card {
+            background: #FFFFFF;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .eligibility-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .eligibility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .eligibility-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .eligibility-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .eligibility-card h3 {
+            color: #FFFFFF;
+        }
+
+        .eligibility-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        body.dark-mode .eligibility-card p {
+            color: #b8b8b8;
+        }
+
+        /* PREPARE SECTION */
+        .gsoc-prepare {
+            padding: 7rem 6%;
+            background: #FFFFFF;
+        }
+
+        body.dark-mode .gsoc-prepare {
+            background: #0f1419;
+        }
+
+        .prepare-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .prepare-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .prepare-header h2 {
+            color: #FFFFFF;
+        }
+
+        .prepare-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .prepare-header p {
+            color: #b8b8b8;
+        }
+
+        .prepare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prepare-card {
+            background: #FAF8F3;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .prepare-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .prepare-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .prepare-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prepare-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .prepare-card h3 {
+            color: #FFFFFF;
+        }
+
+        .prepare-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        body.dark-mode .prepare-card p {
+            color: #b8b8b8;
+        }
+
+        /* RESOURCES SECTION */
+        .gsoc-resources {
+            padding: 7rem 6%;
+            background: #FAF8F3;
+        }
+
+        body.dark-mode .gsoc-resources {
+            background: #0f1419;
+        }
+
+        .resources-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .resources-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .resources-header h2 {
+            color: #FFFFFF;
+        }
+
+        .resources-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .resources-header p {
+            color: #b8b8b8;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #FFFFFF;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        body.dark-mode .resource-card {
+            background: #1a2332;
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .resource-card h3 {
+            color: #FFFFFF;
+        }
+
+        .resource-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .resource-card p {
+            color: #b8b8b8;
+        }
+
+        .resource-btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .resource-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
-        .btn:active {
-            transform: translateY(0);
+        /* CTA SECTION */
+        .gsoc-cta-section {
+            padding: 7rem 6%;
+            text-align: center;
+            background: #FFFFFF;
         }
 
-        .step-number {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        body.dark-mode .gsoc-cta-section {
+            background: #0f1419;
         }
 
-        .stepper-step:hover .step-number {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 20px rgba(31, 60, 136, 0.4);
+        .cta-container h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
         }
 
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+        body.dark-mode .cta-container h2 {
+            color: #FFFFFF;
+        }
+
+        .cta-container p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body.dark-mode .cta-container p {
+            color: #b8b8b8;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.1rem 2.6rem;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .gsoc-hero {
+                padding: 6rem 5% 5rem;
             }
-        }
 
-        /* Focus styles for accessibility */
-        a:focus,
-        button:focus {
-            outline: 3px solid var(--secondary-blue);
-            outline-offset: 2px;
+            .journey-step {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .journey-dot {
+                margin: 0 auto;
+            }
+
+            .snapshot-grid,
+            .phases-grid,
+            .stipend-grid,
+            .eligibility-grid,
+            .prepare-grid,
+            .resources-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
     <header>
-        <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
-        <nav>
-            <a href="../../../index.html">Home</a>
-            <a href="../guides.html">Guides</a>
-            <a href="../programs.html">Programs</a>
-            <a href="../Resources.html">Resources</a>
-            <a href="../Contribute.html">Contribute</a>
-        </nav>
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+                OpenSource Compass
+            </h1>
+            <div class="nav-links">
+                <a href="../../../index.html">Home</a>
+                <a href="../guides.html">Guides</a>
+                <a href="../programs.html">Programs</a>
+                <a href="../Resources.html">Resources</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../Contribute.html">Contribute</a>
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Google Summer of Code</h1>
-            <p class="subtitle">Global program for advanced contributors</p>
-            <p class="intro">
-                Google Summer of Code (GSoC) is a highly prestigious, 12+ week online program where you are paid a stipend to contribute to open-source organizations. Since it is currently late <strong>December 2025</strong>, you are in the perfect "pre-application" window to prepare for GSoC <strong>2026</strong>.
+    <!-- HERO -->
+    <section class="gsoc-hero">
+        <div class="gsoc-hero-content">
+            <span class="gsoc-badge">
+                <i class="fas fa-globe"></i>
+                Global Open Source Program
+            </span>
+
+            <h1 class="gsoc-title">
+                Google Summer of Code <span>(GSoC)</span>
+            </h1>
+
+            <p class="gsoc-tagline">
+                A global initiative that empowers developers to contribute to real-world
+                open-source projects while being mentored and rewarded.
             </p>
-            <div class="cta-buttons">
-                <a href="https://summerofcode.withgoogle.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i>
-                    Official GSoC Portal
+
+            <div class="gsoc-hero-actions">
+                <a href="https://summerofcode.withgoogle.com" target="_blank" rel="noopener noreferrer"
+                    class="gsoc-cta">
+                    Visit Official GSoC Website
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose GSoC Section -->
-<section class="features-section">
-  <h2>Why Choose GSoC?</h2>
-  <p>Discover what makes Google Summer of Code a premier open source program for serious contributors</p>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-globe"></i>
+    <!-- SNAPSHOT -->
+    <section class="gsoc-snapshot">
+        <div class="snapshot-header">
+            <h2>Program Snapshot</h2>
+            <p>Everything you need to know at a glance</p>
         </div>
-        <h3>Global Recognition</h3>
-        <p>GSoC is recognized worldwide and adds strong credibility to your developer profile and resume.</p>
-      </div>
-    </div>
 
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <h3>Real-World Open Source</h3>
-        <p>Work on production-grade open source projects used by thousands of developers globally.</p>
-      </div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <h3>Expert Mentorship</h3>
-        <p>Receive one-on-one mentorship from experienced maintainers and industry professionals.</p>
-      </div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-dollar-sign"></i>
-        </div>
-        <h3>Paid Stipend</h3>
-        <p>Earn a competitive stipend while contributing meaningfully to open source projects.</p>
-      </div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-network-wired"></i>
-        </div>
-        <h3>Strong Network</h3>
-        <p>Build long-term connections with global developers, mentors, and open source communities.</p>
-      </div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-rocket"></i>
-        </div>
-        <h3>Career Acceleration</h3>
-        <p>Past GSoC contributors often convert experience into full-time roles and internships.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Process Stepper -->
-    <section class="process-stepper">
-        <h2>Your GSoC Journey</h2>
-        <div class="stepper-container">
-            <div class="stepper-line"></div>
-            <div class="stepper-steps">
-                <div class="stepper-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Find Organization</h3>
-                        <div class="step-date">February 19, 2026 onwards</div>
-                        <p>Google announces the official list of mentoring organizations. Shortlist 2-3 organizations that match your tech stack.</p>
-                    </div>
+        <div class="snapshot-grid">
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <div class="stepper-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Write Proposal</h3>
-                        <div class="step-date">March 16 - March 31, 2026</div>
-                        <p>Draft your proposal early and share it with mentors for feedback. Include technical breakdown, timeline, and your experience.</p>
-                    </div>
+                <h3>Duration</h3>
+                <p>12–22 weeks</p>
+                <span>Flexible timelines based on project size</span>
+            </div>
+
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-users"></i>
                 </div>
-                <div class="stepper-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Coding Period</h3>
-                        <div class="step-date">May 25 onwards</div>
-                        <p>If accepted (announced April 30), begin coding for 12-22 weeks. Pass mid-term and final evaluations to receive stipend payments.</p>
-                    </div>
+                <h3>Eligibility</h3>
+                <p>18+ years</p>
+                <span>Students & beginners worldwide</span>
+            </div>
+
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-code"></i>
                 </div>
-                <div class="stepper-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Community Bonding</h3>
-                        <div class="step-date">May 1-24, 2026</div>
-                        <p>Set up your development environment, meet your mentor, and finalize project milestones before coding begins.</p>
-                    </div>
+                <h3>Tech Stack</h3>
+                <p>Open Choice</p>
+                <span>Web, AI/ML, Systems, Mobile & more</span>
+            </div>
+
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Stipend</h3>
+                <p>Paid</p>
+                <span>Amount varies by country & project</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section class="features-section">
+        <h2>Why Choose GSoC?</h2>
+        <p>Discover what makes Google Summer of Code a premier open source program for serious contributors</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Global Recognition</h3>
+                <p>GSoC is recognized worldwide and adds strong credibility to your developer profile and resume.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Real-World Open Source</h3>
+                <p>Work on production-grade open source projects used by thousands of developers globally.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Expert Mentorship</h3>
+                <p>Receive one-on-one mentorship from experienced maintainers and industry professionals.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3>Paid Stipend</h3>
+                <p>Earn a competitive stipend while contributing meaningfully to open source projects.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Strong Network</h3>
+                <p>Build long-term connections with global developers, mentors, and open source communities.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Career Acceleration</h3>
+                <p>Past GSoC contributors often convert experience into full-time roles and internships.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="gsoc-journey">
+        <div class="journey-header">
+            <h2>Your GSoC Journey</h2>
+            <p>A clear step-by-step path from preparation to success</p>
+        </div>
+
+        <div class="journey-stepper">
+            <div class="journey-step">
+                <div class="journey-dot">1</div>
+                <div class="journey-card">
+                    <h3>Preparation</h3>
+                    <p>Learn Git, explore open source, and build small contributions.</p>
+                </div>
+            </div>
+
+            <div class="journey-step">
+                <div class="journey-dot">2</div>
+                <div class="journey-card">
+                    <h3>Organization Selection</h3>
+                    <p>Shortlist organizations aligned with your skills and interests.</p>
+                </div>
+            </div>
+
+            <div class="journey-step">
+                <div class="journey-dot">3</div>
+                <div class="journey-card">
+                    <h3>Proposal Writing</h3>
+                    <p>Draft a strong proposal with technical depth and a clear timeline.</p>
+                </div>
+            </div>
+
+            <div class="journey-step">
+                <div class="journey-dot">4</div>
+                <div class="journey-card">
+                    <h3>Community Bonding</h3>
+                    <p>Connect with mentors, understand expectations, and plan milestones.</p>
+                </div>
+            </div>
+
+            <div class="journey-step">
+                <div class="journey-dot">5</div>
+                <div class="journey-card">
+                    <h3>Coding Period</h3>
+                    <p>Work on your project with regular mentor feedback.</p>
+                </div>
+            </div>
+
+            <div class="journey-step">
+                <div class="journey-dot">6</div>
+                <div class="journey-card">
+                    <h3>Evaluations</h3>
+                    <p>Pass mid-term and final evaluations to successfully complete GSoC.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Cards Section -->
-    <section class="timeline-section">
-        <h2>Program Phases</h2>
-        <p>Success in GSoC is 80% preparation. Here's your roadmap to success:</p>
-        <div class="timeline-grid">
-            <div class="timeline-card">
-                <span class="phase-number">Phase 1</span>
+    <!-- PHASES -->
+    <section class="gsoc-phases">
+        <div class="phases-header">
+            <h2>Program Phases</h2>
+            <p>A detailed breakdown for serious applicants who want to prepare strategically and avoid common mistakes.</p>
+        </div>
+
+        <div class="phases-grid">
+            <article class="phase-card">
+                <span class="phase-badge">Phase 1</span>
                 <h3>Preparation</h3>
-                <div class="card-date">December – January</div>
-                <p>Build your "proof of work" before the official organization list is released.</p>
+                <p class="phase-time">Before organization announcements</p>
                 <ul>
-                    <li><strong>Master the Tools:</strong> Ensure you are proficient with <strong>Git and GitHub</strong>. You should be comfortable with forking, cloning, branching, and creating Pull Requests (PRs).</li>
-                    <li><strong>Build Your Profile:</strong> Start making minor contributions to any open-source project. Look for the <strong>good first issue</strong> label on GitHub.</li>
-                    <li><strong>Identify Your Tech Stack:</strong> Decide whether you want to work on Web Development (React/Node), Systems (C++/Rust), AI/ML (Python), or Mobile (Flutter/Kotlin).</li>
+                    <li>Learn Git & GitHub workflows thoroughly</li>
+                    <li>Make small open-source contributions</li>
+                    <li>Identify your strongest tech stack</li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="timeline-card">
-                <span class="phase-number">Phase 2</span>
+            <article class="phase-card">
+                <span class="phase-badge">Phase 2</span>
                 <h3>Organization Selection</h3>
-                <div class="card-date">February 19, 2026 onwards</div>
-                <p>On <strong>February 19, 2026</strong>, Google will announce the official list of mentoring organizations.</p>
+                <p class="phase-time">Organizations announced</p>
                 <ul>
-                    <li><strong>Shortlist 2-3 Organizations:</strong> Filter organizations by your tech stack on the <strong>GSoC website</strong>. Don't pick more than 3, as you'll need to focus your efforts.</li>
-                    <li><strong>Join the Community:</strong> Find their communication channels (Discord, Slack, or Mailing Lists). Introduce yourself politely: "Hi, I'm [Name], a student interested in [Project Idea]. I have experience in [Tech Stack] and have already looked at the codebase."</li>
-                    <li><strong>Study the "Idea List":</strong> Each organization publishes a list of projects they want built. Pick one that matches your skills.</li>
+                    <li>Shortlist 2–3 organizations only</li>
+                    <li>Join community channels early</li>
+                    <li>Study idea lists and existing codebases</li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="timeline-card">
-                <span class="phase-number">Phase 3</span>
-                <h3>The Proposal Period</h3>
-                <div class="card-date">March 16 – March 31, 2026</div>
-                <p>This is the actual application phase. You can submit up to <strong>three</strong> proposals.</p>
+            <article class="phase-card">
+                <span class="phase-badge">Phase 3</span>
+                <h3>Proposal Writing</h3>
+                <p class="phase-time">Application window</p>
                 <ul>
-                    <li><strong>Draft Early:</strong> Don't wait until the deadline. Share a draft with the mentors in their chat channels to get feedback.</li>
-                    <li><strong>The Anatomy of a Winning Proposal:</strong></li>
-                    <li><strong>Synopsis:</strong> A 50-word summary of your project.</li>
-                    <li><strong>Technical Breakdown:</strong> Explain exactly <em>how</em> you will solve the problem (which libraries, which files you'll modify).</li>
-                    <li><strong>Detailed Timeline:</strong> A week-by-week breakdown of your 12-week coding period.</li>
-                    <li><strong>Biographical Info:</strong> Your relevant experience and previous contributions to the project.</li>
+                    <li>Draft early and request mentor feedback</li>
+                    <li>Provide technical implementation details</li>
+                    <li>Include a realistic week-by-week timeline</li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="timeline-card">
-                <span class="phase-number">Phase 4</span>
-                <h3>The Program</h3>
-                <div class="card-date">May – August 2026</div>
-                <p>If you are accepted (announced <strong>April 30, 2026</strong>), the work begins:</p>
+            <article class="phase-card">
+                <span class="phase-badge">Phase 4</span>
+                <h3>Community Bonding</h3>
+                <p class="phase-time">Before coding begins</p>
                 <ul>
-                    <li><strong>Community Bonding (May 1-24):</strong> Set up your development environment, meet your mentor, and finalize your project milestones.</li>
-                    <li><strong>Coding Period (May 25 onwards):</strong> You will code for 12 to 22 weeks depending on your project size.</li>
-                    <li><strong>Evaluations:</strong> There are two evaluations (Mid-term and Final). You must pass these to receive your stipend payments.</li>
+                    <li>Set up development environment</li>
+                    <li>Align expectations with mentors</li>
+                    <li>Finalize milestones and deliverables</li>
                 </ul>
-            </div>
+            </article>
+
+            <article class="phase-card">
+                <span class="phase-badge">Phase 5</span>
+                <h3>Coding Period</h3>
+                <p class="phase-time">Main program duration</p>
+                <ul>
+                    <li>Work consistently with mentor feedback</li>
+                    <li>Submit evaluations on time</li>
+                    <li>Document progress clearly</li>
+                </ul>
+            </article>
+
+            <article class="phase-card">
+                <span class="phase-badge">Phase 6</span>
+                <h3>Evaluations</h3>
+                <p class="phase-time">Mid-term & final</p>
+                <ul>
+                    <li>Demonstrate measurable progress</li>
+                    <li>Submit clean, reviewed code</li>
+                    <li>Complete documentation and reports</li>
+                </ul>
+            </article>
         </div>
     </section>
 
-    <!-- Stipend Section -->
-    <section class="stipend-section">
-        <h2>Stipends for 2026</h2>
-        <p>GSoC stipends are paid in two parts and are adjusted based on your country's cost of living.</p>
+    <!-- STIPEND -->
+    <section class="gsoc-stipend">
+        <div class="stipend-header">
+            <h2>Stipend & Commitment</h2>
+            <p>Understand the financial rewards and time commitment before applying to Google Summer of Code.</p>
+        </div>
+
         <div class="stipend-grid">
             <div class="stipend-card">
-                <h3><i class="fas fa-briefcase"></i> Medium Projects</h3>
-                <div class="stipend-amount">~$1,500 USD</div>
-                <div class="stipend-hours">~175 hours</div>
-                <div class="stipend-location">Estimated in India</div>
+                <div class="stipend-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Stipend</h3>
+                <p class="stipend-desc">GSoC provides a stipend to contributors based on project size and local cost of living.</p>
+                <ul class="stipend-list">
+                    <li><strong>Medium Projects:</strong> ~175 hours</li>
+                    <li><strong>Large Projects:</strong> ~350 hours</li>
+                    <li>Paid in <strong>two evaluations</strong></li>
+                </ul>
             </div>
+
             <div class="stipend-card">
-                <h3><i class="fas fa-briefcase"></i> Medium Projects</h3>
-                <div class="stipend-amount">~$3,000 USD</div>
-                <div class="stipend-hours">~175 hours</div>
-                <div class="stipend-location">Estimated in USA</div>
+                <div class="stipend-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Time Commitment</h3>
+                <p class="stipend-desc">GSoC requires consistent effort and professional-level responsibility.</p>
+                <ul class="stipend-list">
+                    <li>~20–25 hours/week (Medium)</li>
+                    <li>~35+ hours/week (Large)</li>
+                    <li>Weekly mentor sync & progress updates</li>
+                </ul>
             </div>
+
             <div class="stipend-card">
-                <h3><i class="fas fa-rocket"></i> Large Projects</h3>
-                <div class="stipend-amount">~$3,000 USD</div>
-                <div class="stipend-hours">~350 hours</div>
-                <div class="stipend-location">Estimated in India</div>
-            </div>
-            <div class="stipend-card">
-                <h3><i class="fas fa-rocket"></i> Large Projects</h3>
-                <div class="stipend-amount">~$6,000 USD</div>
-                <div class="stipend-hours">~350 hours</div>
-                <div class="stipend-location">Estimated in USA</div>
+                <div class="stipend-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>What's Expected</h3>
+                <p class="stipend-desc">GSoC is not an internship — it's an open-source commitment.</p>
+                <ul class="stipend-list">
+                    <li>Clear communication with mentors</li>
+                    <li>Clean, documented code</li>
+                    <li>Meeting milestones & evaluations</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Start Your GSoC Journey?</h2>
-        <p>Take the first step today. Begin preparing, contribute to open source, and build your profile for GSoC 2026.</p>
-        <div class="cta-buttons-large">
-            <a href="https://developers.google.com/open-source/gsoc/faq" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
-                <i class="fas fa-question-circle"></i>
-                Read FAQ
+    <!-- ELIGIBILITY -->
+    <section class="gsoc-eligibility">
+        <div class="eligibility-header">
+            <h2>Eligibility & Requirements</h2>
+            <p>Who can apply and what's expected to participate in GSoC</p>
+        </div>
+
+        <div class="eligibility-grid">
+            <div class="eligibility-card">
+                <div class="eligibility-icon">🎓</div>
+                <h3>Who Can Apply</h3>
+                <p>Students or contributors aged 18+ enrolled in any academic program, or working independently on open source.</p>
+            </div>
+
+            <div class="eligibility-card">
+                <div class="eligibility-icon">🛠️</div>
+                <h3>Skills Needed</h3>
+                <p>Knowledge of programming, version control (Git), and collaborative coding practices.</p>
+            </div>
+
+            <div class="eligibility-card">
+                <div class="eligibility-icon">📅</div>
+                <h3>Time Commitment</h3>
+                <p>Approximately 30–35 hours per week during coding period, with regular mentor check-ins.</p>
+            </div>
+
+            <div class="eligibility-card">
+                <div class="eligibility-icon">✅</div>
+                <h3>Other Requirements</h3>
+                <p>Active communication, timely proposal submission, and adherence to community guidelines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREPARE -->
+    <section class="gsoc-prepare">
+        <div class="prepare-header">
+            <h2>How to Prepare for GSoC</h2>
+            <p>Essential tips and steps to get ready for a successful application</p>
+        </div>
+
+        <div class="prepare-grid">
+            <div class="prepare-card">
+                <div class="prepare-icon">📚</div>
+                <h3>Learn & Explore</h3>
+                <p>Familiarize yourself with open source projects, Git, and coding best practices.</p>
+            </div>
+
+            <div class="prepare-card">
+                <div class="prepare-icon">🤝</div>
+                <h3>Engage with Community</h3>
+                <p>Join mailing lists, chat channels, and discussion forums of potential organizations.</p>
+            </div>
+
+            <div class="prepare-card">
+                <div class="prepare-icon">📝</div>
+                <h3>Work on Small Tasks</h3>
+                <p>Start with small contributions to gain experience and confidence in the codebase.</p>
+            </div>
+
+            <div class="prepare-card">
+                <div class="prepare-icon">💡</div>
+                <h3>Plan Your Proposal</h3>
+                <p>Draft ideas early, understand timelines, and prepare a clear project roadmap.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="gsoc-resources">
+        <div class="resources-header">
+            <h2>Resources & Helpful Links</h2>
+            <p>Essential references to guide you through the GSoC journey</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">🌐</div>
+                <h3>Official GSoC Website</h3>
+                <p>Get all official updates, timelines, and program details directly from Google.</p>
+                <a href="https://summerofcode.withgoogle.com/" target="_blank" class="resource-btn">Visit</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">📖</div>
+                <h3>Open Source Guides</h3>
+                <p>Learn best practices for contributing to open source projects effectively.</p>
+                <a href="https://opensource.guide/" target="_blank" class="resource-btn">Visit</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">💻</div>
+                <h3>Git & GitHub Docs</h3>
+                <p>Understand version control and Git workflows for smooth collaboration.</p>
+                <a href="https://git-scm.com/docs" target="_blank" class="resource-btn">Visit</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">🤝</div>
+                <h3>Community Forums</h3>
+                <p>Join discussions, ask questions, and network with mentors and contributors.</p>
+                <a href="https://groups.google.com/g/google-summer-of-code-discuss" target="_blank" class="resource-btn">Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gsoc-cta-section">
+        <div class="cta-container">
+            <h2>Ready to Kickstart Your GSoC Journey?</h2>
+            <p>Join thousands of students contributing to open source and make your mark this summer!</p>
+            <a href="https://summerofcode.withgoogle.com/" target="_blank" class="cta-btn">
+                Visit Official GSoC Website
+                <span class="cta-arrow">→</span>
             </a>
         </div>
     </section>
@@ -1096,58 +1495,13 @@
     <div id="footer"></div>
 
     <script src="../../js/components.js"></script>
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <script src="../../js/main.js"></script>
 
-        // Enhanced scroll animations with staggered delays
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
-        };
+    <button id="scrollTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements with enhanced animations
-        document.querySelectorAll(
-  '.feature-card, .timeline-card, .stepper-step, .stipend-card'
-)
-.forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px) scale(0.95)';
-            el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            observer.observe(el);
-        });
-
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < hero.offsetHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-    </script>
+    <script src="../../js/theme.js"></script>
 </body>
+
 </html>
