@@ -343,27 +343,61 @@
             color: #b8b8b8;
         }
 
-        /* JOURNEY SECTION */
+        /* ============================================
+           JOURNEY SECTION - PROFESSIONAL REDESIGN
+           ============================================ */
+
         .gsoc-journey {
             padding: 7rem 6%;
             background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
         }
 
         body.dark-mode .gsoc-journey {
             background: #0f1419;
         }
 
+        /* Decorative background elements */
+        .gsoc-journey::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .gsoc-journey::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(244, 197, 66, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Header Section */
         .journey-header {
             text-align: center;
             max-width: 750px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 6rem;
+            position: relative;
+            z-index: 2;
         }
 
         .journey-header h2 {
-            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 900;
             color: #1a1a1a;
             margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
 
         body.dark-mode .journey-header h2 {
@@ -372,75 +406,470 @@
 
         .journey-header p {
             color: #666;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            line-height: 1.6;
         }
 
         body.dark-mode .journey-header p {
             color: #b8b8b8;
         }
 
-        .journey-stepper {
+        /* Timeline Container */
+        .timeline-container {
             position: relative;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 2rem 0;
         }
 
-        .journey-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
+        /* Central Timeline Line */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, 
+                rgba(212, 175, 55, 0.2) 0%,
+                rgba(212, 175, 55, 0.8) 50%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+        body.dark-mode .timeline-line {
+            background: linear-gradient(180deg, 
+                rgba(244, 197, 66, 0.3) 0%,
+                rgba(244, 197, 66, 0.9) 50%,
+                rgba(244, 197, 66, 0.3) 100%
+            );
+        }
+
+        /* Timeline Item */
+        .timeline-item {
             position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
         }
 
-        .journey-dot {
-            min-width: 70px;
-            height: 70px;
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Timeline Marker */
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .marker-circle {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-            color: #1a1a1a;
-            font-weight: 900;
-            font-size: 1.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 8px 24px rgba(212, 175, 55, 0.4),
+                0 0 0 8px rgba(255, 255, 255, 1),
+                0 0 0 12px rgba(212, 175, 55, 0.2);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        body.dark-mode .marker-circle {
+            box-shadow: 
+                0 8px 24px rgba(244, 197, 66, 0.5),
+                0 0 0 8px rgba(15, 20, 25, 1),
+                0 0 0 12px rgba(244, 197, 66, 0.3);
+        }
+
+        .timeline-item:hover .marker-circle {
+            transform: scale(1.15) rotate(360deg);
+            box-shadow: 
+                0 12px 32px rgba(212, 175, 55, 0.6),
+                0 0 0 8px rgba(255, 255, 255, 1),
+                0 0 0 16px rgba(212, 175, 55, 0.3);
+        }
+
+        body.dark-mode .timeline-item:hover .marker-circle {
+            box-shadow: 
+                0 12px 32px rgba(244, 197, 66, 0.7),
+                0 0 0 8px rgba(15, 20, 25, 1),
+                0 0 0 16px rgba(244, 197, 66, 0.4);
+        }
+
+        .marker-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated Pulse Effect */
+        .marker-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            animation: pulse 2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Timeline Content */
+        .timeline-content {
+            width: 45%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: left;
+        }
+
+        /* Timeline Card */
+        .timeline-card {
+            background: linear-gradient(145deg, #FFFFFF, #FAF8F3);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.08),
+                0 1px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .timeline-card {
+            background: linear-gradient(145deg, #1a2332, #141d2b);
+            border-color: rgba(244, 197, 66, 0.25);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 1px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Card shine effect */
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .timeline-card:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.15),
+                0 8px 16px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        body.dark-mode .timeline-card:hover {
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                0 8px 16px rgba(244, 197, 66, 0.3);
+            border-color: rgba(244, 197, 66, 0.5);
+        }
+
+        /* Card Header */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item:nth-child(odd) .card-header {
+            flex-direction: row-reverse;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
             flex-shrink: 0;
         }
 
-        .journey-card {
-            background: #FAF8F3;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            flex: 1;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+        .timeline-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
 
-        body.dark-mode .journey-card {
-            background: #1a2332;
-            border-color: rgba(212, 175, 55, 0.2);
-        }
-
-        .journey-card h3 {
-            font-size: 1.4rem;
+        .timeline-card h3 {
+            font-size: 1.6rem;
             font-weight: 800;
             color: #1a1a1a;
-            margin-bottom: 0.75rem;
+            margin: 0;
+            letter-spacing: -0.3px;
         }
 
-        body.dark-mode .journey-card h3 {
+        body.dark-mode .timeline-card h3 {
             color: #FFFFFF;
         }
 
-        .journey-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #666;
+        .timeline-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin: 0 0 1.5rem 0;
         }
 
-        body.dark-mode .journey-card p {
+        body.dark-mode .timeline-card p {
             color: #b8b8b8;
+        }
+
+        /* Card Tags */
+        .card-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item:nth-child(odd) .card-tags {
+            justify-content: flex-end;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary-gold);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .tag {
+            background: rgba(244, 197, 66, 0.2);
+            color: var(--secondary-gold);
+            border-color: rgba(244, 197, 66, 0.4);
+        }
+
+        .tag:hover {
+            background: var(--primary-gold);
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        body.dark-mode .tag:hover {
+            background: var(--secondary-gold);
+            color: #0f1419;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+
+        @media (max-width: 992px) {
+            .timeline-line {
+                left: 40px;
+            }
+
+            .timeline-marker {
+                left: 40px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+
+            .timeline-content {
+                width: calc(100% - 140px);
+                margin-left: 100px;
+                padding: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .card-header {
+                flex-direction: row;
+            }
+
+            .timeline-item:nth-child(odd) .card-tags {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gsoc-hero {
+                padding: 6rem 5% 5rem;
+            }
+
+            .gsoc-journey {
+                padding: 5rem 5%;
+            }
+
+            .journey-header {
+                margin-bottom: 4rem;
+            }
+
+            .marker-circle {
+                width: 60px;
+                height: 60px;
+                box-shadow: 
+                    0 6px 16px rgba(212, 175, 55, 0.4),
+                    0 0 0 6px rgba(255, 255, 255, 1),
+                    0 0 0 10px rgba(212, 175, 55, 0.2);
+            }
+
+            body.dark-mode .marker-circle {
+                box-shadow: 
+                    0 6px 16px rgba(244, 197, 66, 0.5),
+                    0 0 0 6px rgba(15, 20, 25, 1),
+                    0 0 0 10px rgba(244, 197, 66, 0.3);
+            }
+
+            .marker-number {
+                font-size: 1.4rem;
+            }
+
+            .marker-pulse {
+                width: 60px;
+                height: 60px;
+            }
+
+            .timeline-card {
+                padding: 2rem;
+            }
+
+            .card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .timeline-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .timeline-card p {
+                font-size: 0.95rem;
+            }
+
+            .snapshot-grid,
+            .phases-grid,
+            .stipend-grid,
+            .eligibility-grid,
+            .prepare-grid,
+            .resources-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 110px);
+                margin-left: 80px;
+            }
+
+            .marker-circle {
+                width: 50px;
+                height: 50px;
+            }
+
+            .marker-number {
+                font-size: 1.2rem;
+            }
+
+            .card-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1rem;
+            }
+
+            .card-tags {
+                gap: 0.5rem;
+            }
+
+            .tag {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
         }
 
         /* PHASES SECTION */
@@ -1010,32 +1439,6 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .gsoc-hero {
-                padding: 6rem 5% 5rem;
-            }
-
-            .journey-step {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .journey-dot {
-                margin: 0 auto;
-            }
-
-            .snapshot-grid,
-            .phases-grid,
-            .stipend-grid,
-            .eligibility-grid,
-            .prepare-grid,
-            .resources-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 
@@ -1191,59 +1594,163 @@
         </div>
     </section>
 
-    <!-- JOURNEY -->
+    <!-- JOURNEY SECTION - REDESIGNED -->
     <section class="gsoc-journey">
         <div class="journey-header">
             <h2>Your GSoC Journey</h2>
             <p>A clear step-by-step path from preparation to success</p>
         </div>
 
-        <div class="journey-stepper">
-            <div class="journey-step">
-                <div class="journey-dot">1</div>
-                <div class="journey-card">
-                    <h3>Preparation</h3>
-                    <p>Learn Git, explore open source, and build small contributions.</p>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">1</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3>Preparation</h3>
+                        </div>
+                        <p>Learn Git, explore open source, and build small contributions. Start early and familiarize yourself with version control workflows.</p>
+                        <div class="card-tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">Open Source</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="journey-step">
-                <div class="journey-dot">2</div>
-                <div class="journey-card">
-                    <h3>Organization Selection</h3>
-                    <p>Shortlist organizations aligned with your skills and interests.</p>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">2</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3>Organization Selection</h3>
+                        </div>
+                        <p>Shortlist organizations aligned with your skills and interests. Research their tech stack, community culture, and project ideas.</p>
+                        <div class="card-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Community</span>
+                            <span class="tag">Tech Stack</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="journey-step">
-                <div class="journey-dot">3</div>
-                <div class="journey-card">
-                    <h3>Proposal Writing</h3>
-                    <p>Draft a strong proposal with technical depth and a clear timeline.</p>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">3</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <h3>Proposal Writing</h3>
+                        </div>
+                        <p>Draft a strong proposal with technical depth and a clear timeline. Include implementation details, milestones, and deliverables.</p>
+                        <div class="card-tags">
+                            <span class="tag">Writing</span>
+                            <span class="tag">Planning</span>
+                            <span class="tag">Technical</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="journey-step">
-                <div class="journey-dot">4</div>
-                <div class="journey-card">
-                    <h3>Community Bonding</h3>
-                    <p>Connect with mentors, understand expectations, and plan milestones.</p>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">4</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Community Bonding</h3>
+                        </div>
+                        <p>Connect with mentors, understand expectations, and plan milestones. Build relationships and set up your development environment.</p>
+                        <div class="card-tags">
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Planning</span>
+                            <span class="tag">Setup</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="journey-step">
-                <div class="journey-dot">5</div>
-                <div class="journey-card">
-                    <h3>Coding Period</h3>
-                    <p>Work on your project with regular mentor feedback.</p>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">5</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Coding Period</h3>
+                        </div>
+                        <p>Work on your project with regular mentor feedback. Write clean code, commit frequently, and maintain clear documentation.</p>
+                        <div class="card-tags">
+                            <span class="tag">Development</span>
+                            <span class="tag">Feedback</span>
+                            <span class="tag">Documentation</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="journey-step">
-                <div class="journey-dot">6</div>
-                <div class="journey-card">
-                    <h3>Evaluations</h3>
-                    <p>Pass mid-term and final evaluations to successfully complete GSoC.</p>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">6</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Evaluations</h3>
+                        </div>
+                        <p>Pass mid-term and final evaluations to successfully complete GSoC. Submit your work, demonstrate progress, and celebrate success!</p>
+                        <div class="card-tags">
+                            <span class="tag">Review</span>
+                            <span class="tag">Success</span>
+                            <span class="tag">Completion</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1353,8 +1860,8 @@
                 <h3>Time Commitment</h3>
                 <p class="stipend-desc">GSoC requires consistent effort and professional-level responsibility.</p>
                 <ul class="stipend-list">
-                    <li>~20–25 hours/week (Medium)</li>
-                    <li>~35+ hours/week (Large)</li>
+                    <li>20–25 hours/week (Medium)</li>
+                    <li>~35 hours/week (Large)</li>
                     <li>Weekly mentor sync & progress updates</li>
                 </ul>
             </div>
@@ -1364,7 +1871,7 @@
                     <i class="fas fa-user-check"></i>
                 </div>
                 <h3>What's Expected</h3>
-                <p class="stipend-desc">GSoC is not an internship — it's an open-source commitment.</p>
+                <p class="stipend-desc">GSoC is not an internship—it's an open-source commitment.</p>
                 <ul class="stipend-list">
                     <li>Clear communication with mentors</li>
                     <li>Clean, documented code</li>
@@ -1377,25 +1884,25 @@
     <!-- ELIGIBILITY -->
     <section class="gsoc-eligibility">
         <div class="eligibility-header">
-            <h2>Eligibility & Requirements</h2>
+            <h2>Eligibility Requirements</h2>
             <p>Who can apply and what's expected to participate in GSoC</p>
         </div>
 
         <div class="eligibility-grid">
             <div class="eligibility-card">
-                <div class="eligibility-icon">🎓</div>
+                <div class="eligibility-icon">👤</div>
                 <h3>Who Can Apply</h3>
-                <p>Students or contributors aged 18+ enrolled in any academic program, or working independently on open source.</p>
+                <p>Students or contributors aged 18+, enrolled in any academic program, or working independently on open source.</p>
             </div>
 
             <div class="eligibility-card">
-                <div class="eligibility-icon">🛠️</div>
+                <div class="eligibility-icon">💻</div>
                 <h3>Skills Needed</h3>
                 <p>Knowledge of programming, version control (Git), and collaborative coding practices.</p>
             </div>
 
             <div class="eligibility-card">
-                <div class="eligibility-icon">📅</div>
+                <div class="eligibility-icon">⏰</div>
                 <h3>Time Commitment</h3>
                 <p>Approximately 30–35 hours per week during coding period, with regular mentor check-ins.</p>
             </div>
@@ -1423,19 +1930,19 @@
             </div>
 
             <div class="prepare-card">
-                <div class="prepare-icon">🤝</div>
+                <div class="prepare-icon">💬</div>
                 <h3>Engage with Community</h3>
                 <p>Join mailing lists, chat channels, and discussion forums of potential organizations.</p>
             </div>
 
             <div class="prepare-card">
-                <div class="prepare-icon">📝</div>
+                <div class="prepare-icon">🔨</div>
                 <h3>Work on Small Tasks</h3>
                 <p>Start with small contributions to gain experience and confidence in the codebase.</p>
             </div>
 
             <div class="prepare-card">
-                <div class="prepare-icon">💡</div>
+                <div class="prepare-icon">📝</div>
                 <h3>Plan Your Proposal</h3>
                 <p>Draft ideas early, understand timelines, and prepare a clear project roadmap.</p>
             </div>
@@ -1454,25 +1961,25 @@
                 <div class="resource-icon">🌐</div>
                 <h3>Official GSoC Website</h3>
                 <p>Get all official updates, timelines, and program details directly from Google.</p>
-                <a href="https://summerofcode.withgoogle.com/" target="_blank" class="resource-btn">Visit</a>
+                <a href="https://summerofcode.withgoogle.com" target="_blank" class="resource-btn">Visit</a>
             </div>
 
             <div class="resource-card">
                 <div class="resource-icon">📖</div>
                 <h3>Open Source Guides</h3>
                 <p>Learn best practices for contributing to open source projects effectively.</p>
-                <a href="https://opensource.guide/" target="_blank" class="resource-btn">Visit</a>
+                <a href="https://opensource.guide" target="_blank" class="resource-btn">Visit</a>
             </div>
 
             <div class="resource-card">
-                <div class="resource-icon">💻</div>
+                <div class="resource-icon">⚙️</div>
                 <h3>Git & GitHub Docs</h3>
                 <p>Understand version control and Git workflows for smooth collaboration.</p>
                 <a href="https://git-scm.com/docs" target="_blank" class="resource-btn">Visit</a>
             </div>
 
             <div class="resource-card">
-                <div class="resource-icon">🤝</div>
+                <div class="resource-icon">💡</div>
                 <h3>Community Forums</h3>
                 <p>Join discussions, ask questions, and network with mentors and contributors.</p>
                 <a href="https://groups.google.com/g/google-summer-of-code-discuss" target="_blank" class="resource-btn">Visit</a>
@@ -1485,7 +1992,7 @@
         <div class="cta-container">
             <h2>Ready to Kickstart Your GSoC Journey?</h2>
             <p>Join thousands of students contributing to open source and make your mark this summer!</p>
-            <a href="https://summerofcode.withgoogle.com/" target="_blank" class="cta-btn">
+            <a href="https://summerofcode.withgoogle.com" target="_blank" class="cta-btn">
                 Visit Official GSoC Website
                 <span class="cta-arrow">→</span>
             </a>
@@ -1493,7 +2000,6 @@
     </section>
 
     <div id="footer"></div>
-
     <script src="../../js/components.js"></script>
     <script src="../../js/main.js"></script>
 
