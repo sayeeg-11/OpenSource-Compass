@@ -2116,6 +2116,266 @@
             "responses": [
                 "SQL injection is a code injection technique, used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution."
             ]
+        },
+        {
+            "tag": "devtools_pr_generator",
+            "patterns": [
+                "pr generator",
+                "create pr description",
+                "ai pr tool",
+                "generate pull request text",
+                "help writing pr"
+            ],
+            "responses": [
+                "Our AI-powered PR Generator helps you write professional PR descriptions in seconds! Find it in the 'Developer Tools' section.",
+                "Just input your changes, and it uses Gemini AI to format a perfect Markdown description for you."
+            ]
+        },
+        {
+            "tag": "devtools_issue_insights",
+            "patterns": [
+                "issue insights",
+                "analyze issue",
+                "explain bug",
+                "understand github issue",
+                "how to start on an issue"
+            ],
+            "responses": [
+                "Struggling to understand a complex GitHub issue? Use our 'Issue Insights' tool in Developer Tools.",
+                "Paste the issue URL, and our AI will break it down into a simple summary and a checklist of steps to get started."
+            ]
+        },
+        {
+            "tag": "community_imposter_syndrome",
+            "patterns": [
+                "i feel fake",
+                "imposter syndrome",
+                "not good enough",
+                "scared to contribute",
+                "everyone is smarter"
+            ],
+            "responses": [
+                "Imposter syndrome is very common in tech! Remember, every expert was once a beginner. Open source is about learning.",
+                "Don't worry about being perfect. Maintainers appreciate the effort to help. Mistakes are just part of the process."
+            ]
+        },
+        {
+            "tag": "community_code_of_conduct",
+            "patterns": [
+                "code of conduct",
+                "coc",
+                "behavior rules",
+                "community guidelines"
+            ],
+            "responses": [
+                "A Code of Conduct (CoC) sets expectations for behavior to ensure a safe and welcoming environment.",
+                "Always read the CoC (usually in CODE_OF_CONDUCT.md) before interacting with a community."
+            ]
+        },
+        {
+            "tag": "docs_as_code",
+            "patterns": [
+                "docs as code",
+                "documentation as code",
+                "markdown docs"
+            ],
+            "responses": [
+                "Docs-as-code treats documentation like software: stored in version control (Git), written in Markdown, and reviewed via PRs.",
+                "It ensures docs are versioned and tested just like the code they describe."
+            ]
+        },
+        {
+            "tag": "github_gist",
+            "patterns": [
+                "github gist",
+                "what is a gist",
+                "save code snippet",
+                "share code snippet"
+            ],
+            "responses": [
+                "GitHub Gists are a simple way to share code snippets and pastes with others.",
+                "They are essentially mini-repositories that can be public or secret."
+            ]
+        },
+        {
+            "tag": "github_cli",
+            "patterns": [
+                "github cli",
+                "gh command",
+                "what is gh",
+                "command line github"
+            ],
+            "responses": [
+                "GitHub CLI (gh) brings GitHub to your terminal. You can create PRs, check issues, and manage repos without leaving the command line.",
+                "Try 'gh pr create' or 'gh issue list' to get started."
+            ]
+        },
+        {
+            "tag": "github_labels",
+            "patterns": [
+                "github labels",
+                "good first issue",
+                "issue tags",
+                "help wanted label"
+            ],
+            "responses": [
+                "Labels categorize issues and PRs. Look for 'good first issue' or 'help wanted' to find beginner-friendly tasks.",
+                "Maintainers use them to prioritize and organize work."
+            ]
+        },
+        {
+            "tag": "github_codespaces",
+            "patterns": [
+                "github codespaces",
+                "cloud ide",
+                "code in browser",
+                "what is codespace"
+            ],
+            "responses": [
+                "GitHub Codespaces is a cloud-based development environment that lets you code directly in your browser or VS Code.",
+                "It sets up the project for you automatically, saving you from 'it works on my machine' issues."
+            ]
+        },
+        {
+            "tag": "github_stars_watch",
+            "patterns": [
+                "star a repo",
+                "watch content",
+                "github notifications",
+                "difference star and watch"
+            ],
+            "responses": [
+                "Starring is like bookmarking or 'liking' a project. Watching subscribes you to notifications for all activity.",
+                "Use 'Watch' carefully on popular repos to avoid flooding your inbox!"
+            ]
+        },
+        {
+            "tag": "github_profile_readme",
+            "patterns": [
+                "profile readme",
+                "customize github profile",
+                "special repository"
+            ],
+            "responses": [
+                "You can create a special repository with the same name as your username to add a README to your GitHub profile.",
+                "It's a great way to showcase your skills, stats, and personality to potential employers or collaborators."
+            ]
+        },
+        {
+            "tag": "github_draft_pr",
+            "patterns": [
+                "draft pr",
+                "draft pull request",
+                "wip pr",
+                "work in progress"
+            ],
+            "responses": [
+                "A Draft PR lets you open a pull request that isn't ready for review yet.",
+                "It signals 'I'm working on this' without notifying mandatory reviewers."
+            ]
+        },
+        {
+            "tag": "contributing_md",
+            "patterns": [
+                "what is contributing.md",
+                "where are the rules",
+                "contribution guidelines",
+                "project rules"
+            ],
+            "responses": [
+                "CONTRIBUTING.md is the most important file for new contributors! It contains the project's specific setup instructions and rules.",
+                "Always read this file before you start. It saves you (and the maintainers) a lot of time."
+            ]
+        },
+        {
+            "tag": "issue_claim",
+            "patterns": [
+                "can i work on this",
+                "how to claim an issue",
+                "assign me",
+                "ask for assignment"
+            ],
+            "responses": [
+                "Don't just say 'assign me'! politely ask: 'I'd like to work on this, is it available?'",
+                "Wait for confirmation from a maintainer before you start coding to avoid wasted effort."
+            ]
+        },
+        {
+            "tag": "pr_review_etiquette",
+            "patterns": [
+                "reviewer asked for changes",
+                "pr rejected",
+                "code review feedback",
+                "handling criticism"
+            ],
+            "responses": [
+                "Feedback is a gift! Don't take it personally. Maintainers want the code to be the best it can be.",
+                "Reply to comments politely, make the requested changes, and re-request review. It's a collaboration."
+            ]
+        },
+        {
+            "tag": "conventional_commits",
+            "patterns": [
+                "commit naming",
+                "conventional commits",
+                "feat fix chore",
+                "how to name commits"
+            ],
+            "responses": [
+                "Many projects use 'Conventional Commits' like 'feat: add login' or 'fix: resolve crash'.",
+                "It makes the history readable and helps generate automatic changelogs."
+            ]
+        },
+        {
+            "tag": "dco_sign_off",
+            "patterns": [
+                "dco",
+                "signed-off-by",
+                "sign off commit",
+                "contributor license agreement"
+            ],
+            "responses": [
+                "Some projects require a 'Signed-off-by' line in your commit message (DCO) to legally certify you wrote the code.",
+                "Use 'git commit -s' to automatically add this signature."
+            ]
+        },
+        {
+            "tag": "hacktoberfest",
+            "patterns": [
+                "hacktoberfest",
+                "october event",
+                "digitalocean event",
+                "free t-shirt"
+            ],
+            "responses": [
+                "Hacktoberfest is a month-long celebration of open source software run by DigitalOcean every October.",
+                "It's a great time to make your first contributions and earn rewards (like a t-shirt or tree planted)."
+            ]
+        },
+        {
+            "tag": "sync_fork",
+            "patterns": [
+                "update fork",
+                "sync fork",
+                "upstream changes",
+                "fork is behind"
+            ],
+            "responses": [
+                "To keep your fork updated, add the original repo as a remote labeled 'upstream'.",
+                "Run 'git fetch upstream' and 'git merge upstream/main' to bring in the latest changes."
+            ]
+        },
+        {
+            "tag": "cla_agreement",
+            "patterns": [
+                "what is cla",
+                "contributor license agreement",
+                "sign cla"
+            ],
+            "responses": [
+                "A CLA (Contributor License Agreement) is a legal document you sign stating you own the code you are contributing.",
+                "Large projects (like React or VS Code) often have a bot that asks you to sign this electronically."
+            ]
         }
     ]
 }
