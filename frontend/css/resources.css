@@ -1,353 +1,190 @@
+@keyframes fadeInUpPage {
+  from {
+    opacity: 0;
+    transform: translateY(50px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+/* =========================================
+   1. GLOBAL VARIABLES & LIGHT MODE
+   ========================================= */
 :root {
-  --osc-navy: #0a192f;
-  --osc-gold: #d4af37;
-  --osc-gold-dark: #b8860b;
-  --osc-cream: #fdfbf5;
-  --osc-white: #ffffff;
-  --osc-text-main: #1d2129;
-  --osc-text-sub: #57606a;
+  --primary-gold: #b59d5c;
+  --hover-gold: #967e45;
+  --bg-light: #fffdf6;
+  --text-dark: #1a1a1a;
+  --text-gray: #555;
   
-  /* Color Mappings */
-  --primary-gold: var(--osc-gold);
-  --deep-navy: var(--osc-navy);
-  --warm-cream: var(--osc-cream);
-  --text-secondary: var(--osc-text-sub);
-  --light-parchment: #ffffff; 
-  --shadow-main: 0 4px 6px rgba(0,0,0,0.05);
-  --shadow-hover: 0 10px 15px rgba(0,0,0,0.1);
-  
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --card-transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 12px 25px rgba(181, 157, 92, 0.2);
 }
 
 body {
-  background-color: var(--osc-cream);
-  color: var(--osc-text-main);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* --- Section: Resources --- */
+/* =========================================
+   2. LAYOUT & HEADER ALIGNMENT
+   ========================================= */
 .resources-section {
-  padding: 4rem 1rem;
-}
-
-.resources-header {
-  max-width: 700px;
-  margin: 0 auto 4rem;
+  opacity: 0; 
+  
+  /* 2. Apply the animation name from Step 1 */
+  animation: fadeInUpPage 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  padding: 120px 20px 60px; /* Pushes content below the fixed navbar */
+  max-width: 1600px;
+  /* width: 95%; */
+  margin: 0 auto;
   text-align: center;
-  padding: 4rem 1rem 6rem;
-  position: relative;
-  background: var(--primary-gold);
-  color: var(--warm-cream);
-  border-radius: 0 0 50% 50% / 0 0 20% 20%;
-  overflow: hidden;
-  transition: background 0.3s ease, border 0.3s ease;
 }
 
 .resources-header h3 {
-  font-size: 2.2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; 
+  color: var(--text-dark);
+  margin-bottom: 5px; 
   font-weight: 700;
-  margin-bottom: 1rem;
-  transition: color 0.3s ease;
 }
 
 .resources-header p {
-  font-size: 1rem;
-  color: inherit;
-  line-height: 1.6;
-  max-width: 520px;
-  margin: 0 auto 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-gray);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
 }
 
-.resources-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: var(--warm-cream);
-  border-radius: 50% 50% 0 0;
-  transition: background 0.3s ease;
-}
+/* =========================================
+   3. CARD GRID & DESIGN
+   ========================================= */
 
-.resources-list {
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.resource-tile {
-  display: flex;
-  align-items: flex-start;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 1.8rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
-  cursor: pointer;
-}
-
-.resource-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
-}
-
-.tile-icon {
-  font-size: 2rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
-  color: var(--primary-gold);
-}
-
-.tile-meta {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--primary-gold);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.tile-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.2rem;
-  line-height: 1.5;
-}
-
-.tile-content a {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  text-decoration: none;
-  position: relative;
-}
-
-/* Gold underline effect on links */
-.tile-content a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
+  grid-template-columns: repeat(4, minmax(250px, 1fr)) !important; 
+  gap: 25px; 
   width: 100%;
-  height: 2px;
+  max-width: 1600px;
+  margin: 0 auto;
+  justify-items: center;
+  padding: 20px;
+}
+
+
+.resource-tile, .card {
+  background: #ffffff !important; 
+  border: 1.5px solid rgba(145, 125, 75, 0.6) !important;
+  
+  border-radius: 20px !important;
+  padding: 30px 45px !important; 
+  max-width: 350px !important; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Glowing Hover Effect */
+.resource-tile:hover, .card:hover {
+  transform: translateY(-12px) scale(1.02) !important;
+  border-color: #b59d5c !important; 
+  box-shadow: 0 0 25px rgba(181, 157, 92, 0.3) !important;
+}
+
+/* =========================================
+   4. DARK MODE (Charcoal & Gold Scheme)
+   ========================================= */
+.dark-mode {
+  --bg-dark: #121212;     
+  --card-bg-dark: #1e1e1e; 
+  --text-main: #f5f5f5;
+  --text-sub: #a0a0a0;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark) !important;
+  background: var(--bg-dark) !important;
+  color: var(--text-main) !important;
+}
+
+body.dark-mode header {
+  background-color: var(--bg-dark) !important;
+  background: var(--bg-dark) !important;
+  border-bottom: 1px solid #333 !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .resource-tile, 
+body.dark-mode .template-tile, 
+body.dark-mode .card, 
+body.dark-mode .checklist-tile {
+  background: var(--card-bg-dark) !important; 
+  border: 1px solid #333 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5 {
+  color: var(--primary-gold) !important;
+}
+
+body.dark-mode p {
+  color: var(--text-sub) !important;
+}
+
+/* Gold Button Fix */
+.card-btn, .resource-link {
   background: var(--primary-gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
+  color: white !important;
+  padding: 12px 35px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+  transition: all 0.3s ease;
 }
 
-.tile-content a:hover::after {
-  transform: scaleX(1);
+.card-btn:hover {
+  background: var(--hover-gold);
+  transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .resource-tile {
-    flex-direction: row;
+.tile-icon, .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px !important;
+}
+
+.resource-tile h4, .card h4 {
+  color: var(--text-dark) !important;
+}
+
+.resource-tile p, .card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px !important; 
+  color: var(--text-gray) !important;
+}
+
+@media (max-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
-/* --- Shared Styles for Templates, Tools, Beginner Sections --- */
-.templates-section, 
-.tools-section, 
-.beginner-issues-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
-  transition: background 0.3s ease;
+@media (max-width: 700px) {
+  .card-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-.templates-header, .tools-header, .beginner-header {
-  max-width: 700px;
-  margin: 0 auto 4rem;
-  text-align: center;
-  padding: 0 1rem;
-  position: relative;
-}
 
-.templates-header h3, .tools-header h3, .beginner-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-  transition: color 0.3s ease;
-}
-
-.templates-header p, .tools-header p, .beginner-header p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.templates-grid, .tools-grid, .beginner-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-/* Generic Tile Style */
-.template-tile, .tool-tile, .beginner-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background: var(--light-parchment);
-  border-radius: 16px;
-  padding: 2rem 1.8rem;
-  box-shadow: var(--shadow-main);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
-  cursor: pointer;
-  border-left: 6px solid var(--primary-gold);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.tool-tile, .beginner-tile {
-  flex-direction: row;
-}
-
-.template-tile:hover, .tool-tile:hover, .beginner-tile:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* --- Checklists --- */
-.checklists-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.checklist-tile {
-  background: var(--osc-white);
-  padding: 2.5rem;
-  border-radius: 16px;
-  border-top: 4px solid var(--osc-gold);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  transition: background 0.3s ease;
-}
-
-.checklist-tile ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 1.5rem;
-}
-
-.checklist-tile li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  font-weight: 500;
-  color: var(--osc-text-main);
-}
-
-.checkmark { color: #2ecc71; font-weight: bold; }
-
-.checklist-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* --- Empty State --- */
-.empty-state {
-  text-align: center;
-  padding: 3rem 1.5rem;
-  border: 2px dashed #ddd;
-  border-radius: 12px;
-  background-color: #fafafa;
-  color: #555;
-  margin-top: 2rem;
-  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
-}
-
-/* ========================================= */
-/* DARK MODE CONFIGURATION                   */
-/* ========================================= */
-
-body.dark-mode {
-  background-color: var(--osc-navy);
-  color: var(--osc-white);
-}
-
-/* 1. Update Section Backgrounds */
-body.dark-mode .templates-section,
-body.dark-mode .tools-section,
-body.dark-mode .beginner-issues-section,
-body.dark-mode .resources-section {
-  background-color: var(--osc-navy);
-}
-
-/* 2. FIX FOR RESOURCES HEADER */
-/* Make background transparent so gold text is visible, remove the solid gold block */
-body.dark-mode .resources-header {
-  background: transparent;
-  border: 1px solid var(--osc-gold); /* Add gold border to maintain shape */
-}
-
-/* Update the curve at the bottom to match the dark body */
-body.dark-mode .resources-header::after {
-  background: var(--osc-navy); 
-}
-
-/* 3. GOLD HEADINGS (The Fix) */
-/* Forces these specific headings to use the Gold color in Dark Mode */
-body.dark-mode .resources-header h3,
-body.dark-mode .templates-header h3,
-body.dark-mode .tools-header h3,
-body.dark-mode .beginner-header h3,
-body.dark-mode .checklist-tile h5,
-body.dark-mode .empty-state h4 {
-  color: var(--osc-gold) !important;
-}
-
-/* 4. Subtext Coloring */
-body.dark-mode .resources-header p,
-body.dark-mode .templates-header p,
-body.dark-mode .tools-header p,
-body.dark-mode .beginner-header p {
-  color: #a8b2d1; /* Light grey/blue for readability */
-}
-
-/* 5. Card/Tile Styling in Dark Mode */
-body.dark-mode .resource-tile,
-body.dark-mode .template-tile,
-body.dark-mode .tool-tile,
-body.dark-mode .beginner-tile,
-body.dark-mode .checklist-tile {
-  background-color: #112240; /* Darker navy for cards */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-}
-
-/* Text inside cards */
-body.dark-mode .tile-content h5,
-body.dark-mode .tile-content a,
-body.dark-mode .checklist-tile li {
-  color: var(--osc-white);
-}
-
-body.dark-mode .tile-content p {
-  color: #a8b2d1;
-}
-
-/* Empty State Dark Mode */
-body.dark-mode .empty-state {
-  background-color: #112240;
-  border-color: #233554;
-  color: #a8b2d1;
-}
