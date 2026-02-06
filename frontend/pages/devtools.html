@@ -223,6 +223,9 @@
                 <button class="tab-btn active" onclick="switchTab('pr-gen')">
                     <i class="fas fa-magic"></i> PR Generator
                 </button>
+                <button class="tab-btn" onclick="switchTab('issue-validator')">
+                    <i class="fas fa-check-double"></i> Issue Validator
+                </button>
                 <button class="tab-btn" onclick="switchTab('playground')">
                     <i class="fas fa-terminal"></i> Git Playground
                 </button>
@@ -286,6 +289,46 @@
             </div>
         </div>
 
+        <!-- ISSUE VALIDATOR PANEL -->
+        <div id="issue-validator" class="tool-panel">
+            <div class="pr-embedded-container">
+                <div class="pr-form-header">
+                    <h2>Smart Issue Validator</h2>
+                    <p>Validate your issue against existing ones and get quality feedback.</p>
+                </div>
+
+                <form id="issueValidatorForm">
+                    <div class="pr-form-group">
+                        <label for="issueRepo">Repository URL *</label>
+                        <input type="url" id="issueRepo" placeholder="e.g., https://github.com/user/project" required>
+                    </div>
+
+                    <div class="pr-form-group">
+                        <label for="issueTitle">Issue Title *</label>
+                        <input type="text" id="issueTitle" placeholder="Brief summary of the issue" required>
+                    </div>
+
+                    <div class="pr-form-group">
+                        <label for="issueDescription">Issue Description *</label>
+                        <textarea id="issueDescription" placeholder="Detailed description of the bug or feature request"
+                            required style="min-height: 150px;"></textarea>
+                    </div>
+
+                    <button type="submit" id="issueSubmitBtn" class="pr-submit-btn">
+                        <span class="btn-text">Check Issue 🔍</span>
+                        <div class="pr-loader"></div>
+                    </button>
+                </form>
+
+                <div id="issueResultSection" class="pr-preview-section">
+                    <div class="pr-preview-header">
+                        <h3>Validation Report</h3>
+                    </div>
+                    <div id="issueResultContent" class="pr-preview-content"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- PLAYGROUND PANEL -->
         <div id="playground" class="tool-panel" style="padding: 0;">
             <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe"
@@ -311,6 +354,7 @@
     </script>
 
     <script src="../js/pr-generator.js?v=${new Date().getTime()}"></script>
+    <script src="../js/issue-validator.js?v=${new Date().getTime()}"></script>
 </body>
 
 </html>

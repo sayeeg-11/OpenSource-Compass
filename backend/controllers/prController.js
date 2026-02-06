@@ -39,7 +39,6 @@ export const generatePRDescription = async (req, res) => {
         // Default to a modern model if env var is missing or old
         const modelName = process.env.GEMINI_MODEL || "gemini-2.5-flash";
         const model = genAI.getGenerativeModel({ model: modelName });
-
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const prDescription = response.text();
@@ -48,7 +47,7 @@ export const generatePRDescription = async (req, res) => {
     } catch (error) {
         console.error("Gemini Error:", error);
         res.status(500).json({
-            error: "Failed to generate PR description. Please check your API key and try again."
+            error: "Failed to generate PR description. Please check your API key and try again. " + (error.message || "")
         });
     }
 };
