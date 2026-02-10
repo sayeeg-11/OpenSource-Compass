@@ -7,14 +7,12 @@
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Awesome (REQUIRED for logo) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!-- Global CSS -->
   <link rel="stylesheet" href="../css/program.css">
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
@@ -25,10 +23,10 @@
 
 
 <body>
-
+  <div id="cursor-highlight" aria-hidden="true"></div>
   <div id="navbar"></div>
 
-  <main>
+  <main role="main">
     <section>
       <h3>Open Source Programs</h3>
       <p>
@@ -82,7 +80,7 @@
     </section>
   </main>
 
-  <div id="footer"></div>
+  <div id="footer" class="footer-container"></div>
 
   <script src="../js/components.js"></script>
   <script src="../js/theme.js"></script>

@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const issueForm = document.getElementById('issueValidatorForm');
-    const resultSection = document.getElementById('issueResultSection');
-    const resultContent = document.getElementById('issueResultContent');
-    const submitBtn = document.getElementById('issueSubmitBtn');
+    const resultSection = document.getElementById('validatorResultSection');
+    const resultContent = document.getElementById('validatorResultContent');
+    const submitBtn = document.getElementById('validatorSubmitBtn');
 
     if (!issueForm) return;
 
     issueForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const repoLink = document.getElementById('issueRepo').value.trim();
-        const title = document.getElementById('issueTitle').value.trim();
-        const description = document.getElementById('issueDescription').value.trim();
+        const repoLink = document.getElementById('validatorRepo').value.trim();
+        const title = document.getElementById('validatorTitle').value.trim();
+        const description = document.getElementById('validatorDescription').value.trim();
 
         if (!repoLink || !title || !description) {
             alert("Please fill in all fields.");
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Related Issues List
         if (data.related_issues && data.related_issues.length > 0) {
-            const repoUrl = document.getElementById('issueRepo').value.trim();
+            const repoUrl = document.getElementById('validatorRepo').value.trim();
             html += `
                 <div style="margin-bottom: 1.2rem;">
                      <h5 style="color: #d4af37; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; margin-bottom: 0.5rem;">Related Issues</h5>
