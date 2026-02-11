@@ -1,5 +1,7 @@
-
-
+/* Target the first section in your main content */
+main section:first-of-type {
+  margin-top: 80px; /* Adjust this value to get more or less space */
+}
 * {
   margin: 0;
   padding: 0;
@@ -8,8 +10,16 @@
 
 html,
 body {
-  max-width: 100%;
-  overflow-x: hidden;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  /* This specific gradient provides the soft pink/white warmth */
+  background: linear-gradient(
+    135deg, 
+    #fff5f5 0%,   /* Misty Pink */
+    #fffaf0 100%  /* Warm White */
+  ) !important;
+  color: var(--charcoal-dark);
 }
 /* --- Centering the Grids --- */
 .resources-list, 
@@ -18,13 +28,16 @@ body {
 .beginner-grid, 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  width: 100%;
   justify-content: center; /* Centers cards if they don't fill the row */
   align-items: stretch;
   max-width: 1200px;
-  margin: 0 auto; /* Centers the whole grid container */
+  margin: 2rem auto 0; /* Centers the whole grid container */
 }
+
+
 
 /* Ensure the cards themselves center content if needed */
 .card, .resource-tile, .template-tile {
@@ -37,7 +50,7 @@ body {
 
 /* --- Dark Mode Visibility Fixes --- */
 body.dark-mode {
-  background-color: #0b111e; /* Deep dark navy */
+  background-color: #121212; 
   color: #ffffff; /* Off-white for high contrast */
 }
 
@@ -54,7 +67,7 @@ body.dark-mode .checklist-tile {
 body.dark-mode h3, 
 body.dark-mode h4, 
 body.dark-mode h5 {
-  color:  #b8860b !important; /* Brighter accent for headings */
+  color:  #ffffff !important; /* Brighter accent for headings */
 }
 
 body.dark-mode p {
@@ -78,18 +91,13 @@ body.dark-mode #quiz-container {
 }
 
 :root {
-  --primary-gold: #d4af37;
-  --secondary-gold: #b8860b;
-  --deep-navy: #1b263b;
-  --warm-cream: #fdf4e3;
-  --light-parchment: #fff8e7;
-  --charcoal-dark: #2c2c2c;
-  --text-secondary: #5a5a5a;
-
-  --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
+  --primary-gold: #b59d5c;
+  --bg-deep: #121212;         /* Main Background */
+  --surface-elevated: #1e1e1e; /* Card & Navbar Surface */
+  --text-main: #e0e0e0;
+  --text-dim: #a0a0a0;
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-
 
 body {
   font-family: "Crimson Text", Georgia, serif;
@@ -340,19 +348,22 @@ main {
   transform: scaleX(1);
 }
 
-@media (max-width: 768px) {
-  .resource-tile {
-    flex-direction: row;
+@media (max-width: 1024px) {
+  .resources-list, .templates-grid, .tools-grid, .beginner-grid, .card-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* --- Shared Styles for Templates, Tools, Beginner Sections --- */
+.resources-section, 
 .templates-section, 
 .tools-section, 
-.beginner-issues-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
-  transition: background 0.3s ease;
+.beginner-issues-section,
+.checklists-grid {
+  display: flex;
+  flex-direction: column; /* Forces vertical stacking */
+  align-items: center;
+  text-align: center;
 }
 
 .templates-header, .tools-header, .beginner-header {
@@ -384,16 +395,25 @@ main {
 }
 
 /* Generic Tile Style */
-.template-tile, .tool-tile, .beginner-tile {
+/* Generic Tile Style - Updated for darker light-theme borders */
+.template-tile, .tool-tile, .beginner-tile, .resource-tile, .card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background: var(--light-parchment);
   border-radius: 16px;
   padding: 2rem 1.8rem;
+  
+  /* ADD THIS LINE: It adds a visible charcoal border for the Light Theme */
+  border: 1px solid rgba(0, 0, 0, 0.2) !important; 
+  
+  /* Keep your existing gold accent */
+  border-left: 6px solid var(--primary-gold) !important;
+
   box-shadow: var(--shadow-main);
   cursor: pointer;
-  border-left: 6px solid var(--primary-gold);
+  transition: all 0.35s ease;
+}
 
   /* animation prep */
 .template-tile {
@@ -405,7 +425,7 @@ main {
     color 0.35s ease;
 }
 
-}
+
 
 
 .template-tile:hover {
@@ -546,75 +566,106 @@ main {
   transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
-/* ========================================= */
-/* DARK MODE CONFIGURATION                   */
-/* ========================================= */
+/* =================================================== */
+/* TRUE CHARCOAL & GOLD: Image Match Version           */
+/* =================================================== */
+
+/* =================================================== */
+/* UPDATED TRUE CHARCOAL: Full Page Sync               */
+/* =================================================== */
 
 body.dark-mode {
-  background-color: var(--osc-navy);
-  color: var(--osc-white);
+  background-color: var(--bg-deep) !important;
+  background: var(--bg-deep) !important;
+  color: var(--text-main) !important;
 }
 
-/* 1. Update Section Backgrounds */
+/* 1. SECTION & WRAPPER SYNC */
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode .resources-section,
 body.dark-mode .templates-section,
 body.dark-mode .tools-section,
 body.dark-mode .beginner-issues-section,
-body.dark-mode .resources-section {
-  background-color: var(--osc-navy);
+body.dark-mode #quiz-section {
+  background-color: var(--bg-deep) !important;
 }
 
-/* 2. FIX FOR RESOURCES HEADER */
-/* Make background transparent so gold text is visible, remove the solid gold block */
-body.dark-mode .resources-header {
-  background: transparent;
-  border: 1px solid var(--osc-gold); /* Add gold border to maintain shape */
+/* 2. ELEVATED NAVBAR */
+body.dark-mode header {
+  background-color: var(--surface-elevated) !important;
+  border-bottom: 3px solid var(--primary-gold) !important;
+  box-shadow: var(--shadow-dark) !important;
 }
 
-/* Update the curve at the bottom to match the dark body */
-body.dark-mode .resources-header::after {
-  background: var(--osc-navy); 
+/* 3. MASTERY PATH (ROADMAP) SYNC */
+body.dark-mode .level-node {
+  background: var(--surface-elevated) !important;
+  border-color: #333 !important;
 }
 
-/* 3. GOLD HEADINGS (The Fix) */
-/* Forces these specific headings to use the Gold color in Dark Mode */
-body.dark-mode .resources-header h3,
-body.dark-mode .templates-header h3,
-body.dark-mode .tools-header h3,
-body.dark-mode .beginner-header h3,
-body.dark-mode .checklist-tile h5,
-body.dark-mode .empty-state h4 {
-  color: var(--osc-gold) !important;
+body.dark-mode .level-item.unlocked .level-node {
+  background: var(--surface-elevated) !important;
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
-/* 4. Subtext Coloring */
-body.dark-mode .resources-header p,
-body.dark-mode .templates-header p,
-body.dark-mode .tools-header p,
-body.dark-mode .beginner-header p {
-  color: #a8b2d1; /* Light grey/blue for readability */
+body.dark-mode .level-title {
+  color: var(--text-main) !important;
 }
 
-/* 5. Card/Tile Styling in Dark Mode */
+body.dark-mode .roadmap-track {
+  background: #333 !important;
+}
+
+/* 4. QUIZ CONTAINER SYNC */
+body.dark-mode #quiz-container {
+  background-color: var(--surface-elevated) !important;
+  color: var(--text-main) !important;
+  border: 1px solid #333;
+  box-shadow: var(--shadow-dark);
+}
+
+body.dark-mode #quiz-container h4,
+body.dark-mode #quiz-container h5 {
+  color: var(--primary-gold) !important;
+}
+
+/* 5. CARDS & TILES */
+body.dark-mode .card,
 body.dark-mode .resource-tile,
 body.dark-mode .template-tile,
-body.dark-mode .tool-tile,
-body.dark-mode .beginner-tile,
-body.dark-mode .checklist-tile {
-  background-color: #112240; /* Darker navy for cards */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+body.dark-mode .checklist-tile,
+body.dark-mode .empty-state {
+  background: linear-gradient(145deg, #1e1e1e, #181818) !important;
+  background-color: var(--surface-elevated) !important;
+  border: 1px solid #2a2a2a !important;
+  box-shadow: var(--shadow-dark) !important;
 }
 
-/* Text inside cards */
-body.dark-mode .tile-content h5,
-body.dark-mode .tile-content a,
-body.dark-mode .checklist-tile li {
-  color: var(--osc-white);
+/* 6. TYPOGRAPHY ACCENTS - Final Override for White Topics */
+body.dark-mode h2,
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5,
+body.dark-mode .hero-section h2,
+body.dark-mode .tile-content h5 {
+  color: #ffffff !important; /* Forces white on every heading type */
 }
 
-body.dark-mode .tile-content p {
-  color: #a8b2d1;
+body.dark-mode p, 
+body.dark-mode li {
+  color: var(--text-dim) !important;
 }
 
+/* 7. HOVER GLOW */
+body.dark-mode .card:hover,
+body.dark-mode .resource-tile:hover,
+body.dark-mode .template-tile:hover {
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 25px rgba(181, 157, 92, 0.15) !important;
+  transform: translateY(-8px) !important;
+}
 @media (prefers-reduced-motion: reduce) {
   .template-tile,
   .template-tile:hover,
@@ -623,10 +674,44 @@ body.dark-mode .tile-content p {
     transform: none;
   }
 }
-
-/* Empty State Dark Mode */
-body.dark-mode .empty-state {
-  background-color: #112240;
-  border-color: #233554;
-  color: #a8b2d1;
+body.dark-mode #options-container button {
+  background: #252525 !important;
+  border: 1px solid #333 !important;
+  color: var(--text-main) !important;
 }
+
+body.dark-mode #options-container button:hover {
+  border-color: var(--primary-gold) !important;
+  background: #2a2a2a !important;
+}
+
+body.dark-mode #explanation-box {
+  background: #1a2733 !important; /* Dark blue tint for insights */
+  border-left-color: var(--primary-gold) !important;
+  color: var(--text-main) !important;
+}
+
+/* Define the entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to all card types */
+.card, .resource-tile, .template-tile, .checklist-tile {
+  animation: fadeInUp 0.6s ease-out forwards;
+  /* Ensures cards are invisible before the animation starts */
+  opacity: 0; 
+}
+
+/* Optional: Stagger the cards so they appear one by one */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
