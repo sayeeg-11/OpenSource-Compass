@@ -20,24 +20,63 @@
     <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
     <link rel="stylesheet" href="frontend/css/style.css" />
     <link rel="stylesheet" href="frontend/css/home.css" />
-    <link rel="stylesheet" href="frontend/css/chatbot.css" />
-  </head>
-  <body>
-  <div id="cursor-highlight" aria-hidden="true"></div>
-
-    <div id="scrollProgress"></div>
-    <div id="navbar"></div>
-
-    <section class="hero" aria-label="OpenSource Compass hero">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="hero-dot" aria-hidden="true"></span>
-            Your map to open source
-          </div>
+      <link rel="stylesheet" href="frontend/css/chatbot.css" />
+  
+  
 
     <link rel="stylesheet" href="frontend/css/pr-generator.css" />
     <style>
+      /* --- THEME VARIABLES --- */
+:root {
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --primary-gold: #b59d5c;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --newsletter-bg: #fcfbf7;        /* Light cream */
+  --newsletter-card: #ffffff;      /* Pure white */
+  --newsletter-text-h: #1a1a1a;    /* Deep navy/black */
+  --newsletter-text-p: #555555;    /* Gray */
+  --newsletter-border: #e2d1a8;    /* Golden beige */
+  --newsletter-btn: #b59d5c;       /* Primary gold */
+  --newsletter-input-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #26448f;
+  --section-bg: #1a1a1a;
+  --text-main: #f0f0f0;
+  --text-secondary: #ccc;
+  --card-bg: #1e1e1e;
+  --border-color: #444;
+  --shadow: rgba(0, 0, 0, 0.5);
+  /* Dark Mode Overrides */
+  --newsletter-bg: #121212;        /* Dark background */
+  --newsletter-card: #1e1e1e;      /* Slightly lighter dark card */
+  --newsletter-text-h: #f0f0f0;    /* Off-white */
+  --newsletter-text-p: #b0b0b0;    /* Light gray */
+  --newsletter-border: #333333;    /* Subtle dark border */
+  --newsletter-input-bg: #2d2d2d;  /* Dark input field */
+}
+
+/* --- APPLYING VARIABLES --- */
+body { background-color: var(--bg-color); color: var(--text-main); }
+#why, .newsletter, .stats-section { background-color: var(--section-bg); }
+
+.card, .stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.card h4, .stat-card h2, #why h3 { color: var(--text-main); }
+.card p, .stat-card p, #why > p { color: var(--text-secondary); }
+
+/* Ensure icons remain gold in both modes */
+.card-icon, .stat-icon, .program-icon { color: var(--primary-gold); }
       #scrollTopBtn {
         display: flex !important;
         /* Enables Flexbox centering */
@@ -464,6 +503,7 @@
 }
   </style>
   <link rel="stylesheet" href="frontend/css/recommendations.css" />
+
     
     <!-- Original Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -473,8 +513,13 @@
     <link rel="stylesheet" href="frontend/css/style.css"/>
     <link rel="stylesheet" href="frontend/css/chatbot.css">
     <link rel="stylesheet" href="index.css">
-    <div id="navbar"></div>
+    
+  </head>
+  <body>
+    <div id="cursor-highlight" aria-hidden="true"></div>
 
+    <div id="scrollProgress"></div>
+    <div id="navbar"></div>
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-container">
@@ -552,86 +597,59 @@
         </div>
       </div>
     </section>
+    <section id="opensource-video" style="padding: 60px 20px; text-align: center;">
+      <span class="programs-eyebrow" style="display: block; margin-bottom: 10px; color: #ffca28; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+        Start Your Journey
+      </span>
+      <h3>🎥 Video for Beginners</h3>
+      <p style="margin-bottom: 30px;">Learn the workflow: Fork, Clone, Commit, and Push.</p>
+    
+      <div class="video-thumbnail-container" style="
+        max-width: 900px;
+        margin: 30px auto;
+        position: relative;
+        aspect-ratio: 16 / 9;
+        border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
 
-    <!-- VIDEO SECTION -->
-    <section id="opensource-video" style="padding: 80px 6%; text-align: center; background: var(--warm-cream); position: relative;">
-      <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="margin-bottom: 50px;">
-          <span style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--secondary-gold); margin-bottom: 16px;">Learning Resources</span>
-          <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--deep-navy); margin-bottom: 20px; letter-spacing: -0.02em;">Start Your First Contribution</h2>
-          <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.8;">Watch this comprehensive guide for beginners to learn the essentials of making your first open source contribution.</p>
-        </div>
-        
-        <div style="max-width: 900px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(27, 38, 59, 0.15); border: 3px solid rgba(212, 175, 55, 0.2);">
-          <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-            <iframe
-              src="https://www.youtube.com/embed/3dGzOWWb0Eo"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-              title="Open Source Contribution for Beginners"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
+    <a href="https://www.youtube.com/watch?v=3dGzOWWb0Eo" target="_blank" style="text-decoration: none;">
+      <img src="https://img.youtube.com/vi/3dGzOWWb0Eo/maxresdefault.jpg" 
+           alt="Open Source Tutorial Thumbnail" 
+           style="width: 100%; height: 100%; object-fit: cover; display: block;">
+
+      <div style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      ">
+
+        <div style="
+          width: 80px;
+          height: 80px;
+          background: rgba(255, 0, 0, 0.9);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 0 20px rgba(255,0,0,0.4);
+        ">
+          <i class="fas fa-play" style="color: white; font-size: 30px; margin-left: 5px;"></i>
       </div>
-    </section>
-
-    <!-- STATS SECTION -->
-    <section class="stats-section reveal">
-      <div class="stats-container">
-        <div class="stats-header">
-          <span class="stats-eyebrow">Impactful Contributions</span>
-          <h2>Open Source Milestones</h2>
-          <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <div class="stat-number" data-target="50000">0</div>
-            <div class="stat-label">First Contributions</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-layer-group"></i>
-            </div>
-            <div class="stat-number" data-target="200">0</div>
-            <div class="stat-label">Programs Tracked</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="stat-number" data-target="10000">0</div>
-            <div class="stat-label">Active Mentors</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-award"></i>
-            </div>
-            <div class="stat-number" data-target="5">0</div>
-            <div class="stat-label">Years Track Record</div>
-          </div>
-        </div>
       </div>
-
-      <button class="submit-btn" type="submit" id="submitBtn">
-        <span class="btn-text">Submit Registration</span>
-        <span class="btn-loader"></span>
-      </button>
-
-      <p class="status" id="statusMsg"></p>
-    </form>
+    </a>
   </div>
-</div>
+</section>
+
 <!-- Programs Section -->
-main
+
 <section class="programs">
   <h3>Open Source Programs</h3>
   <p>
@@ -641,12 +659,44 @@ main
 
   <div class="card-container">
     <div class="card">
-      <h4>Social Winter of Code</h4>
-      <p>Beginner-focused winter open-source program.</p>
-      <span class="badge">Upcoming</span>
+      <div class="card-icon"><i class="fas fa-code"></i></div>
+        <h4>Google Summer of Code</h4>
+        <p>A global program focused on bringing new contributors into open source software development.</p>
+        <span class="badge">Upcoming</span>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-users"></i></div>
+          <h4>GSSoC</h4>
+          <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
+          <span class="badge">Upcoming</span>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-terminal"></i></div>
+          <h4>Hacktoberfest</h4>
+          <p>A month-long celebration of open-source software run by DigitalOcean.</p>
+          <span class="badge">Upcoming</span>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-snowflake"></i></div>
+          <h4>Social Winter of Code</h4>
+          <p>Beginner-focused winter open-source program.</p>
+          <span class="badge">Upcoming</span>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fab fa-linux"></i></div>
+        <h4>Linux Foundation</h4>
+        <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
+        <span class="badge">Upcoming</span>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-globe"></i></div>
+          <h4>Outreachy</h4>
+          <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
+          <span class="badge">Upcoming</span>
     </div>
   </div>
-</section>
+</div>
+  </section>
 
 
     <main>
@@ -681,93 +731,104 @@ main
               Learn alongside maintainers and contributors who’ve already walked
               the path you’re starting today.
             </p>
+          </div>        
+        </div>        
+        <div class="compass-step">          
+          <div class="compass-icon">            
+            <i class="fas fa-scroll"></i>          
+          </div>          
+          <div class="compass-content">            
+            <h4>Navigate Community & Culture</h4>            
+            <p>              
+              Understand codes of conduct, collaboration etiquette, and how              
+              contributors earn trust and respect.
+            </p>
           </div>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
-    <div class="card-container">
-swoc-registration-page
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
-    </section>
-
-    <!-- PROGRAMS SECTION -->
-    <section class="programs-section reveal" id="programs">
-      <div class="programs-container">
-        <div class="programs-header">
-          <span class="programs-eyebrow">Legendary Programs</span>
-          <h2>Open Source Opportunities</h2>
-          <p>Curated programs with historical success rates and maintainer insights to accelerate your journey.</p>
         </div>
-
-        <div class="programs-grid">
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-snowflake program-icon"></i>
-            </div>
-            <h3>Social Winter of Code</h3>
-            <p>India's premier winter program with strong mentorship culture and beginner-friendly projects.</p>
-            <span class="program-badge">Jan 2026</span>
+        <div class="compass-step">
+          <div class="compass-icon">
+            <i class="fas fa-people-group"></i>
           </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-sun program-icon"></i>
-            </div>
-            <h3>GirlScript Summer of Code</h3>
-            <p>Large-scale program with mentors, tasks, and community learning opportunities.</p>
-            <span class="program-badge">Summer 2026</span>
-          </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fab fa-google program-icon"></i>
-            </div>
-            <h3>Google Summer of Code</h3>
-            <p>Global standard for student contributors and open source organizations worldwide.</p>
-            <span class="program-badge">Advanced</span>
-          </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-leaf program-icon"></i>
-            </div>
-            <h3>Outreachy</h3>
-            <p>Paid internships supporting underrepresented people in tech and open source.</p>
-            <span class="program-badge">Internship</span>
-          </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-mountain program-icon"></i>
-            </div>
-            <h3>MLH Fellowship</h3>
-            <p>Work in pods on real projects with guided mentorship and industry connections.</p>
-            <span class="program-badge">Spring 2026</span>
-          </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fab fa-linux program-icon"></i>
-            </div>
-            <h3>Linux Foundation Mentorship</h3>
-            <p>Paid mentorships across major Linux Foundation projects and initiatives.</p>
-            <span class="program-badge">Professional</span>
+          <div class="compass-content">
+            <h4>Community Driven</h4>
+            <p>Built by contributors, improved by contributors.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- NEWSLETTER SECTION -->
-    <section class="newsletter-section reveal">
+    <section class="stats">
+      <div class="stats-header">
+        <h3>Open Source Milestones</h3>
+        <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+          <h2>50K+</h2>
+          <p>First Contributions</p>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+          <h2>200+</h2>
+          <p>Programs Tracked</p>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <h2>10K+</h2>
+          <p>Active Mentors</p>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-award"></i></div>
+          <h2>5Y+</h2>
+          <p>Proven Track Record</p>
+        </div>
+      </div>
+    </section>
+    <section class="programs" id="programs">
+      <div class="programs-header">
+        <h3>Open Source Opportunities</h3>
+        <p>Curated programs with historical success rates and maintainer insights.</p>
+      </div>
+  
+        <div class="card-grid">
+          <div class="card fade-in">
+            <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
+            <p>India's premier winter program with strong mentorship culture.</p>
+            <span class="badge">Jan 2026</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
+            <p>Large-scale program with mentors, tasks, and community learning.</p>
+            <span class="badge">Summer 2026</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
+            <p>Global standard for student contributors and open source orgs.</p>
+            <span class="badge">Advanced</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-leaf"></i> Outreachy</h4>
+            <p>Paid internships supporting underrepresented people in tech.</p>
+            <span class="badge">Internship</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
+            <p>Work in pods on real projects with guided mentorship.</p>
+            <span class="badge">Spring</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
+            <p>Paid mentorships across major Linux Foundation projects.</p>
+            <span class="badge">Professional</span>
+          </div>
+      </div>
+    </section>
+    <section class="newsletter">
       <div class="newsletter-container">
-        <h2>Stay Ahead of Open Source</h2>
-        <p>Weekly dispatches with program deadlines, AMAs, contribution strategies, and insider tips delivered to your inbox.</p>
+        <h3>Stay Ahead of Open Source</h3>
+        <p>Weekly dispatches: deadlines, AMAs, and contribution strategies.</p>
         <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address..." required />
+          <input type="email" placeholder="Your dev email..." required />
           <button type="submit">
             <i class="fas fa-paper-plane"></i>
             Subscribe
@@ -775,30 +836,19 @@ swoc-registration-page
         </form>
       </div>
     </section>
-
+  </main>
     <div id="footer"></div>
+    <div id="opensource-chatbot"></div>
 
-    <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
-      <i class="fas fa-chevron-up"></i>
-    </button>
+    <button id="scrollTopBtn" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
 
     <script src="frontend/js/components.js"></script>
     <script src="frontend/js/theme.js"></script>
+    <script src="frontend/js/home.js"></script>
     <script src="frontend/js/chatbot.js"></script>
+    <script src="frontend/js/pwa.js"></script>
+    <script src="frontend/js/pr-generator.js"></script>
     <script src="index.js"></script>
-
-<script src="frontend/js/components.js"></script>
-<script src="frontend/js/theme.js"></script>
-<script src="frontend/js/home.js"></script>
-
-<!-- OpenSource Guide Chatbot Mount -->
-<div id="opensource-chatbot"></div>
-
-<!-- OpenSource Guide Chatbot -->
-<script src="frontend/js/chatbot.js"></script>
-
-
-<script src="frontend/js/pwa.js"></script>
-<script src="frontend/js/pr-generator.js"></script>
+   
 </body>
 </html>

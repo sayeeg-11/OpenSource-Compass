@@ -27,12 +27,21 @@
    GUIDES PAGE DARK MODE FIXES (Corrected)
 ========================================= */
 /* --- Global Smooth Transition --- */
+body.dark-mode {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
 body.dark-mode * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
 
 body.dark-mode {
     background-color: #121212 !important;
+}
+body.dark-mode section,
+body.dark-mode main {
+    background: transparent !important;
+    border: none !important;
 }
 
 /* 1. Force Main Backgrounds */
@@ -44,14 +53,19 @@ body.dark-mode .common-mistakes {
     background-color: #121212 !important;
     color: #e0e0e0 !important;
 }
-
+body.dark-mode .guide h3,
+body.dark-mode .pull-request-guide h3,
+body.dark-mode .github-guide-timeline h3,
+body.dark-mode .contributing-best-practices h3,
+body.dark-mode .common-mistakes h2 {
+    color: #d4af37 !important; /* Consistent Golden Headings */
+}
 /* 2. Enhanced Card Backgrounds */
 body.dark-mode .guide-list li,
 body.dark-mode .pr-steps li,
 body.dark-mode .timeline-list li,
 body.dark-mode .practice-item,
 body.dark-mode .mistakes-list li {
-    background-color: #1e1e1e !important;
     border: 1px solid #2a2a2a !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     position: relative;
@@ -98,7 +112,7 @@ body.dark-mode .mistakes-list li:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2) !important;
     
     /* Slight background highlight */
-    background-color: #252525 !important;
+    
 }
 
 /* Subtle Shimmer Overlay on Hover */
@@ -110,7 +124,17 @@ body.dark-mode .guide-list li::after {
     background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
     transition: 0.5s;
 }
+/* Specific fix for Mistakes List text visibility in Dark Mode */
+body.dark-mode .mistakes-list p {
+    color: #ffffff !important; /* Forces text to white */
+    opacity: 0.9;              /* Optional: slightly softer than pure white for better UX */
+}
 
+/* Optional: If you want the numbers to remain dark for contrast against the gold circle */
+body.dark-mode .mistake-icon {
+    color: #121212 !important; 
+    background-color: #d4af37 !important;
+}
 body.dark-mode .guide-list li:hover::after {
     left: 100%;
 }
