@@ -727,6 +727,481 @@ body {
   transition: transform 0.6s var(--smooth-curve);
 }
 
+     /* --- THEME VARIABLES --- */
+:root {
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --primary-gold: #b59d5c;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --newsletter-bg: #fcfbf7;        /* Light cream */
+  --newsletter-card: #ffffff;      /* Pure white */
+  --newsletter-text-h: #1a1a1a;    /* Deep navy/black */
+  --newsletter-text-p: #555555;    /* Gray */
+  --newsletter-border: #e2d1a8;    /* Golden beige */
+  --newsletter-btn: #b59d5c;       /* Primary gold */
+  --newsletter-input-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #26448f;
+  --section-bg: #1a1a1a;
+  --text-main: #f0f0f0;
+  --text-secondary: #ccc;
+  --card-bg: #1e1e1e;
+  --border-color: #444;
+  --shadow: rgba(0, 0, 0, 0.5);
+  /* Dark Mode Overrides */
+  --newsletter-bg: #121212;        /* Dark background */
+  --newsletter-card: #1e1e1e;      /* Slightly lighter dark card */
+  --newsletter-text-h: #f0f0f0;    /* Off-white */
+  --newsletter-text-p: #b0b0b0;    /* Light gray */
+  --newsletter-border: #333333;    /* Subtle dark border */
+  --newsletter-input-bg: #2d2d2d;  /* Dark input field */
+}
+
+/* --- APPLYING VARIABLES --- */
+body { background-color: var(--bg-color); color: var(--text-main); }
+#why, .newsletter, .stats-section { background-color: var(--section-bg); }
+
+.card, .stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.card h4, .stat-card h2, #why h3 { color: var(--text-main); }
+.card p, .stat-card p, #why > p { color: var(--text-secondary); }
+
+/* Ensure icons remain gold in both modes */
+.card-icon, .stat-icon, .program-icon { color: var(--primary-gold); }
+      #scrollTopBtn {
+        display: flex !important;
+        /* Enables Flexbox centering */
+        justify-content: center !important;
+        /* Horizontally center */
+        align-items: center !important;
+        /* Vertically center */
+        padding: 0 !important;
+        /* Remove padding that offsets the icon */
+        line-height: 0 !important;
+        /* Reset line height for precise icons */
+      }
+         /* Container to center the entire grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  justify-content: center; /* Centers the grid itself */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Container Layout */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    justify-content: center; /* Centers the grid on the page */
+}
+
+/* Card Core Design */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2d1a8;
+    border-radius: 20px;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centers internal items horizontally */
+    text-align: center;      /* Centers the text lines */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Golden Glow Hover Effect */
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #b59d5c;
+    box-shadow: 0 20px 40px rgba(181, 157, 92, 0.2) !important;
+}
+
+/* Icon Centering */
+.card-icon {
+    font-size: 3rem;
+    color: #b59d5c;
+    margin-bottom: 25px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Typography */
+.card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Pushes the badge to the bottom for row alignment */
+}
+
+/* Badge Styling */
+.badge {
+    background: #b59d5c;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 10px rgba(181, 157, 92, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Individual Card Centering */
+.program-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centers internal elements horizontally */
+  text-align: center;      /* Centers text within elements */
+  height: 100%;
+  padding: 40px 30px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  transition: var(--card-transition);
+}
+
+/* Icon Area Centering */
+.program-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-gold);
+}
+
+/* Pushing Button to Bottom for Alignment */
+.program-card .card-btn {
+  margin-top: auto; /* Aligns buttons across a row */
+}
+    /* --- FEATURE: Golden Glow Hover Effect for Legendary Cards --- */
+    #programs .card {
+      transition: all 0.3s ease-in-out;
+    }
+
+    #programs .card:hover {
+      /* Golden/Yellow Glow */
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important;
+      /* Lift effect */
+      transform: translateY(-5px);
+      /* Gold border */
+      border-color: rgba(255, 215, 0, 0.8) !important;
+    }
+
+    /* --- NEW: Golden Glow Hover Effect for Milestone Stats Cards --- */
+    .stats .stat-card {
+      transition: all 0.3s ease-in-out;
+      border-radius: 12px; /* Ensures glow follows rounded corners if present */
+    }
+
+    .stats .stat-card:hover {
+      /* Stronger Golden Glow from the back */
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5) !important;
+      transform: translateY(-5px);
+      z-index: 2; /* Ensures it pops out above neighbors */
+    }
+
+    /* --- FIX: Timeline Z-Index Layering --- */
+    /* This ensures the golden icons sit ON TOP of the connecting vertical line */
+    .compass-step .compass-icon {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Ensure the timeline line stays in the back */
+    .compass-timeline {
+      position: relative;
+      z-index: 1;
+    }
+    /* --- Why Section Wrapper --- */
+#why {
+  padding: 100px 20px;
+  background-color: #fcfbf7; /* Light cream theme background */
+  text-align: center; /* Centers the main heading and intro */
+}
+
+#why h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+#why > p {
+  max-width: 600px;
+  margin: 0 auto 80px; /* Centers the intro paragraph */
+  font-family: 'Inter', sans-serif;
+  color: #555;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* --- Timeline Container --- */
+.compass-timeline {
+  max-width: 800px;
+  margin: 0 auto; /* Perfectly centers the timeline block */
+  position: relative;
+  padding: 10px 0;
+}
+
+/* The Golden Vertical Line */
+.compass-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 40px; /* Aligns line through the center of icons */
+  width: 2px;
+  background: linear-gradient(180deg, 
+    rgba(181, 157, 92, 0.1) 0%, 
+    rgba(181, 157, 92, 0.6) 15%, 
+    rgba(181, 157, 92, 0.6) 85%, 
+    rgba(181, 157, 92, 0.1) 100%
+  );
+}
+
+/* --- Individual Step --- */
+.compass-step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  position: relative;
+  /* Simple entry animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+/* Stagger animation for each step */
+.compass-step:nth-child(1) { animation-delay: 0.1s; }
+.compass-step:nth-child(2) { animation-delay: 0.3s; }
+.compass-step:nth-child(3) { animation-delay: 0.5s; }
+.compass-step:nth-child(4) { animation-delay: 0.7s; }
+
+/* --- Icon Styling --- */
+.compass-icon {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  border: 2px solid #b59d5c; /* Golden Border */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #b59d5c;
+  z-index: 2; /* Ensures icon sits on top of the line */
+  box-shadow: 0 10px 20px rgba(181, 157, 92, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect: Icon fills with gold */
+.compass-step:hover .compass-icon {
+  background: #b59d5c;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(181, 157, 92, 0.4);
+}
+
+/* --- Content Styling --- */
+.compass-content {
+  padding-left: 40px; /* Space between icon and text */
+  text-align: left;   /* Keep text readable */
+  padding-top: 10px;  /* Visual alignment with icon */
+}
+
+.compass-content h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.compass-step:hover .compass-content h4 {
+  color: #b59d5c; /* Title turns gold on hover */
+}
+
+.compass-content p {
+  font-family: 'Inter', sans-serif;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --- Animation Keyframes --- */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 600px) {
+  #why { padding: 60px 20px; }
+  
+  .compass-timeline::before {
+    left: 25px; /* Adjust line for smaller icons */
+  }
+  
+  .compass-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .compass-content {
+    padding-left: 20px;
+  }
+  
+  .compass-content h4 {
+    font-size: 1.3rem;
+  }
+}
+    /* --- Newsletter Section Design --- */
+.newsletter {
+    padding: 80px 20px;
+    background-color: #fcfbf7; /* Light cream background to match theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-container {
+    background: #ffffff;
+    max-width: 700px;
+    width: 100%;
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid #e2d1a8; /* Theme border color */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(181, 157, 92, 0.15); /* Soft golden shadow */
+    transition: transform 0.3s ease;
+}
+
+.newsletter-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(181, 157, 92, 0.25);
+}
+
+.newsletter h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Optional: Golden underline for the title */
+.newsletter h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #b59d5c;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.newsletter p {
+    font-family: 'Inter', sans-serif;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+}
+
+/* --- Form Styling --- */
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between input and button */
+    flex-wrap: wrap; /* Adapts to smaller screens */
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 280px;
+    padding: 15px 25px;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: #b59d5c; /* Golden border on focus */
+    box-shadow: 0 0 0 4px rgba(181, 157, 92, 0.1);
+}
+
+.newsletter-form button {
+    background: #b59d5c;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.newsletter-form button:hover {
+    background: #1a1a1a; /* Turns black on hover for contrast */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .newsletter-container {
+        padding: 30px 20px;
+    }
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .newsletter-form button {
+        width: 100%; /* Full width button on mobile */
+        justify-content: center;
+    }
+}
 .program-card:hover::before {
   transform: scaleX(1);
 }

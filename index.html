@@ -1,206 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="OpenSource Compass" />
-    <meta property="og:description" content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
-    <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
-    <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
-    <meta property="og:type" content="website" />
-    <title>OpenSource Compass - Navigate Your Open Source Journey</title>
-    <meta
-      name="description"
-      content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="frontend/css/style.css" />
-    <link rel="stylesheet" href="frontend/css/home.css" />
-      <link rel="stylesheet" href="frontend/css/chatbot.css" />
-  
-  
 
-    <link rel="stylesheet" href="frontend/css/pr-generator.css" />
-    <style>
-      /* --- THEME VARIABLES --- */
-:root {
-  --bg-color: #ffffff;
-  --section-bg: #fcfbf7;
-  --text-main: #1a1a1a;
-  --text-secondary: #555;
-  --card-bg: #ffffff;
-  --border-color: #e2d1a8;
-  --primary-gold: #b59d5c;
-  --shadow: rgba(0, 0, 0, 0.05);
-  --newsletter-bg: #fcfbf7;        /* Light cream */
-  --newsletter-card: #ffffff;      /* Pure white */
-  --newsletter-text-h: #1a1a1a;    /* Deep navy/black */
-  --newsletter-text-p: #555555;    /* Gray */
-  --newsletter-border: #e2d1a8;    /* Golden beige */
-  --newsletter-btn: #b59d5c;       /* Primary gold */
-  --newsletter-input-bg: #ffffff;
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="OpenSource Compass" />
+  <meta property="og:description"
+    content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
+  <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
+  <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
+  <meta property="og:type" content="website" />
+  <title>OpenSource Compass - Navigate Your Open Source Journey</title>
+  <meta name="description"
+    content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="frontend/css/style.css" />
+  <link rel="stylesheet" href="frontend/css/home.css" />
+  <link rel="stylesheet" href="frontend/css/chatbot.css" />
+  <link rel="stylesheet" href="index.css">
 
-body.dark-mode {
-  --bg-color: #26448f;
-  --section-bg: #1a1a1a;
-  --text-main: #f0f0f0;
-  --text-secondary: #ccc;
-  --card-bg: #1e1e1e;
-  --border-color: #444;
-  --shadow: rgba(0, 0, 0, 0.5);
-  /* Dark Mode Overrides */
-  --newsletter-bg: #121212;        /* Dark background */
-  --newsletter-card: #1e1e1e;      /* Slightly lighter dark card */
-  --newsletter-text-h: #f0f0f0;    /* Off-white */
-  --newsletter-text-p: #b0b0b0;    /* Light gray */
-  --newsletter-border: #333333;    /* Subtle dark border */
-  --newsletter-input-bg: #2d2d2d;  /* Dark input field */
-}
 
-/* --- APPLYING VARIABLES --- */
-body { background-color: var(--bg-color); color: var(--text-main); }
-#why, .newsletter, .stats-section { background-color: var(--section-bg); }
 
-.card, .stat-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 15px var(--shadow);
-}
+  <link rel="stylesheet" href="frontend/css/pr-generator.css" />
+  <style>
+    /* --- THEME VARIABLES --- */
+    :root {
+      --bg-color: #ffffff;
+      --section-bg: #fcfbf7;
+      --text-main: #1a1a1a;
+      --text-secondary: #555;
+      --card-bg: #ffffff;
+      --border-color: #e2d1a8;
+      --primary-gold: #b59d5c;
+      --shadow: rgba(0, 0, 0, 0.05);
+      --newsletter-bg: #fcfbf7;
+      /* Light cream */
+      --newsletter-card: #ffffff;
+      /* Pure white */
+      --newsletter-text-h: #1a1a1a;
+      /* Deep navy/black */
+      --newsletter-text-p: #555555;
+      /* Gray */
+      --newsletter-border: #e2d1a8;
+      /* Golden beige */
+      --newsletter-btn: #b59d5c;
+      /* Primary gold */
+      --newsletter-input-bg: #ffffff;
+    }
 
-.card h4, .stat-card h2, #why h3 { color: var(--text-main); }
-.card p, .stat-card p, #why > p { color: var(--text-secondary); }
+    body.dark-mode {
+      --bg-color: #26448f;
+      --section-bg: #1a1a1a;
+      --text-main: #f0f0f0;
+      --text-secondary: #ccc;
+      --card-bg: #1e1e1e;
+      --border-color: #444;
+      --shadow: rgba(0, 0, 0, 0.5);
+      /* Dark Mode Overrides */
+      --newsletter-bg: #121212;
+      /* Dark background */
+      --newsletter-card: #1e1e1e;
+      /* Slightly lighter dark card */
+      --newsletter-text-h: #f0f0f0;
+      /* Off-white */
+      --newsletter-text-p: #b0b0b0;
+      /* Light gray */
+      --newsletter-border: #333333;
+      /* Subtle dark border */
+      --newsletter-input-bg: #2d2d2d;
+      /* Dark input field */
+    }
 
-/* Ensure icons remain gold in both modes */
-.card-icon, .stat-icon, .program-icon { color: var(--primary-gold); }
-      #scrollTopBtn {
-        display: flex !important;
-        /* Enables Flexbox centering */
-        justify-content: center !important;
-        /* Horizontally center */
-        align-items: center !important;
-        /* Vertically center */
-        padding: 0 !important;
-        /* Remove padding that offsets the icon */
-        line-height: 0 !important;
-        /* Reset line height for precise icons */
-      }
-         /* Container to center the entire grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-  justify-content: center; /* Centers the grid itself */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-/* Container Layout */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
-    justify-content: center; /* Centers the grid on the page */
-}
+    /* --- APPLYING VARIABLES --- */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+    }
 
-/* Card Core Design */
-.card {
-    background: #ffffff;
-    border: 1px solid #e2d1a8;
-    border-radius: 20px;
-    padding: 50px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;    /* Centers internal items horizontally */
-    text-align: center;      /* Centers the text lines */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    height: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
+    #why,
+    .newsletter,
+    .stats-section {
+      background-color: var(--section-bg);
+    }
 
-/* Golden Glow Hover Effect */
-.card:hover {
-    transform: translateY(-10px);
-    border-color: #b59d5c;
-    box-shadow: 0 20px 40px rgba(181, 157, 92, 0.2) !important;
-}
+    .card,
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px var(--shadow);
+    }
 
-/* Icon Centering */
-.card-icon {
-    font-size: 3rem;
-    color: #b59d5c;
-    margin-bottom: 25px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .card h4,
+    .stat-card h2,
+    #why h3 {
+      color: var(--text-main);
+    }
 
-/* Typography */
-.card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #1a1a1a;
-    margin-bottom: 15px;
-}
+    .card p,
+    .stat-card p,
+    #why>p {
+      color: var(--text-secondary);
+    }
 
-.card p {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    flex-grow: 1; /* Pushes the badge to the bottom for row alignment */
-}
+    /* Ensure icons remain gold in both modes */
+    .card-icon,
+    .stat-icon,
+    .program-icon {
+      color: var(--primary-gold);
+    }
 
-/* Badge Styling */
-.badge {
-    background: #b59d5c;
-    color: #fff;
-    padding: 10px 30px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    box-shadow: 0 4px 10px rgba(181, 157, 92, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-/* Individual Card Centering */
-.program-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    /* Centers internal elements horizontally */
-  text-align: center;      /* Centers text within elements */
-  height: 100%;
-  padding: 40px 30px;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  transition: var(--card-transition);
-}
+    #scrollTopBtn {
+      display: flex !important;
+      /* Enables Flexbox centering */
+      justify-content: center !important;
+      /* Horizontally center */
+      align-items: center !important;
+      /* Vertically center */
+      padding: 0 !important;
+      /* Remove padding that offsets the icon */
+      line-height: 0 !important;
+      /* Reset line height for precise icons */
+    }
 
-/* Icon Area Centering */
-.program-icon {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-gold);
-}
+    /* Container to center the entire grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      justify-content: center;
+      /* Centers the grid itself */
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-/* Pushing Button to Bottom for Alignment */
-.program-card .card-btn {
-  margin-top: auto; /* Aligns buttons across a row */
-}
+    /* Container Layout */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      justify-content: center;
+      /* Centers the grid on the page */
+    }
+
+    /* Card Core Design */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2d1a8;
+      border-radius: 20px;
+      padding: 50px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Centers internal items horizontally */
+      text-align: center;
+      /* Centers the text lines */
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      height: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Golden Glow Hover Effect */
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #b59d5c;
+      box-shadow: 0 20px 40px rgba(181, 157, 92, 0.2) !important;
+    }
+
+    /* Icon Centering */
+    .card-icon {
+      font-size: 3rem;
+      color: #b59d5c;
+      margin-bottom: 25px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Typography */
+    .card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      flex-grow: 1;
+      /* Pushes the badge to the bottom for row alignment */
+    }
+
+    /* Badge Styling */
+    .badge {
+      background: #b59d5c;
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 10px rgba(181, 157, 92, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Individual Card Centering */
+    .program-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Centers internal elements horizontally */
+      text-align: center;
+      /* Centers text within elements */
+      height: 100%;
+      padding: 40px 30px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      transition: var(--card-transition);
+    }
+
+    /* Icon Area Centering */
+    .program-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-gold);
+    }
+
+    /* Pushing Button to Bottom for Alignment */
+    .program-card .card-btn {
+      margin-top: auto;
+      /* Aligns buttons across a row */
+    }
+
     /* --- FEATURE: Golden Glow Hover Effect for Legendary Cards --- */
     #programs .card {
       transition: all 0.3s ease-in-out;
@@ -218,14 +263,16 @@ body { background-color: var(--bg-color); color: var(--text-main); }
     /* --- NEW: Golden Glow Hover Effect for Milestone Stats Cards --- */
     .stats .stat-card {
       transition: all 0.3s ease-in-out;
-      border-radius: 12px; /* Ensures glow follows rounded corners if present */
+      border-radius: 12px;
+      /* Ensures glow follows rounded corners if present */
     }
 
     .stats .stat-card:hover {
       /* Stronger Golden Glow from the back */
       box-shadow: 0 0 40px rgba(255, 215, 0, 0.5) !important;
       transform: translateY(-5px);
-      z-index: 2; /* Ensures it pops out above neighbors */
+      z-index: 2;
+      /* Ensures it pops out above neighbors */
     }
 
     /* --- FIX: Timeline Z-Index Layering --- */
@@ -240,305 +287,342 @@ body { background-color: var(--bg-color); color: var(--text-main); }
       position: relative;
       z-index: 1;
     }
+
     /* --- Why Section Wrapper --- */
-#why {
-  padding: 100px 20px;
-  background-color: #fcfbf7; /* Light cream theme background */
-  text-align: center; /* Centers the main heading and intro */
-}
+    #why {
+      padding: 100px 20px;
+      background-color: #fcfbf7;
+      /* Light cream theme background */
+      text-align: center;
+      /* Centers the main heading and intro */
+    }
 
-#why h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  color: #1a1a1a;
-  margin-bottom: 20px;
-}
+    #why h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
 
-#why > p {
-  max-width: 600px;
-  margin: 0 auto 80px; /* Centers the intro paragraph */
-  font-family: 'Inter', sans-serif;
-  color: #555;
-  font-size: 1.15rem;
-  line-height: 1.6;
-}
+    #why>p {
+      max-width: 600px;
+      margin: 0 auto 80px;
+      /* Centers the intro paragraph */
+      font-family: 'Inter', sans-serif;
+      color: #555;
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
 
-/* --- Timeline Container --- */
-.compass-timeline {
-  max-width: 800px;
-  margin: 0 auto; /* Perfectly centers the timeline block */
-  position: relative;
-  padding: 10px 0;
-}
+    /* --- Timeline Container --- */
+    .compass-timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      /* Perfectly centers the timeline block */
+      position: relative;
+      padding: 10px 0;
+    }
 
-/* The Golden Vertical Line */
-.compass-timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 40px; /* Aligns line through the center of icons */
-  width: 2px;
-  background: linear-gradient(180deg, 
-    rgba(181, 157, 92, 0.1) 0%, 
-    rgba(181, 157, 92, 0.6) 15%, 
-    rgba(181, 157, 92, 0.6) 85%, 
-    rgba(181, 157, 92, 0.1) 100%
-  );
-}
+    /* The Golden Vertical Line */
+    .compass-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 40px;
+      /* Aligns line through the center of icons */
+      width: 2px;
+      background: linear-gradient(180deg,
+          rgba(181, 157, 92, 0.1) 0%,
+          rgba(181, 157, 92, 0.6) 15%,
+          rgba(181, 157, 92, 0.6) 85%,
+          rgba(181, 157, 92, 0.1) 100%);
+    }
 
-/* --- Individual Step --- */
-.compass-step {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 60px;
-  position: relative;
-  /* Simple entry animation */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s forwards;
-}
+    /* --- Individual Step --- */
+    .compass-step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 60px;
+      position: relative;
+      /* Simple entry animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
+    }
 
-/* Stagger animation for each step */
-.compass-step:nth-child(1) { animation-delay: 0.1s; }
-.compass-step:nth-child(2) { animation-delay: 0.3s; }
-.compass-step:nth-child(3) { animation-delay: 0.5s; }
-.compass-step:nth-child(4) { animation-delay: 0.7s; }
+    /* Stagger animation for each step */
+    .compass-step:nth-child(1) {
+      animation-delay: 0.1s;
+    }
 
-/* --- Icon Styling --- */
-.compass-icon {
-  flex-shrink: 0;
-  width: 80px;
-  height: 80px;
-  background: #ffffff;
-  border: 2px solid #b59d5c; /* Golden Border */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: #b59d5c;
-  z-index: 2; /* Ensures icon sits on top of the line */
-  box-shadow: 0 10px 20px rgba(181, 157, 92, 0.15);
-  transition: all 0.3s ease;
-}
+    .compass-step:nth-child(2) {
+      animation-delay: 0.3s;
+    }
 
-/* Hover Effect: Icon fills with gold */
-.compass-step:hover .compass-icon {
-  background: #b59d5c;
-  color: #ffffff;
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(181, 157, 92, 0.4);
-}
+    .compass-step:nth-child(3) {
+      animation-delay: 0.5s;
+    }
 
-/* --- Content Styling --- */
-.compass-content {
-  padding-left: 40px; /* Space between icon and text */
-  text-align: left;   /* Keep text readable */
-  padding-top: 10px;  /* Visual alignment with icon */
-}
+    .compass-step:nth-child(4) {
+      animation-delay: 0.7s;
+    }
 
-.compass-content h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  color: #1a1a1a;
-  margin-bottom: 12px;
-  transition: color 0.3s ease;
-}
+    /* --- Icon Styling --- */
+    .compass-icon {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      border: 2px solid #b59d5c;
+      /* Golden Border */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: #b59d5c;
+      z-index: 2;
+      /* Ensures icon sits on top of the line */
+      box-shadow: 0 10px 20px rgba(181, 157, 92, 0.15);
+      transition: all 0.3s ease;
+    }
 
-.compass-step:hover .compass-content h4 {
-  color: #b59d5c; /* Title turns gold on hover */
-}
+    /* Hover Effect: Icon fills with gold */
+    .compass-step:hover .compass-icon {
+      background: #b59d5c;
+      color: #ffffff;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(181, 157, 92, 0.4);
+    }
 
-.compass-content p {
-  font-family: 'Inter', sans-serif;
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 0;
-}
+    /* --- Content Styling --- */
+    .compass-content {
+      padding-left: 40px;
+      /* Space between icon and text */
+      text-align: left;
+      /* Keep text readable */
+      padding-top: 10px;
+      /* Visual alignment with icon */
+    }
 
-/* --- Animation Keyframes --- */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .compass-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      transition: color 0.3s ease;
+    }
 
-/* --- Mobile Responsiveness --- */
-@media (max-width: 600px) {
-  #why { padding: 60px 20px; }
-  
-  .compass-timeline::before {
-    left: 25px; /* Adjust line for smaller icons */
-  }
-  
-  .compass-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-  
-  .compass-content {
-    padding-left: 20px;
-  }
-  
-  .compass-content h4 {
-    font-size: 1.3rem;
-  }
-}
+    .compass-step:hover .compass-content h4 {
+      color: #b59d5c;
+      /* Title turns gold on hover */
+    }
+
+    .compass-content p {
+      font-family: 'Inter', sans-serif;
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* --- Animation Keyframes --- */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 600px) {
+      #why {
+        padding: 60px 20px;
+      }
+
+      .compass-timeline::before {
+        left: 25px;
+        /* Adjust line for smaller icons */
+      }
+
+      .compass-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+
+      .compass-content {
+        padding-left: 20px;
+      }
+
+      .compass-content h4 {
+        font-size: 1.3rem;
+      }
+    }
+
     /* --- Newsletter Section Design --- */
-.newsletter {
-    padding: 80px 20px;
-    background-color: #fcfbf7; /* Light cream background to match theme */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .newsletter {
+      padding: 80px 20px;
+      background-color: #fcfbf7;
+      /* Light cream background to match theme */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.newsletter-container {
-    background: #ffffff;
-    max-width: 700px;
-    width: 100%;
-    padding: 50px;
-    border-radius: 20px;
-    border: 1px solid #e2d1a8; /* Theme border color */
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(181, 157, 92, 0.15); /* Soft golden shadow */
-    transition: transform 0.3s ease;
-}
-
-.newsletter-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(181, 157, 92, 0.25);
-}
-
-.newsletter h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: #1a1a1a;
-    margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
-}
-
-/* Optional: Golden underline for the title */
-.newsletter h3::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: #b59d5c;
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-.newsletter p {
-    font-family: 'Inter', sans-serif;
-    color: #555;
-    font-size: 1.1rem;
-    margin-bottom: 35px;
-}
-
-/* --- Form Styling --- */
-.newsletter-form {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Space between input and button */
-    flex-wrap: wrap; /* Adapts to smaller screens */
-}
-
-.newsletter-form input[type="email"] {
-    flex: 1;
-    min-width: 280px;
-    padding: 15px 25px;
-    border: 2px solid #eee;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-.newsletter-form input[type="email"]:focus {
-    border-color: #b59d5c; /* Golden border on focus */
-    box-shadow: 0 0 0 4px rgba(181, 157, 92, 0.1);
-}
-
-.newsletter-form button {
-    background: #b59d5c;
-    color: white;
-    border: none;
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Inter', sans-serif;
-}
-
-.newsletter-form button:hover {
-    background: #1a1a1a; /* Turns black on hover for contrast */
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
     .newsletter-container {
-        padding: 30px 20px;
+      background: #ffffff;
+      max-width: 700px;
+      width: 100%;
+      padding: 50px;
+      border-radius: 20px;
+      border: 1px solid #e2d1a8;
+      /* Theme border color */
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(181, 157, 92, 0.15);
+      /* Soft golden shadow */
+      transition: transform 0.3s ease;
     }
+
+    .newsletter-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(181, 157, 92, 0.25);
+    }
+
+    .newsletter h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Optional: Golden underline for the title */
+    .newsletter h3::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #b59d5c;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .newsletter p {
+      font-family: 'Inter', sans-serif;
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 35px;
+    }
+
+    /* --- Form Styling --- */
     .newsletter-form {
-        flex-direction: column;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      /* Space between input and button */
+      flex-wrap: wrap;
+      /* Adapts to smaller screens */
     }
+
+    .newsletter-form input[type="email"] {
+      flex: 1;
+      min-width: 280px;
+      padding: 15px 25px;
+      border: 2px solid #eee;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .newsletter-form input[type="email"]:focus {
+      border-color: #b59d5c;
+      /* Golden border on focus */
+      box-shadow: 0 0 0 4px rgba(181, 157, 92, 0.1);
+    }
+
     .newsletter-form button {
-        width: 100%; /* Full width button on mobile */
-        justify-content: center;
+      background: #b59d5c;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
     }
-}
+
+    .newsletter-form button:hover {
+      background: #1a1a1a;
+      /* Turns black on hover for contrast */
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 600px) {
+      .newsletter-container {
+        padding: 30px 20px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form button {
+        width: 100%;
+        /* Full width button on mobile */
+        justify-content: center;
+      }
+    }
   </style>
   <link rel="stylesheet" href="frontend/css/recommendations.css" />
 
-    
-    <!-- Original Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="frontend/css/style.css"/>
-    <link rel="stylesheet" href="frontend/css/chatbot.css">
-    <link rel="stylesheet" href="index.css">
-    
-  </head>
-  <body>
-    <div id="cursor-highlight" aria-hidden="true"></div>
 
-    <div id="scrollProgress"></div>
-    <div id="navbar"></div>
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="hero-dot"></span>
-            <span>Your Gateway to Open Source</span>
-          </div>
+  <!-- Original Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+
+</head>
 
 <body>
   <div id="cursor-highlight" aria-hidden="true"></div>
+
+  <div id="scrollProgress"></div>
   <div id="navbar"></div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-dot"></span>
+          <span>Your Gateway to Open Source</span>
+        </div>
+
+        <body>
+          <div id="cursor-highlight" aria-hidden="true"></div>
+          <div id="navbar"></div>
           <h1>
             Navigate Your<br>
             <span class="gradient-text">Open Source Odyssey</span>
           </h1>
 
           <p class="hero-subtitle">
-            Discover timeless wisdom for open source mastery. From your first commit to maintainer status, chart your course with proven guides, legendary programs, and a community that supports your journey.
+            Discover timeless wisdom for open source mastery. From your first commit to maintainer status, chart your
+            course with proven guides, legendary programs, and a community that supports your journey.
           </p>
 
           <div class="hero-cta">
@@ -566,45 +650,46 @@ body { background-color: var(--bg-color); color: var(--text-main); }
               <span>Real Programs</span>
             </div>
           </div>
-        </div>
+      </div>
 
-        <div class="hero-visual">
-          <div class="compass-container">
-            <div class="compass-main">
-              <div class="compass-ring compass-ring-1"></div>
-              <div class="compass-ring compass-ring-2"></div>
-              <div class="compass-center">
-                <i class="fas fa-compass"></i>
-              </div>
-              <div class="compass-needle"></div>
+      <div class="hero-visual">
+        <div class="compass-container">
+          <div class="compass-main">
+            <div class="compass-ring compass-ring-1"></div>
+            <div class="compass-ring compass-ring-2"></div>
+            <div class="compass-center">
+              <i class="fas fa-compass"></i>
             </div>
+            <div class="compass-needle"></div>
+          </div>
 
-            <div class="floating-card floating-card-1">
-              <i class="fas fa-list-check"></i>
-              <span>Good First Issues</span>
-            </div>
+          <div class="floating-card floating-card-1">
+            <i class="fas fa-list-check"></i>
+            <span>Good First Issues</span>
+          </div>
 
-            <div class="floating-card floating-card-2">
-              <i class="fas fa-people-group"></i>
-              <span>Community-First</span>
-            </div>
+          <div class="floating-card floating-card-2">
+            <i class="fas fa-people-group"></i>
+            <span>Community-First</span>
+          </div>
 
-            <div class="floating-card floating-card-3">
-              <i class="fas fa-award"></i>
-              <span>Programs Hub</span>
-            </div>
+          <div class="floating-card floating-card-3">
+            <i class="fas fa-award"></i>
+            <span>Programs Hub</span>
           </div>
         </div>
       </div>
-    </section>
-    <section id="opensource-video" style="padding: 60px 20px; text-align: center;">
-      <span class="programs-eyebrow" style="display: block; margin-bottom: 10px; color: #ffca28; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
-        Start Your Journey
-      </span>
-      <h3>🎥 Video for Beginners</h3>
-      <p style="margin-bottom: 30px;">Learn the workflow: Fork, Clone, Commit, and Push.</p>
-    
-      <div class="video-thumbnail-container" style="
+    </div>
+  </section>
+  <section id="opensource-video" style="padding: 60px 20px; text-align: center;">
+    <span class="programs-eyebrow"
+      style="display: block; margin-bottom: 10px; color: #ffca28; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+      Start Your Journey
+    </span>
+    <h3>🎥 Video for Beginners</h3>
+    <p style="margin-bottom: 30px;">Learn the workflow: Fork, Clone, Commit, and Push.</p>
+
+    <div class="video-thumbnail-container" style="
         max-width: 900px;
         margin: 30px auto;
         position: relative;
@@ -616,12 +701,11 @@ body { background-color: var(--bg-color); color: var(--text-main); }
     transition: transform 0.3s ease;
     " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
 
-    <a href="https://www.youtube.com/watch?v=3dGzOWWb0Eo" target="_blank" style="text-decoration: none;">
-      <img src="https://img.youtube.com/vi/3dGzOWWb0Eo/maxresdefault.jpg" 
-           alt="Open Source Tutorial Thumbnail" 
-           style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      <a href="https://www.youtube.com/watch?v=3dGzOWWb0Eo" target="_blank" style="text-decoration: none;">
+        <img src="https://img.youtube.com/vi/3dGzOWWb0Eo/maxresdefault.jpg" alt="Open Source Tutorial Thumbnail"
+          style="width: 100%; height: 100%; object-fit: cover; display: block;">
 
-      <div style="
+        <div style="
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
@@ -631,7 +715,7 @@ body { background-color: var(--bg-color); color: var(--text-main); }
         align-items: center;
       ">
 
-        <div style="
+          <div style="
           width: 80px;
           height: 80px;
           background: rgba(255, 0, 0, 0.9);
@@ -641,71 +725,71 @@ body { background-color: var(--bg-color); color: var(--text-main); }
           align-items: center;
           box-shadow: 0 0 20px rgba(255,0,0,0.4);
         ">
-          <i class="fas fa-play" style="color: white; font-size: 30px; margin-left: 5px;"></i>
-      </div>
-      </div>
-    </a>
-  </div>
-</section>
+            <i class="fas fa-play" style="color: white; font-size: 30px; margin-left: 5px;"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
 
-<!-- Programs Section -->
+  <!-- Programs Section -->
 
-<section class="programs">
-  <h3>Open Source Programs</h3>
-  <p>
-    Explore ongoing and upcoming open-source programs with timelines,
-    prerequisites, and official resources.
-  </p>
+  <section class="programs">
+    <h3>Open Source Programs</h3>
+    <p>
+      Explore ongoing and upcoming open-source programs with timelines,
+      prerequisites, and official resources.
+    </p>
 
-  <div class="card-container">
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-code"></i></div>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-code"></i></div>
         <h4>Google Summer of Code</h4>
         <p>A global program focused on bringing new contributors into open source software development.</p>
         <span class="badge">Upcoming</span>
-    </div>
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-users"></i></div>
-          <h4>GSSoC</h4>
-          <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
-          <span class="badge">Upcoming</span>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-users"></i></div>
+        <h4>GSSoC</h4>
+        <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
+        <span class="badge">Upcoming</span>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-terminal"></i></div>
-          <h4>Hacktoberfest</h4>
-          <p>A month-long celebration of open-source software run by DigitalOcean.</p>
-          <span class="badge">Upcoming</span>
+        <h4>Hacktoberfest</h4>
+        <p>A month-long celebration of open-source software run by DigitalOcean.</p>
+        <span class="badge">Upcoming</span>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fas fa-snowflake"></i></div>
-          <h4>Social Winter of Code</h4>
-          <p>Beginner-focused winter open-source program.</p>
-          <span class="badge">Upcoming</span>
+        <h4>Social Winter of Code</h4>
+        <p>Beginner-focused winter open-source program.</p>
+        <span class="badge">Upcoming</span>
       </div>
       <div class="card">
         <div class="card-icon"><i class="fab fa-linux"></i></div>
         <h4>Linux Foundation</h4>
         <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
         <span class="badge">Upcoming</span>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-globe"></i></div>
+        <h4>Outreachy</h4>
+        <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
+        <span class="badge">Upcoming</span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-globe"></i></div>
-          <h4>Outreachy</h4>
-          <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
-          <span class="badge">Upcoming</span>
     </div>
-  </div>
-</div>
   </section>
 
 
-    <main>
-      <section id="why">
-        <h3>Why OpenSource Compass?</h3>
-        <p>
-          Timeless principles meet modern open source. Structured paths built from
-          decades of collective wisdom.
-        </p>
+  <main>
+    <section id="why">
+      <h3>Why OpenSource Compass?</h3>
+      <p>
+        Timeless principles meet modern open source. Structured paths built from
+        decades of collective wisdom.
+      </p>
 
       <div class="compass-timeline">
 
@@ -731,16 +815,16 @@ body { background-color: var(--bg-color); color: var(--text-main); }
               Learn alongside maintainers and contributors who’ve already walked
               the path you’re starting today.
             </p>
-          </div>        
-        </div>        
-        <div class="compass-step">          
-          <div class="compass-icon">            
-            <i class="fas fa-scroll"></i>          
-          </div>          
-          <div class="compass-content">            
-            <h4>Navigate Community & Culture</h4>            
-            <p>              
-              Understand codes of conduct, collaboration etiquette, and how              
+          </div>
+        </div>
+        <div class="compass-step">
+          <div class="compass-icon">
+            <i class="fas fa-scroll"></i>
+          </div>
+          <div class="compass-content">
+            <h4>Navigate Community & Culture</h4>
+            <p>
+              Understand codes of conduct, collaboration etiquette, and how
               contributors earn trust and respect.
             </p>
           </div>
@@ -789,38 +873,38 @@ body { background-color: var(--bg-color); color: var(--text-main); }
         <h3>Open Source Opportunities</h3>
         <p>Curated programs with historical success rates and maintainer insights.</p>
       </div>
-  
-        <div class="card-grid">
-          <div class="card fade-in">
-            <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
-            <p>India's premier winter program with strong mentorship culture.</p>
-            <span class="badge">Jan 2026</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
-            <p>Large-scale program with mentors, tasks, and community learning.</p>
-            <span class="badge">Summer 2026</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
-            <p>Global standard for student contributors and open source orgs.</p>
-            <span class="badge">Advanced</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-leaf"></i> Outreachy</h4>
-            <p>Paid internships supporting underrepresented people in tech.</p>
-            <span class="badge">Internship</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
-            <p>Work in pods on real projects with guided mentorship.</p>
-            <span class="badge">Spring</span>
-          </div>
-          <div class="card fade-in">
-            <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
-            <p>Paid mentorships across major Linux Foundation projects.</p>
-            <span class="badge">Professional</span>
-          </div>
+
+      <div class="card-grid">
+        <div class="card fade-in">
+          <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
+          <p>India's premier winter program with strong mentorship culture.</p>
+          <span class="badge">Jan 2026</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
+          <p>Large-scale program with mentors, tasks, and community learning.</p>
+          <span class="badge">Summer 2026</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
+          <p>Global standard for student contributors and open source orgs.</p>
+          <span class="badge">Advanced</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-leaf"></i> Outreachy</h4>
+          <p>Paid internships supporting underrepresented people in tech.</p>
+          <span class="badge">Internship</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
+          <p>Work in pods on real projects with guided mentorship.</p>
+          <span class="badge">Spring</span>
+        </div>
+        <div class="card fade-in">
+          <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
+          <p>Paid mentorships across major Linux Foundation projects.</p>
+          <span class="badge">Professional</span>
+        </div>
       </div>
     </section>
     <section class="newsletter">
@@ -837,18 +921,19 @@ body { background-color: var(--bg-color); color: var(--text-main); }
       </div>
     </section>
   </main>
-    <div id="footer"></div>
-    <div id="opensource-chatbot"></div>
+  <div id="footer"></div>
+  <div id="opensource-chatbot"></div>
 
-    <button id="scrollTopBtn" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
+  <button id="scrollTopBtn" title="Back to Top"><i class="fas fa-chevron-up"></i></button>
 
-    <script src="frontend/js/components.js"></script>
-    <script src="frontend/js/theme.js"></script>
-    <script src="frontend/js/home.js"></script>
-    <script src="frontend/js/chatbot.js"></script>
-    <script src="frontend/js/pwa.js"></script>
-    <script src="frontend/js/pr-generator.js"></script>
-    <script src="index.js"></script>
-   
+  <script src="frontend/js/components.js"></script>
+  <script src="frontend/js/theme.js"></script>
+  <script src="frontend/js/home.js"></script>
+  <script src="frontend/js/chatbot.js"></script>
+  <script src="frontend/js/pwa.js"></script>
+  <script src="frontend/js/pr-generator.js"></script>
+  <script src="index.js"></script>
+
 </body>
+
 </html>
