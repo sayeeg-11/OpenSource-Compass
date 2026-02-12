@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="OpenSource Compass" />
-    <meta property="og:description" content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
-    <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
-    <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
-    <meta property="og:type" content="website" />
-    <title>OpenSource Compass - Navigate Your Open Source Journey</title>
-    <meta
-      name="description"
-      content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="frontend/css/style.css" />
-    <link rel="stylesheet" href="frontend/css/home.css" />
-      <link rel="stylesheet" href="frontend/css/chatbot.css" />
-  </head>
-  <body>
-  <div id="cursor-highlight" aria-hidden="true"></div>
+<head>
+  <!-- ===== META ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="OpenSource Compass helps beginners navigate open source with structured guides, programs, and resources." />
 
-    <div id="scrollProgress"></div>
-    <div id="navbar"></div>
+  <meta property="og:title" content="OpenSource Compass" />
+  <meta property="og:description"
+    content="Beginner-friendly platform to learn and contribute to open source." />
+  <meta property="og:image"
+    content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
+  <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
+  <meta property="og:type" content="website" />
 
-    <section class="hero" aria-label="OpenSource Compass hero">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="hero-dot" aria-hidden="true"></span>
-            Your map to open source
-          </div>
+  <title>OpenSource Compass – Navigate Your Open Source Journey</title>
 
-    <link rel="stylesheet" href="frontend/css/pr-generator.css" />
+  <!-- ===== ICONS & FONTS ===== -->
+  <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- ===== STYLES ===== -->
+  <link rel="stylesheet" href="frontend/css/pr-generator.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="frontend/css/home.css" />
+  <link rel="stylesheet" href="frontend/css/chatbot.css" />
+  <link rel="stylesheet" href="frontend/css/recommendations.css" />
+  <link rel="stylesheet" href="index.css" />
+
+  <!-- ===== GOOGLE FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
     <style>
-      #scrollTopBtn {
-        display: flex !important;
-        /* Enables Flexbox centering */
-        justify-content: center !important;
-        /* Horizontally center */
-        align-items: center !important;
-        /* Vertically center */
-        padding: 0 !important;
-        /* Remove padding that offsets the icon */
-        line-height: 0 !important;
-        /* Reset line height for precise icons */
-      }
-         /* Container to center the entire grid */
+    #scrollTopBtn {
+      display: flex !important;
+      /* Enables Flexbox centering */
+      justify-content: center !important;
+      /* Horizontally center */
+      align-items: center !important;
+      /* Vertically center */
+      padding: 0 !important;
+      /* Remove padding that offsets the icon */
+      line-height: 0 !important;
+      /* Reset line height for precise icons */
+    }
+      /* Container to center the entire grid */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -462,196 +462,197 @@
         justify-content: center;
     }
 }
-  </style>
-  <link rel="stylesheet" href="frontend/css/recommendations.css" />
-
+  </style>  
 </head>
-    
-    <!-- Original Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="frontend/css/style.css"/>
-    <link rel="stylesheet" href="frontend/css/chatbot.css">
-    <link rel="stylesheet" href="index.css">
-    
-  </head>
-  <body>
-    <div id="navbar"></div>
+<body>
+  <a href="#main" class="skip-to-main">Skip to main content</a>
+  <div id="cursor-highlight" aria-hidden="true"></div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="hero-dot"></span>
-            <span>Your Gateway to Open Source</span>
-          </div>
+    <div id="scrollProgress"></div>
+    <header>
+      <div id="navbar"></div>
+    </header>
+    <main id="main">
 
-          <h1>
-            Navigate Your<br>
-            <span class="gradient-text">Open Source Odyssey</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            Discover timeless wisdom for open source mastery. From your first commit to maintainer status, chart your course with proven guides, legendary programs, and a community that supports your journey.
-          </p>
-
-          <div class="hero-cta">
-            <a href="#programs" class="btn-primary">
-              <i class="fas fa-rocket"></i>
-              <span>Launch Journey</span>
-            </a>
-            <a href="frontend/pages/guides.html" class="btn-secondary">
-              <i class="fas fa-book-open"></i>
-              <span>Browse Guides</span>
-            </a>
-          </div>
-
-          <div class="hero-features">
-            <div class="hero-feature">
-              <i class="fas fa-seedling"></i>
-              <span>Beginner-friendly</span>
+      <!-- HERO SECTION -->
+      <section class="hero" aria-label="OpenSource Compass hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-eyebrow">
+              <span class="hero-dot" aria-hidden="true"></span>
+              <span>Your Gateway to Open Source</span>
             </div>
-            <div class="hero-feature">
-              <i class="fas fa-compass"></i>
-              <span>Curated Paths</span>
-            </div>
-            <div class="hero-feature">
-              <i class="fas fa-code-branch"></i>
-              <span>Real Programs</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="hero-visual">
-          <div class="compass-container">
-            <div class="compass-main">
-              <div class="compass-ring compass-ring-1"></div>
-              <div class="compass-ring compass-ring-2"></div>
-              <div class="compass-center">
-                <i class="fas fa-compass"></i>
+            <h1>
+              Navigate Your<br>
+              <span class="gradient-text">Open Source Odyssey</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Discover timeless wisdom for open source mastery. From your first commit to maintainer status, chart your course with proven guides, legendary programs, and a community that supports your journey.
+            </p>
+
+            <div class="hero-cta">
+              <a href="#programs" class="btn-primary">
+                <i class="fas fa-rocket" aria-hidden="true"></i>
+                <span>Launch Journey</span>
+              </a>
+              <a href="frontend/pages/guides.html" class="btn-secondary">
+                <i class="fas fa-book-open" aria-hidden="true"></i>
+                <span>Browse Guides</span>
+              </a>
+            </div>
+
+            <div class="hero-features">
+              <div class="hero-feature">
+                <i class="fas fa-seedling" aria-hidden="true"></i>
+                <span>Beginner-friendly</span>
               </div>
-              <div class="compass-needle"></div>
+              <div class="hero-feature">
+                <i class="fas fa-compass" aria-hidden="true"></i>
+                <span>Curated Paths</span>
+              </div>
+              <div class="hero-feature">
+                <i class="fas fa-code-branch" aria-hidden="true"></i>
+                <span>Real Programs</span>
+              </div>
             </div>
+          </div>
 
-            <div class="floating-card floating-card-1">
-              <i class="fas fa-list-check"></i>
-              <span>Good First Issues</span>
-            </div>
+          <div class="hero-visual">
+            <div class="compass-container">
+              <div class="compass-main">
+                <div class="compass-ring compass-ring-1"></div>
+                <div class="compass-ring compass-ring-2"></div>
+                <div class="compass-center">
+                  <i class="fas fa-compass" aria-hidden="true"></i>
+                </div>
+                <div class="compass-needle"></div>
+              </div>
 
-            <div class="floating-card floating-card-2">
-              <i class="fas fa-people-group"></i>
-              <span>Community-First</span>
-            </div>
+              <div class="floating-card floating-card-1">
+                <i class="fas fa-list-check" aria-hidden="true"></i>
+                <span>Good First Issues</span>
+              </div>
 
-            <div class="floating-card floating-card-3">
-              <i class="fas fa-award"></i>
-              <span>Programs Hub</span>
+              <div class="floating-card floating-card-2">
+                <i class="fas fa-people-group" aria-hidden="true"></i>
+                <span>Community-First</span>
+              </div>
+
+              <div class="floating-card floating-card-3">
+                <i class="fas fa-award" aria-hidden="true"></i>
+                <span>Programs Hub</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- VIDEO SECTION -->
-    <section id="opensource-video" style="padding: 80px 6%; text-align: center; background: var(--warm-cream); position: relative;">
-      <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="margin-bottom: 50px;">
-          <span style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--secondary-gold); margin-bottom: 16px;">Learning Resources</span>
-          <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--deep-navy); margin-bottom: 20px; letter-spacing: -0.02em;">Start Your First Contribution</h2>
-          <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.8;">Watch this comprehensive guide for beginners to learn the essentials of making your first open source contribution.</p>
-        </div>
-        
-        <div style="max-width: 900px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(27, 38, 59, 0.15); border: 3px solid rgba(212, 175, 55, 0.2);">
-          <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-            <iframe
-              src="https://www.youtube.com/embed/3dGzOWWb0Eo"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-              title="Open Source Contribution for Beginners"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+
+      <!-- VIDEO SECTION -->
+      <section id="opensource-video" style="padding: 80px 6%; text-align: center; background: var(--warm-cream); position: relative;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <div style="margin-bottom: 50px;">
+            <span style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--secondary-gold); margin-bottom: 16px;">Learning Resources</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--deep-navy); margin-bottom: 20px; letter-spacing: -0.02em;">Start Your First Contribution</h2>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.8;">Watch this comprehensive guide for beginners to learn the essentials of making your first open source contribution.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS SECTION -->
-    <section class="stats-section reveal">
-      <div class="stats-container">
-        <div class="stats-header">
-          <span class="stats-eyebrow">Impactful Contributions</span>
-          <h2>Open Source Milestones</h2>
-          <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-rocket"></i>
+          
+          <div style="max-width: 900px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(27, 38, 59, 0.15); border: 3px solid rgba(212, 175, 55, 0.2);">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+              <iframe
+                src="https://www.youtube.com/embed/3dGzOWWb0Eo"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                title="Open Source Contribution for Beginners"
+                frameborder="0"
+                sandbox="allow-scripts allow-same-origin allow-presentation"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
             </div>
-            <div class="stat-number" data-target="50000">0</div>
-            <div class="stat-label">First Contributions</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-layer-group"></i>
-            </div>
-            <div class="stat-number" data-target="200">0</div>
-            <div class="stat-label">Programs Tracked</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="stat-number" data-target="10000">0</div>
-            <div class="stat-label">Active Mentors</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-award"></i>
-            </div>
-            <div class="stat-number" data-target="5">0</div>
-            <div class="stat-label">Years Track Record</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <button class="submit-btn" type="submit" id="submitBtn">
-        <span class="btn-text">Submit Registration</span>
-        <span class="btn-loader"></span>
-      </button>
+      <!-- STATS SECTION -->
+      <section class="stats-section reveal">
+        <div class="stats-container">
+          <div class="stats-header">
+            <span class="stats-eyebrow">Impactful Contributions</span>
+            <h2>Open Source Milestones</h2>
+            <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
+          </div>
 
-      <p class="status" id="statusMsg"></p>
-    </form>
-  </div>
-</div>
-<!-- Programs Section -->
-main
-<section class="programs">
-  <h3>Open Source Programs</h3>
-  <p>
-    Explore ongoing and upcoming open-source programs with timelines,
-    prerequisites, and official resources.
-  </p>
+          <div class="stats-grid">
+            <div class="stat-card" role="group" aria-labelledby="stat1-label">
+              <div class="stat-icon">
+                <i class="fas fa-rocket" aria-hidden="true"></i>
+              </div>
+              <div class="stat-number" data-target="50000">
+                <span aria-live="polite">0</span>
+              </div>
+              <div class="stat-label" id="stat1-label">First Contributions</div>
+            </div>
 
-  <div class="card-container">
-    <div class="card">
-      <h4>Social Winter of Code</h4>
-      <p>Beginner-focused winter open-source program.</p>
-      <span class="badge">Upcoming</span>
-    </div>
-  </div>
-</section>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-layer-group" aria-hidden="true"></i>
+              </div>
+              <div class="stat-number" data-target="200">
+                <span aria-live="polite">0</span>
+              </div>
+              <div class="stat-label">Programs Tracked</div>
+            </div>
 
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-users" aria-hidden="true"></i>
+              </div>
+              <div class="stat-number" data-target="10000">
+                <span aria-live="polite">0</span>
+              </div>
+              <div class="stat-label">Active Mentors</div>
+            </div>
 
-    <main>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-award" aria-hidden="true"></i>
+              </div>
+              <div class="stat-number" data-target="5">
+                <span aria-live="polite">0</span>
+              </div>
+              <div class="stat-label">Years Track Record</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="submit-btn" type="button" id="submitBtn">
+          <span class="btn-text">Submit Registration</span>
+          <span class="btn-loader"></span>
+        </button>
+
+        <p class="status" id="statusMsg" aria-live="polite"></p>
+      </section>
+
+  <!-- Programs Section -->
+      <section class="programs">
+        <h3>Open Source Programs</h3>
+        <p>
+          Explore ongoing and upcoming open-source programs with timelines,
+          prerequisites, and official resources.
+        </p>
+
+        <div class="card-container">
+          <div class="card">
+            <h4>Social Winter of Code</h4>
+            <p>Beginner-focused winter open-source program.</p>
+            <span class="badge">Upcoming</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY SECTION -->
       <section id="why">
         <h3>Why OpenSource Compass?</h3>
         <p>
@@ -659,152 +660,138 @@ main
           decades of collective wisdom.
         </p>
 
-      <div class="compass-timeline">
+        <div class="compass-timeline">
 
-        <div class="compass-step">
-          <div class="compass-icon">
-            <i class="fas fa-seedling"></i>
+          <div class="compass-step">
+            <div class="compass-icon">
+              <i class="fas fa-seedling" aria-hidden="true"></i>
+            </div>
+            <div class="compass-content">
+              <h4>Start with Strong Foundations</h4>
+              <p>
+                Learn the timeless principles that successful open-source projects
+                are built upon — long before your first pull request.
+              </p>
+            </div>
           </div>
-          <div class="compass-content">
-            <h4>Start with Strong Foundations</h4>
+
+          <div class="compass-step">
+            <div class="compass-icon">
+              <i class="fas fa-users" aria-hidden="true"></i>
+            </div>
+            <div class="compass-content">
+              <h4>Grow with Mentorship</h4>
+              <p>
+                Learn alongside maintainers and contributors who’ve already walked
+                the path you’re starting today.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- PROGRAMS SECTION -->
+      <section class="programs-section reveal" id="programs">
+        <div class="programs-container">
+          <div class="programs-header">
+            <span class="programs-eyebrow">Legendary Programs</span>
+            <h2>Open Source Opportunities</h2>
             <p>
-              Learn the timeless principles that successful open-source projects
-              are built upon — long before your first pull request.
+              Curated programs with historical success rates and maintainer insights 
+              to accelerate your journey.
             </p>
           </div>
-        </div>
-        <div class="compass-step">
-          <div class="compass-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <div class="compass-content">
-            <h4>Grow with Mentorship</h4>
-            <p>
-              Learn alongside maintainers and contributors who’ve already walked
-              the path you’re starting today.
-            </p>
-          </div>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
-    <div class="card-container">
-swoc-registration-page
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
-    </section>
 
-    <!-- PROGRAMS SECTION -->
-    <section class="programs-section reveal" id="programs">
-      <div class="programs-container">
-        <div class="programs-header">
-          <span class="programs-eyebrow">Legendary Programs</span>
-          <h2>Open Source Opportunities</h2>
-          <p>Curated programs with historical success rates and maintainer insights to accelerate your journey.</p>
-        </div>
+          <div class="programs-grid">
 
-        <div class="programs-grid">
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-snowflake program-icon"></i>
+            <div class="program-card">
+              <div class="program-icon-wrapper">
+                <i class="fas fa-snowflake program-icon" aria-hidden="true"></i>
+              </div>
+              <h3>Social Winter of Code</h3>
+              <p>India's premier winter program with strong mentorship culture.</p>
+              <span class="program-badge">Jan 2026</span>
             </div>
-            <h3>Social Winter of Code</h3>
-            <p>India's premier winter program with strong mentorship culture and beginner-friendly projects.</p>
-            <span class="program-badge">Jan 2026</span>
-          </div>
 
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-sun program-icon"></i>
+            <div class="program-card">
+              <div class="program-icon-wrapper">
+                <i class="fas fa-sun program-icon" aria-hidden="true"></i>
+              </div>
+              <h3>GirlScript Summer of Code</h3>
+              <p>Large-scale program with mentors and structured contribution paths.</p>
+              <span class="program-badge">Summer 2026</span>
             </div>
-            <h3>GirlScript Summer of Code</h3>
-            <p>Large-scale program with mentors, tasks, and community learning opportunities.</p>
-            <span class="program-badge">Summer 2026</span>
-          </div>
 
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fab fa-google program-icon"></i>
+            <div class="program-card">
+              <div class="program-icon-wrapper">
+                <i class="fab fa-google program-icon" aria-hidden="true"></i>
+              </div>
+              <h3>Google Summer of Code</h3>
+              <p>Global standard for student contributors and open source orgs.</p>
+              <span class="program-badge">Advanced</span>
             </div>
-            <h3>Google Summer of Code</h3>
-            <p>Global standard for student contributors and open source organizations worldwide.</p>
-            <span class="program-badge">Advanced</span>
-          </div>
 
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-leaf program-icon"></i>
-            </div>
-            <h3>Outreachy</h3>
-            <p>Paid internships supporting underrepresented people in tech and open source.</p>
-            <span class="program-badge">Internship</span>
-          </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-mountain program-icon"></i>
-            </div>
-            <h3>MLH Fellowship</h3>
-            <p>Work in pods on real projects with guided mentorship and industry connections.</p>
-            <span class="program-badge">Spring 2026</span>
-          </div>
-
-          <div class="program-card">
-            <div class="program-icon-wrapper">
-              <i class="fab fa-linux program-icon"></i>
-            </div>
-            <h3>Linux Foundation Mentorship</h3>
-            <p>Paid mentorships across major Linux Foundation projects and initiatives.</p>
-            <span class="program-badge">Professional</span>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- NEWSLETTER SECTION -->
-    <section class="newsletter-section reveal">
-      <div class="newsletter-container">
-        <h2>Stay Ahead of Open Source</h2>
-        <p>Weekly dispatches with program deadlines, AMAs, contribution strategies, and insider tips delivered to your inbox.</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address..." required />
-          <button type="submit">
-            <i class="fas fa-paper-plane"></i>
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </section>
 
-    <div id="footer"></div>
+      <!-- NEWSLETTER SECTION -->
+      <section class="newsletter-section reveal">
+        <div class="newsletter-container">
+          <h2>Stay Ahead of Open Source</h2>
+          <p>
+            Weekly dispatches with program deadlines, AMAs, and contribution tips.
+          </p>
 
-    <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
-      <i class="fas fa-chevron-up"></i>
+          <form class="newsletter-form">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+
+            <button type="submit">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+    <footer>
+      <div id="footer"></div>
+    </footer>
+
+    
+
+    
+
+    <button id="scrollTopBtn"
+        title="Back to Top"
+        aria-label="Back to Top"
+        aria-hidden="true">
+      <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
+    <!-- OpenSource Guide Chatbot Mount -->
+    <div id="opensource-chatbot"></div>
+
+    <!-- Scripts -->
     <script src="frontend/js/components.js"></script>
     <script src="frontend/js/theme.js"></script>
+    <script src="frontend/js/home.js"></script>
     <script src="frontend/js/chatbot.js"></script>
+    <script src="frontend/js/pwa.js"></script>
+    <script src="frontend/js/pr-generator.js"></script>
     <script src="index.js"></script>
 
-<script src="frontend/js/components.js"></script>
-<script src="frontend/js/theme.js"></script>
-<script src="frontend/js/home.js"></script>
-
-<!-- OpenSource Guide Chatbot Mount -->
-<div id="opensource-chatbot"></div>
-
-<!-- OpenSource Guide Chatbot -->
-<script src="frontend/js/chatbot.js"></script>
-
-
-<script src="frontend/js/pwa.js"></script>
-<script src="frontend/js/pr-generator.js"></script>
-</body>
-</html>
-main
-    
   </body>
 </html>
+

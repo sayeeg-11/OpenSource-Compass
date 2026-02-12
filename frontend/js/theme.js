@@ -7,8 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyTheme = (isDark) => {
         document.body.classList.toggle('dark-mode', isDark);
         updateThemeIcon(isDark);
+
+        const toggleBtn = document.getElementById('themeToggle');
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+            toggleBtn.setAttribute(
+                'aria-label',
+                isDark ? 'Switch to light mode' : 'Switch to dark mode'
+            );
+        }
+
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     };
+
 
     // Load saved theme
     const savedTheme = localStorage.getItem('theme');
@@ -25,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keyboard shortcut: Press "D"
     document.addEventListener('keydown', (e) => {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
         if (e.key.toLowerCase() !== 'd') return;
 
         const isDark = !document.body.classList.contains('dark-mode');
@@ -40,8 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-links a').forEach(link => {
             const linkPath = link.getAttribute('href').split('/').pop();
-            link.classList.toggle('active', linkPath === currentPath);
+            const isActive = linkPath === currentPath;
+
+            link.classList.toggle('active', isActive);
+
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
         });
+
     };
 
     highlightActiveLink();
@@ -54,7 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (scrollTopBtn) {
         window.addEventListener('scroll', () => {
-            scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = 'flex';
+                scrollTopBtn.removeAttribute('aria-hidden');
+            } else {
+                scrollTopBtn.style.display = 'none';
+                scrollTopBtn.setAttribute('aria-hidden', 'true');
+            }
+
         });
 
         scrollTopBtn.addEventListener('click', () => {

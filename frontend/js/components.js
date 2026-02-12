@@ -21,34 +21,35 @@ function getPath(path) {
 }
 
 const navbarHTML = `
-<header>
-    <div class="navbar-container">
-        <h1>
-           <i class="fas fa-compass" aria-hidden="true" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
-OpenSource Compass
+  <header>
+    <nav class="navbar-container" role="navigation" aria-label="Primary Navigation">
+            <a href="${getPath('index.html')}" class="brand-title">
+              <i class="fas fa-compass" aria-hidden="true" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
+              OpenSource Compass
+            </div>
 
-        </h1>
-        <div class="nav-links">
-            <a href="${getPath('index.html')}">Home</a>
-            <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
-            <a href="${getPath('frontend/pages/programs.html')}">Programs</a>
-            <a href="${getPath('frontend/pages/Resources.html')}">Resources</a>
-            <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
-            <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
-            <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
-            <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
-           <button
-  id="themeToggle"
-  aria-label="Toggle dark mode"
-  title="Toggle dark mode"
-  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
->
-  <i class="fas fa-moon" aria-hidden="true"></i>
-</button>
+            <div class="nav-links">
+                <a href="${getPath('index.html')}">Home</a>
+                <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
+                <a href="${getPath('frontend/pages/programs.html')}">Programs</a>
+                <a href="${getPath('frontend/pages/Resources.html')}">Resources</a>
+                <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
+                <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
+                <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
+                <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
+              <button
+                  id="themeToggle"
+                  aria-label="Toggle dark mode"
+                  aria-pressed="false"
+                  title="Toggle dark mode"
+                  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+                  >
+                  <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+      </nav>
+  </header> 
 
-        </div>
-    </div>
-</header>
 `;
 
 const footerHTML = `
@@ -57,7 +58,7 @@ const footerHTML = `
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-mark" aria-hidden="true">
-          <i class="fas fa-compass"></i>
+          <i class="fas fa-compass" aria-hidden="true"></i>
         </div>
         <div>
           <div class="footer-title">OpenSource Compass</div>
@@ -119,22 +120,22 @@ const footerHTML = `
 
     <div class="footer-bottom">
       <div class="footer-badges" aria-label="Footer highlights">
-        <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
-        <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
-        <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
+        <span class="footer-pill"><i class="fas fa-shield" aria-hidden="true"></i> Community-safe</span>
+        <span class="footer-pill"><i class="fas fa-bolt" aria-hidden="true"></i> Beginner-ready</span>
+        <span class="footer-pill"><i class="fas fa-code-branch" aria-hidden="true"></i> Open source</span>
         <button id="pwa-install-btn" class="footer-pill" style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
-            <i class="fas fa-download"></i> Install App
+            <i class="fas fa-download" aria-hidden="true"></i> Install App
         </button>
       </div>
 
       <div class="footer-meta">
-        <span>© <span id="footer-year"></span> OpenSource Compass</span>
+        <span>© <span id="footer-year" aria-live="polite"></span> OpenSource Compass</span>
         <span class="footer-sep" aria-hidden="true">•</span>
         <a class="footer-inline"
            href="https://github.com/sayeeg-11/OpenSource-Compass"
            target="_blank"
            rel="noopener noreferrer">
-          <i class="fab fa-github"></i> Star on GitHub
+          <i class="fab fa-github" aria-hidden="true"></i> Star on GitHub
         </a>
       </div>
     </div>

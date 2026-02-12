@@ -5,7 +5,7 @@ const ASSETS_TO_CACHE = [
     './',
     './index.html',
     './offline.html',
-    './frontend/css/style.css',
+    './css/style.css',
     './frontend/css/home.css',
     './frontend/js/components.js',
     './frontend/js/theme.js',
