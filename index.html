@@ -4,15 +4,17 @@
   <!-- ===== META ===== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <meta name="description"
-    content="OpenSource Compass helps beginners navigate open source with structured guides, programs, and resources." />
+    content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources." />
 
   <meta property="og:title" content="OpenSource Compass" />
   <meta property="og:description"
     content="Beginner-friendly platform to learn and contribute to open source." />
   <meta property="og:image"
     content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
-  <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
+  <meta property="og:url"
+    content="https://sayeeg-11.github.io/OpenSource-Compass" />
   <meta property="og:type" content="website" />
 
   <title>OpenSource Compass – Navigate Your Open Source Journey</title>
@@ -36,6 +38,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700&display=swap"
     rel="stylesheet" />
+</head>
+
 
     <style>
     #scrollTopBtn {
@@ -51,6 +55,70 @@
       /* Reset line height for precise icons */
     }
       /* Container to center the entire grid */
+      /* --- THEME VARIABLES --- */
+:root {
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --primary-gold: #b59d5c;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --newsletter-bg: #fcfbf7;        /* Light cream */
+  --newsletter-card: #ffffff;      /* Pure white */
+  --newsletter-text-h: #1a1a1a;    /* Deep navy/black */
+  --newsletter-text-p: #555555;    /* Gray */
+  --newsletter-border: #e2d1a8;    /* Golden beige */
+  --newsletter-btn: #b59d5c;       /* Primary gold */
+  --newsletter-input-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #26448f;
+  --section-bg: #1a1a1a;
+  --text-main: #f0f0f0;
+  --text-secondary: #ccc;
+  --card-bg: #1e1e1e;
+  --border-color: #444;
+  --shadow: rgba(0, 0, 0, 0.5);
+  /* Dark Mode Overrides */
+  --newsletter-bg: #121212;        /* Dark background */
+  --newsletter-card: #1e1e1e;      /* Slightly lighter dark card */
+  --newsletter-text-h: #f0f0f0;    /* Off-white */
+  --newsletter-text-p: #b0b0b0;    /* Light gray */
+  --newsletter-border: #333333;    /* Subtle dark border */
+  --newsletter-input-bg: #2d2d2d;  /* Dark input field */
+}
+
+/* --- APPLYING VARIABLES --- */
+body { background-color: var(--bg-color); color: var(--text-main); }
+#why, .newsletter, .stats-section { background-color: var(--section-bg); }
+
+.card, .stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.card h4, .stat-card h2, #why h3 { color: var(--text-main); }
+.card p, .stat-card p, #why > p { color: var(--text-secondary); }
+
+/* Ensure icons remain gold in both modes */
+.card-icon, .stat-icon, .program-icon { color: var(--primary-gold); }
+      #scrollTopBtn {
+        display: flex !important;
+        /* Enables Flexbox centering */
+        justify-content: center !important;
+        /* Horizontally center */
+        align-items: center !important;
+        /* Vertically center */
+        padding: 0 !important;
+        /* Remove padding that offsets the icon */
+        line-height: 0 !important;
+        /* Reset line height for precise icons */
+      }
+         /* Container to center the entire grid */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -462,25 +530,59 @@
         justify-content: center;
     }
 }
-  </style>  
+</style>
 </head>
+
 <body>
+
+  <!-- Skip Link for Accessibility -->
   <a href="#main" class="skip-to-main">Skip to main content</a>
+
   <div id="cursor-highlight" aria-hidden="true"></div>
+  <div id="scrollProgress"></div>
 
-    <div id="scrollProgress"></div>
-    <header>
-      <div id="navbar"></div>
-    </header>
-    <main id="main">
+  <header role="banner">
+    <div id="navbar"></div>
+  </header>
 
-      <!-- HERO SECTION -->
-      <section class="hero" aria-label="OpenSource Compass hero">
-        <div class="hero-container">
-          <div class="hero-content">
-            <div class="hero-eyebrow">
-              <span class="hero-dot" aria-hidden="true"></span>
-              <span>Your Gateway to Open Source</span>
+  <main id="main" role="main">
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-label="OpenSource Compass hero">
+      <div class="hero-container">
+        <div class="hero-content">
+
+          <div class="hero-eyebrow">
+            <span class="hero-dot" aria-hidden="true"></span>
+            <span>Your Gateway to Open Source</span>
+          </div>
+
+          <h1>
+            Navigate Your<br>
+            <span class="gradient-text">Open Source Odyssey</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Discover timeless wisdom for open source mastery. From your first commit to maintainer status, chart your course with proven guides, legendary programs, and a community that supports your journey.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#programs" class="btn-primary">
+              <i class="fas fa-rocket" aria-hidden="true"></i>
+              <span>Launch Journey</span>
+            </a>
+            <a href="frontend/pages/guides.html" class="btn-secondary">
+              <i class="fas fa-book-open" aria-hidden="true"></i>
+              <span>Browse Guides</span>
+            </a>
+          </div>
+
+          <div class="hero-features">
+            <div class="hero-feature">
+              <i class="fas fa-seedling" aria-hidden="true"></i>
+              <span>Beginner-friendly</span>
+            </div>
+
             </div>
 
             <h1>
@@ -769,14 +871,9 @@
       <div id="footer"></div>
     </footer>
 
-    
-
-    
-
     <button id="scrollTopBtn"
         title="Back to Top"
-        aria-label="Back to Top"
-        aria-hidden="true">
+        aria-label="Back to Top">
       <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 

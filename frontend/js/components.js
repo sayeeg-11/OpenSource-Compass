@@ -28,27 +28,33 @@ const navbarHTML = `
               OpenSource Compass
             </div>
 
-            <div class="nav-links">
-                <a href="${getPath('index.html')}">Home</a>
-                <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
-                <a href="${getPath('frontend/pages/programs.html')}">Programs</a>
-                <a href="${getPath('frontend/pages/Resources.html')}">Resources</a>
-                <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
-                <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
-                <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
-                <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
-              <button
-                  id="themeToggle"
-                  aria-label="Toggle dark mode"
-                  aria-pressed="false"
-                  title="Toggle dark mode"
-                  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
-                  >
-                  <i class="fas fa-moon" aria-hidden="true"></i>
-                </button>
-            </div>
-      </nav>
-  </header> 
+<button class="hamburger-menu" 
+        aria-label="Toggle navigation" 
+        aria-expanded="false">
+  <i class="fas fa-bars" aria-hidden="true"></i>
+</button>
+
+<div class="nav-links">
+    <a href="${getPath('index.html')}">Home</a>
+    <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
+    <a href="${getPath('frontend/pages/programs.html')}">Programs</a>
+    <a href="${getPath('frontend/pages/Resources.html')}">Resources</a>
+    <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
+    <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
+    <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
+    <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
+
+    <button
+        id="themeToggle"
+        aria-label="Toggle dark mode"
+        aria-pressed="false"
+        title="Toggle dark mode"
+        style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+    >
+        <i class="fas fa-moon" aria-hidden="true"></i>
+    </button>
+</div>
+
 
 `;
 
@@ -147,7 +153,26 @@ const footerHTML = `
 const navbarContainer = document.getElementById('navbar');
 const footerContainer = document.getElementById('footer');
 
-if (navbarContainer) navbarContainer.innerHTML = navbarHTML;
+if (navbarContainer) {
+  navbarContainer.innerHTML = navbarHTML;
+
+  // Hamburger Menu Logic
+  const hamburgerBtn = navbarContainer.querySelector('.hamburger-menu');
+  const navLinks = navbarContainer.querySelector('.nav-links');
+
+  if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isActive = navLinks.classList.toggle('active');
+      // Toggle icon between bars and times (X)
+      hamburgerBtn.innerHTML = isActive
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+
+      // Accessibility update
+      hamburgerBtn.setAttribute('aria-expanded', isActive);
+    });
+  }
+}
 if (footerContainer) {
   footerContainer.innerHTML = footerHTML;
   const yearEl = document.getElementById('footer-year');

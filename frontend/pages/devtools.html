@@ -208,6 +208,88 @@
         .active {
             animation: fadeIn 0.3s ease-out;
         }
+
+        /* Responsive Improvements */
+        .devtools-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #d4af37;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .tools-nav {
+                padding: 0 1rem;
+            }
+
+            .devtools-hamburger {
+                display: block;
+            }
+
+            .header-tabs {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: #1e293b;
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+                border-bottom: 2px solid #d4af37;
+                display: none;
+                z-index: 999;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .header-tabs.menu-active {
+                display: flex;
+                animation: slideDown 0.3s ease-out;
+            }
+
+            .tab-btn {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .tab-btn:hover,
+            .tab-btn.active {
+                background: rgba(212, 175, 55, 0.1);
+            }
+
+            .back-text {
+                display: none;
+            }
+
+            .tools-back {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                border-left: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tool-panel {
+                padding: 1rem;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -219,19 +301,25 @@
             <span>Compass DevTools</span>
         </div>
         <div class="nav-right">
-            <div class="header-tabs">
-                <button class="tab-btn active" onclick="switchTab('pr-gen')">
+            <button class="devtools-hamburger" id="toolsMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-tabs" id="toolsTabs">
+                <button class="tab-btn active" onclick="switchTab('pr-gen'); toggleToolsMenu()">
                     <i class="fas fa-magic"></i> PR Generator
                 </button>
-                <button class="tab-btn" onclick="switchTab('issue-validator')">
+                <button class="tab-btn" onclick="switchTab('issue-insights'); toggleToolsMenu()">
+                    <i class="fas fa-lightbulb"></i> Issue Insights
+                </button>
+                <button class="tab-btn" onclick="switchTab('issue-validator'); toggleToolsMenu()">
                     <i class="fas fa-check-double"></i> Issue Validator
                 </button>
-                <button class="tab-btn" onclick="switchTab('playground')">
+                <button class="tab-btn" onclick="switchTab('playground'); toggleToolsMenu()">
                     <i class="fas fa-terminal"></i> Git Playground
                 </button>
             </div>
             <a href="../../index.html" class="tools-back">
-                <i class="fas fa-arrow-left"></i> Back Home
+                <i class="fas fa-arrow-left"></i> <span class="back-text">Back Home</span>
             </a>
         </div>
     </nav>
@@ -289,6 +377,39 @@
             </div>
         </div>
 
+        <!-- ISSUE INSIGHTS PANEL -->
+        <div id="issue-insights" class="tool-panel">
+            <div class="pr-embedded-container">
+                <div class="pr-form-header">
+                    <h2>AI Issue Insights</h2>
+                    <p>Paste a GitHub Issue or PR link to get a clear summary and starting checklist.</p>
+                </div>
+
+                <form id="issueInsightsForm">
+                    <div class="pr-form-group">
+                        <label for="issueUrl">GitHub Issue or PR URL</label>
+                        <input type="url" id="issueUrl" placeholder="https://github.com/owner/repo/issues/123" required>
+                    </div>
+
+                    <button type="submit" id="insightsSubmitBtn" class="pr-submit-btn">
+                        <span class="btn-text">Analyze Issue 🚀</span>
+                        <div class="pr-loader"></div>
+                    </button>
+                </form>
+
+                <div id="insightsResultSection" class="pr-preview-section">
+                    <div class="pr-preview-header">
+                        <h3>Analysis Result</h3>
+                        <button id="insightsClearBtn" class="pr-copy-btn" type="button"
+                            onclick="document.getElementById('insightsResultSection').classList.remove('active')">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
+                    <div id="insightsResultContent" class="pr-preview-content"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- ISSUE VALIDATOR PANEL -->
         <div id="issue-validator" class="tool-panel">
             <div class="pr-embedded-container">
@@ -299,32 +420,43 @@
 
                 <form id="issueValidatorForm">
                     <div class="pr-form-group">
-                        <label for="issueRepo">Repository URL *</label>
-                        <input type="url" id="issueRepo" placeholder="e.g., https://github.com/user/project" required>
+                        <label for="validatorRepo">Repository URL *</label>
+                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project"
+                            required>
                     </div>
 
                     <div class="pr-form-group">
-                        <label for="issueTitle">Issue Title *</label>
-                        <input type="text" id="issueTitle" placeholder="Brief summary of the issue" required>
+                        <label for="validatorTitle">Issue Title *</label>
+                        <input type="text" id="validatorTitle" placeholder="Brief summary of the issue" required>
                     </div>
 
                     <div class="pr-form-group">
-                        <label for="issueDescription">Issue Description *</label>
-                        <textarea id="issueDescription" placeholder="Detailed description of the bug or feature request"
-                            required style="min-height: 150px;"></textarea>
+                        <label for="validatorDescription">Issue Description *</label>
+                        <textarea id="validatorDescription"
+                            placeholder="Detailed description of the bug or feature request" required
+                            style="min-height: 150px;"></textarea>
                     </div>
 
-                    <button type="submit" id="issueSubmitBtn" class="pr-submit-btn">
+                    <button type="submit" id="validatorSubmitBtn" class="pr-submit-btn">
                         <span class="btn-text">Check Issue 🔍</span>
                         <div class="pr-loader"></div>
                     </button>
                 </form>
 
-                <div id="issueResultSection" class="pr-preview-section">
+                <div id="validatorResultSection" class="pr-preview-section">
                     <div class="pr-preview-header">
                         <h3>Validation Report</h3>
+                        <button id="validatorClearBtn" class="pr-copy-btn" type="button"
+                            onclick="document.getElementById('validatorResultSection').classList.remove('active')">
+                            <i class="fas fa-times"></i> Close
+                        </button>
                     </div>
-                    <div id="issueResultContent" class="pr-preview-content"></div>
+                    <div id="validatorResultContent" class="pr-preview-content"></div>
+                    <div class="ai-disclaimer"
+                        style="margin-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center;">
+                        <i class="fas fa-robot"></i> Generated by AI. Please verify with the actual issue description
+                        and codebase.
+                    </div>
                 </div>
             </div>
         </div>
@@ -344,17 +476,36 @@
         function switchTab(tabId) {
             // Update Buttons
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(`switchTab('${tabId}')`));
             if (activeBtn) activeBtn.classList.add('active');
 
             // Update Panels
             document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
         }
+
+        function toggleToolsMenu() {
+            const tabs = document.getElementById('toolsTabs');
+            tabs.classList.toggle('menu-active');
+
+            // Toggle icon
+            const btnIcon = document.querySelector('#toolsMenuBtn i');
+            if (tabs.classList.contains('menu-active')) {
+                btnIcon.classList.remove('fa-bars');
+                btnIcon.classList.add('fa-times');
+            } else {
+                btnIcon.classList.remove('fa-times');
+                btnIcon.classList.add('fa-bars');
+            }
+        }
+
+        // Add event listener for hamburger button
+        document.getElementById('toolsMenuBtn').addEventListener('click', toggleToolsMenu);
     </script>
 
-    <script src="../js/pr-generator.js?v=${new Date().getTime()}"></script>
-    <script src="../js/issue-validator.js?v=${new Date().getTime()}"></script>
+    <script src="../js/pr-generator.js"></script>
+    <script src="../js/issue-insights.js"></script>
+    <script src="../js/issue-validator.js"></script>
 </body>
 
 </html>
