@@ -16,8 +16,10 @@
 </head>
 
 <body>
-    <div id="cursor-highlight" aria-hidden="true"></div>
-    <div id="navbar"></div>
+    <header>
+      <div id="navbar"></div>
+    </header>
+
 
     <!-- Hero Section -->
     <section class="stories-hero">
@@ -27,7 +29,7 @@
                 Community Achievements
             </div>
             <h1>
-                <i class="fas fa-chart-line"></i>
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
                 Success Stories
             </h1>
             <p>
@@ -59,10 +61,14 @@
     </main>
 
     <!-- Submit Story Modal -->
-    <div id="submitModal" class="modal">
+    <div id="submitModal" 
+     class="modal" 
+     role="dialog" 
+     aria-modal="true" 
+     aria-labelledby="submitModalTitle">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>
+                <h2 id="submitModalTitle">
                     <i class="fas fa-pen"></i>
                     Share Your Success Story To Community 
                 </h2>
@@ -112,7 +118,7 @@
                         Cancel
                     </button>
                     <button type="submit" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
                         Submit Story
                     </button>
                 </div>
@@ -139,15 +145,20 @@
                 <form id="commentForm" class="comment-form">
                     <textarea id="commentText" placeholder="Write a comment..." rows="3" required></textarea>
                     <button type="submit" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
                         Post Your Comment
                     </button>
                 </form>
             </div>
         </div>
     </div>
-     <div id="footer"></div>
-    <button id="scrollTopBtn" title="Back to Top" aria-label="Back to Top">
+    <footer>
+        <div id="footer"></div>
+    </footer>
+
+    <button id="scrollTopBtn"
+        title="Back to Top"
+        aria-label="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
    
