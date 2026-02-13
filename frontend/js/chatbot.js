@@ -90,13 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') sendMessage();
     });
 
+    function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
     function addMessage(text, sender) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}`;
-        msgDiv.textContent = text;
-        messagesContainer.appendChild(msgDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${sender}`;
+
+    // Message text
+    const messageText = document.createElement('div');
+    messageText.className = 'message-text';
+    messageText.textContent = text;
+
+    // Timestamp
+    const timestamp = document.createElement('div');
+    timestamp.className = 'timestamp';
+    timestamp.textContent = getCurrentTime();
+
+    msgDiv.appendChild(messageText);
+    msgDiv.appendChild(timestamp);
+
+    messagesContainer.appendChild(msgDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
 
     function getBotResponse(input) {
         input = input.toLowerCase();
