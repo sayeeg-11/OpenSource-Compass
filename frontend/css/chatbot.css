@@ -19,6 +19,53 @@ body.dark-mode {
     --chat-bot-msg-text: #fff;
 }
 
+.timestamp {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 4px;
+}
+
+.message.user .timestamp {
+    text-align: right;
+}
+
+.message.bot .timestamp {
+    text-align: left;
+}
+
+.typing-indicator {
+    font-size: 13px;
+    opacity: 0.7;
+    margin: 8px 12px;
+    font-style: italic;
+    color: #555;
+}
+
+.message-text code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.message-text pre {
+    background: #f4f4f4;
+    padding: 8px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.message-text ul {
+    margin: 5px 0;
+    padding-left: 18px;
+}
+
+.message-text a {
+    color: #1a73e8;
+    text-decoration: underline;
+}
+
+
 /* Floating Chat Button */
 .chat-widget-btn {
     position: fixed;
