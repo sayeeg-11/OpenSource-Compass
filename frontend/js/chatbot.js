@@ -17,10 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="close-btn">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-                Hello! I'm here to help you with your open source journey. Ask me anything!
-            </div>
-        </div>
+    <div class="message bot">
+        Hello! I'm here to help you with your open source journey. Ask me anything!
+    </div>
+</div>
+<div class="typing-indicator" id="typingIndicator" style="display: none;">
+    OpenSource Guide is typing...
+</div>
+
         <div class="chat-input-area">
             <input type="text" id="chatInput" placeholder="Type a message...">
             <button id="sendBtn">➤</button>
@@ -34,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('sendBtn');
     const chatInput = document.getElementById('chatInput');
     const messagesContainer = document.getElementById('chatMessages');
+    const typingIndicator = document.getElementById('typingIndicator');
+
 
     let intents = [];
 
@@ -79,10 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Process Bot Response
         // Simulate thinking time
-        setTimeout(() => {
-            const response = getBotResponse(text);
-            addMessage(response, 'bot');
-        }, 500);
+        // Show typing indicator
+typingIndicator.style.display = 'block';
+messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+// Simulate thinking time
+setTimeout(() => {
+    // Hide typing indicator before showing message
+    typingIndicator.style.display = 'none';
+
+    const response = getBotResponse(text);
+    addMessage(response, 'bot');
+}, 800);
+
     }
 
     sendBtn.addEventListener('click', sendMessage);
@@ -90,13 +105,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') sendMessage();
     });
 
+    function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
     function addMessage(text, sender) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}`;
-        msgDiv.textContent = text;
-        messagesContainer.appendChild(msgDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${sender}`;
+
+    // Message text
+    const messageText = document.createElement('div');
+    messageText.className = 'message-text';
+    messageText.textContent = text;
+
+    // Timestamp
+    const timestamp = document.createElement('div');
+    timestamp.className = 'timestamp';
+    timestamp.textContent = getCurrentTime();
+
+    msgDiv.appendChild(messageText);
+    msgDiv.appendChild(timestamp);
+
+    messagesContainer.appendChild(msgDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
 
     function getBotResponse(input) {
         input = input.toLowerCase();

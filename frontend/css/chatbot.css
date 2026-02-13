@@ -19,6 +19,29 @@ body.dark-mode {
     --chat-bot-msg-text: #fff;
 }
 
+.timestamp {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 4px;
+}
+
+.message.user .timestamp {
+    text-align: right;
+}
+
+.message.bot .timestamp {
+    text-align: left;
+}
+
+.typing-indicator {
+    font-size: 13px;
+    opacity: 0.7;
+    margin: 8px 12px;
+    font-style: italic;
+    color: #555;
+}
+
+
 /* Floating Chat Button */
 .chat-widget-btn {
     position: fixed;
