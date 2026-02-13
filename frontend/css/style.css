@@ -1691,7 +1691,8 @@ body.dark-mode .badge:active,
 ========================= */
 
 #opensource-chatbot {
-  position: fixed;
+  /* position: fixed; */
+  margin-top: 100px;
   bottom: 90px;
   /* stays above scroll button */
   right: 24px;

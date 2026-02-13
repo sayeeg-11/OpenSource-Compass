@@ -45,11 +45,13 @@ body.dark-mode {
 }
 
 /* 2. Chat Window Container */
+
 .chat-window {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     width: var(--chat-width);
+    max-height: 80vh;
     height: var(--chat-height);
     background-color: var(--chat-bg);
     border-radius: 12px;
@@ -57,12 +59,13 @@ body.dark-mode {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 999;
-    opacity: 0%;
+    z-index: 9999;
+    opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 
 .chat-window.active {
     opacity: 100%;
