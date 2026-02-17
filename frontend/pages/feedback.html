@@ -5,55 +5,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Feedback | OpenSource Compass</title>
 
-  <!-- Global styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feedback.css">
+
+  <style>
+    :root {
+      --primary-gold: #d4af37;
+      --deep-navy: #0a192f;
+      --text-main: #333;
+      --bg-cream: #fdfbf7;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+    }
+
+    /* --- Header Styling (Matches Resources.html) --- */
+    .feedback-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feedback-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--deep-navy);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* The Gold Underline Effect */
+    .feedback-header h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-gold);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .feedback-header p {
+      font-family: 'Inter', sans-serif;
+      color: #666;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* --- Form Container (Card Style) --- */
+    .feedback-container {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 4rem;
+    }
+
+    #feedbackForm {
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow like the cards */
+      width: 100%;
+      max-width: 600px;
+      border-top: 4px solid var(--primary-gold); /* Gold accent on top */
+    }
+
+    /* --- Input Styles --- */
+    label {
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 0.5rem;
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    label:first-child {
+      margin-top: 0;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: #fafafa;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* --- Button Styling (Matches Quiz Buttons) --- */
+    button[type="submit"] {
+      background-color: var(--deep-navy);
+      color: white; /* Changed to white for better contrast on navy */
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 2rem;
+      width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 10px rgba(10, 25, 47, 0.2);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      background-color: #1a2f4b; /* Slightly lighter navy on hover */
+      box-shadow: 0 6px 15px rgba(10, 25, 47, 0.3);
+    }
+
+    /* --- Success Message --- */
+    #successMessage {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #27ae60;
+      font-weight: 600;
+      display: none; /* Controlled by JS */
+      background: #e8f5e9;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+  </style>
 </head>
 
 <body>
 
-  <!-- 🔹 Shared Navbar (Injected by components.js) -->
   <div id="navbar"></div>
 
-  <!-- Page Header -->
-  <section class="feedback-header">
-    <h1>We’d Love Your Feedback</h1>
-    <p>Your feedback helps improve OpenSource Compass for everyone.</p>
-  </section>
+  <main>
+    <section class="feedback-header">
+      <h1>We’d Love Your Feedback</h1>
+      <p>Your feedback helps improve OpenSource Compass for everyone. Let us know how we can make your journey better.</p>
+    </section>
 
-  <!-- Feedback Form -->
-  <section class="feedback-container">
-    <form id="feedbackForm">
+    <section class="feedback-container">
+      <form id="feedbackForm">
 
-      <label for="name">Name (optional)</label>
-      <input id="name" type="text" placeholder="Your name">
+        <label for="name">Name <span style="font-weight:400; color:#999; font-size:0.85em">(optional)</span></label>
+        <input id="name" type="text" placeholder="John Doe">
 
-      <label for="email">Email (optional)</label>
-      <input id="email" type="email" placeholder="Your email">
+        <label for="email">Email <span style="font-weight:400; color:#999; font-size:0.85em">(optional)</span></label>
+        <input id="email" type="email" placeholder="john@example.com">
 
-      <label for="type">Feedback Type</label>
-      <select id="type" required>
-        <option value="">Select an option</option>
-        <option>Bug Report</option>
-        <option>Feature Request</option>
-        <option>UI / UX Feedback</option>
-        <option>Content Improvement</option>
-        <option>General Feedback</option>
-      </select>
+        <label for="type">Feedback Type</label>
+        <select id="type" required>
+          <option value="">Select an option...</option>
+          <option>Bug Report</option>
+          <option>Feature Request</option>
+          <option>UI / UX Feedback</option>
+          <option>Content Improvement</option>
+          <option>General Feedback</option>
+        </select>
 
-      <label for="message">Feedback Message *</label>
-      <textarea
-        id="message"
-        required
-        placeholder="Write your feedback here..."
-      ></textarea>
+        <label for="message">Feedback Message *</label>
+        <textarea
+          id="message"
+          required
+          placeholder="Tell us what you think..."
+        ></textarea>
 
-      <button type="submit">Submit Feedback</button>
+        <button type="submit">Submit Feedback <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
 
-      <p id="successMessage">Thank you! Your feedback has been submitted.</p>
+        <p id="successMessage"><i class="fas fa-check-circle"></i> Thank you! Your feedback has been submitted.</p>
 
-    </form>
-  </section>
+      </form>
+    </section>
+  </main>
+
+    <div id="footer"></div>
+
+
 
   <!-- 🔹 Shared Components + Page Logic -->
   <script src="../js/components.js"></script>

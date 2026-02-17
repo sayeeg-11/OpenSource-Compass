@@ -19,9 +19,176 @@
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
 
   <style>
+    :root {
+      --primary-gold: #d4af37;
+      --text-dark: #333;
+      --text-light: #f4f4f4;
+      --bg-card: #ffffff;
+      --transition-speed: 0.3s;
+      --primary-gold: #d4af37;
+    --gold-glow: rgba(212, 175, 55, 0.3);
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =========================
+       NAVIGATION & LAYOUT
+    ========================= */
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      transition: background 0.3s ease;
+    }
+
+ 
+
+    main {
+      padding: 4rem 10%;
+      text-align: center;
+    }
+
+    main h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* =========================
+       FAQ ACCORDION 
+    ========================= */
+    
+    .faq-container {
+      max-width: 850px;
+      margin: 3rem auto;
+      text-align: left;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    /* Hover State */
+    .faq-item:hover {
+      border-color: var(--primary-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: background 0.2s ease;
+    }
+    .faq-question span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    transition: color 0.3s ease;
+  }
+    .faq-question:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .faq-question i {
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      color: var(--primary-gold);
+    }
+    /* Target the specific container for the answer text */
+.faq-answer {
+  display: block;        /* Ensures it behaves as a block-level element */
+  text-align: left;     /* Forces the text to start at the left margin */
+  width: 100%;          /* Uses the full width of the card */
+  max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px); /* Start slightly lower for "float up" effect */
+    transition: max-height 0.5s ease, 
+                opacity 0.4s ease, 
+                transform 0.4s ease;
+}
+
+.faq-answer p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;     /* Explicitly align the paragraph text */
+  margin: 0;            /* Removes default spacing that might cause offset */
+  padding: 1.5rem; /* Adjust padding to match your design's gutter */
+  font-size: 1.05rem;   /* Optimized for readability */
+  line-height: 1.6;     /* Adds breathing room between lines */
+  color: #4b5563;       /* Professional gray for better contrast */
+}
+
+/* For Dark Mode consistency */
+body.dark-mode .faq-answer p {
+  color: #d1d5db;       /* Ensures the text remains visible on dark backgrounds */
+}
+   
+
+    .faq-item.active {
+      border-color: var(--primary-gold);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px; /* Adjust as needed */
+      opacity: 1;
+      padding-bottom: 1.5rem;
+    }
+    .faq-item.active .faq-answer {
+    max-height: 300px; /* Adjust based on content */
+    opacity: 1;
+    transform: translateY(0); /* Finish at natural position */
+  }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* =========================
+       DARK MODE OVERRIDES
+    ========================= */
+    body.dark-mode {
+      background-color: #121212;
+      color: var(--text-light);
+    }
+
+    body.dark-mode .nav-links a { color: #ccc; }
+    body.dark-mode .nav-links a.active-page { color: var(--primary-gold); }
+
+    body.dark-mode .faq-item {
+      background-color: #1e1e1e;
+      border-color: #333;
+    }
+
+    body.dark-mode .faq-question {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .faq-answer p {
+      color: #bbb;
+    }
+
+    body.dark-mode .faq-item:hover {
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+    }
     /* =========================
       FAQ ACCORDION (VERTICAL)
     ========================= */
+
 
     .faq-container {
       max-width: 900px;
@@ -78,7 +245,30 @@
     .faq-item.active .faq-question i {
       transform: rotate(180deg);
     }
+    /* =========================
+      DARK MODE REFINEMENTS
+  ========================= */
+  body.dark-mode .faq-item {
+    background-color: #1a1a1a;
+    border-color: #333;
+  }
 
+  body.dark-mode .faq-item.active {
+    background-color: #221f18; /* Dark gold tint */
+  }
+
+  body.dark-mode .faq-question span {
+    color: #d4af37;
+  }
+
+  body.dark-mode .faq-answer p {
+    color: #cbd5e0;
+  }
+
+  body.dark-mode .faq-item:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 
+                0 0 12px rgba(212, 175, 55, 0.2);
+  }
     /* DARK MODE */
     body.dark-mode .faq-item {
       background-color: #1e1e1e;
@@ -104,8 +294,32 @@
 </head>
 
 <body>
-  <div id="cursor-highlight" aria-hidden="true"></div>
-  <div id="navbar"></div>
+<div id="cursor-highlight" aria-hidden="true"></div>
+<header>
+  <div class="navbar-container">
+    <h1>
+      <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+      OpenSource Compass
+    </h1>
+    <div class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="./guides.html">Guides</a>
+      <a href="./programs.html">Programs</a>
+      <a href="./Resources.html">Resources</a>
+      <a href="./contributors.html">Contributors</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./Contribute.html">Contribute</a>
+      <button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+>
+  <i class="fas fa-moon" aria-hidden="true"></i>
+</button>
+    </div>
+  </div>
+</header>
   <main>
     <section>
       <h3>Frequently Asked Questions</h3>

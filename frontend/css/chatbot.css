@@ -19,6 +19,77 @@ body.dark-mode {
     --chat-bot-msg-text: #fff;
 }
 
+.timestamp {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 4px;
+}
+
+.message.user .timestamp {
+    text-align: right;
+}
+
+.message.bot .timestamp {
+    text-align: left;
+}
+
+.typing-indicator {
+    font-size: 13px;
+    opacity: 0.7;
+    margin: 8px 12px;
+    font-style: italic;
+    color: #555;
+}
+
+.message-text code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.message-text pre {
+    background: #f4f4f4;
+    padding: 8px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.message-text ul {
+    margin: 5px 0;
+    padding-left: 18px;
+}
+
+.message-text a {
+    color: #1a73e8;
+    text-decoration: underline;
+}
+
+.message-rating {
+    margin-top: 6px;
+    display: flex;
+    gap: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.thumb-btn {
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.thumb-btn:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.thumb-btn.selected {
+    color: #f4b400; /* matches theme yellow */
+    transform: scale(1.2);
+}
+
+
+
 /* Floating Chat Button */
 .chat-widget-btn {
     position: fixed;
@@ -45,11 +116,13 @@ body.dark-mode {
 }
 
 /* 2. Chat Window Container */
+
 .chat-window {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     width: var(--chat-width);
+    max-height: 80vh;
     height: var(--chat-height);
     background-color: var(--chat-bg);
     border-radius: 12px;
@@ -57,12 +130,13 @@ body.dark-mode {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 999;
-    opacity: 0%;
+    z-index: 9999;
+    opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 
 .chat-window.active {
     opacity: 100%;

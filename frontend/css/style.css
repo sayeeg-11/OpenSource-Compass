@@ -1036,161 +1036,6 @@ section p {
   line-height: 1.65;
 }
 
-body.dark-mode .card:hover::before {
-  border-color: var(--primary-gold);
-  box-shadow: 0 0 22px rgba(228, 199, 106, 0.45);
-}
-
-body.dark-mode .card {
-  background: linear-gradient(145deg,
-      rgba(20, 26, 43, 0.95),
-      rgba(27, 34, 53, 0.95));
-  border: 1px solid rgba(228, 199, 106, 0.18);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
-  color: var(--text-primary);
-  backdrop-filter: blur(12px);
-}
-
-body.dark-mode .card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 35px 80px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(228, 199, 106, 0.35);
-  border-color: rgba(228, 199, 106, 0.55);
-}
-
-body.dark-mode .card h4 {
-  color: var(--text-primary);
-}
-
-body.dark-mode .card p {
-  color: var(--text-secondary);
-}
-
-body.dark-mode .card i {
-  color: var(--primary-gold);
-  filter: drop-shadow(0 6px 18px rgba(228, 199, 106, 0.35));
-}
-
-body.dark-mode .card:hover i {
-  color: var(--secondary-gold);
-}
-
-body.dark-mode .card .badge {
-  background: rgba(228, 199, 106, 0.15);
-  color: var(--primary-gold);
-  border: 1px solid rgba(228, 199, 106, 0.35);
-  box-shadow: none;
-}
-
-body.dark-mode .card:hover .badge {
-  box-shadow: 0 0 18px rgba(228, 199, 106, 0.35);
-}
-
-body.dark-mode .card::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.06),
-      transparent 35%,
-      transparent 65%,
-      rgba(228, 199, 106, 0.08));
-  pointer-events: none;
-}
-
-/* ========== DARK MODE STYLES FOR WHY SECTION ========== */
-body.dark-mode .why-section {
-  background: linear-gradient(135deg,
-      #0f0f0f 0%,
-      #1a1a1a 50%,
-      #0f0f0f 100%);
-}
-
-body.dark-mode .why-section::before {
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
-}
-
-body.dark-mode .why-section::after {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-}
-
-body.dark-mode .why-header h3 {
-  color: rgba(253, 244, 227, 0.98);
-}
-
-body.dark-mode .why-header p {
-  color: rgba(253, 244, 227, 0.75);
-}
-
-body.dark-mode .why-eyebrow {
-  background: linear-gradient(135deg,
-      rgba(212, 175, 55, 0.2) 0%,
-      rgba(212, 175, 55, 0.1) 100%);
-  border-color: rgba(212, 175, 55, 0.4);
-  color: var(--primary-gold);
-}
-
-body.dark-mode .why-card {
-  background: rgba(26, 26, 26, 0.95);
-  border-color: rgba(212, 175, 55, 0.25);
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.4),
-    0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .why-card:hover {
-  background: rgba(30, 30, 30, 0.98);
-  box-shadow:
-    0 20px 50px rgba(212, 175, 55, 0.3),
-    0 10px 20px rgba(0, 0, 0, 0.5);
-  border-color: rgba(212, 175, 55, 0.6);
-}
-
-body.dark-mode .why-card-content h4 {
-  color: rgba(253, 244, 227, 0.95);
-}
-
-body.dark-mode .why-card:hover .why-card-content h4 {
-  color: var(--primary-gold);
-}
-
-body.dark-mode .why-card-content p {
-  color: rgba(253, 244, 227, 0.75);
-}
-
-body.dark-mode .why-card-icon {
-  background: linear-gradient(135deg,
-      rgba(212, 175, 55, 0.15) 0%,
-      rgba(212, 175, 55, 0.08) 100%);
-  border-color: rgba(212, 175, 55, 0.4);
-}
-
-body.dark-mode .why-card:hover .why-card-icon {
-  background: linear-gradient(135deg,
-      rgba(212, 175, 55, 0.25) 0%,
-      rgba(212, 175, 55, 0.15) 100%);
-}
-
-body.dark-mode .journey-icon {
-  box-shadow:
-    0 4px 20px rgba(212, 175, 55, 0.5),
-    0 0 0 8px rgba(26, 26, 26, 0.95),
-    0 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-body.dark-mode .journey-step span {
-  color: rgba(253, 244, 227, 0.9);
-}
-
-body.dark-mode .journey-line {
-  background: linear-gradient(90deg,
-      rgba(212, 175, 55, 0.3) 0%,
-      rgba(212, 175, 55, 0.7) 50%,
-      rgba(212, 175, 55, 0.3) 100%);
-}
-
 /* =========================
    SCROLL TO TOP BUTTON
 ========================= */
@@ -1691,7 +1536,8 @@ body.dark-mode .badge:active,
 ========================= */
 
 #opensource-chatbot {
-  position: fixed;
+  /* position: fixed; */
+  margin-top: 100px;
   bottom: 90px;
   /* stays above scroll button */
   right: 24px;
@@ -2077,6 +1923,162 @@ body.dark-mode .navbar,
 body.dark-mode header {
   background-color: rgba(27, 38, 59, 0.98);
   border-bottom: 1px solid #333;
+}
+
+
+body.dark-mode .card:hover::before {
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 22px rgba(228, 199, 106, 0.45);
+}
+
+body.dark-mode .card {
+  background: linear-gradient(145deg,
+      rgba(20, 26, 43, 0.95),
+      rgba(27, 34, 53, 0.95));
+  border: 1px solid rgba(228, 199, 106, 0.18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
+  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+}
+
+body.dark-mode .card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(228, 199, 106, 0.35);
+  border-color: rgba(228, 199, 106, 0.55);
+}
+
+body.dark-mode .card h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .card p {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .card i {
+  color: var(--primary-gold);
+  filter: drop-shadow(0 6px 18px rgba(228, 199, 106, 0.35));
+}
+
+body.dark-mode .card:hover i {
+  color: var(--secondary-gold);
+}
+
+body.dark-mode .card .badge {
+  background: rgba(228, 199, 106, 0.15);
+  color: var(--primary-gold);
+  border: 1px solid rgba(228, 199, 106, 0.35);
+  box-shadow: none;
+}
+
+body.dark-mode .card:hover .badge {
+  box-shadow: 0 0 18px rgba(228, 199, 106, 0.35);
+}
+
+body.dark-mode .card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06),
+      transparent 35%,
+      transparent 65%,
+      rgba(228, 199, 106, 0.08));
+  pointer-events: none;
+}
+
+/* ========== DARK MODE STYLES FOR WHY SECTION ========== */
+body.dark-mode .why-section {
+  background: linear-gradient(135deg,
+      #0f0f0f 0%,
+      #1a1a1a 50%,
+      #0f0f0f 100%);
+}
+
+body.dark-mode .why-section::before {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+}
+
+body.dark-mode .why-section::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+}
+
+body.dark-mode .why-header h3 {
+  color: rgba(253, 244, 227, 0.98);
+}
+
+body.dark-mode .why-header p {
+  color: rgba(253, 244, 227, 0.75);
+}
+
+body.dark-mode .why-eyebrow {
+  background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.2) 0%,
+      rgba(212, 175, 55, 0.1) 100%);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--primary-gold);
+}
+
+body.dark-mode .why-card {
+  background: rgba(26, 26, 26, 0.95);
+  border-color: rgba(212, 175, 55, 0.25);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .why-card:hover {
+  background: rgba(30, 30, 30, 0.98);
+  box-shadow:
+    0 20px 50px rgba(212, 175, 55, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+body.dark-mode .why-card-content h4 {
+  color: rgba(253, 244, 227, 0.95);
+}
+
+body.dark-mode .why-card:hover .why-card-content h4 {
+  color: var(--primary-gold);
+}
+
+body.dark-mode .why-card-content p {
+  color: rgba(253, 244, 227, 0.75);
+}
+
+body.dark-mode .why-card-icon {
+  background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.15) 0%,
+      rgba(212, 175, 55, 0.08) 100%);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+body.dark-mode .why-card:hover .why-card-icon {
+  background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.25) 0%,
+      rgba(212, 175, 55, 0.15) 100%);
+}
+
+body.dark-mode .journey-icon {
+  box-shadow:
+    0 4px 20px rgba(212, 175, 55, 0.5),
+    0 0 0 8px rgba(26, 26, 26, 0.95),
+    0 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+body.dark-mode .journey-step span {
+  color: rgba(253, 244, 227, 0.9);
+}
+
+body.dark-mode .journey-line {
+  background: linear-gradient(90deg,
+      rgba(212, 175, 55, 0.3) 0%,
+      rgba(212, 175, 55, 0.7) 50%,
+      rgba(212, 175, 55, 0.3) 100%);
 }
 
 body.dark-mode .nav-link,

@@ -836,3 +836,56 @@ html {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75);
   transform: translateY(-2px);
 }
+
+/* ===== Dark Mode Hover Readability Fix ===== */
+
+.dark-mode .guide-card {
+  transition: transform 0.25s ease, 
+              box-shadow 0.25s ease, 
+              background-color 0.25s ease, 
+              border-color 0.25s ease;
+}
+
+/* Force proper contrast on hover */
+.dark-mode .guide-card:hover {
+  background-color: #1f2937 !important;  /* controlled lift */
+  border-color: #374151 !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.75) !important;
+  transform: translateY(-3px);
+}
+
+/* Lock text visibility */
+.dark-mode .guide-card:hover h3,
+.dark-mode .guide-card:hover p {
+  color: #f9fafb !important;
+  opacity: 1 !important;
+}
+
+/* Disable any glow overlay if present */
+.dark-mode .guide-card::before,
+.dark-mode .guide-card::after {
+  display: none !important;
+}
+
+/* ===== Dark Mode Fix – Common Mistakes Hover ===== */
+
+.dark-mode .mistakes-list li {
+  background: #111827 !important;
+  border-left: 0 !important;
+  border: 1px solid #1f2937 !important;
+}
+
+.dark-mode .mistakes-list li:hover {
+  background: #1f2937 !important;   /* stay dark */
+  border-left: 6px solid #fbbf24 !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.75) !important;
+  transform: translateY(-5px);
+}
+
+.dark-mode .mistakes-list p {
+  color: #e5e7eb !important;
+}
+
+.dark-mode .mistakes-list li:hover p {
+  color: #f9fafb !important;
+}
