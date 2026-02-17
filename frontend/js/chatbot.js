@@ -162,7 +162,6 @@ function parseMarkdown(text) {
     messageText.className = 'message-text';
     messageText.innerHTML = parseMarkdown(text);
 
-
     // Timestamp
     const timestamp = document.createElement('div');
     timestamp.className = 'timestamp';
@@ -171,9 +170,39 @@ function parseMarkdown(text) {
     msgDiv.appendChild(messageText);
     msgDiv.appendChild(timestamp);
 
+    // ⭐ ADD RATING ONLY FOR BOT MESSAGES
+    if (sender === 'bot') {
+        const ratingDiv = document.createElement('div');
+        ratingDiv.className = 'message-rating';
+
+        const thumbsUp = document.createElement('span');
+        thumbsUp.className = 'thumb-btn';
+        thumbsUp.innerHTML = '👍';
+
+        const thumbsDown = document.createElement('span');
+        thumbsDown.className = 'thumb-btn';
+        thumbsDown.innerHTML = '👎';
+
+        // Allow only one selection
+        thumbsUp.addEventListener('click', () => {
+            thumbsUp.classList.add('selected');
+            thumbsDown.classList.remove('selected');
+        });
+
+        thumbsDown.addEventListener('click', () => {
+            thumbsDown.classList.add('selected');
+            thumbsUp.classList.remove('selected');
+        });
+
+        ratingDiv.appendChild(thumbsUp);
+        ratingDiv.appendChild(thumbsDown);
+        msgDiv.appendChild(ratingDiv);
+    }
+
     messagesContainer.appendChild(msgDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
+
 
 
     function getBotResponse(input) {

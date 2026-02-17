@@ -65,6 +65,30 @@ body.dark-mode {
     text-decoration: underline;
 }
 
+.message-rating {
+    margin-top: 6px;
+    display: flex;
+    gap: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.thumb-btn {
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.thumb-btn:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.thumb-btn.selected {
+    color: #f4b400; /* matches theme yellow */
+    transform: scale(1.2);
+}
+
+
 
 /* Floating Chat Button */
 .chat-widget-btn {
