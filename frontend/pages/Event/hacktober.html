@@ -9,21 +9,138 @@
   <meta name="description"
     content="Complete guide to Hacktoberfest - Learn about registration, contribution process, rewards, and how to participate in Hacktoberfest 2026.">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Core Styles -->
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/navigation.css">
-  <!-- Font Awesome (REQUIRED for logo) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/navigation.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
   <style>
-    /* HERO SECTION */
+    :root {
+      --warm-cream: #f5f0e6;
+      --light-parchment: #f0e4c9;
+      --deep-navy: #050816;
+      --charcoal-dark: #121826;
+      --primary-gold: #f2c94c;
+      --secondary-gold: #f5d37b;
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --shadow-main: 0 18px 45px rgba(0, 0, 0, 0.35);
+      --shadow-hover: 0 22px 60px rgba(0, 0, 0, 0.45);
+      --bounce-curve: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      background: var(--deep-navy);
+      color: var(--text-primary);
+    }
+
+    /* =============== GLOBAL BUTTON SYSTEM =============== */
+
+    .btn,
+    .reserve-btn,
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-main);
+      transition: transform 0.25s var(--bounce-curve),
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+      text-decoration: none;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary-gold);
+      color: #111827;
+      border: 1px solid var(--primary-gold);
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary-gold);
+      border-color: var(--secondary-gold);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-gold);
+      border: 1px solid var(--primary-gold);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(242, 201, 76, 0.12);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .reserve-btn {
+      background: var(--primary-gold);
+      color: #111827;
+      border: 1px solid var(--primary-gold);
+    }
+
+    .reserve-btn:hover {
+      background: var(--secondary-gold);
+      border-color: var(--secondary-gold);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cta-button {
+      background-color: var(--warm-cream);
+      color: #111827;
+      border: 1px solid transparent;
+      padding: 16px 40px;
+      font-size: 1.1rem;
+    }
+
+    .cta-button:hover {
+      background-color: var(--primary-gold);
+      color: #111827;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: var(--shadow-hover);
+    }
+
+    body.dark-mode .btn-primary {
+      color: #111827;
+    }
+
+    body.dark-mode .btn-secondary:hover {
+      background: var(--primary-gold);
+      color: #111827;
+    }
+
+    body.dark-mode .reserve-btn:hover {
+      color: #111827;
+    }
+
+    body.dark-mode .cta-button {
+      color: #111827;
+    }
+
+    /* =============== HERO SECTION =============== */
+
     .hero {
       position: relative;
       display: flex;
@@ -39,26 +156,24 @@
     }
 
     body.dark-mode .hero {
-      background: var(--deep-navy);
+      background: radial-gradient(circle at 10% 0%, #1f2937 0, #020617 55%, #000 100%);
       color: var(--text-primary);
     }
 
-    /* Background Glow / Particle Simulation */
     .hero-background {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 20% 20%, var(--warm-cream) 0%, transparent 60%),
-        radial-gradient(circle at 80% 80%, #e6de9c 0%, transparent 50%);
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(242, 201, 76, 0.35) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(245, 211, 123, 0.35) 0%, transparent 55%);
       animation: glow 15s infinite alternate;
       z-index: 1;
+      opacity: 0.7;
     }
 
     @keyframes glow {
       0% {
-        opacity: 0.6;
+        opacity: 0.5;
         transform: scale(1);
       }
 
@@ -68,12 +183,11 @@
       }
 
       100% {
-        opacity: 0.6;
+        opacity: 0.5;
         transform: scale(1);
       }
     }
 
-    /* Hero Content */
     .hero-content {
       position: relative;
       z-index: 2;
@@ -81,72 +195,11 @@
       animation: fadeInUp 1.2s ease forwards;
     }
 
-    .hero-logo img {
-      width: 120px;
-      margin-bottom: 20px;
-      transition: transform 0.6s var(--bounce-curve);
-    }
-
-    .hero-logo img:hover {
-      transform: rotate(-10deg) scale(1.1);
-    }
-
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: var(--primary-gold);
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      margin-bottom: 35px;
-      color: var(--text-secondary);
-    }
-
-    /* Buttons */
-    .hero-cta .btn {
-      padding: 12px 28px;
-      font-size: 1rem;
-      border-radius: 50px;
-      margin: 0 10px;
-      box-shadow: var(--shadow-main);
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: var(--primary-gold);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--secondary-gold);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--primary-gold);
-      color: var(--primary-gold);
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-gold);
-      color: #fff;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: var(--shadow-hover);
-    }
-
     .hero-logo {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 30px;
-      position: relative;
-      z-index: 2;
     }
 
     .logo-wrapper {
@@ -159,7 +212,6 @@
       justify-content: center;
       align-items: center;
       box-shadow: var(--shadow-main);
-
       transition: transform 0.6s var(--bounce-curve), box-shadow 0.4s ease-in-out;
     }
 
@@ -171,41 +223,105 @@
       transition: transform 0.4s ease, filter 0.4s ease;
     }
 
-    /* Rotate and pulse animation */
-    @keyframes rotateLogo {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes pulseLogo {
-
-      0%,
-      100% {
-        box-shadow: var(--shadow-main);
-      }
-
-      50% {
-        box-shadow: var(--shadow-hover);
-      }
-    }
-
-    /* Hover effect */
     .logo-wrapper:hover {
-      transform: scale(1.15) rotate(-10deg);
+      transform: scale(1.12) rotate(-6deg);
       box-shadow: var(--shadow-hover);
     }
 
     .logo-wrapper:hover img {
-      filter: drop-shadow(0 0 10px var(--primary-gold));
+      filter: drop-shadow(0 0 18px rgba(242, 201, 76, 0.8));
     }
 
-    /* Responsive */
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--primary-gold);
+      text-shadow: 0 4px 22px rgba(0, 0, 0, 0.35);
+      letter-spacing: 0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-inline: auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .hero-animation {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 10px;
+    }
+
+    .hero-animation span {
+      width: 10px;
+      height: 10px;
+      background: var(--primary-gold);
+      border-radius: 999px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .hero-animation span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .hero-animation span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .hero-animation span:nth-child(4) {
+      animation-delay: 0.45s;
+    }
+
+    .hero-animation span:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(-14px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.05rem;
+      }
+
       .logo-wrapper {
         width: 120px;
         height: 120px;
@@ -218,115 +334,57 @@
     }
 
     @media (max-width: 480px) {
-      .logo-wrapper {
-        width: 100px;
-        height: 100px;
+      .hero {
+        padding-top: 80px;
       }
 
-      .logo-wrapper img {
-        width: 70px;
-        height: 70px;
-      }
-    }
-
-    /* Floating Particle Animation */
-    .hero-animation {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
-    }
-
-    .hero-animation span {
-      width: 12px;
-      height: 12px;
-      background: var(--primary-gold);
-      border-radius: 50%;
-      margin: 0 8px;
-      animation: float 2s ease-in-out infinite;
-    }
-
-    .hero-animation span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .hero-animation span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    .hero-animation span:nth-child(4) {
-      animation-delay: 0.6s;
-    }
-
-    .hero-animation span:nth-child(5) {
-      animation-delay: 0.8s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-        opacity: 0.6;
-      }
-
-      50% {
-        transform: translateY(-20px);
-        opacity: 1;
-      }
-    }
-
-    /* Fade-in Up Animation */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
       }
 
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 0.98rem;
       }
 
-      .hero-logo img {
-        width: 100px;
-      }
-
-      .hero-cta .btn {
-        margin: 10px 5px;
-        padding: 10px 20px;
+      .hero-cta {
+        flex-direction: column;
       }
     }
 
-    @media (max-width: 480px) {
-      .hero-title {
+    /* =============== SHARED SECTION HEADINGS =============== */
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary-gold);
+      margin-bottom: 10px;
+      text-align: center;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      margin-bottom: 42px;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 650px;
+      margin-inline: auto;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
         font-size: 2rem;
       }
 
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .hero-animation span {
-        width: 10px;
-        height: 10px;
-        margin: 0 5px;
+      .section-subtitle {
+        font-size: 0.98rem;
       }
     }
 
-    /* ABOUT THE EVENT SECTION */
+    /* =============== ABOUT SECTION =============== */
+
     .about-event {
-      padding: 100px 20px;
+      padding: 90px 20px;
       background: var(--warm-cream);
       color: var(--charcoal-dark);
       position: relative;
@@ -335,7 +393,7 @@
     }
 
     body.dark-mode .about-event {
-      background: var(--light-parchment);
+      background: #020617;
       color: var(--text-primary);
     }
 
@@ -350,96 +408,47 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 40px;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeInUp 1.2s ease forwards;
     }
 
     .about-text {
       flex: 1;
-      min-width: 300px;
+      min-width: 280px;
     }
 
     .about-text h2 {
-      font-size: 2.75rem;
-      font-weight: 700;
-      margin-bottom: 20px;
+      font-size: 2.4rem;
+      margin-bottom: 16px;
       color: var(--primary-gold);
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .about-text p {
-      font-size: 1.2rem;
+      font-size: 1.02rem;
       line-height: 1.8;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
       color: var(--text-secondary);
     }
 
-    .about-text .btn {
-      padding: 12px 30px;
-      border-radius: 50px;
-      box-shadow: var(--shadow-main);
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .about-text .btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: var(--shadow-hover);
-    }
-
-    /* IMAGE */
     .about-image {
       flex: 1;
-      min-width: 300px;
+      min-width: 280px;
       display: flex;
       justify-content: center;
       align-items: center;
-      animation: floatImage 3s ease-in-out infinite alternate;
     }
 
     .about-image img {
       width: 100%;
       max-width: 400px;
-      border-radius: 20px;
+      border-radius: 18px;
       box-shadow: var(--shadow-main);
       transition: transform 0.6s var(--bounce-curve), box-shadow 0.4s ease-in-out;
     }
 
     .about-image img:hover {
-      transform: scale(1.05) rotate(-2deg);
+      transform: translateY(-6px) scale(1.03);
       box-shadow: var(--shadow-hover);
     }
 
-    /* FLOATING IMAGE ANIMATION */
-    @keyframes floatImage {
-      0% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-15px);
-      }
-
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
-    /* FADE-IN UP ANIMATION */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .about-content {
         flex-direction: column-reverse;
@@ -447,378 +456,339 @@
       }
 
       .about-text h2 {
-        font-size: 2.25rem;
-      }
-
-      .about-text p {
-        font-size: 1.1rem;
+        font-size: 2.1rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .about-text h2 {
-        font-size: 1.75rem;
-      }
+    /* =============== EVENT HIGHLIGHTS =============== */
 
-      .about-text p {
-        font-size: 1rem;
-      }
-
-      .about-image img {
-        max-width: 300px;
-      }
-    }
-
-    /* EVENT HIGHLIGHTS SECTION */
     .event-highlights {
-      padding: 100px 20px;
+      padding: 90px 20px;
       background: var(--light-parchment);
       color: var(--charcoal-dark);
-      transition: all 0.4s ease-in-out;
-      position: relative;
-      overflow: hidden;
     }
 
     body.dark-mode .event-highlights {
-      background: var(--deep-navy);
+      background: #020617;
       color: var(--text-primary);
     }
 
     .event-highlights .container {
       max-width: 1200px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .section-title {
-      font-size: 2.75rem;
-      font-weight: 700;
-      color: var(--primary-gold);
-      margin-bottom: 10px;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .section-subtitle {
-      font-size: 1.25rem;
-      margin-bottom: 50px;
-      color: var(--text-secondary);
-    }
-
-    /* HIGHLIGHTS GRID */
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
     }
 
     .highlight-card {
       background: var(--warm-cream);
-      border-radius: 20px;
-      padding: 30px 20px;
+      border-radius: 18px;
+      padding: 26px 22px;
       box-shadow: var(--shadow-main);
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeInUp 1s ease forwards;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     body.dark-mode .highlight-card {
-      background: var(--light-parchment);
+      background: #020617;
       color: var(--text-primary);
-    }
-
-    .highlight-card:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-
-    .highlight-card:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .highlight-card:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    .highlight-card:nth-child(4) {
-      animation-delay: 0.8s;
-    }
-
-    .highlight-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: var(--shadow-hover);
     }
 
     .highlight-card .icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: 2.3rem;
+      margin-bottom: 14px;
       color: var(--primary-gold);
-      transition: transform 0.4s ease, color 0.4s ease;
-    }
-
-    .highlight-card:hover .icon {
-      transform: rotate(15deg) scale(1.2);
-      color: var(--secondary-gold);
     }
 
     .highlight-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: var(--charcoal-dark);
-    }
-
-    body.dark-mode .highlight-card h3 {
-      color: var(--primary-gold);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
     }
 
     .highlight-card p {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--text-secondary);
     }
 
-    body.dark-mode .highlight-card p {
-      color: var(--text-secondary);
+    .highlight-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-hover);
     }
 
-    /* FADE-IN UP ANIMATION */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
+    /* =============== REFINED TIMELINE SECTION =============== */
 
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .schedule-timeline {
+      padding: 90px 20px;
+      background: var(--warm-cream);
+      color: var(--charcoal-dark);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 2.25rem;
-      }
-
-      .section-subtitle {
-        font-size: 1.1rem;
-      }
-
-      .highlight-card h3 {
-        font-size: 1.3rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .section-title {
-        font-size: 1.75rem;
-      }
-
-      .section-subtitle {
-        font-size: 1rem;
-      }
-
-      .highlight-card h3 {
-        font-size: 1.2rem;
-      }
-    }
-
-
-    /* Container setup */
-    .ticketing-section {
-      padding: 80px 20px;
-      background-color: var(--warm-cream);
-      color: var(--deep-navy);
-      text-align: center;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    body.dark-mode .ticketing-section {
-      background-color: var(--light-parchment);
+    body.dark-mode .schedule-timeline {
+      background: #020617;
       color: var(--text-primary);
     }
 
-    /* Titles */
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: var(--primary-gold);
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    .schedule-timeline .container {
+      max-width: 960px;
+      margin: 0 auto;
     }
 
-    .section-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 50px;
+    .timeline {
+      position: relative;
+      margin-top: 20px;
+      display: grid;
+      row-gap: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
+      transform: translateX(-50%);
+      border-radius: 999px;
+      opacity: 0.9;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: center;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      grid-column: 1 / 2;
+      justify-self: end;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-meta {
+      grid-column: 2 / 3;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      grid-column: 2 / 3;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .timeline-item:nth-child(even) .timeline-meta {
+      grid-column: 1 / 2;
+    }
+
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--primary-gold);
+      border: 4px solid var(--warm-cream);
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
+      z-index: 1;
+    }
+
+    body.dark-mode .timeline-dot {
+      border-color: #020617;
+    }
+
+    .timeline-content {
+      background: var(--warm-cream);
+      padding: 18px 22px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-main);
+      max-width: 360px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.dark-mode .timeline-content {
+      background: #020617;
+      color: var(--text-primary);
+    }
+
+    .timeline-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: var(--primary-gold);
+    }
+
+    .timeline-content p {
+      font-size: 0.98rem;
       color: var(--text-secondary);
     }
 
-    /* Cards container */
+    .timeline-item:hover .timeline-content {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 16px;
+        transform: none;
+      }
+
+      .timeline-item {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 10px;
+        padding-left: 42px;
+      }
+
+      .timeline-meta {
+        justify-content: flex-start;
+      }
+
+      .timeline-dot {
+        margin-left: -42px;
+      }
+
+      .timeline-content {
+        text-align: left !important;
+        justify-self: stretch !important;
+      }
+    }
+
+    /* =============== TICKETS =============== */
+
+    .ticketing-section {
+      padding: 90px 20px;
+      background-color: var(--warm-cream);
+      color: var(--deep-navy);
+      text-align: center;
+    }
+
+    body.dark-mode .ticketing-section {
+      background-color: #020617;
+      color: var(--text-primary);
+    }
+
+    .ticketing-section .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
     .ticket-cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 26px;
     }
 
-    /* Individual cards */
     .ticket-card {
       background-color: var(--light-parchment);
-      border-radius: 16px;
-      padding: 30px 25px;
+      border-radius: 18px;
+      padding: 26px 24px;
       width: 280px;
       box-shadow: var(--shadow-main);
-      transition: transform 0.5s var(--bounce-curve), box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      text-align: center;
-      cursor: pointer;
+      text-align: left;
+      transition: transform 0.35s var(--bounce-curve), box-shadow 0.35s ease;
+    }
+
+    .ticket-card.featured {
+      border: 2px solid var(--secondary-gold);
+      background: radial-gradient(circle at 0% 0%, var(--primary-gold) 0%, var(--secondary-gold) 65%);
+      color: #111827;
     }
 
     .ticket-card:hover {
-      transform: translateY(-15px) scale(1.05);
+      transform: translateY(-10px) scale(1.03);
       box-shadow: var(--shadow-hover);
     }
 
-    /* Featured ticket */
-    .ticket-card.featured {
-      border: 2px solid var(--secondary-gold);
-      background: linear-gradient(145deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
-      color: var(--deep-navy);
-    }
-
-    /* Card header */
     .ticket-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .ticket-header h3 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
 
     .price {
-      font-size: 1.3rem;
-      font-weight: bold;
+      font-size: 1.2rem;
+      font-weight: 700;
       color: var(--secondary-gold);
     }
 
-    /* Description */
     .ticket-description {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: var(--text-secondary);
-      margin-bottom: 25px;
+      margin: 12px 0 22px;
     }
 
-    /* Button */
-    .reserve-btn {
-      padding: 12px 20px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: var(--deep-navy);
-      background: var(--primary-gold);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: var(--shadow-main);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    }
+    /* =============== GALLERY =============== */
 
-    .reserve-btn:hover {
-      transform: scale(1.1);
-      box-shadow: var(--shadow-hover);
-      background: var(--secondary-gold);
-    }
-
-    /* Responsive */
-    @media (max-width: 950px) {
-      .ticket-cards {
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .ticket-cards {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    /* Gallery Section */
     .gallery-section {
-      padding: 80px 20px;
+      padding: 90px 20px;
       background-color: var(--warm-cream);
       color: var(--deep-navy);
       text-align: center;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body.dark-mode .gallery-section {
-      background-color: var(--light-parchment);
+      background-color: #020617;
       color: var(--text-primary);
     }
 
-    /* Titles */
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: var(--primary-gold);
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    .gallery-section .container {
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .section-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 50px;
-      color: var(--text-secondary);
-    }
-
-    /* Gallery Grid */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
-    /* Gallery Items */
     .gallery-item {
       position: relative;
       overflow: hidden;
       border-radius: 16px;
       box-shadow: var(--shadow-main);
-      transition: transform 0.5s var(--bounce-curve), box-shadow 0.3s ease;
       cursor: pointer;
+      aspect-ratio: 4 / 3;
     }
 
     .gallery-item img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
 
-    .gallery-item:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-hover);
-    }
-
     .gallery-item:hover img {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
 
-    /* Overlay for caption */
     .overlay {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      inset: auto 0 0 0;
+      padding: 14px 16px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
       color: #fff;
-      padding: 15px;
-      font-size: 1rem;
-      font-weight: bold;
       opacity: 0;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      transform: translateY(20px);
+      transform: translateY(14px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      font-size: 0.95rem;
+      text-align: left;
     }
 
     .gallery-item:hover .overlay {
@@ -826,170 +796,117 @@
       transform: translateY(0);
     }
 
-    /* Responsive spacing */
-    @media (max-width: 950px) {
-      .gallery-grid {
-        gap: 15px;
-      }
-    }
+    /* =============== SPONSORS =============== */
 
-    @media (max-width: 650px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Sponsors Section */
     .sponsors-section {
-      padding: 80px 20px;
+      padding: 90px 20px;
       background-color: var(--warm-cream);
       color: var(--deep-navy);
       text-align: center;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body.dark-mode .sponsors-section {
-      background-color: var(--light-parchment);
+      background-color: #020617;
       color: var(--text-primary);
     }
 
-    /* Titles */
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: var(--primary-gold);
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    .sponsors-section .container {
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .section-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 50px;
-      color: var(--text-secondary);
-    }
-
-    /* Sponsors Grid */
     .sponsors-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 30px;
+      gap: 26px;
       align-items: center;
       justify-items: center;
     }
 
-    /* Sponsor Item */
     .sponsor-item {
       background-color: var(--light-parchment);
       border-radius: 16px;
-      padding: 20px;
+      padding: 18px;
       box-shadow: var(--shadow-main);
-      transition: transform 0.5s var(--bounce-curve), box-shadow 0.3s ease;
+      max-width: 210px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s var(--bounce-curve), box-shadow 0.35s ease;
     }
 
     .sponsor-item img {
       max-width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s ease;
+      max-height: 70px;
+      object-fit: contain;
     }
 
     .sponsor-item:hover {
-      transform: translateY(-10px) scale(1.05);
+      transform: translateY(-8px) scale(1.03);
       box-shadow: var(--shadow-hover);
     }
 
-    .sponsor-item:hover img {
-      transform: scale(1.1);
-    }
+    /* =============== FAQ =============== */
 
-    /* Responsive */
-    @media (max-width: 950px) {
-      .sponsors-grid {
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .sponsors-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      }
-    }
-
-    /* FAQ Section */
     .faq-section {
-      padding: 80px 20px;
+      padding: 90px 20px;
       background-color: var(--warm-cream);
       color: var(--deep-navy);
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body.dark-mode .faq-section {
-      background-color: var(--light-parchment);
+      background-color: #020617;
       color: var(--text-primary);
     }
 
-    /* Titles */
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: var(--primary-gold);
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 50px;
-      color: var(--text-secondary);
-      text-align: center;
-    }
-
-    /* Accordion Items */
-    .faq-accordion {
-      max-width: 800px;
+    .faq-section .container {
+      max-width: 900px;
       margin: 0 auto;
     }
 
+    .faq-accordion {
+      margin-top: 24px;
+    }
+
     .faq-item {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: var(--shadow-main);
-      transition: box-shadow 0.3s ease;
+      background: var(--light-parchment);
     }
 
-    .faq-item:hover {
-      box-shadow: var(--shadow-hover);
+    body.dark-mode .faq-item {
+      background: #020617;
     }
 
     .faq-question {
       width: 100%;
-      padding: 20px 25px;
-      background-color: var(--light-parchment);
+      padding: 18px 22px;
       border: none;
       outline: none;
-      text-align: left;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      position: relative;
+      background: transparent;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background 0.3s ease;
-    }
-
-    body.dark-mode .faq-question {
-      background-color: var(--charcoal-dark);
-      color: var(--text-primary);
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: inherit;
     }
 
     .faq-question:hover {
-      background-color: var(--primary-gold);
-      color: var(--deep-navy);
+      background-color: rgba(242, 201, 76, 0.12);
     }
 
     .faq-icon {
-      font-size: 1.5rem;
-      transition: transform 0.3s ease;
+      font-size: 1.4rem;
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(90deg);
     }
 
     .faq-answer {
@@ -997,320 +914,105 @@
       overflow: hidden;
       background-color: var(--warm-cream);
       color: var(--deep-navy);
-      transition: max-height 0.5s ease, padding 0.3s ease;
+      transition: max-height 0.35s ease;
     }
 
     body.dark-mode .faq-answer {
-      background-color: var(--light-parchment);
+      background-color: #020617;
       color: var(--text-primary);
     }
 
     .faq-answer p {
-      padding: 0 25px 20px 25px;
+      padding: 0 22px 18px;
       margin: 0;
+      font-size: 0.96rem;
+      color: var(--text-secondary);
     }
 
-    /* CTA Section */
+    /* =============== CTA =============== */
+
     .cta-section {
-      padding: 100px 20px;
+      padding: 95px 20px;
       text-align: center;
       background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-      color: var(--deep-navy);
+      color: #111827;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    body.dark-mode .cta-section {
-      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-      color: var(--charcoal-dark);
-    }
-
-
-    
-    /* SCHEDULE / TIMELINE SECTION */
-    .schedule-timeline {
-      padding: 100px 20px;
-      background: var(--warm-cream);
-      color: var(--charcoal-dark);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease-in-out;
-    }
-
-    body.dark-mode .schedule-timeline {
-      background: var(--light-parchment);
-      color: var(--text-primary);
-    }
-
-    .schedule-timeline .container {
-      max-width: 1000px;
+    .cta-section .container {
+      max-width: 840px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .section-title {
-      font-size: 2.75rem;
-      font-weight: 700;
-      color: var(--primary-gold);
-      margin-bottom: 10px;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .section-subtitle {
-      font-size: 1.25rem;
-      margin-bottom: 50px;
-      color: var(--text-secondary);
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      margin: 0 auto;
-      padding-left: 20px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
-      border-radius: 2px;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 50px;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    .timeline-item:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-
-    .timeline-item:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .timeline-item:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    .timeline-item:nth-child(4) {
-      animation-delay: 0.8s;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 12px;
-      width: 16px;
-      height: 16px;
-      background: var(--primary-gold);
-      border-radius: 50%;
-      border: 4px solid var(--warm-cream);
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    body.dark-mode .timeline-dot {
-      border: 4px solid var(--deep-navy);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-    }
-
-    .timeline-item:hover .timeline-dot {
-      transform: scale(1.5);
-      background: var(--secondary-gold);
-      box-shadow: 0 0 20px var(--primary-gold);
-    }
-
-    .timeline-content {
-      margin-left: 60px;
-      background: var(--warm-cream);
-      padding: 20px 25px;
-      border-radius: 15px;
-      box-shadow: var(--shadow-main);
-      transition: all 0.4s ease;
-    }
-
-    body.dark-mode .timeline-content {
-      background: var(--deep-navy);
-      color: var(--text-primary);
-    }
-
-    .timeline-item:hover .timeline-content {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .timeline-content h3 {
-      font-size: 1.5rem;
-      color: var(--primary-gold);
-      margin-bottom: 10px;
-    }
-
-    body.dark-mode .timeline-content h3 {
-      color: var(--primary-gold);
-    }
-
-    .timeline-content p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    body.dark-mode .timeline-content p {
-      color: var(--text-secondary);
-    }
-
-    /* FADE-IN UP ANIMATION */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .timeline-content {
-        margin-left: 50px;
-        padding: 15px 20px;
-      }
-
-      .timeline-content h3 {
-        font-size: 1.35rem;
-      }
-
-      .timeline-content p {
-        font-size: 0.95rem;
-      }
-
-      .timeline::before {
-        left: 15px;
-      }
-
-      .timeline-dot {
-        left: 7px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .timeline-content {
-        margin-left: 45px;
-        padding: 12px 18px;
-      }
-
-      .timeline-content h3 {
-        font-size: 1.2rem;
-      }
-
-      .timeline-content p {
-        font-size: 0.9rem;
-      }
-
-      .timeline::before {
-        left: 10px;
-      }
-
-      .timeline-dot {
-        left: 5px;
-      }
-    }
-
-
-    /* CTA Title */
     .cta-title {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-      animation: fadeInUp 1s ease forwards;
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      text-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+      color: #111827;
     }
 
-    /* CTA Subtitle */
     .cta-subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 40px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeInUp 1.2s ease forwards;
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      max-width: 650px;
+      margin-inline: auto;
       opacity: 0;
-    }
-    body.dark-mode .cta-subtitle {
-      color: var(--deep-navy);
+      transition: opacity 0.5s ease;
+      color: #111827;
     }
 
     .cta-subtitle.visible {
       opacity: 1;
     }
 
-    /* CTA Button */
-    .cta-button {
-      display: inline-block;
-      padding: 18px 50px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--deep-navy);
-      background-color: var(--warm-cream);
-      border-radius: 50px;
-      box-shadow: var(--shadow-main);
-      text-decoration: none;
-      transition: all 0.4s var(--bounce-curve);
+    body.dark-mode .cta-section {
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      color: #111827;
     }
 
-    body.dark-mode .cta-button {
-      color: white;
+    body.dark-mode .cta-title,
+    body.dark-mode .cta-subtitle {
+      color: #111827;
     }
 
-    .cta-button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: var(--shadow-hover);
-      background-color: var(--primary-gold);
-      color: var(--deep-navy);
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .cta-title {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
       }
 
       .cta-subtitle {
         font-size: 1rem;
       }
+    }
 
-      .cta-button {
-        padding: 15px 35px;
-        font-size: 1rem;
-      }
+    /* ===== extra contrast fixes in dark mode ===== */
+
+    body.dark-mode .timeline-content p {
+      color: #e5e7eb;
+    }
+
+    body.dark-mode .highlight-card h3 {
+      color: #f9fafb;
+    }
+
+    body.dark-mode .highlight-card p {
+      color: #e5e7eb;
+    }
+
+    body.dark-mode .ticket-description {
+      color: #e5e7eb;
+    }
+
+    body.dark-mode .faq-answer p {
+      color: #e5e7eb;
     }
   </style>
 </head>
 
 <body>
+  <!-- ================= NAVBAR ================= -->
   <header>
     <div class="navbar-container">
       <h1>
@@ -1326,13 +1028,12 @@
         <a href="../faq.html">FAQ</a>
         <a href="../Contribute.html">Contribute</a>
         <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
-          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+          style="background:none;border:none;color:var(--primary-gold);cursor:pointer;font-size:1.1rem;margin-left:0.5rem;transition:transform 0.3s ease;">
           <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
       </div>
     </div>
   </header>
-
 
   <!-- ================= HERO SECTION ================= -->
   <section class="hero">
@@ -1340,47 +1041,53 @@
     <div class="hero-content">
       <div class="hero-logo">
         <div class="logo-wrapper">
-          <img src="../../library/assets/program_logo/hacktober.webp" alt="Hacktoberfest Logo">
+          <img src="../../library/assets/program_logo/hacktober.webp" alt="Hacktoberfest Logo" />
         </div>
       </div>
 
       <h1 class="hero-title">Hacktoberfest 2026</h1>
       <p class="hero-subtitle">Celebrate open-source contributions and community this October!</p>
+
       <div class="hero-cta">
         <a href="https://hacktoberfest.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Official Website
+          <span>Official Website</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
         <a href="https://hacktoberfest.com/participation/" target="_blank" rel="noopener noreferrer"
           class="btn btn-secondary">
-          Register Now
+          <span>Register Now</span>
         </a>
       </div>
+
       <div class="hero-animation">
         <span></span><span></span><span></span><span></span><span></span>
       </div>
     </div>
   </section>
+
+  <!-- ================= ABOUT ================= -->
   <section class="about-event">
     <div class="container">
       <div class="about-content">
         <div class="about-text">
           <h2>About Hacktoberfest 2026</h2>
           <p>
-            Hacktoberfest is a month-long celebration of open-source software, bringing together developers
-            from around the world. Contribute to projects, learn new skills, and be part of a vibrant community.
-            Whether you're a beginner or an experienced contributor, there’s something for everyone this October!
+            Hacktoberfest is a month-long celebration of open-source software, bringing together developers from around
+            the world. Contribute to projects, learn new skills, and be part of a vibrant community. Whether you're a
+            beginner or an experienced contributor, there’s something for everyone this October!
           </p>
           <a href="https://hacktoberfest.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             Learn More
           </a>
         </div>
         <div class="about-image">
-          <img src="../../library/assets/program_logo/hacktober.webp" alt="About Hacktoberfest">
+          <img src="../../library/assets/program_logo/hacktober.webp" alt="About Hacktoberfest" />
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ================= EVENT HIGHLIGHTS ================= -->
   <section class="event-highlights">
     <div class="container">
       <h2 class="section-title">Event Highlights</h2>
@@ -1412,54 +1119,63 @@
     </div>
   </section>
 
+  <!-- ================= EVENT TIMELINE ================= -->
   <section class="schedule-timeline">
     <div class="container">
       <h2 class="section-title">Event Timeline</h2>
-      <p class="section-subtitle">Follow the key dates and milestones of Hacktoberfest 2026</p>
+      <p class="section-subtitle">Follow the key dates and milestones of Hacktoberfest 2026.</p>
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
           <div class="timeline-content">
             <h3>October 1</h3>
             <p>Hacktoberfest officially starts! Register and start contributing to open source projects.</p>
           </div>
+          <div class="timeline-meta">
+            <div class="timeline-dot"></div>
+          </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
           <div class="timeline-content">
             <h3>October 10</h3>
             <p>Mid-month check-in: Track your pull requests and interact with the community.</p>
           </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>October 20</h3>
-            <p>Final week push! Submit your remaining contributions and join last-minute workshops.</p>
+          <div class="timeline-meta">
+            <div class="timeline-dot"></div>
           </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>October 20</h3>
+            <p>Final week push! Submit your remaining contributions and join last-minute workshops.</p>
+          </div>
+          <div class="timeline-meta">
+            <div class="timeline-dot"></div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
           <div class="timeline-content">
             <h3>October 31</h3>
             <p>Hacktoberfest ends! Celebrate your contributions and claim your digital badges and swag.</p>
+          </div>
+          <div class="timeline-meta">
+            <div class="timeline-dot"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ticketing-section">
+  <!-- ================= TICKET SECTION ================= -->
+  <section class="ticketing-section" id="ticket">
     <div class="container">
       <h2 class="section-title">Reserve Your Spot at Hocktoberfest</h2>
       <p class="section-subtitle">Choose your ticket and get ready for an unforgettable experience!</p>
 
       <div class="ticket-cards">
-        <!-- Early Bird -->
         <div class="ticket-card">
           <div class="ticket-header">
             <h3>Early Bird</h3>
@@ -1469,7 +1185,6 @@
           <button class="reserve-btn">Reserve Your Spot</button>
         </div>
 
-        <!-- General -->
         <div class="ticket-card featured">
           <div class="ticket-header">
             <h3>General Admission</h3>
@@ -1479,7 +1194,6 @@
           <button class="reserve-btn">Reserve Your Spot</button>
         </div>
 
-        <!-- VIP -->
         <div class="ticket-card">
           <div class="ticket-header">
             <h3>VIP Experience</h3>
@@ -1492,6 +1206,7 @@
     </div>
   </section>
 
+  <!-- ================= GALLERY ================= -->
   <section class="gallery-section">
     <div class="container">
       <h2 class="section-title">Gallery & Highlights</h2>
@@ -1499,37 +1214,37 @@
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=2" alt="Hocktoberfest highlight 2">
+          <img src="https://picsum.photos/400/300?random=2" alt="Hocktoberfest highlight 2" />
           <div class="overlay">
             <span>Cheers & Festivities</span>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=3" alt="Hocktoberfest highlight 3">
+          <img src="https://picsum.photos/400/300?random=3" alt="Hocktoberfest highlight 3" />
           <div class="overlay">
             <span>Games & Competitions</span>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=4" alt="Hocktoberfest highlight 3">
+          <img src="https://picsum.photos/400/300?random=4" alt="Hocktoberfest highlight 3" />
           <div class="overlay">
             <span>Music & Dance</span>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=1" alt="Hocktoberfest highlight 1">
+          <img src="https://picsum.photos/400/300?random=1" alt="Hocktoberfest highlight 1" />
           <div class="overlay">
             <span>Food & Drinks</span>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=5" alt="Hocktoberfest highlight 5">
+          <img src="https://picsum.photos/400/300?random=5" alt="Hocktoberfest highlight 5" />
           <div class="overlay">
             <span>VIP Experience</span>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=6" alt="Hocktoberfest highlight 6">
+          <img src="https://picsum.photos/400/300?random=6" alt="Hocktoberfest highlight 6" />
           <div class="overlay">
             <span>Fun & Memories</span>
           </div>
@@ -1537,6 +1252,8 @@
       </div>
     </div>
   </section>
+
+  <!-- ================= SPONSORS ================= -->
   <section class="sponsors-section">
     <div class="container">
       <h2 class="section-title">Our Sponsors & Partners</h2>
@@ -1544,27 +1261,28 @@
 
       <div class="sponsors-grid">
         <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=1" alt="Brand 1">
+          <img src="https://picsum.photos/200/100?random=1" alt="Brand 1" />
         </div>
         <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=2" alt="Brand 2">
+          <img src="https://picsum.photos/200/100?random=2" alt="Brand 2" />
         </div>
         <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=3" alt="Brand 3">
+          <img src="https://picsum.photos/200/100?random=3" alt="Brand 3" />
         </div>
         <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=4" alt="Brand 4">
+          <img src="https://picsum.photos/200/100?random=4" alt="Brand 4" />
         </div>
         <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=5" alt="Brand 5">
+          <img src="https://picsum.photos/200/100?random=5" alt="Brand 5" />
         </div>
         <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=6" alt="Brand 6">
+          <img src="https://picsum.photos/200/100?random=6" alt="Brand 6" />
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ================= FAQ ================= -->
   <section class="faq-section">
     <div class="container">
       <h2 class="section-title">Frequently Asked Questions</h2>
@@ -1573,28 +1291,32 @@
       <div class="faq-accordion">
         <div class="faq-item">
           <button class="faq-question">
-            What is Hocktoberfest?
+            <span>What is Hocktoberfest?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Hocktoberfest is a festive celebration of games, food, drinks, and community fun inspired by Oktoberfest
-              traditions.</p>
+            <p>
+              Hocktoberfest is a festive celebration of games, food, drinks, and community fun inspired by Oktoberfest
+              traditions.
+            </p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            Where is the event held?
+            <span>Where is the event held?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>The event takes place at the Downtown Event Hall, with indoor and outdoor activities for all ages.</p>
+            <p>
+              The event takes place at the Downtown Event Hall, with indoor and outdoor activities for all ages.
+            </p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            Are tickets refundable?
+            <span>Are tickets refundable?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
@@ -1604,151 +1326,94 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            Is there parking available?
+            <span>Is there parking available?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Yes, there is on-site parking and additional street parking nearby. We recommend carpooling for
-              convenience.</p>
+            <p>
+              Yes, there is on-site parking and additional street parking nearby. We recommend carpooling for
+              convenience.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ================= CTA ================= -->
   <section class="cta-section">
     <div class="container">
       <h2 class="cta-title">Join the Hocktoberfest Fun!</h2>
-      <p class="cta-subtitle">Don’t miss out on games, food, music, and unforgettable memories. Reserve your spot now!
+      <p class="cta-subtitle">
+        Don’t miss out on games, food, music, and unforgettable memories. Reserve your spot now!
       </p>
       <a href="#ticket" class="cta-button">Reserve Your Spot</a>
     </div>
   </section>
 
-
-
-  <!-- ================= FOOTER ================= -->
+  <!-- ================= FOOTER PLACEHOLDER ================= -->
   <div id="footer"></div>
 
+  <!-- ================= SCRIPTS ================= -->
   <script src="../../js/components.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/DMtheme.js"></script>
+  <script src="../../js/theme.js"></script>
+  <script src='../../js/pwa.js'></script>
+
+  <button id="scrollTopBtn" title="Back to Top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
   <script>
-    const faqItems = document.querySelectorAll(".faq-item");
+    // Theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+      });
+    }
 
-    faqItems.forEach(item => {
+    // FAQ accordion behavior
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach((item) => {
       const question = item.querySelector(".faq-question");
       const answer = item.querySelector(".faq-answer");
       const icon = item.querySelector(".faq-icon");
 
       question.addEventListener("click", () => {
-        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
+        const isOpen = item.classList.contains("open");
 
-        // Close all
-        faqItems.forEach(i => {
+        faqItems.forEach((i) => {
+          i.classList.remove("open");
           i.querySelector(".faq-answer").style.maxHeight = null;
           i.querySelector(".faq-icon").textContent = "+";
         });
 
         if (!isOpen) {
+          item.classList.add("open");
           answer.style.maxHeight = answer.scrollHeight + "px";
           icon.textContent = "−";
         }
       });
     });
-  </script>
-  <script>
-    // Optional: fade-in subtitle when CTA section comes into view
-    const ctaSubtitle = document.querySelector('.cta-subtitle');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          ctaSubtitle.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.5 });
 
-    observer.observe(ctaSubtitle);
-  </script>
-  
-  <!-- ================= SCRIPTS ================= -->
-  <script>
-    // Theme toggle functionality (if needed)
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        themeToggle.textContent =
-          document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-      });
+    // CTA subtitle intersection
+    const ctaSubtitle = document.querySelector(".cta-subtitle");
+    if (ctaSubtitle) {
+      const ctaObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              ctaSubtitle.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      ctaObserver.observe(ctaSubtitle);
     }
-
-    // Create animated particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      if (!particlesContainer) return;
-
-      const particleCount = 30;
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        particlesContainer.appendChild(particle);
-      }
-    }
-
-    // Initialize particles on page load
-    window.addEventListener('DOMContentLoaded', createParticles);
-
-    // Add scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    // Observe all cards and sections
-    document.querySelectorAll('.event-card, .rule-card, .reward-card, .step-content, .tip-item').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
   </script>
-
-    <script src="../../js/main.js"></script>
-
-    <button id="scrollTopBtn" title="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-    <script src="../../js/DMtheme.js"></script>
-
-    <script src="../../js/components.js"></script>
-    <script src="../../js/theme.js"></script>
-  
-  <script>
-    // Optional: fade-in subtitle when CTA section comes into view
-    const ctaSubtitle = document.querySelector('.cta-subtitle');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          ctaSubtitle.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(ctaSubtitle);
-  </script>
-
-  <script src='../../js/pwa.js'></script>
 </body>
 
 </html>

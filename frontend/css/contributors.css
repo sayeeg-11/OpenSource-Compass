@@ -15,6 +15,18 @@
   margin-top: 0.4rem;
   color: var(--deep-navy);
 }
+.contributors-section {
+  padding-top:80px;   /* ensures it clears navbar */
+  text-align: center;   /* center everything */
+}
+
+.contributors-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
 
 body.dark-mode .contributors-section h1 {
   color: #d2c917;
@@ -90,6 +102,7 @@ body.dark-mode .contributors-section p {
   align-items: center;
   gap: 1rem;
   min-width: 0;
+}  
 .contributor-card:hover {
   transform: translateY(-2px);
 }
@@ -1305,4 +1318,87 @@ body.dark-mode #contributor-search {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ==========================
+   Enhance contributors UI 
+========================== */
+
+.dark-mode {
+  --contributors-bg: #0f172a;
+  --contributors-card: #111827;
+  --contributors-text: #f8fafc;
+  --contributors-muted: #9ca3af;
+  --contributors-border: #1f2933;
+  --contributors-gold: #fbbf24;
+}
+
+/* Page background */
+.dark-mode .contributors {
+  background-color: var(--contributors-bg);
+  color: var(--contributors-text);
+}
+
+/* Headings */
+.dark-mode .contributors h1,
+.dark-mode .contributors h2 {
+  color: var(--contributors-text);
+}
+
+/* Subtitle */
+.dark-mode .contributors p {
+  color: var(--contributors-muted);
+}
+
+/* Stats pills (Contributors / People / PRs / Top) */
+.dark-mode .contributors-stats span {
+  background: var(--contributors-card);
+  color: var(--contributors-text);
+  border: 1px solid var(--contributors-border);
+}
+
+/* Search input */
+.dark-mode .contributors-search input {
+  background: var(--contributors-card);
+  color: var(--contributors-text);
+  border: 1px solid var(--contributors-border);
+}
+
+.dark-mode .contributors-search input::placeholder {
+  color: var(--contributors-muted);
+}
+
+/* Contributor cards (left avatars section) */
+.dark-mode .contributor-card {
+  background: var(--contributors-card);
+  border: 1px solid var(--contributors-border);
+}
+
+/* Contributor names list (right side) */
+.dark-mode .contributors-list li {
+  color: var(--contributors-text);
+}
+
+/* PR count + Gold badge */
+.dark-mode .merged-prs,
+.dark-mode .badge-gold {
+  background: #1f2937;
+  color: var(--contributors-gold);
+  border: 1px solid #374151;
+}
+
+/* GitHub icon buttons */
+.dark-mode .github-btn {
+  background: transparent;
+  border: 1px solid var(--contributors-border);
+  color: var(--contributors-text);
+}
+
+.dark-mode .github-btn:hover {
+  background: #1f2937;
+}
+
+/* Divider lines */
+.dark-mode hr {
+  border-color: var(--contributors-border);
 }

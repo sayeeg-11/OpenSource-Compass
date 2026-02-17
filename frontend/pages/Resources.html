@@ -345,7 +345,7 @@
 
 
   <main>
-    <section>
+    <section class="resources-section">
       <h3>Learning Resources</h3>
       <p>Official documentation and trusted guides to help you start and grow in open source.</p>
 
@@ -372,16 +372,7 @@
           </div>
         </article>
 
-        <article class="card">
-          <p>REFERENCE</p>
-          <div class="tile-icon">🐛</div>
-          <h4>Issue Templates</h4>
-          <p>Predefined bug report and feature request formats to save time.</p>
-          <div class="resource-link-wrapper">
-            <a href="https://raw.githubusercontent.com/sayeeg-11/OpenSource-Compass/main/frontend/assets/templates/issue-template.md"
-              target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
+        
 
         <article class="card">
           <p>GUIDE</p>
@@ -396,7 +387,7 @@
       </div>
     </section>
 
-    <section>
+   <section class="templates-section">
       <h3>Templates & Assets</h3>
       <p>Pre-made templates and assets to streamline contributions.</p>
       <div class="card-grid">
@@ -442,52 +433,7 @@
       </div>
     </section>
 
-    <section>
-      <h3>Quick Checklists</h3>
-      <p>Essential reminders to ensure smooth contributions.</p>
-
-      <div class="checklists-grid">
-        <div class="checklist-tile">
-          <h4>Before Opening a PR</h4>
-          <ul>
-            <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
-            <li><span class="checkmark">✔</span> Linked issue referenced</li>
-            <li><span class="checkmark">✔</span> PR title is clear</li>
-          </ul>
-        </div>
-        </article>
-
-        <article class="card">
-          <div class="tile-icon">🐛</div>
-          <h4>Issue Templates</h4>
-          <p>Formats for bug reports and features.</p>
-          <div class="resource-link-wrapper">
-            <a href="https://raw.githubusercontent.com/sayeeg-11/OpenSource-Compass/main/frontend/assets/templates/issue-template.md"
-              target="_blank" class="resource-link">Visit Template <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="tile-icon">📘</div>
-          <h4>README Structure</h4>
-          <p>Layout to guide new contributors.</p>
-          <div class="resource-link-wrapper">
-            <a href="../assets/templates/readme.md" target="_blank" class="resource-link">Visit Template <i
-                class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="tile-icon">🤝</div>
-          <h4>CONTRIBUTING.md</h4>
-          <p>Sample guidelines for project onboarding.</p>
-          <div class="resource-link-wrapper">
-            <a href="../assets/templates/contributing.md" target="_blank" class="resource-link">Visit Template <i
-                class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
-      </div>
-    </section>
+    
 
     <!-- Templates & Assets Section -->
     <section>
@@ -505,7 +451,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="tools-section">
       <h3>Contributor Tools</h3>
       <p>Essential tools to streamline your workflow.</p>
 
@@ -543,7 +489,7 @@
       </div>
     </section>
 
-    <section>
+   <section class="beginner-issues-section">
       <h3>Find Beginner-Friendly Issues</h3>
       <p>Discover repositories curated for first-time contributors.</p>
 
@@ -587,7 +533,7 @@
         <div style="position: relative; display: inline-block;">
           <h3 style="margin: 0;">Mastery Path</h3>
           <div
-            style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px; background: var(--deep-navy); color: var(--primary-gold); padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
+            style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px;  padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
             <i class="fas fa-star" style="margin-right: 5px;"></i> <span id="total-xp">0</span> XP
           </div>
         </div>
@@ -601,7 +547,7 @@
         </div>
       </div>
       <div id="quiz-container"
-        style="max-width: 700px; margin: 2rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-main); display: none; position: relative; z-index: 10;">
+        style="max-width: 700px; margin: 2rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-main); display: none; position: relative; z-index: 10;">
         <button id="back-to-levels"
           style="background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; position: absolute; top: 1.5rem; left: 1.5rem;">
           <i class="fas fa-arrow-left"></i> Back to Roadmap
@@ -616,14 +562,13 @@
               style="width: 0%; background: var(--primary-gold); height: 100%; transition: width 0.3s ease;"></div>
           </div>
         </div>
-      </div>
 
-      <div id="quiz-question">
+        <div id="quiz-question">
         <h5 id="question-text" style="font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; font-weight: 500;">
           Question text</h5>
         <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
         <div id="explanation-box"
-          style="display: none; background: #e3f2fd; border-left: 4px solid #2196f3; padding: 1rem; margin-top: 1.5rem; border-radius: 4px;">
+          style="display: none; padding: 1rem; margin-top: 1.5rem; border-radius: 4px;">
           <strong style="color: #0d47a1;"><i class="fas fa-info-circle"></i> Insight:</strong>
           <p id="explanation-text" style="margin: 0.5rem 0 0; font-size: 0.95rem; color: #333;"></p>
           <button id="next-question-btn"
@@ -632,6 +577,9 @@
         </div>
       </div>
       </div>
+      </div>
+
+
 
       <div id="quiz-result" style="display: none; text-align: center;">
         <div id="result-icon" style="font-size: 3rem; margin-bottom: 1rem;"></div>
@@ -2216,6 +2164,7 @@
           levelWrapper.style.display = 'block';
           renderLevels();
         };
+        
       });
     </script>
 
