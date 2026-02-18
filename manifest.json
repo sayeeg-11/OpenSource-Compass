@@ -1,0 +1,21 @@
+{
+    "name": "OpenSource Compass",
+    "short_name": "OS Compass",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#111111",
+    "theme_color": "#b59d5c",
+    "description": "Navigate your Open Source Odyssey with curated guides and programs.",
+    "icons": [
+        {
+            "src": "./public/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./public/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
