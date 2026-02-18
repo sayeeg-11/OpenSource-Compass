@@ -653,11 +653,43 @@ body.dark-mode code {
   color: #333333;
 }
 
-/* Best practices section stays light */
-body.dark-mode .practices-container {
+/* Best Practices Section Proper Styling */
+
+.practices-section {
   background-color: #ffffff;
 }
 
-body.dark-mode .practices-container * {
-  color: #333333;
+.practices-section h2 {
+  color: #c9a227; /* your gold */
+}
+
+.practices-container {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+}
+
+.practices-container p {
+  color: #222222;
+}
+
+/* Dark mode version */
+body.dark-mode .practices-section {
+  background-color: #111111;
+}
+
+body.dark-mode .practices-section h2 {
+  color: #c9a227;
+}
+
+body.dark-mode .practices-container {
+  background-color: #1b1b1b;
+  border: 1px solid #333333;
+}
+
+body.dark-mode .practices-container p {
+  color: #eeeeee;
+}
+
+body.dark-mode .best-practices .section-title {
+  color: var(--primary-gold) !important;
 }

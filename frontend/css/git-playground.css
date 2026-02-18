@@ -13,6 +13,10 @@
     --terminal-black: #0d1117;
 }
 
+html {
+    overflow: hidden;
+}
+
 body.playground-page {
     background-color: var(--bg-dark) !important;
     background-image: none !important;
@@ -20,6 +24,8 @@ body.playground-page {
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     margin: 0;
+    padding-top: 0 !important;
+    /* Override the global body padding-top: 90px from style.css */
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -149,6 +155,7 @@ body.playground-page {
 .window-actions {
     color: var(--text-secondary);
     display: flex;
+    align-items: center;
     gap: 12px;
     font-size: 1rem;
     cursor: pointer;
@@ -156,6 +163,35 @@ body.playground-page {
 
 .window-actions i:hover {
     color: var(--text-primary);
+}
+
+/* Trophy badge button in terminal bar */
+.terminal-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.terminal-badge-btn:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+}
+
+.terminal-badge-btn .badge-count-pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    border-radius: 10px;
+    padding: 1px 6px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1.4;
 }
 
 .terminal-body {
@@ -324,14 +360,22 @@ body.playground-page {
     padding-right: 0.5rem;
 }
 
+/* Hide global scrollbar for this page */
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
 /* Scrollbar for cheat list, terminal, and modals */
 .cheat-list::-webkit-scrollbar,
+.scenario-list::-webkit-scrollbar,
 .terminal-body::-webkit-scrollbar,
 .modal-body::-webkit-scrollbar {
     width: 6px;
 }
 
 .cheat-list::-webkit-scrollbar-thumb,
+.scenario-list::-webkit-scrollbar-thumb,
 .terminal-body::-webkit-scrollbar-thumb,
 .modal-body::-webkit-scrollbar-thumb {
     background: var(--border-color);
@@ -339,6 +383,7 @@ body.playground-page {
 }
 
 .cheat-list::-webkit-scrollbar-track,
+.scenario-list::-webkit-scrollbar-track,
 .terminal-body::-webkit-scrollbar-track,
 .modal-body::-webkit-scrollbar-track {
     background: transparent;
@@ -605,6 +650,185 @@ body.theme-matrix .window-controls .control {
     /* Dim controls for matrix */
 }
 
-body.theme-matrix .cheat-details {
-    background: rgba(0, 50, 0, 0.1);
+
+/* --- Scenarios UI --- */
+
+#scenarios-view,
+#cheatsheet-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+.header-toggle {
+    display: flex;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2px;
+    margin-bottom: 1rem;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.toggle-btn.active {
+    background: var(--primary-gold);
+    color: #0b111a;
+}
+
+.level-filter {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-tag:hover,
+.filter-tag.active {
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+    background: var(--primary-gold-dim);
+}
+
+.scenario-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.scenario-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.scenario-card:hover {
+    border-color: var(--primary-gold);
+    transform: translateY(-2px);
+}
+
+.scenario-card.active {
+    border-color: var(--primary-gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.scenario-card.completed::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: #27c93f;
+    font-size: 1rem;
+}
+
+.scenario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.scenario-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.scenario-level {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.level-beginner {
+    background: rgba(39, 201, 63, 0.2);
+    color: #27c93f;
+}
+
+.level-intermediate {
+    background: rgba(255, 189, 46, 0.2);
+    color: #ffbd2e;
+}
+
+.level-advanced {
+    background: rgba(255, 95, 86, 0.2);
+    color: #ff5f56;
+}
+
+.scenario-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Terminal Scenario Banner */
+.scenario-banner {
+    background: rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scenario-banner-text {
+    font-size: 0.9rem;
+    color: var(--primary-gold);
+}
+
+.scenario-banner-actions button {
+    background: transparent;
+    border: 1px solid var(--primary-gold);
+    color: var(--primary-gold);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.scenario-banner-actions button:hover {
+    background: var(--primary-gold);
+    color: #0b111a;
 }

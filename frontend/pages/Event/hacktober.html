@@ -3,1016 +3,1013 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Hacktoberfest - OpenSource Compass</title>
+  <title>Hacktoberfest 2026 - OpenSource Compass</title>
   <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Complete guide to Hacktoberfest - Learn about registration, contribution process, rewards, and how to participate in Hacktoberfest 2026.">
+    content="Join Hacktoberfest 2026 - A month-long celebration of open source. Contribute to projects, earn rewards, and connect with developers worldwide.">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lora:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Core Styles -->
-  <link rel="stylesheet" href="../../css/style.css" />
-  <link rel="stylesheet" href="../../css/navigation.css" />
-
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
-      --warm-cream: #f5f0e6;
-      --light-parchment: #f0e4c9;
-      --deep-navy: #050816;
-      --charcoal-dark: #121826;
-      --primary-gold: #f2c94c;
-      --secondary-gold: #f5d37b;
-      --text-primary: #f9fafb;
-      --text-secondary: #9ca3af;
-      --shadow-main: 0 18px 45px rgba(0, 0, 0, 0.35);
-      --shadow-hover: 0 22px 60px rgba(0, 0, 0, 0.45);
-      --bounce-curve: cubic-bezier(0.22, 1, 0.36, 1);
+      /* Original theme colors */
+      --warm-cream: #f9f6f1;
+      --primary-gold: #d4af37;
+      --secondary-gold: #c5a028;
+      --charcoal-dark: #2c2c2c;
+      --deep-navy: #1a1a2e;
+      --light-parchment: #f0ebe3;
+      --text-primary: #f9f6f1;
+      --text-secondary: #6b6b6b;
+      
+      /* Enhanced variables */
+      --accent-bronze: #b8860b;
+      --soft-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+      --medium-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+      --strong-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+      --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-cream);
+      color: var(--charcoal-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body.dark-mode {
       background: var(--deep-navy);
       color: var(--text-primary);
     }
 
-    /* =============== GLOBAL BUTTON SYSTEM =============== */
-
-    .btn,
-    .reserve-btn,
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 28px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      box-shadow: var(--shadow-main);
-      transition: transform 0.25s var(--bounce-curve),
-        box-shadow 0.25s ease,
-        background-color 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
-      text-decoration: none;
-      gap: 0.4rem;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--primary-gold);
-      color: #111827;
-      border: 1px solid var(--primary-gold);
-    }
-
-    .btn-primary:hover {
-      background: var(--secondary-gold);
-      border-color: var(--secondary-gold);
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--primary-gold);
-      border: 1px solid var(--primary-gold);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(242, 201, 76, 0.12);
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .reserve-btn {
-      background: var(--primary-gold);
-      color: #111827;
-      border: 1px solid var(--primary-gold);
-    }
-
-    .reserve-btn:hover {
-      background: var(--secondary-gold);
-      border-color: var(--secondary-gold);
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .cta-button {
-      background-color: var(--warm-cream);
-      color: #111827;
-      border: 1px solid transparent;
-      padding: 16px 40px;
-      font-size: 1.1rem;
-    }
-
-    .cta-button:hover {
-      background-color: var(--primary-gold);
-      color: #111827;
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: var(--shadow-hover);
-    }
-
-    body.dark-mode .btn-primary {
-      color: #111827;
-    }
-
-    body.dark-mode .btn-secondary:hover {
-      background: var(--primary-gold);
-      color: #111827;
-    }
-
-    body.dark-mode .reserve-btn:hover {
-      color: #111827;
-    }
-
-    body.dark-mode .cta-button {
-      color: #111827;
-    }
-
-    /* =============== HERO SECTION =============== */
-
+    /* HERO SECTION - Enhanced */
     .hero {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       min-height: 100vh;
-      padding: 100px 20px;
-      background: var(--warm-cream);
-      color: var(--charcoal-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--warm-cream) 0%, var(--light-parchment) 100%);
       overflow: hidden;
-      transition: all 0.4s ease-in-out;
+      padding: 120px 20px 80px;
     }
 
     body.dark-mode .hero {
-      background: radial-gradient(circle at 10% 0%, #1f2937 0, #020617 55%, #000 100%);
-      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--deep-navy) 0%, #16213e 100%);
     }
 
-    .hero-background {
+    .hero::before {
+      content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(242, 201, 76, 0.35) 0%, transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(245, 211, 123, 0.35) 0%, transparent 55%);
-      animation: glow 15s infinite alternate;
-      z-index: 1;
-      opacity: 0.7;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(197, 160, 40, 0.08) 0%, transparent 50%);
+      animation: pulseGlow 8s ease-in-out infinite;
     }
 
-    @keyframes glow {
-      0% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-
-      100% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
-      animation: fadeInUp 1.2s ease forwards;
+      max-width: 900px;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
     }
 
-    .hero-logo {
-      display: flex;
-      justify-content: center;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(197, 160, 40, 0.1));
+      color: var(--primary-gold);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
       margin-bottom: 30px;
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.5px;
+    }
+
+    body.dark-mode .hero-badge {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(197, 160, 40, 0.15));
+      border-color: rgba(212, 175, 55, 0.4);
     }
 
     .logo-wrapper {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .logo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
       border-radius: 50%;
-      padding: 10px;
-      background: radial-gradient(circle at 30% 30%, var(--primary-gold) 0%, var(--secondary-gold) 80%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: var(--shadow-main);
-      transition: transform 0.6s var(--bounce-curve), box-shadow 0.4s ease-in-out;
+      opacity: 0.2;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .logo-wrapper img {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      transition: transform 0.4s ease, filter 0.4s ease;
-    }
-
-    .logo-wrapper:hover {
-      transform: scale(1.12) rotate(-6deg);
-      box-shadow: var(--shadow-hover);
+      position: relative;
+      z-index: 2;
+      box-shadow: var(--strong-shadow);
+      transition: var(--transition-smooth);
     }
 
     .logo-wrapper:hover img {
-      filter: drop-shadow(0 0 18px rgba(242, 201, 76, 0.8));
+      transform: scale(1.05);
+      box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3);
     }
 
     .hero-title {
-      font-size: 3.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 24px;
       color: var(--primary-gold);
-      text-shadow: 0 4px 22px rgba(0, 0, 0, 0.35);
-      letter-spacing: 0.03em;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 32px;
+      font-family: 'Lora', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
       color: var(--text-secondary);
-      max-width: 540px;
-      margin-inline: auto;
+      margin-bottom: 40px;
+      line-height: 1.7;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    body.dark-mode .hero-subtitle {
+      color: rgba(249, 246, 241, 0.7);
     }
 
     .hero-cta {
       display: flex;
+      gap: 16px;
+      justify-content: center;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
+      margin-bottom: 60px;
     }
 
-    .hero-animation {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-      gap: 10px;
+    .btn {
+      padding: 16px 36px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-animation span {
-      width: 10px;
-      height: 10px;
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      color: white;
+      box-shadow: var(--medium-shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--strong-shadow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-gold);
+      border: 2px solid var(--primary-gold);
+    }
+
+    .btn-secondary:hover {
       background: var(--primary-gold);
-      border-radius: 999px;
-      animation: float 2s ease-in-out infinite;
+      color: white;
+      transform: translateY(-3px);
     }
 
-    .hero-animation span:nth-child(2) {
-      animation-delay: 0.15s;
+    .hero-stats {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 20px;
     }
 
-    .hero-animation span:nth-child(3) {
-      animation-delay: 0.3s;
+    .stat-item {
+      text-align: center;
+      position: relative;
     }
 
-    .hero-animation span:nth-child(4) {
-      animation-delay: 0.45s;
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
     }
 
-    .hero-animation span:nth-child(5) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-        opacity: 0.6;
-      }
-
-      50% {
-        transform: translateY(-14px);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.4rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.05rem;
-      }
-
-      .logo-wrapper {
-        width: 120px;
-        height: 120px;
-      }
-
-      .logo-wrapper img {
-        width: 80px;
-        height: 80px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        padding-top: 80px;
-      }
-
-      .hero-title {
-        font-size: 2.1rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.98rem;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-      }
-    }
-
-    /* =============== SHARED SECTION HEADINGS =============== */
-
-    .section-title {
-      font-size: 2.4rem;
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--primary-gold);
-      margin-bottom: 10px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    body.dark-mode .stat-label {
+      color: rgba(249, 246, 241, 0.6);
+    }
+
+    /* SECTION STYLES */
+    .section {
+      padding: 120px 20px;
+      position: relative;
+    }
+
+    .section:nth-child(even) {
+      background: var(--light-parchment);
+    }
+
+    body.dark-mode .section:nth-child(even) {
+      background: rgba(26, 26, 46, 0.5);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
       text-align: center;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      margin-bottom: 80px;
+      position: relative;
+    }
+
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+      border-radius: 2px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary-gold);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--charcoal-dark);
+      line-height: 1.2;
+    }
+
+    body.dark-mode .section-title {
+      color: var(--text-primary);
     }
 
     .section-subtitle {
-      font-size: 1.05rem;
-      margin-bottom: 42px;
-      color: var(--text-secondary);
-      text-align: center;
-      max-width: 650px;
-      margin-inline: auto;
-    }
-
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .section-subtitle {
-        font-size: 0.98rem;
-      }
-    }
-
-    /* =============== ABOUT SECTION =============== */
-
-    .about-event {
-      padding: 90px 20px;
-      background: var(--warm-cream);
-      color: var(--charcoal-dark);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease-in-out;
-    }
-
-    body.dark-mode .about-event {
-      background: #020617;
-      color: var(--text-primary);
-    }
-
-    .about-event .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .about-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .about-text h2 {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-      color: var(--primary-gold);
-    }
-
-    .about-text p {
-      font-size: 1.02rem;
-      line-height: 1.8;
-      margin-bottom: 24px;
-      color: var(--text-secondary);
-    }
-
-    .about-image {
-      flex: 1;
-      min-width: 280px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .about-image img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 18px;
-      box-shadow: var(--shadow-main);
-      transition: transform 0.6s var(--bounce-curve), box-shadow 0.4s ease-in-out;
-    }
-
-    .about-image img:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: var(--shadow-hover);
-    }
-
-    @media (max-width: 1024px) {
-      .about-content {
-        flex-direction: column-reverse;
-        text-align: center;
-      }
-
-      .about-text h2 {
-        font-size: 2.1rem;
-      }
-    }
-
-    /* =============== EVENT HIGHLIGHTS =============== */
-
-    .event-highlights {
-      padding: 90px 20px;
-      background: var(--light-parchment);
-      color: var(--charcoal-dark);
-    }
-
-    body.dark-mode .event-highlights {
-      background: #020617;
-      color: var(--text-primary);
-    }
-
-    .event-highlights .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 28px;
-    }
-
-    .highlight-card {
-      background: var(--warm-cream);
-      border-radius: 18px;
-      padding: 26px 22px;
-      box-shadow: var(--shadow-main);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    body.dark-mode .highlight-card {
-      background: #020617;
-      color: var(--text-primary);
-    }
-
-    .highlight-card .icon {
-      font-size: 2.3rem;
-      margin-bottom: 14px;
-      color: var(--primary-gold);
-    }
-
-    .highlight-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
-    .highlight-card p {
-      font-size: 0.98rem;
-      color: var(--text-secondary);
-    }
-
-    .highlight-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-hover);
-    }
-
-    /* =============== REFINED TIMELINE SECTION =============== */
-
-    .schedule-timeline {
-      padding: 90px 20px;
-      background: var(--warm-cream);
-      color: var(--charcoal-dark);
-    }
-
-    body.dark-mode .schedule-timeline {
-      background: #020617;
-      color: var(--text-primary);
-    }
-
-    .schedule-timeline .container {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .timeline {
-      position: relative;
-      margin-top: 20px;
-      display: grid;
-      row-gap: 28px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
-      transform: translateX(-50%);
-      border-radius: 999px;
-      opacity: 0.9;
-    }
-
-    .timeline-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      align-items: center;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      grid-column: 1 / 2;
-      justify-self: end;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-meta {
-      grid-column: 2 / 3;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      grid-column: 2 / 3;
-      justify-self: start;
-      text-align: left;
-    }
-
-    .timeline-item:nth-child(even) .timeline-meta {
-      grid-column: 1 / 2;
-    }
-
-    .timeline-meta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .timeline-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: var(--primary-gold);
-      border: 4px solid var(--warm-cream);
-      box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
-      z-index: 1;
-    }
-
-    body.dark-mode .timeline-dot {
-      border-color: #020617;
-    }
-
-    .timeline-content {
-      background: var(--warm-cream);
-      padding: 18px 22px;
-      border-radius: 16px;
-      box-shadow: var(--shadow-main);
-      max-width: 360px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    body.dark-mode .timeline-content {
-      background: #020617;
-      color: var(--text-primary);
-    }
-
-    .timeline-content h3 {
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-      color: var(--primary-gold);
-    }
-
-    .timeline-content p {
-      font-size: 0.98rem;
-      color: var(--text-secondary);
-    }
-
-    .timeline-item:hover .timeline-content {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    @media (max-width: 768px) {
-      .timeline::before {
-        left: 16px;
-        transform: none;
-      }
-
-      .timeline-item {
-        grid-template-columns: minmax(0, 1fr);
-        row-gap: 10px;
-        padding-left: 42px;
-      }
-
-      .timeline-meta {
-        justify-content: flex-start;
-      }
-
-      .timeline-dot {
-        margin-left: -42px;
-      }
-
-      .timeline-content {
-        text-align: left !important;
-        justify-self: stretch !important;
-      }
-    }
-
-    /* =============== TICKETS =============== */
-
-    .ticketing-section {
-      padding: 90px 20px;
-      background-color: var(--warm-cream);
-      color: var(--deep-navy);
-      text-align: center;
-    }
-
-    body.dark-mode .ticketing-section {
-      background-color: #020617;
-      color: var(--text-primary);
-    }
-
-    .ticketing-section .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .ticket-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 26px;
-    }
-
-    .ticket-card {
-      background-color: var(--light-parchment);
-      border-radius: 18px;
-      padding: 26px 24px;
-      width: 280px;
-      box-shadow: var(--shadow-main);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
-      transition: transform 0.35s var(--bounce-curve), box-shadow 0.35s ease;
-    }
-
-    .ticket-card.featured {
-      border: 2px solid var(--secondary-gold);
-      background: radial-gradient(circle at 0% 0%, var(--primary-gold) 0%, var(--secondary-gold) 65%);
-      color: #111827;
-    }
-
-    .ticket-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .ticket-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .ticket-header h3 {
-      font-size: 1.3rem;
-    }
-
-    .price {
+      font-family: 'Lora', serif;
       font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--secondary-gold);
-    }
-
-    .ticket-description {
-      font-size: 0.96rem;
       color: var(--text-secondary);
-      margin: 12px 0 22px;
-    }
-
-    /* =============== GALLERY =============== */
-
-    .gallery-section {
-      padding: 90px 20px;
-      background-color: var(--warm-cream);
-      color: var(--deep-navy);
-      text-align: center;
-    }
-
-    body.dark-mode .gallery-section {
-      background-color: #020617;
-      color: var(--text-primary);
-    }
-
-    .gallery-section .container {
-      max-width: 1100px;
+      max-width: 700px;
       margin: 0 auto;
+      line-height: 1.7;
     }
 
-    .gallery-grid {
+    body.dark-mode .section-subtitle {
+      color: rgba(249, 246, 241, 0.7);
+    }
+
+    /* ABOUT SECTION - Enhanced */
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
     }
 
-    .gallery-item {
+    .about-card {
+      background: white;
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: var(--soft-shadow);
+      transition: var(--transition-smooth);
       position: relative;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: var(--shadow-main);
+      border: 1px solid rgba(212, 175, 55, 0.1);
       cursor: pointer;
-      aspect-ratio: 4 / 3;
     }
 
-    .gallery-item img {
+    body.dark-mode .about-card {
+      background: rgba(26, 26, 46, 0.6);
+      border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+      transform: scaleX(0);
       transition: transform 0.5s ease;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.08);
-    }
-
-    .overlay {
+    .about-card::after {
+      content: '';
       position: absolute;
-      inset: auto 0 0 0;
-      padding: 14px 16px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
-      color: #fff;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(197, 160, 40, 0.05));
       opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: 0.95rem;
-      text-align: left;
+      transition: opacity 0.5s ease;
     }
 
-    .gallery-item:hover .overlay {
+    .about-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .about-card:hover::after {
       opacity: 1;
-      transform: translateY(0);
     }
 
-    /* =============== SPONSORS =============== */
-
-    .sponsors-section {
-      padding: 90px 20px;
-      background-color: var(--warm-cream);
-      color: var(--deep-navy);
-      text-align: center;
+    .about-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--strong-shadow);
+      border-color: var(--primary-gold);
     }
 
-    body.dark-mode .sponsors-section {
-      background-color: #020617;
+    .card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      opacity: 0.3;
+      transition: var(--transition-smooth);
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card:hover .card-number {
+      opacity: 0.6;
+      transform: scale(1.1) translateY(-5px);
+    }
+
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--charcoal-dark);
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      transition: var(--transition-smooth);
+    }
+
+    body.dark-mode .about-card h3 {
       color: var(--text-primary);
     }
 
-    .sponsors-section .container {
-      max-width: 1100px;
-      margin: 0 auto;
+    .about-card:hover h3 {
+      color: var(--primary-gold);
     }
 
-    .sponsors-grid {
+    .about-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    body.dark-mode .about-card p {
+      color: rgba(249, 246, 241, 0.75);
+    }
+
+    /* HIGHLIGHTS - Grid Layout */
+    .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 26px;
-      align-items: center;
-      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
     }
 
-    .sponsor-item {
-      background-color: var(--light-parchment);
+    .highlight-card {
+      background: white;
+      padding: 40px 30px;
       border-radius: 16px;
-      padding: 18px;
-      box-shadow: var(--shadow-main);
-      max-width: 210px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.35s var(--bounce-curve), box-shadow 0.35s ease;
+      box-shadow: var(--soft-shadow);
+      transition: var(--transition-smooth);
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      position: relative;
     }
 
-    .sponsor-item img {
-      max-width: 100%;
-      max-height: 70px;
-      object-fit: contain;
+    body.dark-mode .highlight-card {
+      background: rgba(26, 26, 46, 0.6);
+      border-color: rgba(212, 175, 55, 0.2);
     }
 
-    .sponsor-item:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: var(--shadow-hover);
+    .highlight-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--strong-shadow);
+      border-color: var(--primary-gold);
     }
 
-    /* =============== FAQ =============== */
-
-    .faq-section {
-      padding: 90px 20px;
-      background-color: var(--warm-cream);
-      color: var(--deep-navy);
+    .highlight-card .icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: inline-block;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    body.dark-mode .faq-section {
-      background-color: #020617;
+    .highlight-card:hover .icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .highlight-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--charcoal-dark);
+      font-weight: 700;
+    }
+
+    body.dark-mode .highlight-card h3 {
       color: var(--text-primary);
     }
 
-    .faq-section .container {
-      max-width: 900px;
-      margin: 0 auto;
+    .highlight-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
-    .faq-accordion {
-      margin-top: 24px;
+    body.dark-mode .highlight-card p {
+      color: rgba(249, 246, 241, 0.75);
     }
 
-    .faq-item {
-      margin-bottom: 18px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow-main);
+    /* EVENT TIMELINE */
+    .timeline-section {
       background: var(--light-parchment);
     }
 
+    body.dark-mode .timeline-section {
+      background: rgba(26, 26, 46, 0.5);
+    }
+
+    .event-timeline {
+      max-width: 1000px;
+      margin: 60px auto 0;
+      position: relative;
+    }
+
+    .event-timeline::before {
+      content: '';
+      position: absolute;
+      left: 60px;
+      top: 80px;
+      bottom: 80px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
+      border-radius: 2px;
+    }
+
+    .timeline-event {
+      display: flex;
+      gap: 50px;
+      margin-bottom: 80px;
+      position: relative;
+      opacity: 0;
+      animation: fadeInTimeline 0.8s ease forwards;
+    }
+
+    .timeline-event:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-event:nth-child(2) { animation-delay: 0.3s; }
+    .timeline-event:nth-child(3) { animation-delay: 0.5s; }
+    .timeline-event:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes fadeInTimeline {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .timeline-date {
+      flex-shrink: 0;
+      width: 120px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .date-circle {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      box-shadow: var(--strong-shadow);
+      margin-bottom: 12px;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .date-circle::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      opacity: 0.2;
+      z-index: -1;
+      animation: pulseDateCircle 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseDateCircle {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.2;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+      }
+    }
+
+    .timeline-event:hover .date-circle {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .date-month {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .timeline-event-content {
+      flex: 1;
+      background: white;
+      padding: 35px 40px;
+      border-radius: 20px;
+      box-shadow: var(--soft-shadow);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-mode .timeline-event-content {
+      background: rgba(26, 26, 46, 0.6);
+      border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    .timeline-event-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.5s ease;
+    }
+
+    .timeline-event:hover .timeline-event-content::before {
+      transform: scaleY(1);
+    }
+
+    .timeline-event:hover .timeline-event-content {
+      transform: translateX(15px);
+      box-shadow: var(--strong-shadow);
+    }
+
+    .timeline-event-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      color: var(--charcoal-dark);
+      font-weight: 700;
+    }
+
+    body.dark-mode .timeline-event-content h3 {
+      color: var(--text-primary);
+    }
+
+    .timeline-event-content p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+      font-size: 1.05rem;
+    }
+
+    body.dark-mode .timeline-event-content p {
+      color: rgba(249, 246, 241, 0.75);
+    }
+
+    /* FAQ SECTION - Elegant Accordion */
+    .faq-container {
+      max-width: 900px;
+      margin: 60px auto 0;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: var(--transition-smooth);
+    }
+
     body.dark-mode .faq-item {
-      background: #020617;
+      background: rgba(26, 26, 46, 0.6);
+      border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--medium-shadow);
     }
 
     .faq-question {
       width: 100%;
-      padding: 18px 22px;
-      border: none;
-      outline: none;
+      padding: 28px 32px;
       background: transparent;
+      border: none;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--charcoal-dark);
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: inherit;
+      transition: var(--transition-smooth);
+    }
+
+    body.dark-mode .faq-question {
+      color: var(--text-primary);
     }
 
     .faq-question:hover {
-      background-color: rgba(242, 201, 76, 0.12);
+      color: var(--primary-gold);
     }
 
     .faq-icon {
-      font-size: 1.4rem;
-      transition: transform 0.25s ease;
+      font-size: 1.5rem;
+      color: var(--primary-gold);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 20px;
     }
 
-    .faq-item.open .faq-icon {
-      transform: rotate(90deg);
+    .faq-question.active .faq-icon {
+      transform: rotate(45deg);
     }
 
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      background-color: var(--warm-cream);
-      color: var(--deep-navy);
-      transition: max-height 0.35s ease;
-    }
-
-    body.dark-mode .faq-answer {
-      background-color: #020617;
-      color: var(--text-primary);
+      transition: max-height 0.4s ease, padding 0.4s ease;
     }
 
     .faq-answer p {
-      padding: 0 22px 18px;
-      margin: 0;
-      font-size: 0.96rem;
+      padding: 0 32px 28px;
       color: var(--text-secondary);
+      line-height: 1.9;
+      font-size: 1.05rem;
     }
 
-    /* =============== CTA =============== */
+    body.dark-mode .faq-answer p {
+      color: rgba(249, 246, 241, 0.75);
+    }
 
+    /* CTA SECTION - Bold & Centered */
     .cta-section {
-      padding: 95px 20px;
+      padding: 120px 20px;
       text-align: center;
-      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-      color: #111827;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .cta-section .container {
-      max-width: 840px;
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
       margin: 0 auto;
     }
 
     .cta-title {
-      font-size: 2.6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 800;
-      margin-bottom: 18px;
-      text-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-      color: #111827;
+      margin-bottom: 24px;
+      color: white;
+      line-height: 1.2;
     }
 
     .cta-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 32px;
-      max-width: 650px;
-      margin-inline: auto;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      color: #111827;
+      font-family: 'Lora', serif;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 40px;
+      line-height: 1.7;
     }
 
-    .cta-subtitle.visible {
-      opacity: 1;
+    .btn-cta {
+      padding: 20px 50px;
+      font-size: 1.15rem;
+      background: white;
+      color: var(--primary-gold);
+      font-weight: 700;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
     }
 
-    body.dark-mode .cta-section {
-      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-      color: #111827;
+    .btn-cta:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
     }
 
-    body.dark-mode .cta-title,
-    body.dark-mode .cta-subtitle {
-      color: #111827;
-    }
-
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .cta-title {
-        font-size: 2.1rem;
+      .section {
+        padding: 80px 20px;
       }
 
-      .cta-subtitle {
+      .section-header {
+        margin-bottom: 50px;
+      }
+
+      .hero-stats {
+        gap: 30px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .about-grid,
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      /* Timeline responsive */
+      .event-timeline::before {
+        left: 30px;
+      }
+
+      .timeline-event {
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 60px;
+      }
+
+      .timeline-date {
+        width: 100px;
+      }
+
+      .date-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+      }
+
+      .timeline-event-content {
+        padding: 25px 30px;
+      }
+
+      .timeline-event-content h3 {
+        font-size: 1.5rem;
+      }
+
+      .timeline-event:hover .timeline-event-content {
+        transform: translateY(-5px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .faq-question {
         font-size: 1rem;
+        padding: 20px 24px;
+      }
+
+      .faq-answer p {
+        padding: 0 24px 20px;
+      }
+
+      .card-number {
+        font-size: 4rem;
+      }
+
+      .about-card h3 {
+        font-size: 1.5rem;
+      }
+
+      /* Timeline mobile adjustments */
+      .event-timeline::before {
+        left: 20px;
+      }
+
+      .timeline-date {
+        width: 80px;
+      }
+
+      .date-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+      }
+
+      .date-month {
+        font-size: 0.85rem;
+      }
+
+      .timeline-event-content {
+        padding: 20px 24px;
+      }
+
+      .timeline-event-content h3 {
+        font-size: 1.3rem;
+      }
+
+      .timeline-event-content p {
+        font-size: 0.95rem;
       }
     }
 
-    /* ===== extra contrast fixes in dark mode ===== */
-
-    body.dark-mode .timeline-content p {
-      color: #e5e7eb;
+    /* Scroll to Top Button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--strong-shadow);
+      transition: var(--transition-smooth);
+      z-index: 1000;
     }
 
-    body.dark-mode .highlight-card h3 {
-      color: #f9fafb;
-    }
-
-    body.dark-mode .highlight-card p {
-      color: #e5e7eb;
-    }
-
-    body.dark-mode .ticket-description {
-      color: #e5e7eb;
-    }
-
-    body.dark-mode .faq-answer p {
-      color: #e5e7eb;
+    #scrollTopBtn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
     }
   </style>
 </head>
 
 <body>
-  <!-- ================= NAVBAR ================= -->
   <header>
     <div class="navbar-container">
       <h1>
@@ -1028,311 +1025,294 @@
         <a href="../faq.html">FAQ</a>
         <a href="../Contribute.html">Contribute</a>
         <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
-          style="background:none;border:none;color:var(--primary-gold);cursor:pointer;font-size:1.1rem;margin-left:0.5rem;transition:transform 0.3s ease;">
+          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
           <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
+  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-background"></div>
     <div class="hero-content">
-      <div class="hero-logo">
-        <div class="logo-wrapper">
-          <img src="../../library/assets/program_logo/hacktober.webp" alt="Hacktoberfest Logo" />
-        </div>
+      <div class="hero-badge">
+        <i class="fas fa-calendar-alt"></i>
+        <span>October 1-31, 2026</span>
+      </div>
+      
+      <div class="logo-wrapper">
+        <img src="../../library/assets/program_logo/hacktober.webp" alt="Hacktoberfest Logo">
       </div>
 
       <h1 class="hero-title">Hacktoberfest 2026</h1>
-      <p class="hero-subtitle">Celebrate open-source contributions and community this October!</p>
-
+      <p class="hero-subtitle">
+        A month-long celebration of open source. Contribute to projects, learn new skills, 
+        and connect with developers worldwide.
+      </p>
+      
       <div class="hero-cta">
         <a href="https://hacktoberfest.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <span>Official Website</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Visit Official Site</span>
         </a>
-        <a href="https://hacktoberfest.com/participation/" target="_blank" rel="noopener noreferrer"
-          class="btn btn-secondary">
+        <a href="https://hacktoberfest.com/participation/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
           <span>Register Now</span>
         </a>
       </div>
 
-      <div class="hero-animation">
-        <span></span><span></span><span></span><span></span><span></span>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Running</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500K+</div>
+          <div class="stat-label">Participants</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100K+</div>
+          <div class="stat-label">Projects</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= ABOUT ================= -->
-  <section class="about-event">
+  <!-- ABOUT SECTION -->
+  <section class="section">
     <div class="container">
-      <div class="about-content">
-        <div class="about-text">
-          <h2>About Hacktoberfest 2026</h2>
+      <div class="section-header">
+        <div class="section-eyebrow">What is Hacktoberfest?</div>
+        <h2 class="section-title">Join the Global Movement</h2>
+        <p class="section-subtitle">
+          An annual celebration that brings together developers from around the world 
+          to contribute to open-source software throughout October
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="card-number">01</div>
+          <h3>Global Community</h3>
           <p>
-            Hacktoberfest is a month-long celebration of open-source software, bringing together developers from around
-            the world. Contribute to projects, learn new skills, and be part of a vibrant community. Whether you're a
-            beginner or an experienced contributor, there’s something for everyone this October!
+            Join hundreds of thousands of developers worldwide in celebrating and contributing 
+            to open source. Connect with maintainers and fellow enthusiasts.
           </p>
-          <a href="https://hacktoberfest.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Learn More
-          </a>
         </div>
-        <div class="about-image">
-          <img src="../../library/assets/program_logo/hacktober.webp" alt="About Hacktoberfest" />
+        <div class="about-card">
+          <div class="card-number">02</div>
+          <h3>Learn & Grow</h3>
+          <p>
+            Perfect for beginners and pros alike. Learn new technologies, improve your skills, 
+            and work on meaningful projects that make a difference.
+          </p>
+        </div>
+        <div class="about-card">
+          <div class="card-number">03</div>
+          <h3>Earn Rewards</h3>
+          <p>
+            Complete 4 quality contributions to earn exclusive digital badges, certificates, 
+            and contribute to global tree-planting initiatives.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= EVENT HIGHLIGHTS ================= -->
-  <section class="event-highlights">
+  <!-- HIGHLIGHTS SECTION -->
+  <section class="section">
     <div class="container">
-      <h2 class="section-title">Event Highlights</h2>
-      <p class="section-subtitle">
-        Discover the key features of Hacktoberfest 2026 and what makes this open-source celebration unique.
-      </p>
+      <div class="section-header">
+        <div class="section-eyebrow">Why Participate?</div>
+        <h2 class="section-title">Key Benefits</h2>
+        <p class="section-subtitle">
+          Discover what makes Hacktoberfest a unique and rewarding experience
+        </p>
+      </div>
+
       <div class="highlights-grid">
         <div class="highlight-card">
           <div class="icon">💻</div>
-          <h3>Contribute to Open Source</h3>
-          <p>Make real contributions to popular projects and improve your coding skills.</p>
+          <h3>Make Real Impact</h3>
+          <p>Contribute to projects used by developers worldwide and create lasting change.</p>
         </div>
         <div class="highlight-card">
           <div class="icon">🎓</div>
-          <h3>Learn New Skills</h3>
-          <p>Join workshops, tutorials, and meet developers to expand your knowledge.</p>
+          <h3>Skill Development</h3>
+          <p>Learn new technologies and gain hands-on experience with real-world projects.</p>
         </div>
         <div class="highlight-card">
           <div class="icon">🌐</div>
-          <h3>Global Community</h3>
-          <p>Collaborate with contributors worldwide and be part of an amazing community.</p>
+          <h3>Network Globally</h3>
+          <p>Connect with maintainers and developers from every corner of the globe.</p>
         </div>
         <div class="highlight-card">
           <div class="icon">🏆</div>
-          <h3>Earn Swag & Recognition</h3>
-          <p>Get exclusive prizes, digital badges, and recognition for your contributions.</p>
+          <h3>Recognition</h3>
+          <p>Earn digital badges and certificates to showcase your achievements.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="icon">🚀</div>
+          <h3>Career Growth</h3>
+          <p>Build your portfolio and stand out to potential employers worldwide.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="icon">🌳</div>
+          <h3>Give Back</h3>
+          <p>Your contributions help plant trees through environmental partnerships.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= EVENT TIMELINE ================= -->
-  <section class="schedule-timeline">
+  <!-- EVENT TIMELINE SECTION -->
+  <section class="section timeline-section">
     <div class="container">
-      <h2 class="section-title">Event Timeline</h2>
-      <p class="section-subtitle">Follow the key dates and milestones of Hacktoberfest 2026.</p>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>October 1</h3>
-            <p>Hacktoberfest officially starts! Register and start contributing to open source projects.</p>
-          </div>
-          <div class="timeline-meta">
-            <div class="timeline-dot"></div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>October 10</h3>
-            <p>Mid-month check-in: Track your pull requests and interact with the community.</p>
-          </div>
-          <div class="timeline-meta">
-            <div class="timeline-dot"></div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>October 20</h3>
-            <p>Final week push! Submit your remaining contributions and join last-minute workshops.</p>
-          </div>
-          <div class="timeline-meta">
-            <div class="timeline-dot"></div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>October 31</h3>
-            <p>Hacktoberfest ends! Celebrate your contributions and claim your digital badges and swag.</p>
-          </div>
-          <div class="timeline-meta">
-            <div class="timeline-dot"></div>
-          </div>
-        </div>
+      <div class="section-header">
+        <div class="section-eyebrow">Getting Started</div>
+        <h2 class="section-title">How to Participate</h2>
+        <p class="section-subtitle">
+          Follow these key dates and steps to complete your Hacktoberfest journey
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- ================= TICKET SECTION ================= -->
-  <section class="ticketing-section" id="ticket">
-    <div class="container">
-      <h2 class="section-title">Reserve Your Spot at Hocktoberfest</h2>
-      <p class="section-subtitle">Choose your ticket and get ready for an unforgettable experience!</p>
-
-      <div class="ticket-cards">
-        <div class="ticket-card">
-          <div class="ticket-header">
-            <h3>Early Bird</h3>
-            <span class="price">$25</span>
+      <div class="event-timeline">
+        <div class="timeline-event">
+          <div class="timeline-date">
+            <div class="date-circle">26</div>
+            <div class="date-month">Sep</div>
           </div>
-          <p class="ticket-description">Grab your ticket early and save! Limited availability.</p>
-          <button class="reserve-btn">Reserve Your Spot</button>
+          <div class="timeline-event-content">
+            <h3>Step 1: Register Your Account</h3>
+            <p>Hacktoberfest registration opens on September 26! Sign up with your GitHub or GitLab account—it's completely free and takes just a minute. Get familiar with contribution guidelines and start exploring participating projects.</p>
+          </div>
         </div>
 
-        <div class="ticket-card featured">
-          <div class="ticket-header">
-            <h3>General Admission</h3>
-            <span class="price">$45</span>
+        <div class="timeline-event">
+          <div class="timeline-date">
+            <div class="date-circle">1</div>
+            <div class="date-month">Oct</div>
           </div>
-          <p class="ticket-description">Full access to all games, activities, and festivities.</p>
-          <button class="reserve-btn">Reserve Your Spot</button>
+          <div class="timeline-event-content">
+            <h3>Step 2: Find Projects & Contribute</h3>
+            <p>Contributions begin October 1st! Browse repositories on GitHub or GitLab with the "hacktoberfest" topic or "good first issue" label. Submit 4 quality pull/merge requests to participating repositories—focus on meaningful contributions that help projects, not spam.</p>
+          </div>
         </div>
 
-        <div class="ticket-card">
-          <div class="ticket-header">
-            <h3>VIP Experience</h3>
-            <span class="price">$80</span>
+        <div class="timeline-event">
+          <div class="timeline-date">
+            <div class="date-circle">15</div>
+            <div class="date-month">Oct</div>
           </div>
-          <p class="ticket-description">Exclusive perks, premium seating, and a special gift pack.</p>
-          <button class="reserve-btn">Reserve Your Spot</button>
+          <div class="timeline-event-content">
+            <h3>Step 3: Track Your Progress</h3>
+            <p>Mid-month checkpoint! Review your Hacktoberfest dashboard to track accepted PRs. PRs need a 7-day review period before counting. Join community events, attend virtual meetups, and connect with fellow contributors worldwide.</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ================= GALLERY ================= -->
-  <section class="gallery-section">
-    <div class="container">
-      <h2 class="section-title">Gallery & Highlights</h2>
-      <p class="section-subtitle">Moments from past Hocktoberfest celebrations – fun, food, and festive vibes!</p>
-
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=2" alt="Hocktoberfest highlight 2" />
-          <div class="overlay">
-            <span>Cheers & Festivities</span>
+        <div class="timeline-event">
+          <div class="timeline-date">
+            <div class="date-circle">31</div>
+            <div class="date-month">Oct</div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=3" alt="Hocktoberfest highlight 3" />
-          <div class="overlay">
-            <span>Games & Competitions</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=4" alt="Hocktoberfest highlight 3" />
-          <div class="overlay">
-            <span>Music & Dance</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=1" alt="Hocktoberfest highlight 1" />
-          <div class="overlay">
-            <span>Food & Drinks</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=5" alt="Hocktoberfest highlight 5" />
-          <div class="overlay">
-            <span>VIP Experience</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://picsum.photos/400/300?random=6" alt="Hocktoberfest highlight 6" />
-          <div class="overlay">
-            <span>Fun & Memories</span>
+          <div class="timeline-event-content">
+            <h3>Step 4: Complete & Claim Rewards</h3>
+            <p>Final deadline—October 31st at 11:59 PM UTC! Once your 4 contributions are accepted or merged (or labeled "hacktoberfest-accepted"), claim your digital badge, completion certificate, and celebrate your impact on open source and the environment!</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SPONSORS ================= -->
-  <section class="sponsors-section">
+  <!-- FAQ SECTION -->
+  <section class="section">
     <div class="container">
-      <h2 class="section-title">Our Sponsors & Partners</h2>
-      <p class="section-subtitle">We’re proud to collaborate with amazing brands and local partners!</p>
-
-      <div class="sponsors-grid">
-        <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=1" alt="Brand 1" />
-        </div>
-        <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=2" alt="Brand 2" />
-        </div>
-        <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=3" alt="Brand 3" />
-        </div>
-        <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=4" alt="Brand 4" />
-        </div>
-        <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=5" alt="Brand 5" />
-        </div>
-        <div class="sponsor-item">
-          <img src="https://picsum.photos/200/100?random=6" alt="Brand 6" />
-        </div>
+      <div class="section-header">
+        <div class="section-eyebrow">Have Questions?</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Everything you need to know about participating in Hacktoberfest
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- ================= FAQ ================= -->
-  <section class="faq-section">
-    <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">Everything you need to know about Hocktoberfest!</p>
-
-      <div class="faq-accordion">
+      <div class="faq-container">
         <div class="faq-item">
           <button class="faq-question">
-            <span>What is Hocktoberfest?</span>
+            Do I need to be an experienced developer?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>
-              Hocktoberfest is a festive celebration of games, food, drinks, and community fun inspired by Oktoberfest
-              traditions.
+              Not at all! Hacktoberfest welcomes developers of all skill levels. Many projects 
+              have "good first issue" labels specifically for beginners, making it a perfect 
+              opportunity to learn and grow your skills.
             </p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>Where is the event held?</span>
+            What types of contributions count?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>
-              The event takes place at the Downtown Event Hall, with indoor and outdoor activities for all ages.
+              Quality contributions include bug fixes, new features, documentation improvements, 
+              code refactoring, and more. The key is making meaningful contributions that help 
+              projects. Spam or trivial changes don't count and may result in disqualification.
             </p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>Are tickets refundable?</span>
+            Can I contribute to any repository?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Tickets are non-refundable, but you can transfer your ticket to another person if needed.</p>
+            <p>
+              Contributions must be to public repositories on GitHub or GitLab that have the 
+              "hacktoberfest" topic, or your PR must be labeled "hacktoberfest-accepted" by 
+              maintainers. Contributions to your own repositories don't count.
+            </p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>Is there parking available?</span>
+            What rewards will I receive?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
             <p>
-              Yes, there is on-site parking and additional street parking nearby. We recommend carpooling for
-              convenience.
+              Completing the challenge earns you a digital badge for your GitHub profile, 
+              a completion certificate you can share, and contributes to tree-planting 
+              initiatives through our environmental partnerships.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is participation free?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! Hacktoberfest is completely free to participate in. All you need is a 
+              GitHub or GitLab account and the willingness to contribute to open source projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What if my pull request is rejected?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Rejected PRs don't count toward your total, but don't be discouraged! Use the 
+              feedback to improve and try again. Every contribution is a valuable learning 
+              opportunity that helps you grow as a developer.
             </p>
           </div>
         </div>
@@ -1340,80 +1320,108 @@
     </div>
   </section>
 
-  <!-- ================= CTA ================= -->
+  <!-- CTA SECTION -->
   <section class="cta-section">
-    <div class="container">
-      <h2 class="cta-title">Join the Hocktoberfest Fun!</h2>
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Get Started?</h2>
       <p class="cta-subtitle">
-        Don’t miss out on games, food, music, and unforgettable memories. Reserve your spot now!
+        Join thousands of developers worldwide in celebrating open source. 
+        Register today and make your mark on the community.
       </p>
-      <a href="#ticket" class="cta-button">Reserve Your Spot</a>
+      <a href="https://hacktoberfest.com/participation/" target="_blank" rel="noopener noreferrer" class="btn btn-cta">
+        <span>Register for Hacktoberfest</span>
+      </a>
     </div>
   </section>
 
-  <!-- ================= FOOTER PLACEHOLDER ================= -->
+  <!-- FOOTER -->
   <div id="footer"></div>
 
-  <!-- ================= SCRIPTS ================= -->
-  <script src="../../js/components.js"></script>
-  <script src="../../js/main.js"></script>
-  <script src="../../js/DMtheme.js"></script>
-  <script src="../../js/theme.js"></script>
-  <script src='../../js/pwa.js'></script>
-
+  <!-- SCROLL TO TOP BUTTON -->
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <!-- SCRIPTS -->
+  <script src="../../js/components.js"></script>
+
   <script>
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+      const question = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+
+      question.addEventListener("click", () => {
+        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
+
+        // Close all FAQs
+        faqItems.forEach(i => {
+          i.querySelector(".faq-answer").style.maxHeight = null;
+          i.querySelector(".faq-question").classList.remove("active");
+        });
+
+        // Open clicked FAQ if it wasn't open
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          question.classList.add("active");
+        }
+      });
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.style.display = "flex";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     // Theme toggle
     const themeToggle = document.getElementById("themeToggle");
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
+        const icon = themeToggle.querySelector("i");
+        icon.classList.toggle("fa-moon");
+        icon.classList.toggle("fa-sun");
       });
     }
 
-    // FAQ accordion behavior
-    const faqItems = document.querySelectorAll(".faq-item");
-    faqItems.forEach((item) => {
-      const question = item.querySelector(".faq-question");
-      const answer = item.querySelector(".faq-answer");
-      const icon = item.querySelector(".faq-icon");
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px"
+    };
 
-      question.addEventListener("click", () => {
-        const isOpen = item.classList.contains("open");
-
-        faqItems.forEach((i) => {
-          i.classList.remove("open");
-          i.querySelector(".faq-answer").style.maxHeight = null;
-          i.querySelector(".faq-icon").textContent = "+";
-        });
-
-        if (!isOpen) {
-          item.classList.add("open");
-          answer.style.maxHeight = answer.scrollHeight + "px";
-          icon.textContent = "−";
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
         }
       });
-    });
+    }, observerOptions);
 
-    // CTA subtitle intersection
-    const ctaSubtitle = document.querySelector(".cta-subtitle");
-    if (ctaSubtitle) {
-      const ctaObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              ctaSubtitle.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-      ctaObserver.observe(ctaSubtitle);
-    }
+    // Observe cards
+    document.querySelectorAll('.about-card, .highlight-card').forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(el);
+    });
   </script>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/DMtheme.js"></script>
+  <script src="../../js/theme.js"></script>
+  <script src='../../js/pwa.js'></script>
 </body>
 
 </html>

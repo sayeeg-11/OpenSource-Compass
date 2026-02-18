@@ -81,7 +81,7 @@ _No backend installation required!_
 
 1.  **Clone & Enter:**
     ```bash
-    git clone https://github.com/TarunyaProgrammer/OpenSource-Compass.git
+    git clone https://github.com/sayeeg-11/OpenSource-Compass.git
     cd OpenSource-Compass
     ```
 
