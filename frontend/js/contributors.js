@@ -450,19 +450,67 @@ const botToggle = document.getElementById('toggle-bots');
 searchInput?.addEventListener('input', debounce(applyFilters));
 botToggle?.addEventListener('change', applyFilters);
 
-function updateStats(list) {
-  const stats = document.getElementById('contributors-stats');
+function updateStats(list, allList = allContributors) {
+  const stats = document.getElementById("contributors-stats");
   if (!stats) return;
 
   const total = list.length;
   const humans = list.filter(c => !/\[bot\]$/i.test(c.login)).length;
   const mergedPRs = list.reduce((sum, c) => sum + (c.merged_prs || 0), 0);
-  const top = list[0];
+
+  // ✅ Always use global top contributor
+  const top = allList?.[0];
 
   stats.innerHTML = `
-    <span><strong>${total}</strong> contributors</span>
-    <span><strong>${humans}</strong> people</span>
-    <span><strong>${mergedPRs}</strong> merged PRs</span>
-    ${top ? `<span>🏆 Top: <strong>${top.login}</strong></span>` : ''}
+    <div class="stat-pill">
+      <span class="stat-count" data-target="${total}">0</span>
+      <span class="stat-label">Contributors</span>
+    </div>
+
+    <div class="stat-pill">
+      <span class="stat-count" data-target="${humans}">0</span>
+      <span class="stat-label">People</span>
+    </div>
+
+    <div class="stat-pill">
+      <span class="stat-count" data-target="${mergedPRs}">0</span>
+      <span class="stat-label">Merged PRs</span>
+    </div>
+
+    ${
+      top
+        ? `
+      <div class="stat-pill stat-top">
+        <span class="stat-label"> 🏆 Top:</span>
+        <strong>${escapeHtml(top.login)}</strong>
+      </div>
+    `
+        : ""
+    }
   `;
+
+  animateStatCounts();
+}
+
+function animateStatCounts() {
+  const counters = document.querySelectorAll(".stat-count");
+
+  counters.forEach(counter => {
+    const target = Number(counter.dataset.target);
+    let current = 0;
+
+    const step = Math.max(1, Math.floor(target / 40));
+
+    function tick() {
+      current += step;
+      if (current >= target) {
+        counter.textContent = target;
+      } else {
+        counter.textContent = current;
+        requestAnimationFrame(tick);
+      }
+    }
+
+    tick();
+  });
 }

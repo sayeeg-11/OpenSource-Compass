@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Profile | Git Playground</title>
+    <meta name="description"
+        content="View Git Playground achievement badges. Showcase your Git skills and learning progress.">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/git-badges.css?v=1.0.1">
+    <link rel='manifest' href='../../manifest.json' />
+
+    <style>
+        /* ---- Page-Level Reset ---- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow: auto !important;
+        }
+
+        body {
+            background: #0b111a;
+            min-height: 100vh;
+            height: auto !important;
+            overflow: auto !important;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: #f0f6fc;
+        }
+
+        /* ---- Navbar ---- */
+        .profile-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(22, 27, 34, 0.96);
+            border-bottom: 1px solid #30363d;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .profile-nav .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: #e8b923;
+            font-weight: 700;
+        }
+
+        .profile-nav .nav-back {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-nav .nav-back:hover {
+            color: #e8b923;
+        }
+
+        /* ---- Main Container ---- */
+        .profile-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 4rem;
+        }
+
+        /* ---- Hero ---- */
+        .profile-hero {
+            text-align: center;
+            padding: 2.5rem 1rem 1rem;
+        }
+
+        .profile-hero .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e8b923, #ffd700);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #0b111a;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 24px rgba(232, 185, 35, 0.3);
+        }
+
+        .profile-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #e8b923;
+            margin: 0 0 0.4rem;
+        }
+
+        .profile-hero .hero-subtitle {
+            color: #8b949e;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* ---- Stats Row ---- */
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1.2rem 1.8rem;
+            text-align: center;
+            min-width: 110px;
+            flex: 1;
+            max-width: 180px;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        .stat-box:hover {
+            border-color: rgba(232, 185, 35, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .stat-box .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e8b923;
+            line-height: 1.2;
+        }
+
+        .stat-box .stat-text {
+            font-size: 0.72rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 0.3rem;
+        }
+
+        /* ---- Section Titles ---- */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #f0f6fc;
+            margin: 2.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+        }
+
+        .section-title i {
+            color: #e8b923;
+            font-size: 1.1rem;
+        }
+
+        /* ---- Badge Grid ---- */
+        .profile-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* ---- Empty State ---- */
+        .empty-state {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: #8b949e;
+        }
+
+        .empty-state i {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+            color: #30363d;
+        }
+
+        .empty-state p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ---- Share Section ---- */
+        .share-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+        }
+
+        .share-section h3 {
+            color: #e8b923;
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 0.4rem;
+            font-size: 1.2rem;
+        }
+
+        .share-section h3 i {
+            margin-right: 0.3rem;
+        }
+
+        .share-section p {
+            color: #8b949e;
+            font-size: 0.9rem;
+            margin: 0 0 1.2rem;
+        }
+
+        .share-url-box {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .share-url-input {
+            flex: 1;
+            background: #0b111a;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 0.65rem 1rem;
+            color: #f0f6fc;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78rem;
+        }
+
+        .share-url-input:focus {
+            outline: none;
+            border-color: #e8b923;
+        }
+
+        .share-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: linear-gradient(135deg, #e8b923, #ffd700);
+            color: #0b111a;
+            border: none;
+            padding: 0.65rem 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .share-copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(232, 185, 35, 0.3);
+        }
+
+        .share-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .share-link.github {
+            background: rgba(255, 255, 255, 0.06);
+            color: #f0f6fc;
+            border: 1px solid #30363d;
+        }
+
+        .share-link.github:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #8b949e;
+        }
+
+        .share-link.linkedin {
+            background: rgba(10, 102, 194, 0.15);
+            color: #79c0ff;
+            border: 1px solid rgba(10, 102, 194, 0.3);
+        }
+
+        .share-link.linkedin:hover {
+            background: rgba(10, 102, 194, 0.25);
+        }
+
+        .share-link.twitter {
+            background: rgba(29, 161, 242, 0.15);
+            color: #79c0ff;
+            border: 1px solid rgba(29, 161, 242, 0.3);
+        }
+
+        .share-link.twitter:hover {
+            background: rgba(29, 161, 242, 0.25);
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 600px) {
+            .profile-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .profile-badge-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .profile-stats {
+                gap: 0.6rem;
+            }
+
+            .stat-box {
+                padding: 0.8rem 0.6rem;
+                min-width: 75px;
+            }
+
+            .stat-box .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .share-url-box {
+                flex-direction: column;
+            }
+
+            .share-url-input {
+                width: 100%;
+            }
+
+            .profile-container {
+                padding: 1rem 1rem 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <!-- Hero -->
+        <div class="profile-hero">
+            <div class="hero-icon"><i class="fas fa-medal"></i></div>
+            <h1>Git Playground Achievements</h1>
+            <p class="hero-subtitle" id="profile-subtitle">Loading profile...</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="profile-stats" id="profile-stats">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Earned Badges -->
+        <h2 class="section-title"><i class="fas fa-trophy"></i> Earned Badges</h2>
+        <div id="earned-badges-grid" class="profile-badge-grid">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Locked Badges -->
+        <h2 class="section-title"><i class="fas fa-lock"></i> Locked Badges</h2>
+        <div id="locked-badges-grid" class="profile-badge-grid">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Share Section -->
+        <div class="share-section" id="share-section">
+            <h3><i class="fas fa-share-alt"></i> Share Your Profile</h3>
+            <p>Share your Git achievements on external platforms.</p>
+            <div class="share-url-box">
+                <input type="text" class="share-url-input" id="share-url-input" readonly
+                    placeholder="Generating shareable link...">
+                <button class="share-copy-btn" id="share-copy-btn">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+            <div class="share-links" id="share-links">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Engine -->
+    <script src="../js/git-scenarios.js?v=1.0.3"></script>
+    <script src="../js/git-badges.js?v=1.0.0"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const profileParam = urlParams.get('profile');
+
+            let badges, earnedBadges, lockedBadges, stats;
+
+            if (profileParam) {
+                // Viewing a shared profile
+                const profileData = GitBadgeEngine.parseProfileData(profileParam);
+                if (!profileData) {
+                    document.getElementById('profile-subtitle').textContent = 'Invalid profile link.';
+                    return;
+                }
+
+                const earnedIds = profileData.badges || [];
+                badges = GitBadgeEngine.BADGE_DEFINITIONS.map(b => ({
+                    ...b,
+                    earned: earnedIds.includes(b.id),
+                    earnedAt: null,
+                }));
+                earnedBadges = badges.filter(b => b.earned);
+                lockedBadges = badges.filter(b => !b.earned);
+                stats = {
+                    earned: earnedBadges.length,
+                    total: badges.length,
+                    completedScenarios: profileData.scenarios || 0,
+                    speedruns: profileData.speedruns || 0,
+                };
+
+                document.getElementById('profile-subtitle').textContent =
+                    `Shared profile — Exported ${new Date(profileData.exportedAt).toLocaleDateString()}`;
+                document.getElementById('share-section').style.display = 'none';
+            } else {
+                // Viewing own profile
+                badges = GitBadgeEngine.getAllBadges();
+                earnedBadges = badges.filter(b => b.earned);
+                lockedBadges = badges.filter(b => !b.earned);
+                const progress = GitBadgeEngine.getProgress();
+                stats = {
+                    earned: progress.earned,
+                    total: progress.total,
+                    completedScenarios: progress.completedScenarios,
+                    speedruns: 0,
+                };
+
+                document.getElementById('profile-subtitle').textContent =
+                    `Your personal Git achievement showcase`;
+
+                // Generate share URL
+                const shareURL = GitBadgeEngine.getShareableURL();
+                const shareInput = document.getElementById('share-url-input');
+                shareInput.value = shareURL;
+
+                // Copy button
+                document.getElementById('share-copy-btn').addEventListener('click', () => {
+                    navigator.clipboard.writeText(shareURL).then(() => {
+                        const btn = document.getElementById('share-copy-btn');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                });
+
+                // Social share links
+                const encodedURL = encodeURIComponent(shareURL);
+                const shareText = encodeURIComponent(`I've earned ${stats.earned} Git badges on OpenSource Compass Git Playground! 🏆`);
+                document.getElementById('share-links').innerHTML = `
+                    <a href="https://github.com" target="_blank" class="share-link github">
+                        <i class="fab fa-github"></i> Add to GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodedURL}" target="_blank" class="share-link linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${encodedURL}" target="_blank" class="share-link twitter">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                `;
+            }
+
+            // Render stats
+            const total = stats.total || 1; // avoid division by zero
+            document.getElementById('profile-stats').innerHTML = `
+                <div class="stat-box">
+                    <div class="stat-number">${stats.earned}</div>
+                    <div class="stat-text">Badges Earned</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${stats.total}</div>
+                    <div class="stat-text">Total Badges</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${stats.completedScenarios}</div>
+                    <div class="stat-text">Scenarios Done</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${Math.round((stats.earned / total) * 100)}%</div>
+                    <div class="stat-text">Completion</div>
+                </div>
+            `;
+
+            // Render earned badges
+            const earnedGrid = document.getElementById('earned-badges-grid');
+            if (earnedBadges.length === 0) {
+                earnedGrid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <i class="fas fa-ghost"></i>
+                        <p>No badges earned yet. Complete scenarios in the Git Playground to unlock badges!</p>
+                    </div>`;
+            } else {
+                earnedGrid.innerHTML = earnedBadges.map(b => createBadgeCardHTML(b, true)).join('');
+            }
+
+            // Render locked badges
+            const lockedGrid = document.getElementById('locked-badges-grid');
+            if (lockedBadges.length === 0) {
+                lockedGrid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <i class="fas fa-star"></i>
+                        <p>All badges unlocked! You're a Git master! 🎉</p>
+                    </div>`;
+            } else {
+                lockedGrid.innerHTML = lockedBadges.map(b => createBadgeCardHTML(b, false)).join('');
+            }
+        });
+
+        function createBadgeCardHTML(badge, earned) {
+            const cardClass = earned ? 'badge-card earned' : 'badge-card locked';
+            const earnedDate = badge.earnedAt
+                ? `<div class="badge-earned-date">Earned ${new Date(badge.earnedAt).toLocaleDateString()}</div>`
+                : '';
+            const levelClass = badge.level.toLowerCase();
+
+            return `
+                <div class="${cardClass}" style="--badge-gradient: ${badge.gradient}" id="badge-${badge.id}">
+                    <div class="badge-icon-wrap" style="${earned ? `background: ${badge.gradient}` : ''}">
+                        <i class="fas ${badge.icon}"></i>
+                    </div>
+                    <div class="badge-title">${badge.title}</div>
+                    <div class="badge-description">${badge.description}</div>
+                    <span class="badge-level-tag ${levelClass}">${badge.level}</span>
+                    ${earnedDate}
+                </div>
+            `;
+        }
+    </script>
+    <script src='../js/pwa.js'></script>
+</body>
+
+</html>

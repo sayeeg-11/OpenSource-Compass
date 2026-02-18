@@ -1,25 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Feedback | OpenSource Compass</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback | OpenSource Compass</title>
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/feedback.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- 🔹 Shared Navbar (Injected by components.js) -->
-  <div id="navbar"></div>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/feedback.css" />
 
-  <!-- Page Header -->
-  <section class="feedback-header">
-    <h1>We’d Love Your Feedback</h1>
-    <p>Your feedback helps improve OpenSource Compass for everyone.</p>
-  </section>
+    <style>
+      :root {
+        --primary-gold: #d4af37;
+        --deep-navy: #0a192f;
+        --deep-navy-2: #132b4d;
+        --text-main: #2b2b2b;
+        --muted: #6b7280;
+        --bg-cream: #fdfbf7;
+        --card: rgba(255, 255, 255, 0.78);
+        --border: rgba(15, 23, 42, 0.1);
+        --shadow: 0 18px 60px rgba(10, 25, 47, 0.1);
+        --shadow-hover: 0 22px 75px rgba(10, 25, 47, 0.16);
+        --radius: 18px;
+      }
 
   <!-- Feedback Form -->
 <!-- Feedback Form -->
@@ -30,43 +42,422 @@
 
       <label for="name">Name (optional)</label>
       <input id="name" type="text" placeholder="Your name">
+      * {
+        box-sizing: border-box;
+      }
 
-      <label for="email">Email (optional)</label>
-      <input id="email" type="email" placeholder="Your email">
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            1200px 600px at 20% 0%,
+            rgba(212, 175, 55, 0.13),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 80% 10%,
+            rgba(10, 25, 47, 0.1),
+            transparent 55%
+          ),
+          var(--bg-cream);
+        color: var(--text-main);
+        overflow-x: hidden;
+      }
 
-      <label for="type">Feedback Type</label>
-      <select id="type" required>
-        <option value="">Select an option</option>
-        <option>Bug Report</option>
-        <option>Feature Request</option>
-        <option>UI / UX Feedback</option>
-        <option>Content Improvement</option>
-        <option>General Feedback</option>
-      </select>
+      /* --- Ambient Animated Blobs --- */
+      .bg-blobs {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+        filter: blur(40px);
+        opacity: 0.65;
+      }
 
-      <label for="message">Feedback Message *</label>
-      <textarea
-        id="message"
-        required
-        placeholder="Write your feedback here..."
-      ></textarea>
+      .blob {
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        transform: translate3d(0, 0, 0);
+        animation: float 10s ease-in-out infinite;
+        mix-blend-mode: multiply;
+      }
 
-      <button type="submit">Submit Feedback</button>
+      .blob.one {
+        background: rgba(212, 175, 55, 0.35);
+        top: -120px;
+        left: -120px;
+        animation-duration: 12s;
+      }
 
-      <p id="successMessage">Thank you! Your feedback has been submitted.</p>
+      .blob.two {
+        background: rgba(10, 25, 47, 0.2);
+        top: 60px;
+        right: -140px;
+        animation-duration: 14s;
+      }
+
+      .blob.three {
+        background: rgba(212, 175, 55, 0.18);
+        bottom: -160px;
+        left: 35%;
+        animation-duration: 16s;
+      }
 
         </form>
   </div>
 </section>
 
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+          transform: translate(30px, -18px) scale(1.05);
+        }
+      }
+
+      /* --- Header --- */
+      .feedback-header {
+        text-align: center;
+        padding: 4.25rem 1.25rem 2.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: fadeUp 700ms ease forwards;
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      .feedback-header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+        color: var(--deep-navy);
+        margin-bottom: 0.9rem;
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+      }
+
+      .feedback-header h1::after {
+        content: "";
+        display: block;
+        width: 66px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-gold), #f5e6a5);
+        margin: 0.6rem auto 0;
+        border-radius: 999px;
+      }
+
+      .feedback-header p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 620px;
+        margin: 0 auto;
+        line-height: 1.75;
+      }
+
+      /* --- Container --- */
+      .feedback-container {
+        display: flex;
+        justify-content: center;
+        padding: 0 1rem 4.5rem;
+      }
+
+      /* --- Form Card --- */
+      #feedbackForm {
+        width: 100%;
+        max-width: 640px;
+        padding: 2.6rem 2.6rem 2.2rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--card);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 800ms ease 120ms forwards;
+      }
+
+      /* gold accent top line */
+      #feedbackForm::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-gold),
+          rgba(212, 175, 55, 0.2)
+        );
+      }
+
+      /* subtle highlight */
+      #feedbackForm::after {
+        content: "";
+        position: absolute;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        background: rgba(212, 175, 55, 0.12);
+        top: -120px;
+        right: -120px;
+      }
+
+      /* --- Form Groups --- */
+      .field {
+        position: relative;
+        margin-top: 1.4rem;
+      }
+
+      .field:first-of-type {
+        margin-top: 0;
+      }
+
+      label {
+        font-weight: 600;
+        color: var(--deep-navy);
+        display: block;
+        margin-bottom: 0.55rem;
+        font-size: 0.95rem;
+      }
+
+      /* --- Inputs --- */
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.95rem 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        background: rgba(250, 250, 250, 0.9);
+        transition:
+          transform 180ms ease,
+          box-shadow 240ms ease,
+          border-color 240ms ease,
+          background 240ms ease;
+        outline: none;
+      }
+
+      input:hover,
+      select:hover,
+      textarea:hover {
+        border-color: rgba(212, 175, 55, 0.55);
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(212, 175, 55, 0.9);
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.14);
+        transform: translateY(-1px);
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* --- Submit Button --- */
+      button[type="submit"] {
+        margin-top: 2rem;
+        width: 100%;
+        border: none;
+        border-radius: 999px;
+        cursor: pointer;
+        padding: 1rem 1.25rem;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+        background: linear-gradient(
+          135deg,
+          var(--deep-navy),
+          var(--deep-navy-2)
+        );
+        box-shadow: 0 10px 24px rgba(10, 25, 47, 0.25);
+        transition:
+          transform 180ms ease,
+          box-shadow 220ms ease,
+          filter 220ms ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      button[type="submit"] i {
+        margin-left: 10px;
+      }
+
+      button[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 32px rgba(10, 25, 47, 0.33);
+        filter: brightness(1.05);
+      }
+
+      button[type="submit"]:active {
+        transform: translateY(0px) scale(0.99);
+      }
+
+      /* Ripple */
+      button[type="submit"]::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at var(--x, 50%) var(--y, 50%),
+          rgba(255, 255, 255, 0.35),
+          transparent 40%
+        );
+        opacity: 0;
+        transition: opacity 220ms ease;
+      }
+
+      button[type="submit"]:hover::after {
+        opacity: 1;
+      }
+
+      /* Loading state */
+      button.loading {
+        opacity: 0.85;
+        cursor: not-allowed;
+      }
+      button.loading i {
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* --- Success Message --- */
+      #successMessage {
+        margin-top: 1.25rem;
+        text-align: center;
+        font-weight: 700;
+        display: none;
+        background: rgba(39, 174, 96, 0.12);
+        color: #1f8a4c;
+        border: 1px solid rgba(39, 174, 96, 0.25);
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+        animation: popIn 420ms ease forwards;
+      }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 640px) {
+        #feedbackForm {
+          padding: 2rem 1.25rem 1.6rem;
+        }
+      }
+
+      /* --- Reduce motion accessibility --- */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        .blob {
+          display: none;
+        }
+        #feedbackForm,
+        .feedback-header {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="navbar"></div>
+
+    <main>
+      <section class="feedback-header">
+        <h1>We’d Love Your Feedback</h1>
+        <p>
+          Your feedback helps improve OpenSource Compass for everyone. Let us
+          know how we can make your journey better.
+        </p>
+      </section>
+
+      <section class="feedback-container">
+        <form id="feedbackForm">
+          <label for="name"
+            >Name
+            <span style="font-weight: 400; color: #999; font-size: 0.85em"
+              >(optional)</span
+            ></label
+          >
+          <input id="name" type="text" placeholder="John Doe" />
+
+          <label for="email"
+            >Email
+            <span style="font-weight: 400; color: #999; font-size: 0.85em"
+              >(optional)</span
+            ></label
+          >
+          <input id="email" type="email" placeholder="john@example.com" />
+
+          <label for="type">Feedback Type</label>
+          <select id="type" required>
+            <option value="">Select an option...</option>
+            <option>Bug Report</option>
+            <option>Feature Request</option>
+            <option>UI / UX Feedback</option>
+            <option>Content Improvement</option>
+            <option>General Feedback</option>
+          </select>
+
+          <label for="message">Feedback Message *</label>
+          <textarea
+            id="message"
+            required
+            placeholder="Tell us what you think..."
+          ></textarea>
+
+          <button type="submit">
+            Submit Feedback
+            <i class="fas fa-paper-plane" style="margin-left: 8px"></i>
+          </button>
+
+          <p id="successMessage">
+            <i class="fas fa-check-circle"></i> Thank you! Your feedback has
+            been submitted.
+          </p>
+        </form>
+      </section>
+    </main>
 
     <div id="footer"></div>
 
-
-
-  <!-- 🔹 Shared Components + Page Logic -->
-  <script src="../js/components.js"></script>
-  <script src="../js/feedback.js"></script>
-
-</body>
+    <!-- 🔹 Shared Components + Page Logic -->
+    <script src="../js/components.js"></script>
+    <script src="../js/feedback.js"></script>
+  </body>
 </html>

@@ -4,16 +4,19 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import contributorProgressRoutes from "./routes/contributorProgressRoutes.js";
-import cookieParser from "cookie-parser";
-
+import chatRoute from "./routes/chat.route.js";
+import prRoutes from "./routes/prRoutes.js";
+import issueRoutes from "./routes/issueRoutes.js";
 dotenv.config();
 
 const app = express();
-app.use(cookieParser());
+
 // Middleware
 app.use(cors());
 app.use(express.json());
-
+app.use("/api", chatRoute);
+app.use("/api/pr", prRoutes);
+app.use("/api/issue", issueRoutes);
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/contributor/progress", contributorProgressRoutes);

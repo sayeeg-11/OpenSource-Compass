@@ -1,0 +1,3 @@
+{
+    "requirements": "1. Link the related issue using 'Fixes #ID'.\n2. Include screenshots for visual changes.\n3. Ensure all tests pass.\n4. Follow the project's style guide."
+}

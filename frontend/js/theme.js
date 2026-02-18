@@ -1,76 +1,84 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Check LocalStorage on load and apply theme
+
+    /* ===============================
+       THEME LOGIC (LOAD + TOGGLE)
+    ================================ */
+
+    const applyTheme = (isDark) => {
+        document.body.classList.toggle('dark-mode', isDark);
+        updateThemeIcon(isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+
+    // Load saved theme
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        updateThemeIcon(true); // Helper function to set icon
-    }
+    applyTheme(savedTheme === 'dark');
 
-    // 2. Navigation Active State Logic (Fix for Issue #316)
-    // This identifies the current page and highlights the corresponding navbar link
+    // Click toggle (event delegation)
+    document.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('#themeToggle');
+        if (!toggleBtn) return;
+
+        const isDark = !document.body.classList.contains('dark-mode');
+        applyTheme(isDark);
+    });
+
+    // Keyboard shortcut: Press "D"
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key.toLowerCase() !== 'd') return;
+
+        const isDark = !document.body.classList.contains('dark-mode');
+        applyTheme(isDark);
+    });
+
+    /* ===============================
+       NAVBAR ACTIVE LINK
+    ================================ */
+
     const highlightActiveLink = () => {
-        // Get the current page name from the URL (e.g., 'programs.html')
-        const currentPath = window.location.pathname.split("/").pop() || "index.html";
-        const navLinks = document.querySelectorAll(".nav-links a");
-
-        navLinks.forEach(link => {
-            // Get the filename from the href attribute
-            const linkPath = link.getAttribute("href").split("/").pop();
-            
-            // If the paths match, add the 'active' class
-            if (linkPath === currentPath) {
-                link.classList.add("active");
-            } else {
-                link.classList.remove("active");
-            }
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            const linkPath = link.getAttribute('href').split('/').pop();
+            link.classList.toggle('active', linkPath === currentPath);
         });
     };
 
-    // Run the highlighter on load
     highlightActiveLink();
 
-    // 3. Event Delegation for the Theme Button
-    document.addEventListener('click', (e) => {
-        const toggleBtn = e.target.closest('#themeToggle');
-        if (toggleBtn) {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            
-            updateThemeIcon(isDark);
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        }
-    });
+    /* ===============================
+       SCROLL TO TOP
+    ================================ */
 
-    // 4. Scroll to Top Logic
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
     if (scrollTopBtn) {
-        window.addEventListener("scroll", () => {
-            scrollTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
 
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 });
 
-// Helper function to update the icon safely
+/* ===============================
+   THEME ICON HELPER
+================================ */
+
 function updateThemeIcon(isDark) {
     const icon = document.querySelector('#themeToggle i');
-    if (icon) {
-        if (isDark) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    }
+    if (!icon) return;
+
+    icon.classList.toggle('fa-sun', isDark);
+    icon.classList.toggle('fa-moon', !isDark);
 }
 
-// 5. Cursor Highlight Logic
+/* ===============================
+   CURSOR HIGHLIGHT
+================================ */
+
 const cursor = document.getElementById('cursor-highlight');
 
 if (cursor) {

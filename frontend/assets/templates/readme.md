@@ -83,6 +83,14 @@ project-name/
 ├── CONTRIBUTING.md
 └── LICENSE
 
+## 🖼️ Screenshots
+![Home Page](frontend\assets\templates\Home.png)
+
+![guide Page](frontend\assets\templates\guides.png)
+
+![Programs Page](frontend\assets\templates\Programs.png)
+
+
 ## 🤝 Contributing
 
 Contributions are welcome and appreciated! 🎉  
