@@ -51,8 +51,9 @@ html {
   list-style: none;
   counter-reset: step-counter;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 2.5rem;
+  align-items: stretch;
 }
 
 /* Guide list items */
@@ -74,7 +75,6 @@ html {
 .guide-list li:hover, .mistakes-list li:hover {
   transform: translateX(10px);
   border-left: 6px solid var(--primary-gold);
-  background: #ffffff;
   box-shadow: var(--shadow-hover);
 }
 /* ============================================================

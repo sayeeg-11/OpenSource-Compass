@@ -33,6 +33,7 @@
       --card-bg: #ffffff;
       --border-color: #e2d1a8;
       --primary-gold: #b59d5c;
+      --secondary-gold: #d4af37;
       --shadow: rgba(0, 0, 0, 0.05);
       --newsletter-bg: #fcfbf7;
       /* Light cream */
@@ -105,7 +106,6 @@
 
     /* Ensure icons remain gold in both modes */
     .card-icon,
-    .stat-icon,
     .program-icon {
       color: var(--primary-gold);
     }
@@ -260,19 +260,44 @@
       border-color: rgba(255, 215, 0, 0.8) !important;
     }
 
-    /* --- NEW: Golden Glow Hover Effect for Milestone Stats Cards --- */
     .stats .stat-card {
-      transition: all 0.3s ease-in-out;
-      border-radius: 12px;
-      /* Ensures glow follows rounded corners if present */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 16px;
+      cursor: pointer;
     }
 
     .stats .stat-card:hover {
-      /* Stronger Golden Glow from the back */
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5) !important;
-      transform: translateY(-5px);
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 25px 50px rgba(181, 157, 92, 0.35);
       z-index: 2;
-      /* Ensures it pops out above neighbors */
+    }
+
+    .stat-card h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      transition: color 0.3s ease;
+    }
+
+    .stats .stat-card:hover h2 {
+      color: var(--primary-gold);
+    }
+
+    .stat-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+      transition: all 0.5s var(--bounce-curve);
+    }
+
+    .stat-icon i {
+      color: var(--card-bg);
     }
 
     /* --- FIX: Timeline Z-Index Layering --- */
@@ -798,7 +823,7 @@
             <i class="fas fa-seedling"></i>
           </div>
           <div class="compass-content">
-            <h4>Start with Strong Foundations</h4>
+            <h4 style="color:black">Start with Strong Foundations</h4>
             <p>
               Learn the timeless principles that successful open-source projects
               are built upon — long before your first pull request.
@@ -810,7 +835,7 @@
             <i class="fas fa-users"></i>
           </div>
           <div class="compass-content">
-            <h4>Grow with Mentorship</h4>
+            <h4 style="color:black">Grow with Mentorship</h4>
             <p>
               Learn alongside maintainers and contributors who’ve already walked
               the path you’re starting today.
@@ -834,7 +859,7 @@
             <i class="fas fa-people-group"></i>
           </div>
           <div class="compass-content">
-            <h4>Community Driven</h4>
+            <h4 style="color:black">Community Driven</h4>
             <p>Built by contributors, improved by contributors.</p>
           </div>
         </div>
@@ -842,31 +867,34 @@
     </section>
     <section class="stats">
       <div class="stats-header">
-        <h3>Open Source Milestones</h3>
+        <h3 style="color:black">Open Source Milestones</h3>
         <p>Celebrating achievements of contributors, programs, and mentorships around the globe.</p>
       </div>
       <div class="stats-grid">
         <div class="stat-card fade-in">
           <div class="stat-icon"><i class="fas fa-rocket"></i></div>
-          <h2>50K+</h2>
+          <h2 class="counter" data-target="50000" data-suffix="K+">0</h2>
           <p>First Contributions</p>
         </div>
+
         <div class="stat-card fade-in">
           <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
-          <h2>200+</h2>
+          <h2 class="counter" data-target="200" data-suffix="+">0</h2>
           <p>Programs Tracked</p>
         </div>
+
         <div class="stat-card fade-in">
           <div class="stat-icon"><i class="fas fa-users"></i></div>
-          <h2>10K+</h2>
+          <h2 class="counter" data-target="10000" data-suffix="K+">0</h2>
           <p>Active Mentors</p>
         </div>
+
         <div class="stat-card fade-in">
           <div class="stat-icon"><i class="fas fa-award"></i></div>
-          <h2>5Y+</h2>
+          <h2 class="counter" data-target="5" data-suffix="Y+">0</h2>
           <p>Proven Track Record</p>
-        </div>
-      </div>
+        </div>        
+     </div>
     </section>
     <section class="programs" id="programs">
       <div class="programs-header">

@@ -109,7 +109,7 @@ const footerHTML = `
               </a>
             </li>
             <li>
-              <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">
+              <a href="${getPath('frontend/pages/code-of-conduct.html')}" target="_blank" rel="noopener noreferrer">
                 Code of Conduct
               </a>
             </li>
