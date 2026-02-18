@@ -473,6 +473,11 @@
     </footer>
 
     <script>
+        const backLink = document.querySelector('.tools-back');
+        const backText = backLink.querySelector('.back-text');
+        const playgroundIframe = document.querySelector('.playground-wrapper-iframe');
+        let iframeShowingBadges = false;
+
         function switchTab(tabId) {
             // Update Buttons
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -482,6 +487,41 @@
             // Update Panels
             document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
+
+            // Update back link based on active tab
+            updateBackLink();
+        }
+
+        function updateBackLink() {
+            const playgroundPanel = document.getElementById('playground');
+            const isPlaygroundActive = playgroundPanel && playgroundPanel.classList.contains('active');
+
+            if (isPlaygroundActive && iframeShowingBadges) {
+                backText.textContent = 'Back Playground';
+                backLink.href = '#';
+                backLink.onclick = function (e) {
+                    e.preventDefault();
+                    playgroundIframe.src = './git-playground.html?embedded=true';
+                };
+            } else {
+                backText.textContent = 'Back Home';
+                backLink.href = '../../index.html';
+                backLink.onclick = null;
+            }
+        }
+
+        // Monitor iframe navigation changes
+        if (playgroundIframe) {
+            playgroundIframe.addEventListener('load', function () {
+                try {
+                    const iframeSrc = playgroundIframe.contentWindow.location.href;
+                    iframeShowingBadges = iframeSrc.includes('badges.html');
+                } catch (e) {
+                    // Cross-origin fallback: check src attribute
+                    iframeShowingBadges = playgroundIframe.src.includes('badges.html');
+                }
+                updateBackLink();
+            });
         }
 
         function toggleToolsMenu() {

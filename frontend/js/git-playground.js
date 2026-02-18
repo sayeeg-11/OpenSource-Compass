@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load available scenarios from global or safe fallback
     const allScenarios = window.gitScenarios || [];
 
+    // Restore completed scenarios from badge engine
+    const savedCompletedIds = (window.GitBadgeEngine) ? GitBadgeEngine.getCompletedScenarios() : [];
+    state.completedScenarios = [...savedCompletedIds];
+
     // --- Terminal Logic ---
 
     function addOutput(htmlContent, type = '') {
@@ -351,9 +355,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.querySelector(`.scenario-card[data-id="${scenario.id}"]`);
             if (card) card.classList.add('completed');
 
-            // Clear active scenario after a delay or keep until quit?
-            // Let's keep it active but finished.
-            // Maybe auto-quit? No, let user choose.
+            // Track completion
+            if (!state.completedScenarios.includes(scenario.id)) {
+                state.completedScenarios.push(scenario.id);
+            }
+
+            // --- Badge System Integration ---
+            if (window.GitBadgeEngine) {
+                const commandCount = state.history.length;
+                const newBadges = GitBadgeEngine.onScenarioComplete(scenario.id, commandCount);
+
+                // Show toast for each newly earned badge
+                newBadges.forEach((badge, i) => {
+                    setTimeout(() => showBadgeToast(badge), (i + 1) * 600);
+                });
+
+                // Update badge UI counters
+                updateBadgeUI();
+            }
         }
     }
 
@@ -390,6 +409,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'scenario-card';
             card.dataset.id = scenario.id;
+
+            // Mark previously completed scenarios
+            if (state.completedScenarios.includes(scenario.id)) {
+                card.classList.add('completed');
+            }
 
             const levelClass = `level-${scenario.level.toLowerCase()}`;
 
@@ -605,6 +629,145 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Initialization ---
     // Default View: Scenarios
     renderScenarios();
+
+    // --- Badge Modal & Toast System ---
+
+    function showBadgeToast(badge) {
+        const container = document.getElementById('badge-toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'badge-toast';
+        toast.innerHTML = `
+            <div class="toast-icon" style="background: ${badge.gradient}">
+                <i class="fas ${badge.icon}"></i>
+            </div>
+            <div class="toast-content">
+                <div class="toast-label">Badge Unlocked!</div>
+                <div class="toast-title">${badge.title}</div>
+            </div>
+        `;
+        container.appendChild(toast);
+
+        // Auto-remove after 4 seconds
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(100px)';
+            toast.style.transition = 'all 0.4s ease';
+            setTimeout(() => toast.remove(), 400);
+        }, 4000);
+    }
+
+    function updateBadgeUI() {
+        if (!window.GitBadgeEngine) return;
+
+        const progress = GitBadgeEngine.getProgress();
+
+        // Update nav pill
+        const navCount = document.getElementById('nav-badge-count');
+        if (navCount) navCount.textContent = progress.earned;
+
+        // Update sidebar mini progress
+        const miniProgress = document.getElementById('badge-progress-mini');
+        if (miniProgress) miniProgress.textContent = `${progress.earned} / ${progress.total}`;
+
+        // Update modal progress bar
+        const progressText = document.getElementById('badge-progress-text');
+        const progressFill = document.getElementById('badge-progress-fill');
+        if (progressText) progressText.textContent = `${progress.earned} / ${progress.total}`;
+        if (progressFill) progressFill.style.width = `${progress.percent}%`;
+    }
+
+    function renderBadgeGrid(levelFilter = 'all') {
+        if (!window.GitBadgeEngine) return;
+
+        const grid = document.getElementById('badge-grid');
+        if (!grid) return;
+
+        let badges = GitBadgeEngine.getAllBadges();
+        if (levelFilter !== 'all') {
+            badges = badges.filter(b => b.level === levelFilter);
+        }
+
+        // Sort: earned first, then locked
+        badges.sort((a, b) => (b.earned ? 1 : 0) - (a.earned ? 1 : 0));
+
+        grid.innerHTML = badges.map(badge => {
+            const cardClass = badge.earned ? 'badge-card earned' : 'badge-card locked';
+            const earnedDate = badge.earnedAt
+                ? `<div class="badge-earned-date">Earned ${new Date(badge.earnedAt).toLocaleDateString()}</div>`
+                : '';
+            const levelClass = badge.level.toLowerCase();
+
+            return `
+                <div class="${cardClass}" style="--badge-gradient: ${badge.gradient}" id="badge-${badge.id}">
+                    <div class="badge-icon-wrap" style="${badge.earned ? `background: ${badge.gradient}` : ''}">
+                        <i class="fas ${badge.icon}"></i>
+                    </div>
+                    <div class="badge-title">${badge.title}</div>
+                    <div class="badge-description">${badge.description}</div>
+                    <span class="badge-level-tag ${levelClass}">${badge.level}</span>
+                    ${earnedDate}
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Badge modal open/close
+    const badgeModalOverlay = document.getElementById('badge-modal-overlay');
+    const badgeModalClose = document.getElementById('badge-modal-close');
+    const openBadgesBtn = document.getElementById('open-badges-btn');
+
+    if (openBadgesBtn) {
+        openBadgesBtn.addEventListener('click', () => {
+            renderBadgeGrid();
+            updateBadgeUI();
+            badgeModalOverlay.classList.add('active');
+        });
+    }
+
+    if (badgeModalClose) {
+        badgeModalClose.addEventListener('click', () => {
+            badgeModalOverlay.classList.remove('active');
+        });
+    }
+
+    if (badgeModalOverlay) {
+        badgeModalOverlay.addEventListener('click', (e) => {
+            if (e.target === badgeModalOverlay) {
+                badgeModalOverlay.classList.remove('active');
+            }
+        });
+    }
+
+    // Badge level tab filtering
+    document.querySelectorAll('.badge-level-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.badge-level-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            renderBadgeGrid(tab.dataset.badgeLevel);
+        });
+    });
+
+    // Badge share button
+    const badgeShareBtn = document.getElementById('badge-share-btn');
+    if (badgeShareBtn && window.GitBadgeEngine) {
+        badgeShareBtn.addEventListener('click', () => {
+            const url = GitBadgeEngine.getShareableURL();
+            navigator.clipboard.writeText(url).then(() => {
+                badgeShareBtn.innerHTML = '<i class="fas fa-check"></i> Link Copied!';
+                setTimeout(() => {
+                    badgeShareBtn.innerHTML = '<i class="fas fa-share-alt"></i> Share Profile';
+                }, 2500);
+            }).catch(() => {
+                // Fallback: open in new tab
+                window.open(url, '_blank');
+            });
+        });
+    }
+
+    // Initialize badge UI on load
+    updateBadgeUI();
 
 });
 

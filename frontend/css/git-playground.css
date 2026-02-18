@@ -24,6 +24,8 @@ body.playground-page {
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     margin: 0;
+    padding-top: 0 !important;
+    /* Override the global body padding-top: 90px from style.css */
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -153,6 +155,7 @@ body.playground-page {
 .window-actions {
     color: var(--text-secondary);
     display: flex;
+    align-items: center;
     gap: 12px;
     font-size: 1rem;
     cursor: pointer;
@@ -160,6 +163,35 @@ body.playground-page {
 
 .window-actions i:hover {
     color: var(--text-primary);
+}
+
+/* Trophy badge button in terminal bar */
+.terminal-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.terminal-badge-btn:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+}
+
+.terminal-badge-btn .badge-count-pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    border-radius: 10px;
+    padding: 1px 6px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1.4;
 }
 
 .terminal-body {

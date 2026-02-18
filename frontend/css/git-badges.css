@@ -1,0 +1,685 @@
+/* ============================================================
+   Git Playground — Badge / Gamification Styles
+   ============================================================ */
+
+/* ---------- keyframes ---------- */
+@keyframes badgeUnlockPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes badgeShimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes badgeGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes progressFill {
+    from {
+        width: 0;
+    }
+}
+
+/* ---------- Badge Nav Button ---------- */
+.badge-nav-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.badge-nav-btn:hover {
+    color: var(--primary-gold);
+}
+
+.badge-nav-btn .badge-count-pill {
+    font-size: 0.65rem;
+    background: var(--primary-gold);
+    color: #0b111a;
+    padding: 0.1rem 0.45rem;
+    border-radius: 12px;
+    font-weight: 700;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* ---------- Badge Toggle in Sidebar ---------- */
+.badge-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    width: 100%;
+    margin-top: 0.75rem;
+    flex-shrink: 0;
+}
+
+.badge-toggle-btn:hover {
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+    background: rgba(232, 185, 35, 0.05);
+}
+
+.badge-toggle-btn i {
+    font-size: 1rem;
+}
+
+.badge-toggle-btn .badge-progress-mini {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--primary-gold);
+    font-weight: 600;
+}
+
+/* ---------- Badge Modal ---------- */
+.badge-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1rem;
+}
+
+.badge-modal-overlay.active {
+    display: flex;
+}
+
+.badge-modal {
+    background: var(--card-bg, #161b22);
+    border: 1px solid var(--border-color, #30363d);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.35s ease;
+    overflow: hidden;
+}
+
+.badge-modal-header {
+    padding: 1.5rem 1.8rem 1rem;
+    border-bottom: 1px solid var(--border-color, #30363d);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.badge-modal-header h2 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary-gold, #e8b923);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.badge-modal-header h2 i {
+    font-size: 1.2rem;
+}
+
+.badge-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary, #8b949e);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.badge-modal-close:hover {
+    color: #f0f6fc;
+}
+
+/* Progress Bar Header */
+.badge-progress-bar-wrap {
+    padding: 0.75rem 1.8rem 1rem;
+    border-bottom: 1px solid var(--border-color, #30363d);
+    flex-shrink: 0;
+}
+
+.badge-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.badge-progress-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #8b949e);
+}
+
+.badge-progress-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-gold, #e8b923);
+}
+
+.badge-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.badge-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-gold, #e8b923), #ffd700);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+    animation: progressFill 0.8s ease;
+}
+
+/* Level Tabs */
+.badge-level-tabs {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1.8rem;
+    flex-shrink: 0;
+}
+
+.badge-level-tab {
+    background: transparent;
+    border: 1px solid var(--border-color, #30363d);
+    color: var(--text-secondary, #8b949e);
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.badge-level-tab.active {
+    background: var(--primary-gold, #e8b923);
+    color: #0b111a;
+    border-color: var(--primary-gold, #e8b923);
+}
+
+.badge-level-tab:hover:not(.active) {
+    border-color: var(--primary-gold, #e8b923);
+    color: var(--primary-gold, #e8b923);
+}
+
+/* Badge Grid */
+.badge-modal-body {
+    padding: 1rem 1.8rem 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.badge-modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.badge-modal-body::-webkit-scrollbar-thumb {
+    background: var(--border-color, #30363d);
+    border-radius: 3px;
+}
+
+.badge-modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Individual Badge Card */
+.badge-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color, #30363d);
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.badge-card.earned {
+    border-color: rgba(255, 215, 0, 0.25);
+    animation: badgeGlow 3s ease-in-out infinite;
+}
+
+.badge-card.earned::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--badge-gradient, linear-gradient(90deg, #e8b923, #ffd700));
+    border-radius: 12px 12px 0 0;
+}
+
+.badge-card.locked {
+    opacity: 0.45;
+    filter: grayscale(80%);
+}
+
+.badge-card.locked:hover {
+    opacity: 0.65;
+    filter: grayscale(40%);
+}
+
+.badge-card:hover:not(.locked) {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* Badge Icon */
+.badge-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.badge-card:hover .badge-icon-wrap {
+    transform: scale(1.1);
+}
+
+.badge-card.earned .badge-icon-wrap {
+    background: var(--badge-gradient, linear-gradient(135deg, #e8b923, #ffd700));
+    color: #0b111a;
+    box-shadow: 0 4px 16px rgba(232, 185, 35, 0.3);
+}
+
+.badge-card.locked .badge-icon-wrap {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary, #8b949e);
+}
+
+/* Lock overlay */
+.badge-card.locked .badge-icon-wrap::after {
+    content: '\f023';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    font-size: 0.7rem;
+    background: var(--card-bg, #161b22);
+    color: var(--text-secondary);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+}
+
+.badge-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary, #f0f6fc);
+    line-height: 1.3;
+}
+
+.badge-description {
+    font-size: 0.78rem;
+    color: var(--text-secondary, #8b949e);
+    line-height: 1.4;
+}
+
+.badge-level-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.2rem;
+}
+
+.badge-level-tag.beginner {
+    background: rgba(39, 201, 63, 0.12);
+    color: #3fb950;
+}
+
+.badge-level-tag.intermediate {
+    background: rgba(210, 168, 255, 0.12);
+    color: #d2a8ff;
+}
+
+.badge-level-tag.advanced {
+    background: rgba(248, 81, 73, 0.12);
+    color: #f85149;
+}
+
+.badge-earned-date {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-top: 0.1rem;
+}
+
+/* Share / Actions */
+.badge-modal-footer {
+    padding: 1rem 1.8rem;
+    border-top: 1px solid var(--border-color, #30363d);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.badge-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-gold, #e8b923), #ffd700);
+    color: #0b111a;
+    border: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.25s;
+}
+
+.badge-share-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(232, 185, 35, 0.35);
+}
+
+.badge-share-btn i {
+    font-size: 0.9rem;
+}
+
+.badge-reset-btn {
+    background: transparent;
+    border: 1px solid rgba(248, 81, 73, 0.4);
+    color: #f85149;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.badge-reset-btn:hover {
+    background: rgba(248, 81, 73, 0.12);
+}
+
+/* ---------- Toast / Unlock Notification ---------- */
+.badge-toast-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
+}
+
+.badge-toast {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--card-bg, #161b22);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0.85rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    animation: badgeUnlockPulse 0.5s ease forwards;
+    min-width: 260px;
+    max-width: 360px;
+}
+
+.badge-toast .toast-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #0b111a;
+    flex-shrink: 0;
+}
+
+.badge-toast .toast-content {
+    flex: 1;
+}
+
+.badge-toast .toast-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-gold, #e8b923);
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+}
+
+.badge-toast .toast-title {
+    font-size: 0.9rem;
+    color: #f0f6fc;
+    font-weight: 600;
+}
+
+/* ---------- Badge Profile Page ---------- */
+.badge-profile-page {
+    min-height: 100vh;
+    background: var(--bg-dark, #0b111a);
+    color: var(--text-primary, #f0f6fc);
+    font-family: 'Inter', sans-serif;
+}
+
+.badge-profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.badge-profile-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+}
+
+.badge-profile-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--primary-gold, #e8b923);
+    margin-bottom: 0.5rem;
+}
+
+.badge-profile-hero p {
+    color: var(--text-secondary, #8b949e);
+    font-size: 1rem;
+}
+
+.badge-profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.badge-profile-stat {
+    text-align: center;
+}
+
+.badge-profile-stat .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-gold, #e8b923);
+}
+
+.badge-profile-stat .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #8b949e);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.badge-profile-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+/* Copy URL feedback */
+.copy-url-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.copy-url-btn:hover {
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+}
+
+.copy-url-btn.copied {
+    border-color: #27c93f;
+    color: #27c93f;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+
+    .badge-grid,
+    .badge-profile-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .badge-modal {
+        max-height: 95vh;
+        border-radius: 12px;
+    }
+
+    .badge-modal-header,
+    .badge-modal-body,
+    .badge-modal-footer,
+    .badge-progress-bar-wrap,
+    .badge-level-tabs {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .badge-modal-header h2 {
+        font-size: 1.15rem;
+    }
+
+    .badge-toast {
+        min-width: 220px;
+    }
+
+    .badge-profile-hero h1 {
+        font-size: 1.6rem;
+    }
+}

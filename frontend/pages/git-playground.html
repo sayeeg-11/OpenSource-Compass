@@ -14,20 +14,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/git-playground.css?v=1.0.3">
+    <link rel="stylesheet" href="../css/git-badges.css?v=1.0.0">
     <link rel='manifest' href='../../manifest.json' />
 </head>
 
 <body class="playground-page">
-    <!-- Navbar (Simplified) -->
-    <nav class="playground-nav">
-        <div class="nav-brand">
-            <i class="fas fa-compass"></i>
-            <span>Git Playground</span>
-        </div>
-        <a href="guides.html" class="nav-back">
-            <i class="fas fa-arrow-left"></i> Back to Guides
-        </a>
-    </nav>
+
 
     <div class="playground-wrapper">
 
@@ -44,6 +36,11 @@
                         </div>
                         <div class="window-title">Git Terminal (Interactive Mode)</div>
                         <div class="window-actions">
+                            <a href="badges.html" class="terminal-badge-btn" id="terminal-badge-btn"
+                                title="Achievement Badges">
+                                <i class="fas fa-trophy"></i>
+                                <span class="badge-count-pill" id="nav-badge-count">0</span>
+                            </a>
                             <i class="fas fa-cog" id="settings-btn" title="Settings"></i>
                             <i class="far fa-question-circle" id="help-btn" title="Help"></i>
                         </div>
@@ -98,6 +95,11 @@
                         <div class="scenario-list" id="scenario-list">
                             <!-- Populated by JS -->
                         </div>
+                        <button class="badge-toggle-btn" id="open-badges-btn" type="button">
+                            <i class="fas fa-trophy"></i>
+                            <span>Achievement Badges</span>
+                            <span class="badge-progress-mini" id="badge-progress-mini">0 / 0</span>
+                        </button>
                     </div>
 
                     <!-- Cheat Sheet View -->
@@ -371,16 +373,51 @@
         </div>
     </div>
 
+    <!-- Badge Modal -->
+    <div id="badge-modal-overlay" class="badge-modal-overlay">
+        <div class="badge-modal">
+            <div class="badge-modal-header">
+                <h2><i class="fas fa-trophy"></i> Achievement Badges</h2>
+                <button class="badge-modal-close" id="badge-modal-close">&times;</button>
+            </div>
+            <div class="badge-progress-bar-wrap">
+                <div class="badge-progress-info">
+                    <span class="badge-progress-label">Badge Progress</span>
+                    <span class="badge-progress-value" id="badge-progress-text">0 / 0</span>
+                </div>
+                <div class="badge-progress-track">
+                    <div class="badge-progress-fill" id="badge-progress-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+            <div class="badge-level-tabs">
+                <button class="badge-level-tab active" data-badge-level="all">All</button>
+                <button class="badge-level-tab" data-badge-level="Beginner">Beginner</button>
+                <button class="badge-level-tab" data-badge-level="Intermediate">Intermediate</button>
+                <button class="badge-level-tab" data-badge-level="Advanced">Advanced</button>
+            </div>
+            <div class="badge-modal-body">
+                <div class="badge-grid" id="badge-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <div class="badge-modal-footer">
+                <button class="badge-share-btn" id="badge-share-btn">
+                    <i class="fas fa-share-alt"></i> Share Profile
+                </button>
+                <a href="badges.html" class="badge-share-btn" style="text-decoration: none;">
+                    <i class="fas fa-external-link-alt"></i> Full Profile
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Toast Container -->
+    <div class="badge-toast-container" id="badge-toast-container"></div>
+
     <script src="../js/git-scenarios.js?v=1.0.3"></script>
-    <script src="../js/git-playground.js?v=1.0.3"></script>
-    <script>
-        // Check if page is embedded in an iframe
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('embedded') === 'true') {
-            document.querySelector('.playground-nav').style.display = 'none';
-            document.body.style.paddingTop = '0';
-        }
-    </script>
+    <script src="../js/git-badges.js?v=1.0.0"></script>
+    <script src="../js/git-playground.js?v=1.0.4"></script>
+
     <script src='../js/pwa.js'></script>
 </body>
 
