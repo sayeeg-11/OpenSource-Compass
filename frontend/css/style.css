@@ -1874,7 +1874,7 @@ body.dark-mode footer.site-footer {
   background:
     radial-gradient(900px circle at 10% 10%, rgba(212, 175, 55, 0.16) 0%, transparent 55%),
     radial-gradient(800px circle at 90% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 55%),
-    linear-gradient(135deg, rgba(13, 17, 23, 0.96) 0%, rgba(22, 27, 34, 0.96) 100%);
+    linear-gradient(135deg, rgba(16, 20, 27, 0.96) 0%, rgba(22, 27, 34, 0.96) 100%);
 }
 
 /* =========================
