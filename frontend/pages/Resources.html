@@ -24,25 +24,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* Centers section headings */
       text-align: center;
       width: 100%;
       padding: 4rem 2rem;
     }
 
+    /* ===== UNIFORM CARD SIZING — all grids stretch cards to equal height ===== */
     .card-grid,
     .checklists-grid,
     .tools-grid,
     .beginner-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      justify-content: center;
-      /* Centers the cards within the grid */
       width: 100%;
       max-width: 1200px;
-      /* Prevents cards from spreading too far on wide screens */
       margin: 0 auto;
+      align-items: stretch;  /* every card in a row matches the tallest */
+    }
+
+    /* Every card (including checklist-tile) fills its grid cell fully */
+    .card,
+    .checklist-tile {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Push action area / list to bottom so buttons line up across cards */
+    .resource-link-wrapper {
+      margin-top: auto;
+      padding-top: 1.2rem;
+    }
+
+    /* Checklist list pushes to fill remaining space */
+    .checklist-tile ul {
+      margin-top: auto;
     }
 
     /* Roadmap Container */
@@ -50,7 +68,6 @@
       width: 100%;
       overflow-x: auto;
       padding: 5rem 0 3rem 0;
-      /* Extra top padding for floating XP pills */
       scroll-behavior: smooth;
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -60,7 +77,6 @@
       display: none;
     }
 
-    /* The Flex Container */
     #level-chain-container {
       display: flex;
       align-items: flex-start;
@@ -70,7 +86,6 @@
       margin: 0 auto;
     }
 
-    /* The Background Track (Grey Line) */
     .roadmap-track {
       position: absolute;
       top: 30px;
@@ -82,7 +97,6 @@
       border-radius: 4px;
     }
 
-    /* The Active Progress Track (Gold Line) */
     .roadmap-progress {
       position: absolute;
       top: 30px;
@@ -96,7 +110,6 @@
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
     }
 
-    /* Individual Level Item Wrapper */
     .level-item {
       position: relative;
       z-index: 2;
@@ -106,7 +119,6 @@
       margin-right: 4.5rem;
       cursor: pointer;
       width: 120px;
-      /* Staggered Entrance Animation */
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -116,12 +128,10 @@
       margin-right: 0;
     }
 
-    /* Hover Float Effect */
     .level-item:not(.locked):hover {
       transform: translateY(-8px);
     }
 
-    /* ENTRANCE ANIMATION */
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -129,28 +139,16 @@
       }
     }
 
-    /* SHAKE ANIMATION (For Locked Items) */
     @keyframes shake {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      25% {
-        transform: translateX(-5px);
-      }
-
-      75% {
-        transform: translateX(5px);
-      }
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
 
     .level-item.shake-animation {
       animation: shake 0.3s ease-in-out !important;
     }
 
-    /* The Circular Node */
     .level-node {
       width: 60px;
       height: 60px;
@@ -165,10 +163,8 @@
       border: 3px solid #e0e0e0;
       color: #999;
       position: relative;
-      /* overflow: hidden; Removed overflow hidden to allow Aura to spill out if needed, handled via z-index */
     }
 
-    /* STATUS: LOCKED */
     .level-item.locked .level-node {
       background: #f5f5f5;
       border-color: #d1d1d1;
@@ -177,17 +173,14 @@
       box-shadow: none;
     }
 
-    /* STATUS: COMPLETED */
     .level-item.completed .level-node {
       background: var(--primary-gold);
       border-color: var(--primary-gold);
       color: white;
       box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
       overflow: hidden;
-      /* Keep shimmer inside */
     }
 
-    /* Shimmer for Completed Nodes */
     .level-item.completed .level-node::before {
       content: '';
       position: absolute;
@@ -200,31 +193,20 @@
     }
 
     @keyframes shimmer {
-      0% {
-        left: -100%;
-      }
-
-      20% {
-        left: 100%;
-      }
-
-      100% {
-        left: 100%;
-      }
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
     }
 
-    /* --- THE AURA EFFECT (Current/Unlocked) --- */
     .level-item.unlocked .level-node {
       background: white;
       border-color: var(--primary-gold);
       color: var(--primary-gold);
       transform: scale(1.25);
-      /* Static Glow */
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
       z-index: 5;
     }
 
-    /* The Pulse Ring (Aura Animation) */
     .level-item.unlocked .level-node::after {
       content: '';
       position: absolute;
@@ -239,18 +221,10 @@
     }
 
     @keyframes pulse-aura {
-      0% {
-        transform: scale(1);
-        opacity: 0.8;
-      }
-
-      100% {
-        transform: scale(1.6);
-        opacity: 0;
-      }
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
     }
 
-    /* Text Styling */
     .level-meta {
       text-align: center;
       margin-top: 1.2rem;
@@ -288,15 +262,11 @@
       color: #aaa;
     }
 
-    /* --- DARK XP INFO (Badge) --- */
     .xp-pill {
       position: absolute;
       top: -3rem;
-      /* Float above */
       background: var(--deep-navy);
-      /* Dark Background */
       color: var(--primary-gold);
-      /* Gold Text */
       font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 0.75rem;
@@ -310,7 +280,6 @@
       border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
-    /* Little arrow pointing down */
     .xp-pill::after {
       content: '';
       position: absolute;
@@ -322,18 +291,15 @@
       border-color: var(--deep-navy) transparent transparent transparent;
     }
 
-    /* Show badge on hover */
     .level-item:hover .xp-pill {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Optional: Always show badge for Current Level */
     .level-item.unlocked .xp-pill {
       opacity: 1;
       transform: translateY(0);
       top: -3.5rem;
-      /* Slightly higher for the larger node */
     }
   </style>
   <link rel='manifest' href='../../manifest.json' />
@@ -343,8 +309,9 @@
   <div id="cursor-highlight" aria-hidden="true"></div>
   <div id="navbar"></div>
 
-
   <main>
+
+    <!-- Learning Resources -->
     <section class="resources-section">
       <h3>Learning Resources</h3>
       <p>Official documentation and trusted guides to help you start and grow in open source.</p>
@@ -356,8 +323,7 @@
           <h4>GitHub Docs</h4>
           <p>Explore workflows and platform capabilities directly from the source.</p>
           <div class="resource-link-wrapper">
-            <a href="https://docs.github.com" target="_blank" class="resource-link">Visit Docs <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://docs.github.com" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -367,12 +333,9 @@
           <h4>Git Docs</h4>
           <p>A complete authoritative reference for Git commands and concepts.</p>
           <div class="resource-link-wrapper">
-            <a href="https://git-scm.com/doc" target="_blank" class="resource-link">Visit Docs <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://git-scm.com/doc" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
-
-        
 
         <article class="card">
           <p>GUIDE</p>
@@ -380,15 +343,15 @@
           <h4>Markdown Guide</h4>
           <p>Learn syntax for creating professional READMEs and docs.</p>
           <div class="resource-link-wrapper">
-            <a href="https://www.markdownguide.org" target="_blank" class="resource-link">Visit Docs <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://www.markdownguide.org" target="_blank" class="resource-link">Visit Docs <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
       </div>
     </section>
 
-   <section class="templates-section">
-      <h3>Templates & Assets</h3>
+    <!-- Templates & Assets -->
+    <section class="templates-section">
+      <h3>Templates &amp; Assets</h3>
       <p>Pre-made templates and assets to streamline contributions.</p>
       <div class="card-grid">
         <article class="card">
@@ -396,8 +359,7 @@
           <h4>PR Template</h4>
           <p>Standard structure for clean submissions.</p>
           <div class="resource-link-wrapper">
-            <a href="../assets/templates/pr-template.md" target="_blank" class="resource-link">Get Template <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="../assets/templates/pr-template.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -406,8 +368,7 @@
           <h4>Issue Templates</h4>
           <p>Formats for bug reports and features.</p>
           <div class="resource-link-wrapper">
-            <a href="https://raw.githubusercontent.com/sayeeg-11/OpenSource-Compass/main/frontend/assets/templates/issue-template.md"
-              target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
+            <a href="https://raw.githubusercontent.com/sayeeg-11/OpenSource-Compass/main/frontend/assets/templates/issue-template.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -416,8 +377,7 @@
           <h4>README Structure</h4>
           <p>Layout to guide new contributors.</p>
           <div class="resource-link-wrapper">
-            <a href="../assets/templates/readme.md" target="_blank" class="resource-link">Get Template <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="../assets/templates/readme.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -426,44 +386,65 @@
           <h4>CONTRIBUTING.md</h4>
           <p>Sample guidelines for project onboarding.</p>
           <div class="resource-link-wrapper">
-            <a href="../assets/templates/contributing.md" target="_blank" class="resource-link">Get Template <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="../assets/templates/contributing.md" target="_blank" class="resource-link">Get Template <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
       </div>
     </section>
 
-    
-
-    <!-- Templates & Assets Section -->
-    <section>
+    <!-- Quick Checklists — properly styled, duplicate removed -->
+    <section class="checklists-section">
       <h3>Quick Checklists</h3>
       <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
 
       <div class="checklists-grid">
-        <div class="checklist-tile">
+        <article class="card checklist-tile">
           <h4>Before Opening a PR</h4>
           <ul>
             <li><span class="checkmark">✔</span> Read CONTRIBUTING.md</li>
             <li><span class="checkmark">✔</span> Linked issue referenced</li>
             <li><span class="checkmark">✔</span> PR title is clear</li>
+            <li><span class="checkmark">✔</span> Code tested locally</li>
+            <li><span class="checkmark">✔</span> No unintended files included</li>
           </ul>
-        </div>
+        </article>
+
+        <article class="card checklist-tile">
+          <h4>Before Reporting an Issue</h4>
+          <ul>
+            <li><span class="checkmark">✔</span> Search for existing issues</li>
+            <li><span class="checkmark">✔</span> Provide reproduction steps</li>
+            <li><span class="checkmark">✔</span> Include error logs or screenshots</li>
+            <li><span class="checkmark">✔</span> Specify your environment/version</li>
+            <li><span class="checkmark">✔</span> Use the issue template if available</li>
+          </ul>
+        </article>
+
+        <article class="card checklist-tile">
+          <h4>After Your PR is Merged</h4>
+          <ul>
+            <li><span class="checkmark">✔</span> Delete your feature branch</li>
+            <li><span class="checkmark">✔</span> Sync your fork with upstream</li>
+            <li><span class="checkmark">✔</span> Update any related documentation</li>
+            <li><span class="checkmark">✔</span> Close linked issues if not auto-closed</li>
+            <li><span class="checkmark">✔</span> Celebrate your contribution! 🎉</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
+    <!-- Contributor Tools -->
     <section class="tools-section">
       <h3>Contributor Tools</h3>
       <p>Essential tools to streamline your workflow.</p>
 
       <div class="tools-grid">
-
         <article class="card">
           <div class="tile-icon">💻</div>
           <h4>VS Code</h4>
           <p>Popular editor for efficient development.</p>
           <div class="resource-link-wrapper">
-            <a href="https://code.visualstudio.com" target="_blank" class="resource-link">Visit Tool <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://code.visualstudio.com" target="_blank" class="resource-link">Visit Tool <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -472,8 +453,7 @@
           <h4>GitHub CLI</h4>
           <p>Terminal-based workflow management.</p>
           <div class="resource-link-wrapper">
-            <a href="https://cli.github.com" target="_blank" class="resource-link">Visit Tool <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://cli.github.com" target="_blank" class="resource-link">Visit Tool <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -482,26 +462,24 @@
           <h4>Diff Checker</h4>
           <p>Compare code changes visually.</p>
           <div class="resource-link-wrapper">
-            <a href="https://www.diffchecker.com" target="_blank" class="resource-link">Visit Tool <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://www.diffchecker.com" target="_blank" class="resource-link">Visit Tool <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
       </div>
     </section>
 
-   <section class="beginner-issues-section">
+    <!-- Beginner Issues -->
+    <section class="beginner-issues-section">
       <h3>Find Beginner-Friendly Issues</h3>
       <p>Discover repositories curated for first-time contributors.</p>
 
       <div class="beginner-grid">
-
         <article class="card">
           <div class="tile-icon">🎯</div>
           <h4>Good First Issue</h4>
           <p>Curated beginner issues across OS projects.</p>
           <div class="resource-link-wrapper">
-            <a href="https://goodfirstissue.dev" target="_blank" class="resource-link">Visit Site <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://goodfirstissue.dev" target="_blank" class="resource-link">Visit Site <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -510,8 +488,7 @@
           <h4>Up For Grabs</h4>
           <p>Projects welcoming new contributors.</p>
           <div class="resource-link-wrapper">
-            <a href="https://up-for-grabs.net" target="_blank" class="resource-link">Visit Site <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://up-for-grabs.net" target="_blank" class="resource-link">Visit Site <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -520,1441 +497,91 @@
           <h4>First Timers Only</h4>
           <p>Made specifically for first-time contributors.</p>
           <div class="resource-link-wrapper">
-            <a href="https://www.firsttimersonly.com" target="_blank" class="resource-link">Visit Site <i
-                class="fas fa-arrow-right"></i></a>
+            <a href="https://www.firsttimersonly.com" target="_blank" class="resource-link">Visit Site <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Mastery Path / Quiz -->
     <section id="quiz-section">
-      <div
-        style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 1rem; position: relative;">
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 1rem; position: relative;">
         <div style="position: relative; display: inline-block;">
           <h3 style="margin: 0;">Mastery Path</h3>
-          <div
-            style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px;  padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
+          <div style="position: absolute; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 15px; padding: 0.4rem 0.8rem; border-radius: 50px; font-weight: 700; font-family: 'Inter', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.85rem; white-space: nowrap;">
             <i class="fas fa-star" style="margin-right: 5px;"></i> <span id="total-xp">0</span> XP
           </div>
         </div>
         <p style="margin-top: 0.5rem; color: #666;">Your journey to open source mastery.</p>
       </div>
+
       <div id="level-chain-wrapper">
         <div id="level-chain-container">
           <div class="roadmap-track"></div>
           <div id="roadmap-progress-line" class="roadmap-progress"></div>
-
         </div>
       </div>
-      <div id="quiz-container"
-        style="max-width: 700px; margin: 2rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-main); display: none; position: relative; z-index: 10;">
-        <button id="back-to-levels"
-          style="background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; position: absolute; top: 1.5rem; left: 1.5rem;">
+
+      <div id="quiz-container" style="max-width: 700px; margin: 2rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-main); display: none; position: relative; z-index: 10;">
+        <button id="back-to-levels" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; position: absolute; top: 1.5rem; left: 1.5rem;">
           <i class="fas fa-arrow-left"></i> Back to Roadmap
         </button>
 
         <div id="quiz-header" style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
-          <h4 id="level-title"
-            style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--deep-navy);">Level Title</h4>
-          <div
-            style="width: 100%; background: #eee; height: 6px; border-radius: 3px; margin-top: 1rem; overflow: hidden;">
-            <div id="progress-bar"
-              style="width: 0%; background: var(--primary-gold); height: 100%; transition: width 0.3s ease;"></div>
+          <h4 id="level-title" style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--deep-navy);">Level Title</h4>
+          <div style="width: 100%; background: #eee; height: 6px; border-radius: 3px; margin-top: 1rem; overflow: hidden;">
+            <div id="progress-bar" style="width: 0%; background: var(--primary-gold); height: 100%; transition: width 0.3s ease;"></div>
           </div>
         </div>
 
         <div id="quiz-question">
-        <h5 id="question-text" style="font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; font-weight: 500;">
-          Question text</h5>
-        <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
-        <div id="explanation-box"
-          style="display: none; padding: 1rem; margin-top: 1.5rem; border-radius: 4px;">
-          <strong style="color: #0d47a1;"><i class="fas fa-info-circle"></i> Insight:</strong>
-          <p id="explanation-text" style="margin: 0.5rem 0 0; font-size: 0.95rem; color: #333;"></p>
-          <button id="next-question-btn"
-            style="margin-top: 1rem; background: var(--deep-navy); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer;">Next
-            Question <i class="fas fa-arrow-right"></i></button>
+          <h5 id="question-text" style="font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; font-weight: 500;">Question text</h5>
+          <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
+          <div id="explanation-box" style="display: none; padding: 1rem; margin-top: 1.5rem; border-radius: 4px;">
+            <strong style="color: #0d47a1;"><i class="fas fa-info-circle"></i> Insight:</strong>
+            <p id="explanation-text" style="margin: 0.5rem 0 0; font-size: 0.95rem; color: #333;"></p>
+            <button id="next-question-btn" style="margin-top: 1rem; background: var(--deep-navy); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer;">Next Question <i class="fas fa-arrow-right"></i></button>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
-
-
 
       <div id="quiz-result" style="display: none; text-align: center;">
         <div id="result-icon" style="font-size: 3rem; margin-bottom: 1rem;"></div>
         <h4 id="result-title" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Result</h4>
         <p id="result-message" style="margin-bottom: 1.5rem; color: var(--text-secondary);">Message</p>
         <p style="font-size: 1.1rem; margin-bottom: 2rem;">Score: <span id="score">0</span> / 5</p>
-        <p style="font-size: 1rem; margin-bottom: 2rem; color: var(--primary-gold); font-weight: bold;">+<span
-            id="earned-xp">0</span> XP Earned</p>
+        <p style="font-size: 1rem; margin-bottom: 2rem; color: var(--primary-gold); font-weight: bold;">+<span id="earned-xp">0</span> XP Earned</p>
 
         <div style="display: flex; gap: 1rem; justify-content: center;">
-          <button id="restart-btn"
-            style="background: var(--deep-navy); color: white; padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer;">Try
-            Again</button>
-          <button id="next-level-btn"
-            style="background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold)); color: var(--deep-navy); padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 600; display: none;">Next
-            Level <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i></button>
+          <button id="restart-btn" style="background: var(--deep-navy); color: white; padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer;">Try Again</button>
+          <button id="next-level-btn" style="background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold)); color: var(--deep-navy); padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 600; display: none;">Next Level <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i></button>
         </div>
-      </div>
-      </div>
       </div>
     </section>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         let levels = [
-          {
+          { "id": 1, "title": "Open Source Basics", "icon": "fas fa-seedling", "questions": [ { "q": "What does OSS stand for?", "options": ["Open Source Software", "Operating System Service", "Open System Security", "One Stop Shop"], "a": 0, "xp": 10, "explanation": "OSS stands for Open Source Software, code that is designed to be publicly accessible." }, { "q": "Which is NOT a core principle of open source?", "options": ["Transparency", "Collaboration", "Secrecy", "Community"], "a": 2, "xp": 10, "explanation": "Secrecy is the opposite of open source; transparency and openness are key." }, { "q": "Who can contribute to open source?", "options": ["Only expert coders", "Anyone", "Only employees", "Only Linux users"], "a": 1, "xp": 10, "explanation": "Anyone can contribute! Contributions include code, documentation, design, and more." }, { "q": "What is a 'fork'?", "options": ["A copy of a repository", "A bug in the code", "A system error", "A utensil"], "a": 0, "xp": 10, "explanation": "Forking creates a personal copy of someone else's project for your own use." }, { "q": "Why contribute?", "options": ["To get rich quick", "To learn and give back", "To break things", "To avoid homework"], "a": 1, "xp": 10, "explanation": "Contributing helps you learn, build a reputation, and give back to the community." } ] },
+          { "id": 2, "title": "Version Control (Git)", "icon": "fas fa-code-branch", "questions": [ { "q": "What command creates a new repo?", "options": ["git init", "git start", "git new", "git create"], "a": 0, "xp": 15, "explanation": "`git init` initializes a new Git repository." }, { "q": "Which command saves changes to history?", "options": ["git save", "git commit", "git add", "git store"], "a": 1, "xp": 15, "explanation": "`git commit` records changes to the repository." }, { "q": "What is 'origin' usually?", "options": ["Your local computer", "The remote repository", "The creator", "The database"], "a": 1, "xp": 15, "explanation": "'origin' is the default alias for the remote repository URL." }, { "q": "How do you download a repo?", "options": ["git download", "git clone", "git pull", "git get"], "a": 1, "xp": 15, "explanation": "`git clone` copies an existing repository." }, { "q": "What command shows status?", "options": ["git info", "git status", "git check", "git show"], "a": 1, "xp": 15, "explanation": "`git status` displays the state of the working directory and staging area." } ] },
+          { "id": 3, "title": "GitHub Fundamentals", "icon": "fab fa-github", "questions": [ { "q": "What is an 'Issue'?", "options": ["A fatal error", "Examples of bad code", "A task or bug report", "A magazine"], "a": 2, "xp": 20, "explanation": "Issues are used to track tasks, enhancements, and bugs." }, { "q": "What does 'Starring' a repo do?", "options": ["Downloads it", "Bookmarks/Likes it", "Deletes it", "Emails the author"], "a": 1, "xp": 20, "explanation": "Starring shows appreciation and bookmarks the repository." }, { "q": "What is a README?", "options": ["A file to ignore", "Project documentation", "License file", "Source code"], "a": 1, "xp": 20, "explanation": "README is the main documentation file visitors see first." }, { "q": "Where do you host static sites?", "options": ["GitHub Pages", "GitHub Issues", "GitHub Actions", "GitHub Servers"], "a": 0, "xp": 20, "explanation": "GitHub Pages hosts static websites directly from a repository." }, { "q": "What is a Gist?", "options": ["A code snippet", "A full project", "A comment", "A large file"], "a": 0, "xp": 20, "explanation": "Gists are a way to share code snippets." } ] },
+          { "id": 4, "title": "Licensing Essentials", "icon": "fas fa-scale-balanced", "questions": [ { "q": "Which license is permissive?", "options": ["GPL", "MIT", "AGPL", "Proprietary"], "a": 1, "xp": 25, "explanation": "MIT is a permissive license, allowing almost unrestricted reuse." }, { "q": "What does 'Copyleft' mean?", "options": ["No copyright", "Derivative work must be same license", "You can't copy", "All rights reserved"], "a": 1, "xp": 25, "explanation": "Copyleft requires derivative works to use the same license (e.g., GPL)." }, { "q": "Can you sell open source software?", "options": ["Yes", "No", "Only on Sundays", "Only if you beg"], "a": 0, "xp": 25, "explanation": "Yes, many open source licenses allow commercial use and selling." }, { "q": "What is the Unlicense?", "options": ["Public Domain", "Strict Copyright", "Illegal", "Paid License"], "a": 0, "xp": 25, "explanation": "The Unlicense dedicates the work to the public domain." }, { "q": "Why have a license?", "options": ["To look cool", "Define legal usage rights", "It's required by law", "To make it slower"], "a": 1, "xp": 25, "explanation": "A license defines how others can use, modify, and distribute your code." } ] },
+          { "id": 5, "title": "Community Etiquette", "icon": "fas fa-users", "questions": [ { "q": "Always check what before posting?", "options": ["The weather", "Existing issues", "Your horoscope", "Your email"], "a": 1, "xp": 30, "explanation": "Avoid duplicates by checking existing issues first." }, { "q": "What applies to behavior?", "options": ["Code of Conduct", "Rule of Law", "Terms of Service", "The Constitution"], "a": 0, "xp": 30, "explanation": "A Code of Conduct sets expectations for community behavior." }, { "q": "How to treat maintainers?", "options": ["Demand fixes", "With respect and patience", "Ignore them", "Pay them"], "a": 1, "xp": 30, "explanation": "Maintainers are often volunteers; kindness goes a long way." }, { "q": "Is 'it doesn't work' a good report?", "options": ["Yes", "No, provide details", "Maybe", "I don't know"], "a": 1, "xp": 30, "explanation": "Vague reports are unhelpful; provide reproduction steps and logs." }, { "q": "What if your PR is rejected?", "options": ["Insult everyone", "Ask for feedback & improve", "Delete account", "Sue them"], "a": 1, "xp": 30, "explanation": "Rejection is part of learning; ask for feedback and improve." } ] },
+          { "id": 6, "title": "Finding Projects", "icon": "fas fa-magnifying-glass", "questions": [ { "q": "Good label for beginners?", "options": ["good first issue", "critical", "wontfix", "hard"], "a": 0, "xp": 35, "explanation": "'good first issue' labels are specifically meant for new contributors." }, { "q": "Where to search?", "options": ["Facebook", "GitHub Explore / Topics", "Department Store", "Twitter"], "a": 1, "xp": 35, "explanation": "GitHub Explore and Topics are great places to find projects." }, { "q": "What indicates an active project?", "options": ["Old commits", "Recent activity & responses", "No issues", "Lots of stars only"], "a": 1, "xp": 35, "explanation": "Recent commits and responses to issues indicate a live project." }, { "q": "What is 'Up for Grabs'?", "options": ["Free snacks", "Issues ready for assignment", "Deleted code", "Expensive"], "a": 1, "xp": 35, "explanation": "'Up for grabs' is another common label for issues needing help." }, { "q": "Should you hack a project you use?", "options": ["No", "Yes, it helps you understand it", "Only if paid", "Maybe"], "a": 1, "xp": 35, "explanation": "Contributing to tools you use is one of the best ways to start." } ] },
+          { "id": 7, "title": "Making Contributions", "icon": "fas fa-code-pull-request", "questions": [ { "q": "Steps to contribute?", "options": ["Fork -> Branch -> Change -> PR", "Change -> Push", "Email code", "Commit -> Push"], "a": 0, "xp": 40, "explanation": "The standard flow: Fork, Branch, Commit, Pull Request." }, { "q": "Why use branches?", "options": ["To isolate changes", "To make it slower", "To confuse others", "To duplicate code"], "a": 0, "xp": 40, "explanation": "Branches keep your changes separate from the main codebase until ready." }, { "q": "What should commit messages be?", "options": ["Funny", "Clear and descriptive", "Empty", "Random"], "a": 1, "xp": 40, "explanation": "Clear messages help reviewers understand your changes." }, { "q": "Test your code?", "options": ["No, let them test", "Yes, locally first", "Only in production", "Never"], "a": 1, "xp": 40, "explanation": "Always verify your changes locally to save everyone time." }, { "q": "What links a PR to an issue?", "options": ["Magic", "Keywords like 'Fixes #1'", "Not possible", "URL"], "a": 1, "xp": 40, "explanation": "Keywords like 'Fixes' or 'Closes' automatically link and close issues." } ] },
+          { "id": 8, "title": "Review & Merging", "icon": "fas fa-check-double", "questions": [ { "q": "Who reviews code?", "options": ["Maintainers/Peers", "The computer only", "No one", "The CEO"], "a": 0, "xp": 45, "explanation": "Code review is done by humans (maintainers) and sometimes automated tools." }, { "q": "What is CI?", "options": ["Continuous Integration", "Code Insert", "Common Issue", "Code Improvement"], "a": 0, "xp": 45, "explanation": "CI (Continuous Integration) automatically builds and tests code." }, { "q": "What if feedback requests changes?", "options": ["Ignore it", "Make changes & push", "Close PR", "Argue"], "a": 1, "xp": 45, "explanation": "Iterate on your PR by pushing new commits to the same branch." }, { "q": "What keeps syntax consistent?", "options": ["Linters", "Comments", "Guessing", "Compilers"], "a": 0, "xp": 45, "explanation": "Linters automatically check for style and syntax errors." }, { "q": "When is code merged?", "options": ["Immediately", "After approval & passing tests", "Never", "When you feel like it"], "a": 1, "xp": 45, "explanation": "Merge happens after humans approve and automated tests pass." } ] },
+          { "id": 9, "title": "Project Maintenance", "icon": "fas fa-screwdriver-wrench", "questions": [ { "q": "What is Triage?", "options": ["Sorting/Prioritizing issues", "Deleting code", "Writing docs", "Coding"], "a": 0, "xp": 50, "explanation": "Triage involves sorting, prioritizing, and labeling incoming issues." }, { "q": "What is Semantic Versioning?", "options": ["Random numbers", "MAJOR.MINOR.PATCH", "Dates", "Alphabetical"], "a": 1, "xp": 50, "explanation": "SemVer uses Major.Minor.Patch to indicate compatibility." }, { "q": "How to avoid burnout?", "options": ["Work 24/7", "Delegate & set boundaries", "Quit", "Drink coffee"], "a": 1, "xp": 50, "explanation": "Sustainable maintenance requires boundaries and delegation." }, { "q": "Who manages releases?", "options": ["Maintainers", "Users", "GitHub", "Bots"], "a": 0, "xp": 50, "explanation": "Maintainers are responsible for cutting and publishing releases." }, { "q": "Key to sustainability?", "options": ["Funding & Community", "Ads", "Paywalls", "Magic"], "a": 0, "xp": 50, "explanation": "A healthy community and sometimes funding keep projects alive." } ] },
+          { "id": 10, "title": "Advanced Concepts", "icon": "fas fa-infinity", "questions": [ { "q": "What is a Foundation?", "options": ["Non-profit supporting projects", "Basement", "Start point", "A building"], "a": 0, "xp": 60, "explanation": "Foundations (like Linux Foundation) provide legal and financial support." }, { "q": "What is DCO?", "options": ["Developer Certificate of Origin", "Direct Code Output", "Data Control Only", "Data Center"], "a": 0, "xp": 60, "explanation": "DCO confirms you have the right to submit the code." }, { "q": "What is InnerSource?", "options": ["Open source practices inside companies", "Secrets", "Localhost", "Outsourcing"], "a": 0, "xp": 60, "explanation": "InnerSource applies open source culture to proprietary corporate code." }, { "q": "Bus Factor?", "options": ["Transportation", "Risk if key people leave", "Code speed", "Commute time"], "a": 1, "xp": 60, "explanation": "Bus factor measures how many people's disappearance would stall the project." }, { "q": "Open Collective?", "options": ["Funding platform", "A group chat", "A license", "A union"], "a": 0, "xp": 60, "explanation": "Open Collective helps projects transparently manage funding." } ] }
+        ];
 
-            "id": 1,
-
-            "title": "Open Source Basics",
-
-            "icon": "fas fa-seedling",
-
-            "questions": [
-
-              {
-
-                "q": "What does OSS stand for?",
-
-                "options": [
-
-                  "Open Source Software",
-
-                  "Operating System Service",
-
-                  "Open System Security",
-
-                  "One Stop Shop"
-
-                ],
-
-                "a": 0,
-
-                "xp": 10,
-
-                "explanation": "OSS stands for Open Source Software, code that is designed to be publicly accessible."
-
-              },
-
-              {
-
-                "q": "Which is NOT a core principle of open source?",
-
-                "options": [
-
-                  "Transparency",
-
-                  "Collaboration",
-
-                  "Secrecy",
-
-                  "Community"
-
-                ],
-
-                "a": 2,
-
-                "xp": 10,
-
-                "explanation": "Secrecy is the opposite of open source; transparency and openness are key."
-
-              },
-
-              {
-
-                "q": "Who can contribute to open source?",
-
-                "options": [
-
-                  "Only expert coders",
-
-                  "Anyone",
-
-                  "Only employees",
-
-                  "Only Linux users"
-
-                ],
-
-                "a": 1,
-
-                "xp": 10,
-
-                "explanation": "Anyone can contribute! Contributions include code, documentation, design, and more."
-
-              },
-
-              {
-
-                "q": "What is a 'fork'?",
-
-                "options": [
-
-                  "A copy of a repository",
-
-                  "A bug in the code",
-
-                  "A system error",
-
-                  "A utensil"
-
-                ],
-
-                "a": 0,
-
-                "xp": 10,
-
-                "explanation": "Forking creates a personal copy of someone else's project for your own use."
-
-              },
-
-              {
-
-                "q": "Why contribute?",
-
-                "options": [
-
-                  "To get rich quick",
-
-                  "To learn and give back",
-
-                  "To break things",
-
-                  "To avoid homework"
-
-                ],
-
-                "a": 1,
-
-                "xp": 10,
-
-                "explanation": "Contributing helps you learn, build a reputation, and give back to the community."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 2,
-
-            "title": "Version Control (Git)",
-
-            "icon": "fas fa-code-branch",
-
-            "questions": [
-
-              {
-
-                "q": "What command creates a new repo?",
-
-                "options": [
-
-                  "git init",
-
-                  "git start",
-
-                  "git new",
-
-                  "git create"
-
-                ],
-
-                "a": 0,
-
-                "xp": 15,
-
-                "explanation": "`git init` initializes a new Git repository."
-
-              },
-
-              {
-
-                "q": "Which command saves changes to history?",
-
-                "options": [
-
-                  "git save",
-
-                  "git commit",
-
-                  "git add",
-
-                  "git store"
-
-                ],
-
-                "a": 1,
-
-                "xp": 15,
-
-                "explanation": "`git commit` records changes to the repository."
-
-              },
-
-              {
-
-                "q": "What is 'origin' usually?",
-
-                "options": [
-
-                  "Your local computer",
-
-                  "The remote repository",
-
-                  " The creator",
-
-                  "The database"
-
-                ],
-
-                "a": 1,
-
-                "xp": 15,
-
-                "explanation": "'origin' is the default alias for the remote repository URL."
-
-              },
-
-              {
-
-                "q": "How do you download a repo?",
-
-                "options": [
-
-                  "git download",
-
-                  "git clone",
-
-                  "git pull",
-
-                  "git get"
-
-                ],
-
-                "a": 1,
-
-                "xp": 15,
-
-                "explanation": "`git clone` copies an existing repository."
-
-              },
-
-              {
-
-                "q": "What command shows status?",
-
-                "options": [
-
-                  "git info",
-
-                  "git status",
-
-                  "git check",
-
-                  "git show"
-
-                ],
-
-                "a": 1,
-
-                "xp": 15,
-
-                "explanation": "`git status` displays the state of the working directory and staging area."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 3,
-
-            "title": "GitHub Fundamentals",
-
-            "icon": "fab fa-github",
-
-            "questions": [
-
-              {
-
-                "q": "What is an 'Issue'?",
-
-                "options": [
-
-                  "A fatal error",
-
-                  "Examples of bad code",
-
-                  "A task or bug report",
-
-                  "A magazine"
-
-                ],
-
-                "a": 2,
-
-                "xp": 20,
-
-                "explanation": "Issues are used to track tasks, enhancements, and bugs."
-
-              },
-
-              {
-
-                "q": "What does 'Starring' a repo do?",
-
-                "options": [
-
-                  "Downloads it",
-
-                  "Bookmarks/Likes it",
-
-                  "Deletes it",
-
-                  "Emails the author"
-
-                ],
-
-                "a": 1,
-
-                "xp": 20,
-
-                "explanation": "Starring shows appreciation and bookmarks the repository."
-
-              },
-
-              {
-
-                "q": "What is a README?",
-
-                "options": [
-
-                  "A file to ignore",
-
-                  "Project documentation",
-
-                  "License file",
-
-                  "Source code"
-
-                ],
-
-                "a": 1,
-
-                "xp": 20,
-
-                "explanation": "README is the main documentation file visitors see first."
-
-              },
-
-              {
-
-                "q": "Where do you host static sites?",
-
-                "options": [
-
-                  "GitHub Pages",
-
-                  "GitHub Issues",
-
-                  "GitHub Actions",
-
-                  "GitHub Servers"
-
-                ],
-
-                "a": 0,
-
-                "xp": 20,
-
-                "explanation": "GitHub Pages hosts static websites directly from a repository."
-
-              },
-
-              {
-
-                "q": "What is a Gist?",
-
-                "options": [
-
-                  "A code snippet",
-
-                  "A full project",
-
-                  "A comment",
-
-                  "A large file"
-
-                ],
-
-                "a": 0,
-
-                "xp": 20,
-
-                "explanation": "Gists are a way to share code snippets."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 4,
-
-            "title": "Licensing Essentials",
-
-            "icon": "fas fa-scale-balanced",
-
-            "questions": [
-
-              {
-
-                "q": "Which license is permissive?",
-
-                "options": [
-
-                  "GPL",
-
-                  "MIT",
-
-                  "AGPL",
-
-                  "Proprietary"
-
-                ],
-
-                "a": 1,
-
-                "xp": 25,
-
-                "explanation": "MIT is a permissive license, allowing almost unrestricted reuse."
-
-              },
-
-              {
-
-                "q": "What does 'Copyleft' mean?",
-
-                "options": [
-
-                  "No copyright",
-
-                  "Derivative work must be same license",
-
-                  "You can't copy",
-
-                  "All rights reserved"
-
-                ],
-
-                "a": 1,
-
-                "xp": 25,
-
-                "explanation": "Copyleft requires derivative works to use the same license (e.g., GPL)."
-
-              },
-
-              {
-
-                "q": "Can you sell open source software?",
-
-                "options": [
-
-                  "Yes",
-
-                  "No",
-
-                  "Only on Sundays",
-
-                  "Only if you beg"
-
-                ],
-
-                "a": 0,
-
-                "xp": 25,
-
-                "explanation": "Yes, many open source licenses allow commercial use and selling."
-
-              },
-
-              {
-
-                "q": "What is the Unlicense?",
-
-                "options": [
-
-                  "Public Domain",
-
-                  "Strict Copyright",
-
-                  "Illegal",
-
-                  "Paid License"
-
-                ],
-
-                "a": 0,
-
-                "xp": 25,
-
-                "explanation": "The Unlicense dedicates the work to the public domain."
-
-              },
-
-              {
-
-                "q": "Why have a license?",
-
-                "options": [
-
-                  "To look cool",
-
-                  "Define legal usage rights",
-
-                  "It's required by law",
-
-                  "To make it slower"
-
-                ],
-
-                "a": 1,
-
-                "xp": 25,
-
-                "explanation": "A license defines how others can use, modify, and distribute your code."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 5,
-
-            "title": "Community Etiquette",
-
-            "icon": "fas fa-users",
-
-            "questions": [
-
-              {
-
-                "q": "Always check what before posting?",
-
-                "options": [
-
-                  "The weather",
-
-                  "Existing issues",
-
-                  "Your horoscope",
-
-                  "Your email"
-
-                ],
-
-                "a": 1,
-
-                "xp": 30,
-
-                "explanation": "Avoid duplicates by checking existing issues first."
-
-              },
-
-              {
-
-                "q": "What applies to behavior?",
-
-                "options": [
-
-                  "Code of Conduct",
-
-                  "Rule of Law",
-
-                  "Terms of Service",
-
-                  "The Constitution"
-
-                ],
-
-                "a": 0,
-
-                "xp": 30,
-
-                "explanation": "A Code of Conduct sets expectations for community behavior."
-
-              },
-
-              {
-
-                "q": "How to treat maintainers?",
-
-                "options": [
-
-                  "Demand fixes",
-
-                  "With respect and patience",
-
-                  "Ignore them",
-
-                  "Pay them"
-
-                ],
-
-                "a": 1,
-
-                "xp": 30,
-
-                "explanation": "Maintainers are often volunteers; kindness goes a long way."
-
-              },
-
-              {
-
-                "q": "Is 'it doesn't work' a good report?",
-
-                "options": [
-
-                  "Yes",
-
-                  "No, provide details",
-
-                  "Maybe",
-
-                  "I don't know"
-
-                ],
-
-                "a": 1,
-
-                "xp": 30,
-
-                "explanation": "Vague reports are unhelpful; provide reproduction steps and logs."
-
-              },
-
-              {
-
-                "q": "What if your PR is rejected?",
-
-                "options": [
-
-                  "Insult everyone",
-
-                  "Ask for feedback & improve",
-
-                  "Delete account",
-
-                  "Sue them"
-
-                ],
-
-                "a": 1,
-
-                "xp": 30,
-
-                "explanation": "Rejection is part of learning; ask for feedback and improve."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 6,
-
-            "title": "Finding Projects",
-
-            "icon": "fas fa-magnifying-glass",
-
-            "questions": [
-
-              {
-
-                "q": "Good label for beginners?",
-
-                "options": [
-
-                  "good first issue",
-
-                  "critical",
-
-                  "wontfix",
-
-                  "hard"
-
-                ],
-
-                "a": 0,
-
-                "xp": 35,
-
-                "explanation": "'good first issue' labels are specifically meant for new contributors."
-
-              },
-
-              {
-
-                "q": "Where to search?",
-
-                "options": [
-
-                  "Facebook",
-
-                  "GitHub Explore / Topics",
-
-                  "Department Store",
-
-                  "Twitter"
-
-                ],
-
-                "a": 1,
-
-                "xp": 35,
-
-                "explanation": "GitHub Explore and Topics are great places to find projects."
-
-              },
-
-              {
-
-                "q": "What indicates an active project?",
-
-                "options": [
-
-                  "Old commits",
-
-                  "Recent activity & responses",
-
-                  "No issues",
-
-                  "Lots of stars only"
-
-                ],
-
-                "a": 1,
-
-                "xp": 35,
-
-                "explanation": "Recent commits and responses to issues indicate a live project."
-
-              },
-
-              {
-
-                "q": "What is 'Up for Grabs'?",
-
-                "options": [
-
-                  "Free snacks",
-
-                  "Issues ready for assignment",
-
-                  "Deleted code",
-
-                  "Expensive"
-
-                ],
-
-                "a": 1,
-
-                "xp": 35,
-
-                "explanation": "'Up for grabs' is another common label for issues needing help."
-
-              },
-
-              {
-
-                "q": "Should you hack a project you use?",
-
-                "options": [
-
-                  "No",
-
-                  "Yes, it helps you understand it",
-
-                  "Only if paid",
-
-                  "Maybe"
-
-                ],
-
-                "a": 1,
-
-                "xp": 35,
-
-                "explanation": "Contributing to tools you use is one of the best ways to start."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 7,
-
-            "title": "Making Contributions",
-
-            "icon": "fas fa-code-pull-request",
-
-            "questions": [
-
-              {
-
-                "q": "Steps to contribute?",
-
-                "options": [
-
-                  "Fork -> Branch -> Change -> PR",
-
-                  "Change -> Push",
-
-                  "Email code",
-
-                  "Commit -> Push"
-
-                ],
-
-                "a": 0,
-
-                "xp": 40,
-
-                "explanation": "The standard flow: Fork, Branch, Commit, Pull Request."
-
-              },
-
-              {
-
-                "q": "Why use branches?",
-
-                "options": [
-
-                  "To isolate changes",
-
-                  "To make it slower",
-
-                  "To confuse others",
-
-                  "To duplicate code"
-
-                ],
-
-                "a": 0,
-
-                "xp": 40,
-
-                "explanation": "Branches keep your changes separate from the main codebase until ready."
-
-              },
-
-              {
-
-                "q": "What should commit messages be?",
-
-                "options": [
-
-                  "Funny",
-
-                  "Clear and descriptive",
-
-                  "Empty",
-
-                  "Random"
-
-                ],
-
-                "a": 1,
-
-                "xp": 40,
-
-                "explanation": "Clear messages help reviewers understand your changes."
-
-              },
-
-              {
-
-                "q": "Test your code?",
-
-                "options": [
-
-                  "No, let them test",
-
-                  "Yes, locally first",
-
-                  "Only in production",
-
-                  "Never"
-
-                ],
-
-                "a": 1,
-
-                "xp": 40,
-
-                "explanation": "Always verify your changes locally to save everyone time."
-
-              },
-
-              {
-
-                "q": "What links a PR to an issue?",
-
-                "options": [
-
-                  "Magic",
-
-                  "Keywords like 'Fixes #1'",
-
-                  "Not possible",
-
-                  "URL"
-
-                ],
-
-                "a": 1,
-
-                "xp": 40,
-
-                "explanation": "Keywords like 'Fixes' or 'Closes' automatically link and close issues."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 8,
-
-            "title": "Review & Merging",
-
-            "icon": "fas fa-check-double",
-
-            "questions": [
-
-              {
-
-                "q": "Who reviews code?",
-
-                "options": [
-
-                  "Maintainers/Peers",
-
-                  "The computer only",
-
-                  "No one",
-
-                  "The CEO"
-
-                ],
-
-                "a": 0,
-
-                "xp": 45,
-
-                "explanation": "Code review is done by humans (maintainers) and sometimes automated tools."
-
-              },
-
-              {
-
-                "q": "What is CI?",
-
-                "options": [
-
-                  "Continuous Integration",
-
-                  "Code Insert",
-
-                  "Common Issue",
-
-                  "Code Improvement"
-
-                ],
-
-                "a": 0,
-
-                "xp": 45,
-
-                "explanation": "CI (Continuous Integration) automatically builds and tests code."
-
-              },
-
-              {
-
-                "q": "What if feedback requests changes?",
-
-                "options": [
-
-                  "Ignore it",
-
-                  "Make changes & push",
-
-                  "Close PR",
-
-                  "Argue"
-
-                ],
-
-                "a": 1,
-
-                "xp": 45,
-
-                "explanation": "Iterate on your PR by pushing new commits to the same branch."
-
-              },
-
-              {
-
-                "q": "What keeps syntax consistent?",
-
-                "options": [
-
-                  "Linters",
-
-                  "Comments",
-
-                  "Guessing",
-
-                  "Compilers"
-
-                ],
-
-                "a": 0,
-
-                "xp": 45,
-
-                "explanation": "Linters automatically check for style and syntax errors."
-
-              },
-
-              {
-
-                "q": "When is code merged?",
-
-                "options": [
-
-                  "Immediately",
-
-                  "After approval & passing tests",
-
-                  "Never",
-
-                  "When you feel like it"
-
-                ],
-
-                "a": 1,
-
-                "xp": 45,
-
-                "explanation": "Merge happens after humans approve and automated tests pass."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 9,
-
-            "title": "Project Maintenance",
-
-            "icon": "fas fa-screwdriver-wrench",
-
-            "questions": [
-
-              {
-
-                "q": "What is Triage?",
-
-                "options": [
-
-                  "Sorting/Prioritizing issues",
-
-                  "Deleting code",
-
-                  "Writing docs",
-
-                  "Coding"
-
-                ],
-
-                "a": 0,
-
-                "xp": 50,
-
-                "explanation": "Triage involves sorting, prioritizing, and labeling incoming issues."
-
-              },
-
-              {
-
-                "q": "What is Semantic Versioning?",
-
-                "options": [
-
-                  "Random numbers",
-
-                  "MAJOR.MINOR.PATCH",
-
-                  "Dates",
-
-                  "Alphabetical"
-
-                ],
-
-                "a": 1,
-
-                "xp": 50,
-
-                "explanation": "SemVer uses Major.Minor.Patch to indicate compatibility."
-
-              },
-
-              {
-
-                "q": "How to avoid burnout?",
-
-                "options": [
-
-                  "Work 24/7",
-
-                  "Delegate & set boundaries",
-
-                  "Quit",
-
-                  "Drink coffee"
-
-                ],
-
-                "a": 1,
-
-                "xp": 50,
-
-                "explanation": "Sustainable maintenance requires boundaries and delegation."
-
-              },
-
-              {
-
-                "q": "Who manages releases?",
-
-                "options": [
-
-                  "Maintainers",
-
-                  "Users",
-
-                  "GitHub",
-
-                  "Bots"
-
-                ],
-
-                "a": 0,
-
-                "xp": 50,
-
-                "explanation": "Maintainers are responsible for cutting and publishing releases."
-
-              },
-
-              {
-
-                "q": "Key to sustainability?",
-
-                "options": [
-
-                  "Funding & Community",
-
-                  "Ads",
-
-                  "Paywalls",
-
-                  "Magic"
-
-                ],
-
-                "a": 0,
-
-                "xp": 50,
-
-                "explanation": "A healthy community and sometimes funding keep projects alive."
-
-              }
-
-            ]
-
-          },
-
-          {
-
-            "id": 10,
-
-            "title": "Advanced Concepts",
-
-            "icon": "fas fa-infinity",
-
-            "questions": [
-
-              {
-
-                "q": "What is a Foundation?",
-
-                "options": [
-
-                  "Non-profit supporting projects",
-
-                  "Basement",
-
-                  "Start point",
-
-                  "A building"
-
-                ],
-
-                "a": 0,
-
-                "xp": 60,
-
-                "explanation": "Foundations (like Linux Foundation) provide legal and financial support."
-
-              },
-
-              {
-
-                "q": "What is DCO?",
-
-                "options": [
-
-                  "Developer Certificate of Origin",
-
-                  "Direct Code Output",
-
-                  "Data Control Only",
-
-                  "Data Center"
-
-                ],
-
-                "a": 0,
-
-                "xp": 60,
-
-                "explanation": "DCO confirms you have the right to submit the code."
-
-              },
-
-              {
-
-                "q": "What is InnerSource?",
-
-                "options": [
-
-                  "Open source practices inside companies",
-
-                  "Secrets",
-
-                  "Localhost",
-
-                  "Outsourcing"
-
-                ],
-
-                "a": 0,
-
-                "xp": 60,
-
-                "explanation": "InnerSource applies open source culture to proprietary corporate code."
-
-              },
-
-              {
-
-                "q": "Bus Factor?",
-
-                "options": [
-
-                  "Transportation",
-
-                  "Risk if key people leave",
-
-                  "Code speed",
-
-                  "Commute time"
-
-                ],
-
-                "a": 1,
-
-                "xp": 60,
-
-                "explanation": "Bus factor measures how many people's disappearance would stall the project."
-
-              },
-
-              {
-
-                "q": "Open Collective?",
-
-                "options": [
-
-                  "Funding platform",
-
-                  "A group chat",
-
-                  "A license",
-
-                  "A union"
-
-                ],
-
-                "a": 0,
-
-                "xp": 60,
-
-                "explanation": "Open Collective helps projects transparently manage funding."
-
-              }
-
-            ]
-
-          }
-        ]; // Will be fetched
         let currentLevelIndex = 0;
         let currentQuestionIndex = 0;
         let currentScore = 0;
         let currentLevelXP = 0;
 
-        // Persistent State
         let unlockedLevel = parseInt(localStorage.getItem('osc_unlockedLevel') || 1);
         let totalXP = parseInt(localStorage.getItem('osc_totalXP') || 0);
 
-        // Elements
         const levelContainer = document.getElementById('level-chain-container');
         const levelWrapper = document.getElementById('level-chain-wrapper');
         const quizContainer = document.getElementById('quiz-container');
@@ -1968,23 +595,18 @@
         const nextQBtn = document.getElementById('next-question-btn');
         const roadmapProgressLine = document.getElementById('roadmap-progress-line');
 
-        // Initial Render
         xpDisplay.innerText = totalXP;
-        renderLevels(); // Directly call render instead of fetching
+        renderLevels();
 
-        // --- ENHANCED ROADMAP RENDERER (Mixed Features) ---
         function renderLevels() {
-          // Remove old nodes but keep tracks
           const childrenToRemove = [];
           for (let i = 2; i < levelContainer.children.length; i++) {
             childrenToRemove.push(levelContainer.children[i]);
           }
           childrenToRemove.forEach(child => child.remove());
 
-          // Calculate and animate progress line width
           const totalLevels = levels.length;
           if (totalLevels > 1) {
-            // Delay the line animation slightly so it follows the nodes appearing
             setTimeout(() => {
               const progressPct = ((unlockedLevel - 1) / (totalLevels - 1)) * 100;
               roadmapProgressLine.style.width = `${Math.min(progressPct, 100)}%`;
@@ -1998,41 +620,30 @@
             let statusClass = '';
             let iconClass = level.icon;
 
-            if (isLocked) {
-              statusClass = 'locked';
-              iconClass = 'fas fa-lock';
-            } else if (isCompleted) {
-              statusClass = 'completed';
-              iconClass = 'fas fa-check';
-            } else {
-              statusClass = 'unlocked';
-            }
-            item.className = `level-item ${statusClass}`;
+            if (isLocked) { statusClass = 'locked'; iconClass = 'fas fa-lock'; }
+            else if (isCompleted) { statusClass = 'completed'; iconClass = 'fas fa-check'; }
+            else { statusClass = 'unlocked'; }
 
-            // Staggered Animation Delay
+            item.className = `level-item ${statusClass}`;
             item.style.animationDelay = `${index * 0.1}s`;
 
-            // Interaction
             if (!isLocked) {
               item.onclick = () => startLevel(level.id);
             } else {
-              // Shake animation on click for locked items
               item.onclick = () => {
                 item.classList.remove('shake-animation');
-                void item.offsetWidth; // trigger reflow
+                void item.offsetWidth;
                 item.classList.add('shake-animation');
-              }
+              };
             }
-            // HTML Structure: Dark XP Pill + Node + Meta
+
             item.innerHTML = `
-                <div class="xp-pill"><i class="fas fa-bolt" style="margin-right:4px;"></i>${level.questions ? level.questions.length * 10 : 50} XP</div>
-                <div class="level-node">
-                   <i class="${iconClass}"></i>
-                </div>
-                <div class="level-meta">
-                   <span class="level-id">Level ${level.id}</span>
-                   <div class="level-title">${level.title}</div>
-                </div>
+              <div class="xp-pill"><i class="fas fa-bolt" style="margin-right:4px;"></i>${level.questions ? level.questions.length * 10 : 50} XP</div>
+              <div class="level-node"><i class="${iconClass}"></i></div>
+              <div class="level-meta">
+                <span class="level-id">Level ${level.id}</span>
+                <div class="level-title">${level.title}</div>
+              </div>
             `;
             levelContainer.appendChild(item);
           });
@@ -2068,10 +679,8 @@
             const btn = document.createElement('button');
             btn.innerText = opt;
             btn.style.cssText = "padding: 1rem; border: 2px solid #eee; background: white; border-radius: 8px; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--charcoal-dark); transition: all 0.2s;";
-
-            btn.onmouseover = () => { if (!btn.disabled) { btn.style.background = '#fffbf0'; btn.style.borderColor = 'var(--primary-gold)'; } }
-            btn.onmouseout = () => { if (!btn.disabled) { btn.style.background = 'white'; btn.style.borderColor = '#eee'; } }
-
+            btn.onmouseover = () => { if (!btn.disabled) { btn.style.background = '#fffbf0'; btn.style.borderColor = 'var(--primary-gold)'; } };
+            btn.onmouseout = () => { if (!btn.disabled) { btn.style.background = 'white'; btn.style.borderColor = '#eee'; } };
             btn.onclick = () => handleAnswer(idx, btn, qData);
             optionsContainer.appendChild(btn);
           });
@@ -2080,7 +689,6 @@
         function handleAnswer(selectedIndex, selectedBtn, qData) {
           const allBtns = optionsContainer.querySelectorAll('button');
           allBtns.forEach(b => b.disabled = true);
-
           const correctIndex = qData.a;
 
           if (selectedIndex === correctIndex) {
@@ -2096,15 +704,12 @@
             allBtns[correctIndex].style.background = '#e8f5e9';
             allBtns[correctIndex].style.borderColor = '#2ecc71';
           }
+
           explanationText.innerText = qData.explanation;
           explanationBox.style.display = 'block';
           nextQBtn.onclick = () => {
             currentQuestionIndex++;
-            if (currentQuestionIndex < 5) {
-              loadQuestion();
-            } else {
-              showResult();
-            }
+            if (currentQuestionIndex < 5) { loadQuestion(); } else { showResult(); }
           };
         }
 
@@ -2139,7 +744,6 @@
               localStorage.setItem('osc_unlockedLevel', unlockedLevel);
               resultMsg.innerText += " Next level unlocked!";
             }
-
             if (levels[currentLevelIndex].id < levels.length) {
               nextBtn.style.display = 'inline-block';
               nextBtn.onclick = () => startLevel(levels[currentLevelIndex].id + 1);
@@ -2164,29 +768,21 @@
           levelWrapper.style.display = 'block';
           renderLevels();
         };
-        
       });
     </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const copyButtons = document.querySelectorAll(".copy-btn");
-
         copyButtons.forEach((btn) => {
           btn.addEventListener("click", () => {
             const link = btn.getAttribute("data-link");
             const feedback = btn.nextElementSibling;
             const icon = btn.querySelector("i");
-
             navigator.clipboard.writeText(link).then(() => {
-              // Show feedback
               feedback.style.display = "inline";
-
-              // Change icon to tick
               icon.classList.remove("fa-copy");
               icon.classList.add("fa-check");
-
-              // Reset after 1.5 sec
               setTimeout(() => {
                 feedback.style.display = "none";
                 icon.classList.remove("fa-check");
@@ -2200,13 +796,13 @@
 
     <section id="recommended-resources"></section>
   </main>
+
   <div id="footer"></div>
 
   <script src="../js/components.js"></script>
   <script src="../js/theme.js"></script>
   <script src="../js/cChatbot.js"></script>
   <script src="../js/recommendations.js"></script>
-
   <script src="../js/chatbot.js"></script>
   <script src="../js/resources.js"></script>
   <script src="../js/main.js"></script>
