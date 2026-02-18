@@ -889,3 +889,33 @@ html {
 .dark-mode .mistakes-list li:hover p {
   color: #f9fafb !important;
 }
+
+/* =========================================
+   DARK MODE – FIX WHITE HOVER BACKGROUND
+   ========================================= */
+
+body.dark-mode .practice-item,
+body.dark-mode .pr-steps li,
+body.dark-mode .guide-list li,
+body.dark-mode .mistakes-list li {
+  background: #111827; /* dark card base */
+  border: 1px solid #1f2937;
+}
+
+/* Hover state stays dark */
+body.dark-mode .practice-item:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .guide-list li:hover,
+body.dark-mode .mistakes-list li:hover {
+  background: #1f2937; /* slightly lifted dark */
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.75);
+  transform: translateY(-6px);
+}
+
+/* Ensure text stays visible */
+body.dark-mode .practice-item h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .guide-list h4,
+body.dark-mode .mistakes-list p {
+  color: #f9fafb;
+}
