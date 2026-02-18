@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learner Dashboard | OpenSource Compass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        @media (max-width: 968px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 110px;
+        }
+
+        .user-brief {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 20px var(--gold-glow);
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-link {
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            color: var(--text-high);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sidebar-link:hover, .sidebar-link.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-deep);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--deep-navy), #2c3e50);
+            padding: 3rem;
+            border-radius: 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .welcome-card p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-align: left;
+            margin: 0;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .mini-stat-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .mini-stat-card i {
+            font-size: 1.5rem;
+            color: var(--gold-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-stat-card h4 {
+            margin: 0.5rem 0;
+            font-size: 1.8rem;
+        }
+
+        .mini-stat-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-mid);
+        }
+
+        .progress-section {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .guide-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-main);
+            padding: 1.2rem 1.5rem;
+            border-radius: 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .guide-item:hover {
+            border-color: var(--gold-bright);
+            transform: translateX(5px);
+        }
+
+        .guide-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guide-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-deep);
+            font-size: 1.2rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-badge.completed {
+            background: rgba(39, 174, 96, 0.1);
+            color: #27ae60;
+        }
+
+        .status-badge.pending {
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-bright), var(--gold-deep));
+            width: 0%;
+            transition: width 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar-container">
+            <a href="../index.html" style="text-decoration: none;"><h1><i class="fas fa-compass"></i> OpenSource Compass</h1></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">Home</a>
+                <a href="guides.html">Guides</a>
+                <a href="Resources.html">Roadmaps</a>
+                <!-- Profile icon will be injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="user-brief">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <h3 id="userName">User Name</h3>
+                    <p id="userEmail" style="font-size: 0.8rem; color: var(--text-mid);">user@example.com</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link active"><i class="fas fa-th-large"></i> Overview</a>
+                    <a href="profile.html" class="sidebar-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                    <a href="guides.html" class="sidebar-link"><i class="fas fa-book-open"></i> My Guides</a>
+                    <a href="#" class="sidebar-link" id="dashboardLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </nav>
+            </aside>
+
+            <section class="main-content">
+                <div class="welcome-card">
+                    <h2>Welcome back, <span id="welcomeName">Learner</span>! 👋</h2>
+                    <p>You're doing great on your open source journey. Keep it up!</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-fill" id="overallProgressFill"></div>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;"><span id="progressText">0%</span> of the roadmap completed</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="mini-stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h4 id="completedCount">0</h4>
+                        <p>Guides Finished</p>
+                    </div>
+                    <div class="mini-stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h4 id="pendingCount">5</h4>
+                        <p>Guides in Progress</p>
+                    </div>
+                    <div class="mini-stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <h4 id="rankLabel">Novice</h4>
+                        <p>Contribution Rank</p>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="section-header">
+                        <h3>Your Progress</h3>
+                        <a href="guides.html" class="btn-small" style="font-size: 0.9rem; color: var(--gold-deep);">Explore More</a>
+                    </div>
+                    <div class="guide-list" id="progressList">
+                        <!-- Items will be injected by dashboard.js -->
+                        <div class="loading-spinner" style="text-align: center; padding: 2rem;">
+                            <i class="fas fa-spinner fa-spin"></i> Loading your progress...
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
