@@ -21,6 +21,7 @@
     --border: rgba(212, 175, 55, 0.2);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     --glass: blur(12px) saturate(180%);
+    
 }
 
 body.dark-mode {
@@ -431,6 +432,7 @@ header {
   width: 100%;
   z-index: 1000;
   box-shadow: var(--shadow-main);
+
 }
 
 .navbar-container {
@@ -534,17 +536,14 @@ body.dark-mode .nav-links a.active {
   color: var(--primary-gold) !important;
 }
 
-main {
-  margin-top: 0;
-  padding-top: 0;
-}
-
 header h1 i {
   font-size: 0.95em;
   line-height: 1;
   display: inline-flex;
   align-items: center;
 }
+
+
 
 /* HAMBURGER MENU (Hidden on Desktop) */
 .hamburger-menu {
