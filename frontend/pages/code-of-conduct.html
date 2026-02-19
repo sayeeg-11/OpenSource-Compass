@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code of Conduct | OpenSource Compass</title>
+
+  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/chatbot.css">
+  
+  <link rel="stylesheet" href="../css/code-of-conduct.css">
+
+</head>
+
+<body>
+
+<div id="navbar"></div>
+
+<section class="conduct-hero">
+  <h1>⚖️ <span>Code of Conduct</span></h1>
+  <p>
+    Welcome to the OpenSource Compass Community.  
+    Together, we build a respectful, inclusive, and collaborative environment for all contributors.
+  </p>
+</section>
+
+<section class="conduct-container">
+
+  <div class="conduct-block">
+    <h2><i class="fas fa-handshake"></i> Our Pledge</h2>
+    <p>
+      We are dedicated to fostering a collaborative and inclusive environment for all contributors.
+      Participation in this project will always remain harassment-free regardless of background,
+      identity, or experience level.
+    </p>
+  </div>
+
+  <div class="conduct-block">
+    <h2><i class="fas fa-check-circle"></i> What We Encourage</h2>
+    <ul class="conduct-list encourage">
+      <li>Showing empathy toward others</li>
+      <li>Using welcoming and inclusive language</li>
+      <li>Giving constructive feedback</li>
+      <li>Accepting responsibility for mistakes</li>
+      <li>Respectful dissent</li>
+    </ul>
+  </div>
+
+  <div class="conduct-block">
+    <h2><i class="fas fa-ban"></i> What We Discourage (Zero Tolerance)</h2>
+    <ul class="conduct-list discourage">
+      <li>Harassment or discrimination</li>
+      <li>Inappropriate conduct</li>
+      <li>Confidentiality breaches</li>
+      <li>Trolling or derogatory remarks</li>
+      <li>Any act making others uncomfortable or unsafe</li>
+    </ul>
+  </div>
+
+  <div class="conduct-block">
+    <h2><i class="fas fa-shield-alt"></i> Maintainer Responsibilities</h2>
+    <p>
+      Maintainers commit to clarifying and enforcing community standards fairly.
+      We lead by example, protect confidentiality, avoid bias, and ensure the
+      project remains transparent and welcoming.
+    </p>
+  </div>
+
+  <div class="conduct-block">
+    <h2><i class="fas fa-heart"></i> Our Commitment</h2>
+    <p>
+      We strive to build a space where every student feels empowered to grow
+      their technical skills and share their ideas confidently.
+      Thank you for making OpenSource Compass a better place.
+    </p>
+  </div>
+
+</section>
+
+<button id="scrollTopBtn" title="Back to Top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<div id="footer"></div>
+
+<script src="../js/components.js"></script>
+<script src="../js/theme.js"></script>
+<script>
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add("show");
+    } else {
+      scrollBtn.classList.remove("show");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+.glossary-hero {
+  background:
+    radial-gradient(circle at top right, rgba(212,175,55,0.12), transparent 40%),
+    var(--warm-cream);
+  padding: 96px 16px 72px;
+  text-align: center;
+}
+
+body.dark-mode .glossary-hero {
+  background:
+    radial-gradient(circle at top right, rgba(228,199,106,0.15), transparent 40%),
+    var(--deep-navy);
+}
+
+.hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  color: var(--secondary-gold);
+  font-weight: 600;
+}
+
+.glossary-hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  margin: 16px 0;
+  color: var(--charcoal-dark);
+}
+
+body.dark-mode .glossary-hero h1 {
+  color: var(--text-primary);
+}
+
+.glossary-hero p {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.glossary-search-wrapper {
+  max-width: 720px;
+  margin: -36px auto 64px;
+  padding: 0 16px;
+}
+
+.glossary-search-wrapper input {
+  width: 100%;
+  padding: 18px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, #e5e7eb);
+  background: var(--light-parchment);
+  box-shadow: var(--shadow-main);
+  font-size: 1rem;
+  transition: all 0.35s var(--bounce-curve);
+}
+
+.glossary-search-wrapper input:focus {
+  outline: none;
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 0 4px rgba(212,175,55,0.2), var(--shadow-hover);
+}
+.glossary-explorer {
+  padding: 96px 16px 72px;
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(212,175,55,0.06),
+      transparent
+    );
+}
+
+.explorer-header {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.explorer-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 12px;
+  color: var(--charcoal-dark);
+}
+
+body.dark-mode .explorer-header h2 {
+  color: var(--text-primary);
+}
+
+.explorer-header p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.explorer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.explorer-card {
+  background: var(--light-parchment);
+  border-radius: 28px;
+  padding: 32px 28px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-main);
+  transition:
+    transform 0.5s var(--bounce-curve),
+    box-shadow 0.5s var(--bounce-curve);
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark-mode .explorer-card {
+  background: #1b2235;
+}
+
+.explorer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right,
+      rgba(212,175,55,0.18),
+      transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.explorer-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.explorer-card:hover::after {
+  opacity: 1;
+}
+
+.explorer-card .icon {
+  font-size: 1.8rem;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.explorer-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: var(--charcoal-dark);
+}
+
+body.dark-mode .explorer-card h3 {
+  color: var(--text-primary);
+}
+
+.explorer-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.explorer-card .count {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--secondary-gold);
+  font-weight: 600;
+}
+.glossary-library {
+  padding: 104px 16px 120px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(212,175,55,0.04),
+      transparent 35%
+    );
+}
+
+.library-header {
+  max-width: 760px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+
+.library-header h2 {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  margin-bottom: 14px;
+  color: var(--charcoal-dark);
+}
+
+body.dark-mode .library-header h2 {
+  color: var(--text-primary);
+}
+
+.library-header p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.glossary-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+  perspective: 1200px;
+}
+.glossary-card {
+  background: var(--light-parchment);
+  border-radius: 28px;
+  padding: 36px 34px 40px;
+  box-shadow: var(--shadow-main);
+  position: relative;
+  transform-style: preserve-3d;
+  opacity: 0;
+  animation: cardReveal 0.6s ease forwards;
+  transition:
+    transform 0.45s var(--bounce-curve),
+    box-shadow 0.45s var(--bounce-curve);
+}
+
+body.dark-mode .glossary-card {
+  background: #1b2235;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.glossary-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(212,175,55,0.18),
+      transparent 55%
+    );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.glossary-card:hover::before {
+  opacity: 1;
+}
+
+.glossary-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.term-tag {
+  background: rgba(212,175,55,0.18);
+  color: var(--secondary-gold);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.term-level {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+.term-title {
+  font-size: 1.45rem;
+  margin-bottom: 14px;
+  color: var(--charcoal-dark);
+  line-height: 1.3;
+}
+
+body.dark-mode .term-title {
+  color: var(--text-primary);
+}
+
+.term-definition {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+.term-example summary {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--secondary-gold);
+  transition: opacity 0.25s ease;
+}
+
+.term-example summary:hover {
+  opacity: 0.85;
+}
+
+.term-example code {
+  display: block;
+  margin-top: 12px;
+  background: rgba(212,175,55,0.1);
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 0.8rem;
+  color: var(--charcoal-dark);
+  animation: fadeInExample 0.35s ease;
+}
+
+body.dark-mode .term-example code {
+  color: var(--text-primary);
+}
+
+@keyframes fadeInExample {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.glossary-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 96px 16px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.glossary-empty h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--charcoal-dark);
+}
+
+body.dark-mode .glossary-empty h3 {
+  color: var(--text-primary);
+}
+
+.glossary-empty p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.explorer-card.active {
+  outline: 2px solid rgba(212,175,55,0.4);
+  box-shadow:
+    0 0 0 6px rgba(212,175,55,0.12),
+    var(--shadow-hover);
+}
+.library-header {
+  max-width: 760px;
+  margin: 0 auto 80px;
+  text-align: center;
+  position: relative;
+}
+
+/* Eyebrow label */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--secondary-gold);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Title */
+.library-header h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--charcoal-dark);
+  position: relative;
+}
+
+body.dark-mode .library-header h2 {
+  color: var(--text-primary);
+}
+
+/* Subtle gold underline accent */
+.library-header h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 20px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-gold),
+    transparent
+  );
+  opacity: 0.85;
+}
+
+/* Description */
+.library-header p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 22px auto 0;
+}

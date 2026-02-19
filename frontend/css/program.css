@@ -2,6 +2,77 @@
    Global Page Layout
 ------------------------- */
 :root {
+  /* Animation Constants */
+  --card-transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --icon-transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Light Mode Values */
+  --card-bg: #ffffff;
+  --text-main: #1a1a1a;
+  --accent-gold: #b59d5c;
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --border-style: 1px solid #e2d1a8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: #1a1a1a;
+    --text-main: #f5f5f5;
+    --accent-gold: #d4af37;
+    /* In dark mode, shadows must be darker and glows more subtle */
+    --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
+    --border-style: 1px solid #333;
+  }
+}
+.program-card {
+  background: var(--card-bg);
+  border: var(--border-style);
+  color: var(--text-main);
+  transition: var(--card-transition);
+  position: relative;
+  z-index: 1;
+}
+
+.program-card:hover {
+  /* Physical Motion */
+  transform: translateY(-10px) scale(1.02);
+  
+  /* Visual Depth */
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-gold);
+}
+
+/* -------------------------
+   Inner Element Animations
+------------------------- */
+
+/* Icon "Pop" effect */
+.card-icon {
+  transition: var(--icon-transition);
+  display: inline-block; /* Required for transform */
+}
+
+.program-card:hover .card-icon {
+  transform: scale(1.2) translateY(-5px);
+}
+
+/* Button "Stretch" effect */
+.card-btn {
+  transition: var(--card-transition);
+}
+
+.program-card:hover .card-btn {
+  padding: 12px 45px; /* Subtle widening on hover */
+  letter-spacing: 1px;
+}
+body, .program-card, .card-btn, h3, p {
+  transition: 
+    background-color 0.4s ease, 
+    color 0.4s ease, 
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+:root {
   --primary-gold: #b59d5c;
   --hover-gold: #967e45;
   --bg-cream: #fffdf6;
@@ -181,4 +252,36 @@
   .program-card {
     max-width: 100%;
   }
+}
+
+/* ==========================
+   Dark Mode Overrides
+========================== */
+
+.dark-mode {
+  --bg-cream: #0f172a;
+  --text-dark: #f8fafc;
+  --text-gray: #9ca3af;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --hover-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Program Cards Dark Mode */
+.dark-mode .program-card {
+  background: #111827;
+  border-color: #1f2933;
+}
+
+.dark-mode .program-card h3 {
+  color: #f9fafb;
+}
+
+.dark-mode .program-card p {
+  color: #d1d5db;
+}
+
+.dark-mode .skill-tag {
+  background: #1f2937;
+  color: #fbbf24;
+  border-color: #374151;
 }
