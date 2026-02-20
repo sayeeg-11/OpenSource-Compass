@@ -18,9 +18,12 @@
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.1",
-    "nodemailer": "^7.0.13"
+    "nodemailer": "^7.0.13",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12"
   },
   "description": ""
 }

@@ -1,6 +1,7 @@
+const API_URL = 'http://localhost:5000/api';
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const users = JSON.parse(localStorage.getItem('users')) || [];
 
     if (!currentUser) {
         window.location.href = 'login.html';
@@ -16,34 +17,49 @@ document.addEventListener('DOMContentLoaded', () => {
     nameInput.value = currentUser.name;
     emailInput.value = currentUser.email;
 
-    document.getElementById('profileForm').addEventListener('submit', (e) => {
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Find user in the master users array
-        const userIndex = users.findIndex(u => u.email === currentUser.email);
+        const name = nameInput.value.trim();
+        const password = passwordInput.value.trim();
 
-        if (userIndex !== -1) {
-            // 1. Update master users array
-            users[userIndex].name = nameInput.value.trim();
-            if (passwordInput.value.trim() !== "") {
-                users[userIndex].password = passwordInput.value;
+        msg.textContent = "Updating...";
+        msg.style.color = "var(--text-mid)";
+
+        try {
+            const response = await fetch(`${API_URL}/auth/update-profile`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({
+                    name,
+                    password: password || undefined
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Update current session object in localStorage
+                const updatedUser = { ...currentUser, name: data.user.name };
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+
+                msg.textContent = "Profile updated successfully! ✨";
+                msg.style.color = "#27ae60";
+
+                // Update the UI via auth.js if available
+                if (typeof checkAuthStatus === "function") await checkAuthStatus();
+
+                // Clear password field
+                passwordInput.value = "";
+            } else {
+                msg.textContent = data.message || "Failed to update profile";
+                msg.style.color = "#c53030";
             }
-
-            // 2. Update current session object
-            currentUser.name = nameInput.value.trim();
-
-            // 3. Save back to localStorage
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-            msg.textContent = "Profile updated successfully!";
-            msg.style.color = "green";
-
-            // Update the icon in the nav immediately
-            if (typeof updateProfileIcon === "function") updateProfileIcon();
-            
-            // Clear password field
-            passwordInput.value = "";
+        } catch (error) {
+            console.error('Update profile error:', error);
+            msg.textContent = "Server error. Please try again later.";
+            msg.style.color = "#c53030";
         }
     });
 });

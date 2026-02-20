@@ -4,71 +4,86 @@
 /* =========================
    1. UNIFIED THEME VARIABLES
    ========================= */
-   :root {
-    /* Primary Palette - Light Mode */
-    --bg-main: #fdf4e3;          /* Warm Cream */
-    --bg-alt: #ffffff;           /* Pure White */
-    --surface: rgba(255, 255, 255, 0.8);
-    
-    --text-high: #1b263b;        /* Deep Navy */
-    --text-mid: #5a5a5a;         /* Gray */
-    --text-inv: #ffffff;
-    
-    --gold-bright: #d4af37;
-    --gold-deep: #b8860b;
-    --gold-glow: rgba(212, 175, 55, 0.3);
+:root {
+  /* Primary Palette - Light Mode */
+  --bg-main: #fdf4e3;
+  /* Warm Cream */
+  --bg-alt: #ffffff;
+  /* Pure White */
+  --surface: rgba(255, 255, 255, 0.8);
 
-    --border: rgba(212, 175, 55, 0.2);
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --glass: blur(12px) saturate(180%);
+  --text-high: #1b263b;
+  /* Deep Navy */
+  --text-mid: #5a5a5a;
+  /* Gray */
+  --text-inv: #ffffff;
+
+  --gold-bright: #d4af37;
+  --gold-deep: #b8860b;
+  --gold-glow: rgba(212, 175, 55, 0.3);
+
+  --border: rgba(212, 175, 55, 0.2);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass: blur(12px) saturate(180%);
 }
 
 body.dark-mode {
-    /* Primary Palette - Dark Mode */
-    --bg-main: #0b1220;          /* Deep Navy Background */
-    --bg-alt: #16213e;           /* Lighter Navy Surface */
-    --surface: rgba(22, 33, 62, 0.8);
-    
-    --text-high: #fdf4e3;        /* Warm Cream Text */
-    --text-mid: #b9bfd1;         /* Muted Slate */
-    
-    --gold-bright: #e4c76a;
-    --gold-glow: rgba(228, 199, 106, 0.25);
-    
-    --border: rgba(228, 199, 106, 0.15);
-    --shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  /* Primary Palette - Dark Mode */
+  --bg-main: #0b1220;
+  /* Deep Navy Background */
+  --bg-alt: #16213e;
+  /* Lighter Navy Surface */
+  --surface: rgba(22, 33, 62, 0.8);
+
+  --text-high: #fdf4e3;
+  /* Warm Cream Text */
+  --text-mid: #b9bfd1;
+  /* Muted Slate */
+
+  --gold-bright: #e4c76a;
+  --gold-glow: rgba(228, 199, 106, 0.25);
+
+  --border: rgba(228, 199, 106, 0.15);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
 }
 
 /* =========================
    2. GLOBAL VISIBILITY FIXES
    ========================= */
 body {
-    background: var(--bg-main);
-    color: var(--text-mid);
-    transition: background 0.4s ease, color 0.4s ease;
+  background: var(--bg-main);
+  color: var(--text-mid);
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-h1, h2, h3, h4 {
-    color: var(--text-high);
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-high);
 }
 
 /* =========================
    3. ADAPTIVE CARD & NESTING FIXES
    ========================= */
-.card, .why-card, .stat-card, .newsletter-container {
-    background: var(--surface) !important;
-    backdrop-filter: var(--glass);
-    -webkit-backdrop-filter: var(--glass);
-    border: 1px solid var(--border) !important;
-    box-shadow: var(--shadow);
-    color: var(--text-high) !important;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+.card,
+.why-card,
+.stat-card,
+.newsletter-container {
+  background: var(--surface) !important;
+  backdrop-filter: var(--glass);
+  -webkit-backdrop-filter: var(--glass);
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow);
+  color: var(--text-high) !important;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
 }
 
-.card:hover, .why-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px var(--gold-glow);
-    border-color: var(--gold-bright) !important;
+.card:hover,
+.why-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--gold-glow);
+  border-color: var(--gold-bright) !important;
 }
 
 /* =========================
@@ -77,45 +92,47 @@ h1, h2, h3, h4 {
 
 /* Newsletter adaptive colors */
 .newsletter-form input {
-    background: var(--bg-alt) !important;
-    color: var(--text-high) !important;
-    border: 2px solid var(--border) !important;
+  background: var(--bg-alt) !important;
+  color: var(--text-high) !important;
+  border: 2px solid var(--border) !important;
 }
 
 /* Badge Glow (Visible in Dark Mode) */
 .badge {
-    background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
-    box-shadow: 0 4px 15px var(--gold-glow);
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+  box-shadow: 0 4px 15px var(--gold-glow);
 }
 
 /* Icon visibility */
-.stat-icon i, .why-card-icon i {
-    color: var(--gold-bright);
-    filter: drop-shadow(0 0 8px var(--gold-glow));
+.stat-icon i,
+.why-card-icon i {
+  color: var(--gold-bright);
+  filter: drop-shadow(0 0 8px var(--gold-glow));
 }
 
 /* Navbar Adaptive Blur */
 header {
-    background: var(--surface);
-    backdrop-filter: var(--glass);
-    border-bottom: 3px solid var(--gold-bright);
+  background: var(--surface);
+  backdrop-filter: var(--glass);
+  border-bottom: 3px solid var(--gold-bright);
 }
 
 /* =========================
    5. UTILITY & SCROLLBAR
    ========================= */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-main);
+  background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--gold-bright);
-    border-radius: 5px;
+  background: var(--gold-bright);
+  border-radius: 5px;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -140,6 +157,106 @@ body {
   }
 }
 
+/* Auth & Profile Styles */
+.profile-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.profile-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 4px 10px var(--gold-glow);
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: var(--shadow);
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+}
+
+.profile-dropdown:hover .profile-menu {
+  display: flex;
+}
+
+.profile-menu-item {
+  padding: 10px;
+  color: var(--text-high);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.profile-menu-item:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.track-guide-btn {
+  background: white;
+  border: 1px solid var(--gold-bright);
+  color: var(--gold-deep);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.track-guide-btn:hover {
+  background: var(--gold-bright);
+  color: white;
+}
+
+.track-guide-btn.completed-style {
+  background: #27ae60;
+  color: white;
+  border-color: #27ae60;
+  cursor: default;
+}
+
+.btn-auth {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-auth:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--gold-glow);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 20px;
+}
+
 
 /* =========================
    THEME VARIABLES (CLASSIC)
@@ -157,32 +274,52 @@ body {
   --shadow-main: 0 8px 32px rgb(0 0 0 / 12%);
   --shadow-hover: 0 20px 40px rgb(0 0 0 / 18%);
   --bounce-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --newsletter-bg: #fcfbf7;        /* Light cream */
-  --newsletter-card: #ffffff;      /* Pure white */
-  --newsletter-text-h: #1a1a1a;    /* Deep navy/black */
-  --newsletter-text-p: #555555;    /* Gray */
-  --newsletter-border: #e2d1a8;    /* Golden beige */
-  --newsletter-btn: #b59d5c;       /* Primary gold */
+  --newsletter-bg: #fcfbf7;
+  /* Light cream */
+  --newsletter-card: #ffffff;
+  /* Pure white */
+  --newsletter-text-h: #1a1a1a;
+  /* Deep navy/black */
+  --newsletter-text-p: #555555;
+  /* Gray */
+  --newsletter-border: #e2d1a8;
+  /* Golden beige */
+  --newsletter-btn: #b59d5c;
+  /* Primary gold */
   --newsletter-input-bg: #ffffff;
-  --programs-header-h3: #1b263b;    /* Deep Navy */
-  --programs-header-p: #5a5a5a;     /* Muted Gray */
-  --programs-bg: #ffffff;           /* Pure White */
+  --programs-header-h3: #1b263b;
+  /* Deep Navy */
+  --programs-header-p: #5a5a5a;
+  /* Muted Gray */
+  --programs-bg: #ffffff;
+  /* Pure White */
   /* Light Mode - Stats */
   /* Light Mode - Stats */
-  --stats-bg: #fdf4e3;           /* Warm Cream */
-  --stats-card-bg: #ffffff;      /* Pure White */
-  --stats-text-h: #1b263b;       /* Deep Navy */
-  --stats-text-p: #5a5a5a;       /* Charcoal Gray */
-  --stats-card-border: #e2d1a8;  /* Golden Beige */
+  --stats-bg: #fdf4e3;
+  /* Warm Cream */
+  --stats-card-bg: #ffffff;
+  /* Pure White */
+  --stats-text-h: #1b263b;
+  /* Deep Navy */
+  --stats-text-p: #5a5a5a;
+  /* Charcoal Gray */
+  --stats-card-border: #e2d1a8;
+  /* Golden Beige */
   --stats-shadow: rgba(0, 0, 0, 0.08);
-  --programs-bg: #ffffff;           /* Pure White */
-  --programs-text-h3: #1b263b;      /* Deep Navy */
-  --programs-text-p: #5a5a5a;       /* Muted Gray */
-  --programs-underline: #d4af37;    /* Primary Gold */
+  --programs-bg: #ffffff;
+  /* Pure White */
+  --programs-text-h3: #1b263b;
+  /* Deep Navy */
+  --programs-text-p: #5a5a5a;
+  /* Muted Gray */
+  --programs-underline: #d4af37;
+  /* Primary Gold */
   --video-section-bg: #ffffff;
-  --video-h3-color: #ffffff;       /* Deep Navy */
-  --video-eyebrow-color: #b8860b;  /* Secondary Gold */
-  
+  --video-h3-color: #ffffff;
+  /* Deep Navy */
+  --video-eyebrow-color: #b8860b;
+  /* Secondary Gold */
+
 }
 
 body.dark-mode {
@@ -204,46 +341,69 @@ body.dark-mode {
 
   --border-subtle: rgba(255, 255, 255, 0.08);
   /* Dark Mode Overrides */
-  --newsletter-bg: #121212;        /* Dark background */
-  --newsletter-card: #1e1e1e;      /* Slightly lighter dark card */
-  --newsletter-text-h: #f0f0f0;    /* Off-white */
-  --newsletter-text-p: #b0b0b0;    /* Light gray */
-  --newsletter-border: #333333;    /* Subtle dark border */
-  --newsletter-input-bg: #2d2d2d;  /* Dark input field */
+  --newsletter-bg: #121212;
+  /* Dark background */
+  --newsletter-card: #1e1e1e;
+  /* Slightly lighter dark card */
+  --newsletter-text-h: #f0f0f0;
+  /* Off-white */
+  --newsletter-text-p: #b0b0b0;
+  /* Light gray */
+  --newsletter-border: #333333;
+  /* Subtle dark border */
+  --newsletter-input-bg: #2d2d2d;
+  /* Dark input field */
   /* Dark Mode Overrides */
-  --programs-header-h3: #fdf4e3;    /* Warm Cream / Off-white */
-  --programs-header-p: #b9bfd1;     /* Lighter Slate Gray */
+  --programs-header-h3: #fdf4e3;
+  /* Warm Cream / Off-white */
+  --programs-header-p: #b9bfd1;
+  /* Lighter Slate Gray */
   --programs-bg: #0b1220;
   /* Dark Mode - Stats */
   /* Dark Mode - Stats */
-  --stats-bg: #d5e2b4;           /* Solid Dark Background */
-  --stats-card-bg: rgba(20, 26, 43, 0.95); /* Deep Navy Glass */
-  --stats-text-h: #f5f4f0;       /* Off-White Header */
-  --stats-text-p: #b9bfd1;       /* Muted Slate Text */
-  --stats-card-border: rgba(228, 199, 106, 0.3); /* Softer Gold Border */
+  --stats-bg: #d5e2b4;
+  /* Solid Dark Background */
+  --stats-card-bg: rgba(20, 26, 43, 0.95);
+  /* Deep Navy Glass */
+  --stats-text-h: #f5f4f0;
+  /* Off-White Header */
+  --stats-text-p: #b9bfd1;
+  /* Muted Slate Text */
+  --stats-card-border: rgba(228, 199, 106, 0.3);
+  /* Softer Gold Border */
   --stats-shadow: rgba(0, 0, 0, 0.6);
-  --programs-bg: #0b1220;           /* Deep Space Navy */
-  --programs-text-h3: #fdf4e3;      /* Warm Cream */
-  --programs-text-p: #b9bfd1;       /* Slate Blue Gray */
+  --programs-bg: #0b1220;
+  /* Deep Space Navy */
+  --programs-text-h3: #fdf4e3;
+  /* Warm Cream */
+  --programs-text-p: #b9bfd1;
+  /* Slate Blue Gray */
   --programs-underline: #e4c76a;
-  --video-section-bg: #0b1220;     /* Deep Space Navy */
-  --video-h3-color: #fdf4e3;       /* Warm Cream */
-  --video-eyebrow-color: #ffca28;  /* Bright Gold */
+  --video-section-bg: #0b1220;
+  /* Deep Space Navy */
+  --video-h3-color: #fdf4e3;
+  /* Warm Cream */
+  --video-eyebrow-color: #ffca28;
+  /* Bright Gold */
 }
+
 :root {
   /* Light Mode - Standard High Contrast */
-  --h3-color: #1b263b; /* Deep Navy */
+  --h3-color: #1b263b;
+  /* Deep Navy */
 }
 
 body.dark-mode {
   /* Dark Mode - High Visibility */
-  --h3-color: #fdf4e3; /* Warm Cream */
+  --h3-color: #fdf4e3;
+  /* Warm Cream */
 }
 
 /* Global H3 Application */
 h3 {
   color: var(--h3-color);
-  transition: color 0.4s ease; /* Smooth theme switching */
+  transition: color 0.4s ease;
+  /* Smooth theme switching */
 }
 
 /* =========================
@@ -259,6 +419,7 @@ body {
   color: var(--charcoal-dark);
   padding-top: 90px;
 }
+
 .video-section {
   padding: 60px 20px;
   text-align: center;
@@ -293,6 +454,7 @@ body {
   background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
   border-radius: 2px;
 }
+
 .programs {
   background-color: var(--programs-bg);
   padding: 80px 6%;
@@ -327,6 +489,7 @@ body {
   margin: 0 auto 3.5rem;
   transition: color 0.4s ease;
 }
+
 .programs {
   background-color: var(--programs-bg);
   transition: background-color 0.4s ease;
@@ -360,6 +523,7 @@ body {
   border-radius: 2px;
   box-shadow: 0 0 10px var(--gold-glow);
 }
+
 .stats {
   background-color: var(--stats-bg);
   padding: 80px 6%;
@@ -385,7 +549,8 @@ body {
   border-radius: 20px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  backdrop-filter: blur(10px); /* Adds premium glass feel in dark mode */
+  backdrop-filter: blur(10px);
+  /* Adds premium glass feel in dark mode */
 }
 
 .stat-card:hover {

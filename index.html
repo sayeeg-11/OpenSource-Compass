@@ -608,6 +608,27 @@
         justify-content: center;
       }
     }
+
+
+
+  .explore-btn{
+  background: linear-gradient(45deg,#28a745,#20c997);
+  color:white;
+  padding:10px 22px;
+  border:none;
+  border-radius:25px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.explore-btn:hover{
+  transform: scale(1.08);
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+
+
+
   </style>
   <link rel="stylesheet" href="frontend/css/recommendations.css" />
 
@@ -636,9 +657,7 @@
           <span>Your Gateway to Open Source</span>
         </div>
 
-        <body>
-          <div id="cursor-highlight" aria-hidden="true"></div>
-          <div id="navbar"></div>
+        
           <h1>
             Navigate Your<br>
             <span class="gradient-text">Open Source Odyssey</span>
@@ -759,52 +778,89 @@
   <!-- Programs Section -->
 
   <section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
-      Explore ongoing and upcoming open-source programs with timelines,
-      prerequisites, and official resources.
-    </p>
+  <h3>Open Source Programs</h3>
+  <p>
+    Explore ongoing and upcoming open-source programs with timelines,
+    prerequisites, and official resources.
+  </p>
 
-    <div class="card-container">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-code"></i></div>
-        <h4>Google Summer of Code</h4>
-        <p>A global program focused on bringing new contributors into open source software development.</p>
-        <span class="badge">Upcoming</span>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-users"></i></div>
-        <h4>GSSoC</h4>
-        <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
-        <span class="badge">Upcoming</span>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-terminal"></i></div>
-        <h4>Hacktoberfest</h4>
-        <p>A month-long celebration of open-source software run by DigitalOcean.</p>
-        <span class="badge">Upcoming</span>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-snowflake"></i></div>
-        <h4>Social Winter of Code</h4>
-        <p>Beginner-focused winter open-source program.</p>
-        <span class="badge">Upcoming</span>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fab fa-linux"></i></div>
-        <h4>Linux Foundation</h4>
-        <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
-        <span class="badge">Upcoming</span>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-globe"></i></div>
-        <h4>Outreachy</h4>
-        <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
-        <span class="badge">Upcoming</span>
-      </div>
+  <div class="card-container">
+
+    <!-- GSoC -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-code"></i></div>
+      <h4>Google Summer of Code</h4>
+      <p>A global program focused on bringing new contributors into open source software development.</p>
+      <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer">
+        <button class="explore-btn">
+          Explore <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+      </a>
     </div>
+
+    <!-- GSSoC -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-users"></i></div>
+      <h4>GSSoC</h4>
+      <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
+      <a href="https://gssoc.girlscript.tech/" target="_blank" rel="noopener noreferrer">
+        <button class="explore-btn">
+          Explore <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+      </a>
     </div>
-  </section>
+
+    <!-- Hacktoberfest -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-terminal"></i></div>
+      <h4>Hacktoberfest</h4>
+      <p>A month-long celebration of open-source software run by DigitalOcean.</p>
+      <a href="https://hacktoberfest.com/" target="_blank" rel="noopener noreferrer">
+        <button class="explore-btn">
+          Explore <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+      </a>
+    </div>
+
+    <!-- SWOC -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-snowflake"></i></div>
+      <h4>Social Winter of Code</h4>
+      <p>Beginner-focused winter open-source program.</p>
+      <a href="https://www.socialwinterofcode.com/" target="_blank" rel="noopener noreferrer">
+        <button class="explore-btn">
+          Explore <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+      </a>
+    </div>
+
+    <!-- Linux Foundation -->
+    <div class="card">
+      <div class="card-icon"><i class="fab fa-linux"></i></div>
+      <h4>Linux Foundation</h4>
+      <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
+      <a href="https://www.linuxfoundation.org/" target="_blank" rel="noopener noreferrer">
+        <button class="explore-btn">
+          Explore <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+      </a>
+    </div>
+
+    <!-- Outreachy -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-globe"></i></div>
+      <h4>Outreachy</h4>
+      <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
+      <a href="https://www.outreachy.org/" target="_blank" rel="noopener noreferrer">
+        <button class="explore-btn">
+          Explore <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+      </a>
+    </div>
+
+  </div>
+</section>
+
 
 
   <main>
@@ -901,6 +957,49 @@
         <p>Curated programs with historical success rates and maintainer insights.</p>
       </div>
 
+        <div class="card-grid">
+          <div class="card fade-in">
+            <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>
+            <p>India's premier winter program with strong mentorship culture.</p>
+            <span class="badge">Jan 2026</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-sun"></i> GirlScript Summer of Code</h4>
+            <p>Large-scale program with mentors, tasks, and community learning.</p>
+            <span class="badge">Summer 2026</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fab fa-google"></i> Google Summer of Code</h4>
+            <p>Global standard for student contributors and open source orgs.</p>
+            <span class="badge">Advanced</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-leaf"></i> Outreachy</h4>
+            <p>Paid internships supporting underrepresented people in tech.</p>
+            <span class="badge">Internship</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fas fa-mountain"></i> MLH Fellowship</h4>
+            <p>Work in pods on real projects with guided mentorship.</p>
+            <span class="badge">Spring</span>
+          </div>
+          <div class="card fade-in">
+            <h4><i class="fab fa-linux"></i> Linux Foundation Mentorship</h4>
+            <p>Paid mentorships across major Linux Foundation projects.</p>
+            <span class="badge">Professional</span>
+          </div>
+          <div class="card fade-in">
+  <h4><i class="fas fa-desktop"></i> Season of KDE</h4>
+  <p>Mentorship program by the KDE community for contributing to desktop and Qt-based open source projects.</p>
+  <span class="badge">Jan – Apr</span>
+</div>
+<div class="card fade-in">
+  <h4><i class="fas fa-link"></i> Hyperledger Mentorship</h4>
+  <p>Blockchain-focused mentorship program under the Hyperledger open source ecosystem.</p>
+  <span class="badge">Paid Mentorship</span>
+</div>
+
+     </section>
       <div class="card-grid">
         <div class="card fade-in">
           <h4><i class="fas fa-snowflake"></i> Social Winter of Code</h4>

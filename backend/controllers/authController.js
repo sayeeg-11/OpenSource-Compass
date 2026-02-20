@@ -31,17 +31,22 @@ export const registerUser = async (req, res) => {
   });
 
   // Send Welcome Email
-  await sendEmail({
-    to: email,
-    subject: "Welcome to AlgoAI 🚀",
-    html: `
-      <h2>Hello ${name} 👋</h2>
-      <p>Welcome to <b>AlgoAI</b>.</p>
-      <p>You can now start using AI tools.</p>
-      <br/>
-      <p>— Team AlgoAI</p>
-    `,
-  });
+  try {
+    await sendEmail({
+      to: email,
+      subject: "Welcome to OpenSource Compass 🚀",
+      html: `
+        <h2>Hello ${name} 👋</h2>
+        <p>Welcome to <b>OpenSource Compass</b>.</p>
+        <p>You can now track your progress and personalize your learning journey.</p>
+        <br/>
+        <p>— The OpenSource Compass Team</p>
+      `,
+    });
+  } catch (error) {
+    console.error("Welcome email failed to send:", error);
+    // Continue even if email fails - don't block registration
+  }
 
   res.status(201).json({
     success: true,
@@ -74,7 +79,7 @@ export const loginUser = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    
+
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -108,6 +113,48 @@ export const logoutUser = (req, res) => {
 
 
 export const getUserProfile = async (req, res) => {
-  const user = await User.findById(req.userId).select("-password");
-  res.json({ success: true, user });
+  // User is already attached to req.user by protect middleware
+  res.json({ success: true, user: req.user });
+};
+
+export const trackGuideCompletion = async (req, res) => {
+  const { guideId } = req.body;
+  if (!guideId) return res.status(400).json({ message: "Guide ID required" });
+
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Check if already completed
+    const isAlreadyCompleted = user.completedGuides.some((g) => g.guideId === guideId);
+    if (isAlreadyCompleted) {
+      return res.status(200).json({ success: true, message: "Guide already completed", user });
+    }
+
+    user.completedGuides.push({ guideId, completedAt: new Date() });
+    await user.save();
+
+    res.json({ success: true, message: "Guide progress tracked", user });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const updateUserProfile = async (req, res) => {
+  const { name, password } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    if (name) user.name = name;
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.password = hashedPassword;
+    }
+
+    await user.save();
+    res.json({ success: true, message: "Profile updated", user: { id: user._id, name: user.name, email: user.email } });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 };
