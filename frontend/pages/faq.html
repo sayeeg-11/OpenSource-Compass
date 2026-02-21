@@ -325,6 +325,117 @@ body.dark-mode .faq-answer p {
       <h3>Frequently Asked Questions</h3>
       <p>Common questions about OpenSource Compass and open source contributions.</p>
 
+      <div class="faq-accordion">
+  <div class="faq-item">
+    <button class="faq-question">
+      What is OpenSource Compass?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Do I need programming experience?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>No. You can contribute to open source through documentation, design, testing, community support, and many other non-coding roles.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      How do I get started with open source?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Start by reading contribution guides, choosing a beginner-friendly project, and working on small issues such as documentation or bug fixes.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      How do I choose a project to contribute to?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Pick projects that match your interests and skill level. Look for repositories with labels like “good first issue” or “help wanted”.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      What are the benefits of contributing to open source?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Contributing helps you build a portfolio, improve technical skills, collaborate globally, and gain real-world development experience.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Where can I ask for help?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Most projects have active communities on GitHub, Discord, or Slack. Asking questions is encouraged and is part of open-source culture.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      How do I find beginner-friendly issues?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Look for repositories with labels like <strong>good first issue</strong>, <strong>beginner</strong>, or <strong>help wanted</strong>.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      What is a “good first issue”?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>A good first issue is a small, well-defined task that helps beginners understand the project without deep knowledge of the entire codebase.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Do I need to know Git before contributing?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Basic Git knowledge is helpful, but not mandatory. Many projects provide step-by-step contribution guides.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      How should I communicate with maintainers?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Be polite, clear, and patient. Use GitHub issues or discussions to ask questions and seek feedback before starting work.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      What should I do if my pull request is rejected?
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="faq-answer">
+      <p>Don’t be discouraged. Read the feedback carefully, make the suggested changes, or ask for clarification.</p>
+    </div>
+  </div>
+</div>
       <div class="faq-container">
 
         <div class="faq-item">
@@ -448,6 +559,29 @@ body.dark-mode .faq-answer p {
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item => {
+    const button = item.querySelector(".faq-question");
+
+    button.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+
+      // Close all
+      faqItems.forEach(i => i.classList.remove("active"));
+
+      // Open clicked one if it was closed
+      if (!isActive) {
+        item.classList.add("active");
+      }
+    });
+  });
+});
+</script>
+
   <script src="/frontend/js/DMtheme.js"></script>
 
   <script>

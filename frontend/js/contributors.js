@@ -56,7 +56,11 @@ async function refreshInBackground() {
     writeCache(enriched);
 
     const grid = document.getElementById("contributors-grid");
-    if (grid) renderContributorsGrid(grid, visibleContributors);
+    if (grid) {
+  renderTopContributors(visibleContributors);
+  renderContributorsGrid(grid, visibleContributors);
+}
+
   } catch {
     // Silent background refresh failure.
   }
@@ -77,8 +81,12 @@ async function loadAndRender() {
     writeCache(enriched);
 
     setStatus("");
-    renderContributorsGrid(grid, visibleContributors);
-    updateStats(visibleContributors);
+renderTopContributors(visibleContributors);
+renderTopContributors(visibleContributors);
+renderContributorsGrid(grid, visibleContributors);
+updateStats(visibleContributors);
+
+
   } catch (err) {
     renderEmptyState(grid);
     setStatus(formatError(err), true);
@@ -149,10 +157,24 @@ function renderContributorsGrid(grid, list) {
     return;
   }
 
-  const frag = document.createDocumentFragment();
- 
+  // 🔥 Remove Top 3 contributors (already shown in highlight section)
+  const topThreeLogins = new Set(
+    [...list]
+      .sort((a, b) => (b.merged_prs || 0) - (a.merged_prs || 0))
+      .slice(0, 3)
+      .map(c => c.login)
+  );
 
-  list.forEach((c) => {
+  const filteredList = list.filter(c => !topThreeLogins.has(c.login));
+
+  if (!filteredList.length) {
+    renderEmptyState(grid);
+    return;
+  }
+
+  const frag = document.createDocumentFragment();
+
+  filteredList.forEach((c) => {
     const login = c?.login || c?.name || "Anonymous";
     const mergedPrs = Number.isFinite(c?.merged_prs) ? c.merged_prs : 0;
     const avatar = c?.avatar_url
@@ -162,7 +184,7 @@ function renderContributorsGrid(grid, list) {
     const isBot =
       (c?.type || "").toLowerCase() === "bot" || /\[bot\]$/i.test(login);
     const isFirstTime = isFirstTimeContributor(c);
-    const tier = getContributorTier(mergedPrs); // ✅ MOVE HERE
+    const tier = getContributorTier(mergedPrs);
 
     const card = document.createElement("div");
     card.className = "contributor-card";
@@ -172,46 +194,42 @@ function renderContributorsGrid(grid, list) {
         <div class="contributor-main">
           <div class="contributor-name" title="${escapeHtml(login)}">${escapeHtml(login)}</div>
           <div class="contributor-meta">
-  <span class="contributor-chip">
-    <i class="fas fa-code-merge" aria-hidden="true"></i>
-    ${mergedPrs} merged PR${mergedPrs === 1 ? "" : "s"}
-  </span>
+            <span class="contributor-chip">
+              <i class="fas fa-code-merge" aria-hidden="true"></i>
+              ${mergedPrs} merged PR${mergedPrs === 1 ? "" : "s"}
+            </span>
 
-  ${
-    isFirstTime
-      ? `
-    <span class="contributor-chip is-first">
-      🏅 First-time contributor
-    </span>
-  `
-      : ""
-  }
+            ${
+              isFirstTime
+                ? `<span class="contributor-chip is-first">🏅 First-time contributor</span>`
+                : ""
+            }
 
-  ${
-    tier
-      ? `
-    <span class="contributor-chip tier-${tier}">
-      ${tier === "gold" ? "🥇 Gold" : tier === "silver" ? "🥈 Silver" : "🥉 Bronze"}
-    </span>
-  `
-      : ""
-  }
+            ${
+              tier
+                ? `<span class="contributor-chip tier-${tier}">
+                    ${tier === "gold" ? "🥇 Gold" : tier === "silver" ? "🥈 Silver" : "🥉 Bronze"}
+                  </span>`
+                : ""
+            }
 
-  ${
-    isBot
-      ? `
-    <span class="contributor-chip is-bot">
-      <i class="fas fa-robot" aria-hidden="true"></i> Bot
-    </span>
-  `
-      : ""
-  }
-</div>
-
-         
+            ${
+              isBot
+                ? `<span class="contributor-chip is-bot">
+                    <i class="fas fa-robot"></i> Bot
+                  </span>`
+                : ""
+            }
+          </div>
         </div>
         <div class="contributor-actions">
-          ${profileUrl ? `<a class="contributor-github" href="${profileUrl}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(login)} on GitHub"><i class=\"fab fa-github\" aria-hidden=\"true\"></i></a>` : ""}
+          ${
+            profileUrl
+              ? `<a class="contributor-github" href="${profileUrl}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-github"></i>
+                </a>`
+              : ""
+          }
         </div>
       </div>
     `;
@@ -222,6 +240,7 @@ function renderContributorsGrid(grid, list) {
 
   grid.appendChild(frag);
 }
+
 
 function fallbackAvatar(seed) {
   // Inline SVG fallback so we never show a broken image.
@@ -492,6 +511,61 @@ function updateStats(list, allList = allContributors) {
   animateStatCounts();
 }
 
+function renderTopContributors(contributors) {
+  const topGrid = document.getElementById("top-contributors-grid");
+  if (!topGrid) return;
+
+  // Use merged PRs (your actual metric)
+  const topThree = [...contributors]
+    .sort((a, b) => (b.merged_prs || 0) - (a.merged_prs || 0))
+    .slice(0, 3);
+
+  topGrid.innerHTML = "";
+
+  topThree.forEach((c, index) => {
+    const login = c?.login || "Anonymous";
+    const mergedPrs = c?.merged_prs || 0;
+    const avatar = c?.avatar_url
+      ? `${c.avatar_url}&s=200`
+      : fallbackAvatar(login);
+    const profileUrl = c?.html_url || "";
+
+    const card = document.createElement("div");
+    card.className = "contributor-card top-card";
+
+    card.innerHTML = `
+      <div class="contributor-card-inner">
+        <div class="top-rank-badge">
+          ${index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉"}
+        </div>
+        <img class="contributor-avatar" src="${avatar}" alt="${escapeHtml(login)} avatar" loading="lazy" />
+        <div class="contributor-main">
+          <div class="contributor-name">${escapeHtml(login)}</div>
+          <div class="contributor-meta">
+            <span class="contributor-chip">
+              <i class="fas fa-code-merge"></i>
+              ${mergedPrs} merged PR${mergedPrs === 1 ? "" : "s"}
+            </span>
+            <span class="contributor-chip is-top">
+              🏆 Top Contributor
+            </span>
+          </div>
+        </div>
+        <div class="contributor-actions">
+          ${
+            profileUrl
+              ? `<a class="contributor-github" href="${profileUrl}" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-github"></i>
+                </a>`
+              : ""
+          }
+        </div>
+      </div>
+    `;
+
+    topGrid.appendChild(card);
+  });
+}
 function animateStatCounts() {
   const counters = document.querySelectorAll(".stat-count");
 
