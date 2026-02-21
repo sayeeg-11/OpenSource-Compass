@@ -2162,7 +2162,9 @@ body.dark-mode .why-section {
       #1a1a1a 50%,
       #0f0f0f 100%);
 }
-
+body.dark-mode #why > p {
+  color: rgba(253, 244, 227, 0.85);
+}
 body.dark-mode .why-section::before {
   background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
 }
