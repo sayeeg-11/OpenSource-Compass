@@ -18,11 +18,20 @@ body {
   --light-parchment: #fff8e7;
   --charcoal-dark: #2c2c2c;
   --text-secondary: #5a5a5a;
-
+  --code-bg: #f8f9fa;
+  --code-border: #e0e0e0;
+  --code-text: #2c2c2c;
+  --code-comment: #6a737d;
   --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
 }
 
+body.dark-mode {
+  --code-bg: #1e1e1e;      /* Soft dark gray background */
+  --code-border: #333333; /* Subtle border */
+  --code-text: #e6e6e6;    /* Light readable text */
+  --code-comment: #9ca3af; /* Muted gray for comments */
+}
 
 body {
   font-family: "Crimson Text", Georgia, serif;
@@ -33,9 +42,6 @@ body {
       var(--warm-cream) 100%);
   color: var(--charcoal-dark);
 }
-
-
-
 
 main {
   margin-top: 0;
@@ -640,22 +646,8 @@ body.dark-mode li {
   color: #cccccc;
 }
 
-/* Code blocks remain readable */
-body.dark-mode .code-block,
-body.dark-mode pre {
-  background-color: #ffffff;
-  color: #333333;
-  border-color: #e0e0e0;
-}
-
-body.dark-mode code {
-  background-color: #ffffff;
-  color: #333333;
-}
-
-/* Best Practices Section Proper Styling */
-
-.practices-section {
+/* Best practices section stays light */
+body.dark-mode .practices-container {
   background-color: #ffffff;
 }
 

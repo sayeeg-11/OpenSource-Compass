@@ -28,54 +28,163 @@
 
   <main role="main">
     <section>
-      <h3 style="color:rgba(221, 189, 8, 0.801)">Open Source Programs</h3>
+      <h3 class="programs-heading">Open Source Programs</h3>
       <p>
         Explore popular open source programs that help students and developers
         gain real-world experience through contributions.
       </p>
 
+      <!-- =========================
+          FILTER BAR
+      ========================== -->
+      <div class="filter-bar">
+
+        <div class="filter-wrapper">
+          <select id="levelFilter">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div class="filter-wrapper">
+          <select id="typeFilter">
+            <option value="all">All Types</option>
+            <option value="paid">Paid</option>
+            <option value="unpaid">Unpaid</option>
+          </select>
+        </div>
+
+        <div class="filter-wrapper">
+          <select id="regionFilter">
+            <option value="all">All Regions</option>
+            <option value="global">Global</option>
+            <option value="india">India</option>
+          </select>
+        </div>
+
+        <div class="filter-wrapper">
+          <select id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="seasonal">Seasonal</option>
+            <option value="ongoing">Ongoing</option>
+          </select>
+        </div>
+
+      </div>
+
       <div class="card-grid" id="programs-grid">
-        <div class="program-card">
+        <div class="program-card beginner paid global seasonal">
           <div class="card-icon"><i class="fas fa-code"></i></div>
           <h3>Google Summer of Code</h3>
+
+          <div class="badge-group">
+            <span class="label paid">Paid</span>
+            <span class="label global">Global</span>
+            <span class="label beginner">Beginner-Friendly</span>
+          </div>
+
           <p>A global program focused on bringing new contributors into open source software development.</p>
           <a href="Event/gsoc.html" class="card-btn">View Details</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card beginner unpaid india seasonal">
           <div class="card-icon"><i class="fas fa-users"></i></div>
           <h3>GSSoC</h3>
+
+          <div class="badge-group">
+            <span class="label unpaid">Unpaid</span>
+            <span class="label india">India</span>
+            <span class="label beginner">Beginner-Friendly</span>
+          </div>
+
           <p>GirlScript Summer of Code is a three-month-long Open Source program by GirlScript Foundation.</p>
           <a href="Event/gssoc.html" class="card-btn">View Details</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card beginner unpaid global seasonal">
           <div class="card-icon"><i class="fas fa-terminal"></i></div>
           <h3>Hacktoberfest</h3>
+
+          <div class="badge-group">
+            <span class="label unpaid">Unpaid</span>
+            <span class="label global">Global</span>
+            <span class="label beginner">Beginner-Friendly</span>
+          </div>
+
           <p>A month-long celebration of open-source software run by DigitalOcean.</p>
           <a href="Event/hacktober.html" class="card-btn">View Details</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card intermediate paid global ongoing">
           <div class="card-icon"><i class="fas fa-linux"></i></div>
           <h3>Linux Foundation</h3>
+
+          <div class="badge-group">
+            <span class="label paid">Paid</span>
+            <span class="label global">Global</span>
+            <span class="label intermediate">Intermediate</span>
+          </div>
+
           <p>Explore various mentorship opportunities within the massive Linux ecosystem.</p>
           <a href="Event/linux.html" class="card-btn">View Details</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card beginner paid global seasonal">
           <div class="card-icon"><i class="fas fa-globe"></i></div>
           <h3>Outreachy</h3>
+
+          <div class="badge-group">
+            <span class="label paid">Paid</span>
+            <span class="label global">Global</span>
+            <span class="label beginner">Beginner-Friendly</span>
+          </div>
+
           <p>Provides internships to people subject to systemic bias and underrepresented in tech.</p>
           <a href="Event/outreachy.html" class="card-btn">View Details</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card beginner unpaid india seasonal">
           <div class="card-icon"><i class="fas fa-heart"></i></div>
           <h3>Social Summer of Code</h3>
+
+          <div class="badge-group">
+            <span class="label unpaid">Unpaid</span>
+            <span class="label india">India</span>
+            <span class="label beginner">Beginner-Friendly</span>
+          </div>
+
           <p>A program to promote open source and encourage student developers to build for social good.</p>
           <a href="Event/ssoc.html" class="card-btn">View Details</a>
         </div>
+
+        <!-- NEW PROGRAMS ADDED BELOW -->
+
+        <div class="program-card intermediate paid global ongoing">
+          <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>MLH Fellowship</h3>
+          <div class="badge-group">
+            <span class="label paid">Paid</span>
+            <span class="label global">Global</span>
+            <span class="label intermediate">Intermediate</span>
+          </div>
+          <p>A 12-week remote internship alternative for aspiring engineers.</p>
+          <a href="#" class="card-btn">View Details</a>
+        </div>
+
+        <div class="program-card advanced paid global seasonal">
+          <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Google Season of Docs</h3>
+          <div class="badge-group">
+            <span class="label paid">Paid</span>
+            <span class="label global">Global</span>
+            <span class="label advanced">Advanced</span>
+          </div>
+          <p>Supports open source documentation projects.</p>
+          <a href="#" class="card-btn">View Details</a>
+        </div>
+
       </div>
     </section>
   </main>
@@ -94,6 +203,40 @@
   </button>
   <script src='../js/pwa.js'></script>
   <script src="../js/pr-generator.js"></script>
+  <script>
+    const filters = {
+      level: document.getElementById("levelFilter"),
+      type: document.getElementById("typeFilter"),
+      region: document.getElementById("regionFilter"),
+      status: document.getElementById("statusFilter"),
+    };
+
+    const cards = document.querySelectorAll(".program-card");
+
+    function applyFilters() {
+      cards.forEach(card => {
+        const matchLevel =
+          filters.level.value === "all" || card.classList.contains(filters.level.value);
+
+        const matchType =
+          filters.type.value === "all" || card.classList.contains(filters.type.value);
+
+        const matchRegion =
+          filters.region.value === "all" || card.classList.contains(filters.region.value);
+
+        const matchStatus =
+          filters.status.value === "all" || card.classList.contains(filters.status.value);
+
+        card.style.display = (matchLevel && matchType && matchRegion && matchStatus)
+          ? "flex"
+          : "none";
+      });
+    }
+
+    Object.values(filters).forEach(filter =>
+      filter.addEventListener("change", applyFilters)
+    );
+  </script>
 </body>
 
 </html>
