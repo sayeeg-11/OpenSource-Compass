@@ -799,6 +799,7 @@ body.theme-matrix .window-controls .control {
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -831,4 +832,547 @@ body.theme-matrix .window-controls .control {
 .scenario-banner-actions button:hover {
     background: var(--primary-gold);
     color: #0b111a;
+}
+
+/* ====================================================
+   REPLAY MODE STYLES
+   ==================================================== */
+
+/* --- Replay Toggle Button in Terminal Bar --- */
+.replay-toggle-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+}
+
+.replay-toggle-btn:hover {
+    color: var(--primary-gold);
+    border-color: rgba(212, 175, 55, 0.3);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.replay-toggle-btn.active {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+    background: rgba(255, 107, 107, 0.1);
+    animation: replayBtnPulse 2s ease-in-out infinite;
+}
+
+@keyframes replayBtnPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 12px 2px rgba(255, 107, 107, 0.25);
+    }
+}
+
+/* --- Replay Controls Bar --- */
+.replay-controls {
+    background: linear-gradient(135deg, rgba(22, 27, 34, 0.98), rgba(11, 17, 26, 0.98));
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    animation: slideDownReplay 0.35s ease-out;
+    flex-shrink: 0;
+}
+
+@keyframes slideDownReplay {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.replay-controls-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    gap: 1rem;
+}
+
+/* Replay "REC" label */
+.replay-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ff6b6b;
+    white-space: nowrap;
+}
+
+.replay-rec-dot {
+    font-size: 0.5rem;
+    animation: recBlink 1.2s ease-in-out infinite;
+}
+
+@keyframes recBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* Navigation buttons group */
+.replay-nav-btns {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.replay-btn {
+    background: rgba(48, 54, 61, 0.6);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.replay-btn:hover:not(:disabled) {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+}
+
+.replay-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.replay-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.replay-btn i {
+    font-size: 0.75rem;
+}
+
+/* Exit button special styling */
+.replay-exit-btn {
+    border-color: rgba(255, 107, 107, 0.3);
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.08);
+}
+
+.replay-exit-btn:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.15);
+}
+
+/* Step indicator (e.g. 3 / 8) */
+.replay-step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    min-width: 50px;
+    justify-content: center;
+}
+
+.replay-step-current {
+    color: var(--primary-gold);
+    font-weight: 700;
+}
+
+.replay-step-sep {
+    color: var(--text-secondary);
+}
+
+.replay-step-total {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Progress Bar (below controls) */
+.replay-progress-track {
+    height: 3px;
+    background: rgba(48, 54, 61, 0.8);
+    overflow: hidden;
+}
+
+.replay-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-gold), #ffd700, var(--primary-gold));
+    background-size: 200% 100%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: progressShimmer 2s linear infinite;
+    border-radius: 0 2px 2px 0;
+}
+
+@keyframes progressShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* --- Replay History Timeline Panel --- */
+.replay-history-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    background: linear-gradient(180deg, rgba(22, 27, 34, 0.97), rgba(11, 17, 26, 0.97));
+    border-left: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    animation: slideInRight 0.35s ease-out;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.replay-history-header {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.replay-history-header h4 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--primary-gold);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.replay-history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.replay-history-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.replay-history-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+}
+
+/* Individual timeline step item */
+.replay-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.6rem 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.replay-step-item:hover {
+    background: rgba(212, 175, 55, 0.06);
+}
+
+.replay-step-item.active {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.replay-step-item.completed .replay-step-dot {
+    background: var(--primary-gold);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.replay-step-item.active .replay-step-dot {
+    background: var(--primary-gold);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* Timeline dot */
+.replay-step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-color);
+    flex-shrink: 0;
+    margin-top: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Connecting line between dots */
+.replay-step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(0.5rem + 4px);
+    top: calc(0.6rem + 14px);
+    width: 2px;
+    height: calc(100% - 8px);
+    background: var(--border-color);
+}
+
+.replay-step-item.completed:not(:last-child)::after {
+    background: rgba(212, 175, 55, 0.4);
+}
+
+/* Step text info */
+.replay-step-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.replay-step-num {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.replay-step-cmd {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: var(--text-primary);
+    word-break: break-all;
+    line-height: 1.3;
+}
+
+.replay-step-item.active .replay-step-cmd {
+    color: var(--primary-gold);
+}
+
+.replay-step-item.future .replay-step-cmd {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.replay-step-item.future .replay-step-dot {
+    opacity: 0.4;
+}
+
+/* --- State Info Box (shown in terminal during replay) --- */
+.replay-state-box {
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    animation: fadeInState 0.3s ease;
+}
+
+@keyframes fadeInState {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.replay-state-box .state-label {
+    color: var(--primary-gold);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.replay-state-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-secondary);
+}
+
+.replay-state-row .label {
+    color: #58a6ff;
+    font-weight: 500;
+    min-width: 70px;
+}
+
+.replay-state-row .value {
+    color: var(--text-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+}
+
+/* --- Read-Only Overlay --- */
+.replay-readonly-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(22, 27, 34, 0.95), rgba(11, 17, 26, 0.95));
+    border-top: 1px solid rgba(255, 107, 107, 0.2);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: rgba(255, 107, 107, 0.7);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    z-index: 20;
+}
+
+.replay-readonly-overlay i {
+    font-size: 0.75rem;
+}
+
+/* Terminal body needs relative positioning for the replay history panel */
+.terminal-window {
+    position: relative;
+}
+
+/* Replay body state: reduce width when history panel is visible */
+.terminal-window.replay-active .terminal-body {
+    padding-right: 290px;
+    transition: padding-right 0.35s ease;
+}
+
+/* --- Replay Mode: No-recording empty state --- */
+.replay-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.replay-empty-state i {
+    font-size: 2.5rem;
+    color: var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.replay-empty-state p {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    max-width: 250px;
+}
+
+.replay-empty-state .hint {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .replay-controls-inner {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .replay-nav-btns {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .replay-label {
+        order: 1;
+    }
+
+    .replay-exit-btn {
+        order: 1;
+    }
+
+    .replay-history-panel {
+        width: 220px;
+    }
+
+    .terminal-window.replay-active .terminal-body {
+        padding-right: 230px;
+    }
+
+    .replay-btn span {
+        display: none;
+    }
 }
