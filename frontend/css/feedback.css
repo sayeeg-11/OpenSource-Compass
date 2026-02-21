@@ -6,21 +6,64 @@ body {
   text-align: center;
   padding: 40px 20px 0px; /* remove bottom gap */
   margin-bottom: 0;
+:root {
+  --primary-gold: #d4af37;
+  --deep-navy: #0a192f;
+  --text-main: #333;
+  --bg-cream: #fdfbf7;
+}
+
+body.dark-mode {
+  --bg-cream: #0f172a;
+  --text-main: #e5e7eb;
+  --deep-navy: #f1f5f9;
+  --card-bg: #1e293b;
+  --input-bg: #0f172a;
+  --input-border: #334155;
+  --text-secondary-dark: #94a3b8;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+}
+
+/* --- Header Styling (Matches Resources.html) --- */
+.feedback-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
 
 .feedback-header h1 {
-  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
   color: var(--deep-navy);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* The Gold Underline Effect */
+.feedback-header h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-gold);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
 }
 
 .feedback-header p {
-  color: var(--text-secondary);
-  margin-top: 10px;
-}
-
-.feedback-container {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-secondary-dark, #666);
+  font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto 60px; /* removes top gap */
   padding: 0 20px 40px;
@@ -29,46 +72,126 @@ body {
 
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
+/* --- Form Container (Card Style) --- */
+.feedback-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4rem;
+}
+
+#feedbackForm {
+  background: var(--card-bg, white);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow like the cards */
+  width: 100%;
+  max-width: 600px;
+  border-top: 4px solid var(--primary-gold); /* Gold accent on top */
+}
+
+/* --- Input Styles --- */
 label {
   font-weight: 600;
+  color: var(--deep-navy);
+  margin-bottom: 0.5rem;
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+label:first-child {
+  margin-top: 0;
 }
 
 input, select, textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--input-bg, #fafafa);
+  border: 1px solid var(--input-border, #e0e0e0);
+  color: var(--text-main);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-gold);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 textarea {
-  min-height: 120px;
+  min-height: 150px;
   resize: vertical;
 }
 
-button {
-  background-color: var(--primary-gold);
-  color: #000;
-  padding: 12px;
+/* --- Button Styling (Matches Quiz Buttons) --- */
+button[type="submit"] {
+  background-color: var(--deep-navy);
+  color: white; /* Changed to white for better contrast on navy */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 50px;
   cursor: pointer;
+  margin-top: 2rem;
+  width: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(10, 25, 47, 0.2);
 }
 
-button:hover {
-  opacity: 0.9;
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  background-color: #1a2f4b; /* Slightly lighter navy on hover */
+  box-shadow: 0 6px 15px rgba(10, 25, 47, 0.3);
 }
 
+body.dark-mode button[type="submit"] {
+  background-color: var(--primary-gold) !important;
+  color: #000 !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+body.dark-mode button[type="submit"]:hover {
+  background-color: #c49b2f !important;
+  transform: translateY(-2px);
+}
+
+/* --- Success Message --- */
 #successMessage {
-  display: none;
-  color: green;
-  margin-top: 10px;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #27ae60;
   font-weight: 600;
+  display: none; /* Controlled by JS */
+  background: #e8f5e9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+body.dark-mode #successMessage {
+  background: #052e16;
+  color: #4ade80;
+}
+
+body.dark-mode select {
+  background-color: #0f1b2d !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+body.dark-mode select:focus {
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
 }
 
 /* ===== Card Layout Enhancement ===== */
@@ -131,3 +254,20 @@ button:hover {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+/* Dropdown options */
+body.dark-mode select option {
+  background-color: #0f1b2d;
+  color: #ffffff;
+}
+
+body.dark-mode textarea,
+body.dark-mode input {
+  background-color: #0f1b2d !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+body.dark-mode textarea::placeholder,
+body.dark-mode input::placeholder {
+  color: #94a3b8 !important;
+}

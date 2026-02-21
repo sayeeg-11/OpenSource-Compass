@@ -21,6 +21,13 @@ const UserSchema = new mongoose.Schema(
       minlength: [6, "Password must be at least 6 characters"],
     },
 
+    //  GITHUB AUTH
+    githubId: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
+
     //  NEW FIELDS FOR CONTRIBUTOR PROGRESS
     progress: {
       issuesSelected: {
@@ -41,6 +48,14 @@ const UserSchema = new mongoose.Schema(
         default: "NONE",
       },
     },
+
+    // TRACKING GUIDES AND MODULES
+    completedGuides: [
+      {
+        guideId: { type: String, required: true },
+        completedAt: { type: Date, default: Date.now },
+      }
+    ],
 
     //  ONBOARDING LEVEL
     level: {
