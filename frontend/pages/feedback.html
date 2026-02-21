@@ -14,6 +14,18 @@
 
 </head>
 
+  <!-- Feedback Form -->
+<!-- Feedback Form -->
+<section class="feedback-container">
+  <div class="feedback-card">
+    <form id="feedbackForm">
+
+
+      <label for="name">Name (optional)</label>
+      <input id="name" type="text" placeholder="Your name">
+      * {
+        box-sizing: border-box;
+      }
 <body>
 
   <div id="navbar"></div>
@@ -43,6 +55,19 @@
           <option>General Feedback</option>
         </select>
 
+        </form>
+  </div>
+</section>
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+          transform: translate(30px, -18px) scale(1.05);
+        }
+      }
         <label for="message">Feedback Message *</label>
         <textarea
           id="message"
