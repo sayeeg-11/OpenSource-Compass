@@ -212,3 +212,123 @@ if (scrollTopBtn) {
   scrollTopBtn.addEventListener('touchstart', scrollToTop, { passive: true });
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".stat-number");
+
+  const animateCounter = (el) => {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || "";
+    const duration = 1500;
+    const startTime = performance.now();
+
+    const update = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const value = Math.floor(progress * target);
+
+      if (target >= 1000) {
+        el.textContent = `${Math.floor(value / 1000)}K${suffix}`;
+      } else {
+        el.textContent = `${value}${suffix}`;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent =
+          target >= 1000
+            ? `${target / 1000}K${suffix}`
+            : `${target}${suffix}`;
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const journey = document.querySelector(".why-journey");
+
+  if (!journey) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        journey.classList.add("is-visible");
+        observer.unobserve(journey);
+      }
+    },
+    { threshold: 0.4 }
+  );
+
+  observer.observe(journey);
+});
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll(".counter");
+        const statsSection = document.querySelector(".stats");
+
+        let hasAnimated = false;
+
+        const animateCounter = (counter) => {
+          const target = +counter.getAttribute("data-target");
+          const suffix = counter.getAttribute("data-suffix") || "";
+          const duration = 1200; // animation duration
+          const startTime = performance.now();
+
+          const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(progress * target);
+
+            // Format large numbers
+            let displayValue = value;
+            if (target >= 1000) {
+              displayValue = Math.floor(value / 1000);
+            }
+
+            counter.innerText = displayValue + suffix;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              // Final accurate value
+              if (target >= 1000) {
+                counter.innerText = Math.floor(target / 1000) + suffix;
+              } else {
+                counter.innerText = target + suffix;
+              }
+            }
+          };
+
+          requestAnimationFrame(updateCounter);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+              counters.forEach(counter => animateCounter(counter));
+              hasAnimated = true;
+              observer.disconnect();
+            }
+          });
+        }, {
+          threshold: 0.4
+        });
+
+        observer.observe(statsSection);
+      });
