@@ -1076,3 +1076,60 @@ body.dark-mode .top-title {
   font-weight: 600;
 }
 
+/* ================================
+   Contributors Stats Cards
+   ================================ */
+.contributors-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.stat-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 1.4rem;
+  color: var(--primary-gold, #c9a227);
+  margin-bottom: 0.4rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  margin-top: 2px;
+}
+
+/* Dark mode support */
+body.dark-mode .stat-card {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .stat-value {
+  color: #ffffff;
+}
+
+body.dark-mode .stat-label {
+  color: #b5b5b5;
+}

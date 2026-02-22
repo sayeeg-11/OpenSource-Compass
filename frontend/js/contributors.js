@@ -59,6 +59,7 @@ async function refreshInBackground() {
     if (grid) {
   renderTopContributors(visibleContributors);
   renderContributorsGrid(grid, visibleContributors);
+  updateStats(visibleContributors);
 }
 
   } catch {
@@ -81,7 +82,6 @@ async function loadAndRender() {
     writeCache(enriched);
 
     setStatus("");
-renderTopContributors(visibleContributors);
 renderTopContributors(visibleContributors);
 renderContributorsGrid(grid, visibleContributors);
 updateStats(visibleContributors);
@@ -479,13 +479,44 @@ function updateStats(list) {
   const top = list[0];
 
   stats.innerHTML = `
-    <span><strong>${total}</strong> contributors</span>
-    <span><strong>${humans}</strong> people</span>
-    <span><strong>${mergedPRs}</strong> merged PRs</span>
-    ${top ? `<span>🏆 Top: <strong>${top.login}</strong></span>` : ''}
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="stat-value">${total}</div>
+      <div class="stat-label">Contributors</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-user-friends"></i>
+      </div>
+      <div class="stat-value">${humans}</div>
+      <div class="stat-label">People</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-code-merge"></i>
+      </div>
+      <div class="stat-value">${mergedPRs}</div>
+      <div class="stat-label">Merged PRs</div>
+    </div>
+
+    ${
+      top
+        ? `
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fas fa-crown"></i>
+      </div>
+      <div class="stat-value">${escapeHtml(top.login)}</div>
+      <div class="stat-label">Top Contributor</div>
+    </div>`
+        : ""
+    }
   `;
 }
-
 function renderTopContributors(contributors) {
   const topGrid = document.getElementById("top-contributors-grid");
   if (!topGrid) return;
