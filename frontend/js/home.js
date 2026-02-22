@@ -191,25 +191,28 @@ if (scrollProgressBar) {
   });
 })();
 // ===============================
-// Back to Top Button (Mobile Fix)
+// Back to Top Button 
 // ===============================
 const scrollTopBtn = document.getElementById('scrollTopBtn');
+const scrollThreshold = 300;
 
 if (scrollTopBtn) {
-  const scrollToTop = () => {
-    // Mobile fallback
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
 
-    // Desktop smooth scroll
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+  const toggleScrollButton = () => {
+    if (window.scrollY > scrollThreshold) {
+      scrollTopBtn.classList.add('show');
+    } else {
+      scrollTopBtn.classList.remove('show');
+    }
   };
 
-  scrollTopBtn.addEventListener('click', scrollToTop);
-  scrollTopBtn.addEventListener('touchstart', scrollToTop, { passive: true });
+  window.addEventListener('scroll', toggleScrollButton);
+  toggleScrollButton();
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
 }
 
 
