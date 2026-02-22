@@ -1,56 +1,279 @@
-/* Section */
-.resources-section {
-  padding: 4rem 1rem;
- 
+/* Target the first section in your main content */
+main section:first-of-type {
+  margin-top: 80px; /* Adjust this value to get more or less space */
 }
-.resources-header {
-  max-width: 700px;
-  margin: 0 auto 4rem;
-  text-align: center;
-  padding: 4rem 1rem 6rem; /* extra bottom padding for curve */
-  position: relative;
-  background: var(--primary-gold); /* gold header background */
-  color: var(--warm-cream);
-  border-radius: 0 0 50% 50% / 0 0 20% 20%; /* bottom curve */
-  overflow: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Main Title */
-.resources-header h3 {
-  font-size: 2.2rem;
+html,
+body {
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  /* This specific gradient provides the soft pink/white warmth */
+  background: linear-gradient(
+    135deg, 
+    #fff5f5 0%,   /* Misty Pink */
+    #fffaf0 100%  /* Warm White */
+  ) !important;
+  color: var(--charcoal-dark);
+}
+/* --- Centering the Grids --- */
+.resources-list, 
+.templates-grid, 
+.tools-grid, 
+.beginner-grid, 
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  justify-content: center; /* Centers cards if they don't fill the row */
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 2rem auto 0; /* Centers the whole grid container */
+}
+
+
+
+/* Ensure the cards themselves center content if needed */
+.card, .resource-tile, .template-tile {
+  margin: 0 auto; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- Dark Mode Visibility Fixes --- */
+body.dark-mode {
+  background-color: #121212; 
+  color: #ffffff; /* Off-white for high contrast */
+}
+
+body.dark-mode .card,
+body.dark-mode .resource-tile,
+body.dark-mode .template-tile,
+body.dark-mode .checklist-tile {
+  background-color: #112240; /* Slightly lighter navy for depth */
+  border: 1px solid #233554;
+  color: #ffffff;
+}
+
+/* Fixing Low Visibility Text */
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5 {
+  color:  #ffffff !important; /* Brighter accent for headings */
+}
+
+body.dark-mode p {
+  color: #a8b2d1 !important; /* Clear grey-blue for body text */
+}
+
+body.dark-mode .tile-icon {
+  color: #b8860b; /* Brighter gold for icons */
+}
+
+/* Visibility for Links */
+body.dark-mode a.resource-link {
+  color: #b8860b;
+  font-weight: 600;
+}
+
+/* Quiz Container Visibility */
+body.dark-mode #quiz-container {
+  background-color: #b8860b;
+  color: #ffffff;
+}
+
+:root {
+  --primary-gold: #b59d5c;
+  --bg-deep: #121212;         /* Main Background */
+  --surface-elevated: #1e1e1e; /* Card & Navbar Surface */
+  --text-main: #e0e0e0;
+  --text-dim: #a0a0a0;
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  background: linear-gradient(
+    135deg,
+    var(--light-parchment) 0%,
+    var(--warm-cream) 100%
+  );
+  color: var(--charcoal-dark);
+}
+
+header {
+  position: fixed !important; /* Locks the navbar to the viewport */
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 3px solid var(--primary-gold);
+  padding: 1rem 6%;
+  box-shadow: var(--shadow-main);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 3vw, 1.9rem);
   font-weight: 700;
-  margin-bottom: 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--deep-navy) 0%,
+    var(--primary-gold) 70%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.01em;
 }
 
-/* Subtitle / Description */
-.resources-header p {
-  font-size: 1rem;
-  color: var(--warm-cream);
-  line-height: 1.6;
-  max-width: 520px;
-  margin: 0 auto 0;
+header h1 i {
+  font-size: 0.95em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* Optional: small wave overlay with pseudo-element */
-.resources-header::after {
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--charcoal-dark) !important;
+  font-family: "Inter", -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.nav-links a::before {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: var(--warm-cream);
-  border-radius: 50% 50% 0 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 1px;
 }
 
-/* Resource List */
+.nav-links a:hover {
+  color: var(--deep-navy) !important;
+  transform: translateY(-1px);
+}
+
+.nav-links a:hover::before {
+  width: 70%;
+}
+
+
+main {
+  margin-top: 0;
+  padding-top: 0;
+}
+/* Hero Section */
+.hero-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 6% 3rem;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--deep-navy);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.hero-section h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(
+    90deg,
+    var(--primary-gold),
+    var(--secondary-gold)
+  );
+  border-radius: 2px;
+}
+
+.hero-section p {
+  max-width: 800px;
+  margin: 2rem auto 0;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Section: Resources --- */
+.resources-section {
+  padding: 4rem 1rem;
+}
+
+
 .resources-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-/* Resource Tile */
 .resource-tile {
   display: flex;
   align-items: flex-start;
@@ -59,7 +282,7 @@
   padding: 1.8rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
   cursor: pointer;
 }
 
@@ -68,27 +291,19 @@
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Accent Bar */
-.tile-accent {
-  width: 6px;
-  border-radius: 3px;
-  margin-right: 1rem;
-}
-
-/* Icon */
 .tile-icon {
   font-size: 2rem;
   margin-right: 1rem;
   flex-shrink: 0;
+  color: var(--primary-gold);
 }
 
-/* Content */
 .tile-meta {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: var(--primary-gold);
   margin-bottom: 0.5rem;
   display: block;
 }
@@ -96,26 +311,26 @@
 .tile-content h5 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1f1f3d;
+  color: var(--deep-navy);
   margin-bottom: 0.6rem;
 }
 
 .tile-content p {
   font-size: 0.95rem;
-  color: #555555;
+  color: var(--text-secondary);
   margin-bottom: 1.2rem;
   line-height: 1.5;
 }
 
-/* Links */
 .tile-content a {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1f1f3d;
+  color: var(--deep-navy);
   text-decoration: none;
   position: relative;
 }
 
+/* Gold underline effect on links */
 .tile-content a::after {
   content: "";
   position: absolute;
@@ -123,7 +338,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #d4af37;
+  background: var(--primary-gold);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
@@ -133,54 +348,72 @@
   transform: scaleX(1);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .resource-tile {
-    flex-direction: row;
+@media (max-width: 1024px) {
+  .resources-list, .templates-grid, .tools-grid, .beginner-grid, .card-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-/* Section */
-.templates-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
+
+/* --- Shared Styles for Templates, Tools, Beginner Sections --- */
+.resources-section, 
+.templates-section, 
+.tools-section, 
+.beginner-issues-section,
+.checklists-grid {
+  display: flex;
+  flex-direction: column; /* Forces vertical stacking */
+  align-items: center;
+  text-align: center;
 }
 
-/* Header */
-.templates-header {
- max-width: 700px; margin: 0 auto 4rem; /* more breathing space */ text-align: center; padding: 0 1rem; position: relative;
+.templates-header, .tools-header, .beginner-header {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
 }
 
-.templates-header h3 {
+.templates-header h3, .tools-header h3, .beginner-header h3 {
   font-size: 2rem;
   font-weight: 700;
   color: var(--deep-navy);
   margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
 }
 
-.templates-header p {
+.templates-header p, .tools-header p, .beginner-header p {
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Grid Layout */
-.templates-grid {
+.templates-grid, .tools-grid, .beginner-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
-/* Tile */
-.template-tile {
+/* Generic Tile Style */
+/* Generic Tile Style - Updated for darker light-theme borders */
+.template-tile, .tool-tile, .beginner-tile, .resource-tile, .card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background: var(--light-parchment);
   border-radius: 16px;
   padding: 2rem 1.8rem;
+  
+  /* ADD THIS LINE: It adds a visible charcoal border for the Light Theme */
+  border: 1px solid rgba(0, 0, 0, 0.2) !important; 
+  
+  /* Keep your existing gold accent */
+  border-left: 6px solid var(--primary-gold) !important;
+
   box-shadow: var(--shadow-main);
   cursor: pointer;
-  border-left: 6px solid var(--primary-gold);
+  transition: all 0.35s ease;
+}
 
   /* animation prep */
 .template-tile {
@@ -192,7 +425,7 @@
     color 0.35s ease;
 }
 
-}
+
 
 
 .template-tile:hover {
@@ -267,303 +500,61 @@
   position: absolute;
   bottom: -2px;
   left: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+  cursor: pointer;
+  border-left: 6px solid var(--primary-gold);
   width: 100%;
-  height: 2px;
-  background: var(--primary-gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
+  box-sizing: border-box;
 }
 
-.tile-content a:hover::after {
-  transform: scaleX(1);
+.tool-tile, .beginner-tile {
+  flex-direction: row;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .template-tile {
-    padding: 1.6rem 1.4rem;
-  }
-  .tile-icon {
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
-  }
-}
-/* Section */
-.checklists-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
+.template-tile:hover, .tool-tile:hover, .beginner-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
 }
 
-/* Header */
-.checklists-header {
-  max-width: 700px; margin: 0 auto 4rem; /* more breathing space */ text-align: center; padding: 0 1rem; position: relative;
-}
-
-.checklists-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 0.5rem;
-}
-
-.checklists-header p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Grid Layout */
+/* --- Checklists --- */
 .checklists-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-/* Checklist Tile */
 .checklist-tile {
-  display: flex;
-  align-items: flex-start;
-  background: var(--light-parchment);
+  background: var(--osc-white);
+  padding: 2.5rem;
   border-radius: 16px;
-  padding: 2rem;
-  box-shadow: var(--shadow-main);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border-left: 6px solid var(--primary-gold);
+  border-top: 4px solid var(--osc-gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: background 0.3s ease;
 }
+
+.checklist-tile ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.checklist-tile li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--osc-text-main);
+}
+
+.checkmark { color: #2ecc71; font-weight: bold; }
 
 .checklist-tile:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
 }
 
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-right: 1rem;
-  color: var(--primary-gold);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 1rem;
-}
-
-/* Checklist Items */
-.tile-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tile-content li {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-}
-
-/* Checkmark */
-.checkmark {
-  color: var(--primary-gold);
-  font-weight: 700;
-  margin-right: 0.5rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .checklist-tile {
-    padding: 1.5rem;
-  }
-
-  .tile-icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-  }
-}
-/* Section */
-.tools-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
-}
-
-/* Header */
-.tools-header {
-  max-width: 700px;
-  margin: 0 auto 4rem;
-  text-align: center;
-  padding: 0 1rem;
-  position: relative;
-}
-
-.tools-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 0.5rem;
-}
-
-.tools-header p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Grid Layout */
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-}
-
-/* Tool Tile */
-.tool-tile {
-  display: flex;
-  align-items: flex-start;
-  background: var(--light-parchment);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: var(--shadow-main);
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border-left: 6px solid var(--primary-gold);
-  width: 100%;
-}
-
-.tool-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-right: 1rem;
-  color: var(--primary-gold);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.tile-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .tool-tile {
-    padding: 1.6rem;
-  }
-
-  .tile-icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-  }
-}
-/* Section */
-.beginner-issues-section {
-  padding: 4rem 1rem;
-  background: var(--warm-cream);
-}
-
-/* Header */
-.beginner-header {
-  max-width: 700px; margin: 0 auto 4rem; 
-  margin: 0 auto 4rem;
-  text-align: center;
-  padding: 0 1rem;
-  position: relative;
-}
-
-.beginner-header h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 0.5rem;
-}
-
-.beginner-header p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Grid Layout */
-.beginner-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-}
-
-/* Tile */
-.beginner-tile {
-  display: flex;
-  align-items: flex-start;
-  background: var(--light-parchment);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: var(--shadow-main);
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border-left: 6px solid var(--secondary-gold);
-  width: 100%;
-}
-
-.beginner-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Icon */
-.tile-icon {
-  font-size: 2.5rem;
-  margin-right: 1rem;
-  color: var(--primary-gold);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tile-content h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  margin-bottom: 0.6rem;
-}
-
-.tile-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .beginner-tile {
-    padding: 1.6rem;
-  }
-
-  .tile-icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-  }
-}
-/* Empty State UI */
+/* --- Empty State --- */
 .empty-state {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -572,24 +563,109 @@
   background-color: #fafafa;
   color: #555;
   margin-top: 2rem;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
-.empty-state .empty-icon {
-  font-size: 3rem;
-  margin-bottom: 0.8rem;
+/* =================================================== */
+/* TRUE CHARCOAL & GOLD: Image Match Version           */
+/* =================================================== */
+
+/* =================================================== */
+/* UPDATED TRUE CHARCOAL: Full Page Sync               */
+/* =================================================== */
+
+body.dark-mode {
+  background-color: var(--bg-deep) !important;
+  background: var(--bg-deep) !important;
+  color: var(--text-main) !important;
 }
 
-.empty-state h4 {
-  margin-bottom: 0.4rem;
-  font-size: 1.2rem;
-  color: var(--deep-navy);
+/* 1. SECTION & WRAPPER SYNC */
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode .resources-section,
+body.dark-mode .templates-section,
+body.dark-mode .tools-section,
+body.dark-mode .beginner-issues-section,
+body.dark-mode #quiz-section {
+  background-color: var(--bg-deep) !important;
 }
 
-.empty-state p {
-  font-size: 0.95rem;
-  color: #777;
+/* 2. ELEVATED NAVBAR */
+body.dark-mode header {
+  background-color: var(--surface-elevated) !important;
+  border-bottom: 3px solid var(--primary-gold) !important;
+  box-shadow: var(--shadow-dark) !important;
 }
 
+/* 3. MASTERY PATH (ROADMAP) SYNC */
+body.dark-mode .level-node {
+  background: var(--surface-elevated) !important;
+  border-color: #333 !important;
+}
+
+body.dark-mode .level-item.unlocked .level-node {
+  background: var(--surface-elevated) !important;
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+body.dark-mode .level-title {
+  color: var(--text-main) !important;
+}
+
+body.dark-mode .roadmap-track {
+  background: #333 !important;
+}
+
+/* 4. QUIZ CONTAINER SYNC */
+body.dark-mode #quiz-container {
+  background-color: var(--surface-elevated) !important;
+  color: var(--text-main) !important;
+  border: 1px solid #333;
+  box-shadow: var(--shadow-dark);
+}
+
+body.dark-mode #quiz-container h4,
+body.dark-mode #quiz-container h5 {
+  color: var(--primary-gold) !important;
+}
+
+/* 5. CARDS & TILES */
+body.dark-mode .card,
+body.dark-mode .resource-tile,
+body.dark-mode .template-tile,
+body.dark-mode .checklist-tile,
+body.dark-mode .empty-state {
+  background: linear-gradient(145deg, #1e1e1e, #181818) !important;
+  background-color: var(--surface-elevated) !important;
+  border: 1px solid #2a2a2a !important;
+  box-shadow: var(--shadow-dark) !important;
+}
+
+/* 6. TYPOGRAPHY ACCENTS - Final Override for White Topics */
+body.dark-mode h2,
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5,
+body.dark-mode .hero-section h2,
+body.dark-mode .tile-content h5 {
+  color: #ffffff !important; /* Forces white on every heading type */
+}
+
+body.dark-mode p, 
+body.dark-mode li {
+  color: var(--text-dim) !important;
+}
+
+/* 7. HOVER GLOW */
+body.dark-mode .card:hover,
+body.dark-mode .resource-tile:hover,
+body.dark-mode .template-tile:hover {
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 25px rgba(181, 157, 92, 0.15) !important;
+  transform: translateY(-8px) !important;
+}
 @media (prefers-reduced-motion: reduce) {
   .template-tile,
   .template-tile:hover,
@@ -597,6 +673,41 @@
     transition: none;
     transform: none;
   }
+}
+body.dark-mode #options-container button {
+  background: #252525 !important;
+  border: 1px solid #333 !important;
+  color: var(--text-main) !important;
+}
+
+body.dark-mode #options-container button:hover {
+  border-color: var(--primary-gold) !important;
+  background: #2a2a2a !important;
+}
+
+body.dark-mode #explanation-box {
+  background: #1a2733 !important; /* Dark blue tint for insights */
+  border-left-color: var(--primary-gold) !important;
+  color: var(--text-main) !important;
+}
+
+/* Define the entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to all card types */
+.card, .resource-tile, .template-tile, .checklist-tile {
+  animation: fadeInUp 0.6s ease-out forwards;
+  /* Ensures cards are invisible before the animation starts */
+  opacity: 0; 
 }
 
 /* ===== Category Filter Tabs ===== */
@@ -641,7 +752,6 @@
 
 /* ================================
    Beginner Learning Path Section
-================================ */
 .learning-path-section {
   padding: 60px 20px 30px;
   background: linear-gradient(135deg, #fffaf0, #fff7e6);
@@ -817,3 +927,8 @@
     font-size: 1.4rem;
   }
 }
+/* Optional: Stagger the cards so they appear one by one */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }

@@ -44,6 +44,31 @@ html {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
+
+/* =========================================
+   DARK MODE – FLOATING BUTTON FIX
+========================================= */
+
+body.dark-mode #scrollTopBtn {
+  border: 2px solid rgba(228, 199, 106, 0.6);
+  box-shadow:
+    0 0 0 3px rgba(228, 199, 106, 0.15),
+    0 18px 45px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(228, 199, 106, 0.4);
+}
+
+/* Override the navy hover */
+body.dark-mode #scrollTopBtn:hover {
+  background: linear-gradient(135deg,
+    var(--primary-gold),
+    var(--secondary-gold));
+    
+  box-shadow:
+    0 0 0 4px rgba(228, 199, 106, 0.25),
+    0 25px 60px rgba(0, 0, 0, 0.95),
+    0 0 28px rgba(228, 199, 106, 0.6);
+}
+
 /* =========================
    GUIDE LIST - TWO COLUMNS
 ========================= */
@@ -51,8 +76,9 @@ html {
   list-style: none;
   counter-reset: step-counter;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 2.5rem;
+  align-items: stretch;
 }
 
 /* Guide list items */
@@ -74,7 +100,6 @@ html {
 .guide-list li:hover, .mistakes-list li:hover {
   transform: translateX(10px);
   border-left: 6px solid var(--primary-gold);
-  background: #ffffff;
   box-shadow: var(--shadow-hover);
 }
 /* ============================================================
@@ -850,4 +875,133 @@ body.dark-mode .step,
 body.dark-mode .mistake-icon {
   background: #facc15 !important;
   color: #0f172a !important;
+}
+/* =====================================================
+   Dark Mode Refinement – Guides Page (Final Patch)
+   Paste at the bottom of guides.css
+
+/* Section surfaces */
+.dark-mode .guides-hero,
+.dark-mode .guides-section {
+  background-color: #020617; /* deep slate for contrast */
+}
+
+/* Headings */
+.dark-mode .guides-section h1,
+.dark-mode .guides-section h2,
+.dark-mode .guides-section h3 {
+  color: #f8fafc;
+}
+
+/* Body text */
+.dark-mode .guides-section p {
+  color: #cbd5f5;
+}
+
+/* Guide cards */
+.dark-mode .guide-card {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65);
+}
+
+/* Card titles & content */
+.dark-mode .guide-card h3,
+.dark-mode .guide-card p {
+  color: #e5e7eb;
+}
+
+/* Number badge / icon */
+.dark-mode .guide-card .number {
+  background-color: #fbbf24;
+  color: #111827;
+}
+
+/* Hover polish */
+.dark-mode .guide-card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75);
+  transform: translateY(-2px);
+}
+
+/* ===== Dark Mode Hover Readability Fix ===== */
+
+.dark-mode .guide-card {
+  transition: transform 0.25s ease, 
+              box-shadow 0.25s ease, 
+              background-color 0.25s ease, 
+              border-color 0.25s ease;
+}
+
+/* Force proper contrast on hover */
+.dark-mode .guide-card:hover {
+  background-color: #1f2937 !important;  /* controlled lift */
+  border-color: #374151 !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.75) !important;
+  transform: translateY(-3px);
+}
+
+/* Lock text visibility */
+.dark-mode .guide-card:hover h3,
+.dark-mode .guide-card:hover p {
+  color: #f9fafb !important;
+  opacity: 1 !important;
+}
+
+/* Disable any glow overlay if present */
+.dark-mode .guide-card::before,
+.dark-mode .guide-card::after {
+  display: none !important;
+}
+
+/* ===== Dark Mode Fix – Common Mistakes Hover ===== */
+
+.dark-mode .mistakes-list li {
+  background: #111827 !important;
+  border-left: 0 !important;
+  border: 1px solid #1f2937 !important;
+}
+
+.dark-mode .mistakes-list li:hover {
+  background: #1f2937 !important;   /* stay dark */
+  border-left: 6px solid #fbbf24 !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.75) !important;
+  transform: translateY(-5px);
+}
+
+.dark-mode .mistakes-list p {
+  color: #e5e7eb !important;
+}
+
+.dark-mode .mistakes-list li:hover p {
+  color: #f9fafb !important;
+}
+
+/* =========================================
+   DARK MODE – FIX WHITE HOVER BACKGROUND
+   ========================================= */
+
+body.dark-mode .practice-item,
+body.dark-mode .pr-steps li,
+body.dark-mode .guide-list li,
+body.dark-mode .mistakes-list li {
+  background: #111827; /* dark card base */
+  border: 1px solid #1f2937;
+}
+
+/* Hover state stays dark */
+body.dark-mode .practice-item:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .guide-list li:hover,
+body.dark-mode .mistakes-list li:hover {
+  background: #1f2937; /* slightly lifted dark */
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.75);
+  transform: translateY(-6px);
+}
+
+/* Ensure text stays visible */
+body.dark-mode .practice-item h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .guide-list h4,
+body.dark-mode .mistakes-list p {
+  color: #f9fafb;
 }

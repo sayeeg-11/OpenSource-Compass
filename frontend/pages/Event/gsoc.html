@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Google Summer of Code - OpenSource Compass</title>
     <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete guide to Google Summer of Code (GSoC) - Learn about phases, timeline, stipends, and how to apply for GSoC 2026.">
+    <meta name="description"
+        content="Complete guide to Google Summer of Code (GSoC) - Learn about phases, timeline, stipends, and how to apply for GSoC 2026.">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigation.css" />
 
     <style>
         :root {
@@ -959,10 +962,10 @@ body.dark-mode footer {
 }
 
     </style>
+   <link rel="stylesheet" href="gsoc.css">
 </head>
 
 <body>
-    <!-- Navbar -->
     <header>
     <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
     <nav>
@@ -984,220 +987,515 @@ body.dark-mode footer {
     </nav>
 </header>
 
+        <div class="navbar-container">
+            <h1>
+                <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+                OpenSource Compass
+            </h1>
+            <div class="nav-links">
+                <a href="../../../index.html">Home</a>
+                <a href="../guides.html">Guides</a>
+                <a href="../programs.html">Programs</a>
+                <a href="../Resources.html">Resources</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../Contribute.html">Contribute</a>
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Google Summer of Code</h1>
-            <p class="subtitle">Global program for advanced contributors</p>
-            <p class="intro">
-                Google Summer of Code (GSoC) is a highly prestigious, 12+ week online program where you are paid a stipend to contribute to open-source organizations. Since it is currently late <strong>December 2025</strong>, you are in the perfect "pre-application" window to prepare for GSoC <strong>2026</strong>.
+    <!-- HERO -->
+
+    <section class="gsoc-hero">
+        <div class="gsoc-hero-content">
+            <span class="gsoc-badge">
+                <i class="fas fa-globe"></i>
+                Global Open Source Program
+            </span>
+
+            <h1 class="gsoc-title">
+                Google Summer of Code <span>(GSoC)</span>
+            </h1>
+
+            <p class="gsoc-tagline">
+                A global initiative that empowers developers to contribute to real-world
+                open-source projects while being mentored and rewarded.
             </p>
-            <div class="cta-buttons">
-                <a href="https://summerofcode.withgoogle.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i>
-                    Official GSoC Portal
+
+            <div class="gsoc-hero-actions">
+                <a href="https://summerofcode.withgoogle.com" target="_blank" rel="noopener noreferrer"
+                    class="gsoc-cta">
+                    Visit Official GSoC Website
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose GSoC Section -->
-<section class="features-section">
-  <h2>Why Choose GSoC?</h2>
-  <p>Discover what makes Google Summer of Code a premier open source program for serious contributors</p>
+    <!-- SNAPSHOT -->
 
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-globe"></i>
+    <section class="gsoc-snapshot">
+        <div class="snapshot-header">
+            <h2>Program Snapshot</h2>
+            <p>Everything you need to know at a glance</p>
         </div>
-        <h3>Global Recognition</h3>
-        <p>GSoC is recognized worldwide and adds strong credibility to your developer profile and resume.</p>
-      </div>
-    </div>
 
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-code"></i>
+        <div class="snapshot-grid">
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Duration</h3>
+                <p>12–22 weeks</p>
+                <span>Flexible timelines based on project size</span>
+            </div>
+
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Eligibility</h3>
+                <p>18+ years</p>
+                <span>Students & beginners worldwide</span>
+            </div>
+
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Tech Stack</h3>
+                <p>Open Choice</p>
+                <span> Web, AI/ML, Systems, Mobile & more</span>
+            </div>
+
+            <div class="snapshot-card">
+                <div class="snapshot-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Stipend</h3>
+                <p>Paid</p>
+                <span>Amount varies by country & project</span>
+            </div>
         </div>
-        <h3>Real-World Open Source</h3>
-        <p>Work on production-grade open source projects used by thousands of developers globally.</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-user-tie"></i>
+    <!-- WHY CHOOSE -->
+
+    <section class="features-section">
+        <h2>Why Choose GSoC?</h2>
+        <p>Discover what makes Google Summer of Code a premier open source program for serious contributors</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Global Recognition</h3>
+                <p>GSoC is recognized worldwide and adds strong credibility to your developer profile and resume.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Real-World Open Source</h3>
+                <p>Work on production-grade open source projects used by thousands of developers globally.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Expert Mentorship</h3>
+                <p>Receive one-on-one mentorship from experienced maintainers and industry professionals.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3>Paid Stipend</h3>
+                <p>Earn a competitive stipend while contributing meaningfully to open source projects.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Strong Network</h3>
+                <p>Build long-term connections with global developers, mentors, and open source communities.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Career Acceleration</h3>
+                <p>Past GSoC contributors often convert experience into full-time roles and internships.</p>
+            </div>
         </div>
-        <h3>Expert Mentorship</h3>
-        <p>Receive one-on-one mentorship from experienced maintainers and industry professionals.</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-dollar-sign"></i>
+    <!-- JOURNEY SECTION - REDESIGNED -->
+
+    <section class="gsoc-journey">
+        <div class="journey-header">
+            <h2>Your GSoC Journey</h2>
+            <p>A clear step-by-step path from preparation to success</p>
         </div>
-        <h3>Paid Stipend</h3>
-        <p>Earn a competitive stipend while contributing meaningfully to open source projects.</p>
-      </div>
-    </div>
 
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-network-wired"></i>
-        </div>
-        <h3>Strong Network</h3>
-        <p>Build long-term connections with global developers, mentors, and open source communities.</p>
-      </div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-card-content">
-        <div class="feature-icon">
-          <i class="fas fa-rocket"></i>
-        </div>
-        <h3>Career Acceleration</h3>
-        <p>Past GSoC contributors often convert experience into full-time roles and internships.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Process Stepper -->
-    <section class="process-stepper">
-        <h2>Your GSoC Journey</h2>
-        <div class="stepper-container">
-            <div class="stepper-line"></div>
-            <div class="stepper-steps">
-                <div class="stepper-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Find Organization</h3>
-                        <div class="step-date">February 19, 2026 onwards</div>
-                        <p>Google announces the official list of mentoring organizations. Shortlist 2-3 organizations that match your tech stack.</p>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">1</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3>Preparation</h3>
+                        </div>
+                        <p>Learn Git, explore open source, and build small contributions. Start early and familiarize yourself with version control workflows.</p>
+                        <div class="card-tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">Open Source</span>
+                        </div>
                     </div>
                 </div>
-                <div class="stepper-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Write Proposal</h3>
-                        <div class="step-date">March 16 - March 31, 2026</div>
-                        <p>Draft your proposal early and share it with mentors for feedback. Include technical breakdown, timeline, and your experience.</p>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">2</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3>Organization Selection</h3>
+                        </div>
+                        <p>Shortlist organizations aligned with your skills and interests. Research their tech stack, community culture, and project ideas.</p>
+                        <div class="card-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Community</span>
+                            <span class="tag">Tech Stack</span>
+                        </div>
                     </div>
                 </div>
-                <div class="stepper-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Coding Period</h3>
-                        <div class="step-date">May 25 onwards</div>
-                        <p>If accepted (announced April 30), begin coding for 12-22 weeks. Pass mid-term and final evaluations to receive stipend payments.</p>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">3</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <h3>Proposal Writing</h3>
+                        </div>
+                        <p>Draft a strong proposal with technical depth and a clear timeline. Include implementation details, milestones, and deliverables.</p>
+                        <div class="card-tags">
+                            <span class="tag">Writing</span>
+                            <span class="tag">Planning</span>
+                            <span class="tag">Technical</span>
+                        </div>
                     </div>
                 </div>
-                <div class="stepper-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Community Bonding</h3>
-                        <div class="step-date">May 1-24, 2026</div>
-                        <p>Set up your development environment, meet your mentor, and finalize project milestones before coding begins.</p>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">4</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Community Bonding</h3>
+                        </div>
+                        <p>Connect with mentors, understand expectations, and plan milestones. Build relationships and set up your development environment.</p>
+                        <div class="card-tags">
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Planning</span>
+                            <span class="tag">Setup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">5</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Coding Period</h3>
+                        </div>
+                        <p>Work on your project with regular mentor feedback. Write clean code, commit frequently, and maintain clear documentation.</p>
+                        <div class="card-tags">
+                            <span class="tag">Development</span>
+                            <span class="tag">Feedback</span>
+                            <span class="tag">Documentation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="timeline-marker">
+                    <div class="marker-circle">
+                        <span class="marker-number">6</span>
+                    </div>
+                    <div class="marker-pulse"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Evaluations</h3>
+                        </div>
+                        <p>Pass mid-term and final evaluations to successfully complete GSoC. Submit your work, demonstrate progress, and celebrate success!</p>
+                        <div class="card-tags">
+                            <span class="tag">Review</span>
+                            <span class="tag">Success</span>
+                            <span class="tag">Completion</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Cards Section -->
-    <section class="timeline-section">
-        <h2>Program Phases</h2>
-        <p>Success in GSoC is 80% preparation. Here's your roadmap to success:</p>
-        <div class="timeline-grid">
-            <div class="timeline-card">
-                <span class="phase-number">Phase 1</span>
+    <!-- PHASES -->
+
+    <section class="gsoc-phases">
+        <div class="phases-header">
+            <h2>Program Phases</h2>
+            <p>A detailed breakdown for serious applicants who want to prepare strategically and avoid common mistakes.</p>
+        </div>
+
+        <div class="phases-grid">
+            <article class="phase-card">
+                <span class="phase-badge">Phase 1</span>
                 <h3>Preparation</h3>
-                <div class="card-date">December – January</div>
-                <p>Build your "proof of work" before the official organization list is released.</p>
+                <p class="phase-time">Before organization announcements</p>
                 <ul>
-                    <li><strong>Master the Tools:</strong> Ensure you are proficient with <strong>Git and GitHub</strong>. You should be comfortable with forking, cloning, branching, and creating Pull Requests (PRs).</li>
-                    <li><strong>Build Your Profile:</strong> Start making minor contributions to any open-source project. Look for the <strong>good first issue</strong> label on GitHub.</li>
-                    <li><strong>Identify Your Tech Stack:</strong> Decide whether you want to work on Web Development (React/Node), Systems (C++/Rust), AI/ML (Python), or Mobile (Flutter/Kotlin).</li>
+                    <li>Learn Git & GitHub workflows thoroughly</li>
+                    <li>Make small open-source contributions</li>
+                    <li>Identify your strongest tech stack</li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="timeline-card">
-                <span class="phase-number">Phase 2</span>
+            <article class="phase-card">
+                <span class="phase-badge">Phase 2</span>
                 <h3>Organization Selection</h3>
-                <div class="card-date">February 19, 2026 onwards</div>
-                <p>On <strong>February 19, 2026</strong>, Google will announce the official list of mentoring organizations.</p>
+                <p class="phase-time">Organizations announced</p>
                 <ul>
-                    <li><strong>Shortlist 2-3 Organizations:</strong> Filter organizations by your tech stack on the <strong>GSoC website</strong>. Don't pick more than 3, as you'll need to focus your efforts.</li>
-                    <li><strong>Join the Community:</strong> Find their communication channels (Discord, Slack, or Mailing Lists). Introduce yourself politely: "Hi, I'm [Name], a student interested in [Project Idea]. I have experience in [Tech Stack] and have already looked at the codebase."</li>
-                    <li><strong>Study the "Idea List":</strong> Each organization publishes a list of projects they want built. Pick one that matches your skills.</li>
+                    <li>Shortlist 2–3 organizations only</li>
+                    <li>Join community channels early</li>
+                    <li>Study idea lists and existing codebases</li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="timeline-card">
-                <span class="phase-number">Phase 3</span>
-                <h3>The Proposal Period</h3>
-                <div class="card-date">March 16 – March 31, 2026</div>
-                <p>This is the actual application phase. You can submit up to <strong>three</strong> proposals.</p>
+            <article class="phase-card">
+                <span class="phase-badge">Phase 3</span>
+                <h3>Proposal Writing</h3>
+                <p class="phase-time">Application window</p>
                 <ul>
-                    <li><strong>Draft Early:</strong> Don't wait until the deadline. Share a draft with the mentors in their chat channels to get feedback.</li>
-                    <li><strong>The Anatomy of a Winning Proposal:</strong></li>
-                    <li><strong>Synopsis:</strong> A 50-word summary of your project.</li>
-                    <li><strong>Technical Breakdown:</strong> Explain exactly <em>how</em> you will solve the problem (which libraries, which files you'll modify).</li>
-                    <li><strong>Detailed Timeline:</strong> A week-by-week breakdown of your 12-week coding period.</li>
-                    <li><strong>Biographical Info:</strong> Your relevant experience and previous contributions to the project.</li>
+                    <li>Draft early and request mentor feedback</li>
+                    <li>Provide technical implementation details</li>
+                    <li>Include a realistic week-by-week timeline</li>
                 </ul>
-            </div>
+            </article>
 
-            <div class="timeline-card">
-                <span class="phase-number">Phase 4</span>
-                <h3>The Program</h3>
-                <div class="card-date">May – August 2026</div>
-                <p>If you are accepted (announced <strong>April 30, 2026</strong>), the work begins:</p>
+            <article class="phase-card">
+                <span class="phase-badge">Phase 4</span>
+                <h3>Community Bonding</h3>
+                <p class="phase-time">Before coding begins</p>
                 <ul>
-                    <li><strong>Community Bonding (May 1-24):</strong> Set up your development environment, meet your mentor, and finalize your project milestones.</li>
-                    <li><strong>Coding Period (May 25 onwards):</strong> You will code for 12 to 22 weeks depending on your project size.</li>
-                    <li><strong>Evaluations:</strong> There are two evaluations (Mid-term and Final). You must pass these to receive your stipend payments.</li>
+                    <li>Set up development environment</li>
+                    <li>Align expectations with mentors</li>
+                    <li>Finalize milestones and deliverables</li>
                 </ul>
-            </div>
+            </article>
+
+            <article class="phase-card">
+                <span class="phase-badge">Phase 5</span>
+                <h3>Coding Period</h3>
+                <p class="phase-time">Main program duration</p>
+                <ul>
+                    <li>Work consistently with mentor feedback</li>
+                    <li>Submit evaluations on time</li>
+                    <li>Document progress clearly</li>
+                </ul>
+            </article>
+
+            <article class="phase-card">
+                <span class="phase-badge">Phase 6</span>
+                <h3>Evaluations</h3>
+                <p class="phase-time">Mid-term & final</p>
+                <ul>
+                    <li>Demonstrate measurable progress</li>
+                    <li>Submit clean, reviewed code</li>
+                    <li>Complete documentation and reports</li>
+                </ul>
+            </article>
         </div>
     </section>
 
-    <!-- Stipend Section -->
-    <section class="stipend-section">
-        <h2>Stipends for 2026</h2>
-        <p>GSoC stipends are paid in two parts and are adjusted based on your country's cost of living.</p>
+    <!-- STIPEND -->
+
+    <section class="gsoc-stipend">
+        <div class="stipend-header">
+            <h2>Stipend & Commitment</h2>
+            <p>Understand the financial rewards and time commitment before applying to Google Summer of Code.</p>
+        </div>
+
         <div class="stipend-grid">
             <div class="stipend-card">
-                <h3><i class="fas fa-briefcase"></i> Medium Projects</h3>
-                <div class="stipend-amount">~$1,500 USD</div>
-                <div class="stipend-hours">~175 hours</div>
-                <div class="stipend-location">Estimated in India</div>
+                <div class="stipend-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Stipend</h3>
+                <p class="stipend-desc">GSoC provides a stipend to contributors based on project size and local cost of living.</p>
+                <ul class="stipend-list">
+                    <li><strong>Medium Projects:</strong> ~175 hours</li>
+                    <li><strong>Large Projects:</strong> ~350 hours</li>
+                    <li>Paid in <strong>two evaluations</strong></li>
+                </ul>
             </div>
+
             <div class="stipend-card">
-                <h3><i class="fas fa-briefcase"></i> Medium Projects</h3>
-                <div class="stipend-amount">~$3,000 USD</div>
-                <div class="stipend-hours">~175 hours</div>
-                <div class="stipend-location">Estimated in USA</div>
+                <div class="stipend-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Time Commitment</h3>
+                <p class="stipend-desc">GSoC requires consistent effort and professional-level responsibility.</p>
+                <ul class="stipend-list">
+                    <li>20–25 hours/week (Medium)</li>
+                    <li>~35 hours/week (Large)</li>
+                    <li>Weekly mentor sync & progress updates</li>
+                </ul>
             </div>
+
             <div class="stipend-card">
-                <h3><i class="fas fa-rocket"></i> Large Projects</h3>
-                <div class="stipend-amount">~$3,000 USD</div>
-                <div class="stipend-hours">~350 hours</div>
-                <div class="stipend-location">Estimated in India</div>
+                <div class="stipend-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>What's Expected</h3>
+                <p class="stipend-desc">GSoC is not an internship—it's an open-source commitment.</p>
+                <ul class="stipend-list">
+                    <li>Clear communication with mentors</li>
+                    <li>Clean, documented code</li>
+                    <li>Meeting milestones & evaluations</li>
+                </ul>
             </div>
-            <div class="stipend-card">
-                <h3><i class="fas fa-rocket"></i> Large Projects</h3>
-                <div class="stipend-amount">~$6,000 USD</div>
-                <div class="stipend-hours">~350 hours</div>
-                <div class="stipend-location">Estimated in USA</div>
+        </div>
+    </section>
+
+    <!-- ELIGIBILITY -->
+
+    <section class="gsoc-eligibility">
+        <div class="eligibility-header">
+            <h2>Eligibility Requirements</h2>
+            <p>Who can apply and what's expected to participate in GSoC</p>
+        </div>
+
+        <div class="eligibility-grid">
+            <div class="eligibility-card">
+                <div class="eligibility-icon">👤</div>
+                <h3>Who Can Apply</h3>
+                <p>Students or contributors aged 18+, enrolled in any academic program, or working independently on open source.</p>
+            </div>
+
+            <div class="eligibility-card">
+                <div class="eligibility-icon">💻</div>
+                <h3>Skills Needed</h3>
+                <p>Knowledge of programming, version control (Git), and collaborative coding practices.</p>
+            </div>
+
+            <div class="eligibility-card">
+                <div class="eligibility-icon">⏰</div>
+                <h3>Time Commitment</h3>
+                <p>Approximately 30–35 hours per week during coding period, with regular mentor check-ins.</p>
+            </div>
+
+            <div class="eligibility-card">
+                <div class="eligibility-icon">✅</div>
+                <h3>Other Requirements</h3>
+                <p>Active communication, timely proposal submission, and adherence to community guidelines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREPARE -->
+
+    <section class="gsoc-prepare">
+        <div class="prepare-header">
+            <h2>How to Prepare for GSoC</h2>
+            <p>Essential tips and steps to get ready for a successful application</p>
+        </div>
+
+        <div class="prepare-grid">
+            <div class="prepare-card">
+                <div class="prepare-icon">📚</div>
+                <h3>Learn & Explore</h3>
+                <p>Familiarize yourself with open source projects, Git, and coding best practices.</p>
+            </div>
+
+            <div class="prepare-card">
+                <div class="prepare-icon">💬</div>
+                <h3>Engage with Community</h3>
+                <p>Join mailing lists, chat channels, and discussion forums of potential organizations.</p>
+            </div>
+
+            <div class="prepare-card">
+                <div class="prepare-icon">🔨</div>
+                <h3>Work on Small Tasks</h3>
+                <p>Start with small contributions to gain experience and confidence in the codebase.</p>
+            </div>
+
+            <div class="prepare-card">
+                <div class="prepare-icon">📝</div>
+                <h3>Plan Your Proposal</h3>
+                <p>Draft ideas early, understand timelines, and prepare a clear project roadmap.</p>
             </div>
         </div>
     </section>
@@ -1254,6 +1552,54 @@ body.dark-mode footer {
             <a href="https://developers.google.com/open-source/gsoc/faq" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
                 <i class="fas fa-question-circle"></i>
                 Read FAQ
+    <!-- RESOURCES -->
+
+    <section class="gsoc-resources">
+        <div class="resources-header">
+            <h2>Resources & Helpful Links</h2>
+            <p>Essential references to guide you through the GSoC journey</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">🌐</div>
+                <h3>Official GSoC Website</h3>
+                <p>Get all official updates, timelines, and program details directly from Google.</p>
+                <a href="https://summerofcode.withgoogle.com" target="_blank" class="resource-btn">Visit</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">📖</div>
+                <h3>Open Source Guides</h3>
+                <p>Learn best practices for contributing to open source projects effectively.</p>
+                <a href="https://opensource.guide" target="_blank" class="resource-btn">Visit</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">⚙️</div>
+                <h3>Git & GitHub Docs</h3>
+                <p>Understand version control and Git workflows for smooth collaboration.</p>
+                <a href="https://git-scm.com/docs" target="_blank" class="resource-btn">Visit</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">💡</div>
+                <h3>Community Forums</h3>
+                <p>Join discussions, ask questions, and network with mentors and contributors.</p>
+                <a href="https://groups.google.com/g/google-summer-of-code-discuss" target="_blank" class="resource-btn">Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="gsoc-cta-section">
+        <div class="cta-container">
+            <h2>Ready to Kickstart Your GSoC Journey?</h2>
+            <p>Join thousands of students contributing to open source and make your mark this summer!</p>
+            <a href="https://summerofcode.withgoogle.com" target="_blank" class="cta-btn">
+                Visit Official GSoC Website
+                <span class="cta-arrow">→</span>
             </a>
         </div>
     </section>
@@ -1334,5 +1680,17 @@ toggleBtn.addEventListener("click", () => {
     }
 });
     </script>
+
+    <script src="../../js/main.js"></script>
+
+    <button id="scrollTopBtn" title="Back to Top">
+
+        <i class="fas fa-chevron-up"></i>
+
+    </button>
+
+    <script src="../../js/theme.js"></script>
+    
 </body>
+
 </html>
