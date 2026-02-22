@@ -272,8 +272,21 @@
   <div id="navbar"></div>
 
   <main>
-    <section class="resources-section">
-      <header class="resources-header">
+   <section class="resources-section resource-category" data-category="learning">
+  <header class="resources-header">
+    <h3>Learning Resources</h3>
+    <p>Official documentation and trusted guides to help you work efficiently.</p>
+  </header>
+
+  <!-- 🔹 Category Filter Tabs (NEW) -->
+  <div class="resources-tabs">
+    <button class="tab-btn active" data-category="all">All</button>
+    <button class="tab-btn" data-category="learning">Learning Resources</button>
+    <button class="tab-btn" data-category="templates">Templates & Assets</button>
+    <button class="tab-btn" data-category="checklists">Quick Checklists</button>
+    <button class="tab-btn" data-category="tools">Contributor Tools</button>
+    <button class="tab-btn" data-category="beginner">Beginner Issues</button>
+  </div>
         <h3>Learning Resources</h3>
         <p>Official documentation and trusted guides to help you work efficiently.</p>
       </header>
@@ -313,7 +326,7 @@
         </div>
       </div>
     </section>
-    <section class="templates-section">
+    <section class="templates-section resource-category" data-category="templates">
       <header class="templates-header">
         <h3>Templates & Assets</h3>
         <p>Pre-made templates and assets to streamline contributions and documentation. Click any tile to view the
@@ -359,7 +372,7 @@
       </div>
     </section>
 
-    <section class="checklists-section">
+    <section class="checklists-section resource-category" data-category="checklists">
       <header class="checklists-header">
         <h3>Quick Checklists</h3>
         <p>Essential reminders to ensure smooth contributions and efficient workflow.</p>
@@ -391,7 +404,7 @@
         </div>
       </div>
     </section>
-    <section class="tools-section">
+    <section class="tools-section resource-category" data-category="tools">
       <header class="tools-header">
         <h3>Contributor Tools</h3>
         <p>Essential tools to streamline your workflow and improve contributions.</p>
@@ -423,7 +436,7 @@
         </a>
       </div>
     </section>
-    <section class="beginner-issues-section">
+    <section class="beginner-issues-section resource-category" data-category="beginner">
       <header class="beginner-header">
         <h3>Find Beginner-Friendly Issues</h3>
         <p>Discover repositories and issues curated for first-time contributors.</p>
