@@ -1416,6 +1416,64 @@
                 transform: translateY(-50px);
             }
         }
+
+        /* ==== Global Highlight Stabilizer ==== */
+
+        /* Kill glow pseudo-element everywhere */
+         .benefits-card.highlight::after,
+         .card.highlight::after,
+         .highlight::after {
+         display: none !important;
+        }
+
+         /* Unified card glass style */
+         .benefits-card,
+         .card {
+         background: rgba(255, 255, 255, 0.88) !important;
+         backdrop-filter: blur(8px);
+         -webkit-backdrop-filter: blur(8px);
+         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+         border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Dark mode consistency */
+        body.dark-mode .benefits-card,
+        body.dark-mode .card {
+         background: rgba(27, 34, 53, 0.92) !important;
+        }
+
+        /* Controlled gold accent instead of glow */
+        .highlight {
+         border: 1px solid rgba(212, 175, 55, 0.35) !important;
+          box-shadow: 0 10px 25px rgba(212, 175, 55, 0.12) !important;
+        }
+
+        /* Tone down background bloom globally */
+        .benefits-bg {
+         opacity: 0.04 !important;
+         filter: blur(80px) !important;
+        }
+
+        /* ==== Remove ALL Golden Borders from Cards ==== */
+
+        .benefits-card,
+        .card,
+        .highlight {
+         border: 1px solid rgba(255, 255, 255, 0.05) !important;
+         border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35) !important;
+        }
+
+        /* Kill any leftover pseudo-border effects */
+        .benefits-card::before,
+        .benefits-card::after,
+        .card::before,
+        .card::after,
+        .highlight::before,
+        .highlight::after {
+         border: none !important;
+        }
+        
     </style>
     <link rel='manifest' href='../../../manifest.json' />
 </head>
