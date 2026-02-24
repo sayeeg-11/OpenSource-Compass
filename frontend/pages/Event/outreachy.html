@@ -323,19 +323,26 @@
         }
 
         .eligibility-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:2rem;
+        max-width:1200px;
+        margin:0 auto;
+        align-items:stretch;
         }
 
         .eligibility-card {
-            padding: 2rem 1.8rem;
-            border-radius: 22px;
-            backdrop-filter: blur(14px);
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: var(--shadow-main);
-            transition: transform 0.45s var(--bounce-curve),
-                box-shadow 0.45s ease;
+           padding:2rem 1.8rem;
+           border-radius:22px;
+           backdrop-filter:blur(14px);
+           background:rgba(255,255,255,0.6);
+           box-shadow:var(--shadow-main);
+           transition:transform .45s var(--bounce-curve),
+           box-shadow .45s ease;
+           display:flex;
+           flex-direction:column;
+           height:100%;
+
         }
 
         .eligibility-card:hover {
@@ -352,6 +359,8 @@
         .eligibility-card ul {
             padding-left: 1.1rem;
             color: var(--text-secondary);
+            line-height:1.6;
+            flex-grow:1;
         }
 
         .eligibility-card ul li {
@@ -1416,6 +1425,14 @@
                 transform: translateY(-50px);
             }
         }
+
+        @media(max-width:768px){
+            .eligibility-grid{
+                gap:1.5rem;
+                padding:0 10px;
+            }
+
+}
     </style>
     <link rel='manifest' href='../../../manifest.json' />
 </head>
