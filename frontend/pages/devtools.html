@@ -333,29 +333,142 @@
                     <p>Provide details about your contribution to generate a professional description.</p>
                 </div>
 
+                <!-- AI Assist Controls -->
+                <div class="ai-assist-panel" id="aiAssistPanel">
+                    <button class="ai-assist-toggle-btn" id="aiAssistToggleBtn" type="button">
+                        <div class="ai-assist-toggle-left">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Assist Controls</span>
+                        </div>
+                        <div class="ai-assist-toggle-right">
+                            <span class="ai-assist-badge">Smart</span>
+                            <i class="fas fa-chevron-down ai-assist-chevron"></i>
+                        </div>
+                    </button>
+
+                    <div class="ai-assist-body" id="aiAssistBody">
+                        <!-- Creativity Level Slider -->
+                        <div class="ai-control-group">
+                            <div class="ai-control-header">
+                                <div class="ai-control-label">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Creativity Level</span>
+                                </div>
+                                <span class="ai-control-value" id="creativityValue">Medium</span>
+                            </div>
+                            <div class="ai-slider-wrap">
+                                <span class="ai-slider-label">Low</span>
+                                <input type="range" id="creativitySlider" class="ai-slider" min="0" max="100" value="50">
+                                <span class="ai-slider-label">High</span>
+                            </div>
+                            <p class="ai-control-desc">Controls how expressive or concise the generated text is.</p>
+                        </div>
+
+                        <!-- Strictness Toggle -->
+                        <div class="ai-control-group">
+                            <div class="ai-control-header">
+                                <div class="ai-control-label">
+                                    <i class="fas fa-ruler"></i>
+                                    <span>Strictness</span>
+                                </div>
+                            </div>
+                            <div class="ai-strictness-toggle" id="strictnessToggle">
+                                <button class="ai-strictness-btn active" data-value="best-practice" type="button">
+                                    <i class="fas fa-shield-alt"></i> Best-Practice
+                                </button>
+                                <button class="ai-strictness-btn" data-value="flexible" type="button">
+                                    <i class="fas fa-feather-alt"></i> Flexible
+                                </button>
+                            </div>
+                            <p class="ai-control-desc">Best-practice outputs formal, guideline-driven text. Flexible is more relaxed and developer-friendly.</p>
+                        </div>
+
+                        <!-- Smart Toggles Row -->
+                        <div class="ai-smart-toggles">
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-file-code"></i>
+                                    <span>Auto-summarize Git Diff</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Generates a high-level summary from code changes.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="autoSummarizeToggle" checked>
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-tags"></i>
+                                    <span>Auto-detect PR Type</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Detects Bug Fix, Feature, Refactor, Docs, etc.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="autoDetectTypeToggle" checked>
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-magic"></i>
+                                    <span>Rewrite Low-quality Input</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Improves unclear or poorly written input automatically.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="rewriteInputToggle">
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <form id="prGeneratorForm">
-                    <div class="pr-form-group">
-                        <label for="prLink">Issue or PR Link (Optional)</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prLink">Issue or PR Link (Optional)</label>
+                        </div>
                         <input type="url" id="prLink" placeholder="e.g., https://github.com/user/repo/issues/123">
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prProblem">Problem Statement</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prProblem">Problem Statement</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prProblem" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <textarea id="prProblem" placeholder="What issue are you solving?"></textarea>
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prChanges">Changes Implemented</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prChanges">Changes Implemented</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prChanges" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <textarea id="prChanges" placeholder="Describe your code changes..."></textarea>
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prTesting">Testing Evidence</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prTesting">Testing Evidence</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prTesting" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <input type="text" id="prTesting" placeholder="How was this verified?">
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prLimitations">Limitations / Notes</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prLimitations">Limitations / Notes</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prLimitations" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <input type="text" id="prLimitations" placeholder="Any known bottlenecks?">
                     </div>
 
