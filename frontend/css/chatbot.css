@@ -232,11 +232,20 @@ body.dark-mode .chat-input-area {
 
 #chatInput {
     flex: 1;
-    padding: 0.8rem;
+    padding: 10px 14px;
     border: 1px solid #ddd;
-    border-radius: 25px;
+    border-radius: 16px;
     outline: none;
     font-family: inherit;
+    font-size: 14px;
+    resize: none;              /* Disable manual resize */
+    overflow-y: auto;          /* Scroll if max reached */
+    line-height: 1.4;
+    min-height: 40px;
+    max-height: 120px;         /* Prevents layout breaking */
+    transition: border 0.2s ease;
+    background: var(--chat-bg);
+    color: var(--chat-text);
 }
 
 #chatInput:focus {

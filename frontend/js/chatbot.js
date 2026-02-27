@@ -17,16 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="close-btn">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages">
-    <div class="message bot">
-        Hello! I'm here to help you with your open source journey. Ask me anything!
-    </div>
-</div>
-<div class="typing-indicator" id="typingIndicator" style="display: none;">
-    OpenSource Guide is typing...
-</div>
+            <div class="message bot">
+                Hello! I'm here to help you with your open source journey. Ask me anything!
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            OpenSource Guide is typing...
+        </div>
 
         <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Type a message...">
+            <textarea id="chatInput" rows="1" placeholder="Type a message..."></textarea>
             <button id="sendBtn">➤</button>
         </div>
     `;
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add User Message
         addMessage(text, 'user');
         chatInput.value = '';
+        chatInput.style.height = "auto";
 
         // Process Bot Response
         // Simulate thinking time
@@ -101,8 +102,18 @@ setTimeout(() => {
     }
 
     sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+    // Auto resize textarea
+    chatInput.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    });
+
+    // Enter to send | Shift+Enter for new line
+    chatInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
     });
 
     function getCurrentTime() {
