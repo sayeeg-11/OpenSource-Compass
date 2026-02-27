@@ -168,12 +168,14 @@ body.dark-mode #scrollTopBtn:hover {
      justify-content: center;
      position: absolute;
      left: -5.15rem;           /* Adjust this based on your padding to center on line */
-     z-index: 2;
+     z-index: 10;
      box-shadow: 0 0 0 8px var(--warm-cream); /* Masks the line behind the icon */
      font-size: 1.3rem;
    }
    .timeline-list li {
-    transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    position: relative;
+    overflow: visible !important; 
   }
   
   /* When you hover the list item, make the icon glow */
@@ -523,22 +525,6 @@ body.dark-mode #scrollTopBtn:hover {
   align-items: flex-start;
   gap: 1rem;
   position: relative;
-}
-
-.timeline-list li .icon {
-  counter-increment: step-counter;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: var(--primary-gold);
-  color: var(--deep-navy);
-  font-size: 1.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
 
 .timeline-list li .content {
