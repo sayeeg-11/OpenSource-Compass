@@ -3,13 +3,15 @@
 # 🌍 OpenSource Compass  
 ### Navigate Your Open Source Journey with Confidence
 
-<img src="frontend/library/assets/swoc_banner.png" alt="OpenSource Compass – SWOC'26 Banner" width="40%" />
+<img src="frontend/library/assets/swoc_banner.png" alt="OpenSource Compass – SWOC'26 Banner" width="38%" />
+<img src="frontend/library/assets/ecwoc.png" alt="ECWOC 2026" width="38%" />
 
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/sayeeg-11/OpenSource-Compass)
 [![GitHub Issues](https://img.shields.io/github/issues/sayeeg-11/OpenSource-Compass)](https://github.com/sayeeg-11/OpenSource-Compass/issues)
 [![GitHub License](https://img.shields.io/github/license/sayeeg-11/OpenSource-Compass)](LICENSE)
 
 <img src="https://img.shields.io/badge/SWOC-2026-blueviolet?style=for-the-badge&logo=rocket" alt="SWOC 2026">
+<img src="https://img.shields.io/badge/ECWOC-2026-ff69b4?style=for-the-badge&logo=opensourceinitiative" alt="ECWOC 2026">
 <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge&logo=github" alt="PRs Welcome">
 <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
 
@@ -18,6 +20,10 @@
 ## ❄️ Social Winter of Code (SWOC) 2026
 
 **Social Winter of Code (SWOC)** is a winter-long open-source program that mentors students through meaningful, real-world contributions.
+
+### 🌟 Elite Coders Winter of Code (ECWOC) 2026
+
+**Elite Coders Winter of Code (ECWOC)** is a beginner-friendly open-source initiative that supports students through guided mentorship and real-world project contributions.
 
 ---
 
