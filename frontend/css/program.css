@@ -380,7 +380,7 @@ body.dark-mode .programs-heading {
 
 /* =========================
    DARK MODE FIX
-=========================*/
+
 body.dark-mode .filter-wrapper select {
   background: linear-gradient(145deg, #1f2937, #111827) !important;
   color: #f9fafb !important;
@@ -403,7 +403,7 @@ body.dark-mode .filter-wrapper select option {
 
 /* =========================================
    PREMIUM LABEL BADGES
-=========================*/
+
 .badge-group {
   display: flex;
   flex-wrap: wrap;
