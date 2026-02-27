@@ -117,7 +117,7 @@ header {
   left: 0 !important;
   width: 100% !important;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(239, 136, 76, 0.98);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 3px solid var(--primary-gold);
   padding: 1rem 6%;
@@ -265,6 +265,8 @@ main {
 /* --- Section: Resources --- */
 .resources-section {
   padding: 4rem 1rem;
+  color: pink !important;
+  background-color: #112240 !important;
 }
 
 
