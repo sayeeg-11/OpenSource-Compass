@@ -1433,6 +1433,11 @@ body.dark-mode .sk {
   gap: 24px;
   align-items: stretch;
   justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Rank Badge */
@@ -1452,6 +1457,7 @@ body.dark-mode .sk {
 .top-contributors-grid .contributor-card {
   width: 100%;
   max-width: 320px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1462,6 +1468,31 @@ body.dark-mode .sk {
 /* Hover Effect */
 .top-contributors-grid .contributor-card:hover {
   transform: scale(1.08) translateY(-5px);
+/* ===== Fix Top Contributors Mobile Overflow ===== */
+@media (max-width: 768px) {
+  .top-contributors-section {
+    padding: 22px 16px;
+    margin: 30px 12px 10px;
+  }
+
+  .top-contributors-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .top-card {
+    transform: none; /* prevent zoom overflow */
+  }
+
+  .top-contributors-grid .contributor-card:hover {
+    transform: translateY(-4px); /* remove scale(1.08) overflow */
+  }
+}
+
+
+/* Hover Effect */
+.top-contributors-grid .contributor-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 20px 45px rgba(212, 175, 55, 0.25);
 }
 

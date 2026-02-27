@@ -43,3 +43,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+/* ===== Category Tabs Filtering ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab-btn");
+  const sections = document.querySelectorAll(".resource-category");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const category = tab.dataset.category;
+
+      // Active tab styling
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      // Show/Hide sections
+      sections.forEach((section) => {
+        if (category === "all") {
+          section.classList.remove("hidden");
+        } else {
+          if (section.dataset.category === category) {
+            section.classList.remove("hidden");
+          } else {
+            section.classList.add("hidden");
+          }
+        }
+      });
+
+      // Smooth scroll to top of resources
+      document.querySelector(".resources-section")
+        ?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+});

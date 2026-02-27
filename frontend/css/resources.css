@@ -713,6 +713,45 @@ body.dark-mode #explanation-box {
   opacity: 0; 
 }
 
+/* ===== Category Filter Tabs ===== */
+.resources-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 35px;
+  max-width: 900px;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #374151;
+}
+
+.tab-btn:hover {
+  border-color: #d4af37;
+  background: #fff8e6;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #d4af37, #f0d98c);
+  color: #1a2433;
+  border-color: #d4af37;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.25);
+}
+
+/* Hide filtered sections */
+.resource-category.hidden {
+  display: none;
+}
 /* Optional: Stagger the cards so they appear one by one */
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }

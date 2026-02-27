@@ -2028,6 +2028,99 @@
                 grid-template-columns: 1fr;
             }
 
+        /* ---------- Pro Tips Section ---------- */
+.pro-tips-section {
+    padding: 80px 8%;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+    text-align: center;
+    position: relative;
+}
+
+.pro-tips-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
+}
+
+.pro-tips-section h2 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--primary-blue);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.pro-tips-subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.pro-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.pro-tip-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pro-tip-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary-blue);
+    box-shadow: 0 20px 45px rgba(31, 60, 136, 0.2);
+}
+
+.tip-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 18px;
+}
+
+.pro-tip-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.pro-tip-card p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .pro-tips-section {
+        padding: 60px 5%;
+    }
+}
+
+        /* Focus styles for accessibility */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--secondary-blue);
+            outline-offset: 2px;
             .protip-card {
                 padding-top: 3.4rem;
             }
@@ -2476,6 +2569,39 @@
         </div>
     </section>
 
+    <!-- Pro Tips Section -->
+<section class="pro-tips-section">
+    <h2>Pro Tips for GSSOC Contributors</h2>
+    <p class="pro-tips-subtitle">
+        Actionable guidance to help beginners confidently start and succeed in GSSOC.
+    </p>
+
+    <div class="pro-tips-grid">
+        <div class="pro-tip-card">
+            <div class="tip-icon"><i class="fas fa-search"></i></div>
+            <h3>Choose Beginner-Friendly Issues</h3>
+            <p>Look for labels like <strong>good first issue</strong> or <strong>beginner</strong> to start with manageable tasks and build confidence.</p>
+        </div>
+
+        <div class="pro-tip-card">
+            <div class="tip-icon"><i class="fas fa-comments"></i></div>
+            <h3>Communicate with Mentors</h3>
+            <p>Ask questions early, clarify doubts, and stay active in project discussions to avoid confusion and delays.</p>
+        </div>
+
+        <div class="pro-tip-card">
+            <div class="tip-icon"><i class="fas fa-code-branch"></i></div>
+            <h3>Write Quality PR Descriptions</h3>
+            <p>Clearly explain what you changed, why you changed it, and link the issue to improve review speed.</p>
+        </div>
+
+        <div class="pro-tip-card">
+            <div class="tip-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Stay Consistent</h3>
+            <p>Regular small contributions are better than one large PR. Consistency improves rankings and learning.</p>
+        </div>
+    </div>
+</section>
 
 
     <script src="../../js/theme.js"></script>
