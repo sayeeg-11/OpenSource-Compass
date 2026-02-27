@@ -778,19 +778,34 @@ body { background-color: var(--bg-color); color: var(--text-main); }
 
 /* Ensure icons remain gold in both modes */
 .card-icon, .stat-icon, .program-icon { color: var(--primary-gold); }
-      #scrollTopBtn {
-        display: flex !important;
-        /* Enables Flexbox centering */
-        justify-content: center !important;
-        /* Horizontally center */
-        align-items: center !important;
-        /* Vertically center */
-        padding: 0 !important;
-        /* Remove padding that offsets the icon */
-        line-height: 0 !important;
-        /* Reset line height for precise icons */
-      }
-         /* Container to center the entire grid */
+
+/* =========================
+   SCROLL TO TOP BUTTON
+========================= */
+
+#scrollTopBtn {
+  /* Hidden state */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(15px);
+}
+
+/* Visible state */
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Hover effect */
+#scrollTopBtn:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 15px 40px rgba(181, 157, 92, 0.6);
+}
+
+/* Container to center the entire grid */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
