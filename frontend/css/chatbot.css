@@ -119,7 +119,7 @@ body.dark-mode {
 
 .chat-window {
     position: fixed;
-    bottom: 20px;
+    bottom: 7rem;
     right: 20px;
     width: var(--chat-width);
     max-height: 80vh;
