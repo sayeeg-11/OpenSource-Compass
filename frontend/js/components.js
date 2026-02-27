@@ -28,6 +28,9 @@ const navbarHTML = `
 OpenSource Compass
 
         </h1>
+        <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
+             <i class="fas fa-bars"></i>
+        </button>
         <div class="nav-links">
             <a href="${getPath('index.html')}">Home</a>
             <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
@@ -106,7 +109,7 @@ const footerHTML = `
               </a>
             </li>
             <li>
-              <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">
+              <a href="${getPath('frontend/pages/code-of-conduct.html')}" target="_blank" rel="noopener noreferrer">
                 Code of Conduct
               </a>
             </li>
@@ -146,7 +149,26 @@ const footerHTML = `
 const navbarContainer = document.getElementById('navbar');
 const footerContainer = document.getElementById('footer');
 
-if (navbarContainer) navbarContainer.innerHTML = navbarHTML;
+if (navbarContainer) {
+  navbarContainer.innerHTML = navbarHTML;
+
+  // Hamburger Menu Logic
+  const hamburgerBtn = navbarContainer.querySelector('.hamburger-menu');
+  const navLinks = navbarContainer.querySelector('.nav-links');
+
+  if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isActive = navLinks.classList.toggle('active');
+      // Toggle icon between bars and times (X)
+      hamburgerBtn.innerHTML = isActive
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+
+      // Accessibility update
+      hamburgerBtn.setAttribute('aria-expanded', isActive);
+    });
+  }
+}
 if (footerContainer) {
   footerContainer.innerHTML = footerHTML;
   const yearEl = document.getElementById('footer-year');

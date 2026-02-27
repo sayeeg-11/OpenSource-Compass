@@ -24,48 +24,8 @@
 </head>
 <style>
   /* =========================================
-   NAVBAR FIXED POSITION FIX
-========================================= */
-  html,
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-  }
-
-  header {
-    position: fixed !important;
-    /* Locks the navbar to the viewport */
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 1000;
-    /* Ensure it has a background so content doesn't show through */
-    background-color: #0F172A;
-    /* Dark Blue matching your theme */
-  }
-
-  /* Push main content down so it doesn't hide behind the fixed navbar */
-  main {
-    padding-top: 100px !important;
-  }
-
-  /* =========================================
    CONTRIBUTE PAGE DARK MODE FIXES
-========================================= */
-
-  /* 1. Page Background - Cold Gray */
-  body.dark-mode main,
-  body.dark-mode section {
-    background-color: #121212 !important;
-    color: #e0e0e0 !important;
-  }
-
-  /* Ensure header background updates in dark mode */
-  body.dark-mode header {
-    background-color: #121212 !important;
-    border-bottom: 1px solid #333;
-  }
+  ===========================================*/
 
   /* 2. Card Backgrounds - Dark Grey */
   body.dark-mode .step,
@@ -111,31 +71,40 @@
     border-color: #d4af37 !important;
     transform: translateY(-5px);
   }
+/* ==========================
+   Code Blocks (Theme Safe)
+  ==========================*/
 
-  /* 7. Code Snippet Backgrounds - FORCED LIGHT THEME */
-  /* This keeps code blocks white even in dark mode */
-  body.dark-mode .code-block,
-  body.dark-mode pre {
-    background-color: #ffffff !important;
-    border: 1px solid #e0e0e0 !important;
-    color: #333333 !important;
-    /* Dark grey text */
-  }
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
 
-  /* Inline code (like 'git push' in notes) is now White with Dark Text */
-  body.dark-mode code {
-    background-color: #ffffff !important;
-    /* White background */
-    color: #333333 !important;
-    /* Dark Text */
-    padding: 0.1rem 0.3rem;
-    border-radius: 3px;
-  }
+.code-block pre {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--code-command);
+}
 
-  /* Ensure comments inside code are visible */
-  body.dark-mode .code-comment {
-    color: #6a737d !important;
-  }
+code {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.code-comment {
+  color: var(--code-comment);
+  font-style: italic;
+}
 
   /* 8. BEST PRACTICES SECTION VISIBILITY FIX */
   /* Forces dark text on the light background for this specific section */
@@ -156,31 +125,20 @@
     color: #000000 !important;
     /* Black for bold text */
   }
+
+  #footer,
+  #footer * {
+    text-align: left !important;
+  }
+
+  #footer a {
+    text-decoration: none !important;
+  }
 </style>
 
 <body>
   <div id="cursor-highlight" aria-hidden="true"></div>
-  <header>
-    <div class="navbar-container">
-      <h1>
-        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
-        OpenSource Compass
-      </h1>
-      <div class="nav-links">
-        <a href="../../index.html">Home</a>
-        <a href="./guides.html">Guides</a>
-        <a href="./programs.html">Programs</a>
-        <a href="./Resources.html">Resources</a>
-        <a href="./contributors.html">Contributors</a>
-        <a href="./faq.html">FAQ</a>
-        <a href="./Contribute.html">Contribute</a>
-        <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
-          style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
-          <i class="fas fa-moon" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </header>
+  <div id="navbar"></div>
 
   <main>
     <div class="hero-section">

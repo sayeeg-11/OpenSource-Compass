@@ -115,7 +115,7 @@ OPENSOURCE-COMPASS/
 ### Screenshots
 
 #### Home Page
-[![Home Page](frontend/assets/templates/Home.png)](frontend/assets/templates/Home.png)
+[![Home Page](./frontend/assets/templates/Updated%20Homepage.png)](./frontend/assets/templates/Updated%20Homepage.png)
 
 #### Guide Page
 [![Guide Page](frontend/assets/templates/guides.png)](frontend/assets/templates/guides.png)
@@ -124,17 +124,7 @@ OPENSOURCE-COMPASS/
 [![Programs Page](frontend/assets/templates/Programs.png)](frontend/assets/templates/Programs.png)
 
 
-## 📸 Screenshots
-
-#### Home Page
-[![Home Page](frontend/assets/templates/Home.png)](frontend/assets/templates/Home.png)
-
-#### Guide Page
-[![Guide Page](frontend/assets/templates/guides.png)](frontend/assets/templates/guides.png)
-
-#### Programs Page
-[![Programs Page](frontend/assets/templates/Programs.png)](frontend/assets/templates/Programs.png)
-
+---
 ## 👥 Team — SWOC’26
 
 ### 🛠 Project Admin

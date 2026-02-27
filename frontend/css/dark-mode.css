@@ -55,8 +55,7 @@ body.dark-mode .guide-list li { /* Specific fix for the Guide Steps list */
 }
 
 /* 4. TEXT COLORS */
-/* General Headings turn White */
-body.dark-mode h3, 
+/* General Headings turn White */ 
 body.dark-mode h4, 
 body.dark-mode h5, 
 body.dark-mode h6,
@@ -68,6 +67,7 @@ body.dark-mode strong {
 /* Targets the big titles on the Guide page */
 body.dark-mode h1, 
 body.dark-mode h2,
+body.dark-mode h3,
 body.dark-mode .section-title {
     color: #d4af37 !important; /* Primary Gold Color */
 }

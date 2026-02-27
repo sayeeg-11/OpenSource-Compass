@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Tools | OpenSource Compass</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pr-generator.css">
     <style>
@@ -68,16 +66,13 @@
             width: 8px;
             height: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--bg-primary);
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--border-color);
             border-radius: 10px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-color);
         }
@@ -172,7 +167,6 @@
         /* Content Area */
         .tools-main-content {
             flex: 1;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             background: var(--bg-primary);
@@ -181,18 +175,22 @@
 
         .tool-panel {
             display: none;
-            height: 100%;
             width: 100%;
-            overflow-y: auto;
             padding: 2rem;
             box-sizing: border-box;
+            flex-grow: 1;
         }
 
         .tool-panel.active {
             display: block;
         }
 
-        /* Iframe styling */
+        /* Iframe styling for Playground - Fixed to screen height */
+        #playground.active {
+            padding: 0;
+            height: calc(100vh - 64px); 
+        }
+        
         .playground-wrapper-iframe {
             width: 100%;
             height: 100%;
@@ -216,6 +214,8 @@
         }
 
         @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -246,11 +246,14 @@
             <span>Compass DevTools</span>
         </div>
         <div class="nav-right">
-            <div class="header-tabs">
-                <button class="tab-btn active" onclick="switchTab('pr-gen')">
+            <button class="devtools-hamburger" id="toolsMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-tabs" id="toolsTabs">
+                <button class="tab-btn active" onclick="switchTab('pr-gen'); toggleToolsMenu()">
                     <i class="fas fa-magic"></i> PR Generator
                 </button>
-                <button class="tab-btn" onclick="switchTab('issue-insights')">
+                <button class="tab-btn" onclick="switchTab('issue-insights'); toggleToolsMenu()">
                     <i class="fas fa-lightbulb"></i> Issue Insights
                 </button>
                 <button class="tab-btn" onclick="switchTab('issue-validator')">
@@ -269,14 +272,13 @@
                 </button>
             </div>
             <a href="../../index.html" class="tools-back">
-                <i class="fas fa-arrow-left"></i> Back Home
+                <i class="fas fa-arrow-left"></i> <span class="back-text">Back Home</span>
             </a>
             
         </div>
     </nav>
 
     <main class="tools-main-content">
-        <!-- PR GENERATOR PANEL -->
         <div id="pr-gen" class="tool-panel active">
             <div class="pr-embedded-container">
                 <div class="pr-form-header">
@@ -284,29 +286,142 @@
                     <p>Provide details about your contribution to generate a professional description.</p>
                 </div>
 
+                <!-- AI Assist Controls -->
+                <div class="ai-assist-panel" id="aiAssistPanel">
+                    <button class="ai-assist-toggle-btn" id="aiAssistToggleBtn" type="button">
+                        <div class="ai-assist-toggle-left">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Assist Controls</span>
+                        </div>
+                        <div class="ai-assist-toggle-right">
+                            <span class="ai-assist-badge">Smart</span>
+                            <i class="fas fa-chevron-down ai-assist-chevron"></i>
+                        </div>
+                    </button>
+
+                    <div class="ai-assist-body" id="aiAssistBody">
+                        <!-- Creativity Level Slider -->
+                        <div class="ai-control-group">
+                            <div class="ai-control-header">
+                                <div class="ai-control-label">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Creativity Level</span>
+                                </div>
+                                <span class="ai-control-value" id="creativityValue">Medium</span>
+                            </div>
+                            <div class="ai-slider-wrap">
+                                <span class="ai-slider-label">Low</span>
+                                <input type="range" id="creativitySlider" class="ai-slider" min="0" max="100" value="50">
+                                <span class="ai-slider-label">High</span>
+                            </div>
+                            <p class="ai-control-desc">Controls how expressive or concise the generated text is.</p>
+                        </div>
+
+                        <!-- Strictness Toggle -->
+                        <div class="ai-control-group">
+                            <div class="ai-control-header">
+                                <div class="ai-control-label">
+                                    <i class="fas fa-ruler"></i>
+                                    <span>Strictness</span>
+                                </div>
+                            </div>
+                            <div class="ai-strictness-toggle" id="strictnessToggle">
+                                <button class="ai-strictness-btn active" data-value="best-practice" type="button">
+                                    <i class="fas fa-shield-alt"></i> Best-Practice
+                                </button>
+                                <button class="ai-strictness-btn" data-value="flexible" type="button">
+                                    <i class="fas fa-feather-alt"></i> Flexible
+                                </button>
+                            </div>
+                            <p class="ai-control-desc">Best-practice outputs formal, guideline-driven text. Flexible is more relaxed and developer-friendly.</p>
+                        </div>
+
+                        <!-- Smart Toggles Row -->
+                        <div class="ai-smart-toggles">
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-file-code"></i>
+                                    <span>Auto-summarize Git Diff</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Generates a high-level summary from code changes.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="autoSummarizeToggle" checked>
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-tags"></i>
+                                    <span>Auto-detect PR Type</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Detects Bug Fix, Feature, Refactor, Docs, etc.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="autoDetectTypeToggle" checked>
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-magic"></i>
+                                    <span>Rewrite Low-quality Input</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Improves unclear or poorly written input automatically.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="rewriteInputToggle">
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <form id="prGeneratorForm">
-                    <div class="pr-form-group">
-                        <label for="prLink">Issue or PR Link (Optional)</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prLink">Issue or PR Link (Optional)</label>
+                        </div>
                         <input type="url" id="prLink" placeholder="e.g., https://github.com/user/repo/issues/123">
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prProblem">Problem Statement</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prProblem">Problem Statement</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prProblem" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <textarea id="prProblem" placeholder="What issue are you solving?"></textarea>
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prChanges">Changes Implemented</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prChanges">Changes Implemented</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prChanges" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <textarea id="prChanges" placeholder="Describe your code changes..."></textarea>
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prTesting">Testing Evidence</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prTesting">Testing Evidence</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prTesting" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <input type="text" id="prTesting" placeholder="How was this verified?">
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prLimitations">Limitations / Notes</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prLimitations">Limitations / Notes</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prLimitations" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <input type="text" id="prLimitations" placeholder="Any known bottlenecks?">
                     </div>
 
@@ -328,7 +443,6 @@
             </div>
         </div>
 
-        <!-- ISSUE INSIGHTS PANEL -->
         <div id="issue-insights" class="tool-panel">
             <div class="pr-embedded-container">
                 <div class="pr-form-header">
@@ -361,7 +475,6 @@
             </div>
         </div>
 
-        <!-- ISSUE VALIDATOR PANEL -->
         <div id="issue-validator" class="tool-panel">
             <div class="pr-embedded-container">
                 <div class="pr-form-header">
@@ -372,8 +485,7 @@
                 <form id="issueValidatorForm">
                     <div class="pr-form-group">
                         <label for="validatorRepo">Repository URL *</label>
-                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project"
-                            required>
+                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project" required>
                     </div>
 
                     <div class="pr-form-group">
@@ -383,9 +495,7 @@
 
                     <div class="pr-form-group">
                         <label for="validatorDescription">Issue Description *</label>
-                        <textarea id="validatorDescription"
-                            placeholder="Detailed description of the bug or feature request" required
-                            style="min-height: 150px;"></textarea>
+                        <textarea id="validatorDescription" placeholder="Detailed description of the bug or feature request" required style="min-height: 150px;"></textarea>
                     </div>
 
                     <button type="submit" id="validatorSubmitBtn" class="pr-submit-btn">
@@ -412,22 +522,105 @@
             </div>
         </div>
 
-        <!-- PLAYGROUND PANEL -->
-        <div id="playground" class="tool-panel" style="padding: 0;">
-            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe"
-                title="Git Playground"></iframe>
+        <div id="playground" class="tool-panel">
+            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe" title="Git Playground"></iframe>
         </div>
     </main>
 
-    <footer class="tools-footer">
-        OpenSource Compass Developer Workspace &copy; 2026
-    </footer>
+    <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+        <div class="footer-shell">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="footer-mark" aria-hidden="true">
+                <i class="fas fa-compass"></i>
+              </div>
+              <div>
+                <div class="footer-title">OpenSource Compass</div>
+                <div class="footer-tagline">
+                   OpenSource Compass is a beginner-friendly, 
+                   community-driven platform that guides students 
+                   and first-time contributors in open source. 
+                   It offers Git/GitHub basics, contribution best practices, 
+                   do’s and don’ts, and a hub for programs
+                   like SWOsC, GSSoC, GSoC, Hacktoberfest, etc
+                </div>
+              </div>
+            </div>
+      
+            <div class="footer-columns" aria-label="Footer links">
+              <nav class="footer-col" aria-label="Explore">
+                <div class="footer-col-title">Explore</div>
+                <ul class="footer-links">
+                  <li><a href="${getPath('index.html')}">Home</a></li>
+                  <li><a href="${getPath('frontend/pages/guides.html')}">Guides</a></li>
+                  <li><a href="${getPath('frontend/pages/programs.html')}">Programs</a></li>
+                  <li><a href="${getPath('frontend/pages/Resources.html')}">Resources</a></li>
+                </ul>
+              </nav>
+      
+              <nav class="footer-col" aria-label="Community">
+                <div class="footer-col-title">Community</div>
+                <ul class="footer-links">
+                  <li><a href="${getPath('frontend/pages/contributors.html')}">Contributors</a></li>
+                  <li><a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a></li>
+                  <li><a href="${getPath('frontend/pages/faq.html')}">FAQ</a></li>
+                </ul>
+              </nav>
+      
+              <nav class="footer-col" aria-label="Project">
+                <div class="footer-col-title">Project</div>
+                <ul class="footer-links">
+                  <li>
+                    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">
+                      Contributing
+                    </a>
+                  </li>
+                  <li>
+                    <a href="${getPath('frontend/pages/code-of-conduct.html')}" target="_blank" rel="noopener noreferrer">
+                      Code of Conduct
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      
+          <div class="footer-divider" aria-hidden="true"></div>
+      
+          <div class="footer-bottom">
+            <div class="footer-badges" aria-label="Footer highlights">
+              <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
+              <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
+              <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
+              <button id="pwa-install-btn" class="footer-pill" style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
+                  <i class="fas fa-download"></i> Install App
+              </button>
+            </div>
+      
+            <div class="footer-meta">
+              <span>© <span id="footer-year"></span> OpenSource Compass</span>
+              <span class="footer-sep" aria-hidden="true">•</span>
+              <a class="footer-inline"
+                 href="https://github.com/sayeeg-11/OpenSource-Compass"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Star on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
     <script>
         // --- Tab Switching Logic ---
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(`switchTab('${tabId}')`));
             if (activeBtn) activeBtn.classList.add('active');
 
             document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));

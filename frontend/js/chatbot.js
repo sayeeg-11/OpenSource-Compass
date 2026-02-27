@@ -20,9 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="message bot">
                 Hello! I'm here to help you with your open source journey. Ask me anything!
             </div>
+            <div class="suggestions" id="chatSuggestions">
+                <!-- Chips will be injected here -->
+            </div>
         </div>
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            OpenSource Guide is typing...
+        </div>
+
         <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Type a message...">
+            <textarea id="chatInput" rows="1" placeholder="Type a message..."></textarea>
             <button id="sendBtn">➤</button>
         </div>
     `;
@@ -34,9 +41,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('sendBtn');
     const chatInput = document.getElementById('chatInput');
     const messagesContainer = document.getElementById('chatMessages');
+    const typingIndicator = document.getElementById('typingIndicator');
+    const suggestionsContainer = document.getElementById("chatSuggestions");
+
 
     let intents = [];
 
+    const suggestions = [
+        "Know about Open Source",
+        "Beginner Guide",
+        "Git Push Command",
+        "How to Raise a PR",
+        "Contribution Guide"
+    ];
+
+    function renderSuggestions() {
+        suggestionsContainer.innerHTML = "";
+        suggestions.forEach(text => {
+            const chip = document.createElement("button");
+            chip.className = "suggestion-chip";
+            chip.textContent = text;
+
+            chip.addEventListener("click", () => {
+                chatInput.value = text;
+                sendMessage();
+                suggestionsContainer.style.display = "none"; // hide after click
+            });
+
+            suggestionsContainer.appendChild(chip);
+        });
+    }
+
+    renderSuggestions();
+    
     // Load data
     // Note: This path assumes index.html is in /pages/ and data is in /data/
     fetch('../data/chatbot_data.json')
@@ -76,27 +113,142 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add User Message
         addMessage(text, 'user');
         chatInput.value = '';
+        chatInput.style.height = "auto";
 
         // Process Bot Response
         // Simulate thinking time
+        // Show typing indicator
+        typingIndicator.style.display = 'block';
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // Simulate thinking time
         setTimeout(() => {
+            // Hide typing indicator before showing message
+            typingIndicator.style.display = 'none';
+
             const response = getBotResponse(text);
             addMessage(response, 'bot');
-        }, 500);
+        }, 800);
+
     }
 
     sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+    // Auto resize textarea
+    chatInput.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
     });
 
+    // Enter to send | Shift+Enter for new line
+    chatInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function parseMarkdown(text) {
+    // IMPORTANT WORDS to highlight automatically
+    const importantWords = [
+        "open source",
+        "OpenSource Guide",
+        "documentation",
+        "programs",
+        "guides",
+        "project",
+        "maintainers",
+        "community"
+    ];
+
+    // Escape HTML to prevent injection
+    text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    // Code blocks ```code```
+    text = text.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+
+    // Inline code `code`
+    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Bold **text** (manual markdown)
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Links [text](url)
+    text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+    // Bullet points
+    text = text.replace(/^- (.*)$/gm, '<li>$1</li>');
+    text = text.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+
+    // 🔥 Auto highlight important keywords in bold
+    importantWords.forEach(word => {
+        const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+        text = text.replace(regex, '<strong>$1</strong>');
+    });
+
+    // Preserve line breaks
+    text = text.replace(/\n/g, "<br>");
+
+    return text;
+}
+
+
+
     function addMessage(text, sender) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}`;
-        msgDiv.textContent = text;
-        messagesContainer.appendChild(msgDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${sender}`;
+
+    // Message text
+    const messageText = document.createElement('div');
+    messageText.className = 'message-text';
+    messageText.innerHTML = parseMarkdown(text);
+
+    // Timestamp
+    const timestamp = document.createElement('div');
+    timestamp.className = 'timestamp';
+    timestamp.textContent = getCurrentTime();
+
+    msgDiv.appendChild(messageText);
+    msgDiv.appendChild(timestamp);
+
+    // ⭐ ADD RATING ONLY FOR BOT MESSAGES
+    if (sender === 'bot') {
+        const ratingDiv = document.createElement('div');
+        ratingDiv.className = 'message-rating';
+
+        const thumbsUp = document.createElement('span');
+        thumbsUp.className = 'thumb-btn';
+        thumbsUp.innerHTML = '👍';
+
+        const thumbsDown = document.createElement('span');
+        thumbsDown.className = 'thumb-btn';
+        thumbsDown.innerHTML = '👎';
+
+        // Allow only one selection
+        thumbsUp.addEventListener('click', () => {
+            thumbsUp.classList.add('selected');
+            thumbsDown.classList.remove('selected');
+        });
+
+        thumbsDown.addEventListener('click', () => {
+            thumbsDown.classList.add('selected');
+            thumbsUp.classList.remove('selected');
+        });
+
+        ratingDiv.appendChild(thumbsUp);
+        ratingDiv.appendChild(thumbsDown);
+        msgDiv.appendChild(ratingDiv);
     }
+
+    messagesContainer.appendChild(msgDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+
 
     function getBotResponse(input) {
         input = input.toLowerCase();

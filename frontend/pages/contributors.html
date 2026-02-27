@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <title>OpenSource Compass</title>
@@ -13,13 +12,15 @@
   />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contributors.css" />
-  <link rel="stylesheet" href="../css/chatbot.css" />
-  <link rel="stylesheet" href="../css/pr-generator.css" />
-
+  <link rel="stylesheet" href="../css/chatbot.css" /> 
+  
   <link rel='manifest' href='../../manifest.json' />
+
 </head>
 
 <body class="contributors-page">
@@ -28,16 +29,54 @@
 
   <main>
     <section class="contributors-section">
-      <h1>Contributors</h1>
+      <h1 style="color:rgba(221, 189, 8, 0.801)">Contributors</h1>
       <p>People who have helped build and improve OpenSource Compass.</p>
 
       <div class="contributors-stats" id="contributors-stats"></div>
 
-      <div class="contributors-controls">
-        <input id="contributor-search" type="search" placeholder="Search contributors…"
-          aria-label="Search contributors" />
+  <div class="contributors-controls">
+  <div class="search-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input
+      id="contributor-search"
+      type="search"
+      placeholder="Search contributors..."
+      aria-label="Search contributors"
+    />
+  </div>
 
-        <label class="bot-toggle">
+  <label class="bot-toggle">
+    <input type="checkbox" id="toggle-bots" checked />
+    <span>Show bots</span>
+  </label>
+</div>
+
+
+        <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
+
+<!-- Top 3 Contributors Highlight Section -->
+<div class="top-contributors-section" id="top-contributors-section">
+  <h4 class="top-title">
+    <i class="fas fa-crown"></i> Top Contributors
+  </h4>
+  <div class="top-contributors-grid" id="top-contributors-grid"></div>
+</div>
+
+<!-- All Contributors Grid -->
+<div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
+
+      </section>
+      
+    </main>
+      <div class="contributors-controls">
+        <input
+          id="contributor-search"
+          type="search"
+          placeholder="Search contributors…"
+          aria-label="Search contributors"
+        />
+
+        <label class="bot-toggle" style="color:rgba(221, 189, 8, 0.801)">
           <input type="checkbox" id="toggle-bots" checked />
           Show bots
         </label>
@@ -56,67 +95,105 @@
   <script src="../js/contributors.js"></script>
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
-  <script src="/frontend/js/DMtheme.js"></script>
+<script src="/frontend/js/DMtheme.js"></script>
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Inline script to fix chatbot button overlap -->
+  <script>
+    (function enforceCardLayout() {
+      const observer = new MutationObserver(() => {
+        const cards = document.querySelectorAll('.contributor-card');
+        
+        cards.forEach(card => {
+          if (card.dataset.layoutFixed === "true") return;
+
+          const img = card.querySelector('img'); 
+          const links = card.querySelectorAll('a'); 
+          const iconLink = links.length > 0 ? links[links.length - 1] : null; 
+
+          if (img && iconLink) {
+            
+            const leftSection = document.createElement('div');
+            leftSection.className = 'card-avatar-section';
+            
+            const centerSection = document.createElement('div');
+            centerSection.className = 'card-info-section';
+            
+            const rightSection = document.createElement('div');
+            rightSection.className = 'card-icon-section';
+
+            leftSection.appendChild(img);
+            rightSection.appendChild(iconLink);
+
+            const children = Array.from(card.childNodes);
+            children.forEach(child => {
+              if (!leftSection.contains(child) && !rightSection.contains(child)) {
+                centerSection.appendChild(child);
+              }
+            });
+
+            card.innerHTML = '';
+            card.appendChild(leftSection);
+            card.appendChild(centerSection);
+            card.appendChild(rightSection);
+
+            card.dataset.layoutFixed = "true";
+          }
+        });
+      });
+
+      const grid = document.getElementById('contributors-grid');
+      if (grid) {
+        observer.observe(grid, { childList: true, subtree: true });
+      } else {
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    })();
+  </script>
+
   <script>
     (function fixChatbotOverlap() {
       function adjustChatbotPosition() {
-        // Wait for DOM to be fully loaded
         if (document.readyState !== 'complete') {
           window.addEventListener('load', adjustChatbotPosition);
           return;
         }
 
-        // Find the chatbot button by checking all fixed elements
         const allElements = document.querySelectorAll('*');
-
+        
         for (const el of allElements) {
-          // Skip scroll button and footer elements
-          if (el.id === 'scrollTopBtn' ||
-            el.closest('footer') ||
-            el.closest('#footer') ||
-            el.classList.contains('contributor-card')) {
+          if (el.id === 'scrollTopBtn' || 
+              el.closest('footer') || 
+              el.closest('#footer') ||
+              el.classList.contains('contributor-card')) {
             continue;
           }
 
           const styles = window.getComputedStyle(el);
-
+          
           if (styles.position === 'fixed') {
             const rect = el.getBoundingClientRect();
-            const vh = window.innerHeight;
-            const vw = window.innerWidth;
-
-            // Check if element is in bottom-right corner (chatbot position)
-            const isBottomRight =
-              rect.bottom > vh - 150 &&
-              rect.right > vw - 150 &&
-              rect.width > 30 &&
-              rect.width < 150 &&
-              rect.height > 30 &&
-              rect.height < 150;
-
+            
+            const isBottomRight = 
+              rect.bottom > window.innerHeight - 150 && 
+              rect.right > window.innerWidth - 150 &&
+              rect.width > 30 && 
+              rect.width < 150;
+            
             if (isBottomRight) {
-              // Apply positioning fix
               el.style.setProperty('bottom', '90px', 'important');
               el.style.setProperty('right', '20px', 'important');
               el.style.setProperty('z-index', '1000', 'important');
-              console.log('✅ Chatbot button repositioned to avoid overlap');
             }
           }
         }
       }
 
-      // Run multiple times to catch lazy-loaded chatbots
       setTimeout(adjustChatbotPosition, 100);
       setTimeout(adjustChatbotPosition, 500);
-      setTimeout(adjustChatbotPosition, 1000);
       setTimeout(adjustChatbotPosition, 2000);
 
-      // Watch for new elements being added
       const observer = new MutationObserver(() => {
         adjustChatbotPosition();
       });
@@ -128,7 +205,5 @@
     })();
   </script>
   <script src='../js/pwa.js'></script>
-  <script src="../js/pr-generator.js"></script>
 </body>
-
 </html>
