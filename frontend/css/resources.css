@@ -713,6 +713,224 @@ body.dark-mode #explanation-box {
   opacity: 0; 
 }
 
+/* ===== Category Filter Tabs ===== */
+.resources-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 35px;
+  max-width: 900px;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #374151;
+}
+
+.tab-btn:hover {
+  border-color: #d4af37;
+  background: #fff8e6;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #d4af37, #f0d98c);
+  color: #1a2433;
+  border-color: #d4af37;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.25);
+}
+
+/* Hide filtered sections */
+.resource-category.hidden {
+  display: none;
+}
+
+
+/* ================================
+   Beginner Learning Path Section
+.learning-path-section {
+  padding: 60px 20px 30px;
+  background: linear-gradient(135deg, #fffaf0, #fff7e6);
+  border-bottom: 1px solid #f1e3b0;
+}
+
+.learning-path-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.learning-path-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #b8860b;
+  margin-bottom: 10px;
+}
+
+.learning-path-subtitle {
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto 35px;
+  font-size: 1rem;
+}
+
+.learning-path-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.path-step {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid #f1e3b0;
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.12);
+  text-align: left;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.path-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(212, 175, 55, 0.25);
+}
+
+.step-number {
+  min-width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #d4af37;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.step-content h3 {
+  margin: 0 0 5px;
+  font-size: 1.1rem;
+  color: #1a2433;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .learning-path-title {
+    font-size: 1.6rem;
+  }
+  .path-step {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+/* ======================================
+   Resources Stats Section (Issue #905)
+   ====================================== */
+
+.resources-stats-section {
+  max-width: 1100px;
+  margin: 40px auto 10px;
+  padding: 30px 24px;
+  background: linear-gradient(135deg, #fffaf0, #fff7e6);
+  border-radius: 20px;
+  border: 1px solid #f1e3b0;
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.12);
+  text-align: center;
+}
+
+.stats-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #b8860b;
+  margin-bottom: 6px;
+}
+
+.stats-subtitle {
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.resources-stats-section .stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 12px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.resources-stats-section .stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(212, 175, 55, 0.18);
+}
+
+.resources-stats-section .stat-icon {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.resources-stats-section .stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a2433;
+  font-family: 'Inter', sans-serif;
+}
+
+.resources-stats-section .stat-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* Mobile Optimization */
+@media (max-width: 640px) {
+  .resources-stats-section {
+    margin: 24px 14px 0;
+    padding: 22px 16px;
+  }
+
+  .stats-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .resources-stats-section .stat-number {
+    font-size: 1.4rem;
+  }
+}
 /* Optional: Stagger the cards so they appear one by one */
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }

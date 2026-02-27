@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feedback.css">
+  <link rel="stylesheet" href="../css/chatbot.css" />
 
 </head>
 
@@ -36,6 +37,15 @@
       <p>Your feedback helps improve OpenSource Compass for everyone. Let us know how we can make your journey better.</p>
     </section>
 
+  <!-- Feedback Form -->
+<!-- Feedback Form -->
+<section class="feedback-container">
+  <div class="feedback-card">
+    <form id="feedbackForm">
+
+
+      <label for="name">Name (optional)</label>
+      <input id="name" type="text" placeholder="Your name">
     <section class="feedback-container">
       <form id="feedbackForm">
 
@@ -79,6 +89,10 @@
 
         <p id="successMessage"><i class="fas fa-check-circle"></i> Thank you! Your feedback has been submitted.</p>
 
+        </form>
+  </div>
+</section>
+
       </form>
     </section>
   </main>
@@ -92,6 +106,12 @@
   <script src="../js/feedback.js"></script>
   <script src="../js/theme.js"></script>
   <script src="/frontend/js/DMtheme.js"></script>
+
+  <!-- OpenSource Guide Chatbot Mount -->
+<div id="opensource-chatbot"></div>
+
+<!-- OpenSource Guide Chatbot -->
+<script src="../js/chatbot.js"></script>
 
 </body>
 </html>

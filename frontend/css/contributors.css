@@ -166,16 +166,9 @@ body.dark-mode .contributors-section p {
   flex: 1;
   max-width: 100px;
   display: flex;
+   min-width: 0;
   flex-direction: column;
   gap: 0.6rem;
-}
-
-.contributor-name {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #1a2433; /* dark navy */
-  margin: 0;
 }
 
 .contributor-meta {
@@ -848,9 +841,13 @@ body.dark-mode .contributors-section p {
   font-size: 1.4rem;
   color: #1a2433;
   margin: 0;
-  white-space: nowrap;         
-  overflow: hidden;           
-  text-overflow: ellipsis;    
+
+  /* ✅ FIX: allow full username visibility */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .contributor-actions {
@@ -1238,6 +1235,90 @@ body.dark-mode .sk {
   padding: 0 1rem;
 }
 
+/* ===== Contributors Controls (Search + Toggle) ===== */
+.contributors-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 30px auto 20px;
+  max-width: 900px;
+  flex-wrap: wrap;
+}
+
+/* Search Wrapper */
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Search Icon */
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+/* Search Input Styling */
+#contributor-search {
+  width: 100%;
+  padding: 14px 16px 14px 42px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Hover Effect */
+#contributor-search:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Focus Effect (Important for UX) */
+#contributor-search:focus {
+  outline: none;
+  border-color: var(--primary-gold, #d4af37);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  background: #ffffff;
+}
+
+/* Bot Toggle Styling */
+.bot-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #374151;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.bot-toggle:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.bot-toggle input {
+  accent-color: var(--primary-gold, #d4af37);
+  cursor: pointer;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .contributors-controls {
 /* Search Input */
 #contributor-search {
   width: 100%;
@@ -1349,6 +1430,11 @@ body.dark-mode .sk {
   gap: 24px;
   align-items: stretch;
   justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Rank Badge */
@@ -1368,6 +1454,7 @@ body.dark-mode .sk {
 .top-contributors-grid .contributor-card {
   width: 100%;
   max-width: 320px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1378,6 +1465,31 @@ body.dark-mode .sk {
 /* Hover Effect */
 .top-contributors-grid .contributor-card:hover {
   transform: scale(1.08) translateY(-5px);
+/* ===== Fix Top Contributors Mobile Overflow ===== */
+@media (max-width: 768px) {
+  .top-contributors-section {
+    padding: 22px 16px;
+    margin: 30px 12px 10px;
+  }
+
+  .top-contributors-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .top-card {
+    transform: none; /* prevent zoom overflow */
+  }
+
+  .top-contributors-grid .contributor-card:hover {
+    transform: translateY(-4px); /* remove scale(1.08) overflow */
+  }
+}
+
+
+/* Hover Effect */
+.top-contributors-grid .contributor-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 20px 45px rgba(212, 175, 55, 0.25);
 }
 
@@ -1410,6 +1522,62 @@ body.dark-mode .top-title {
   font-weight: 600;
 }
 
+/* ================================
+   Contributors Stats Cards
+   ================================ */
+.contributors-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.stat-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 1.4rem;
+  color: var(--primary-gold, #c9a227);
+  margin-bottom: 0.4rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  margin-top: 2px;
+}
+
+/* Dark mode support */
+body.dark-mode .stat-card {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .stat-value {
+  color: #ffffff;
+}
+
+body.dark-mode .stat-label {
+  color: #b5b5b5;
   .stat-pill {
     width: 100%;
     justify-content: center;

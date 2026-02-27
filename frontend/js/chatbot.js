@@ -17,16 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="close-btn">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages">
-    <div class="message bot">
-        Hello! I'm here to help you with your open source journey. Ask me anything!
-    </div>
-</div>
-<div class="typing-indicator" id="typingIndicator" style="display: none;">
-    OpenSource Guide is typing...
-</div>
+            <div class="message bot">
+                Hello! I'm here to help you with your open source journey. Ask me anything!
+            </div>
+            <div class="suggestions" id="chatSuggestions">
+                <!-- Chips will be injected here -->
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            OpenSource Guide is typing...
+        </div>
 
         <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Type a message...">
+            <textarea id="chatInput" rows="1" placeholder="Type a message..."></textarea>
             <button id="sendBtn">➤</button>
         </div>
     `;
@@ -39,10 +42,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chatInput');
     const messagesContainer = document.getElementById('chatMessages');
     const typingIndicator = document.getElementById('typingIndicator');
+    const suggestionsContainer = document.getElementById("chatSuggestions");
 
 
     let intents = [];
 
+    const suggestions = [
+        "Know about Open Source",
+        "Beginner Guide",
+        "Git Push Command",
+        "How to Raise a PR",
+        "Contribution Guide"
+    ];
+
+    function renderSuggestions() {
+        suggestionsContainer.innerHTML = "";
+        suggestions.forEach(text => {
+            const chip = document.createElement("button");
+            chip.className = "suggestion-chip";
+            chip.textContent = text;
+
+            chip.addEventListener("click", () => {
+                chatInput.value = text;
+                sendMessage();
+                suggestionsContainer.style.display = "none"; // hide after click
+            });
+
+            suggestionsContainer.appendChild(chip);
+        });
+    }
+
+    renderSuggestions();
+    
     // Load data
     // Note: This path assumes index.html is in /pages/ and data is in /data/
     fetch('../data/chatbot_data.json')
@@ -82,27 +113,38 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add User Message
         addMessage(text, 'user');
         chatInput.value = '';
+        chatInput.style.height = "auto";
 
         // Process Bot Response
         // Simulate thinking time
         // Show typing indicator
-typingIndicator.style.display = 'block';
-messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        typingIndicator.style.display = 'block';
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-// Simulate thinking time
-setTimeout(() => {
-    // Hide typing indicator before showing message
-    typingIndicator.style.display = 'none';
+        // Simulate thinking time
+        setTimeout(() => {
+            // Hide typing indicator before showing message
+            typingIndicator.style.display = 'none';
 
-    const response = getBotResponse(text);
-    addMessage(response, 'bot');
-}, 800);
+            const response = getBotResponse(text);
+            addMessage(response, 'bot');
+        }, 800);
 
     }
 
     sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+    // Auto resize textarea
+    chatInput.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    });
+
+    // Enter to send | Shift+Enter for new line
+    chatInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
     });
 
     function getCurrentTime() {
@@ -147,6 +189,9 @@ function parseMarkdown(text) {
         const regex = new RegExp(`\\b(${word})\\b`, 'gi');
         text = text.replace(regex, '<strong>$1</strong>');
     });
+
+    // Preserve line breaks
+    text = text.replace(/\n/g, "<br>");
 
     return text;
 }

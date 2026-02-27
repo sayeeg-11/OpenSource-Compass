@@ -254,6 +254,21 @@ body.dark-mode select:focus {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< submit
+/* Success Message (Hidden by default) */
+#successMessage {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #e6f7ee;
+  color: #137333;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid #b7e4c7;
+  text-align: center;
+=======
+>>>>>>> main
 /* Dropdown options */
 body.dark-mode select option {
   background-color: #0f1b2d;

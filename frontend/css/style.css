@@ -1831,6 +1831,70 @@ body.dark-mode .chat-widget-btn {
   font-size: 16px;
   line-height: 1.7;
 }
+
+/* ===== FAQ CTA Redirect Card ===== */
+.faq-cta-card {
+  max-width: 950px;
+  margin: 30px auto 0;
+  padding: 28px 24px;
+  border-radius: 16px;
+  text-align: center;
+  background: linear-gradient(135deg, #fffaf0, #fff3d6);
+  border: 1px solid #f1e3b0;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-cta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(212, 175, 55, 0.25);
+}
+
+.faq-cta-content h4 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #b8860b;
+  font-weight: 700;
+}
+
+.faq-cta-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.faq-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: #d4af37;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.faq-cta-btn:hover {
+  background: #b8962e;
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Support */
+body.dark-mode .faq-cta-card {
+  background: linear-gradient(135deg, #1f2937, #111827);
+  border: 1px solid #374151;
+}
+
+body.dark-mode .faq-cta-content h4 {
+  color: #facc15;
+}
+
+body.dark-mode .faq-cta-content p {
+  color: #d1d5db;
+}
 /* =========================
    ACCESSIBILITY
 @media (prefers-reduced-motion: reduce) {
@@ -2242,7 +2306,9 @@ body.dark-mode .why-section {
       #1a1a1a 50%,
       #0f0f0f 100%);
 }
-
+body.dark-mode #why > p {
+  color: rgba(253, 244, 227, 0.85);
+}
 body.dark-mode .why-section::before {
   background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
 }
