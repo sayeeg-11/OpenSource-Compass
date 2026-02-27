@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Tools | OpenSource Compass</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pr-generator.css">
     <style>
@@ -17,9 +15,8 @@
         html.devtools-page body {
             margin: 0 !important;
             padding: 0 !important;
-            height: 100vh !important;
-            width: 100vw !important;
-            overflow: hidden !important;
+            min-height: 100vh !important; /* Changed to allow scrolling */
+            overflow-x: hidden !important; 
             background: #0f172a !important;
         }
 
@@ -29,7 +26,6 @@
             color: #e2e8f0;
             font-family: 'Inter', sans-serif;
             padding-top: 0 !important;
-            /* Remove style.css 90px padding */
         }
 
         /* Modern Scrollbar Styling */
@@ -37,16 +33,13 @@
             width: 8px;
             height: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: #0f172a;
         }
-
         ::-webkit-scrollbar-thumb {
             background: #334155;
             border-radius: 10px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #d4af37;
         }
@@ -63,6 +56,8 @@
             z-index: 1000;
             flex-shrink: 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: sticky; /* Keeps nav at top while scrolling */
+            top: 0;
         }
 
         .tools-brand {
@@ -106,7 +101,6 @@
             border-bottom: 3px solid transparent;
             position: relative;
             top: 1px;
-            /* Visual alignment with header border */
         }
 
         .tab-btn:hover {
@@ -118,16 +112,6 @@
             color: #d4af37;
             border-bottom-color: #d4af37;
             background: rgba(212, 175, 55, 0.08);
-        }
-
-        .tools-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: #d4af37;
-            white-space: nowrap;
         }
 
         .tools-back {
@@ -142,7 +126,6 @@
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             padding-left: 1.5rem;
             height: 30px;
-            /* Centered height */
         }
 
         .tools-back:hover {
@@ -152,57 +135,40 @@
         /* Content Area */
         .tools-main-content {
             flex: 1;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             background: #0f172a;
+            min-height: calc(100vh - 64px); /* Ensures full screen minus header */
         }
 
         .tool-panel {
             display: none;
-            height: 100%;
             width: 100%;
-            overflow-y: auto;
             padding: 2rem;
             box-sizing: border-box;
+            flex-grow: 1;
         }
 
         .tool-panel.active {
             display: block;
         }
 
-        /* Iframe styling */
+        /* Iframe styling for Playground - Fixed to screen height */
+        #playground.active {
+            padding: 0;
+            height: calc(100vh - 64px); 
+        }
+        
         .playground-wrapper-iframe {
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 8px;
             background: #0b111a;
         }
 
-        /* Footer */
-        .tools-footer {
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #0f172a;
-            color: #64748b;
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            flex-shrink: 0;
-        }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .active {
@@ -221,14 +187,8 @@
         }
 
         @media (max-width: 900px) {
-            .tools-nav {
-                padding: 0 1rem;
-            }
-
-            .devtools-hamburger {
-                display: block;
-            }
-
+            .tools-nav { padding: 0 1rem; }
+            .devtools-hamburger { display: block; }
             .header-tabs {
                 position: fixed;
                 top: 64px;
@@ -243,12 +203,10 @@
                 z-index: 999;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             }
-
             .header-tabs.menu-active {
                 display: flex;
                 animation: slideDown 0.3s ease-out;
             }
-
             .tab-btn {
                 width: 100%;
                 justify-content: flex-start;
@@ -256,39 +214,107 @@
                 font-size: 1rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
-
-            .tab-btn:hover,
-            .tab-btn.active {
-                background: rgba(212, 175, 55, 0.1);
-            }
-
-            .back-text {
-                display: none;
-            }
-
-            .tools-back {
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-                border-left: none;
-            }
+            .tab-btn:hover, .tab-btn.active { background: rgba(212, 175, 55, 0.1); }
+            .back-text { display: none; }
+            .tools-back { padding-left: 0.5rem; padding-right: 0.5rem; border-left: none; }
         }
 
         @media (max-width: 768px) {
-            .tool-panel {
-                padding: 1rem;
-            }
+            .tool-panel { padding: 1rem; }
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* =========================================
+           COMPASS FOOTER STYLES 
+        ========================================= */
+        .compass-footer {
+            background-color: #0b111a;
+            color: #94a3b8;
+            font-family: 'Inter', sans-serif;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            padding: 4rem 2rem 1rem 2rem;
+            margin-top: auto; /* Pushes footer to the bottom */
+            position: relative;
+            z-index: 10;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-brand .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .footer-description { line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .footer-socials { display: flex; gap: 1rem; }
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .footer-socials a:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            border-color: #d4af37;
+            transform: translateY(-3px);
+        }
+        .footer-heading {
+            font-family: 'Playfair Display', serif;
+            color: #e2e8f0;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .footer-heading::after {
+            content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background-color: #d4af37;
+        }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; transition: all 0.2s ease; display: inline-block; }
+        .footer-links a:hover { color: #d4af37; transform: translateX(5px); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        .footer-bottom p { margin: 0; }
+
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .footer-brand { grid-column: span 2; }
+        }
+        @media (max-width: 576px) {
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-brand { grid-column: span 1; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
@@ -325,7 +351,6 @@
     </nav>
 
     <main class="tools-main-content">
-        <!-- PR GENERATOR PANEL -->
         <div id="pr-gen" class="tool-panel active">
             <div class="pr-embedded-container">
                 <div class="pr-form-header">
@@ -333,29 +358,142 @@
                     <p>Provide details about your contribution to generate a professional description.</p>
                 </div>
 
+                <!-- AI Assist Controls -->
+                <div class="ai-assist-panel" id="aiAssistPanel">
+                    <button class="ai-assist-toggle-btn" id="aiAssistToggleBtn" type="button">
+                        <div class="ai-assist-toggle-left">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Assist Controls</span>
+                        </div>
+                        <div class="ai-assist-toggle-right">
+                            <span class="ai-assist-badge">Smart</span>
+                            <i class="fas fa-chevron-down ai-assist-chevron"></i>
+                        </div>
+                    </button>
+
+                    <div class="ai-assist-body" id="aiAssistBody">
+                        <!-- Creativity Level Slider -->
+                        <div class="ai-control-group">
+                            <div class="ai-control-header">
+                                <div class="ai-control-label">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Creativity Level</span>
+                                </div>
+                                <span class="ai-control-value" id="creativityValue">Medium</span>
+                            </div>
+                            <div class="ai-slider-wrap">
+                                <span class="ai-slider-label">Low</span>
+                                <input type="range" id="creativitySlider" class="ai-slider" min="0" max="100" value="50">
+                                <span class="ai-slider-label">High</span>
+                            </div>
+                            <p class="ai-control-desc">Controls how expressive or concise the generated text is.</p>
+                        </div>
+
+                        <!-- Strictness Toggle -->
+                        <div class="ai-control-group">
+                            <div class="ai-control-header">
+                                <div class="ai-control-label">
+                                    <i class="fas fa-ruler"></i>
+                                    <span>Strictness</span>
+                                </div>
+                            </div>
+                            <div class="ai-strictness-toggle" id="strictnessToggle">
+                                <button class="ai-strictness-btn active" data-value="best-practice" type="button">
+                                    <i class="fas fa-shield-alt"></i> Best-Practice
+                                </button>
+                                <button class="ai-strictness-btn" data-value="flexible" type="button">
+                                    <i class="fas fa-feather-alt"></i> Flexible
+                                </button>
+                            </div>
+                            <p class="ai-control-desc">Best-practice outputs formal, guideline-driven text. Flexible is more relaxed and developer-friendly.</p>
+                        </div>
+
+                        <!-- Smart Toggles Row -->
+                        <div class="ai-smart-toggles">
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-file-code"></i>
+                                    <span>Auto-summarize Git Diff</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Generates a high-level summary from code changes.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="autoSummarizeToggle" checked>
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-tags"></i>
+                                    <span>Auto-detect PR Type</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Detects Bug Fix, Feature, Refactor, Docs, etc.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="autoDetectTypeToggle" checked>
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="ai-smart-toggle-card">
+                                <div class="ai-smart-toggle-top">
+                                    <i class="fas fa-magic"></i>
+                                    <span>Rewrite Low-quality Input</span>
+                                </div>
+                                <p class="ai-smart-toggle-desc">Improves unclear or poorly written input automatically.</p>
+                                <label class="ai-switch">
+                                    <input type="checkbox" id="rewriteInputToggle">
+                                    <span class="ai-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <form id="prGeneratorForm">
-                    <div class="pr-form-group">
-                        <label for="prLink">Issue or PR Link (Optional)</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prLink">Issue or PR Link (Optional)</label>
+                        </div>
                         <input type="url" id="prLink" placeholder="e.g., https://github.com/user/repo/issues/123">
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prProblem">Problem Statement</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prProblem">Problem Statement</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prProblem" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <textarea id="prProblem" placeholder="What issue are you solving?"></textarea>
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prChanges">Changes Implemented</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prChanges">Changes Implemented</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prChanges" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <textarea id="prChanges" placeholder="Describe your code changes..."></textarea>
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prTesting">Testing Evidence</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prTesting">Testing Evidence</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prTesting" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <input type="text" id="prTesting" placeholder="How was this verified?">
                     </div>
 
-                    <div class="pr-form-group">
-                        <label for="prLimitations">Limitations / Notes</label>
+                    <div class="pr-form-group ai-field-group">
+                        <div class="ai-field-header">
+                            <label for="prLimitations">Limitations / Notes</label>
+                            <button type="button" class="ai-field-assist-btn" data-target="prLimitations" title="Improve this section with AI">
+                                <i class="fas fa-wand-magic-sparkles"></i> Improve
+                            </button>
+                        </div>
                         <input type="text" id="prLimitations" placeholder="Any known bottlenecks?">
                     </div>
 
@@ -377,7 +515,6 @@
             </div>
         </div>
 
-        <!-- ISSUE INSIGHTS PANEL -->
         <div id="issue-insights" class="tool-panel">
             <div class="pr-embedded-container">
                 <div class="pr-form-header">
@@ -410,7 +547,6 @@
             </div>
         </div>
 
-        <!-- ISSUE VALIDATOR PANEL -->
         <div id="issue-validator" class="tool-panel">
             <div class="pr-embedded-container">
                 <div class="pr-form-header">
@@ -421,8 +557,7 @@
                 <form id="issueValidatorForm">
                     <div class="pr-form-group">
                         <label for="validatorRepo">Repository URL *</label>
-                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project"
-                            required>
+                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project" required>
                     </div>
 
                     <div class="pr-form-group">
@@ -432,9 +567,7 @@
 
                     <div class="pr-form-group">
                         <label for="validatorDescription">Issue Description *</label>
-                        <textarea id="validatorDescription"
-                            placeholder="Detailed description of the bug or feature request" required
-                            style="min-height: 150px;"></textarea>
+                        <textarea id="validatorDescription" placeholder="Detailed description of the bug or feature request" required style="min-height: 150px;"></textarea>
                     </div>
 
                     <button type="submit" id="validatorSubmitBtn" class="pr-submit-btn">
@@ -452,25 +585,106 @@
                         </button>
                     </div>
                     <div id="validatorResultContent" class="pr-preview-content"></div>
-                    <div class="ai-disclaimer"
-                        style="margin-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center;">
-                        <i class="fas fa-robot"></i> Generated by AI. Please verify with the actual issue description
-                        and codebase.
+                    <div class="ai-disclaimer" style="margin-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center;">
+                        <i class="fas fa-robot"></i> Generated by AI. Please verify with the actual issue description and codebase.
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PLAYGROUND PANEL -->
-        <div id="playground" class="tool-panel" style="padding: 0;">
-            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe"
-                title="Git Playground"></iframe>
+        <div id="playground" class="tool-panel">
+            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe" title="Git Playground"></iframe>
         </div>
     </main>
 
-    <footer class="tools-footer">
-        OpenSource Compass Developer Workspace &copy; 2026
-    </footer>
+    <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+        <div class="footer-shell">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="footer-mark" aria-hidden="true">
+                <i class="fas fa-compass"></i>
+              </div>
+              <div>
+                <div class="footer-title">OpenSource Compass</div>
+                <div class="footer-tagline">
+                   OpenSource Compass is a beginner-friendly, 
+                   community-driven platform that guides students 
+                   and first-time contributors in open source. 
+                   It offers Git/GitHub basics, contribution best practices, 
+                   do’s and don’ts, and a hub for programs
+                   like SWOsC, GSSoC, GSoC, Hacktoberfest, etc
+                </div>
+              </div>
+            </div>
+      
+            <div class="footer-columns" aria-label="Footer links">
+              <nav class="footer-col" aria-label="Explore">
+                <div class="footer-col-title">Explore</div>
+                <ul class="footer-links">
+                  <li><a href="${getPath('index.html')}">Home</a></li>
+                  <li><a href="${getPath('frontend/pages/guides.html')}">Guides</a></li>
+                  <li><a href="${getPath('frontend/pages/programs.html')}">Programs</a></li>
+                  <li><a href="${getPath('frontend/pages/Resources.html')}">Resources</a></li>
+                </ul>
+              </nav>
+      
+              <nav class="footer-col" aria-label="Community">
+                <div class="footer-col-title">Community</div>
+                <ul class="footer-links">
+                  <li><a href="${getPath('frontend/pages/contributors.html')}">Contributors</a></li>
+                  <li><a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a></li>
+                  <li><a href="${getPath('frontend/pages/faq.html')}">FAQ</a></li>
+                </ul>
+              </nav>
+      
+              <nav class="footer-col" aria-label="Project">
+                <div class="footer-col-title">Project</div>
+                <ul class="footer-links">
+                  <li>
+                    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">
+                      Contributing
+                    </a>
+                  </li>
+                  <li>
+                    <a href="${getPath('frontend/pages/code-of-conduct.html')}" target="_blank" rel="noopener noreferrer">
+                      Code of Conduct
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      
+          <div class="footer-divider" aria-hidden="true"></div>
+      
+          <div class="footer-bottom">
+            <div class="footer-badges" aria-label="Footer highlights">
+              <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
+              <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
+              <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
+              <button id="pwa-install-btn" class="footer-pill" style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
+                  <i class="fas fa-download"></i> Install App
+              </button>
+            </div>
+      
+            <div class="footer-meta">
+              <span>© <span id="footer-year"></span> OpenSource Compass</span>
+              <span class="footer-sep" aria-hidden="true">•</span>
+              <a class="footer-inline"
+                 href="https://github.com/sayeeg-11/OpenSource-Compass"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Star on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
     <script>
         const backLink = document.querySelector('.tools-back');
@@ -490,6 +704,9 @@
 
             // Update back link based on active tab
             updateBackLink();
+            
+            // Scroll back to top when switching tabs
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateBackLink() {
@@ -517,7 +734,6 @@
                     const iframeSrc = playgroundIframe.contentWindow.location.href;
                     iframeShowingBadges = iframeSrc.includes('badges.html');
                 } catch (e) {
-                    // Cross-origin fallback: check src attribute
                     iframeShowingBadges = playgroundIframe.src.includes('badges.html');
                 }
                 updateBackLink();
@@ -539,10 +755,18 @@
             }
         }
 
-        // Add event listener for hamburger button
         document.getElementById('toolsMenuBtn').addEventListener('click', toggleToolsMenu);
     </script>
-
+    
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="/frontend/js/DMtheme.js"></script>
+    
+    <button id="scrollTopBtn" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <script src='../js/pwa.js'></script>
     <script src="../js/pr-generator.js"></script>
     <script src="../js/issue-insights.js"></script>
     <script src="../js/issue-validator.js"></script>

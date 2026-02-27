@@ -16,11 +16,977 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/navigation.css" />
 
+    <style>
+        :root {
+            --primary-blue: #1F3C88;
+            --secondary-blue: #4D96FF;
+            --light-gray: #F5F7FA;
+            --text-dark: #2E2E2E;
+            --success-green: #3CCF91;
+            --white: #FFFFFF;
+            --accent-orange: #FF6B35;
+            --accent-purple: #9B59B6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ---------- Navbar ---------- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid #eaeaea;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        header h1 {
+            color: var(--primary-blue);
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-blue);
+        }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0d1f4d 0%, #1F3C88 50%, #2a4a9e 100%);
+            color: var(--white);
+            padding: 100px 8% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 16px;
+            font-weight: 500;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero .intro {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            max-width: 750px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero .intro strong {
+            color: #FFD700;
+            font-weight: 600;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            will-change: transform, box-shadow;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            transform: skewX(-20deg);
+            transition: transform 0.45s ease;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 45%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px) scale(1.03) rotate(-0.3deg);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.26);
+        }
+
+        .btn-secondary:hover::after {
+            opacity: 1;
+        }
+
+        .btn:hover::before {
+            transform: translateX(240%) skewX(-20deg);
+        }
+
+        
+
+        /* ---------- Process Stepper ---------- */
+        .process-stepper {
+            padding: 80px 8%;
+            background-color: var(--white);
+        }
+
+        .process-stepper h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .stepper-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .stepper-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary-blue), var(--success-green));
+            z-index: 0;
+        }
+
+        .stepper-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stepper-step {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(31, 60, 136, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(77,150,255,0.1), rgba(60,207,145,0.08));
+            padding: 28px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary-blue);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-left-width 0.3s ease;
+            animation: fadeInLeft 0.6s ease-out both;
+        }
+
+        .stepper-step:nth-child(1) .step-content { animation-delay: 0.1s; }
+        .stepper-step:nth-child(2) .step-content { animation-delay: 0.2s; }
+        .stepper-step:nth-child(3) .step-content { animation-delay: 0.3s; }
+        .stepper-step:nth-child(4) .step-content { animation-delay: 0.4s; }
+
+        .step-content:hover {
+            transform: translateX(10px) scale(1.01);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+            border-left-width: 6px;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .step-content .step-date {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .step-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-content ul li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .step-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* ---------- Timeline Cards ---------- */
+        .timeline-section {
+            padding: 80px 8%;
+            background-color: var(--light-gray);
+        }
+
+        .timeline-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .timeline-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .timeline-card {
+            background-color: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease, filter 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .timeline-card:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-card:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-card:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--success-green));
+            transition: height 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-12px) scale(1.025) rotate(-0.25deg);
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
+            filter: drop-shadow(0 6px 12px rgba(31, 60, 136, 0.12));
+        }
+
+        .timeline-card:hover::before {
+            height: 6px;
+        }
+
+        .timeline-card .phase-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .timeline-card h3 {
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .timeline-card .card-date {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .timeline-card p {
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-align: left;
+            line-height: 1.7;
+        }
+
+        .timeline-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-card ul li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .timeline-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-blue);
+            font-weight: 700;
+        }
+
+        /* ---------- Stipend Section ---------- */
+        .stipend-section {
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #0d1f4d 0%, var(--primary-blue) 50%, #2C4A8F 100%);
+            color: var(--white);
+        }
+
+        .stipend-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .stipend-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .stipend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .stipend-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+            color: var(--text-dark);
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeInScale 0.6s ease-out both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stipend-card:nth-child(1) { animation-delay: 0.1s; }
+        .stipend-card:nth-child(2) { animation-delay: 0.2s; }
+        .stipend-card:nth-child(3) { animation-delay: 0.3s; }
+        .stipend-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .stipend-card:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+            border-color: rgba(255, 215, 0, 0.7);
+        }
+
+        .stipend-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,255,255,0));
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .stipend-card:hover::after {
+            opacity: 1;
+        }
+
+        .stipend-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .stipend-card h3::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            margin-left: 12px;
+        }
+
+        .stipend-card .stipend-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+
+        .stipend-card .stipend-hours {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .stipend-card .stipend-location {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* ---------- GSoC Tips Section ---------- */
+.gsoc-tips-section {
+    padding: 80px 8%;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.gsoc-tips-section h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.gsoc-tips-section p {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.gsoc-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gsoc-tip-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: left;
+}
+
+.gsoc-tip-card i {
+    font-size: 28px;
+    color: var(--secondary-blue);
+    margin-bottom: 15px;
+}
+
+.gsoc-tip-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.gsoc-tip-card p {
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.gsoc-tip-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+        /* ---------- CTA Section ---------- */
+        .cta-section {
+            padding: 80px 8%;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .cta-buttons-large {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 18px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 32px 8%;
+        }
+
+        footer p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .features-section {
+  padding: 80px 8%;
+  background-color: var(--light-gray);
+}
+
+.features-section h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--primary-blue);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.features-section p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: var(--white);
+  padding: 36px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+  border: 2px solid transparent;
+}
+
+.feature-card:hover {
+  transform: translateY(-15px) rotate(1deg);
+  box-shadow: 0 25px 60px rgba(31, 60, 136, 0.25);
+  border-color: var(--secondary-blue);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px 5%;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .hero {
+                padding: 60px 5% 50px;
+            }
+
+            .hero .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .process-stepper,
+            .timeline-section,
+            .stipend-section,
+            .cta-section {
+                padding: 60px 5%;
+            }
+
+            .stepper-line {
+                left: 20px;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .step-content {
+                padding: 20px;
+            }
+
+            .timeline-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .stipend-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .cta-buttons-large {
+                flex-direction: column;
+            }
+
+            .btn-large {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 14px;
+            }
+
+            .step-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .timeline-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Smooth transitions for interactive elements */
+        .btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .step-number {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stepper-step:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(31, 60, 136, 0.4);
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--secondary-blue);
+            outline-offset: 2px;
+        }
+
+        /* ---------- Dark Mode ---------- */
+body.dark-mode {
+    --white: #0f172a;
+    --light-gray: #020617;
+    --text-dark: #e5e7eb;
+    --primary-blue: #93c5fd;
+    --secondary-blue: #60a5fa;
+    --accent-orange: #fb923c;
+    --accent-purple: #c084fc;
+    background-color: #020617;
+    color: #e5e7eb;
+}
+
+body.dark-mode header {
+    background-color: #020617;
+    border-bottom: 1px solid #1f2937;
+}
+
+body.dark-mode nav a {
+    color: #e5e7eb;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .timeline-card,
+body.dark-mode .step-content,
+body.dark-mode .gsoc-tip-card {
+    background-color: #020617;
+    color: #e5e7eb;
+    border: 1px solid #1f2937;
+}
+
+body.dark-mode .features-section,
+body.dark-mode .timeline-section,
+body.dark-mode .gsoc-tips-section {
+    background-color: #020617;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #1e293b;
+    color: #e5e7eb;
+}
+
+body.dark-mode footer {
+    background-color: #020617;
+}
+
+    </style>
    <link rel="stylesheet" href="gsoc.css">
 </head>
 
 <body>
     <header>
+    <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
+    <nav>
+        <a href="../../../index.html">Home</a>
+        <a href="../guides.html">Guides</a>
+        <a href="../programs.html">Programs</a>
+        <a href="../Resources.html">Resources</a>
+        <a href="../Contribute.html">Contribute</a>
+        <button id="darkModeToggle" aria-label="Toggle Dark Mode" style="
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+        ">
+            🌙
+        </button>
+    </nav>
+</header>
+
         <div class="navbar-container">
             <h1>
                 <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
@@ -534,6 +1500,58 @@
         </div>
     </section>
 
+    <!-- Tips to Get Selected for GSoC -->
+<section class="gsoc-tips-section">
+    <h2>Tips to Get Selected for GSoC</h2>
+    <p>Practical strategies that significantly increase your chances of getting accepted into Google Summer of Code.</p>
+
+    <div class="gsoc-tips-grid">
+        <div class="gsoc-tip-card">
+            <i class="fas fa-code-branch"></i>
+            <h3>Start Contributing Early</h3>
+            <p>Begin contributing to open source projects before the application period to build credibility and familiarity with the codebase.</p>
+        </div>
+
+        <div class="gsoc-tip-card">
+            <i class="fas fa-bug"></i>
+            <h3>Pick Beginner-Friendly Issues</h3>
+            <p>Look for “good first issue” or “beginner-friendly” tags to understand the project structure and workflow.</p>
+        </div>
+
+        <div class="gsoc-tip-card">
+            <i class="fas fa-users"></i>
+            <h3>Communicate with Mentors</h3>
+            <p>Actively interact in community channels like Discord, Slack, or mailing lists to show genuine interest.</p>
+        </div>
+
+        <div class="gsoc-tip-card">
+            <i class="fas fa-file-alt"></i>
+            <h3>Write a Strong Proposal</h3>
+            <p>Create a detailed proposal with technical approach, timeline, and expected deliverables to stand out.</p>
+        </div>
+
+        <div class="gsoc-tip-card">
+            <i class="fas fa-clock"></i>
+            <h3>Be Consistent</h3>
+            <p>Regular contributions and consistent activity show commitment and reliability to mentors.</p>
+        </div>
+
+        <div class="gsoc-tip-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Understand the Codebase</h3>
+            <p>Study documentation, past PRs, and project architecture before proposing your idea.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Start Your GSoC Journey?</h2>
+        <p>Take the first step today. Begin preparing, contribute to open source, and build your profile for GSoC 2026.</p>
+        <div class="cta-buttons-large">
+            <a href="https://developers.google.com/open-source/gsoc/faq" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
+                <i class="fas fa-question-circle"></i>
+                Read FAQ
     <!-- RESOURCES -->
 
     <section class="gsoc-resources">
@@ -589,6 +1607,79 @@
     <div id="footer"></div>
 
     <script src="../../js/components.js"></script>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations with staggered delays
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with enhanced animations
+        document.querySelectorAll(
+  '.feature-card, .timeline-card, .stepper-step, .stipend-card'
+)
+.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px) scale(0.95)';
+            el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+        
+        const toggleBtn = document.getElementById("darkModeToggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        toggleBtn.textContent = "☀️";
+    } else {
+        localStorage.setItem("theme", "light");
+        toggleBtn.textContent = "🌙";
+    }
+});
+    </script>
 
     <script src="../../js/main.js"></script>
 

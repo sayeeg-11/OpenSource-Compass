@@ -814,10 +814,71 @@ body.dark-mode #scrollTopBtn:hover {
   }
 }
 
+/* =========================================================
+   DARK MODE FIX — GUIDES PAGE READABILITY (Issue #860)
+   ========================================================= */
+
+/* Page background & base text */
+body.dark-mode {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+/* Section headings */
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+  color: #f9fafb !important;
+}
+
+/* Paragraph text readability */
+body.dark-mode p,
+body.dark-mode li {
+  color: #cbd5e1 !important;
+}
+
+/* Guide cards (major issue: parchment background in dark mode) */
+body.dark-mode .guide-list li,
+body.dark-mode .pr-steps li,
+body.dark-mode .practice-item,
+body.dark-mode .mistakes-list li {
+  background: #1e293b !important; /* replaces light parchment */
+  color: #e5e7eb !important;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Fix titles inside cards */
+body.dark-mode .guide-list h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .timeline-list h4,
+body.dark-mode .practice-item h4 {
+  color: #ffffff !important;
+}
+
+/* Fix description text inside components */
+body.dark-mode .guide-list p,
+body.dark-mode .pr-steps p,
+body.dark-mode .timeline-list p,
+body.dark-mode .practice-item p,
+body.dark-mode .mistakes-list p {
+  color: #cbd5e1 !important;
+}
+
+/* Timeline line visibility */
+body.dark-mode .timeline-list::before {
+  background: linear-gradient(to bottom, #facc15, #eab308);
+}
+
+/* Icons contrast */
+body.dark-mode .icon,
+body.dark-mode .step,
+body.dark-mode .mistake-icon {
+  background: #facc15 !important;
+  color: #0f172a !important;
+}
 /* =====================================================
    Dark Mode Refinement – Guides Page (Final Patch)
    Paste at the bottom of guides.css
-===================================================== */
 
 /* Section surfaces */
 .dark-mode .guides-hero,
