@@ -1346,46 +1346,70 @@
             margin-bottom: 3.5rem;
         }
 
+        /* ===============================
+        BENEFITS GRID – CLEAN LAYOUT
+        =============================== */
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        /* ===============================
+        BENEFITS CARD – CLEAN BASE
+        =============================== */
+
         .benefits-card {
-            padding: 2rem 1.8rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow-main);
-            transition: transform 0.45s var(--bounce-curve),
-                box-shadow 0.35s ease;
-            text-align: left;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.8rem 2rem;
+            text-align: center;
+
+            border: 1px solid rgba(0, 0, 0, 0.06);
+
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+
+            transition: box-shadow 0.35s ease, border 0.35s ease;
         }
 
-        .benefits-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
+        /* Proper spacing */
         .benefits-card h3 {
-            font-size: 1.05rem;
-            margin-bottom: 0.6rem;
-            color: var(--deep-navy);
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
         }
 
         .benefits-card p {
+            line-height: 1.7;
             font-size: 0.95rem;
-            line-height: 1.55;
-            color: var(--text-secondary);
         }
 
-        /* Highlight Card */
-        .benefits-card.highlight::after {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            border-radius: 22px;
-            background: linear-gradient(135deg,
-                    var(--primary-gold),
-                    var(--secondary-gold));
-            opacity: 0.25;
-            filter: blur(20px);
-            z-index: -1;
+        /* ===============================
+        BORDER GLOW ON HOVER ONLY
+        =============================== */
+
+        .benefits-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.8rem 2rem;
+            text-align: center;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+
+            transition: box-shadow 0.3s ease, border 0.3s ease;
+        }
+
+        /* BORDER GLOW */
+        .benefits-card:hover {
+            border: 1px solid var(--primary-gold);
+
+            box-shadow:
+                0 0 0 3px rgba(212, 175, 55, 0.25),   /* outer glow ring */
+                0 20px 40px rgba(0, 0, 0, 0.18);     /* keep normal shadow */
         }
 
         /* Footer Note */
@@ -1461,22 +1485,111 @@
         }
 
         /* Grid Table */
+
         .compare-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            border-radius: 16px;
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: var(--shadow-main);
-            transition: box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.18);
+            transition: box-shadow 0.35s ease;
         }
 
         .compare-grid:hover {
-            box-shadow: var(--shadow-hover);
+            box-shadow: 
+                0 28px 70px rgba(0, 0, 0, 0.25);
         }
 
+        /* Use grid rows */
         .compare-row {
             display: contents;
-            /* Use CSS Grid "display: contents" for row styling */
+        }
+
+        /* Cells */
+        .compare-row > div {
+            padding: 1.6rem 2rem;
+            font-size: 0.95rem;
+            color: var(--deep-navy);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: 
+                background 0.35s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .compare-row.header > div {
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            color: #111;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-align: center;
+
+            /* prevent hover override */
+            transition: none;
+        }
+
+        /* IMPORTANT: Prevent header turning white */
+        .compare-row.header:hover > div {
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            ) !important;
+            color: #111 !important;
+        }
+
+        /* ---------- ZEBRA STRIPES ---------- */
+
+        .compare-row:nth-child(even):not(.header) > div {
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        /* ---------- ROW HOVER ---------- */
+
+        .compare-row:not(.header):hover > div {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--deep-navy);
+            transform: scale(1.01);
+        }
+
+        /* Remove last border */
+        .compare-row:last-child > div {
+            border-bottom: none;
+        }
+
+        /* ===============================
+        DARK MODE TABLE
+        =============================== */
+
+        body.dark-mode .compare-grid {
+            background: rgba(27, 34, 53, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        body.dark-mode .compare-row > div {
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-mode .compare-row:nth-child(even):not(.header) > div {
+            background: rgba(27, 34, 53, 0.75);
+        }
+
+        body.dark-mode .compare-row:not(.header):hover > div {
+            background: rgba(212, 175, 55, 0.20);
+            color: #fff;
         }
 
         .compare-row>div {
@@ -1598,26 +1711,103 @@
             margin-bottom: 4.5rem;
         }
 
-        /* Stories Grid */
         .success-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
         }
 
-        /* Card */
         .success-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            border-radius: 22px;
-            box-shadow: var(--shadow-main);
+            position: relative;
+            padding: 2.8rem 2.4rem;
+            border-radius: 26px;
+
+            /* Stronger contrast */
+            background: #ffffff;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.18);
+
+            transition:
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                border 0.3s ease;
+
             overflow: hidden;
-            transition: transform 0.5s var(--bounce-curve), box-shadow 0.4s ease;
         }
 
+        /* Stronger Quote Icon */
+        .success-card::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 3rem;
+
+            /* Increase visibility */
+            color: rgba(212, 175, 55, 0.35);
+        }
+
+        /* Hover */
         .success-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-12px);
+            box-shadow:
+                0 35px 80px rgba(0, 0, 0, 0.25),
+                0 0 45px rgba(212, 175, 55, 0.20);
+
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        /* Name */
+        .success-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            margin-bottom: 0.4rem;
+            color: var(--deep-navy);
+        }
+
+        /* Program label – darker for visibility */
+        .success-content .program {
+            display: inline-block;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+
+            color: #9a7b1f; /* darker gold */
+            font-weight: 600;
+
+            margin-bottom: 1.4rem;
+        }
+
+        /* Quote text stronger contrast */
+        .success-content .quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+
+            color: #444; /* stronger than var(--text-secondary) */
+            font-style: italic;
+        }
+
+        /* Dark Mode */
+        body.dark-mode .success-card {
+            background: linear-gradient(
+                145deg,
+                rgba(27,34,53,0.9),
+                rgba(27,34,53,0.75)
+            );
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        body.dark-mode .success-content h3 {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .success-content .quote {
+            color: var(--text-secondary);
         }
 
         .success-photo img {
@@ -1754,16 +1944,6 @@
         .benefits-bg {
          opacity: 0.04 !important;
          filter: blur(80px) !important;
-        }
-
-        /* ==== Remove ALL Golden Borders from Cards ==== */
-
-        .benefits-card,
-        .card,
-        .highlight {
-         border: 1px solid rgba(255, 255, 255, 0.05) !important;
-         border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
-         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35) !important;
         }
 
         /* Kill any leftover pseudo-border effects */
@@ -2532,10 +2712,11 @@
         }, observerOptions);
 
         // Observe all cards and sections
-        document.querySelectorAll('.cohort-card, .benefit-card, .step-content, .preparation-item').forEach(el => {
+        document.querySelectorAll('.success-card, .cohort-card, .benefits-card, .prepare-card, .contribution-card')
+        .forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(el);
         });
     </script>
