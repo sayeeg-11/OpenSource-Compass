@@ -16,20 +16,7 @@
 
 <body>
   <!-- Navbar -->
-  <header>
-    <div class="navbar-container">
-      <h1>
-        <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
-        OpenSource Compass
-      </h1>
-      <div class="nav-links">
-        <a href="/OpenSource-Compass/index.html">Home</a>
-        <a href="./programs.html">Programs</a>
-        <a href="./Resources.html">Resources</a>
-        <a href="./Contribute.html">Contribute</a>
-      </div>
-    </div>
-  </header>
+ <header id="navbar"></header>
 
   <!-- Hero Section -->
   <div class="hero-section" id="home">
@@ -182,14 +169,66 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      © 2026 OpenSource Compass ·
-      <a href="https://github.com/sayeeg-11/opensource-compass">GitHub</a> ·
-      Made with <i class="fas fa-heart" style="color: var(--primary-gold);"></i> for the Open Source Community
-    </p>
-  </footer>
+   <!-- ===== OpenSource Compass Styled Footer ===== -->
+<footer class="osc-footer">
+  <div class="footer-container">
+
+    <!-- Brand Section -->
+    <div class="footer-brand">
+      <div class="brand-title">
+        <span class="brand-icon">🧭</span>
+        <h3>OpenSource Compass</h3>
+      </div>
+      <p>
+        OpenSource Compass is a beginner-friendly, community-driven platform that guides students and first-time
+        contributors in open source. It offers Git/GitHub basics, contribution best practices, and a hub for programs like
+        SWoCs, GSSoC, GSoC, Hacktoberfest, etc.
+      </p>
+
+      <div class="footer-badges">
+        <span>🛡 Community-safe</span>
+        <span>⚡ Beginner-ready</span>
+        <span>🌍 Open source</span>
+        <span>⬇ Install App</span>
+      </div>
+    </div>
+
+    <!-- Explore -->
+    <div class="footer-column">
+      <h4>EXPLORE</h4>
+      <a href="/OpenSource-Compass/index.html">Home</a>
+      <a href="./guides.html">Guides</a>
+      <a href="./programs.html">Programs</a>
+      <a href="./Resources.html">Resources</a>
+    </div>
+
+    <!-- Community -->
+    <div class="footer-column">
+      <h4>COMMUNITY</h4>
+      <a href="./contributors.html">Contributors</a>
+      <a href="./Contribute.html">Contribute</a>
+      <a href="./faq.html">FAQ</a>
+    </div>
+
+    <!-- Project -->
+    <div class="footer-column">
+      <h4>PROJECT</h4>
+      <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank">GitHub</a>
+      <a href="#">Contributing</a>
+      <a href="#">Code of Conduct</a>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    © 2026 OpenSource Compass ·
+    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank">
+      ⭐ Star on GitHub
+    </a>
+  </div>
+</footer>
+    <script src="../js/components.js"></script>
   <script src='../js/pwa.js'></script>
 </body>
 </html>

@@ -447,6 +447,54 @@
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
+  <script>
+/* ===== FIX: Mark as Completed Button (Issue #998) ===== */
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".track-guide-btn");
+
+  buttons.forEach((button) => {
+    const guideId = button.dataset.guideId;
+
+    // Load saved state from localStorage
+    const savedState = localStorage.getItem("guide_" + guideId);
+
+    if (savedState === "completed") {
+      setCompleted(button);
+    }
+
+    // Click functionality (THIS FIXES THE BUG)
+    button.addEventListener("click", function () {
+      const isCompleted = button.classList.contains("completed");
+
+      if (!isCompleted) {
+        // Mark as completed
+        localStorage.setItem("guide_" + guideId, "completed");
+        setCompleted(button);
+      } else {
+        // Toggle back to incomplete (optional but good UX)
+        localStorage.removeItem("guide_" + guideId);
+        resetButton(button);
+      }
+    });
+  });
+
+  function setCompleted(btn) {
+    btn.textContent = "✓ Completed";
+    btn.classList.add("completed");
+    btn.style.background = "#2ecc71";
+    btn.style.color = "#ffffff";
+    btn.style.border = "none";
+    btn.style.cursor = "pointer";
+  }
+
+  function resetButton(btn) {
+    btn.textContent = "Mark as Completed";
+    btn.classList.remove("completed");
+    btn.style.background = "";
+    btn.style.color = "";
+  }
+});
+</script>
   <script src='../js/pwa.js'></script>
 </body>
 
