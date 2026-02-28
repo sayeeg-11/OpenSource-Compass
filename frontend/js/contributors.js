@@ -528,7 +528,7 @@ function updateStats(list, allList = allContributors) {
       </div>
       <div class="stat-value">${escapeHtml(top.login)}</div>
       <div class="stat-label">Top Contributor</div>
-    </div>`
+    </div>
       <div class="stat-pill stat-top">
         <span class="stat-label"> 🏆 Top:</span>
         <strong>${escapeHtml(top.login)}</strong>

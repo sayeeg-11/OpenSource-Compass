@@ -139,13 +139,16 @@
       }
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+   @keyframes shake {
+      0% { margin-left: 0; }
+      20% { margin-left: -8px; }
+      40% { margin-left: 8px; }
+      60% { margin-left: -6px; }
+      80% { margin-left: 6px; }
+      100% { margin-left: 0; }
     }
 
-    .level-item.shake-animation {
+    .level-item.shake-animation .level-node{
       animation: shake 0.3s ease-in-out !important;
     }
 
@@ -352,98 +355,6 @@
     </div>
   </div>
 </section>
-<!-- ===== End Resources Stats Section ===== -->
-   <section class="resources-section resource-category" data-category="learning">
-  <header class="resources-header">
-    <h3>Learning Resources</h3>
-    <p>Official documentation and trusted guides to help you work efficiently.</p>
-  </header>
-
-  <!-- 🔹 Category Filter Tabs (NEW) -->
-  <div class="resources-tabs">
-    <button class="tab-btn active" data-category="all">All</button>
-    <button class="tab-btn" data-category="learning">Learning Resources</button>
-    <button class="tab-btn" data-category="templates">Templates & Assets</button>
-    <button class="tab-btn" data-category="checklists">Quick Checklists</button>
-    <button class="tab-btn" data-category="tools">Contributor Tools</button>
-    <button class="tab-btn" data-category="beginner">Beginner Issues</button>
-  </div>
-        <h3>Learning Resources</h3>
-        <p>Official documentation and trusted guides to help you work efficiently.</p>
-      </header>
-
-      <div class="resources-list">
-        <div class="resource-tile">
-          <div class="tile-accent" style="background-color: #d4af37;"></div>
-
-    <!-- ===== Resources Stats Section (NEW) ===== -->
-<section class="resources-stats-section">
-  <div class="resources-stats-container">
-    <h2 class="stats-title">📊 Resources Overview</h2>
-    <p class="stats-subtitle">
-      Quick snapshot of all learning materials available for your open-source journey.
-    </p>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon">📚</div>
-        <div class="stat-number">3</div>
-        <div class="stat-label">Learning Resources</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">📄</div>
-        <div class="stat-number">4</div>
-        <div class="stat-label">Templates & Assets</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🛠️</div>
-        <div class="stat-number">3</div>
-        <div class="stat-label">Contributor Tools</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">✅</div>
-        <div class="stat-number">2</div>
-        <div class="stat-label">Quick Checklists</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🌱</div>
-        <div class="stat-number">3</div>
-        <div class="stat-label">Beginner Guides</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ===== End Resources Stats Section ===== -->
-   <section class="resources-section resource-category" data-category="learning">
-  <header class="resources-header">
-    <h3>Learning Resources</h3>
-    <p>Official documentation and trusted guides to help you work efficiently.</p>
-  </header>
-
-  <!-- 🔹 Category Filter Tabs (NEW) -->
-  <div class="resources-tabs">
-    <button class="tab-btn active" data-category="all">All</button>
-    <button class="tab-btn" data-category="learning">Learning Resources</button>
-    <button class="tab-btn" data-category="templates">Templates & Assets</button>
-    <button class="tab-btn" data-category="checklists">Quick Checklists</button>
-    <button class="tab-btn" data-category="tools">Contributor Tools</button>
-    <button class="tab-btn" data-category="beginner">Beginner Issues</button>
-  </div>
-        <h3>Learning Resources</h3>
-        <p>Official documentation and trusted guides to help you work efficiently.</p>
-      </header>
-
-      <div class="resources-list">
-        <div class="resource-tile">
-          <div class="tile-accent" style="background-color: #d4af37;"></div>
-    <!-- Learning Resources -->
-    <section class="resources-section">
-      <h3>Learning Resources</h3>
-      <p>Official documentation and trusted guides to help you start and grow in open source.</p>
 
       <div class="card-grid">
         <article class="card">
@@ -477,12 +388,6 @@
         </article>
       </div>
     </section>
-    <section class="templates-section resource-category" data-category="templates">
-      <header class="templates-header">
-        <h3>Templates & Assets</h3>
-        <p>Pre-made templates and assets to streamline contributions and documentation. Click any tile to view the
-          template.</p>
-      </header>
 
       <div class="templates-grid">
         <div class="template-tile">
@@ -816,11 +721,14 @@
         renderLevels();
 
         function renderLevels() {
-          const childrenToRemove = [];
-          for (let i = 2; i < levelContainer.children.length; i++) {
-            childrenToRemove.push(levelContainer.children[i]);
-          }
-          childrenToRemove.forEach(child => child.remove());
+         // const childrenToRemove = [];
+         // for (let i = 2; i < levelContainer.children.length; i++) {
+        //  childrenToRemove.push(levelContainer.children[i]);
+         // }
+         // childrenToRemove.forEach(child => child.remove());
+
+         // Remove only level items, keep roadmap track and progress line
+          levelContainer.querySelectorAll('.level-item').forEach(el => el.remove());
 
           const totalLevels = levels.length;
           if (totalLevels > 1) {
@@ -998,13 +906,13 @@
   </footer>
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const copyButtons = document.querySelectorAll(".copy-btn");
+    const copyButtons = document.querySelectorAll(".copy-btn");})
 
     copyButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const link = btn.getAttribute("data-link");
         const feedback = btn.nextElementSibling;
-        const icon = btn.querySelector("i");
+        const icon = btn.querySelector("i");})
 
         navigator.clipboard.writeText(link).then(() => {
           // Show feedback
@@ -1012,7 +920,7 @@
 
           // Change icon to tick
           icon.classList.remove("fa-copy");
-          icon.classList.add("fa-check");
+          icon.classList.add("fa-check");})
 
           // Reset after 1.5 sec
           setTimeout(() => {
@@ -1020,7 +928,7 @@
             icon.classList.remove("fa-check");
             icon.classList.add("fa-copy");
           }, 1500);
-    <script>
+   
       document.addEventListener("DOMContentLoaded", () => {
         const copyButtons = document.querySelectorAll(".copy-btn");
         copyButtons.forEach((btn) => {
@@ -1040,7 +948,7 @@
             });
           });
         });
-      });
+      });});
     </script>
 
     <section id="recommended-resources"></section>
@@ -1061,6 +969,3 @@
   </button>
   <script src='../js/pwa.js'></script>
   <script src="../js/pr-generator.js"></script>
-</body>
-
-</html>

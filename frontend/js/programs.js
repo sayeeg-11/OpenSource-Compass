@@ -442,8 +442,11 @@ function renderPrograms(filteredPrograms = programs) {
         return;
     }
 
-    container.innerHTML = filteredPrograms.map(program => `
-    <div class="program-card" onclick="openModal(${program.id})">
+    container.innerHTML = filteredPrograms.map(program => {
+        // determine what clicking the card should do
+        const clickAction = program.url ? `window.open('${program.url}','_blank')` : `openModal(${program.id})`;
+        return `
+    <div class="program-card" onclick="${clickAction}">
         <div class="program-info">
             <div class="program-header">
                 <h3>${program.name}</h3>
@@ -486,7 +489,8 @@ function renderPrograms(filteredPrograms = programs) {
             <img src="${program.image}" alt="${program.name} logo" onerror="this.src='../library/assets/logo.png'">
         </div>
     </div>
-`).join('');
+`;
+    }).join('');
 }
 
 // Open Modal
@@ -540,7 +544,7 @@ function openModal(programId) {
         </div>
 
         <div style="margin-top: 24px; display: flex; gap: 12px;">
-            <button class="btn btn-primary" onclick="alert('Redirecting to official website...')">Visit Official Website</button>
+            <button class="btn btn-primary" onclick="window.open('${program.url ? program.url : '#'}','_blank')">Visit Official Website</button>
             <button class="btn btn-secondary" onclick="alert('Redirecting to GitHub projects...')">Browse GitHub Projects</button>
         </div>
     `;

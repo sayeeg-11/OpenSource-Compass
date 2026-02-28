@@ -125,17 +125,28 @@ main {
       var(--secondary-gold));
 }
 
-/* Individual Step */
+
+
 .step {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 2.5rem;
-  margin-bottom: 2.5rem;
-  box-shadow: var(--shadow-main);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid transparent;
-  animation: fadeInUp 0.6s ease-out backwards;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smoother "pop" effect */
+  background: var(--bg-card); /* Ensure there's a base color */
+  border: 1px solid transparent;
+  margin-top: 20px;
 }
+
+.step:hover {
+  transform: translateY(-10px); /* Lift it slightly higher */
+  border-color: var(--primary-gold);
+  
+  /* HIGH VISIBILITY SHADOW */
+  /* Format: horizontal vertical blur spread color */
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4); 
+  
+  /* Optional: subtle background tint to make the card "pop" */
+  background-color: rgba(212, 175, 55, 0.05);
+}
+
+
 
 .step:nth-child(1) {
   animation-delay: 0.1s;
@@ -169,11 +180,6 @@ main {
   animation-delay: 0.45s;
 }
 
-.step:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary-gold);
-}
 
 .step-header {
   display: flex;

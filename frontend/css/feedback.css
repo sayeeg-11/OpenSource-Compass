@@ -1,11 +1,3 @@
-body {
-  margin: 0;
-}
-
-.feedback-header {
-  text-align: center;
-  padding: 40px 20px 0px; /* remove bottom gap */
-  margin-bottom: 0;
 :root {
   --primary-gold: #d4af37;
   --deep-navy: #0a192f;
@@ -65,13 +57,6 @@ body {
   color: var(--text-secondary-dark, #666);
   font-size: 1.1rem;
   max-width: 600px;
-  margin: 0 auto 60px; /* removes top gap */
-  padding: 0 20px 40px;
-}
-
-
-
-form {
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -183,78 +168,8 @@ body.dark-mode #successMessage {
   color: #4ade80;
 }
 
-body.dark-mode select {
-  background-color: #0f1b2d !important;
-  color: #ffffff !important;
-  border: 1px solid #334155 !important;
-}
-
-body.dark-mode select:focus {
-  border-color: var(--primary-gold) !important;
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-}
-
-/* ===== Card Layout Enhancement ===== */
-
-.feedback-container {
-  max-width: 700px;
-  margin: auto;
-  padding: 40px 20px 80px;
-  display: flex;
-  justify-content: center;
-}
-
-.feedback-card {
-  width: 100%;
-  background: #ffffff;
-  padding: 35px 30px;
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Hover effect for modern UI depth */
-.feedback-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Improve input styling consistency */
-.feedback-card input,
-.feedback-card select,
-.feedback-card textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #dcdcdc;
-  font-size: 1rem;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Focus interaction */
-.feedback-card input:focus,
-.feedback-card select:focus,
-.feedback-card textarea:focus {
-  outline: none;
-  border-color: var(--primary-gold);
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-}
-
-/* Better button polish */
-.feedback-card button {
-  margin-top: 10px;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feedback-card button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-}
-
-<<<<<<< submit
+/* --- Success Message --- */
+#successMessage {
 /* Success Message (Hidden by default) */
 #successMessage {
   display: none;
@@ -267,8 +182,26 @@ body.dark-mode select:focus {
   font-size: 0.95rem;
   border: 1px solid #b7e4c7;
   text-align: center;
-=======
->>>>>>> main
+}
+
+/* Dropdown options */
+body.dark-mode select option {
+  background-color: #0f1b2d;
+  color: #ffffff;
+}
+
+body.dark-mode textarea,
+body.dark-mode input {
+  background-color: #0f1b2d !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+body.dark-mode select:focus {
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
 /* Dropdown options */
 body.dark-mode select option {
   background-color: #0f1b2d;

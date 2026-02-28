@@ -353,6 +353,59 @@
     border-color: var(--pr-gold-primary);
 }
 
+/* ===== Smart PR Structure Controls ===== */
+
+.pr-structure-controls {
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.pr-structure-controls:hover {
+    border-color: rgba(212, 175, 55, 0.35);
+}
+
+/* Collapsible Header Button */
+.pr-structure-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 1.4rem;
+    background: rgba(212, 175, 55, 0.06);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+}
+
+.pr-structure-toggle:hover {
+    background: rgba(212, 175, 55, 0.12);
+}
+
+.pr-structure-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.pr-structure-toggle-left i {
+    color: var(--pr-gold-primary);
+    font-size: 1rem;
+}
+
+.pr-structure-toggle-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
 /* ===========================
    AI Assist Controls
    =========================== */
@@ -412,6 +465,24 @@
     gap: 0.8rem;
 }
 
+.pr-structure-badge {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--pr-gold-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    transition: all 0.3s ease;
+}
+
+.pr-structure-chevron {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .ai-assist-badge {
     background: linear-gradient(135deg, var(--pr-gold-primary), var(--pr-gold-secondary));
     color: var(--pr-navy);
@@ -429,6 +500,131 @@
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.pr-structure-toggle[aria-expanded="true"] .pr-structure-chevron {
+    transform: rotate(180deg);
+}
+
+/* Expandable Panel */
+.pr-structure-panel {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 1.4rem;
+}
+
+.pr-structure-panel.open {
+    max-height: 800px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0.8rem 1.4rem 1.4rem;
+}
+
+.pr-structure-hint {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Toggle Options */
+.pr-structure-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pr-toggle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+}
+
+.pr-toggle-item:hover {
+    background: rgba(212, 175, 55, 0.06);
+    border-color: rgba(212, 175, 55, 0.2);
+    transform: translateX(4px);
+}
+
+.pr-toggle-info {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.pr-toggle-info>i {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--pr-gold-primary);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.pr-toggle-label {
+    display: block;
+    color: #e2e8f0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.pr-toggle-desc {
+    display: block;
+    color: #64748b;
+    font-size: 0.76rem;
+    margin-top: 0.15rem;
+}
+
+/* Toggle Switch */
+.pr-toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.pr-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.pr-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #334155;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pr-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .ai-assist-panel.open .ai-assist-chevron {
     transform: rotate(180deg);
 }
@@ -436,13 +632,17 @@
 /* Collapsible Body */
 .ai-assist-body {
     max-height: 0;
+    opacity: 0;
+    visibility: hidden;
     overflow: hidden;
-    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0 1.4rem;
 }
 
 .ai-assist-panel.open .ai-assist-body {
-    max-height: 800px;
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
     padding: 1.2rem 1.4rem 1.6rem;
 }
 
@@ -686,7 +886,233 @@
     background: #94a3b8;
     border-radius: 50%;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+.pr-toggle-switch input:checked+.pr-toggle-slider {
+    background: linear-gradient(135deg, var(--pr-gold-primary), var(--pr-gold-secondary));
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.pr-toggle-switch input:checked+.pr-toggle-slider::before {
+    transform: translateX(20px);
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.pr-toggle-switch input:focus+.pr-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+/* Disabled state for toggle items */
+.pr-toggle-item.disabled {
+    opacity: 0.5;
+}
+
+.pr-toggle-item.disabled .pr-toggle-info>i {
+    background: rgba(255, 255, 255, 0.05);
+    color: #64748b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .pr-structure-toggle {
+        padding: 0.8rem 1rem;
+    }
+
+    .pr-structure-panel.open {
+        padding: 0.6rem 1rem 1rem;
+    }
+
+    .pr-toggle-item {
+        padding: 0.7rem 0.8rem;
+    }
+
+    .pr-toggle-info>i {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+
+    .pr-toggle-label {
+        font-size: 0.82rem;
+    }
+
+    .pr-toggle-desc {
+        font-size: 0.7rem;
+    }
+
+    .pr-structure-badge {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.5rem;
+    }
+}
+
+/* ===== Editable PR Textarea with Settings ===== */
+
+.pr-preview-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Word/Char Counter */
+.pr-word-count {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+
+
+/* Editor Hint */
+.pr-editor-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.8rem;
+    padding: 0.4rem 0.6rem;
+    background: rgba(212, 175, 55, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+}
+
+.pr-editor-hint i {
+    color: var(--pr-gold-primary);
+    font-size: 0.75rem;
+}
+
+/* Compact Formatting Strip */
+.pr-format-strip {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0.45rem 0.6rem;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+}
+
+.pr-fmt-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #64748b;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    transition: all 0.2s ease;
+}
+
+.pr-fmt-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--pr-gold-primary);
+    border-color: rgba(212, 175, 55, 0.15);
+}
+
+.pr-fmt-btn:active {
+    transform: scale(0.9);
+    background: rgba(212, 175, 55, 0.2);
+}
+
+.pr-fmt-sep {
+    width: 1px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 0 0.3rem;
+    flex-shrink: 0;
+}
+
+/* When formatting strip is present, remove top border-radius of textarea */
+.pr-format-strip+.pr-editable-textarea {
+    border-radius: 0 0 12px 12px;
+    border-top-color: rgba(255, 255, 255, 0.04);
+}
+
+.pr-editable-textarea {
+    width: 100%;
+    min-height: 250px;
+    resize: vertical;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, font-size 0.2s ease;
+}
+
+.pr-editable-textarea:focus {
+    border-color: var(--pr-gold-primary);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+}
+
+.pr-editable-textarea::placeholder {
+    color: #475569;
+    font-style: italic;
+}
+
+.pr-editable-textarea::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+}
+
+
+/* Copy button success state */
+.pr-copy-btn.success {
+    background: rgba(34, 197, 94, 0.15) !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+    color: #22c55e !important;
+}
+
+@media (max-width: 600px) {
+    .pr-preview-actions {
+        flex-wrap: wrap;
+    }
+
+    .pr-word-count {
+        order: 10;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.3rem;
+    }
+
+
+
+    .pr-fmt-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
+    }
+
+    .pr-format-strip {
+        gap: 1px;
+        padding: 0.35rem 0.4rem;
+    }
+}
+
 
 .ai-switch input:checked+.ai-switch-slider {
     background: linear-gradient(135deg, var(--pr-gold-primary), var(--pr-gold-secondary));

@@ -74,6 +74,7 @@ body, .program-card, .card-btn, h3, p {
 }
 :root {
   --primary-gold: #b59d5c;
+  --secondary-gold: #d4af37;
   --hover-gold: #967e45;
   --bg-cream: #fffdf6;
   --text-dark: #1a1a1a;
@@ -311,8 +312,10 @@ body.dark-mode .programs-heading {
     var(--primary-gold),
     var(--secondary-gold)
   );
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
 
 .filter-bar {
   display: flex;
@@ -380,7 +383,7 @@ body.dark-mode .programs-heading {
 
 /* =========================
    DARK MODE FIX
-
+ =========================================*/
 body.dark-mode .filter-wrapper select {
   background: linear-gradient(145deg, #1f2937, #111827) !important;
   color: #f9fafb !important;
@@ -403,7 +406,7 @@ body.dark-mode .filter-wrapper select option {
 
 /* =========================================
    PREMIUM LABEL BADGES
-
+ =========================================*/
 .badge-group {
   display: flex;
   flex-wrap: wrap;

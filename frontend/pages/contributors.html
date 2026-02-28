@@ -23,6 +23,39 @@
 
 </head>
 
+<header>
+    <div class="navbar-container">
+        <h1>
+           <i class="fas fa-compass" aria-hidden="true" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
+OpenSource Compass
+
+        </h1>
+        <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
+             <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="${getPath('index.html')}">Home</a>
+            <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
+            <a href="${getPath('frontend/pages/programs.html')}">Programs</a>
+            <a href="${getPath('frontend/pages/Resources.html')}">Resources</a>
+            <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
+            <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
+            <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
+            <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
+           <button
+  id="themeToggle"
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+>
+  <i class="fas fa-moon" aria-hidden="true"></i>
+</button>
+
+        </div>
+    </div>
+</header>
+
+
 <body class="contributors-page">
   <div id="cursor-highlight" aria-hidden="true"></div>
   <div id="navbar"></div>
@@ -52,7 +85,7 @@
 </div>
 
 
-        <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
+<div class="contributors-status" id="contributors-status" aria-live="polite"></div>
 
 <!-- Top 3 Contributors Highlight Section -->
 <div class="top-contributors-section" id="top-contributors-section">
@@ -96,9 +129,10 @@
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
 <script src="/frontend/js/DMtheme.js"></script>
-  <button id="scrollTopBtn" title="Back to Top">
+<button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
+<!-- </body> -->
 
   <script>
     (function enforceCardLayout() {

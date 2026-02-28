@@ -171,6 +171,14 @@ body.dark-mode .contributors-section p {
   gap: 0.6rem;
 }
 
+.contributor-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a2433; /* dark navy */
+  margin: 0;
+}
+
 .contributor-meta {
   
   display: flex;
@@ -850,97 +858,6 @@ body.dark-mode .contributors-section p {
   overflow-wrap: anywhere;
 }
 
-.contributor-actions {
-  flex-shrink: 0;  
-  margin-left: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-/* ===== Contributors Controls (Search + Toggle) ===== */
-.contributors-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin: 30px auto 20px;
-  max-width: 900px;
-  flex-wrap: wrap;
-}
-
-/* Search Wrapper */
-.search-wrapper {
-  position: relative;
-  flex: 1;
-  min-width: 280px;
-}
-
-/* Search Icon */
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #9ca3af;
-  font-size: 15px;
-  pointer-events: none;
-}
-
-/* Search Input Styling */
-#contributor-search {
-  width: 100%;
-  padding: 14px 16px 14px 42px;
-  border-radius: 12px;
-  border: 1.5px solid #e5e7eb;
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
-  background: #ffffff;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-}
-
-/* Hover Effect */
-#contributor-search:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-/* Focus Effect (Important for UX) */
-#contributor-search:focus {
-  outline: none;
-  border-color: var(--primary-gold, #d4af37);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
-  background: #ffffff;
-}
-
-/* Bot Toggle Styling */
-.bot-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  color: #374151;
-  background: #ffffff;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.bot-toggle:hover {
-  border-color: #d1d5db;
-  background: #f9fafb;
-}
-
-.bot-toggle input {
-  accent-color: var(--primary-gold, #d4af37);
-  cursor: pointer;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 640px) {
-  .contributors-controls {
 /* Animation trigger */
 .contributor-card.is-visible {
     opacity: 1;
@@ -1051,6 +968,7 @@ body.dark-mode .contributors-section p {
 
 /* =========================================
    SKELETON LOADING ANIMATION
+ =========================================*/
 .contributor-skeleton {
     background: #fff;
     border: 1px solid #eee;
@@ -1094,6 +1012,7 @@ body.dark-mode .contributors-section p {
 
 /* =========================================
    DARK MODE OVERRIDES (The Fix)
+ =========================================*/
 body.dark-mode .contributor-card {
     background-color: #1e1e1e !important;
     border-color: #333 !important;
@@ -1143,7 +1062,7 @@ body.dark-mode .sk {
 
 /* =========================================
    CONTRIBUTORS STATS
-
+ =========================================*/
 .contributors-stats {
   display: flex;
   justify-content: center;
@@ -1203,7 +1122,7 @@ body.dark-mode .sk {
 
 /* =========================================
    TOP CONTRIBUTOR – ENHANCED
-
+ =========================================*/
 .stat-pill.stat-top {
   background: linear-gradient(180deg, #e6c453, #fdeeb5);
   border-color: #d4af37;
@@ -1225,7 +1144,7 @@ body.dark-mode .sk {
 
 /* =========================================
    CONTRIBUTORS CONTROLS
-
+ =========================================*/
 .contributors-controls {
   display: flex;
   justify-content: center;
@@ -1350,7 +1269,7 @@ body.dark-mode .sk {
 
 /* =========================================
    RESPONSIVE
-
+ =========================================*/
 @media (max-width: 768px) {
   .contributors-stats {
     gap: 0.75rem;
@@ -1595,7 +1514,7 @@ body.dark-mode .stat-label {
 
 /* =========================================
    DARK MODE
-
+ =========================================*/
 body.dark-mode .stat-pill {
   background: linear-gradient(180deg, #ffffff, #ffe9a9);
   border-color: #d5c63e;
@@ -1631,7 +1550,7 @@ body.dark-mode #contributor-search {
 
 /* =========================================
    ANIMATION
-
+ =========================================*/
 @keyframes statFadeUp {
   to {
     opacity: 1;
@@ -1641,7 +1560,7 @@ body.dark-mode #contributor-search {
 
 /* ==========================
    Enhance contributors UI 
-
+ =========================================*/
 .dark-mode {
   --contributors-bg: #0f172a;
   --contributors-card: #111827;

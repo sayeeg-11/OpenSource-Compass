@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <title>Feedback | OpenSource Compass</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -12,22 +11,9 @@
 
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feedback.css">
-  <link rel="stylesheet" href="../css/chatbot.css" />
 
 </head>
 
-  <!-- Feedback Form -->
-<!-- Feedback Form -->
-<section class="feedback-container">
-  <div class="feedback-card">
-    <form id="feedbackForm">
-
-
-      <label for="name">Name (optional)</label>
-      <input id="name" type="text" placeholder="Your name">
-      * {
-        box-sizing: border-box;
-      }
 <body>
 
   <div id="navbar"></div>
@@ -38,15 +24,6 @@
       <p>Your feedback helps improve OpenSource Compass for everyone. Let us know how we can make your journey better.</p>
     </section>
 
-  <!-- Feedback Form -->
-<!-- Feedback Form -->
-<section class="feedback-container">
-  <div class="feedback-card">
-    <form id="feedbackForm">
-
-
-      <label for="name">Name (optional)</label>
-      <input id="name" type="text" placeholder="Your name">
     <section class="feedback-container">
       <form id="feedbackForm">
 
@@ -66,19 +43,6 @@
           <option>General Feedback</option>
         </select>
 
-        </form>
-  </div>
-</section>
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translate(0px, 0px) scale(1);
-        }
-        50% {
-          transform: translate(30px, -18px) scale(1.05);
-        }
-      }
         <label for="message">Feedback Message *</label>
         <textarea
           id="message"
@@ -89,10 +53,6 @@
         <button type="submit">Submit Feedback <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
 
         <p id="successMessage"><i class="fas fa-check-circle"></i> Thank you! Your feedback has been submitted.</p>
-
-        </form>
-  </div>
-</section>
 
       </form>
     </section>
@@ -107,12 +67,6 @@
   <script src="../js/feedback.js"></script>
   <script src="../js/theme.js"></script>
   <script src="/frontend/js/DMtheme.js"></script>
-
-  <!-- OpenSource Guide Chatbot Mount -->
-<div id="opensource-chatbot"></div>
-
-<!-- OpenSource Guide Chatbot -->
-<script src="../js/chatbot.js"></script>
 
 </body>
 </html>

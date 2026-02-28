@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Tools | OpenSource Compass</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pr-generator.css">
     <style>
@@ -15,8 +17,9 @@
         html.devtools-page body {
             margin: 0 !important;
             padding: 0 !important;
-            min-height: 100vh !important; /* Changed to allow scrolling */
-            overflow-x: hidden !important; 
+            min-height: 100vh !important;
+            /* Changed to allow scrolling */
+            overflow-x: hidden !important;
             background: #0f172a !important;
         }
 
@@ -33,13 +36,16 @@
             width: 8px;
             height: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0f172a;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #334155;
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #d4af37;
         }
@@ -56,7 +62,8 @@
             z-index: 1000;
             flex-shrink: 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            position: sticky; /* Keeps nav at top while scrolling */
+            position: sticky;
+            /* Keeps nav at top while scrolling */
             top: 0;
         }
 
@@ -138,7 +145,8 @@
             display: flex;
             flex-direction: column;
             background: #0f172a;
-            min-height: calc(100vh - 64px); /* Ensures full screen minus header */
+            min-height: calc(100vh - 64px);
+            /* Ensures full screen minus header */
         }
 
         .tool-panel {
@@ -156,9 +164,9 @@
         /* Iframe styling for Playground - Fixed to screen height */
         #playground.active {
             padding: 0;
-            height: calc(100vh - 64px); 
+            height: calc(100vh - 64px);
         }
-        
+
         .playground-wrapper-iframe {
             width: 100%;
             height: 100%;
@@ -167,8 +175,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .active {
@@ -187,8 +202,14 @@
         }
 
         @media (max-width: 900px) {
-            .tools-nav { padding: 0 1rem; }
-            .devtools-hamburger { display: block; }
+            .tools-nav {
+                padding: 0 1rem;
+            }
+
+            .devtools-hamburger {
+                display: block;
+            }
+
             .header-tabs {
                 position: fixed;
                 top: 64px;
@@ -203,10 +224,12 @@
                 z-index: 999;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             }
+
             .header-tabs.menu-active {
                 display: flex;
                 animation: slideDown 0.3s ease-out;
             }
+
             .tab-btn {
                 width: 100%;
                 justify-content: flex-start;
@@ -214,18 +237,39 @@
                 font-size: 1rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
-            .tab-btn:hover, .tab-btn.active { background: rgba(212, 175, 55, 0.1); }
-            .back-text { display: none; }
-            .tools-back { padding-left: 0.5rem; padding-right: 0.5rem; border-left: none; }
+
+            .tab-btn:hover,
+            .tab-btn.active {
+                background: rgba(212, 175, 55, 0.1);
+            }
+
+            .back-text {
+                display: none;
+            }
+
+            .tools-back {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                border-left: none;
+            }
         }
 
         @media (max-width: 768px) {
-            .tool-panel { padding: 1rem; }
+            .tool-panel {
+                padding: 1rem;
+            }
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* =========================================
@@ -237,10 +281,12 @@
             font-family: 'Inter', sans-serif;
             border-top: 2px solid rgba(212, 175, 55, 0.2);
             padding: 4rem 2rem 1rem 2rem;
-            margin-top: auto; /* Pushes footer to the bottom */
+            margin-top: auto;
+            /* Pushes footer to the bottom */
             position: relative;
             z-index: 10;
         }
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -250,6 +296,7 @@
             padding-bottom: 3rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .footer-brand .footer-logo {
             display: flex;
             align-items: center;
@@ -260,8 +307,18 @@
             margin-bottom: 1rem;
             font-weight: 700;
         }
-        .footer-description { line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .footer-socials { display: flex; gap: 1rem; }
+
+        .footer-description {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
         .footer-socials a {
             display: flex;
             align-items: center;
@@ -275,12 +332,14 @@
             transition: all 0.3s ease;
             border: 1px solid transparent;
         }
+
         .footer-socials a:hover {
             background-color: rgba(212, 175, 55, 0.1);
             color: #d4af37;
             border-color: #d4af37;
             transform: translateY(-3px);
         }
+
         .footer-heading {
             font-family: 'Playfair Display', serif;
             color: #e2e8f0;
@@ -289,13 +348,40 @@
             position: relative;
             padding-bottom: 0.5rem;
         }
+
         .footer-heading::after {
-            content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background-color: #d4af37;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #d4af37;
         }
-        .footer-links ul { list-style: none; padding: 0; margin: 0; }
-        .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.95rem; transition: all 0.2s ease; display: inline-block; }
-        .footer-links a:hover { color: #d4af37; transform: translateX(5px); }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+            transform: translateX(5px);
+        }
+
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
@@ -305,16 +391,50 @@
             align-items: center;
             font-size: 0.85rem;
         }
-        .footer-bottom p { margin: 0; }
+
+        .footer-bottom p {
+            margin: 0;
+        }
 
         @media (max-width: 992px) {
-            .footer-container { grid-template-columns: 1fr 1fr; }
-            .footer-brand { grid-column: span 2; }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
         }
+
         @media (max-width: 576px) {
-            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-brand { grid-column: span 1; }
-            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Footer centering for DevTools */
+        .devtools-footer-wrapper {
+            width: 100%;
+            background: #0b111a;
+            border-top: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .devtools-footer-wrapper footer.site-footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: none;
+            background: transparent;
         }
     </style>
 </head>
@@ -366,6 +486,90 @@
                     <p>Provide details about your contribution to generate a professional description.</p>
                 </div>
 
+                <!-- Smart PR Structure Controls -->
+                <div class="pr-structure-controls">
+                    <button type="button" class="pr-structure-toggle" id="structureToggleBtn" aria-expanded="false">
+                        <div class="pr-structure-toggle-left">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>PR Structure Controls</span>
+                        </div>
+                        <div class="pr-structure-toggle-right">
+                            <span class="pr-structure-badge" id="structureBadge">5 / 5 active</span>
+                            <i class="fas fa-chevron-down pr-structure-chevron"></i>
+                        </div>
+                    </button>
+                    <div class="pr-structure-panel" id="structurePanel">
+                        <p class="pr-structure-hint">Choose which sections to include in your generated PR description.
+                        </p>
+                        <div class="pr-structure-options">
+                            <label class="pr-toggle-item" for="toggleSummary">
+                                <div class="pr-toggle-info">
+                                    <i class="fas fa-align-left"></i>
+                                    <div>
+                                        <span class="pr-toggle-label">Include Summary Section</span>
+                                        <span class="pr-toggle-desc">A concise overview of what this PR does</span>
+                                    </div>
+                                </div>
+                                <div class="pr-toggle-switch">
+                                    <input type="checkbox" id="toggleSummary" checked>
+                                    <span class="pr-toggle-slider"></span>
+                                </div>
+                            </label>
+                            <label class="pr-toggle-item" for="toggleChecklist">
+                                <div class="pr-toggle-info">
+                                    <i class="fas fa-tasks"></i>
+                                    <div>
+                                        <span class="pr-toggle-label">Include Checklist</span>
+                                        <span class="pr-toggle-desc">Pre-merge quality checklist for reviewers</span>
+                                    </div>
+                                </div>
+                                <div class="pr-toggle-switch">
+                                    <input type="checkbox" id="toggleChecklist" checked>
+                                    <span class="pr-toggle-slider"></span>
+                                </div>
+                            </label>
+                            <label class="pr-toggle-item" for="toggleBreaking">
+                                <div class="pr-toggle-info">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <div>
+                                        <span class="pr-toggle-label">Include Breaking Changes</span>
+                                        <span class="pr-toggle-desc">Highlight any breaking or disruptive changes</span>
+                                    </div>
+                                </div>
+                                <div class="pr-toggle-switch">
+                                    <input type="checkbox" id="toggleBreaking" checked>
+                                    <span class="pr-toggle-slider"></span>
+                                </div>
+                            </label>
+                            <label class="pr-toggle-item" for="toggleScreenshots">
+                                <div class="pr-toggle-info">
+                                    <i class="fas fa-camera"></i>
+                                    <div>
+                                        <span class="pr-toggle-label">Include Screenshots Section</span>
+                                        <span class="pr-toggle-desc">Placeholder for visual evidence of changes</span>
+                                    </div>
+                                </div>
+                                <div class="pr-toggle-switch">
+                                    <input type="checkbox" id="toggleScreenshots" checked>
+                                    <span class="pr-toggle-slider"></span>
+                                </div>
+                            </label>
+                            <label class="pr-toggle-item" for="toggleLinkedIssues">
+                                <div class="pr-toggle-info">
+                                    <i class="fas fa-link"></i>
+                                    <div>
+                                        <span class="pr-toggle-label">Include Linked Issues</span>
+                                        <span class="pr-toggle-desc">Reference related issues and pull requests</span>
+                                    </div>
+                                </div>
+                                <div class="pr-toggle-switch">
+                                    <input type="checkbox" id="toggleLinkedIssues" checked>
+                                    <span class="pr-toggle-slider"></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 <!-- AI Assist Controls -->
                 <div class="ai-assist-panel" id="aiAssistPanel">
                     <button class="ai-assist-toggle-btn" id="aiAssistToggleBtn" type="button">
@@ -391,7 +595,8 @@
                             </div>
                             <div class="ai-slider-wrap">
                                 <span class="ai-slider-label">Low</span>
-                                <input type="range" id="creativitySlider" class="ai-slider" min="0" max="100" value="50">
+                                <input type="range" id="creativitySlider" class="ai-slider" min="0" max="100"
+                                    value="50">
                                 <span class="ai-slider-label">High</span>
                             </div>
                             <p class="ai-control-desc">Controls how expressive or concise the generated text is.</p>
@@ -413,7 +618,8 @@
                                     <i class="fas fa-feather-alt"></i> Flexible
                                 </button>
                             </div>
-                            <p class="ai-control-desc">Best-practice outputs formal, guideline-driven text. Flexible is more relaxed and developer-friendly.</p>
+                            <p class="ai-control-desc">Best-practice outputs formal, guideline-driven text. Flexible is
+                                more relaxed and developer-friendly.</p>
                         </div>
 
                         <!-- Smart Toggles Row -->
@@ -447,7 +653,8 @@
                                     <i class="fas fa-magic"></i>
                                     <span>Rewrite Low-quality Input</span>
                                 </div>
-                                <p class="ai-smart-toggle-desc">Improves unclear or poorly written input automatically.</p>
+                                <p class="ai-smart-toggle-desc">Improves unclear or poorly written input automatically.
+                                </p>
                                 <label class="ai-switch">
                                     <input type="checkbox" id="rewriteInputToggle">
                                     <span class="ai-switch-slider"></span>
@@ -468,7 +675,8 @@
                     <div class="pr-form-group ai-field-group">
                         <div class="ai-field-header">
                             <label for="prProblem">Problem Statement</label>
-                            <button type="button" class="ai-field-assist-btn" data-target="prProblem" title="Improve this section with AI">
+                            <button type="button" class="ai-field-assist-btn" data-target="prProblem"
+                                title="Improve this section with AI">
                                 <i class="fas fa-wand-magic-sparkles"></i> Improve
                             </button>
                         </div>
@@ -478,7 +686,8 @@
                     <div class="pr-form-group ai-field-group">
                         <div class="ai-field-header">
                             <label for="prChanges">Changes Implemented</label>
-                            <button type="button" class="ai-field-assist-btn" data-target="prChanges" title="Improve this section with AI">
+                            <button type="button" class="ai-field-assist-btn" data-target="prChanges"
+                                title="Improve this section with AI">
                                 <i class="fas fa-wand-magic-sparkles"></i> Improve
                             </button>
                         </div>
@@ -488,7 +697,8 @@
                     <div class="pr-form-group ai-field-group">
                         <div class="ai-field-header">
                             <label for="prTesting">Testing Evidence</label>
-                            <button type="button" class="ai-field-assist-btn" data-target="prTesting" title="Improve this section with AI">
+                            <button type="button" class="ai-field-assist-btn" data-target="prTesting"
+                                title="Improve this section with AI">
                                 <i class="fas fa-wand-magic-sparkles"></i> Improve
                             </button>
                         </div>
@@ -498,7 +708,8 @@
                     <div class="pr-form-group ai-field-group">
                         <div class="ai-field-header">
                             <label for="prLimitations">Limitations / Notes</label>
-                            <button type="button" class="ai-field-assist-btn" data-target="prLimitations" title="Improve this section with AI">
+                            <button type="button" class="ai-field-assist-btn" data-target="prLimitations"
+                                title="Improve this section with AI">
                                 <i class="fas fa-wand-magic-sparkles"></i> Improve
                             </button>
                         </div>
@@ -513,12 +724,57 @@
 
                 <div id="prPreviewSection" class="pr-preview-section">
                     <div class="pr-preview-header">
-                        <h3>Markdown Preview</h3>
-                        <button id="prCopyBtn" class="pr-copy-btn">
-                            <i class="far fa-copy"></i> Copy to Clipboard
+                        <h3>Generated PR Description</h3>
+                        <div class="pr-preview-actions">
+                            <span class="pr-word-count" id="prWordCount">0 words · 0 chars</span>
+                            <button id="prCopyBtn" class="pr-copy-btn" title="Copy to Clipboard">
+                                <i class="far fa-copy"></i> Copy
+                            </button>
+                            <button id="prDownloadBtn" class="pr-copy-btn" title="Download as .md">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pr-editor-hint">
+                        <i class="fas fa-pen"></i> You can edit the text below before copying
+                    </div>
+
+                    <!-- Compact Formatting Strip -->
+                    <div class="pr-format-strip" id="prFormatStrip">
+                        <button type="button" class="pr-fmt-btn" data-action="bold" title="Bold (Ctrl+B)">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button type="button" class="pr-fmt-btn" data-action="italic" title="Italic (Ctrl+I)">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button type="button" class="pr-fmt-btn" data-action="strikethrough" title="Strikethrough">
+                            <i class="fas fa-strikethrough"></i>
+                        </button>
+                        <span class="pr-fmt-sep"></span>
+                        <button type="button" class="pr-fmt-btn" data-action="heading" title="Heading">
+                            <i class="fas fa-heading"></i>
+                        </button>
+                        <button type="button" class="pr-fmt-btn" data-action="code" title="Inline Code">
+                            <i class="fas fa-code"></i>
+                        </button>
+                        <button type="button" class="pr-fmt-btn" data-action="link" title="Link">
+                            <i class="fas fa-link"></i>
+                        </button>
+                        <span class="pr-fmt-sep"></span>
+                        <button type="button" class="pr-fmt-btn" data-action="ul" title="Bullet List">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button type="button" class="pr-fmt-btn" data-action="checklist" title="Task List">
+                            <i class="fas fa-tasks"></i>
+                        </button>
+                        <button type="button" class="pr-fmt-btn" data-action="quote" title="Blockquote">
+                            <i class="fas fa-quote-right"></i>
                         </button>
                     </div>
-                    <div id="prPreviewContent" class="pr-preview-content"></div>
+
+                    <textarea id="prEditorTextarea" class="pr-preview-content pr-editable-textarea" spellcheck="false"
+                        placeholder="Your generated PR description will appear here..."></textarea>
                 </div>
             </div>
         </div>
@@ -565,7 +821,8 @@
                 <form id="issueValidatorForm">
                     <div class="pr-form-group">
                         <label for="validatorRepo">Repository URL *</label>
-                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project" required>
+                        <input type="url" id="validatorRepo" placeholder="e.g., https://github.com/user/project"
+                            required>
                     </div>
 
                     <div class="pr-form-group">
@@ -575,7 +832,9 @@
 
                     <div class="pr-form-group">
                         <label for="validatorDescription">Issue Description *</label>
-                        <textarea id="validatorDescription" placeholder="Detailed description of the bug or feature request" required style="min-height: 150px;"></textarea>
+                        <textarea id="validatorDescription"
+                            placeholder="Detailed description of the bug or feature request" required
+                            style="min-height: 150px;"></textarea>
                     </div>
 
                     <button type="submit" id="validatorSubmitBtn" class="pr-submit-btn">
@@ -593,106 +852,112 @@
                         </button>
                     </div>
                     <div id="validatorResultContent" class="pr-preview-content"></div>
-                    <div class="ai-disclaimer" style="margin-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center;">
-                        <i class="fas fa-robot"></i> Generated by AI. Please verify with the actual issue description and codebase.
+                    <div class="ai-disclaimer"
+                        style="margin-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center;">
+                        <i class="fas fa-robot"></i> Generated by AI. Please verify with the actual issue description
+                        and codebase.
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="playground" class="tool-panel">
-            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe" title="Git Playground"></iframe>
+            <iframe src="./git-playground.html?embedded=true" class="playground-wrapper-iframe"
+                title="Git Playground"></iframe>
         </div>
     </main>
 
-    <footer class="site-footer" role="contentinfo" aria-label="Site footer">
-        <div class="footer-shell">
-          <div class="footer-top">
-            <div class="footer-brand">
-              <div class="footer-mark" aria-hidden="true">
-                <i class="fas fa-compass"></i>
-              </div>
-              <div>
-                <div class="footer-title">OpenSource Compass</div>
-                <div class="footer-tagline">
-                   OpenSource Compass is a beginner-friendly, 
-                   community-driven platform that guides students 
-                   and first-time contributors in open source. 
-                   It offers Git/GitHub basics, contribution best practices, 
-                   do’s and don’ts, and a hub for programs
-                   like SWOsC, GSSoC, GSoC, Hacktoberfest, etc
+    <div class="devtools-footer-wrapper">
+        <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+            <div class="footer-shell">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="footer-mark" aria-hidden="true">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div>
+                            <div class="footer-title">OpenSource Compass</div>
+                            <div class="footer-tagline">
+                                OpenSource Compass is a beginner-friendly,
+                                community-driven platform that guides students
+                                and first-time contributors in open source.
+                                It offers Git/GitHub basics, contribution best practices,
+                                do’s and don’ts, and a hub for programs
+                                like SWOsC, GSSoC, GSoC, Hacktoberfest, etc
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-columns" aria-label="Footer links">
+                        <nav class="footer-col" aria-label="Explore">
+                            <div class="footer-col-title">Explore</div>
+                            <ul class="footer-links">
+                                <li><a href="../../index.html">Home</a></li>
+                                <li><a href="guides.html">Guides</a></li>
+                                <li><a href="programs.html">Programs</a></li>
+                                <li><a href="Resources.html">Resources</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="footer-col" aria-label="Community">
+                            <div class="footer-col-title">Community</div>
+                            <ul class="footer-links">
+                                <li><a href="contributors.html">Contributors</a></li>
+                                <li><a href="Contribute.html">Contribute</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                            </ul>
+                        </nav>
+
+                        <nav class="footer-col" aria-label="Project">
+                            <div class="footer-col-title">Project</div>
+                            <ul class="footer-links">
+                                <li>
+                                    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank"
+                                        rel="noopener noreferrer">
+                                        GitHub
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CONTRIBUTING.md"
+                                        target="_blank" rel="noopener noreferrer">
+                                        Contributing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="code-of-conduct.html" target="_blank" rel="noopener noreferrer">
+                                        Code of Conduct
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-              </div>
+
+                <div class="footer-divider" aria-hidden="true"></div>
+
+                <div class="footer-bottom">
+                    <div class="footer-badges" aria-label="Footer highlights">
+                        <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
+                        <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
+                        <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
+                        <button id="pwa-install-btn" class="footer-pill"
+                            style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
+                            <i class="fas fa-download"></i> Install App
+                        </button>
+                    </div>
+
+                    <div class="footer-meta">
+                        <span>© <span id="footer-year"></span> OpenSource Compass</span>
+                        <span class="footer-sep" aria-hidden="true">•</span>
+                        <a class="footer-inline" href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Star on GitHub
+                        </a>
+                    </div>
+                </div>
             </div>
-      
-            <div class="footer-columns" aria-label="Footer links">
-              <nav class="footer-col" aria-label="Explore">
-                <div class="footer-col-title">Explore</div>
-                <ul class="footer-links">
-                  <li><a href="${getPath('index.html')}">Home</a></li>
-                  <li><a href="${getPath('frontend/pages/guides.html')}">Guides</a></li>
-                  <li><a href="${getPath('frontend/pages/programs.html')}">Programs</a></li>
-                  <li><a href="${getPath('frontend/pages/Resources.html')}">Resources</a></li>
-                </ul>
-              </nav>
-      
-              <nav class="footer-col" aria-label="Community">
-                <div class="footer-col-title">Community</div>
-                <ul class="footer-links">
-                  <li><a href="${getPath('frontend/pages/contributors.html')}">Contributors</a></li>
-                  <li><a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a></li>
-                  <li><a href="${getPath('frontend/pages/faq.html')}">FAQ</a></li>
-                </ul>
-              </nav>
-      
-              <nav class="footer-col" aria-label="Project">
-                <div class="footer-col-title">Project</div>
-                <ul class="footer-links">
-                  <li>
-                    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank" rel="noopener noreferrer">
-                      GitHub
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">
-                      Contributing
-                    </a>
-                  </li>
-                  <li>
-                    <a href="${getPath('frontend/pages/code-of-conduct.html')}" target="_blank" rel="noopener noreferrer">
-                      Code of Conduct
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-      
-          <div class="footer-divider" aria-hidden="true"></div>
-      
-          <div class="footer-bottom">
-            <div class="footer-badges" aria-label="Footer highlights">
-              <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
-              <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
-              <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
-              <button id="pwa-install-btn" class="footer-pill" style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
-                  <i class="fas fa-download"></i> Install App
-              </button>
-            </div>
-      
-            <div class="footer-meta">
-              <span>© <span id="footer-year"></span> OpenSource Compass</span>
-              <span class="footer-sep" aria-hidden="true">•</span>
-              <a class="footer-inline"
-                 href="https://github.com/sayeeg-11/OpenSource-Compass"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                <i class="fab fa-github"></i> Star on GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+        </footer>
+    </div>
 
     <script>
         const backLink = document.querySelector('.tools-back');
@@ -712,7 +977,7 @@
 
             // Update back link based on active tab
             updateBackLink();
-            
+
             // Scroll back to top when switching tabs
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -785,7 +1050,7 @@
 
         document.getElementById('toolsMenuBtn').addEventListener('click', toggleToolsMenu);
     </script>
-    
+
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="/frontend/js/theme.js"></script>
@@ -793,7 +1058,7 @@
     <button id="scrollTopBtn" title="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
-    
+
     <script src='../js/pwa.js'></script>
     <script src="../js/pr-generator.js"></script>
     <script src="../js/issue-insights.js"></script>
