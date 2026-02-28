@@ -174,6 +174,10 @@
             flex-wrap: wrap;
         }
 
+        .hero-actions a {
+            text-decoration: none;
+        }
+
         .btn {
             padding: 0.95rem 2.4rem;
             font-size: 1rem;
@@ -1005,6 +1009,7 @@
             border-radius: 999px;
             font-size: 0.85rem;
             font-weight: 600;
+            text-decoration: none;
             background: linear-gradient(135deg,
                     var(--primary-gold),
                     var(--secondary-gold));
@@ -1106,82 +1111,136 @@
             margin: 0 auto 5rem;
         }
 
-        /* Wrapper */
+        /* ===============================
+        ALTERNATING CENTER TIMELINE
+        =============================== */
+
         .timeline-wrapper {
             position: relative;
-            display: grid;
-            gap: 3.5rem;
-            padding-left: 2.5rem;
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem 0;
         }
 
-        /* Vertical spine */
+        /* Center vertical line */
         .timeline-wrapper::before {
             content: "";
             position: absolute;
-            left: 12px;
+            left: 50%;
             top: 0;
-            bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg,
-                    var(--primary-gold),
-                    transparent);
-            opacity: 0.7;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                var(--primary-gold),
+                transparent
+            );
+            transform: translateX(-50%);
         }
 
-        /* Item */
+        /* Timeline item */
         .timeline-item {
-            display: flex;
-            gap: 2.2rem;
-            align-items: flex-start;
+            position: relative;
+            width: 50%;
+            padding: 1.5rem 2.5rem;
+        }
+
+        /* Left side */
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        /* Right side */
+        .timeline-item:nth-child(even) {
+            left: 50%;
         }
 
         /* Dot */
         .timeline-dot {
-            width: 26px;
-            height: 26px;
+            position: absolute;
+            top: 28px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            background: linear-gradient(135deg,
-                    var(--primary-gold),
-                    var(--secondary-gold));
-            box-shadow: var(--shadow-main);
-            flex-shrink: 0;
-            animation: glow 3s infinite ease-in-out;
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            box-shadow: 0 0 0 4px rgba(212,175,55,0.2);
+            z-index: 2;
+        }
+
+        /* Position dot center */
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -11px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -11px;
         }
 
         /* Card */
         .timeline-card {
-            background: linear-gradient(145deg,
-                    rgba(255, 255, 255, 0.85),
-                    rgba(255, 255, 255, 0.55));
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.9),
+                rgba(255,255,255,0.6)
+            );
             backdrop-filter: blur(16px);
-            padding: 2rem 2.4rem;
+            padding: 2rem 2.2rem;
             border-radius: 22px;
             box-shadow: var(--shadow-main);
-            transition: transform 0.5s var(--bounce-curve),
-                box-shadow 0.5s ease;
+            transition: transform 0.4s ease,
+                        box-shadow 0.4s ease;
         }
 
-        body.dark-mode .timeline-card {
-            background: linear-gradient(145deg,
-                    rgba(20, 26, 43, 0.9),
-                    rgba(20, 26, 43, 0.65));
-        }
-
+        /* Hover elevation */
         .timeline-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
         }
 
-        /* Text */
+        /* Date badge */
         .timeline-date {
             display: inline-block;
             font-size: 0.75rem;
             margin-bottom: 0.6rem;
             padding: 0.35rem 0.75rem;
             border-radius: 999px;
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212,175,55,0.15);
             color: var(--secondary-gold);
-            letter-spacing: 0.06em;
+        }
+
+        /* Dark mode */
+        body.dark-mode .timeline-card {
+            background: linear-gradient(
+                145deg,
+                rgba(20,26,43,0.95),
+                rgba(20,26,43,0.7)
+            );
+        }
+
+        /* Responsive (stacked on mobile) */
+        @media (max-width: 768px) {
+
+            .timeline-wrapper::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 3.5rem;
+                padding-right: 1rem;
+                left: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
         }
 
         .timeline-card h3 {
@@ -2276,7 +2335,26 @@
                 }
             });
         });
-    </script>
+
+        /* Timeline Scroll Reveal */
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const timelineObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.2 });
+
+        timelineItems.forEach(item => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(60px)";
+            item.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            timelineObserver.observe(item);
+        });
+            </script>
 
 </body>
 
