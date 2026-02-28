@@ -768,6 +768,88 @@
   transform:translateY(-2px) scale(1.05);
   box-shadow:0 12px 30px rgba(181,157,92,0.5);
 }
+
+/* Modal Background */
+.program-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal Box */
+.modal-content {
+  background: #f8f5ef;
+  width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  border-radius: 18px;
+  border: 2px solid #b59d5c;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.modal-basic-info {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #b59d5c;
+}
+
+/* Accordion */
+.accordion-header {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #b59d5c;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px 15px;
+  background: white;
+  border-left: 3px solid #b59d5c;
+  margin-top: 5px;
+  border-radius: 6px;
+}
+
+.accordion-body ul {
+  padding-left: 18px;
+}
+
+.accordion-body li {
+  margin-bottom: 6px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
     </style>
     <link rel="stylesheet" href="frontend/css/recommendations.css" />
 
@@ -1244,21 +1326,37 @@
       <i class="fas fa-chevron-up"></i>
     </button>
      
- <!-- PROGRAM MODAL -->
-<div id="programModal" class="modal">
+  <!-- Program Details Modal -->
+<div id="programModal" class="program-modal">
   <div class="modal-content">
 
     <span class="close-btn" onclick="closeModal()">&times;</span>
 
-    <h2 id="modalTitle">Program Title</h2>
+    <h2 id="modalTitle"></h2>
 
-    <div id="modalBody" class="modal-body">
-      Program details here
+    <div class="modal-basic-info" id="modalBasicInfo"></div>
+
+    <!-- Accordion Sections -->
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-header">🛠 Skills Required</button>
+        <div class="accordion-body" id="modalSkills"></div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">🚀 How to Prepare</button>
+        <div class="accordion-body" id="modalPrepare"></div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">🎯 Selection Tips</button>
+        <div class="accordion-body" id="modalTips"></div>
+      </div>
     </div>
 
   </div>
 </div>
-
     <script src="frontend/js/components.js"></script>
     <script src="frontend/js/theme.js"></script>
     <script src="frontend/js/home.js"></script>
@@ -1330,6 +1428,68 @@ if(e.target === modal){
 modal.style.display="none";
 }
 }
+</script>
+<script>
+function openModal(program) {
+  const modal = document.getElementById("programModal");
+  const title = document.getElementById("modalTitle");
+  const basicInfo = document.getElementById("modalBasicInfo");
+  const skills = document.getElementById("modalSkills");
+  const prepare = document.getElementById("modalPrepare");
+  const tips = document.getElementById("modalTips");
+
+  const data = {
+    gsoc: {
+      title: "Google Summer of Code",
+      basic: `
+        📅 <b>Duration:</b> 12 Weeks <br>
+        🌍 <b>Eligibility:</b> Students worldwide <br>
+        💰 <b>Stipend:</b> Paid <br>
+        ⏳ <b>Timeline:</b> May–Aug
+      `,
+      skills: [
+        "Strong problem solving",
+        "Git & GitHub workflow",
+        "Open source contribution experience"
+      ],
+      prepare: [
+        "Start contributing early",
+        "Fix good first issues",
+        "Interact with mentors",
+        "Understand project roadmap"
+      ],
+      tips: [
+        "Write strong proposal",
+        "Be active in discussions",
+        "Submit quality PRs",
+        "Show consistency"
+      ]
+    }
+  };
+
+  const programData = data[program];
+
+  title.innerHTML = programData.title;
+  basicInfo.innerHTML = programData.basic;
+
+  skills.innerHTML = "<ul>" + programData.skills.map(item => `<li>${item}</li>`).join("") + "</ul>";
+  prepare.innerHTML = "<ul>" + programData.prepare.map(item => `<li>${item}</li>`).join("") + "</ul>";
+  tips.innerHTML = "<ul>" + programData.tips.map(item => `<li>${item}</li>`).join("") + "</ul>";
+
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("programModal").style.display = "none";
+}
+
+/* Accordion Toggle */
+document.addEventListener("click", function(e){
+  if(e.target.classList.contains("accordion-header")){
+    const body = e.target.nextElementSibling;
+    body.style.display = body.style.display === "block" ? "none" : "block";
+  }
+});
 </script>
   </body>
 </html>
