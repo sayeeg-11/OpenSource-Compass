@@ -562,203 +562,203 @@
             }
         }
 
-/* ===============================
-   NEW COMPACT COHORT DESIGN
-================================ */
+        /* ===============================
+        NEW COMPACT COHORT DESIGN
+        ================================ */
 
-.cohorts {
-    position: relative;
-    padding: 5rem 1.5rem; /* Reduced from 8rem */
-    background: linear-gradient(
-        180deg,
-        var(--light-parchment),
-        var(--warm-cream)
-    );
-}
+        .cohorts {
+            position: relative;
+            padding: 5rem 1.5rem; /* Reduced from 8rem */
+            background: linear-gradient(
+                180deg,
+                var(--light-parchment),
+                var(--warm-cream)
+            );
+        }
 
-.cohorts-container {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .cohorts-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.cohorts-intro{
-    max-width: 760px;
-    margin-bottom: 4.5rem;
-}
+        .cohorts-intro{
+            max-width: 760px;
+            margin-bottom: 4.5rem;
+        }
 
-.cohorts-intro .section-description{
-    text-align: left;
-}
+        .cohorts-intro .section-description{
+            text-align: left;
+        }
 
-/* GRID */
-.cohorts-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-    max-width: 1000px;   /* align with content width */
-    margin: 0 auto; 
-}
+        /* GRID */
+        .cohorts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px;   /* align with content width */
+            margin: 0 auto; 
+        }
 
-/* CARD */
-.cohort-card {
-    padding: 1.9rem;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
+        /* CARD */
+        .cohort-card {
+            padding: 1.9rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
 
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 
-    transition: 
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        background 0.35s ease;
-}
+            transition: 
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
 
-.cohort-card:hover {
-    transform: translateY(-8px);
+        .cohort-card:hover {
+            transform: translateY(-8px);
 
-    background: linear-gradient(
-        135deg,
-        rgba(212, 175, 55, 0.12),
-        rgba(212, 175, 55, 0.05)
-    );
+            background: linear-gradient(
+                135deg,
+                rgba(212, 175, 55, 0.12),
+                rgba(212, 175, 55, 0.05)
+            );
 
-    box-shadow:
-        0 20px 45px rgba(0, 0, 0, 0.22),
-        0 0 35px rgba(212, 175, 55, 0.25);
-}
+            box-shadow:
+                0 20px 45px rgba(0, 0, 0, 0.22),
+                0 0 35px rgba(212, 175, 55, 0.25);
+        }
 
-/* HEADER */
-.cohort-header {
-    margin-bottom: 1.4rem;
-}
+        /* HEADER */
+        .cohort-header {
+            margin-bottom: 1.4rem;
+        }
 
-.cohort-header h3 {
-    font-size: 1.5rem; /* Balanced */
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-}
+        .cohort-header h3 {
+            font-size: 1.5rem; /* Balanced */
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
 
-.cohort-tag {
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--secondary-gold);
-}
+        .cohort-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--secondary-gold);
+        }
 
-/* =========================
-   NEW VERTICAL TIMELINE
-========================= */
+        /* =========================
+        NEW VERTICAL TIMELINE
+        ========================= */
 
-.cohort-timeline {
-    position: relative;
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-}
+        .cohort-timeline {
+            position: relative;
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
 
-/* Vertical line */
-.cohort-timeline::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 4px;
-    bottom: 4px;
-    width: 2px;
-    background: rgba(212, 175, 55, 0.4);
-}
+        /* Vertical line */
+        .cohort-timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: rgba(212, 175, 55, 0.4);
+        }
 
-/* Timeline Item */
-.cohort-timeline li {
-    position: relative;
-    padding-left: 2rem;
-    margin-bottom: 1.3rem;
-}
+        /* Timeline Item */
+        .cohort-timeline li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.3rem;
+        }
 
-/* Dot */
-.cohort-timeline li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    background: var(--primary-gold);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
-}
+        /* Dot */
+        .cohort-timeline li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+        }
 
-/* Title */
-.cohort-timeline strong {
-    display: block;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-    color: var(--deep-navy);
-}
+        /* Title */
+        .cohort-timeline strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: var(--deep-navy);
+        }
 
-/* Date text */
-.cohort-timeline p {
-    margin: 0;
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-}
+        /* Date text */
+        .cohort-timeline p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
 
-/* Footer */
-.cohort-footer {
-    margin-top: 1rem;
-}
+        /* Footer */
+        .cohort-footer {
+            margin-top: 1rem;
+        }
 
-.cohort-footer p {
-    font-size: 0.9rem;
-    opacity: 0.85;
-}
+        .cohort-footer p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
 
-/* Highlight Card (Subtle Gold Accent) */
-.cohort-card.highlight {
-    border: 1px solid rgba(212, 175, 55, 0.35);
-}
+        /* Highlight Card (Subtle Gold Accent) */
+        .cohort-card.highlight {
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
 
-/* =========================
-   DARK MODE
-========================= */
+        /* =========================
+        DARK MODE
+        ========================= */
 
-body.dark-mode .cohorts {
-    background: linear-gradient(
-        180deg,
-        var(--deep-navy),
-        var(--warm-cream)
-    );
-}
+        body.dark-mode .cohorts {
+            background: linear-gradient(
+                180deg,
+                var(--deep-navy),
+                var(--warm-cream)
+            );
+        }
 
-body.dark-mode .cohort-card {
-    background: rgba(27, 34, 53, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
+        body.dark-mode .cohort-card {
+            background: rgba(27, 34, 53, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
 
-body.dark-mode .cohort-timeline::before {
-    background: rgba(212, 175, 55, 0.3);
-}
+        body.dark-mode .cohort-timeline::before {
+            background: rgba(212, 175, 55, 0.3);
+        }
 
-body.dark-mode .cohort-timeline strong {
-    color: var(--text-primary);
-}
+        body.dark-mode .cohort-timeline strong {
+            color: var(--text-primary);
+        }
 
-/* =========================
-   RESPONSIVE
-========================= */
+        /* =========================
+        RESPONSIVE
+        ========================= */
 
-@media (max-width: 768px) {
-    .cohorts {
-        padding: 4rem 1.2rem;
-    }
+        @media (max-width: 768px) {
+            .cohorts {
+                padding: 4rem 1.2rem;
+            }
 
-    .cohort-card {
-        padding: 1.5rem;
-    }
-}
+            .cohort-card {
+                padding: 1.5rem;
+            }
+        }
 
         .process {
             position: relative;
@@ -955,9 +955,27 @@ body.dark-mode .cohort-timeline strong {
             text-align: left;
         }
 
+        /* Smooth premium transition */
+        .prepare-card {
+            transition: 
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
+
+        /* Premium Golden Hover Effect */
         .prepare-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-10px) scale(1.02);
+
+            background: linear-gradient(
+                135deg,
+                rgba(212, 175, 55, 0.12),
+                rgba(212, 175, 55, 0.05)
+            );
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 0 35px rgba(212, 175, 55, 0.25);
         }
 
         .prepare-card h3 {
@@ -2081,7 +2099,7 @@ body.dark-mode .cohort-timeline strong {
                     </ul>
                 </div>
 
-                <div class="prepare-card highlight">
+                <div class="prepare-card">
                     <h3>📝 Final Application</h3>
                     <ul>
                         <li>Document your contributions</li>
