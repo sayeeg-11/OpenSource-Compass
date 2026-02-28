@@ -1,3 +1,13 @@
+:root{
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --primary-gold: #b59d5c;
+  --footer-bg: #ffffff;
+}
 /* =========================================
    CONTRIBUTORS PAGE STYLES
 ========================================= */
@@ -26,6 +36,10 @@
   text-align: center;
   width: 100%;
   display: block;
+}
+
+body.dark-mode{
+  --footer-bg: #1a1a1a;
 }
 
 body.dark-mode .contributors-section h1 {
@@ -1639,3 +1653,4 @@ body.dark-mode #contributor-search {
 .dark-mode hr {
   border-color: var(--contributors-border);
 }
+}}}

@@ -1,8 +1,14 @@
 :root {
-  --primary-gold: #d4af37;
+  --primary-gold: #b59d5c;
   --deep-navy: #0a192f;
-  --text-main: #333;
   --bg-cream: #fdfbf7;
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --footer-bg: #ffffff;
 }
 
 body.dark-mode {
@@ -13,6 +19,7 @@ body.dark-mode {
   --input-bg: #0f172a;
   --input-border: #334155;
   --text-secondary-dark: #94a3b8;
+  --footer-bg: #1a1a1a;
 }
 
 body {
@@ -218,4 +225,4 @@ body.dark-mode input {
 body.dark-mode textarea::placeholder,
 body.dark-mode input::placeholder {
   color: #94a3b8 !important;
-}
+}}

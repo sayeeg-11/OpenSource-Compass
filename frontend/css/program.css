@@ -12,12 +12,18 @@
   --accent-gold: #b59d5c;
   --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
   --border-style: 1px solid #e2d1a8;
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --primary-gold: #b59d5c;
+  --footer-bg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --card-bg: #1a1a1a;
-    --text-main: #f5f5f5;
     --accent-gold: #d4af37;
     /* In dark mode, shadows must be darker and glows more subtle */
     --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
