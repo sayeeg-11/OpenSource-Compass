@@ -819,6 +819,7 @@ body.dark-mode #scrollTopBtn:hover {
 body.dark-mode {
   background-color: #0f172a;
   color: #e5e7eb;
+  --footer-bg: #1a1a1a;
 }
 
 /* Section headings */

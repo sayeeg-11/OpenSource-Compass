@@ -38,6 +38,10 @@
   display: block;
 }
 
+body.dark-mode{
+  --footer-bg: #1a1a1a;
+}
+
 body.dark-mode .contributors-section h1 {
   color: #d2c917;
 }

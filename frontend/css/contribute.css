@@ -37,6 +37,7 @@ body.dark-mode {
   --code-border: #333333; /* Subtle border */
   --code-text: #e6e6e6;    /* Light readable text */
   --code-comment: #9ca3af; /* Muted gray for comments */
+  --footer-bg: #1a1a1a;
 }
 
 body {
