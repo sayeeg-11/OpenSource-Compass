@@ -1740,6 +1740,50 @@ body.dark-mode .badge:active,
     0 0 0 2px rgba(212, 175, 55, 0.55);
 }
 
+/* ===== Minimize Button Styling ===== */
+.chat-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.chat-controls button {
+    background: transparent;
+    border: none;
+    color: #d4af37;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Rectangular minimized bar */
+.chat-widget-btn.minimized-bar {
+    width: auto;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #1f2a44;
+    color: #d4af37;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* Normal circular chat button (unchanged) */
+.chat-widget-btn:not(.minimized-bar) {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+.chat-controls button:hover {
+    opacity: 0.8;
+}
+
 body.dark-mode .chat-widget-btn {
 
   color: #0b1220;
