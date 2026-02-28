@@ -743,7 +743,6 @@ body {
   transition: transform 0.6s var(--smooth-curve);
 }
 
-
 #why,
 .newsletter,
 .stats-section {
@@ -1125,6 +1124,14 @@ body {
   .compass-content h4 {
     font-size: 1.3rem;
   }
+}
+
+.newsletter {
+  padding: 80px 20px;
+  background-color: var(--border-color); /* Light cream background to match theme */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .newsletter-container {

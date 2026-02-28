@@ -30,17 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateCounter(element, target, suffix, duration = 2000) {
       const startTime = performance.now();
       const startValue = 0;
-      
+
       function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
+
         // Easing function for smooth animation
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
         const currentValue = Math.floor(easeOutQuart * target);
-        
+
         element.textContent = currentValue + suffix;
-        
+
         if (progress < 1) {
           requestAnimationFrame(updateCounter);
         } else {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
           element.textContent = target + suffix;
         }
       }
-      
+
       requestAnimationFrame(updateCounter);
     }
 
@@ -59,25 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
           if (entry.isIntersecting) {
             const statItem = entry.target;
             const numberElement = statItem.querySelector('h2');
-            
+
             if (numberElement && !numberElement.hasAttribute('data-animated')) {
               const target = parseFloat(numberElement.getAttribute('data-target') || '0');
               const suffix = numberElement.getAttribute('data-suffix') || '';
-              
+
               // Mark as animated to prevent re-running
               numberElement.setAttribute('data-animated', 'true');
-              
+
               // Start animation with small delay
               setTimeout(() => {
                 animateCounter(numberElement, target, suffix);
               }, 200);
-              
+
               observer.unobserve(statItem);
             }
           }
         });
       },
-      { 
+      {
         threshold: 0.3,
         rootMargin: '0px 0px -100px 0px'
       }
@@ -281,57 +281,118 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(journey);
 });
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const counters = document.querySelectorAll(".counter");
-        const statsSection = document.querySelector(".stats");
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter");
+  const statsSection = document.querySelector(".stats");
 
-        let hasAnimated = false;
+  let hasAnimated = false;
 
-        const animateCounter = (counter) => {
-          const target = +counter.getAttribute("data-target");
-          const suffix = counter.getAttribute("data-suffix") || "";
-          const duration = 1200; // animation duration
-          const startTime = performance.now();
+  const animateCounter = (counter) => {
+    const target = +counter.getAttribute("data-target");
+    const suffix = counter.getAttribute("data-suffix") || "";
+    const duration = 1200; // animation duration
+    const startTime = performance.now();
 
-          const updateCounter = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const value = Math.floor(progress * target);
+    const updateCounter = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.floor(progress * target);
 
-            // Format large numbers
-            let displayValue = value;
-            if (target >= 1000) {
-              displayValue = Math.floor(value / 1000);
-            }
+      // Format large numbers
+      let displayValue = value;
+      if (target >= 1000) {
+        displayValue = Math.floor(value / 1000);
+      }
 
-            counter.innerText = displayValue + suffix;
+      counter.innerText = displayValue + suffix;
 
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            } else {
-              // Final accurate value
-              if (target >= 1000) {
-                counter.innerText = Math.floor(target / 1000) + suffix;
-              } else {
-                counter.innerText = target + suffix;
-              }
-            }
-          };
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        // Final accurate value
+        if (target >= 1000) {
+          counter.innerText = Math.floor(target / 1000) + suffix;
+        } else {
+          counter.innerText = target + suffix;
+        }
+      }
+    };
 
-          requestAnimationFrame(updateCounter);
-        };
+    requestAnimationFrame(updateCounter);
+  };
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && !hasAnimated) {
-              counters.forEach(counter => animateCounter(counter));
-              hasAnimated = true;
-              observer.disconnect();
-            }
-          });
-        }, {
-          threshold: 0.4
-        });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        counters.forEach(counter => animateCounter(counter));
+        hasAnimated = true;
+        observer.disconnect();
+      }
+    });
+  }, {
+    threshold: 0.4
+  });
 
-        observer.observe(statsSection);
-      });
+  observer.observe(statsSection);
+});
+
+function openModal(program) {
+  const modal = document.getElementById("programModal");
+  const title = document.getElementById("modalTitle");
+  const basicInfo = document.getElementById("modalBasicInfo");
+  const skills = document.getElementById("modalSkills");
+  const prepare = document.getElementById("modalPrepare");
+  const tips = document.getElementById("modalTips");
+
+  const data = {
+    gsoc: {
+      title: "Google Summer of Code",
+      basic: `
+        📅 <b>Duration:</b> 12 Weeks <br>
+        🌍 <b>Eligibility:</b> Students worldwide <br>
+        💰 <b>Stipend:</b> Paid <br>
+        ⏳ <b>Timeline:</b> May–Aug
+      `,
+      skills: [
+        "Strong problem solving",
+        "Git & GitHub workflow",
+        "Open source contribution experience"
+      ],
+      prepare: [
+        "Start contributing early",
+        "Fix good first issues",
+        "Interact with mentors",
+        "Understand project roadmap"
+      ],
+      tips: [
+        "Write strong proposal",
+        "Be active in discussions",
+        "Submit quality PRs",
+        "Show consistency"
+      ]
+    }
+  };
+
+  const programData = data[program];
+
+  title.innerHTML = programData.title;
+  basicInfo.innerHTML = programData.basic;
+
+  skills.innerHTML = "<ul>" + programData.skills.map(item => `<li>${item}</li>`).join("") + "</ul>";
+  prepare.innerHTML = "<ul>" + programData.prepare.map(item => `<li>${item}</li>`).join("") + "</ul>";
+  tips.innerHTML = "<ul>" + programData.tips.map(item => `<li>${item}</li>`).join("") + "</ul>";
+
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("programModal").style.display = "none";
+}
+
+/* Accordion Toggle */
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("accordion-header")) {
+    const body = e.target.nextElementSibling;
+    body.style.display = body.style.display === "block" ? "none" : "block";
+  }
+});
