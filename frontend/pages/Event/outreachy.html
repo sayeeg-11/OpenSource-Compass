@@ -346,15 +346,41 @@
             min-height: 340px; /* equal height */
         }
 
+        /* Title wrapper */
+        .eligibility-card h3 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        /* Golden underline */
+        .eligibility-card h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 90px; /* final width */
+            background: linear-gradient(
+                to right,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+
+            transform: scaleX(0.4);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .eligibility-card:hover h3::after {
+            transform: scaleX(1);
+        }
+       
         /* Title alignment consistency */
         .eligibility-card h3 {
             font-size: 1.2rem;
             margin-bottom: 1.2rem;
             text-align: left;
-        }
-
-        .eligibility-card h3::after {
-            margin: 0.6rem 0 0 0; /* remove auto centering */
         }
 
         /* Content alignment */
