@@ -34,6 +34,40 @@
 
       <div class="contributors-stats" id="contributors-stats"></div>
 
+  <div class="contributors-controls">
+  <div class="search-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input
+      id="contributor-search"
+      type="search"
+      placeholder="Search contributors..."
+      aria-label="Search contributors"
+    />
+  </div>
+
+  <label class="bot-toggle">
+    <input type="checkbox" id="toggle-bots" checked />
+    <span>Show bots</span>
+  </label>
+</div>
+
+
+        <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
+
+<!-- Top 3 Contributors Highlight Section -->
+<div class="top-contributors-section" id="top-contributors-section">
+  <h4 class="top-title">
+    <i class="fas fa-crown"></i> Top Contributors
+  </h4>
+  <div class="top-contributors-grid" id="top-contributors-grid"></div>
+</div>
+
+<!-- All Contributors Grid -->
+<div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
+
+      </section>
+      
+    </main>
       <div class="contributors-controls">
         <input
           id="contributor-search"

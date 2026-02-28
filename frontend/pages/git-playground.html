@@ -13,7 +13,7 @@
         rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/git-playground.css?v=1.0.3">
+    <link rel="stylesheet" href="../css/git-playground.css?v=1.1.0">
     <link rel="stylesheet" href="../css/git-badges.css?v=1.0.0">
     <link rel='manifest' href='../../manifest.json' />
 </head>
@@ -41,6 +41,9 @@
                                 <i class="fas fa-trophy"></i>
                                 <span class="badge-count-pill" id="nav-badge-count">0</span>
                             </a>
+                            <button class="replay-toggle-btn" id="replay-toggle-btn" title="Replay Mode">
+                                <i class="fas fa-film"></i>
+                            </button>
                             <i class="fas fa-cog" id="settings-btn" title="Settings"></i>
                             <i class="far fa-question-circle" id="help-btn" title="Help"></i>
                         </div>
@@ -58,7 +61,53 @@
                         </div>
                     </div>
 
-                    <div class="terminal-input-area">
+                    <!-- Replay Controls Bar (hidden by default) -->
+                    <div class="replay-controls" id="replay-controls" style="display: none;">
+                        <div class="replay-controls-inner">
+                            <div class="replay-label">
+                                <i class="fas fa-circle replay-rec-dot"></i>
+                                <span>REPLAY MODE</span>
+                            </div>
+                            <div class="replay-nav-btns">
+                                <button class="replay-btn" id="replay-restart-btn" title="Restart">
+                                    <i class="fas fa-undo-alt"></i>
+                                    <span>Restart</span>
+                                </button>
+                                <button class="replay-btn" id="replay-prev-btn" title="Previous Step">
+                                    <i class="fas fa-step-backward"></i>
+                                    <span>Previous</span>
+                                </button>
+                                <div class="replay-step-indicator" id="replay-step-indicator">
+                                    <span class="replay-step-current" id="replay-step-current">0</span>
+                                    <span class="replay-step-sep">/</span>
+                                    <span class="replay-step-total" id="replay-step-total">0</span>
+                                </div>
+                                <button class="replay-btn" id="replay-next-btn" title="Next Step">
+                                    <span>Next</span>
+                                    <i class="fas fa-step-forward"></i>
+                                </button>
+                            </div>
+                            <button class="replay-btn replay-exit-btn" id="replay-exit-btn" title="Exit Replay">
+                                <i class="fas fa-times"></i>
+                                <span>Exit</span>
+                            </button>
+                        </div>
+                        <div class="replay-progress-track">
+                            <div class="replay-progress-fill" id="replay-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Replay History Timeline (hidden by default) -->
+                    <div class="replay-history-panel" id="replay-history-panel" style="display: none;">
+                        <div class="replay-history-header">
+                            <h4><i class="fas fa-history"></i> Command Timeline</h4>
+                        </div>
+                        <div class="replay-history-list" id="replay-history-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="terminal-input-area" id="terminal-input-area">
                         <div class="input-group">
                             <span class="prompt-pill user">user@compass</span>
                             <span class="prompt-pill dir">~/projects</span>
@@ -66,6 +115,12 @@
                             <input type="text" id="command-input" placeholder="Enter a command..." autocomplete="off">
                             <button id="send-btn" title="Run Command"><i class="fas fa-paper-plane"></i></button>
                         </div>
+                    </div>
+
+                    <!-- Read-only overlay for replay mode -->
+                    <div class="replay-readonly-overlay" id="replay-readonly-overlay" style="display: none;">
+                        <i class="fas fa-lock"></i>
+                        <span>Read-only during Replay Mode</span>
                     </div>
                 </div>
             </section>
@@ -416,7 +471,7 @@
 
     <script src="../js/git-scenarios.js?v=1.0.3"></script>
     <script src="../js/git-badges.js?v=1.0.0"></script>
-    <script src="../js/git-playground.js?v=1.0.4"></script>
+    <script src="../js/git-playground.js?v=1.1.0"></script>
 
     <script src='../js/pwa.js'></script>
 </body>

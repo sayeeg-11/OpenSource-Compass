@@ -17,6 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cheat Sheet UI
     const cheatSearch = document.getElementById('cheat-search');
 
+    // Replay Mode UI
+    const replayToggleBtn = document.getElementById('replay-toggle-btn');
+    const replayControls = document.getElementById('replay-controls');
+    const replayPrevBtn = document.getElementById('replay-prev-btn');
+    const replayNextBtn = document.getElementById('replay-next-btn');
+    const replayRestartBtn = document.getElementById('replay-restart-btn');
+    const replayExitBtn = document.getElementById('replay-exit-btn');
+    const replayStepCurrent = document.getElementById('replay-step-current');
+    const replayStepTotal = document.getElementById('replay-step-total');
+    const replayProgressFill = document.getElementById('replay-progress-fill');
+    const replayHistoryPanel = document.getElementById('replay-history-panel');
+    const replayHistoryList = document.getElementById('replay-history-list');
+    const replayReadonlyOverlay = document.getElementById('replay-readonly-overlay');
+    const terminalInputArea = document.getElementById('terminal-input-area');
+
     // --- State ---
     const state = {
         history: [],
@@ -30,6 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         activeScenario: null, // { id, ... }
         completedScenarios: []
+    };
+
+    // --- Replay Mode State ---
+    const replayState = {
+        isActive: false,
+        snapshots: [],       // Array of { cmd, terminalHTML, state: {...}, timestamp }
+        currentIndex: -1,    // Current replay position (-1 = before any command)
+        savedTerminalHTML: '',  // Terminal HTML before entering replay
+        savedState: null        // Full state backup before entering replay
     };
 
     // Load available scenarios from global or safe fallback
@@ -377,6 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleCommand() {
+        if (replayState.isActive) return; // Block commands during replay
+
         const cmd = commandInput.value;
         if (!cmd.trim()) return;
 
@@ -384,6 +410,233 @@ document.addEventListener('DOMContentLoaded', () => {
         addCommandToHistory(cmd);
         simulateGitCommand(cmd);
         commandInput.value = '';
+
+        // Record snapshot for replay AFTER command processes
+        setTimeout(() => {
+            recordReplaySnapshot(cmd);
+        }, state.commandDelay + 50);
+    }
+
+    // =========================================================
+    //  REPLAY MODE SYSTEM
+    // =========================================================
+
+    /**
+     * Deep clone the current state for snapshot storage
+     */
+    function cloneState() {
+        return {
+            currentDir: state.currentDir,
+            currentBranch: state.currentBranch,
+            branches: [...state.branches],
+            staged: [...state.staged],
+            commits: state.commits.map(c => ({ ...c })),
+            history: [...state.history]
+        };
+    }
+
+    /**
+     * Record a snapshot after each command execution
+     */
+    function recordReplaySnapshot(cmd) {
+        replayState.snapshots.push({
+            cmd: cmd,
+            terminalHTML: terminalOutput.innerHTML,
+            state: cloneState(),
+            timestamp: Date.now()
+        });
+    }
+
+    /**
+     * Enter Replay Mode
+     */
+    function enterReplayMode() {
+        if (replayState.snapshots.length === 0) {
+            // No commands recorded yet — show empty state message
+            const currentHTML = terminalOutput.innerHTML;
+            terminalOutput.innerHTML = `
+                <div class="replay-empty-state">
+                    <i class="fas fa-film"></i>
+                    <p><strong>No commands recorded yet</strong></p>
+                    <p>Execute some Git commands first, then enter Replay Mode to review your session step-by-step.</p>
+                    <p class="hint">Try: <code>git init</code>, <code>git add .</code>, <code>git commit -m "first"</code></p>
+                </div>
+            `;
+            setTimeout(() => {
+                terminalOutput.innerHTML = currentHTML;
+            }, 3000);
+            return;
+        }
+
+        replayState.isActive = true;
+        replayState.savedTerminalHTML = terminalOutput.innerHTML;
+        replayState.savedState = cloneState();
+        replayState.currentIndex = replayState.snapshots.length - 1; // Start at latest
+
+        // UI Updates
+        replayToggleBtn.classList.add('active');
+        replayControls.style.display = 'block';
+        replayHistoryPanel.style.display = 'flex';
+        replayReadonlyOverlay.style.display = 'flex';
+        terminalInputArea.style.display = 'none';
+        terminalWindow.classList.add('replay-active');
+
+        // Disable command input
+        commandInput.disabled = true;
+        sendBtn.disabled = true;
+
+        renderReplayTimeline();
+        goToReplayStep(replayState.currentIndex);
+    }
+
+    /**
+     * Exit Replay Mode — restore original state
+     */
+    function exitReplayMode() {
+        replayState.isActive = false;
+
+        // Restore terminal
+        terminalOutput.innerHTML = replayState.savedTerminalHTML;
+
+        // Restore state
+        if (replayState.savedState) {
+            state.currentDir = replayState.savedState.currentDir;
+            state.currentBranch = replayState.savedState.currentBranch;
+            state.branches = [...replayState.savedState.branches];
+            state.staged = [...replayState.savedState.staged];
+            state.commits = replayState.savedState.commits.map(c => ({ ...c }));
+            state.history = [...replayState.savedState.history];
+        }
+
+        // UI Updates
+        replayToggleBtn.classList.remove('active');
+        replayControls.style.display = 'none';
+        replayHistoryPanel.style.display = 'none';
+        replayReadonlyOverlay.style.display = 'none';
+        terminalInputArea.style.display = 'block';
+        terminalWindow.classList.remove('replay-active');
+
+        // Re-enable command input
+        commandInput.disabled = false;
+        sendBtn.disabled = false;
+        commandInput.focus();
+    }
+
+    /**
+     * Navigate to a specific replay step
+     */
+    function goToReplayStep(index) {
+        const total = replayState.snapshots.length;
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+
+        replayState.currentIndex = index;
+        const snapshot = replayState.snapshots[index];
+
+        // Update terminal output
+        terminalOutput.innerHTML = snapshot.terminalHTML;
+
+        // Add state info box below the replayed output
+        const stateBox = document.createElement('div');
+        stateBox.className = 'replay-state-box';
+        const snap = snapshot.state;
+        stateBox.innerHTML = `
+            <div class="state-label"><i class="fas fa-database"></i> Repository State at Step ${index + 1}</div>
+            <div class="replay-state-row">
+                <span class="label">Branch:</span>
+                <span class="value">${snap.currentBranch}</span>
+            </div>
+            <div class="replay-state-row">
+                <span class="label">Branches:</span>
+                <span class="value">${snap.branches.join(', ')}</span>
+            </div>
+            <div class="replay-state-row">
+                <span class="label">Staged:</span>
+                <span class="value">${snap.staged.length > 0 ? snap.staged.join(', ') : 'none'}</span>
+            </div>
+            <div class="replay-state-row">
+                <span class="label">Commits:</span>
+                <span class="value">${snap.commits.length} (latest: ${snap.commits[0]?.msg || 'none'})</span>
+            </div>
+            <div class="replay-state-row">
+                <span class="label">Directory:</span>
+                <span class="value">${snap.currentDir}</span>
+            </div>
+        `;
+        terminalOutput.appendChild(stateBox);
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+        // Update controls
+        updateReplayControls();
+        renderReplayTimeline();
+    }
+
+    /**
+     * Update the control buttons and indicators
+     */
+    function updateReplayControls() {
+        const total = replayState.snapshots.length;
+        const idx = replayState.currentIndex;
+
+        replayStepCurrent.textContent = idx + 1;
+        replayStepTotal.textContent = total;
+
+        // Progress bar
+        const pct = total > 1 ? ((idx) / (total - 1)) * 100 : 100;
+        replayProgressFill.style.width = `${pct}%`;
+
+        // Enable/disable buttons
+        replayPrevBtn.disabled = idx <= 0;
+        replayNextBtn.disabled = idx >= total - 1;
+        replayRestartBtn.disabled = idx <= 0;
+    }
+
+    /**
+     * Render the timeline sidebar with all recorded steps
+     */
+    function renderReplayTimeline() {
+        replayHistoryList.innerHTML = '';
+        const currentIdx = replayState.currentIndex;
+
+        replayState.snapshots.forEach((snap, i) => {
+            const item = document.createElement('div');
+            item.className = 'replay-step-item';
+
+            // Assign visual states
+            if (i < currentIdx) item.classList.add('completed');
+            else if (i === currentIdx) item.classList.add('active');
+            else item.classList.add('future');
+
+            item.innerHTML = `
+                <div class="replay-step-dot"></div>
+                <div class="replay-step-info">
+                    <div class="replay-step-num">Step ${i + 1}</div>
+                    <div class="replay-step-cmd">${escapeHtml(snap.cmd)}</div>
+                </div>
+            `;
+
+            // Click to jump to step
+            item.addEventListener('click', () => {
+                goToReplayStep(i);
+            });
+
+            replayHistoryList.appendChild(item);
+        });
+
+        // Scroll active step into view
+        const activeItem = replayHistoryList.querySelector('.replay-step-item.active');
+        if (activeItem) {
+            activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+
+    /**
+     * Simple HTML escaper for safe display
+     */
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
     // --- Scenarios Management ---
@@ -431,6 +684,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadScenario(id) {
+        if (replayState.isActive) exitReplayMode();
+
+        // Clear replay snapshots for new scenario session
+        replayState.snapshots = [];
+        replayState.currentIndex = -1;
+
         const scenario = allScenarios.find(s => s.id === id);
         if (!scenario) return;
 
@@ -487,11 +746,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Terminal Interactions
     commandInput.addEventListener('keydown', (e) => {
+        if (replayState.isActive) { e.preventDefault(); return; }
         if (e.key === 'Enter') handleCommand();
     });
 
-    sendBtn.addEventListener('click', handleCommand);
-    terminalOutput.addEventListener('click', () => commandInput.focus());
+    sendBtn.addEventListener('click', () => {
+        if (replayState.isActive) return;
+        handleCommand();
+    });
+    terminalOutput.addEventListener('click', () => {
+        if (!replayState.isActive) commandInput.focus();
+    });
+
+    // --- Replay Mode Event Listeners ---
+    if (replayToggleBtn) {
+        replayToggleBtn.addEventListener('click', () => {
+            if (replayState.isActive) {
+                exitReplayMode();
+            } else {
+                enterReplayMode();
+            }
+        });
+    }
+
+    if (replayPrevBtn) {
+        replayPrevBtn.addEventListener('click', () => {
+            if (replayState.currentIndex > 0) {
+                goToReplayStep(replayState.currentIndex - 1);
+            }
+        });
+    }
+
+    if (replayNextBtn) {
+        replayNextBtn.addEventListener('click', () => {
+            if (replayState.currentIndex < replayState.snapshots.length - 1) {
+                goToReplayStep(replayState.currentIndex + 1);
+            }
+        });
+    }
+
+    if (replayRestartBtn) {
+        replayRestartBtn.addEventListener('click', () => {
+            goToReplayStep(0);
+        });
+    }
+
+    if (replayExitBtn) {
+        replayExitBtn.addEventListener('click', () => {
+            exitReplayMode();
+        });
+    }
+
+    // Keyboard shortcuts for replay navigation
+    document.addEventListener('keydown', (e) => {
+        if (!replayState.isActive) return;
+
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (replayState.currentIndex > 0) goToReplayStep(replayState.currentIndex - 1);
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (replayState.currentIndex < replayState.snapshots.length - 1) goToReplayStep(replayState.currentIndex + 1);
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            goToReplayStep(0);
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            goToReplayStep(replayState.snapshots.length - 1);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            exitReplayMode();
+        }
+    });
 
     // Toggle View
     function switchView(view) {
@@ -603,6 +929,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (clearHistoryBtn) {
         clearHistoryBtn.addEventListener('click', () => {
+            // Exit replay mode if active
+            if (replayState.isActive) exitReplayMode();
+
+            // Clear replay snapshots
+            replayState.snapshots = [];
+            replayState.currentIndex = -1;
+
             state.history = [];
             state.currentDir = '~/projects';
             state.currentBranch = 'main';

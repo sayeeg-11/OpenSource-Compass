@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Google Season of Docs - OpenSource Compass</title>
+<link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+content="Complete guide to Google Season of Docs - Learn about eligibility, benefits, timeline, and how to apply.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/navigation.css">
+
+<style>
+
+/* ===============================
+   GOOGLE SEASON OF DOCS – ENHANCED
+================================= */
+
+/* HERO */
+
+.gsod-hero {
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(135deg,#f6efe2,#efe3c8,#e9dcc0);
+}
+
+body.dark-mode .gsod-hero {
+    background: linear-gradient(135deg,#0b1220,#111827,#0f172a);
+}
+
+.gsod-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--deep-navy);
+}
+
+body.dark-mode .gsod-title {
+    color: #ffffff;
+}
+
+.gsod-title span {
+    color: var(--primary-gold);
+}
+
+.gsod-tagline {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    max-width: 720px;
+    margin-inline: auto;
+    color: #555;
+}
+
+body.dark-mode .gsod-tagline {
+    color: #d1d5db;
+}
+
+/* BUTTON */
+
+.gsod-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 32px;
+    border-radius: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    background: linear-gradient(45deg,var(--primary-gold),var(--secondary-gold));
+    color: var(--deep-navy);
+    box-shadow: 0 10px 25px rgba(181,157,92,0.35);
+    transition: 0.3s ease;
+}
+
+.gsod-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(181,157,92,0.55);
+}
+
+/* SECTIONS */
+
+.gsod-section {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+body:not(.dark-mode) .gsod-section:nth-of-type(odd) {
+    background: #ffffff;
+}
+
+body:not(.dark-mode) .gsod-section:nth-of-type(even) {
+    background: #f7f1e4;
+}
+
+body.dark-mode .gsod-section:nth-of-type(odd) {
+    background: #111827;
+}
+
+body.dark-mode .gsod-section:nth-of-type(even) {
+    background: #0f172a;
+}
+
+/* CARDS */
+/* IMPROVED CARD LAYOUT */
+
+.gsod-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.gsod-card {
+    width: 300px;
+    padding: 30px 28px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(181,157,92,0.35);
+    transition: all 0.35s ease;
+    box-shadow: 
+        0 10px 25px rgba(0,0,0,0.08),
+        0 2px 6px rgba(0,0,0,0.04);
+}
+
+.gsod-card h3 {
+    font-size: 1.15rem;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: var(--deep-navy);
+    position: relative;
+}
+
+/* GOLD UNDERLINE */
+
+.gsod-card h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-gold);
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+.gsod-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+    margin-top: 12px;
+}
+
+.gsod-card i {
+    font-size: 1.9rem;
+    color: var(--primary-gold);
+    transition: 0.3s ease;
+}
+
+/* HOVER */
+
+.gsod-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-gold);
+    box-shadow:
+        0 25px 45px rgba(181,157,92,0.35);
+}
+
+.gsod-card:hover i {
+    transform: rotate(-10deg) scale(1.15);
+}
+
+/* DARK MODE */
+
+body.dark-mode .gsod-card {
+    background: #1e293b;
+    border: 1px solid rgba(181,157,92,0.55);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+}
+
+body.dark-mode .gsod-card h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .gsod-card p {
+    color: #d1d5db;
+}
+
+/* TIMELINE */
+
+.timeline-horizontal {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.timeline-horizontal::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: var(--primary-gold);
+}
+
+.timeline-card {
+    width: 220px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid rgba(181,157,92,0.3);
+    transition: 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+.timeline-card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.timeline-card p {
+    font-size: 0.82rem;
+    color: #555;
+}
+
+.timeline-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(181,157,92,0.35);
+}
+
+body.dark-mode .timeline-card {
+    background: #1f2937;
+    border: 1px solid rgba(181,157,92,0.5);
+}
+
+body.dark-mode .timeline-card h4 {
+    color: #ffffff;
+}
+
+body.dark-mode .timeline-card p {
+    color: #d1d5db;
+}
+
+/* CTA */
+
+.gsod-cta {
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(135deg,#f6efe2,#efe3c8);
+}
+
+body.dark-mode .gsod-cta {
+    background: linear-gradient(135deg,#0b1220,#111827);
+}
+
+.gsod-cta h2 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.gsod-cta p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+body.dark-mode .gsod-cta h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .gsod-cta p {
+    color: #d1d5db;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="navbar-container">
+<h1><i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>OpenSource Compass</h1>
+<div class="nav-links">
+<a href="../../../index.html">Home</a>
+<a href="../guides.html">Guides</a>
+<a href="../programs.html">Programs</a>
+<a href="../Resources.html">Resources</a>
+<a href="../contributors.html">Contributors</a>
+<a href="../faq.html">FAQ</a>
+<a href="../Contribute.html">Contribute</a>
+<button id="themeToggle" style="background:none;border:none;color:var(--primary-gold);cursor:pointer;">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+</div>
+</header>
+
+<section class="gsod-hero">
+<h1 class="gsod-title">Google Season of <span>Docs</span></h1>
+<p class="gsod-tagline">
+An initiative by Google connecting professional technical writers with open source communities to improve documentation quality.
+</p>
+<a href="https://developers.google.com/season-of-docs" target="_blank" class="gsod-btn">
+Visit Official Website →
+</a>
+</section>
+
+<section class="gsod-section">
+    <h2>Program Overview</h2>
+
+    <div class="gsod-grid">
+
+        <div class="gsod-card">
+            <i class="fas fa-book"></i>
+            <h3>Documentation Focus</h3>
+            <p>
+                Google Season of Docs helps open source organizations improve
+                technical documentation, onboarding guides, API references,
+                and overall developer experience.
+            </p>
+        </div>
+
+        <div class="gsod-card">
+            <i class="fas fa-users"></i>
+            <h3>Writer Collaboration</h3>
+            <p>
+                Professional technical writers collaborate directly with
+                open source maintainers to identify documentation gaps,
+                structure content, and improve clarity.
+            </p>
+        </div>
+
+        <div class="gsod-card">
+            <i class="fas fa-coins"></i>
+            <h3>Funded Grants</h3>
+            <p>
+                Participating organizations receive financial grants from Google
+                to support documentation projects and compensate technical writers.
+            </p>
+        </div>
+
+        <div class="gsod-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Project Growth</h3>
+            <p>
+                Well-documented projects attract more contributors,
+                improve usability, and increase long-term sustainability
+                within the open source ecosystem.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="gsod-section">
+<h2>Who Can Apply?</h2>
+<div class="gsod-grid">
+<div class="gsod-card"><i class="fas fa-user-edit"></i><h3>Technical Writers</h3><p>Experienced writers with documentation expertise.</p></div>
+<div class="gsod-card"><i class="fas fa-code-branch"></i><h3>Open Source Orgs</h3><p>Projects aiming to improve documentation quality.</p></div>
+</div>
+</section>
+
+<section class="gsod-section">
+<h2>Program Timeline</h2>
+<div class="timeline-horizontal">
+<div class="timeline-card"><div class="timeline-dot"></div><h4>Org Applications</h4><p>Projects apply.</p></div>
+<div class="timeline-card"><div class="timeline-dot"></div><h4>Selection</h4><p>Google selects orgs.</p></div>
+<div class="timeline-card"><div class="timeline-dot"></div><h4>Documentation</h4><p>Writers improve docs.</p></div>
+<div class="timeline-card"><div class="timeline-dot"></div><h4>Final Review</h4><p>Submit final reports.</p></div>
+</div>
+</section>
+
+<section class="gsod-cta">
+<h2>Ready to Improve Open Source Documentation?</h2>
+<p>Join Google Season of Docs and make a lasting impact.</p>
+<a href="https://developers.google.com/season-of-docs" target="_blank" class="gsod-btn">
+Apply / Learn More →
+</a>
+</section>
+
+<div id="footer"></div>
+
+<script src="../../js/components.js"></script>
+<script src="../../js/theme.js"></script>
+
+</body>
+</html>

@@ -62,11 +62,6 @@
             filter: blur(70px);
         }
 
-
-        body.dark-mode .hero-stats>div {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
         .hero-container {
             max-width: 1200px;
             margin: auto;
@@ -148,20 +143,101 @@
         }
 
         /* ---------------- STATS ---------------- */
-
         .hero-stats {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
+        /* Individual stat card */
+        .hero-stats > div {
+            position: relative;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            min-width: 120px;
+            text-align: left;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s var(--bounce-curve);
+            overflow: hidden;
+        }
+
+        /* GOLD ACCENT BAR */
+        .hero-stats > div::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(
+                90deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            transform: scaleX(0.4);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        /* NUMBER STYLE */
         .hero-stats h3 {
-            color: var(--primary-gold);
-            font-size: 1.6rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.9rem;
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.4rem;
         }
 
+        /* LABEL STYLE */
         .hero-stats span {
             font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
             color: var(--text-secondary);
+        }
+
+        /* Hover Animation */
+        .hero-stats > div:hover {
+            transform: translateY(-6px);
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(212, 175, 55, 0.25);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-stats > div:hover::before {
+            transform: scaleX(1);
+        }
+
+        body.dark-mode .hero-stats > div {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(228, 199, 106, 0.25);
+        }
+
+        body.dark-mode .hero-stats > div:hover {
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.6),
+                0 0 25px rgba(228, 199, 106, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-stats > div {
+                min-width: 110px;
+            }
         }
 
         /* ---------------- VISUAL ---------------- */
@@ -327,11 +403,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
         .about-card h3 {
             color: var(--primary-gold);
             margin-bottom: 0.6rem;
@@ -440,11 +511,6 @@
 
         .track-card:hover::before {
             opacity: 1;
-        }
-
-        .track-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-hover);
         }
 
         /* ---------- ICON ---------- */
@@ -573,11 +639,6 @@
             opacity: 1;
         }
 
-        .eligibility-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
         /* ---------- ICON ---------- */
 
         .eligibility-icon {
@@ -700,11 +761,6 @@
             opacity: 1;
         }
 
-        .mentorship-step:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-hover);
-        }
-
         /* ---------- ICON ---------- */
 
         .step-icon {
@@ -825,12 +881,6 @@
         .outcome-card:hover::before {
             opacity: 1;
         }
-
-        .outcome-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-hover);
-        }
-
         /* ---------- ICON ---------- */
 
         .outcome-icon {
@@ -936,11 +986,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .apply-step:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-hover);
-        }
-
         /* ---------- STEP NUMBER ---------- */
 
         .step-number {
@@ -1007,6 +1052,162 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* =========================================
+        ADVANCED GLOBAL CARD HOVER SYSTEM
+        ========================================= */
+
+        .about-card,
+        .track-card,
+        .eligibility-card,
+        .mentorship-step,
+        .outcome-card,
+        .apply-step {
+            position: relative;
+            border-radius: 22px;
+            border: 1px solid transparent;
+            transform-style: preserve-3d;
+            transition:
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.45s ease,
+                border-color 0.45s ease,
+                background 0.45s ease;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* ---------------- SHIMMER LAYER ---------------- */
+
+        .about-card::before,
+        .track-card::before,
+        .eligibility-card::before,
+        .mentorship-step::before,
+        .outcome-card::before,
+        .apply-step::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(
+                120deg,
+                transparent 30%,
+                rgba(255,255,255,0.4),
+                transparent 70%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.8s ease;
+            pointer-events: none;
+        }
+
+        /* ---------------- RADIAL GLOW ---------------- */
+
+        .about-card::after,
+        .track-card::after,
+        .eligibility-card::after,
+        .mentorship-step::after,
+        .outcome-card::after,
+        .apply-step::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                circle at var(--x, 50%) var(--y, 50%),
+                rgba(212,175,55,0.25),
+                transparent 60%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        /* ---------------- HOVER EFFECT ---------------- */
+
+        .about-card:hover,
+        .track-card:hover,
+        .eligibility-card:hover,
+        .mentorship-step:hover,
+        .outcome-card:hover,
+        .apply-step:hover {
+            transform: translateY(-12px) rotateX(3deg) rotateY(-3deg);
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.18),
+                0 10px 25px rgba(212,175,55,0.2);
+            border-color: rgba(212,175,55,0.4);
+        }
+
+        /* shimmer movement */
+        .about-card:hover::before,
+        .track-card:hover::before,
+        .eligibility-card:hover::before,
+        .mentorship-step:hover::before,
+        .outcome-card:hover::before,
+        .apply-step:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* glow activate */
+        .about-card:hover::after,
+        .track-card:hover::after,
+        .eligibility-card:hover::after,
+        .mentorship-step:hover::after,
+        .outcome-card:hover::after,
+        .apply-step:hover::after {
+            opacity: 1;
+        }
+
+        /* ---------------- ICON LIFT ---------------- */
+
+        .track-card:hover .track-icon,
+        .eligibility-card:hover .eligibility-icon,
+        .mentorship-step:hover .step-icon,
+        .outcome-card:hover .outcome-icon {
+            transform: translateY(-6px) scale(1.1);
+            transition: transform 0.4s var(--bounce-curve);
+        }
+
+        /* ---------------- DARK MODE BOOST ---------------- */
+
+        body.dark-mode .about-card:hover,
+        body.dark-mode .track-card:hover,
+        body.dark-mode .eligibility-card:hover,
+        body.dark-mode .mentorship-step:hover,
+        body.dark-mode .outcome-card:hover,
+        body.dark-mode .apply-step:hover {
+            box-shadow:
+                0 25px 55px rgba(0,0,0,0.5),
+                0 0 30px rgba(228,199,106,0.35);
+            border-color: rgba(228,199,106,0.6);
+        }
+
+        /* ---------------- ACCESSIBILITY ---------------- */
+
+        @media (prefers-reduced-motion: reduce) {
+            .about-card,
+            .track-card,
+            .eligibility-card,
+            .mentorship-step,
+            .outcome-card,
+            .apply-step {
+                transition: none !important;
+                transform: none !important;
+            }
+
+            .about-card::before,
+            .track-card::before,
+            .eligibility-card::before,
+            .mentorship-step::before,
+            .outcome-card::before,
+            .apply-step::before,
+            .about-card::after,
+            .track-card::after,
+            .eligibility-card::after,
+            .mentorship-step::after,
+            .outcome-card::after,
+            .apply-step::after {
+                display: none !important;
+            }
+        }
     </style>
 
 
@@ -1057,15 +1258,15 @@
 
                 <div class="hero-stats">
                     <div>
-                        <h3>150+</h3>
+                        <h3 class="stat-number" data-target="150">0</h3>
                         <span>Mentors</span>
                     </div>
                     <div>
-                        <h3>300+</h3>
+                        <h3 class="stat-number" data-target="300">0</h3>
                         <span>Projects</span>
                     </div>
                     <div>
-                        <h3>10K+</h3>
+                        <h3 class="stat-number" data-target="10000" data-suffix="+">0</h3>
                         <span>Contributors</span>
                     </div>
                 </div>
@@ -1516,7 +1717,7 @@
         }, observerOptions);
 
         // Observe elements with enhanced animations
-        document.querySelectorAll('.track-card, .process-step, .benefit-card').forEach((el, index) => {
+        document.querySelectorAll('.about-card, .track-card, .eligibility-card, .mentorship-step, .outcome-card, .apply-step').forEach((el, index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px) scale(0.95)';
             el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -1532,6 +1733,90 @@
             }
         });
     </script>
+
+    <script>
+        /* =========================================
+        CURSOR FOLLOW RADIAL GLOW
+        ========================================= */
+
+        const cards = document.querySelectorAll(
+        '.about-card, .track-card, .eligibility-card, .mentorship-step, .outcome-card, .apply-step'
+        );
+
+        cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--x', `${x}%`);
+            card.style.setProperty('--y', `${y}%`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--x', `50%`);
+            card.style.setProperty('--y', `50%`);
+        });
+        });
+    </script>
+
+    <script>
+    /* =========================================
+    HERO STATS COUNT-UP ANIMATION
+    ========================================= */
+
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    const prefersReducedMotion =
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function formatNumber(num) {
+    if (num >= 1000) {
+        return (num / 1000).toFixed(num >= 10000 ? 0 : 1) + 'K+';
+    }
+    return num + '+';
+    }
+
+    function animateCount(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(progress * target);
+
+        el.textContent = formatNumber(value);
+
+        if (progress < 1) {
+        requestAnimationFrame(update);
+        } else {
+        el.textContent = formatNumber(target);
+        }
+    }
+
+    requestAnimationFrame(update);
+    }
+
+    /* Intersection Observer to trigger once */
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        if (!prefersReducedMotion) {
+            animateCount(entry.target);
+        } else {
+            entry.target.textContent =
+            formatNumber(parseInt(entry.target.getAttribute('data-target')));
+        }
+        observer.unobserve(entry.target);
+        }
+    });
+    }, { threshold: 0.6 });
+
+    statNumbers.forEach(stat => {
+    statsObserver.observe(stat);
+    });
+    </script>
+    
 </body>
 
 </html>

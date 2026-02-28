@@ -700,20 +700,21 @@
             padding: 2rem;
             text-align: center;
             box-shadow: var(--shadow-main);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: default;
-            position: relative;
-            animation: fadeInUp 1s var(--bounce-curve) forwards;
-            opacity: 0;
+            border: 1px solid transparent;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(212, 175, 55, 0.35);
         }
 
         body.dark-mode .step-card {
             background: var(--charcoal-dark);
-        }
-
-        .step-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
         }
 
         /* Step Icon */
@@ -906,20 +907,21 @@
             padding: 2rem;
             text-align: center;
             box-shadow: var(--shadow-main);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: default;
-            position: relative;
-            animation: fadeInUp 1s var(--bounce-curve) forwards;
-            opacity: 0;
+            border: 1px solid transparent;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(212, 175, 55, 0.35);
         }
 
         body.dark-mode .feature-card {
             background: var(--charcoal-dark);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
         }
 
         /* Feature Icon */
@@ -1176,11 +1178,6 @@
             z-index: -1;
         }
 
-        .feature-icon {
-            display: inline-block;
-            animation: iconFloat 6s ease-in-out infinite;
-        }
-
         .feature-card:hover .feature-icon {
             animation-play-state: paused;
         }
@@ -1264,20 +1261,21 @@
             padding: 2rem;
             text-align: center;
             box-shadow: var(--shadow-main);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            cursor: default;
-            animation: fadeInUp 1s var(--bounce-curve) forwards;
-            opacity: 0;
+            border: 1px solid transparent;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .track-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(212, 175, 55, 0.35);
         }
 
         body.dark-mode .track-card {
             background: var(--charcoal-dark);
-        }
-
-        .track-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
         }
 
         /* Track Icon */
@@ -1458,20 +1456,21 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-main);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            cursor: pointer;
-            animation: fadeInUp 1s var(--bounce-curve) forwards;
-            opacity: 0;
+            border: 1px solid transparent;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(212, 175, 55, 0.35);
         }
 
         body.dark-mode .project-card {
             background: var(--charcoal-dark);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
         }
 
         /* Project Image */
@@ -1676,12 +1675,10 @@
 
         /* Timeline Cards */
         .timeline-card {
-            position: relative;
             width: 45%;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem;
             background: var(--warm-cream);
             border-radius: 20px;
-            margin-bottom: 3rem;
             box-shadow: var(--shadow-main);
             transition: transform 0.3s, box-shadow 0.3s, background 0.5s;
             opacity: 0;
@@ -2028,9 +2025,246 @@
                 grid-template-columns: 1fr;
             }
 
+        /* ---------- Pro Tips Section ---------- */
+.pro-tips-section {
+    padding: 80px 8%;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+    text-align: center;
+    position: relative;
+}
+
+.pro-tips-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--secondary-blue), transparent);
+}
+
+.pro-tips-section h2 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--primary-blue);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.pro-tips-subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.pro-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.pro-tip-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pro-tip-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary-blue);
+    box-shadow: 0 20px 45px rgba(31, 60, 136, 0.2);
+}
+
+.tip-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 18px;
+}
+
+.pro-tip-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.pro-tip-card p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .pro-tips-section {
+        padding: 60px 5%;
+    }
+}
+
+        /* Focus styles for accessibility */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--secondary-blue);
+            outline-offset: 2px;
             .protip-card {
                 padding-top: 3.4rem;
             }
+        }
+
+        body.dark-mode .step-card:hover,
+        body.dark-mode .feature-card:hover,
+        body.dark-mode .track-card:hover,
+        body.dark-mode .project-card:hover,
+        body.dark-mode .timeline-card:hover {
+            border-color: rgba(228, 199, 106, 0.5);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .step-card,
+            .feature-card,
+            .track-card,
+            .project-card,
+            .timeline-card {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* =====================================
+        GLOBAL PREMIUM CARD HOVER SYSTEM
+        ===================================== */
+
+        .step-card,
+        .feature-card,
+        .track-card,
+        .project-card,
+        .timeline-card,
+        .eligibility-card,
+        .protip-card {
+            position: relative;
+            border: 1px solid transparent;
+            transition:
+                transform 0.35s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+            transform-style: preserve-3d;
+        }
+
+        /* Glow border effect */
+        .step-card::before,
+        .feature-card::before,
+        .track-card::before,
+        .project-card::before,
+        .timeline-card::before,
+        .eligibility-card::before,
+        .protip-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid rgba(212, 175, 55, 0);
+            transition: border-color 0.35s ease;
+            pointer-events: none;
+        }
+
+        /* Hover */
+        .step-card:hover,
+        .feature-card:hover,
+        .track-card:hover,
+        .project-card:hover,
+        .timeline-card:hover,
+        .eligibility-card:hover,
+        .protip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step-card:hover::before,
+        .feature-card:hover::before,
+        .track-card:hover::before,
+        .project-card:hover::before,
+        .timeline-card:hover::before,
+        .eligibility-card:hover::before,
+        .protip-card:hover::before {
+            border-color: rgba(212, 175, 55, 0.45);
+        }
+
+        /* Dark mode glow */
+        body.dark-mode .step-card:hover::before,
+        body.dark-mode .feature-card:hover::before,
+        body.dark-mode .track-card:hover::before,
+        body.dark-mode .project-card:hover::before,
+        body.dark-mode .timeline-card:hover::before,
+        body.dark-mode .eligibility-card:hover::before,
+        body.dark-mode .protip-card:hover::before {
+            border-color: rgba(228, 199, 106, 0.6);
+        }
+
+        /* =====================================
+        GLOBAL ICON ANIMATION
+        ===================================== */
+
+        .step-icon,
+        .feature-icon,
+        .track-icon,
+        .timeline-icon,
+        .protip-index {
+            transition:
+                transform 0.4s var(--bounce-curve),
+                box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        /* Icon glow ring */
+        .step-icon::after,
+        .feature-icon::after,
+        .track-icon::after,
+        .timeline-icon::after,
+        .protip-index::after {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Hover animation */
+        .step-card:hover .step-icon,
+        .feature-card:hover .feature-icon,
+        .track-card:hover .track-icon,
+        .timeline-card:hover .timeline-icon,
+        .protip-card:hover .protip-index {
+            transform: rotate(-8deg) scale(1.15);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .step-card:hover .step-icon::after,
+        .feature-card:hover .feature-icon::after,
+        .track-card:hover .track-icon::after,
+        .timeline-card:hover .timeline-icon::after,
+        .protip-card:hover .protip-index::after {
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+
+        body.dark-mode .step-card:hover .step-icon::after,
+        body.dark-mode .feature-card:hover .feature-icon::after,
+        body.dark-mode .track-card:hover .track-icon::after,
+        body.dark-mode .timeline-card:hover .timeline-icon::after,
+        body.dark-mode .protip-card:hover .protip-index::after {
+            border-color: rgba(228, 199, 106, 0.7);
         }
     </style>
     <link rel='manifest' href='../../../manifest.json' />
@@ -2476,40 +2710,43 @@
         </div>
     </section>
 
+    <!-- Pro Tips Section -->
+    <section class="pro-tips-section">
+        <h2>Pro Tips for GSSOC Contributors</h2>
+        <p class="pro-tips-subtitle">
+            Actionable guidance to help beginners confidently start and succeed in GSSOC.
+        </p>
 
+        <div class="pro-tips-grid">
+            <div class="pro-tip-card">
+                <div class="tip-icon"><i class="fas fa-search"></i></div>
+                <h3>Choose Beginner-Friendly Issues</h3>
+                <p>Look for labels like <strong>good first issue</strong> or <strong>beginner</strong> to start with manageable tasks and build confidence.</p>
+            </div>
 
+            <div class="pro-tip-card">
+                <div class="tip-icon"><i class="fas fa-comments"></i></div>
+                <h3>Communicate with Mentors</h3>
+                <p>Ask questions early, clarify doubts, and stay active in project discussions to avoid confusion and delays.</p>
+            </div>
+
+            <div class="pro-tip-card">
+                <div class="tip-icon"><i class="fas fa-code-branch"></i></div>
+                <h3>Write Quality PR Descriptions</h3>
+                <p>Clearly explain what you changed, why you changed it, and link the issue to improve review speed.</p>
+            </div>
+
+            <div class="pro-tip-card">
+                <div class="tip-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Stay Consistent</h3>
+                <p>Regular small contributions are better than one large PR. Consistency improves rankings and learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
     <script src="../../js/theme.js"></script>
-
-
-      <div class="protip-card">
-        <div class="protip-index">05</div>
-        <h3>Document Your Work</h3>
-        <p>
-          Maintain proper documentation and comments so your contributions
-          remain valuable and reusable.
-        </p>
-      </div>
-
-      <div class="protip-card">
-        <div class="protip-index">06</div>
-        <h3>Engage With the Community</h3>
-        <p>
-          Participate in discussions, help others, and build meaningful
-          connections within the SSOC community.
-        </p>
-      </div>
-
-    </div>
-
-    <div id="footer"></div>
     <script src="../../js/DMtheme.js"></script>
-
-
-
-  </div>
-</section>
-
-    <div id="footer"></div>
     <script src="../../js/components.js"></script>
     <script>
         // Smooth scroll for anchor links

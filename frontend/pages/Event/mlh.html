@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MLH Fellowship - OpenSource Compass</title>
+    <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Complete guide to MLH Fellowship - Tracks, eligibility, timeline, benefits and application details.">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navigation.css">
+
+<style>
+
+/* ===============================
+   MLH FELLOWSHIP – PREMIUM DESIGN
+================================= */
+
+.mlh-hero {
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        rgba(181,157,92,0.15),
+        rgba(255,248,230,0.8)
+    );
+    position: relative;
+}
+
+body.dark-mode .mlh-hero {
+    background: linear-gradient(
+        135deg,
+        #0b0b0b,
+        #111111
+    );
+}
+
+.mlh-hero-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.mlh-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 25px;
+    background: var(--primary-gold);
+    color: var(--deep-navy);
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(181,157,92,0.4);
+}
+
+.mlh-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.mlh-title span {
+    color: var(--primary-gold);
+}
+
+.mlh-tagline {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.mlh-btn {
+    padding: 14px 30px;
+    background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+    color: var(--deep-navy);
+    border-radius: 40px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 30px rgba(181,157,92,0.3);
+}
+
+.mlh-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(181,157,92,0.6);
+}
+
+/* SECTION LAYOUT */
+
+.mlh-section {
+    padding: 110px 20px;
+    text-align: center;
+}
+
+.mlh-grid {
+    display: grid;
+    gap: 30px;
+    margin-top: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* ================================
+   ADVANCED MLH CARD DESIGN
+================================ */
+
+.mlh-card {
+    position: relative;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.9),
+        rgba(255,255,255,0.7)
+    );
+    padding: 35px 30px;
+    border-radius: 22px;
+    border: 1px solid rgba(181,157,92,0.15);
+    transition: all 0.4s cubic-bezier(.25,.8,.25,1);
+    overflow: hidden;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.06),
+        0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* GOLD BORDER GLOW */
+.mlh-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    padding: 1.5px;
+    background: linear-gradient(
+        135deg,
+        var(--primary-gold),
+        transparent 60%
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* HOVER EFFECT */
+.mlh-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.12),
+        0 0 25px rgba(181,157,92,0.25);
+}
+
+.mlh-card:hover::before {
+    opacity: 1;
+}
+
+/* ICON STYLING */
+.mlh-card i {
+    font-size: 2.4rem;
+    color: var(--primary-gold);
+    margin-bottom: 18px;
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/* ICON TILT ANIMATION */
+.mlh-card:hover i {
+    transform: rotate(-12deg) scale(1.2);
+    color: var(--secondary-gold);
+}
+
+/* TITLE */
+.mlh-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+/* DARK MODE ENHANCEMENT */
+body.dark-mode .mlh-card {
+    background: linear-gradient(
+        145deg,
+        rgba(28,28,28,0.95),
+        rgba(18,18,18,0.95)
+    );
+    border: 1px solid rgba(181,157,92,0.3);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .mlh-card:hover {
+    box-shadow:
+        0 35px 70px rgba(0,0,0,0.8),
+        0 0 35px rgba(181,157,92,0.4);
+}
+
+body.dark-mode .mlh-card i {
+    color: var(--primary-gold);
+}
+
+/* TEXT IMPROVEMENT IN DARK */
+body.dark-mode .mlh-card h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .mlh-card p {
+    color: #cfcfcf;
+}
+
+.mlh-card i {
+    font-size: 2.2rem;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+}
+
+.mlh-card h3 {
+    margin-bottom: 10px;
+}
+
+/* CTA */
+
+.mlh-cta {
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        rgba(181,157,92,0.15),
+        rgba(255,255,255,0.9)
+    );
+}
+
+body.dark-mode .mlh-cta {
+    background: linear-gradient(
+        135deg,
+        #000000,
+        #0d0d0d
+    );
+}
+
+.mlh-cta .mlh-btn {
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .mlh-title {
+        font-size: 2.2rem;
+    }
+
+    .mlh-section {
+        padding: 70px 20px;
+    }
+}
+
+/* ===================================
+   ALTERNATING SECTION BACKGROUNDS
+=================================== */
+
+/* Default section */
+.mlh-section {
+    padding: 110px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* LIGHT MODE Alternating */
+body:not(.dark-mode) .mlh-section:nth-of-type(even) {
+    background: linear-gradient(
+        135deg,
+        rgba(181,157,92,0.08),
+        rgba(255,248,230,0.6)
+    );
+}
+
+body:not(.dark-mode) .mlh-section:nth-of-type(odd) {
+    background: #ffffff;
+}
+
+/* DARK MODE Alternating */
+body.dark-mode .mlh-section:nth-of-type(even) {
+    background: linear-gradient(
+        135deg,
+        #0f0f0f,
+        #141414
+    );
+}
+
+body.dark-mode .mlh-section:nth-of-type(odd) {
+    background: #1a1a1a;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar-container">
+        <h1>
+            <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
+            OpenSource Compass
+        </h1>
+        <div class="nav-links">
+            <a href="../../../index.html">Home</a>
+            <a href="../guides.html">Guides</a>
+            <a href="../programs.html">Programs</a>
+            <a href="../Resources.html">Resources</a>
+            <a href="../contributors.html">Contributors</a>
+            <a href="../faq.html">FAQ</a>
+            <a href="../Contribute.html">Contribute</a>
+            <button id="themeToggle" style="background:none;border:none;color:var(--primary-gold);cursor:pointer;">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="mlh-hero">
+    <div class="mlh-hero-content">
+        <span class="mlh-badge">
+            <i class="fas fa-laptop-code"></i> Global Remote Fellowship
+        </span>
+        <h1 class="mlh-title">MLH Fellowship <span>(Major League Hacking)</span></h1>
+        <p class="mlh-tagline">
+            A 12-week fully remote, paid fellowship where developers collaborate in pods,
+            contribute to impactful open-source or production projects,
+            and gain real-world engineering experience.
+        </p>
+        <a href="https://fellowship.mlh.io" target="_blank" class="mlh-btn">
+            Visit Official Website →
+        </a>
+    </div>
+</section>
+
+<!-- SNAPSHOT -->
+<section class="mlh-section">
+    <h2>Program Snapshot</h2>
+    <div class="mlh-grid">
+        <div class="mlh-card">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Duration</h3>
+            <p>12 Weeks Full-Time Remote</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-coins"></i>
+            <h3>Stipend</h3>
+            <p>Paid Global Fellowship</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-code"></i>
+            <h3>Tracks</h3>
+            <p>Open Source & Production Engineering</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-users"></i>
+            <h3>Team Structure</h3>
+            <p>Pod-based collaboration model</p>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="mlh-section">
+    <h2>Why Choose MLH Fellowship?</h2>
+    <div class="mlh-grid">
+        <div class="mlh-card">
+            <i class="fas fa-globe"></i>
+            <h3>Global Network</h3>
+            <p>Work with talented fellows and mentors worldwide.</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Internship Alternative</h3>
+            <p>Industry-level project collaboration.</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-user-tie"></i>
+            <h3>Expert Mentorship</h3>
+            <p>Structured guidance from senior engineers.</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Career Growth</h3>
+            <p>Boost your resume with production-ready contributions.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="mlh-section">
+    <h2>Eligibility</h2>
+    <div class="mlh-grid">
+        <div class="mlh-card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>Students</h3>
+            <p>Currently enrolled university students.</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-code-branch"></i>
+            <h3>Git & Coding</h3>
+            <p>Strong programming fundamentals required.</p>
+        </div>
+        <div class="mlh-card">
+            <i class="fas fa-clock"></i>
+            <h3>Commitment</h3>
+            <p>Full-time participation for 12 weeks.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="mlh-cta">
+    <h2>Ready to Join MLH Fellowship?</h2>
+    <p>Take your open-source journey to the next professional level.</p>
+    <a href="https://fellowship.mlh.io" target="_blank" class="mlh-btn">
+        Apply Now →
+    </a>
+</section>
+
+<div id="footer"></div>
+
+<script src="../../js/components.js"></script>
+<script src="../../js/theme.js"></script>
+
+</body>
+</html>

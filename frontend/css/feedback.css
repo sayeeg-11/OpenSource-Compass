@@ -168,6 +168,9 @@ body.dark-mode #successMessage {
   color: #4ade80;
 }
 
+/* --- Success Message --- */
+#successMessage {
+/* Success Message (Hidden by default) */
 #successMessage {
   display: none;
   margin-top: 12px;
