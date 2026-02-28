@@ -348,380 +348,9 @@
         /* Aligns line through the center of icons */
         width: 2px;
         background: linear-gradient(
-          180deg,
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="OpenSource Compass" />
-  <meta property="og:description"
-    content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
-  <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
-  <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
-  <meta property="og:type" content="website" />
-  <title>OpenSource Compass - Navigate Your Open Source Journey</title>
-  <meta name="description"
-    content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="frontend/css/style.css" />
-  <link rel="stylesheet" href="frontend/css/home.css" />
-  <link rel="stylesheet" href="frontend/css/chatbot.css" />
-  <link rel="stylesheet" href="index.css">
-
-
-
-  <link rel="stylesheet" href="frontend/css/pr-generator.css" />
-  <style>
-    /* --- THEME VARIABLES --- */
-    :root {
-      --bg-color: #ffffff;
-      --section-bg: #fcfbf7;
-      --text-main: #1a1a1a;
-      --text-secondary: #555;
-      --card-bg: #ffffff;
-      --border-color: #e2d1a8;
-      --primary-gold: #b59d5c;
-      --secondary-gold: #d4af37;
-      --shadow: rgba(0, 0, 0, 0.05);
-      --newsletter-bg: #fcfbf7;
-      /* Light cream */
-      --newsletter-card: #ffffff;
-      /* Pure white */
-      --newsletter-text-h: #1a1a1a;
-      /* Deep navy/black */
-      --newsletter-text-p: #555555;
-      /* Gray */
-      --newsletter-border: #e2d1a8;
-      /* Golden beige */
-      --newsletter-btn: #b59d5c;
-      /* Primary gold */
-      --newsletter-input-bg: #ffffff;
-    }
-
-    body.dark-mode {
-      --bg-color: #26448f;
-      --section-bg: #1a1a1a;
-      --text-main: #f0f0f0;
-      --text-secondary: #ccc;
-      --card-bg: #1e1e1e;
-      --border-color: #444;
-      --shadow: rgba(0, 0, 0, 0.5);
-      /* Dark Mode Overrides */
-      --newsletter-bg: #121212;
-      /* Dark background */
-      --newsletter-card: #1e1e1e;
-      /* Slightly lighter dark card */
-      --newsletter-text-h: #f0f0f0;
-      /* Off-white */
-      --newsletter-text-p: #b0b0b0;
-      /* Light gray */
-      --newsletter-border: #333333;
-      /* Subtle dark border */
-      --newsletter-input-bg: #2d2d2d;
-      /* Dark input field */
-    }
-
-    /* --- APPLYING VARIABLES --- */
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-    }
-
-    .newsletter,
-    .stats-section {
-      background-color: var(--section-bg);
-    }
-
-    .card,
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 15px var(--shadow);
-    }
-
-    .card h4,
-    .stat-card h2,
-    #why h3 {
-      color: var(--text-main);
-    }
-
-    .card p,
-    .stat-card p,
-    #why>p {
-      color: var(--text-secondary);
-    }
-
-    /* Ensure icons remain gold in both modes */
-    .card-icon,
-    .program-icon {
-      color: var(--primary-gold);
-    }
-
-    /* Container to center the entire grid */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 40px;
-      justify-content: center;
-      /* Centers the grid itself */
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Container Layout */
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 40px;
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-      justify-content: center;
-      /* Centers the grid on the page */
-    }
-
-    /* Card Core Design */
-    .card {
-      background: #ffffff;
-      border: 1px solid #e2d1a8;
-      border-radius: 20px;
-      padding: 50px 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      /* Centers internal items horizontally */
-      text-align: center;
-      /* Centers the text lines */
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      height: 100%;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    /* Golden Glow Hover Effect */
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: #b59d5c;
-      box-shadow: 0 20px 40px rgba(181, 157, 92, 0.2) !important;
-    }
-
-    /* Icon Centering */
-    .card-icon {
-      font-size: 3rem;
-      color: #b59d5c;
-      margin-bottom: 25px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Typography */
-    .card h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #1a1a1a;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 30px;
-      flex-grow: 1;
-      /* Pushes the badge to the bottom for row alignment */
-    }
-
-    /* Badge Styling */
-    .badge {
-      background: #b59d5c;
-      color: #fff;
-      padding: 10px 30px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      box-shadow: 0 4px 10px rgba(181, 157, 92, 0.3);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Individual Card Centering */
-    .program-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      /* Centers internal elements horizontally */
-      text-align: center;
-      /* Centers text within elements */
-      height: 100%;
-      padding: 40px 30px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      transition: var(--card-transition);
-    }
-
-    /* Icon Area Centering */
-    .program-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary-gold);
-    }
-
-    /* Pushing Button to Bottom for Alignment */
-    .program-card .card-btn {
-      margin-top: auto;
-      /* Aligns buttons across a row */
-    }
-
-    /* --- FEATURE: Golden Glow Hover Effect for Legendary Cards --- */
-    #programs .card {
-      transition: all 0.3s ease-in-out;
-    }
-
-    #programs .card:hover {
-      /* Golden/Yellow Glow */
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important;
-      /* Lift effect */
-      transform: translateY(-5px);
-      /* Gold border */
-      border-color: rgba(255, 215, 0, 0.8) !important;
-    }
-
-    .stats .stat-card {
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      border-radius: 16px;
-      cursor: pointer;
-    }
-
-    .stats .stat-card:hover {
-      transform: translateY(-12px) scale(1.05);
-      box-shadow: 0 25px 50px rgba(181, 157, 92, 0.35);
-      z-index: 2;
-    }
-
-    .stat-card h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      transition: color 0.3s ease;
-    }
-
-    .stats .stat-card:hover h2 {
-      color: var(--primary-gold);
-    }
-
-    .stat-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 24px;
-      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
-      transition: all 0.5s var(--bounce-curve);
-    }
-
-    .stat-icon i {
-      color: var(--card-bg);
-    }
-
-    /* --- FIX: Timeline Z-Index Layering --- */
-    /* This ensures the golden icons sit ON TOP of the connecting vertical line */
-    .compass-step .compass-icon {
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Ensure the timeline line stays in the back */
-    .compass-timeline {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* --- Why Section Wrapper --- */
-    #why {
-      padding: 100px 20px;
-      background-color: var(--section-bg);
-      /* Light cream theme background */
-      text-align: center;
-      /* Centers the main heading and intro */
-    }
-
-    #why h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      color: #1a1a1a;
-      margin-bottom: 20px;
-    }
-
-    #why>p {
-      max-width: 600px;
-      margin: 0 auto 80px;
-      /* Centers the intro paragraph */
-      font-family: 'Inter', sans-serif;
-      color: #555;
-      font-size: 1.15rem;
-      line-height: 1.6;
-    }
-
-    /* --- Timeline Container --- */
-    .compass-timeline {
-      max-width: 800px;
-      margin: 0 auto;
-      /* Perfectly centers the timeline block */
-      position: relative;
-      padding: 10px 0;
-    }
-
-    /* The Golden Vertical Line */
-    .compass-timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 40px;
-      /* Aligns line through the center of icons */
-      width: 2px;
-      background: linear-gradient(180deg,
-
-          rgba(181, 157, 92, 0.1) 0%,
-          rgba(181, 157, 92, 0.6) 15%,
-          rgba(181, 157, 92, 0.6) 85%,
-          rgba(181, 157, 92, 0.1) 100%
-        );
+          180deg,)
+      
       }
-
-      /* --- Individual Step --- */
-      .compass-step {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 60px;
-        position: relative;
-        /* Simple entry animation */
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.8s forwards;
-      }
-
-      /* Stagger animation for each step */
-      .compass-step:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-
-      .compass-step:nth-child(2) {
-        animation-delay: 0.3s;
-      }
-
       .compass-step:nth-child(3) {
         animation-delay: 0.5s;
       }
@@ -1114,6 +743,88 @@
   transform:translateY(-2px) scale(1.05);
   box-shadow:0 12px 30px rgba(181,157,92,0.5);
 }
+
+/* Modal Background */
+.program-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal Box */
+.modal-content {
+  background: #f8f5ef;
+  width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  border-radius: 18px;
+  border: 2px solid #b59d5c;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.modal-basic-info {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #b59d5c;
+}
+
+/* Accordion */
+.accordion-header {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #b59d5c;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px 15px;
+  background: white;
+  border-left: 3px solid #b59d5c;
+  margin-top: 5px;
+  border-radius: 6px;
+}
+
+.accordion-body ul {
+  padding-left: 18px;
+}
+
+.accordion-body li {
+  margin-bottom: 6px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
     </style>
     <link rel="stylesheet" href="frontend/css/recommendations.css" />
 
@@ -1432,6 +1143,73 @@
             </button>
           </a>
         </div>
+
+        <!-- MLH Fellowship -->
+<div class="card">
+  <div class="card-icon"><i class="fas fa-mountain"></i></div>
+  <h4>MLH Fellowship</h4>
+  <p>
+    A remote internship-like open source program where you collaborate in pods
+    on real-world projects with mentorship.
+  </p>
+  <button class="view-btn" onclick="openModal('mlh')">
+    View Details
+  </button>
+  <a
+    href="https://fellowship.mlh.io/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <button class="explore-btn">
+      Explore <i class="fas fa-arrow-up-right-from-square"></i>
+    </button>
+  </a>
+</div>
+
+
+<!-- Season of KDE -->
+<div class="card">
+  <div class="card-icon"><i class="fas fa-desktop"></i></div>
+  <h4>Season of KDE</h4>
+  <p>
+    A mentorship program by KDE that allows contributors to work on open
+    source desktop and Qt-based projects.
+  </p>
+  <button class="view-btn" onclick="openModal('kde')">
+    View Details
+  </button>
+  <a
+    href="https://season.kde.org/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <button class="explore-btn">
+      Explore <i class="fas fa-arrow-up-right-from-square"></i>
+    </button>
+  </a>
+</div>
+
+<!-- Hyperledger Mentorship -->
+<div class="card">
+  <div class="card-icon"><i class="fas fa-link"></i></div>
+  <h4>Hyperledger Mentorship</h4>
+  <p>
+    A blockchain-focused mentorship program under the Hyperledger open source
+    ecosystem with guided project contributions.
+  </p>
+  <button class="view-btn" onclick="openModal('hyperledger')">
+    View Details
+  </button>
+  <a
+    href="https://wiki.hyperledger.org/display/INTERN"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <button class="explore-btn">
+      Explore <i class="fas fa-arrow-up-right-from-square"></i>
+    </button>
+  </a>
+</div>
       </div>
     </section>
 
@@ -1592,8 +1370,8 @@
       <i class="fas fa-chevron-up"></i>
     </button>
      
- <!-- PROGRAM MODAL -->
-<div id="programModal" class="modal">
+  <!-- Program Details Modal -->
+<div id="programModal" class="program-modal">
   <div class="modal-content">
 
           <div class="compass-content">
@@ -1735,15 +1513,31 @@
 
     <span class="close-btn" onclick="closeModal()">&times;</span>
 
-    <h2 id="modalTitle">Program Title</h2>
+    <h2 id="modalTitle"></h2>
 
-    <div id="modalBody" class="modal-body">
-      Program details here
+    <div class="modal-basic-info" id="modalBasicInfo"></div>
+
+    <!-- Accordion Sections -->
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-header">🛠 Skills Required</button>
+        <div class="accordion-body" id="modalSkills"></div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">🚀 How to Prepare</button>
+        <div class="accordion-body" id="modalPrepare"></div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">🎯 Selection Tips</button>
+        <div class="accordion-body" id="modalTips"></div>
+      </div>
     </div>
 
   </div>
 </div>
-
     <script src="frontend/js/components.js"></script>
     <script src="frontend/js/theme.js"></script>
     <script src="frontend/js/home.js"></script>
@@ -1815,6 +1609,68 @@ if(e.target === modal){
 modal.style.display="none";
 }
 }
+</script>
+<script>
+function openModal(program) {
+  const modal = document.getElementById("programModal");
+  const title = document.getElementById("modalTitle");
+  const basicInfo = document.getElementById("modalBasicInfo");
+  const skills = document.getElementById("modalSkills");
+  const prepare = document.getElementById("modalPrepare");
+  const tips = document.getElementById("modalTips");
+
+  const data = {
+    gsoc: {
+      title: "Google Summer of Code",
+      basic: `
+        📅 <b>Duration:</b> 12 Weeks <br>
+        🌍 <b>Eligibility:</b> Students worldwide <br>
+        💰 <b>Stipend:</b> Paid <br>
+        ⏳ <b>Timeline:</b> May–Aug
+      `,
+      skills: [
+        "Strong problem solving",
+        "Git & GitHub workflow",
+        "Open source contribution experience"
+      ],
+      prepare: [
+        "Start contributing early",
+        "Fix good first issues",
+        "Interact with mentors",
+        "Understand project roadmap"
+      ],
+      tips: [
+        "Write strong proposal",
+        "Be active in discussions",
+        "Submit quality PRs",
+        "Show consistency"
+      ]
+    }
+  };
+
+  const programData = data[program];
+
+  title.innerHTML = programData.title;
+  basicInfo.innerHTML = programData.basic;
+
+  skills.innerHTML = "<ul>" + programData.skills.map(item => `<li>${item}</li>`).join("") + "</ul>";
+  prepare.innerHTML = "<ul>" + programData.prepare.map(item => `<li>${item}</li>`).join("") + "</ul>";
+  tips.innerHTML = "<ul>" + programData.tips.map(item => `<li>${item}</li>`).join("") + "</ul>";
+
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("programModal").style.display = "none";
+}
+
+/* Accordion Toggle */
+document.addEventListener("click", function(e){
+  if(e.target.classList.contains("accordion-header")){
+    const body = e.target.nextElementSibling;
+    body.style.display = body.style.display === "block" ? "none" : "block";
+  }
+});
 </script>
   </body>
 </html>

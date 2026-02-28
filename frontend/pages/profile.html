@@ -3,37 +3,282 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Profile Settings</title>
+  <title>Profile Settings | OpenSource Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Existing Global Styles -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel='manifest' href='../../manifest.json' />
+
+  <style>
+    /* ===== PAGE LAYOUT ===== */
+    .profile-page {
+      min-height: calc(100vh - 160px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 1.5rem 4rem;
+      background: var(--bg-main);
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ===== MAIN CARD ===== */
+    .profile-card {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 2.3rem;
+      box-shadow: var(--shadow-main);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+    }
+
+    .profile-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.8rem;
+      color: var(--deep-navy);
+    }
+
+    /* ===== AVATAR SECTION ===== */
+    .avatar-section {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .avatar-preview {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-gold);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      margin-bottom: 0.6rem;
+    }
+
+    .avatar-upload {
+      display: none;
+    }
+
+    .upload-btn {
+      background: var(--deep-navy);
+      color: white;
+      padding: 0.45rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s ease;
+    }
+
+    .upload-btn:hover {
+      background: var(--primary-gold);
+      color: var(--deep-navy);
+    }
+
+    /* ===== FORM ===== */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.4rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--deep-navy);
+    }
+
+    .form-group input {
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+    }
+
+    .form-group input[readonly] {
+      background: var(--bg-main);
+      cursor: not-allowed;
+      opacity: 0.75;
+    }
+
+    /* ===== PASSWORD STRENGTH ===== */
+    .strength-meter {
+      height: 6px;
+      border-radius: 6px;
+      margin-top: 6px;
+      background: #eee;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 0%;
+      transition: 0.3s ease;
+    }
+
+    .strength-text {
+      font-size: 0.75rem;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* ===== BUTTON ===== */
+    .btn-save {
+      width: 100%;
+      margin-top: 0.8rem;
+      padding: 0.85rem;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: linear-gradient(135deg, var(--primary-gold), #ffd700);
+      color: var(--deep-navy);
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 6px 18px rgba(212,175,55,0.25);
+    }
+
+    .btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(212,175,55,0.35);
+    }
+
+    /* ===== STATS CARD ===== */
+    .stats-card {
+      width: 100%;
+      max-width: 320px;
+      background: linear-gradient(135deg, var(--deep-navy), #0f2a44);
+      color: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-main);
+    }
+
+    .stats-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-gold);
+    }
+
+    .stat-item {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #unsavedWarning {
+      color: #e67e22;
+      font-size: 0.8rem;
+      margin-top: 8px;
+      display: none;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .profile-page {
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header id="navbar"></header>
 
-  <div class="auth-page">
-    <div class="auth-card">
-      <h2>Account Settings</h2>
+  <main class="profile-page">
+
+    <!-- ===== PROFILE FORM CARD ===== -->
+    <div class="profile-card">
+      <h2 class="profile-title">Account Settings</h2>
+
+      <!-- Avatar Upload -->
+      <div class="avatar-section">
+        <img id="avatarPreview" class="avatar-preview"
+          src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+        <br>
+        <label class="upload-btn">
+          Change Avatar
+          <input type="file" id="avatarUpload" class="avatar-upload" accept="image/*">
+        </label>
+      </div>
+
       <form id="profileForm">
         <div class="form-group">
           <label>Full Name</label>
           <input type="text" id="editName" required>
         </div>
+
         <div class="form-group">
           <label>Email Address</label>
-          <input type="email" id="editEmail" readonly
-            style="background:var(--bg-main); cursor: not-allowed; opacity: 0.7;">
+          <input type="email" id="editEmail" readonly>
         </div>
+
         <div class="form-group">
-          <label>New Password (leave blank to keep current)</label>
-          <input type="password" id="editPassword" placeholder="••••••••">
+          <label>New Password</label>
+          <div style="position: relative;">
+            <input type="password" id="editPassword" placeholder="Leave blank to keep current">
+            <i id="togglePassword" class="fa fa-eye"
+              style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer;"></i>
+          </div>
+
+          <div class="strength-meter">
+            <div id="strengthFill" class="strength-fill"></div>
+          </div>
+          <div id="strengthText" class="strength-text"></div>
         </div>
-        <button type="submit" class="btn-auth">Save Changes</button>
-        <p id="profileMessage" style="margin-top: 1rem; font-size: 0.9rem;"></p>
+
+        <button type="submit" class="btn-save">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
+
+        <div id="unsavedWarning">⚠ You have unsaved changes</div>
+        <p id="profileMessage"></p>
       </form>
     </div>
-  </div>
+
+    <!-- ===== STATS CARD ===== -->
+    <div class="stats-card">
+      <div class="stats-title">Your Progress</div>
+      <div class="stat-item">
+        <span>Total XP</span>
+        <strong id="xpStat">0</strong>
+      </div>
+      <div class="stat-item">
+        <span>Unlocked Level</span>
+        <strong id="levelStat">1</strong>
+      </div>
+      <div class="stat-item">
+        <span>Member Since</span>
+        <strong id="joinDate"></strong>
+      </div>
+    </div>
+
+  </main>
 
   <div id="footer"></div>
 
@@ -41,10 +286,94 @@
   <script src="../js/auth.js"></script>
   <script src="../js/profile2.js"></script>
 
+  <script>
+    // ===== Avatar Preview =====
+    const avatarUpload = document.getElementById("avatarUpload");
+    const avatarPreview = document.getElementById("avatarPreview");
+
+    avatarUpload.addEventListener("change", () => {
+      const file = avatarUpload.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          avatarPreview.src = e.target.result;
+          localStorage.setItem("osc_avatar", e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Load saved avatar
+    const savedAvatar = localStorage.getItem("osc_avatar");
+    if (savedAvatar) avatarPreview.src = savedAvatar;
+
+    // ===== Password Strength Meter =====
+    const passwordInput = document.getElementById("editPassword");
+    const strengthFill = document.getElementById("strengthFill");
+    const strengthText = document.getElementById("strengthText");
+
+    passwordInput.addEventListener("input", () => {
+      const val = passwordInput.value;
+      let strength = 0;
+
+      if (val.length > 5) strength++;
+      if (/[A-Z]/.test(val)) strength++;
+      if (/[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+      const widths = ["0%", "25%", "50%", "75%", "100%"];
+      const colors = ["transparent", "red", "orange", "gold", "green"];
+      const texts = ["", "Weak", "Fair", "Good", "Strong"];
+
+      strengthFill.style.width = widths[strength];
+      strengthFill.style.background = colors[strength];
+      strengthText.textContent = texts[strength];
+    });
+
+    // ===== Show/Hide Password =====
+    document.getElementById("togglePassword").onclick = () => {
+      passwordInput.type =
+        passwordInput.type === "password" ? "text" : "password";
+    };
+
+    // ===== Unsaved Changes Detection =====
+    const form = document.getElementById("profileForm");
+    const warning = document.getElementById("unsavedWarning");
+    let isDirty = false;
+
+    form.addEventListener("input", () => {
+      isDirty = true;
+      warning.style.display = "block";
+    });
+
+    form.addEventListener("submit", () => {
+      isDirty = false;
+      warning.style.display = "none";
+    });
+
+    window.addEventListener("beforeunload", (e) => {
+      if (isDirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    });
+
+    // ===== Load Stats (integrates with your existing XP system) =====
+    document.getElementById("xpStat").textContent =
+      localStorage.getItem("osc_totalXP") || 0;
+
+    document.getElementById("levelStat").textContent =
+      localStorage.getItem("osc_unlockedLevel") || 1;
+
+    const join = localStorage.getItem("osc_joinDate") ||
+      new Date().toLocaleDateString();
+    localStorage.setItem("osc_joinDate", join);
+    document.getElementById("joinDate").textContent = join;
+  </script>
+
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
   <script src='../js/pwa.js'></script>
 </body>
-
 </html>

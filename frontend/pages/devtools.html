@@ -12,21 +12,182 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pr-generator.css">
     <style>
-        /* Force Reset and Overrides for Global Styles */
+        /* ==========================================================================
+            DevTools Theme Variables
+            ========================================================================== */
+        /* Default Light Theme */
+        :root {
+            --bg-primary: #c6d6f3;
+            --bg-secondary: #dcdfe2;
+            --bg-tertiary: #f1f5f9;
+            --text-main: #96d7c9;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --accent-color: #d4af37;
+            --accent-hover: #bda030;
+            --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Dark Theme Overrides */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #0b111a;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-color: #d4af37;
+            --accent-hover: #fce788;
+        }
+        /* Default Light Theme */
+:root {
+    --nav-bg: #ecf0c4;           /* Matches your --bg-secondary */
+    --nav-btn-hover-bg: #f1f5f9; /* Matches your --bg-tertiary */
+    --nav-text-main: #1e293b;    /* Dark text for light mode */
+    --nav-text-muted: #dce25e;   /* Muted text for inactive tabs */
+    --nav-border: #cbd5e1;       /* Border for dividers */
+    --nav-accent: #d4af37;       /* Gold accent */
+    --nav-accent-bg: rgba(212, 175, 55, 0.08); /* Faint gold for active tab */
+    --nav-transition: all 0.3s ease;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+    --nav-bg: #1e293b;
+    --nav-btn-hover-bg: #0b111a;
+    --nav-text-main: #e2e8f0;
+    --nav-text-muted: #94a3b8;
+    --nav-border: rgba(255, 255, 255, 0.1);
+    --nav-accent: #d4af37;
+    --nav-accent-bg: rgba(212, 175, 55, 0.15);
+}
+
+/* ==========================================================================
+   Navigation Right Section Styles
+   ========================================================================== */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+}
+
+.header-tabs {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Tab Buttons */
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--nav-text-muted);
+    padding: 0 1.2rem;
+    height: 100%;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 3px solid transparent;
+    transition: var(--nav-transition);
+    position: relative;
+    top: 1.5px; /* Aligns the bottom border perfectly */
+}
+
+.tab-btn i {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+/* Hover State */
+.tab-btn:hover {
+    color: var(--nav-text-main);
+    background: var(--nav-btn-hover-bg);
+}
+
+.tab-btn:hover i {
+    transform: translateY(-2px); /* Slight jump effect on hover */
+}
+
+/* Active State */
+.tab-btn.active {
+    color: var(--nav-accent);
+    border-bottom-color: var(--nav-accent);
+    background: var(--nav-accent-bg);
+}
+
+/* Theme Toggle Button (Overriding your inline styles slightly for better hover) */
+#themeToggle {
+    background: none;
+    border: none;
+    color: var(--nav-accent);
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--nav-transition);
+}
+
+#themeToggle:hover {
+    background: var(--nav-btn-hover-bg);
+    transform: rotate(15deg) scale(1.1); /* Fun little rotation effect */
+}
+
+/* Back Home Link */
+.tools-back {
+    color: var(--nav-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--nav-transition);
+    border-left: 1px solid var(--nav-border);
+    padding-left: 1.5rem;
+    height: 30px;
+}
+
+.tools-back:hover {
+    color: var(--nav-accent);
+}
+
+.tools-back i {
+    transition: transform 0.2s ease;
+}
+
+.tools-back:hover i {
+    transform: translateX(-4px); /* Arrow points left on hover */
+}
+        /* ==========================================================================
+            Global & Layout Styles
+            ========================================================================== */
+        
         html.devtools-page,
         html.devtools-page body {
             margin: 0 !important;
             padding: 0 !important;
-            min-height: 100vh !important;
-            /* Changed to allow scrolling */
-            overflow-x: hidden !important;
-            background: #0f172a !important;
+            min-height: 100vh !important; /* Changed to min-height to allow expansion */
+            width: 100vw !important;
+            overflow-x: hidden !important; /* Changed to only hide horizontal overflow */
+            background: var(--bg-primary) !important;
+            transition: var(--theme-transition);
         }
 
         body.devtools-body {
             display: flex;
             flex-direction: column;
-            color: #e2e8f0;
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             padding-top: 0 !important;
         }
@@ -38,16 +199,16 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #0f172a;
+            background: var(--bg-primary);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: var(--border-color);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #d4af37;
+            background: var(--accent-color);
         }
 
         /* Integrated Header */
@@ -56,14 +217,14 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
-            background: #1e293b;
-            border-bottom: 2px solid #d4af37;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--accent-color);
             height: 64px;
             z-index: 1000;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            /* Keeps nav at top while scrolling */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--theme-transition);
+            position: sticky; /* Optional: keeps nav at top when scrolling */
             top: 0;
         }
 
@@ -73,7 +234,7 @@
             gap: 0.8rem;
             font-family: 'Playfair Display', serif;
             font-size: 1.2rem;
-            color: #d4af37;
+            color: var(--accent-color);
             white-space: nowrap;
         }
 
@@ -94,7 +255,7 @@
         .tab-btn {
             background: none;
             border: none;
-            color: #94a3b8;
+            color: var(--text-muted);
             padding: 0 1.2rem;
             height: 100%;
             font-size: 0.9rem;
@@ -111,18 +272,18 @@
         }
 
         .tab-btn:hover {
-            color: #e2e8f0;
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            background: var(--bg-tertiary);
         }
 
         .tab-btn.active {
-            color: #d4af37;
-            border-bottom-color: #d4af37;
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
             background: rgba(212, 175, 55, 0.08);
         }
 
         .tools-back {
-            color: #94a3b8;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
@@ -130,23 +291,22 @@
             align-items: center;
             gap: 0.5rem;
             transition: color 0.2s;
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid var(--border-color);
             padding-left: 1.5rem;
             height: 30px;
         }
 
         .tools-back:hover {
-            color: #d4af37;
+            color: var(--accent-color);
         }
 
         /* Content Area */
         .tools-main-content {
-            flex: 1;
+            flex: 1 0 auto; /* Ensures content pushes footer to the bottom */
             display: flex;
             flex-direction: column;
-            background: #0f172a;
-            min-height: calc(100vh - 64px);
-            /* Ensures full screen minus header */
+            background: var(--bg-primary);
+            transition: var(--theme-transition);
         }
 
         .tool-panel {
@@ -171,270 +331,47 @@
             width: 100%;
             height: 100%;
             border: none;
-            background: #0b111a;
+            border-radius: 8px;
+            background: var(--bg-tertiary);
+        }
+
+        /* Footer */
+        .site-footer {
+            flex-shrink: 0; /* Prevents the footer from shrinking */
+        }
+
+        .tools-footer {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border-color);
+            flex-shrink: 0;
+            transition: var(--theme-transition);
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .active {
             animation: fadeIn 0.3s ease-out;
         }
-
-        /* Responsive Improvements */
-        .devtools-hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: #d4af37;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
+        
+        /* Force PR Gen Form to use theme variables */
+        .pr-form-header h2, .pr-form-header p, .pr-form-group label {
+            color: var(--text-main);
+            transition: var(--theme-transition);
         }
-
-        @media (max-width: 900px) {
-            .tools-nav {
-                padding: 0 1rem;
-            }
-
-            .devtools-hamburger {
-                display: block;
-            }
-
-            .header-tabs {
-                position: fixed;
-                top: 64px;
-                left: 0;
-                width: 100%;
-                background: #1e293b;
-                flex-direction: column;
-                padding: 1rem 0;
-                gap: 0;
-                border-bottom: 2px solid #d4af37;
-                display: none;
-                z-index: 999;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            }
-
-            .header-tabs.menu-active {
-                display: flex;
-                animation: slideDown 0.3s ease-out;
-            }
-
-            .tab-btn {
-                width: 100%;
-                justify-content: flex-start;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .tab-btn:hover,
-            .tab-btn.active {
-                background: rgba(212, 175, 55, 0.1);
-            }
-
-            .back-text {
-                display: none;
-            }
-
-            .tools-back {
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-                border-left: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .tool-panel {
-                padding: 1rem;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================================
-           COMPASS FOOTER STYLES 
-        ========================================= */
-        .compass-footer {
-            background-color: #0b111a;
-            color: #94a3b8;
-            font-family: 'Inter', sans-serif;
-            border-top: 2px solid rgba(212, 175, 55, 0.2);
-            padding: 4rem 2rem 1rem 2rem;
-            margin-top: auto;
-            /* Pushes footer to the bottom */
-            position: relative;
-            z-index: 10;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-brand .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #d4af37;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .footer-description {
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .footer-socials a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: #1e293b;
-            color: #e2e8f0;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .footer-socials a:hover {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
-            border-color: #d4af37;
-            transform: translateY(-3px);
-        }
-
-        .footer-heading {
-            font-family: 'Playfair Display', serif;
-            color: #e2e8f0;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .footer-heading::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 30px;
-            height: 2px;
-            background-color: #d4af37;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: #d4af37;
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-        }
-
-        .footer-bottom p {
-            margin: 0;
-        }
-
-        @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .footer-brand {
-                grid-column: span 2;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-brand {
-                grid-column: span 1;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        /* Footer centering for DevTools */
-        .devtools-footer-wrapper {
-            width: 100%;
-            background: #0b111a;
-            border-top: 1px solid rgba(212, 175, 55, 0.18);
-        }
-
-        .devtools-footer-wrapper footer.site-footer {
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: none;
-            background: transparent;
+        .pr-form-group input, .pr-form-group textarea {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-main) !important;
+            border: 1px solid var(--border-color) !important;
+            transition: var(--theme-transition);
         }
     </style>
 </head>
@@ -447,9 +384,6 @@
             <span>Compass DevTools</span>
         </div>
         <div class="nav-right">
-            <button class="devtools-hamburger" id="toolsMenuBtn" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
             <div class="header-tabs" id="toolsTabs">
                 <button class="tab-btn active" onclick="switchTab('pr-gen'); toggleToolsMenu()">
                     <i class="fas fa-magic"></i> PR Generator
@@ -457,19 +391,36 @@
                 <button class="tab-btn" onclick="switchTab('issue-insights'); toggleToolsMenu()">
                     <i class="fas fa-lightbulb"></i> Issue Insights
                 </button>
-                <button class="tab-btn" onclick="switchTab('issue-validator'); toggleToolsMenu()">
+                <button class="tab-btn" onclick="switchTab('issue-validator')">
                     <i class="fas fa-check-double"></i> Issue Validator
                 </button>
-                <button class="tab-btn" onclick="switchTab('playground'); toggleToolsMenu()">
+                <button class="tab-btn" onclick="switchTab('playground')">
                     <i class="fas fa-terminal"></i> Git Playground
                 </button>
+                <button
+                    id="themeToggle"
+                    aria-label="Toggle dark mode"
+                    title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--accent-color); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+                >
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
             </div>
+            <button
+                id="themeToggle"
+                aria-label="Toggle dark mode"
+                title="Toggle dark mode"
+                style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
+            >
+            <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
             <a href="../../index.html" class="tools-back">
                 <i class="fas fa-arrow-left"></i> <span class="back-text">Back Home</span>
             </a>
+            
         </div>
     </nav>
-
+    
     <main class="tools-main-content">
         <div id="pr-gen" class="tool-panel active">
             <div class="pr-embedded-container">
@@ -845,7 +796,7 @@
                     </div>
                     <div id="validatorResultContent" class="pr-preview-content"></div>
                     <div class="ai-disclaimer"
-                        style="margin-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center;">
+                        style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
                         <i class="fas fa-robot"></i> Generated by AI. Please verify with the actual issue description
                         and codebase.
                     </div>
@@ -952,18 +903,12 @@
     </div>
 
     <script>
-        const backLink = document.querySelector('.tools-back');
-        const backText = backLink.querySelector('.back-text');
-        const playgroundIframe = document.querySelector('.playground-wrapper-iframe');
-        let iframeShowingBadges = false;
-
+        // --- Tab Switching Logic ---
         function switchTab(tabId) {
-            // Update Buttons
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(`switchTab('${tabId}')`));
             if (activeBtn) activeBtn.classList.add('active');
 
-            // Update Panels
             document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
 
@@ -974,37 +919,77 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function updateBackLink() {
-            const playgroundPanel = document.getElementById('playground');
-            const isPlaygroundActive = playgroundPanel && playgroundPanel.classList.contains('active');
+        // --- Theme Toggle Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const icon = themeToggleBtn.querySelector('i');
+            const root = document.documentElement;
 
-            if (isPlaygroundActive && iframeShowingBadges) {
-                backText.textContent = 'Back Playground';
-                backLink.href = '#';
-                backLink.onclick = function (e) {
-                    e.preventDefault();
-                    playgroundIframe.src = './git-playground.html?embedded=true';
-                };
+            // Optional: Check if user previously selected a theme
+            const currentTheme = localStorage.getItem('devtools-theme') || 'dark'; // Defaults to dark mode
+            if (currentTheme === 'light') {
+                root.removeAttribute('data-theme');
+                icon.classList.replace('fa-sun', 'fa-moon'); // Show moon in light mode
             } else {
-                backText.textContent = 'Back Home';
-                backLink.href = '../../index.html';
-                backLink.onclick = null;
+                root.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun'); // Show sun in dark mode
             }
-        }
 
-        // Monitor iframe navigation changes
-        if (playgroundIframe) {
-            playgroundIframe.addEventListener('load', function () {
-                try {
-                    const iframeSrc = playgroundIframe.contentWindow.location.href;
-                    iframeShowingBadges = iframeSrc.includes('badges.html');
-                } catch (e) {
-                    iframeShowingBadges = playgroundIframe.src.includes('badges.html');
+            // Click Event to switch theme
+            themeToggleBtn.addEventListener('click', () => {
+                if (root.hasAttribute('data-theme')) {
+                    // Switch to Light
+                    root.removeAttribute('data-theme');
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('devtools-theme', 'light');
+                } else {
+                    // Switch to Dark
+                    root.setAttribute('data-theme', 'dark');
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('devtools-theme', 'dark');
                 }
-                updateBackLink();
             });
-        }
+\
+        });
 
+        // --- Hamburger Logic Fallback ---
+        const navbarContainer = document.getElementById('navbar');
+        if (navbarContainer && typeof navbarHTML !== 'undefined') {
+            navbarContainer.innerHTML = navbarHTML;
+            const hamburgerBtn = navbarContainer.querySelector('.hamburger-menu');
+            const navLinks = navbarContainer.querySelector('.nav-links');
+
+            if (hamburgerBtn && navLinks) {
+                hamburgerBtn.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    hamburgerBtn.innerHTML = isActive
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                    hamburgerBtn.setAttribute('aria-expanded', isActive);
+                });
+
+        }
+        const navbarContainer = document.getElementById('navbar');
+        if (navbarContainer) {
+  navbarContainer.innerHTML = navbarHTML;
+
+  // Hamburger Menu Logic
+  const hamburgerBtn = navbarContainer.querySelector('.hamburger-menu');
+  const navLinks = navbarContainer.querySelector('.nav-links');
+
+  if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isActive = navLinks.classList.toggle('active');
+      // Toggle icon between bars and times (X)
+      hamburgerBtn.innerHTML = isActive
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+
+      // Accessibility update
+      hamburgerBtn.setAttribute('aria-expanded', isActive);
+    });
+  }
+}
         function toggleToolsMenu() {
             const tabs = document.getElementById('toolsTabs');
             tabs.classList.toggle('menu-active');
@@ -1017,16 +1002,19 @@
             } else {
                 btnIcon.classList.remove('fa-times');
                 btnIcon.classList.add('fa-bars');
+
             }
         }
-
-        document.getElementById('toolsMenuBtn').addEventListener('click', toggleToolsMenu);
     </script>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="/frontend/js/theme.js"></script>
+
 
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
-    <script src="/frontend/js/DMtheme.js"></script>
-
+    <script src="/frontend/js/theme.js"></script>
+    
     <button id="scrollTopBtn" title="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>

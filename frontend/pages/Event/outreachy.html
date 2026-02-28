@@ -87,6 +87,10 @@
             flex-wrap: wrap;
         }
 
+        .hero-actions a{
+            text-decoration: none;
+        }
+
         .btn {
             padding: 0.9rem 1.8rem;
             border-radius: 14px;
@@ -217,47 +221,123 @@
             color: var(--text-secondary);
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 3rem;
+        .about-story {
+            margin: 0 auto;
+            text-align: left;
         }
 
         .about-story h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--deep-navy);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Golden underline */
+        .about-story h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            height: 3px;
+            width: 90px;
+            background: linear-gradient(
+                to right,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            transition: width 0.35s ease;
+        }
+
+        .about-story:hover h3::after {
+            width: 140px;
         }
 
         .about-story p {
-            margin-bottom: 1rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 1.08rem;
+            margin-bottom: 1.2rem;
+            text-align: left;
+            max-width: 90%;
         }
+
+        /* =============================
+        CARDS BELOW TEXT
+        ============================= */
 
         .about-cards {
             display: grid;
-            gap: 1.4rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
+        /* CARD STYLE */
         .about-card {
-            padding: 1.6rem 1.5rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow-main);
+            padding: 2.2rem 2rem;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(212, 175, 55, 0.15);
+
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+
+            text-align: left;
+
             transition: transform 0.45s var(--bounce-curve),
-                box-shadow 0.45s ease;
+                        box-shadow 0.35s ease,
+                        border 0.3s ease;
         }
 
+        /* HOVER EFFECT */
         .about-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.45);
         }
 
+        /* ENLARGED TITLE */
         .about-card h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+            font-weight: 700;
             color: var(--primary-gold);
-            margin-bottom: 0.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Slight grow on hover */
+        .about-card:hover h4 {
+            transform: translateX(6px);
+        }
+
+        .about-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 950px) {
+            .about-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark-mode .about-card {
+            background: rgba(27, 34, 53, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        body.dark-mode .about-card:hover {
+            border: 1px solid rgba(212, 175, 55, 0.5);
         }
 
         /* Dark Mode */
@@ -281,13 +361,20 @@
             }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
             .about-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .about-intro {
-                margin-bottom: 3rem;
+            .about-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .about-cards {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -322,58 +409,114 @@
             margin-bottom: 4.5rem;
         }
 
+        /* =============================
+        PERFECT ELIGIBILITY LAYOUT
+        ============================= */
+
         .eligibility-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* force 4 equal columns on desktop */
             gap: 2rem;
+            align-items: stretch;
         }
 
         .eligibility-card {
-            padding: 2rem 1.8rem;
-            border-radius: 22px;
-            backdrop-filter: blur(14px);
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: var(--shadow-main);
-            transition: transform 0.45s var(--bounce-curve),
-                box-shadow 0.45s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            
+            padding: 2rem !important;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            
+            min-height: 340px; /* equal height */
         }
 
-        .eligibility-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-        }
-
+        /* Title wrapper */
         .eligibility-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            color: var(--deep-navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
         }
 
+        /* Golden underline */
+        .eligibility-card h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 90px; /* final width */
+            background: linear-gradient(
+                to right,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+
+            transform: scaleX(0.4);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .eligibility-card:hover h3::after {
+            transform: scaleX(1);
+        }
+       
+        /* Title alignment consistency */
+        .eligibility-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        /* Content alignment */
+        .eligibility-card ul,
+        .eligibility-card p {
+            margin: 0;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        /* Remove unnecessary spacing */
         .eligibility-card ul {
-            padding-left: 1.1rem;
-            color: var(--text-secondary);
+            padding-left: 1.2rem;
         }
 
         .eligibility-card ul li {
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.7rem;
         }
 
+        /* Remove flex-grow to avoid empty space */
+        .eligibility-card ul,
         .eligibility-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
+            flex: none;
         }
 
-        /* Card Accents */
+        /* Accent borders stay same */
         .eligibility-card.success {
-            border-left: 5px solid #2ecc71;
+            border-left: 4px solid #2ecc71;
         }
 
         .eligibility-card.danger {
-            border-left: 5px solid #e74c3c;
+            border-left: 4px solid #e74c3c;
         }
 
         .eligibility-card.info {
-            border-left: 5px solid var(--primary-gold);
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .eligibility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .eligibility-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Footer Note */
@@ -419,150 +562,201 @@
             }
         }
 
+        /* ===============================
+        NEW COMPACT COHORT DESIGN
+        ================================ */
+
         .cohorts {
             position: relative;
-            padding: 8rem 1.5rem;
-            background: linear-gradient(180deg,
-                    var(--light-parchment),
-                    var(--warm-cream));
-            overflow: hidden;
-        }
-
-        .cohorts-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 25% 25%, var(--primary-gold), transparent 40%),
-                radial-gradient(circle at 75% 75%, var(--secondary-gold), transparent 45%);
-            opacity: 0.1;
-            filter: blur(100px);
-            animation: cohortsFloat 18s ease-in-out infinite alternate;
+            padding: 5rem 1.5rem; /* Reduced from 8rem */
+            background: linear-gradient(
+                180deg,
+                var(--light-parchment),
+                var(--warm-cream)
+            );
         }
 
         .cohorts-container {
             position: relative;
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
         }
 
-        .cohorts-intro {
+        .cohorts-intro{
             max-width: 760px;
             margin-bottom: 4.5rem;
         }
 
-        .cohorts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+        .cohorts-intro .section-description{
+            text-align: left;
         }
 
-        /* Cohort Card */
+        /* GRID */
+        .cohorts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px;   /* align with content width */
+            margin: 0 auto; 
+        }
+
+        /* CARD */
         .cohort-card {
-            position: relative;
-            padding: 2.2rem 2rem;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow-main);
-            transition: transform 0.5s var(--bounce-curve),
-                box-shadow 0.4s ease;
+            padding: 1.9rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+            transition: 
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease;
         }
 
         .cohort-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px);
+
+            background: linear-gradient(
+                135deg,
+                rgba(212, 175, 55, 0.12),
+                rgba(212, 175, 55, 0.05)
+            );
+
+            box-shadow:
+                0 20px 45px rgba(0, 0, 0, 0.22),
+                0 0 35px rgba(212, 175, 55, 0.25);
         }
 
-        .cohort-card.highlight::after {
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: 26px;
-            background: linear-gradient(135deg,
-                    var(--primary-gold),
-                    var(--secondary-gold));
-            opacity: 0.35;
-            filter: blur(22px);
-            z-index: -1;
-        }
-
+        /* HEADER */
         .cohort-header {
-            margin-bottom: 1.6rem;
+            margin-bottom: 1.4rem;
         }
 
         .cohort-header h3 {
-            font-size: 1.5rem;
-            color: var(--deep-navy);
+            font-size: 1.5rem; /* Balanced */
+            font-weight: 700;
+            margin-bottom: 0.3rem;
         }
 
         .cohort-tag {
-            display: inline-block;
-            margin-top: 0.4rem;
             font-size: 0.75rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--secondary-gold);
         }
 
-        /* Timeline */
+        /* =========================
+        NEW VERTICAL TIMELINE
+        ========================= */
+
         .cohort-timeline {
+            position: relative;
             list-style: none;
             padding: 0;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
+        /* Vertical line */
+        .cohort-timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: rgba(212, 175, 55, 0.4);
+        }
+
+        /* Timeline Item */
         .cohort-timeline li {
             position: relative;
-            display: flex;
-            gap: 1rem;
-            padding-left: 1.2rem;
+            padding-left: 2rem;
+            margin-bottom: 1.3rem;
         }
 
-        .cohort-timeline li:not(:last-child) {
-            margin-bottom: 1.8rem;
-        }
-
-        .cohort-timeline .dot {
+        /* Dot */
+        .cohort-timeline li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
             width: 12px;
             height: 12px;
             background: var(--primary-gold);
             border-radius: 50%;
-            margin-top: 0.3rem;
-            flex-shrink: 0;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
         }
 
+        /* Title */
         .cohort-timeline strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
             color: var(--deep-navy);
         }
 
+        /* Date text */
         .cohort-timeline p {
+            margin: 0;
+            font-size: 0.92rem;
             color: var(--text-secondary);
         }
 
         /* Footer */
-        .cohort-footer p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
+        .cohort-footer {
+            margin-top: 1rem;
         }
 
-        /* Dark Mode */
+        .cohort-footer p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* Highlight Card (Subtle Gold Accent) */
+        .cohort-card.highlight {
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        /* =========================
+        DARK MODE
+        ========================= */
+
         body.dark-mode .cohorts {
-            background: linear-gradient(180deg,
-                    var(--deep-navy),
-                    var(--warm-cream));
+            background: linear-gradient(
+                180deg,
+                var(--deep-navy),
+                var(--warm-cream)
+            );
         }
 
         body.dark-mode .cohort-card {
-            background: rgba(27, 34, 53, 0.65);
+            background: rgba(27, 34, 53, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        @keyframes cohortsFloat {
-            from {
-                transform: translateY(0);
+        body.dark-mode .cohort-timeline::before {
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        body.dark-mode .cohort-timeline strong {
+            color: var(--text-primary);
+        }
+
+        /* =========================
+        RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+            .cohorts {
+                padding: 4rem 1.2rem;
             }
 
-            to {
-                transform: translateY(-70px);
+            .cohort-card {
+                padding: 1.5rem;
             }
         }
 
@@ -761,9 +955,27 @@
             text-align: left;
         }
 
+        /* Smooth premium transition */
+        .prepare-card {
+            transition: 
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
+
+        /* Premium Golden Hover Effect */
         .prepare-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-10px) scale(1.02);
+
+            background: linear-gradient(
+                135deg,
+                rgba(212, 175, 55, 0.12),
+                rgba(212, 175, 55, 0.05)
+            );
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 0 35px rgba(212, 175, 55, 0.25);
         }
 
         .prepare-card h3 {
@@ -908,9 +1120,28 @@
                 box-shadow 0.35s ease;
         }
 
+        /* Smooth transition */
+        .contribution-card {
+            transition: 
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
+
+        /* Golden glow hover */
         .contribution-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-10px) scale(1.02);
+
+            background: linear-gradient(
+                135deg,
+                rgba(212, 175, 55, 0.10),
+                rgba(212, 175, 55, 0.04)
+            );
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.35),      /* depth */
+                0 0 40px rgba(212, 175, 55, 0.30),   /* outer glow */
+                0 0 14px rgba(212, 175, 55, 0.20);   /* soft inner glow */
         }
 
         .contribution-card .step {
@@ -954,12 +1185,82 @@
             gap: 2rem;
         }
 
+        /* ================================
+        CONTRIBUTION TIPS – PREMIUM STYLE
+        ================================ */
+
         .tip {
-            padding: 1.6rem;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow-main);
+            position: relative;
+            padding: 1.8rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+
+            transition:
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                border 0.3s ease,
+                background 0.35s ease;
+        }
+
+        /* GOOD CARD (Green Accent) */
+        .tip.good {
+            border-left: 4px solid #2ecc71;
+        }
+
+        /* BAD CARD (Amber Accent – softer than red) */
+        .tip.bad {
+            border-left: 4px solid #f1c40f;
+        }
+
+        /* HOVER EFFECT */
+        .tip:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Green Glow */
+        .tip.good:hover {
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 0 35px rgba(46, 204, 113, 0.25);
+        }
+
+        /* Amber Glow */
+        .tip.bad:hover {
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                0 0 35px rgba(241, 196, 15, 0.25);
+        }
+
+        /* Title refinement */
+        .tip h4 {
+            margin-bottom: 0.9rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            transition: transform 0.3s ease;
+        }
+
+        .tip:hover h4 {
+            transform: translateX(6px);
+        }
+
+        .tip ul {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            padding-left: 1.2rem;
+        }
+
+        /* Dark Mode */
+        body.dark-mode .tip {
+            background: rgba(27, 34, 53, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .tip h4 {
@@ -1366,6 +1667,7 @@
             color: var(--warm-cream);
             font-weight: 600;
             border-radius: 10px;
+            text-decoration: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -1727,7 +2029,7 @@
                 </div>
 
                 <!-- December Cohort -->
-                <div class="cohort-card highlight">
+                <div class="cohort-card ">
                     <div class="cohort-header">
                         <h3>❄️ December – March</h3>
                         <span class="cohort-tag">End-Year Cohort</span>
@@ -1887,7 +2189,7 @@
                     </ul>
                 </div>
 
-                <div class="prepare-card highlight">
+                <div class="prepare-card">
                     <h3>📝 Final Application</h3>
                     <ul>
                         <li>Document your contributions</li>
@@ -1956,7 +2258,7 @@
                     </p>
                 </div>
 
-                <div class="contribution-card highlight">
+                <div class="contribution-card ">
                     <span class="step">04</span>
                     <h3>Learn & Improve</h3>
                     <p>
@@ -2006,7 +2308,7 @@
 
             <!-- Benefits Grid -->
             <div class="benefits-grid">
-                <div class="benefits-card highlight">
+                <div class="benefits-card ">
                     <h3>💰 Stipend</h3>
                     <p>Receive a competitive stipend to support your internship period and help you focus on
                         contributing full-time.</p>

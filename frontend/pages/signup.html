@@ -11,6 +11,15 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
+
+        :root {
+    --surface: #ffffff;
+    --border: #e6d3a3;
+    --gold-bright: #c89b2c;
+    --gold-deep: #a87916;
+    --gold-glow: rgba(200, 155, 44, 0.15);
+    --text-mid: #666;
+}
         .auth-page {
             display: flex;
             justify-content: center;
@@ -20,15 +29,21 @@
         }
 
         .auth-card {
-            background: var(--surface);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            max-width: 450px;
-            width: 100%;
-            text-align: center;
-        }
+    background: linear-gradient(145deg, #ffffff, #fbf7ef);
+    padding: 3rem 2.8rem;
+    border-radius: 24px;
+    border: 1px solid #e6d3a3;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+}
 
         .auth-card h2 {
             font-family: 'Playfair Display', serif;
@@ -64,21 +79,24 @@
         }
 
         .btn-auth {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
-            color: white;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: transform 0.2s ease;
-        }
+    width: 100%;
+    padding: 1rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #c89b2c, #a87916);
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1.2rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 25px rgba(200,155,44,0.35);
+}
 
-        .btn-auth:hover {
-            transform: translateY(-2px);
-        }
+.btn-auth:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(200,155,44,0.45);
+}
+
 
         .auth-footer {
             margin-top: 2rem;
@@ -101,6 +119,29 @@
             margin-bottom: 1.5rem;
             display: none;
         }
+        .input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b59d5c;
+    font-size: 14px;
+}
+
+.input-wrapper input {
+    padding-left: 42px;
+    width: 100%;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    border-radius: 12px;
+    border: 1px solid #e6d3a3;
+    background: #ffffff;
+    transition: all 0.25s ease;
+}
     </style>
 </head>
 
@@ -114,21 +155,33 @@
 
             <form id="signupForm">
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" required>
-                </div>
+    <label>Full Name</label>
+    <div class="input-wrapper">
+        <i class="fas fa-user"></i>
+        <input type="text" id="name" placeholder="John Doe" required>
+    </div>
+</div>
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com" required>
-                </div>
+    <label>Email Address</label>
+    <div class="input-wrapper">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" placeholder="john@example.com" required>
+    </div>
+</div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="password" placeholder="Min 6 characters" required>
-                </div>
+    <label>Password</label>
+    <div class="input-wrapper">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Min 6 characters" required>
+    </div>
+</div>
                 <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder="••••••••" required>
-                </div>
+    <label>Confirm Password</label>
+    <div class="input-wrapper">
+        <i class="fas fa-check-circle"></i>
+        <input type="password" id="confirmPassword" placeholder="••••••••" required>
+    </div>
+</div>
                 <button type="submit" class="btn-auth">Create Account</button>
             </form>
 
@@ -142,6 +195,30 @@
 
     <script src="../js/components.js"></script>
     <script src="../js/auth.js"></script>
+
+    <script>
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirmPassword").value;
+    const errorBox = document.getElementById("signupError");
+
+    if (password !== confirm) {
+        e.preventDefault();
+        errorBox.textContent = "Passwords do not match!";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    if (password.length < 6) {
+        e.preventDefault();
+        errorBox.textContent = "Password must be at least 6 characters.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    errorBox.style.display = "none";
+});
+</script>
 </body>
 
 </html>

@@ -281,3 +281,17 @@ body {
     white-space: nowrap;
   }
 }
+
+/* FIX: Make Explore Programs button clickable above timeline layer */
+.roadmap-step .btn {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Ensure step content stays above decorative timeline */
+.step-content {
+  position: relative;
+  z-index: 5;
+}
