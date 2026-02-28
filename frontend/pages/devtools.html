@@ -11,6 +11,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pr-generator.css">
+    <link rel="stylesheet" href="../css/repo-health.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* ==========================================================================
             DevTools Theme Variables
@@ -39,147 +41,162 @@
             --accent-color: #d4af37;
             --accent-hover: #fce788;
         }
+
         /* Default Light Theme */
-:root {
-    --nav-bg: #ecf0c4;           /* Matches your --bg-secondary */
-    --nav-btn-hover-bg: #f1f5f9; /* Matches your --bg-tertiary */
-    --nav-text-main: #1e293b;    /* Dark text for light mode */
-    --nav-text-muted: #dce25e;   /* Muted text for inactive tabs */
-    --nav-border: #cbd5e1;       /* Border for dividers */
-    --nav-accent: #d4af37;       /* Gold accent */
-    --nav-accent-bg: rgba(212, 175, 55, 0.08); /* Faint gold for active tab */
-    --nav-transition: all 0.3s ease;
-}
+        :root {
+            --nav-bg: #ecf0c4;
+            /* Matches your --bg-secondary */
+            --nav-btn-hover-bg: #f1f5f9;
+            /* Matches your --bg-tertiary */
+            --nav-text-main: #1e293b;
+            /* Dark text for light mode */
+            --nav-text-muted: #dce25e;
+            /* Muted text for inactive tabs */
+            --nav-border: #cbd5e1;
+            /* Border for dividers */
+            --nav-accent: #d4af37;
+            /* Gold accent */
+            --nav-accent-bg: rgba(212, 175, 55, 0.08);
+            /* Faint gold for active tab */
+            --nav-transition: all 0.3s ease;
+        }
 
-/* Dark Theme Overrides */
-[data-theme="dark"] {
-    --nav-bg: #1e293b;
-    --nav-btn-hover-bg: #0b111a;
-    --nav-text-main: #e2e8f0;
-    --nav-text-muted: #94a3b8;
-    --nav-border: rgba(255, 255, 255, 0.1);
-    --nav-accent: #d4af37;
-    --nav-accent-bg: rgba(212, 175, 55, 0.15);
-}
+        /* Dark Theme Overrides */
+        [data-theme="dark"] {
+            --nav-bg: #1e293b;
+            --nav-btn-hover-bg: #0b111a;
+            --nav-text-main: #e2e8f0;
+            --nav-text-muted: #94a3b8;
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --nav-accent: #d4af37;
+            --nav-accent-bg: rgba(212, 175, 55, 0.15);
+        }
 
-/* ==========================================================================
+        /* ==========================================================================
    Navigation Right Section Styles
    ========================================================================== */
 
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    height: 100%;
-}
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            height: 100%;
+        }
 
-.header-tabs {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    gap: 0.5rem;
-}
+        .header-tabs {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-/* Tab Buttons */
-.tab-btn {
-    background: transparent;
-    border: none;
-    color: var(--nav-text-muted);
-    padding: 0 1.2rem;
-    height: 100%;
-    font-size: 0.9rem;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    border-bottom: 3px solid transparent;
-    transition: var(--nav-transition);
-    position: relative;
-    top: 1.5px; /* Aligns the bottom border perfectly */
-}
+        /* Tab Buttons */
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--nav-text-muted);
+            padding: 0 1.2rem;
+            height: 100%;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 3px solid transparent;
+            transition: var(--nav-transition);
+            position: relative;
+            top: 1.5px;
+            /* Aligns the bottom border perfectly */
+        }
 
-.tab-btn i {
-    font-size: 1rem;
-    transition: transform 0.2s ease;
-}
+        .tab-btn i {
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
 
-/* Hover State */
-.tab-btn:hover {
-    color: var(--nav-text-main);
-    background: var(--nav-btn-hover-bg);
-}
+        /* Hover State */
+        .tab-btn:hover {
+            color: var(--nav-text-main);
+            background: var(--nav-btn-hover-bg);
+        }
 
-.tab-btn:hover i {
-    transform: translateY(-2px); /* Slight jump effect on hover */
-}
+        .tab-btn:hover i {
+            transform: translateY(-2px);
+            /* Slight jump effect on hover */
+        }
 
-/* Active State */
-.tab-btn.active {
-    color: var(--nav-accent);
-    border-bottom-color: var(--nav-accent);
-    background: var(--nav-accent-bg);
-}
+        /* Active State */
+        .tab-btn.active {
+            color: var(--nav-accent);
+            border-bottom-color: var(--nav-accent);
+            background: var(--nav-accent-bg);
+        }
 
-/* Theme Toggle Button (Overriding your inline styles slightly for better hover) */
-#themeToggle {
-    background: none;
-    border: none;
-    color: var(--nav-accent);
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--nav-transition);
-}
+        /* Theme Toggle Button (Overriding your inline styles slightly for better hover) */
+        #themeToggle {
+            background: none;
+            border: none;
+            color: var(--nav-accent);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--nav-transition);
+        }
 
-#themeToggle:hover {
-    background: var(--nav-btn-hover-bg);
-    transform: rotate(15deg) scale(1.1); /* Fun little rotation effect */
-}
+        #themeToggle:hover {
+            background: var(--nav-btn-hover-bg);
+            transform: rotate(15deg) scale(1.1);
+            /* Fun little rotation effect */
+        }
 
-/* Back Home Link */
-.tools-back {
-    color: var(--nav-text-muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--nav-transition);
-    border-left: 1px solid var(--nav-border);
-    padding-left: 1.5rem;
-    height: 30px;
-}
+        /* Back Home Link */
+        .tools-back {
+            color: var(--nav-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--nav-transition);
+            border-left: 1px solid var(--nav-border);
+            padding-left: 1.5rem;
+            height: 30px;
+        }
 
-.tools-back:hover {
-    color: var(--nav-accent);
-}
+        .tools-back:hover {
+            color: var(--nav-accent);
+        }
 
-.tools-back i {
-    transition: transform 0.2s ease;
-}
+        .tools-back i {
+            transition: transform 0.2s ease;
+        }
 
-.tools-back:hover i {
-    transform: translateX(-4px); /* Arrow points left on hover */
-}
+        .tools-back:hover i {
+            transform: translateX(-4px);
+            /* Arrow points left on hover */
+        }
+
         /* ==========================================================================
             Global & Layout Styles
             ========================================================================== */
-        
+
         html.devtools-page,
         html.devtools-page body {
             margin: 0 !important;
             padding: 0 !important;
-            min-height: 100vh !important; /* Changed to min-height to allow expansion */
+            min-height: 100vh !important;
+            /* Changed to min-height to allow expansion */
             width: 100vw !important;
-            overflow-x: hidden !important; /* Changed to only hide horizontal overflow */
+            overflow-x: hidden !important;
+            /* Changed to only hide horizontal overflow */
             background: var(--bg-primary) !important;
             transition: var(--theme-transition);
         }
@@ -224,7 +241,8 @@
             flex-shrink: 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: var(--theme-transition);
-            position: sticky; /* Optional: keeps nav at top when scrolling */
+            position: sticky;
+            /* Optional: keeps nav at top when scrolling */
             top: 0;
         }
 
@@ -302,7 +320,8 @@
 
         /* Content Area */
         .tools-main-content {
-            flex: 1 0 auto; /* Ensures content pushes footer to the bottom */
+            flex: 1 0 auto;
+            /* Ensures content pushes footer to the bottom */
             display: flex;
             flex-direction: column;
             background: var(--bg-primary);
@@ -337,7 +356,8 @@
 
         /* Footer */
         .site-footer {
-            flex-shrink: 0; /* Prevents the footer from shrinking */
+            flex-shrink: 0;
+            /* Prevents the footer from shrinking */
         }
 
         .tools-footer {
@@ -354,20 +374,31 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .active {
             animation: fadeIn 0.3s ease-out;
         }
-        
+
         /* Force PR Gen Form to use theme variables */
-        .pr-form-header h2, .pr-form-header p, .pr-form-group label {
+        .pr-form-header h2,
+        .pr-form-header p,
+        .pr-form-group label {
             color: var(--text-main);
             transition: var(--theme-transition);
         }
-        .pr-form-group input, .pr-form-group textarea {
+
+        .pr-form-group input,
+        .pr-form-group textarea {
             background-color: var(--bg-secondary) !important;
             color: var(--text-main) !important;
             border: 1px solid var(--border-color) !important;
@@ -385,10 +416,10 @@
         </div>
         <div class="nav-right">
             <div class="header-tabs" id="toolsTabs">
-                <button class="tab-btn active" onclick="switchTab('pr-gen'); toggleToolsMenu()">
+                <button class="tab-btn active" onclick="switchTab('pr-gen')">
                     <i class="fas fa-magic"></i> PR Generator
                 </button>
-                <button class="tab-btn" onclick="switchTab('issue-insights'); toggleToolsMenu()">
+                <button class="tab-btn" onclick="switchTab('issue-insights')">
                     <i class="fas fa-lightbulb"></i> Issue Insights
                 </button>
                 <button class="tab-btn" onclick="switchTab('issue-validator')">
@@ -397,30 +428,18 @@
                 <button class="tab-btn" onclick="switchTab('playground')">
                     <i class="fas fa-terminal"></i> Git Playground
                 </button>
-                <button
-                    id="themeToggle"
-                    aria-label="Toggle dark mode"
-                    title="Toggle dark mode"
-                    style="background: none; border: none; color: var(--accent-color); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
-                >
+                <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"
+                    style="background: none; border: none; color: var(--accent-color); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;">
                     <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
             </div>
-            <button
-                id="themeToggle"
-                aria-label="Toggle dark mode"
-                title="Toggle dark mode"
-                style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
-            >
-            <i class="fas fa-moon" aria-hidden="true"></i>
-        </button>
             <a href="../../index.html" class="tools-back">
                 <i class="fas fa-arrow-left"></i> <span class="back-text">Back Home</span>
             </a>
-            
+
         </div>
     </nav>
-    
+
     <main class="tools-main-content">
         <div id="pr-gen" class="tool-panel active">
             <div class="pr-embedded-container">
@@ -751,7 +770,12 @@
                     </div>
                     <div id="insightsResultContent" class="pr-preview-content"></div>
                 </div>
+
+                <!-- Repo Health Dashboard -->
+                <div id="repoHealthDashboard" class="repo-health-dashboard"></div>
             </div>
+
+
         </div>
 
         <div id="issue-validator" class="tool-panel">
@@ -810,110 +834,37 @@
         </div>
     </main>
 
-    <div class="devtools-footer-wrapper">
-        <footer class="site-footer" role="contentinfo" aria-label="Site footer">
-            <div class="footer-shell">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <div class="footer-mark" aria-hidden="true">
-                            <i class="fas fa-compass"></i>
-                        </div>
-                        <div>
-                            <div class="footer-title">OpenSource Compass</div>
-                            <div class="footer-tagline">
-                                OpenSource Compass is a beginner-friendly,
-                                community-driven platform that guides students
-                                and first-time contributors in open source.
-                                It offers Git/GitHub basics, contribution best practices,
-                                do’s and don’ts, and a hub for programs
-                                like SWOsC, GSSoC, GSoC, Hacktoberfest, etc
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-columns" aria-label="Footer links">
-                        <nav class="footer-col" aria-label="Explore">
-                            <div class="footer-col-title">Explore</div>
-                            <ul class="footer-links">
-                                <li><a href="../../index.html">Home</a></li>
-                                <li><a href="guides.html">Guides</a></li>
-                                <li><a href="programs.html">Programs</a></li>
-                                <li><a href="Resources.html">Resources</a></li>
-                            </ul>
-                        </nav>
-
-                        <nav class="footer-col" aria-label="Community">
-                            <div class="footer-col-title">Community</div>
-                            <ul class="footer-links">
-                                <li><a href="contributors.html">Contributors</a></li>
-                                <li><a href="Contribute.html">Contribute</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                            </ul>
-                        </nav>
-
-                        <nav class="footer-col" aria-label="Project">
-                            <div class="footer-col-title">Project</div>
-                            <ul class="footer-links">
-                                <li>
-                                    <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank"
-                                        rel="noopener noreferrer">
-                                        GitHub
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/sayeeg-11/OpenSource-Compass/blob/main/CONTRIBUTING.md"
-                                        target="_blank" rel="noopener noreferrer">
-                                        Contributing
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="code-of-conduct.html" target="_blank" rel="noopener noreferrer">
-                                        Code of Conduct
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-
-                <div class="footer-divider" aria-hidden="true"></div>
-
-                <div class="footer-bottom">
-                    <div class="footer-badges" aria-label="Footer highlights">
-                        <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
-                        <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
-                        <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
-                        <button id="pwa-install-btn" class="footer-pill"
-                            style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
-                            <i class="fas fa-download"></i> Install App
-                        </button>
-                    </div>
-
-                    <div class="footer-meta">
-                        <span>© <span id="footer-year"></span> OpenSource Compass</span>
-                        <span class="footer-sep" aria-hidden="true">•</span>
-                        <a class="footer-inline" href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="fab fa-github"></i> Star on GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+    <footer class="tools-footer" id="devtools-footer" style="width: 100%; justify-content: center; text-align: center;">
+        <span>© <span id="devtools-footer-year"></span> OpenSource Compass •
+            <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank"
+                style="color: inherit; text-decoration: none; margin-left: 0.2rem;">
+                <i class="fab fa-github"></i> Star on GitHub
+            </a>
+        </span>
+    </footer>
 
     <script>
+        // Set dynamic year for the small devtools footer
+        document.getElementById('devtools-footer-year').textContent = new Date().getFullYear();
+
         // --- Tab Switching Logic ---
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(`switchTab('${tabId}')`));
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => {
+                const onclickAttr = btn.getAttribute('onclick');
+                return onclickAttr && onclickAttr.includes(`switchTab('${tabId}')`);
+            });
             if (activeBtn) activeBtn.classList.add('active');
 
             document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+            const targetPanel = document.getElementById(tabId);
+            if (targetPanel) targetPanel.classList.add('active');
 
-            // Update back link based on active tab
-            updateBackLink();
+            // Show footer on all tabs including Git Playground
+            const footer = document.getElementById('devtools-footer');
+            if (footer) {
+                footer.style.display = 'flex';
+            }
 
             // Scroll back to top when switching tabs
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -949,72 +900,13 @@
                     localStorage.setItem('devtools-theme', 'dark');
                 }
             });
-\
         });
 
-        // --- Hamburger Logic Fallback ---
-        const navbarContainer = document.getElementById('navbar');
-        if (navbarContainer && typeof navbarHTML !== 'undefined') {
-            navbarContainer.innerHTML = navbarHTML;
-            const hamburgerBtn = navbarContainer.querySelector('.hamburger-menu');
-            const navLinks = navbarContainer.querySelector('.nav-links');
-
-            if (hamburgerBtn && navLinks) {
-                hamburgerBtn.addEventListener('click', () => {
-                    const isActive = navLinks.classList.toggle('active');
-                    hamburgerBtn.innerHTML = isActive
-                        ? '<i class="fas fa-times"></i>'
-                        : '<i class="fas fa-bars"></i>';
-                    hamburgerBtn.setAttribute('aria-expanded', isActive);
-                });
-
-        }
-        const navbarContainer = document.getElementById('navbar');
-        if (navbarContainer) {
-  navbarContainer.innerHTML = navbarHTML;
-
-  // Hamburger Menu Logic
-  const hamburgerBtn = navbarContainer.querySelector('.hamburger-menu');
-  const navLinks = navbarContainer.querySelector('.nav-links');
-
-  if (hamburgerBtn && navLinks) {
-    hamburgerBtn.addEventListener('click', () => {
-      const isActive = navLinks.classList.toggle('active');
-      // Toggle icon between bars and times (X)
-      hamburgerBtn.innerHTML = isActive
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
-
-      // Accessibility update
-      hamburgerBtn.setAttribute('aria-expanded', isActive);
-    });
-  }
-}
-        function toggleToolsMenu() {
-            const tabs = document.getElementById('toolsTabs');
-            tabs.classList.toggle('menu-active');
-
-            // Toggle icon
-            const btnIcon = document.querySelector('#toolsMenuBtn i');
-            if (tabs.classList.contains('menu-active')) {
-                btnIcon.classList.remove('fa-bars');
-                btnIcon.classList.add('fa-times');
-            } else {
-                btnIcon.classList.remove('fa-times');
-                btnIcon.classList.add('fa-bars');
-
-            }
-        }
     </script>
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="/frontend/js/theme.js"></script>
 
-
-    <script src="../js/components.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="/frontend/js/theme.js"></script>
-    
     <button id="scrollTopBtn" title="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -1022,6 +914,8 @@
     <script src='../js/pwa.js'></script>
     <script src="../js/pr-generator.js"></script>
     <script src="../js/issue-insights.js"></script>
+    <script src="../js/issue-dashboard.js"></script>
+    <script src="../js/repo-health-dashboard.js"></script>
     <script src="../js/issue-validator.js"></script>
 </body>
 

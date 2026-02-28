@@ -1752,12 +1752,14 @@ body.dark-mode .chat-widget-btn {
   margin: 50px auto 0;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* SPACE BETWEEN QUESTIONS */
+  gap: 16px;
+  /* SPACE BETWEEN QUESTIONS */
 }
 
 .faq-item {
   background: #ffffff;
-  border-radius: 14px; /* ROUNDED CORNERS */
+  border-radius: 14px;
+  /* ROUNDED CORNERS */
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   transition: all 0.3s ease;
@@ -1895,8 +1897,10 @@ body.dark-mode .faq-cta-content h4 {
 body.dark-mode .faq-cta-content p {
   color: #d1d5db;
 }
+
 /* =========================
    ACCESSIBILITY
+========================= */
 @media (prefers-reduced-motion: reduce) {
 
   footer.site-footer::after,
@@ -1914,12 +1918,14 @@ body.dark-mode .faq-cta-content p {
 
 /* =========================
    QUIZ SECTION SCROLLBAR
+========================= */
 #level-chain-wrapper::-webkit-scrollbar {
   display: none;
 }
 
 /* =========================
    PRINT STYLES
+========================= */
 @media print {
 
   .why-section::before,
@@ -1934,6 +1940,7 @@ body.dark-mode .faq-cta-content p {
 
 /* =========================
    FOOTER (GLOBAL)
+========================= */
 footer.site-footer {
   position: relative;
   overflow: hidden;
@@ -2190,6 +2197,7 @@ body.dark-mode footer.site-footer {
 
 /* =========================
    RESOURCE LINKS
+========================= */
 .resource-link-wrapper {
   display: flex;
   align-items: center;
@@ -2228,6 +2236,7 @@ body.dark-mode footer.site-footer {
 
 /* =========================
    DARK MODE FIXES
+========================= */
 body.dark-mode .navbar,
 body.dark-mode header {
   background-color: rgba(27, 38, 59, 0.98);
@@ -2306,9 +2315,11 @@ body.dark-mode .why-section {
       #1a1a1a 50%,
       #0f0f0f 100%);
 }
-body.dark-mode #why > p {
+
+body.dark-mode #why>p {
   color: rgba(253, 244, 227, 0.85);
 }
+
 body.dark-mode .why-section::before {
   background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
 }
@@ -2446,9 +2457,8 @@ body.dark-mode {
 
 .apply-step:hover {
   transform: translateY(-8px) scale(1.02) !important;
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.18),
     0 0 25px rgba(212, 175, 55, 0.35) !important;
   border-color: var(--primary-gold) !important;
 }
-
