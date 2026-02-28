@@ -469,6 +469,27 @@
     <!-- Badge Toast Container -->
     <div class="badge-toast-container" id="badge-toast-container"></div>
 
+    <footer id="devtools-footer"
+        style="width: 100%; justify-content: center; text-align: center; height: 32px; display: flex; align-items: center; background: var(--bg-primary, #0f172a); color: var(--text-muted, #94a3b8); font-size: 0.75rem; border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.1)); flex-shrink: 0; margin-top: auto;">
+        <span>© <span id="devtools-footer-year"></span> OpenSource Compass •
+            <a href="https://github.com/sayeeg-11/OpenSource-Compass" target="_blank"
+                style="color: inherit; text-decoration: none; margin-left: 0.2rem;">
+                <i class="fab fa-github"></i> Star on GitHub
+            </a>
+        </span>
+    </footer>
+
+    <script>
+        const playgroundFooter = document.getElementById('devtools-footer');
+        if (playgroundFooter) {
+            if (window.location.search.includes('embedded=true')) {
+                playgroundFooter.style.display = 'none';
+            } else {
+                document.getElementById('devtools-footer-year').textContent = new Date().getFullYear();
+            }
+        }
+    </script>
+
     <script src="../js/git-scenarios.js?v=1.0.3"></script>
     <script src="../js/git-badges.js?v=1.0.0"></script>
     <script src="../js/git-playground.js?v=1.1.0"></script>

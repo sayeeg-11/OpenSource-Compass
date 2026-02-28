@@ -1,4 +1,5 @@
-const CACHE_NAME = 'os-compass-v3';
+const CACHE_VERSION = Date.now(); // Auto-bust cache on new SW install
+const CACHE_NAME = `os-compass-v4-${CACHE_VERSION}`;
 const OFFLINE_PAGE = './offline.html';
 
 const ASSETS_TO_CACHE = [
@@ -16,58 +17,47 @@ const ASSETS_TO_CACHE = [
     './public/icon.png'
 ];
 
-/* INSTALL */
+/* INSTALL - Skip waiting immediately to activate the new SW */
 self.addEventListener('install', (event) => {
-    self.skipWaiting(); // Force the waiting service worker to become the active service worker
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log('Caching assets');
+            console.log('Caching assets with version:', CACHE_NAME);
             return cache.addAll(ASSETS_TO_CACHE);
         })
     );
 });
 
-// Activate event - Clean up old caches
+/* ACTIVATE - Delete ALL old caches and claim clients */
 self.addEventListener('activate', (event) => {
     event.waitUntil(
-        Promise.all([
-            self.clients.claim(), // Become the controller for all clients
-            caches.keys().then((cacheNames) => {
-                return Promise.all(
-                    cacheNames.map((cacheName) => {
-                        if (cacheName !== CACHE_NAME) {
-                            console.log('Deleting old cache:', cacheName);
-                            return caches.delete(cacheName);
-                        }
-                    })
-                );
-            })
-        ])
-    );
-    self.skipWaiting();
-});
-
-/* ACTIVATE */
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then((keys) =>
-            Promise.all(
-                keys.map((key) => {
-                    if (key !== CACHE_NAME) {
-                        return caches.delete(key);
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('Deleting old cache:', cacheName);
+                        return caches.delete(cacheName);
                     }
                 })
-            )
-        )
+            );
+        }).then(() => {
+            console.log('New service worker activated, claiming clients');
+            return self.clients.claim();
+        })
     );
-    self.clients.claim();
 });
 
-/* FETCH */
+/* FETCH - Network-first strategy: always try to get fresh content */
 self.addEventListener('fetch', (event) => {
     const request = event.request;
 
-    // Handle navigation (HTML pages)
+    // Only handle GET requests
+    if (request.method !== 'GET') return;
+
+    // Skip non-http(s) requests (e.g. chrome-extension://)
+    if (!request.url.startsWith('http')) return;
+
+    // Handle navigation (HTML pages) - Network first, fallback to cache/offline
     if (request.mode === 'navigate') {
         event.respondWith(
             fetch(request)
@@ -83,26 +73,22 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Handle static assets (CSS, JS, images)
+    // Handle all other assets (CSS, JS, images, fonts, etc.) - Network first
     event.respondWith(
-        caches.match(request).then((cached) => {
-            if (cached) {
-                // Update cache in background
-                fetch(request).then((response) => {
+        fetch(request)
+            .then((response) => {
+                // Only cache successful, same-origin or CORS responses
+                if (response && response.status === 200) {
+                    const copy = response.clone();
                     caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(request, response.clone());
+                        cache.put(request, copy);
                     });
-                });
-                return cached;
-            }
-
-            return fetch(request).then((response) => {
-                const copy = response.clone();
-                caches.open(CACHE_NAME).then((cache) => {
-                    cache.put(request, copy);
-                });
+                }
                 return response;
-            });
-        })
+            })
+            .catch(() => {
+                // Network failed, fallback to cache
+                return caches.match(request);
+            })
     );
 });

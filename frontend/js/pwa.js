@@ -14,6 +14,9 @@ if ('serviceWorker' in navigator) {
             .then(registration => {
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
 
+                // Force check for updates on every page load
+                registration.update();
+
                 // Handle updates
                 registration.onupdatefound = () => {
                     const installingWorker = registration.installing;
