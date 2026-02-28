@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="frontend/css/home.css" />
     <link rel="stylesheet" href="frontend/css/chatbot.css" />
     <link rel="stylesheet" href="index.css" />
-
+    <link rel="stylesheet" href="frontend/css/footer.css">
     <link rel="stylesheet" href="frontend/css/pr-generator.css" />
     <style>
       /* --- THEME VARIABLES --- */
@@ -47,6 +47,7 @@
         --card-bg: #ffffff;
         --border-color: #e2d1a8;
         --primary-gold: #b59d5c;
+        --footer-bg: #ffffff;
         --shadow: rgba(0, 0, 0, 0.05);
         --newsletter-bg: #fcfbf7;
         /* Light cream */
@@ -1387,7 +1388,6 @@
         </form>
       </div>
     </section>
-    <div id="footer"></div>
     <div id="opensource-chatbot"></div>
 
     <button id="scrollTopBtn" title="Back to Top">
@@ -1532,6 +1532,7 @@
       </div>
     </section>
   </main>
+
   <div id="opensource-chatbot"></div>
 
 
@@ -1562,14 +1563,15 @@
 
   </div>
 </div>
-    <script src="frontend/js/components.js"></script>
-    <script src="frontend/js/theme.js"></script>
-    <script src="frontend/js/home.js"></script>
-    <script src="frontend/js/chatbot.js"></script>
-    <script src="frontend/js/pwa.js"></script>
-    <script src="frontend/js/pr-generator.js"></script>
-    <script src="index.js"></script>
-   <script>
+<div id="footer"></div>
+<script src="frontend/js/components.js"></script>
+<script src="frontend/js/theme.js"></script>
+<script src="frontend/js/home.js"></script>
+<script src="frontend/js/chatbot.js"></script>
+<script src="frontend/js/pwa.js"></script>
+<script src="frontend/js/pr-generator.js"></script>
+<script src="index.js"></script>
+<script>
 function openModal(program) {
 
 const modal = document.getElementById("programModal");
@@ -1696,5 +1698,5 @@ document.addEventListener("click", function(e){
   }
 });
 </script>
-  </body>
+</body>
 </html>

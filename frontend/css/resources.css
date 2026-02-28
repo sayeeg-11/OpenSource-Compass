@@ -94,9 +94,15 @@ body.dark-mode #quiz-container {
   --primary-gold: #b59d5c;
   --bg-deep: #121212;         /* Main Background */
   --surface-elevated: #1e1e1e; /* Card & Navbar Surface */
-  --text-main: #e0e0e0;
   --text-dim: #a0a0a0;
   --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --footer-bg: #ffffff;
 }
 
 body {
