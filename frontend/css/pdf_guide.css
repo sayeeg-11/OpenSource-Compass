@@ -425,3 +425,122 @@ footer a:hover {
     font-size: 1.5rem;
   }
 }
+
+/* ===== OpenSource Compass Footer (Gradient Style) ===== */
+.osc-footer {
+  background: linear-gradient(135deg, #0b1d2a, #132f4c, #0f2135);
+  color: #ffffff;
+  padding: 3rem 2rem 1.5rem;
+  margin-top: 4rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.footer-brand h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+  background: #d4af37;
+  color: #0b1d2a;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #cfd8dc;
+  margin-bottom: 1.2rem;
+}
+
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-badges span {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.footer-column h4 {
+  color: #d4af37;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.footer-column a {
+  display: block;
+  text-decoration: none;
+  color: #e0e0e0;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #d4af37;
+  transform: translateX(3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+  color: #b0bec5;
+}
+
+.footer-bottom a {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-badges {
+    justify-content: center;
+  }
+}
