@@ -1,21 +1,29 @@
 document.body.classList.add("has-chatbot");
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Persistent chat storage key
+const CHAT_STORAGE_KEY = "opensource_compass_chat_history";
     // DOM Elements - Create dynamically to be less intrusive
     document.body.classList.add("has-chatbot");
 
     const chatBtn = document.createElement('button');
-    chatBtn.className = 'chat-widget-btn';
-    chatBtn.innerHTML = '💬';
-    chatBtn.title = 'Need Help?';
+chatBtn.className = 'chat-widget-btn';
+chatBtn.innerHTML = '💬';
+chatBtn.title = 'Open Chat';
+chatBtn.dataset.state = "closed"; // NEW: track state
 
     const chatWindow = document.createElement('div');
     chatWindow.className = 'chat-window';
     chatWindow.innerHTML = `
         <div class="chat-header">
-            <span>OpenSource Guide</span>
-            <button class="close-btn">&times;</button>
-        </div>
+    <span>OpenSource Guide</span>
+    <div class="chat-controls">
+            <button id="clearChatBtn" title="Clear Chat">🗑️</button>
+
+        <button class="minimize-btn" title="Minimize">—</button>
+        <button class="close-btn" title="Close">&times;</button>
+    </div>
+</div>
         <div class="chat-messages" id="chatMessages">
             <div class="message bot">
                 Hello! I'm here to help you with your open source journey. Ask me anything!
@@ -38,15 +46,41 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(chatWindow);
 
     const closeBtn = chatWindow.querySelector('.close-btn');
+const minimizeBtn = chatWindow.querySelector('.minimize-btn');
     const sendBtn = document.getElementById('sendBtn');
     const chatInput = document.getElementById('chatInput');
     const messagesContainer = document.getElementById('chatMessages');
     const typingIndicator = document.getElementById('typingIndicator');
     const suggestionsContainer = document.getElementById("chatSuggestions");
+    const clearChatBtn = document.getElementById("clearChatBtn");
+
+clearChatBtn.addEventListener("click", () => {
+    localStorage.removeItem(CHAT_STORAGE_KEY);
+    messagesContainer.innerHTML = `
+        <div class="message bot">
+            Hello! I'm here to help you with your open source journey. Ask me anything!
+        </div>
+        <div class="suggestions" id="chatSuggestions"></div>
+    `;
+    renderSuggestions();
+});
 
 
     let intents = [];
 
+    // Save chat messages to localStorage
+function saveChatHistory() {
+    const messages = [];
+    const allMessages = messagesContainer.querySelectorAll('.message');
+
+    allMessages.forEach(msg => {
+        const text = msg.querySelector('.message-text')?.innerText || "";
+        const sender = msg.classList.contains('user') ? 'user' : 'bot';
+        messages.push({ text, sender });
+    });
+
+    localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+}
     const suggestions = [
         "Know about Open Source",
         "Beginner Guide",
@@ -73,6 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderSuggestions();
+
+    // Restore chat history on page load
+function restoreChatHistory() {
+    const stored = localStorage.getItem(CHAT_STORAGE_KEY);
+    if (!stored) return;
+
+    const messages = JSON.parse(stored);
+
+    // Clear default welcome message before restoring
+    messagesContainer.innerHTML = "";
+
+    messages.forEach(msg => {
+        addMessage(msg.text, msg.sender);
+    });
+
+    suggestionsContainer.style.display = "none";
+}
+
+restoreChatHistory();
     
     // Load data
     // Note: This path assumes index.html is in /pages/ and data is in /data/
@@ -94,16 +147,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Toggle Chat
-    chatBtn.addEventListener('click', () => {
-        chatWindow.classList.add('active');
-        chatBtn.style.display = 'none';
-        chatInput.focus();
-    });
+    // OPEN CHAT (from bubble or minimized bar)
+chatBtn.addEventListener('click', () => {
+    chatWindow.classList.add('active');
+    chatBtn.style.display = 'none';
+    chatBtn.dataset.state = "closed"; // reset state
+    chatBtn.innerHTML = '💬'; // reset icon
+    chatBtn.classList.remove('minimized-bar');
+    chatInput.focus();
+});
 
-    closeBtn.addEventListener('click', () => {
-        chatWindow.classList.remove('active');
-        chatBtn.style.display = 'flex'; // Use flex to center the icon
-    });
+// CLOSE CHAT (full dismiss - circular icon)
+closeBtn.addEventListener('click', () => {
+    chatWindow.classList.remove('active');
+    chatBtn.style.display = 'flex';
+    chatBtn.dataset.state = "closed";
+    chatBtn.innerHTML = '💬'; // normal bubble
+    chatBtn.classList.remove('minimized-bar');
+});
+
+// MINIMIZE CHAT (rectangular bar)
+minimizeBtn.addEventListener('click', () => {
+    chatWindow.classList.remove('active');
+    chatBtn.style.display = 'flex';
+    chatBtn.dataset.state = "minimized";
+    chatBtn.innerHTML = 'OpenSource Guide (Minimized)';
+    chatBtn.classList.add('minimized-bar');
+});
 
     // Send Message Logic
     function sendMessage() {
@@ -246,6 +316,7 @@ function parseMarkdown(text) {
 
     messagesContainer.appendChild(msgDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    saveChatHistory();
 }
 
 
