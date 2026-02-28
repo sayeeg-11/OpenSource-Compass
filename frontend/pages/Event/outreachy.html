@@ -217,47 +217,123 @@
             color: var(--text-secondary);
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 3rem;
+        .about-story {
+            margin: 0 auto;
+            text-align: left;
         }
 
         .about-story h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--deep-navy);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Golden underline */
+        .about-story h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            height: 3px;
+            width: 90px;
+            background: linear-gradient(
+                to right,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            transition: width 0.35s ease;
+        }
+
+        .about-story:hover h3::after {
+            width: 140px;
         }
 
         .about-story p {
-            margin-bottom: 1rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 1.08rem;
+            margin-bottom: 1.2rem;
+            text-align: left;
+            max-width: 90%;
         }
+
+        /* =============================
+        CARDS BELOW TEXT
+        ============================= */
 
         .about-cards {
             display: grid;
-            gap: 1.4rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
+        /* CARD STYLE */
         .about-card {
-            padding: 1.6rem 1.5rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow-main);
+            padding: 2.2rem 2rem;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(212, 175, 55, 0.15);
+
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+
+            text-align: left;
+
             transition: transform 0.45s var(--bounce-curve),
-                box-shadow 0.45s ease;
+                        box-shadow 0.35s ease,
+                        border 0.3s ease;
         }
 
+        /* HOVER EFFECT */
         .about-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.45);
         }
 
+        /* ENLARGED TITLE */
         .about-card h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+            font-weight: 700;
             color: var(--primary-gold);
-            margin-bottom: 0.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Slight grow on hover */
+        .about-card:hover h4 {
+            transform: translateX(6px);
+        }
+
+        .about-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 950px) {
+            .about-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark-mode .about-card {
+            background: rgba(27, 34, 53, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        body.dark-mode .about-card:hover {
+            border: 1px solid rgba(212, 175, 55, 0.5);
         }
 
         /* Dark Mode */
@@ -281,13 +357,20 @@
             }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
             .about-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .about-intro {
-                margin-bottom: 3rem;
+            .about-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .about-cards {
+                grid-template-columns: 1fr;
             }
         }
 
