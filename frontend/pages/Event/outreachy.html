@@ -1116,9 +1116,28 @@
                 box-shadow 0.35s ease;
         }
 
+        /* Smooth transition */
+        .contribution-card {
+            transition: 
+                transform 0.45s var(--bounce-curve),
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
+
+        /* Golden glow hover */
         .contribution-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-10px) scale(1.02);
+
+            background: linear-gradient(
+                135deg,
+                rgba(212, 175, 55, 0.10),
+                rgba(212, 175, 55, 0.04)
+            );
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.35),      /* depth */
+                0 0 40px rgba(212, 175, 55, 0.30),   /* outer glow */
+                0 0 14px rgba(212, 175, 55, 0.20);   /* soft inner glow */
         }
 
         .contribution-card .step {
@@ -1935,7 +1954,7 @@
                 </div>
 
                 <!-- December Cohort -->
-                <div class="cohort-card highlight">
+                <div class="cohort-card ">
                     <div class="cohort-header">
                         <h3>❄️ December – March</h3>
                         <span class="cohort-tag">End-Year Cohort</span>
@@ -2164,7 +2183,7 @@
                     </p>
                 </div>
 
-                <div class="contribution-card highlight">
+                <div class="contribution-card ">
                     <span class="step">04</span>
                     <h3>Learn & Improve</h3>
                     <p>
@@ -2214,7 +2233,7 @@
 
             <!-- Benefits Grid -->
             <div class="benefits-grid">
-                <div class="benefits-card highlight">
+                <div class="benefits-card ">
                     <h3>💰 Stipend</h3>
                     <p>Receive a competitive stipend to support your internship period and help you focus on
                         contributing full-time.</p>
