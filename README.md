@@ -216,16 +216,33 @@ git clone https://github.com/YOUR-USERNAME/OpenSource-Compass.git
 cd OpenSource-Compass
  ```
 
-### 3️⃣ Run the Project
+### 3️⃣ Run the Project (One-Command Setup)
 
-> [!WARNING]
-> **Do NOT open `index.html` directly (`file://`).**
-> This will break features like the Program Hub and Contributor Wall. You **must** use a local development server.
+For a quick and easy start, we provide a one-command setup script that automatically installs all dependencies, sets up your environment variables, and starts both the backend API and frontend web app.
 
-**Recommended Method:**
-1.  Install the **Live Server** extension in VS Code.
-2.  Right-click `index.html` and select **"Open with Live Server"**.
-3.  The site will open at `http://127.0.0.1:5500`.
+**For Windows Users (Command Prompt):**
+```cmd
+setup.bat
+```
+
+**For Windows Users (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup.ps1
+```
+
+**For Mac/Linux Users:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+**What this does:**
+- Installs backend dependencies.
+- Copies `.env.example` to `.env`.
+- Starts the backend server.
+- Starts `live-server` which will automatically open `http://127.0.0.1:5500` in your default browser.
+
+*(Alternatively, you can manually use the **Live Server** extension in VS Code if you only plan to edit the frontend).*
 
 ### 4️⃣ Start Contributing
 Make changes → Test → Push → Create Pull Request
