@@ -24,6 +24,12 @@ body {
   --code-comment: #6a737d;
   --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --footer-bg: #ffffff;
 }
 
 body.dark-mode {
@@ -31,6 +37,7 @@ body.dark-mode {
   --code-border: #333333; /* Subtle border */
   --code-text: #e6e6e6;    /* Light readable text */
   --code-comment: #9ca3af; /* Muted gray for comments */
+  --footer-bg: #1a1a1a;
 }
 
 body {

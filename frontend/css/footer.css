@@ -1,0 +1,131 @@
+.site-footer {
+    background: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+    margin-top: 80px;
+    padding-top: 50px;
+    width: 100%;
+    display: block;
+    padding-bottom: 40px;
+    font-family: 'Times New Roman', Times, serif
+}
+
+
+/* MAIN CONTAINER */
+.footer-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 40px 50px;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    gap: 80px;
+}
+
+/* Prevent footer from inheriting section centering behavior */
+footer.site-footer {
+    text-align: left;
+}
+
+/* Footer columns layout fix */
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+}
+
+/* BRAND */
+.footer-brand {
+    max-width: 420px;
+}
+
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-gold);
+    margin-bottom: 12px;
+}
+
+
+.footer-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+
+/* COLUMNS */
+.footer-column h4 {
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+
+.footer-column a {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+
+.footer-column a:hover {
+    color: var(--primary-gold);
+}
+
+
+/* BADGES */
+.footer-badges {
+    margin-top: 10px;
+}
+
+
+.footer-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+
+/* BOTTOM BAR */
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding: 15px 20px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+
+.footer-bottom a {
+    color: var(--primary-gold);
+    text-decoration: none;
+}
+
+
+.footer-dot {
+    margin: 0 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

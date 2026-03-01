@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="frontend/css/home.css" />
     <link rel="stylesheet" href="frontend/css/chatbot.css" />
     <link rel="stylesheet" href="index.css" />
-
+    <link rel="stylesheet" href="frontend/css/footer.css">
     <link rel="stylesheet" href="frontend/css/pr-generator.css" />
     <style>
       /* --- THEME VARIABLES --- */
@@ -47,6 +47,7 @@
         --card-bg: #ffffff;
         --border-color: #e2d1a8;
         --primary-gold: #b59d5c;
+        --footer-bg: #ffffff;
         --shadow: rgba(0, 0, 0, 0.05);
         --newsletter-bg: #fcfbf7;
         /* Light cream */
@@ -70,6 +71,7 @@
         --text-secondary: #ccc;
         --card-bg: #1e1e1e;
         --border-color: #444;
+        --footer-bg:#1a1a1a;
         --shadow: rgba(0, 0, 0, 0.5);
         /* Dark Mode Overrides */
         --newsletter-bg: #121212;
@@ -1030,18 +1032,20 @@
             A global program focused on bringing new contributors into open
             source software development.
           </p>
-          <button class="view-btn" onclick="openModal('gsoc')">
-  View Details
-</button>
-          <a
-            href="https://summerofcode.withgoogle.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button class="explore-btn">
-              Explore <i class="fas fa-arrow-up-right-from-square"></i>
-            </button>
-          </a>
+          <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
+    View Details
+  </button>
+
+  <a
+    href="https://summerofcode.withgoogle.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="explore-btn"
+  >
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
+  </a>
+</div>
         </div>
 
         <!-- GSSoC -->
@@ -1052,21 +1056,22 @@
             GirlScript Summer of Code is a three-month-long Open Source program
             by GirlScript Foundation.
           </p>
-          <button class="view-btn" onclick="openModal('gssoc')">
-  View Details
-</button>
-          <a
-            href="https://gssoc.girlscript.tech/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button class="explore-btn">
-              Explore <i class="fas fa-arrow-up-right-from-square"></i>
-            </button>
-          </a>
-        </div>
+          <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
+    View Details
+  </button>
 
-        <!-- Hacktoberfest -->
+  <a
+    href="https://gssoc.girlscript.tech/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="explore-btn"
+  >
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
+  </a>
+</div>
+</div>
+                  <!-- Hacktoberfest -->
         <div class="card">
           <div class="card-icon"><i class="fas fa-terminal"></i></div>
           <h4>Hacktoberfest</h4>
@@ -1074,38 +1079,44 @@
             A month-long celebration of open-source software run by
             DigitalOcean.
           </p>
-          <button class="view-btn" onclick="openModal('hack')">
-  View Details
-</button>
-          <a
-            href="https://hacktoberfest.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button class="explore-btn">
-              Explore <i class="fas fa-arrow-up-right-from-square"></i>
-            </button>
-          </a>
-        </div>
+
+          <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
+    View Details
+  </button>
+
+  <a
+    href="https://hacktoberfest.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="explore-btn"
+  >
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
+  </a>
+</div>
+</div>
 
         <!-- SWOC -->
         <div class="card">
           <div class="card-icon"><i class="fas fa-snowflake"></i></div>
           <h4>Social Winter of Code</h4>
           <p>Beginner-focused winter open-source program.</p>
-          <button class="view-btn" onclick="openModal('swoc')">
-  View Details
-</button>
-          <a
-            href="https://www.socialwinterofcode.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button class="explore-btn">
-              Explore <i class="fas fa-arrow-up-right-from-square"></i>
-            </button>
-          </a>
-        </div>
+
+          <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
+    View Details
+  </button>
+
+  <a
+    href="https://www.socialwinterofcode.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="explore-btn"
+  >
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
+  </a>
+</div>
+</div>
 
         <!-- Linux Foundation -->
         <div class="card">
@@ -1115,19 +1126,21 @@
             Explore various mentorship opportunities within the massive Linux
             ecosystem.
           </p>
-          <button class="view-btn" onclick="openModal('linux')">
-  View Details
-</button>
-          <a
-            href="https://www.linuxfoundation.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button class="explore-btn">
-              Explore <i class="fas fa-arrow-up-right-from-square"></i>
-            </button>
-          </a>
-        </div>
+          <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
+    View Details
+  </button>
+
+  <a
+    href="https://www.linuxfoundation.org/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="explore-btn"
+  >
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
+  </a>
+</div>
+</div>
 
         <!-- Outreachy -->
         <div class="card">
@@ -1137,19 +1150,21 @@
             Provides internships to people subject to systemic bias and
             underrepresented in tech.
           </p>
-          <button class="view-btn" onclick="openModal('outreachy')">
-  View Details
-</button>
-          <a
-            href="https://www.outreachy.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button class="explore-btn">
-              Explore <i class="fas fa-arrow-up-right-from-square"></i>
-            </button>
-          </a>
-        </div>
+          <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
+    View Details
+  </button>
+
+  <a
+    href="https://www.outreachy.org/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="explore-btn"
+  >
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
+  </a>
+</div>
+</div>
 
         <!-- MLH Fellowship -->
 <div class="card">
@@ -1159,18 +1174,20 @@
     A remote internship-like open source program where you collaborate in pods
     on real-world projects with mentorship.
   </p>
-  <button class="view-btn" onclick="openModal('mlh')">
+  <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
     View Details
   </button>
+
   <a
     href="https://fellowship.mlh.io/"
     target="_blank"
     rel="noopener noreferrer"
+    class="explore-btn"
   >
-    <button class="explore-btn">
-      Explore <i class="fas fa-arrow-up-right-from-square"></i>
-    </button>
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
   </a>
+</div>
 </div>
 
 
@@ -1182,18 +1199,20 @@
     A mentorship program by KDE that allows contributors to work on open
     source desktop and Qt-based projects.
   </p>
-  <button class="view-btn" onclick="openModal('kde')">
+  <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
     View Details
   </button>
+
   <a
     href="https://season.kde.org/"
     target="_blank"
     rel="noopener noreferrer"
+    class="explore-btn"
   >
-    <button class="explore-btn">
-      Explore <i class="fas fa-arrow-up-right-from-square"></i>
-    </button>
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
   </a>
+</div>
 </div>
 
 <!-- Hyperledger Mentorship -->
@@ -1204,18 +1223,20 @@
     A blockchain-focused mentorship program under the Hyperledger open source
     ecosystem with guided project contributions.
   </p>
-  <button class="view-btn" onclick="openModal('hyperledger')">
+  <div class="card-actions">
+  <button class="view-btn" onclick="openModal('gsoc')">
     View Details
   </button>
+
   <a
     href="https://wiki.hyperledger.org/display/INTERN"
     target="_blank"
     rel="noopener noreferrer"
+    class="explore-btn"
   >
-    <button class="explore-btn">
-      Explore <i class="fas fa-arrow-up-right-from-square"></i>
-    </button>
+    Explore <i class="fas fa-arrow-up-right-from-square"></i>
   </a>
+</div>
 </div>
       </div>
     </section>
@@ -1387,7 +1408,6 @@
         </form>
       </div>
     </section>
-    <div id="footer"></div>
     <div id="opensource-chatbot"></div>
 
     <button id="scrollTopBtn" title="Back to Top">
@@ -1532,6 +1552,7 @@
       </div>
     </section>
   </main>
+
   <div id="opensource-chatbot"></div>
 
 
@@ -1562,14 +1583,15 @@
 
   </div>
 </div>
-    <script src="frontend/js/components.js"></script>
-    <script src="frontend/js/theme.js"></script>
-    <script src="frontend/js/home.js"></script>
-    <script src="frontend/js/chatbot.js"></script>
-    <script src="frontend/js/pwa.js"></script>
-    <script src="frontend/js/pr-generator.js"></script>
-    <script src="index.js"></script>
-   <script>
+<div id="footer"></div>
+<script src="frontend/js/components.js"></script>
+<script src="frontend/js/theme.js"></script>
+<script src="frontend/js/home.js"></script>
+<script src="frontend/js/chatbot.js"></script>
+<script src="frontend/js/pwa.js"></script>
+<script src="frontend/js/pr-generator.js"></script>
+<script src="index.js"></script>
+<script>
 function openModal(program) {
 
 const modal = document.getElementById("programModal");
@@ -1696,5 +1718,5 @@ document.addEventListener("click", function(e){
   }
 });
 </script>
-  </body>
+</body>
 </html>
