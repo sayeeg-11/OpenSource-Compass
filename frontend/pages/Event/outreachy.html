@@ -1461,23 +1461,115 @@
         }
 
         /* Grid Table */
-        .compare-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-main);
-            transition: box-shadow 0.3s ease;
-        }
+/* ===============================
+   PREMIUM COMPARISON TABLE
+=============================== */
 
-        .compare-grid:hover {
-            box-shadow: var(--shadow-hover);
-        }
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.18);
+    transition: box-shadow 0.35s ease;
+}
 
-        .compare-row {
-            display: contents;
-            /* Use CSS Grid "display: contents" for row styling */
-        }
+.compare-grid:hover {
+    box-shadow: 
+        0 28px 70px rgba(0, 0, 0, 0.25);
+}
+
+/* Use grid rows */
+.compare-row {
+    display: contents;
+}
+
+/* Cells */
+.compare-row > div {
+    padding: 1.6rem 2rem;
+    font-size: 0.95rem;
+    color: var(--deep-navy);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: 
+        background 0.35s ease,
+        color 0.3s ease,
+        transform 0.2s ease;
+}
+
+/* ---------- HEADER ---------- */
+
+.compare-row.header > div {
+    background: linear-gradient(
+        135deg,
+        var(--primary-gold),
+        var(--secondary-gold)
+    );
+    color: #111;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+
+    /* prevent hover override */
+    transition: none;
+}
+
+/* IMPORTANT: Prevent header turning white */
+.compare-row.header:hover > div {
+    background: linear-gradient(
+        135deg,
+        var(--primary-gold),
+        var(--secondary-gold)
+    ) !important;
+    color: #111 !important;
+}
+
+/* ---------- ZEBRA STRIPES ---------- */
+
+.compare-row:nth-child(even):not(.header) > div {
+    background: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------- ROW HOVER ---------- */
+
+.compare-row:not(.header):hover > div {
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--deep-navy);
+    transform: scale(1.01);
+}
+
+/* Remove last border */
+.compare-row:last-child > div {
+    border-bottom: none;
+}
+
+/* ===============================
+   DARK MODE TABLE
+=============================== */
+
+body.dark-mode .compare-grid {
+    background: rgba(27, 34, 53, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .compare-row > div {
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .compare-row:nth-child(even):not(.header) > div {
+    background: rgba(27, 34, 53, 0.75);
+}
+
+body.dark-mode .compare-row:not(.header):hover > div {
+    background: rgba(212, 175, 55, 0.20);
+    color: #fff;
+}
 
         .compare-row>div {
             padding: 1.5rem;
