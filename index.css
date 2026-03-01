@@ -956,10 +956,8 @@ body {
 /* --- Why Section Wrapper --- */
 #why {
   padding: 100px 20px;
-  background-color: #fcfbf7;
-  /* Light cream theme background */
-  text-align: center;
-  /* Centers the main heading and intro */
+  background-color: var(--section-bg); /* Light cream theme background */
+  text-align: center; /* Centers the main heading and intro */
 }
 
 #why h3 {

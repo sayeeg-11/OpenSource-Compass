@@ -24,6 +24,12 @@ body {
   --code-comment: #6a737d;
   --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.18);
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --footer-bg: #ffffff;
 }
 
 body.dark-mode {
@@ -31,6 +37,7 @@ body.dark-mode {
   --code-border: #333333; /* Subtle border */
   --code-text: #e6e6e6;    /* Light readable text */
   --code-comment: #9ca3af; /* Muted gray for comments */
+  --footer-bg: #1a1a1a;
 }
 
 body {
@@ -652,22 +659,35 @@ body.dark-mode li {
   color: #cccccc;
 }
 
-/* Best practices section stays light */
+/* =========================
+   BEST PRACTICES DARK MODE
+========================= */
+
+body.dark-mode .best-practices {
+  background-color: #111111;
+}
+
 body.dark-mode .practices-container {
-  background-color: #ffffff;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.practices-section h2 {
-  color: #c9a227; /* your gold */
+body.dark-mode .practice-list li {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  color: #cccccc;
 }
 
-.practices-container {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
+body.dark-mode .practice-list strong {
+  color: var(--primary-gold);
 }
 
-.practices-container p {
-  color: #222222;
+body.dark-mode .practice-list li::before {
+  border-color: transparent;
+}
+
+body.dark-mode .practice-list li:hover::before {
+  border-color: var(--primary-gold);
 }
 
 /* Dark mode version */
@@ -690,4 +710,19 @@ body.dark-mode .practices-container p {
 
 body.dark-mode .best-practices .section-title {
   color: var(--primary-gold) !important;
+}
+
+/* Step Card Base Styling */
+.step {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;   /* ✅ Added proper padding */
+  box-shadow: var(--shadow-main);
+  margin-top: 2rem;
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.steps-container {
+  padding-top: 4rem;
 }

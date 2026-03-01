@@ -45,44 +45,63 @@
             line-height: 1.6;
         }
 
-        /* ---------- Navbar ---------- */
-        header {
-            background-color: var(--white);
-            border-bottom: 1px solid #eaeaea;
-            padding: 16px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
+       /* Center all section content */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically if height is set */
+    text-align: center; /* Centers all text by default */
+}
 
-        header h1 {
-            color: var(--primary-blue);
-            font-size: 22px;
-            font-weight: 700;
-        }
+/* Ensure grids are centered and items inside them are centered */
+.snapshot-grid, 
+.features-grid, 
+.timeline-grid, 
+.stipend-grid, 
+.eligibility-grid, 
+.prepare-grid, 
+.gsoc-tips-grid, 
+.resources-grid {
+    display: grid;
+    justify-content: center; /* Centers the grid itself */
+    justify-items: center;   /* Centers cards inside the grid */
+    align-items: stretch;    /* Keeps cards the same height */
+    margin: 0 auto;          /* Standard centering */
+    width: 100%;
+    max-width: 1200px;       /* Keeps layout from getting too wide */
+}
 
-        nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
+/* Fix individual cards that might have left-aligned text */
+.snapshot-card, 
+.feature-card, 
+.timeline-card, 
+.stipend-card, 
+.eligibility-card, 
+.prepare-card, 
+.gsoc-tip-card, 
+.resource-card,
+.phase-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* Centers icons/titles inside cards */
+    text-align: center;      /* Centers text inside cards */
+}
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s ease;
-        }
+/* Ensure lists inside cards are centered without bullet-point gaps */
+.timeline-card ul, 
+.stipend-list, 
+.phase-card ul {
+    padding: 0;
+    list-style-position: inside; /* Keeps markers aligned with centered text */
+    text-align: center;
+}
 
-        nav a:hover {
-            color: var(--secondary-blue);
-        }
-
+.timeline-card ul li, 
+.stipend-list li, 
+.phase-card ul li {
+    padding-left: 0;
+}
         /* ---------- Hero Section ---------- */
         .hero {
             background: linear-gradient(135deg, #0d1f4d 0%, #1F3C88 50%, #2a4a9e 100%);
@@ -156,7 +175,101 @@
             font-weight: 600;
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
         }
+        /* General Section Styling */
+.gsoc-resources {
+    background-color: #0b0e14; /* Dark background as seen in image */
+    padding: 60px 20px;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
 
+.resources-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.resources-header p {
+    color: #8a94a6;
+    margin-bottom: 40px;
+}
+
+/* The Grid Layout */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Individual Resource Card */
+.resource-card {
+    background-color: #99ccff; /* Light blue from your screenshot */
+    border-radius: 15px;
+    padding: 30px;
+    color: #1a1a1a; /* Dark text for contrast on light blue */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover Effect */
+.resource-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(153, 204, 255, 0.3);
+}
+
+/* Icons and Text */
+.resource-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.resource-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.resource-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Button inside Card */
+.resource-btn {
+    text-decoration: none;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.resource-btn:hover {
+    background-color: #333333;
+}
+
+/* CTA Section specific (from your HTML) */
+.cta-section {
+    padding: 50px 20px;
+    background-color: #0b0e14;
+    text-align: center;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
         .hero .cta-buttons {
             display: flex;
             gap: 16px;
@@ -936,7 +1049,155 @@ body.dark-mode header {
 body.dark-mode nav a {
     color: #e5e7eb;
 }
+:root {
+  --primary-gold: #c5a059; /* Approximate gold from the image */
+  --footer-bg: #0a0c10;
+  --text-gray: #a1a1a1;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
 
+.site-footer {
+  background-color: var(--footer-bg);
+  color: white;
+  padding: 4rem 2rem 2rem;
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Brand Section */
+.footer-brand {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-mark {
+  background: var(--primary-gold);
+  color: #000;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.footer-tagline {
+  color: var(--text-gray);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 400px;
+}
+
+/* Navigation Columns */
+.footer-columns {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-col-title {
+  color: var(--primary-gold);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* Divider */
+.footer-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin-bottom: 2rem;
+}
+
+/* Bottom Section & Badges */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-badges {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-meta {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+.footer-inline {
+  color: var(--primary-gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-top, .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-columns {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}
 body.dark-mode .feature-card,
 body.dark-mode .timeline-card,
 body.dark-mode .step-content,
@@ -967,26 +1228,6 @@ body.dark-mode footer {
 
 <body>
     <header>
-    <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">OpenSource Compass</a></h1>
-    <nav>
-        <a href="../../../index.html">Home</a>
-        <a href="../guides.html">Guides</a>
-        <a href="../programs.html">Programs</a>
-        <a href="../Resources.html">Resources</a>
-        <a href="../Contribute.html">Contribute</a>
-        <button id="darkModeToggle" aria-label="Toggle Dark Mode" style="
-            padding: 8px 14px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            background: transparent;
-            cursor: pointer;
-            font-weight: 600;
-        ">
-            🌙
-        </button>
-    </nav>
-</header>
-
         <div class="navbar-container">
             <h1>
                 <i class="fas fa-compass" style="color: var(--primary-gold); margin-right: 0.4rem"></i>
@@ -1007,6 +1248,8 @@ body.dark-mode footer {
             </div>
         </div>
     </header>
+
+        
 
     <!-- HERO -->
 
@@ -1457,11 +1700,7 @@ body.dark-mode footer {
                 <p>Approximately 30–35 hours per week during coding period, with regular mentor check-ins.</p>
             </div>
 
-            <div class="eligibility-card">
-                <div class="eligibility-icon">✅</div>
-                <h3>Other Requirements</h3>
-                <p>Active communication, timely proposal submission, and adherence to community guidelines.</p>
-            </div>
+           
         </div>
     </section>
 
@@ -1474,11 +1713,7 @@ body.dark-mode footer {
         </div>
 
         <div class="prepare-grid">
-            <div class="prepare-card">
-                <div class="prepare-icon">📚</div>
-                <h3>Learn & Explore</h3>
-                <p>Familiarize yourself with open source projects, Git, and coding best practices.</p>
-            </div>
+        
 
             <div class="prepare-card">
                 <div class="prepare-icon">💬</div>
@@ -1548,10 +1783,7 @@ body.dark-mode footer {
     <section class="cta-section">
         <h2>Ready to Start Your GSoC Journey?</h2>
         <p>Take the first step today. Begin preparing, contribute to open source, and build your profile for GSoC 2026.</p>
-        <div class="cta-buttons-large">
-            <a href="https://developers.google.com/open-source/gsoc/faq" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="background-color: var(--primary-blue); color: var(--white); border-color: var(--primary-blue);">
-                <i class="fas fa-question-circle"></i>
-                Read FAQ
+    </section>
     <!-- RESOURCES -->
 
     <section class="gsoc-resources">
@@ -1582,12 +1814,7 @@ body.dark-mode footer {
                 <a href="https://git-scm.com/docs" target="_blank" class="resource-btn">Visit</a>
             </div>
 
-            <div class="resource-card">
-                <div class="resource-icon">💡</div>
-                <h3>Community Forums</h3>
-                <p>Join discussions, ask questions, and network with mentors and contributors.</p>
-                <a href="https://groups.google.com/g/google-summer-of-code-discuss" target="_blank" class="resource-btn">Visit</a>
-            </div>
+            
         </div>
     </section>
 

@@ -83,7 +83,6 @@ async function loadAndRender() {
 
     setStatus("");
 renderTopContributors(visibleContributors);
-renderTopContributors(visibleContributors);
 renderContributorsGrid(grid, visibleContributors);
 updateStats(visibleContributors);
 
@@ -158,18 +157,26 @@ function renderContributorsGrid(grid, list) {
     return;
   }
 
-  // 🔥 Remove Top 3 contributors (already shown in highlight section)
-  const topThreeLogins = new Set(
-    [...list]
-      .sort((a, b) => (b.merged_prs || 0) - (a.merged_prs || 0))
-      .slice(0, 3)
-      .map(c => c.login)
-  );
+  let filteredList = list;
 
-  const filteredList = list.filter(c => !topThreeLogins.has(c.login));
+  // Only remove top 3 when showing full unfiltered list
+  if (list.length === allContributors.length) {
+    const topThreeLogins = new Set(
+      [...list]
+        .sort((a, b) => (b.merged_prs || 0) - (a.merged_prs || 0))
+        .slice(0, 3)
+        .map(c => c.login)
+    );
+
+    filteredList = list.filter(c => !topThreeLogins.has(c.login));
+  }
 
   if (!filteredList.length) {
-    renderEmptyState(grid);
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:2rem;">
+        No contributors found.
+      </div>
+    `;
     return;
   }
 
@@ -464,11 +471,8 @@ function debounce(fn, delay = 150) {
     t = setTimeout(() => fn(...args), delay);
   };
 }
-const searchInput = document.getElementById('contributor-search');
-const botToggle = document.getElementById('toggle-bots');
 
-searchInput?.addEventListener('input', debounce(applyFilters));
-botToggle?.addEventListener('change', applyFilters);
+setupFilters();
 
 function updateStats(list, allList = allContributors) {
   const stats = document.getElementById("contributors-stats");
@@ -477,123 +481,35 @@ function updateStats(list, allList = allContributors) {
   const total = list.length;
   const humans = list.filter(c => !/\[bot\]$/i.test(c.login)).length;
   const mergedPRs = list.reduce((sum, c) => sum + (c.merged_prs || 0), 0);
-
-  // ✅ Always use global top contributor
   const top = allList?.[0];
 
   stats.innerHTML = `
-    <div class="stat-card">
-      <div class="stat-icon">
-        <i class="fas fa-users"></i>
-      </div>
-      <div class="stat-value">${total}</div>
-      <div class="stat-label">Contributors</div>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">
-        <i class="fas fa-user-friends"></i>
-      </div>
-      <div class="stat-value">${humans}</div>
-      <div class="stat-label">People</div>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">
-        <i class="fas fa-code-merge"></i>
-      </div>
-      <div class="stat-value">${mergedPRs}</div>
-      <div class="stat-label">Merged PRs</div>
     <div class="stat-pill">
-      <span class="stat-count" data-target="${total}">0</span>
+      <span class="stat-count">${total}</span>
       <span class="stat-label">Contributors</span>
     </div>
 
     <div class="stat-pill">
-      <span class="stat-count" data-target="${humans}">0</span>
+      <span class="stat-count">${humans}</span>
       <span class="stat-label">People</span>
     </div>
 
     <div class="stat-pill">
-      <span class="stat-count" data-target="${mergedPRs}">0</span>
+      <span class="stat-count">${mergedPRs}</span>
       <span class="stat-label">Merged PRs</span>
     </div>
 
     ${
       top
         ? `
-    <div class="stat-card">
-      <div class="stat-icon">
-        <i class="fas fa-crown"></i>
-      </div>
-      <div class="stat-value">${escapeHtml(top.login)}</div>
-      <div class="stat-label">Top Contributor</div>
+    <div class="stat-pill stat-top">
+      <span class="stat-label">🏆 Top</span>
+      <strong>${escapeHtml(top.login)}</strong>
     </div>
-      <div class="stat-pill stat-top">
-        <span class="stat-label"> 🏆 Top:</span>
-        <strong>${escapeHtml(top.login)}</strong>
-      </div>
-    `
+        `
         : ""
     }
   `;
-
-  animateStatCounts();
-}
-function renderTopContributors(contributors) {
-  const topGrid = document.getElementById("top-contributors-grid");
-  if (!topGrid) return;
-
-  // Use merged PRs (your actual metric)
-  const topThree = [...contributors]
-    .sort((a, b) => (b.merged_prs || 0) - (a.merged_prs || 0))
-    .slice(0, 3);
-
-  topGrid.innerHTML = "";
-
-  topThree.forEach((c, index) => {
-    const login = c?.login || "Anonymous";
-    const mergedPrs = c?.merged_prs || 0;
-    const avatar = c?.avatar_url
-      ? `${c.avatar_url}&s=200`
-      : fallbackAvatar(login);
-    const profileUrl = c?.html_url || "";
-
-    const card = document.createElement("div");
-    card.className = "contributor-card top-card";
-
-    card.innerHTML = `
-      <div class="contributor-card-inner">
-        <div class="top-rank-badge">
-          ${index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉"}
-        </div>
-        <img class="contributor-avatar" src="${avatar}" alt="${escapeHtml(login)} avatar" loading="lazy" />
-        <div class="contributor-main">
-          <div class="contributor-name">${escapeHtml(login)}</div>
-          <div class="contributor-meta">
-            <span class="contributor-chip">
-              <i class="fas fa-code-merge"></i>
-              ${mergedPrs} merged PR${mergedPrs === 1 ? "" : "s"}
-            </span>
-            <span class="contributor-chip is-top">
-              🏆 Top Contributor
-            </span>
-          </div>
-        </div>
-        <div class="contributor-actions">
-          ${
-            profileUrl
-              ? `<a class="contributor-github" href="${profileUrl}" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-github"></i>
-                </a>`
-              : ""
-          }
-        </div>
-      </div>
-    `;
-
-    topGrid.appendChild(card);
-  });
 }
 
 function renderTopContributors(contributors) {
@@ -672,4 +588,14 @@ function animateStatCounts() {
 
     tick();
   });
+}
+
+function setupFilters() {
+  const searchInput = document.getElementById('contributor-search');
+  const botToggle = document.getElementById('toggle-bots');
+
+  if (!searchInput || !botToggle) return;
+
+  searchInput.addEventListener('input', debounce(applyFilters));
+  botToggle.addEventListener('change', applyFilters);
 }

@@ -607,3 +607,96 @@ function copyToClipboard(source, copyBtn) {
         alert('Failed to copy to clipboard.');
     });
 }
+
+/* =========================================
+   PR STATUS ANALYZER (Issue #1014)
+========================================= */
+
+const prLinkInput = document.getElementById("prLink");
+const prStatusPanel = document.getElementById("prStatusPanel");
+const prStatusContent = document.getElementById("prStatusContent");
+
+if (prLinkInput) {
+    prLinkInput.addEventListener("change", analyzePRStatus);
+}
+
+async function analyzePRStatus() {
+    const url = prLinkInput.value.trim();
+
+    if (!url || !url.includes("github.com") || !url.includes("/pull/")) {
+        prStatusPanel.style.display = "none";
+        return;
+    }
+
+    prStatusPanel.style.display = "block";
+    prStatusContent.innerHTML = "🔍 Analyzing PR status...";
+
+    try {
+        // Extract owner, repo, and PR number
+        const match = url.match(/github\.com\/([^\/]+)\/([^\/]+)\/pull\/(\d+)/);
+
+        if (!match) {
+            prStatusContent.innerHTML = "❌ Invalid PR URL format.";
+            return;
+        }
+
+        const owner = match[1];
+        const repo = match[2];
+        const prNumber = match[3];
+
+        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/pulls/${prNumber}`;
+
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error("PR not found or repository is private.");
+        }
+
+        const data = await response.json();
+
+        // Determine status
+        let statusBadge = "";
+        let statusText = "";
+
+        if (data.merged) {
+            statusBadge = `<span class="pr-badge merged">Merged</span>`;
+            statusText = "This Pull Request has been successfully merged.";
+        } 
+        else if (data.state === "open" && data.draft) {
+            statusBadge = `<span class="pr-badge draft">Draft</span>`;
+            statusText = "This PR is currently in draft state.";
+        } 
+        else if (data.state === "open") {
+            statusBadge = `<span class="pr-badge open">Open</span>`;
+            statusText = "This PR is open and under review.";
+        } 
+        else {
+            statusBadge = `<span class="pr-badge closed">Closed</span>`;
+            statusText = "This PR is closed without merge.";
+        }
+
+        // Mergeability info
+        let mergeInfo = "";
+        if (data.mergeable === false) {
+            mergeInfo = "<br>⚠️ Merge conflicts detected.";
+        } else if (data.mergeable === true) {
+            mergeInfo = "<br>✅ No merge conflicts.";
+        }
+
+        prStatusContent.innerHTML = `
+            ${statusBadge}
+            <strong>${data.title}</strong>
+            <br>
+            👤 Author: ${data.user.login}
+            <br>
+            🔄 State: ${data.state}
+            ${mergeInfo}
+            <br><br>
+            ${statusText}
+        `;
+    } catch (error) {
+        prStatusContent.innerHTML =
+            "❌ Failed to analyze PR. It may be private, invalid, or rate-limited by GitHub API.";
+        console.error("PR Analyzer Error:", error);
+    }
+}

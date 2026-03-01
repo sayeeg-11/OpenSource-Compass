@@ -1,10 +1,3 @@
-document.getElementById("feedbackForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  document.getElementById("successMessage").style.display = "block";
-  this.reset();
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("feedbackForm");
   const successMessage = document.getElementById("successMessage");
@@ -15,8 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault(); // Prevent page reload
 
     // Get form values (optional but useful)
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
     const type = document.getElementById("type").value;
     const message = document.getElementById("message").value.trim();
 

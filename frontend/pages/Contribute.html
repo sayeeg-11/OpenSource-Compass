@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../css/contribute.css" />
     <link rel="stylesheet" href="../css/chatbot.css" />
     <link rel="stylesheet" href="../css/pr-generator.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="/frontend/css/dark-mode.css" />
     <link rel="manifest" href="../../manifest.json" />
   </head>
@@ -111,30 +112,9 @@
       font-style: italic;
     }
 
-    /* 8. BEST PRACTICES SECTION VISIBILITY FIX */
-    /* Forces dark text on the light background for this specific section */
-    body.dark-mode .practices-container {
-      background-color: #ffffff !important;
-      /* Keep white background */
-      border: 1px solid #e0e0e0 !important;
-    }
-
-    body.dark-mode .practices-container li,
-    body.dark-mode .practices-container span,
-    body.dark-mode .practices-container p {
-      color: #333333 !important;
-      /* Dark Grey Text */
-    }
-
-    body.dark-mode .practices-container strong {
-      color: #000000 !important;
-      /* Black for bold text */
-    }
-
     #footer,
     #footer * {
       text-align: left !important;
-      background-color: #cdccbe !important;
       text-decoration-color: black !important;
     }
   </style>
@@ -510,9 +490,7 @@ git push origin feature/add-new-feature
       <i class="fas fa-chevron-up"></i>
     </button>
 
-    <div id="footer">
-      <h1></h1>
-    </div>
+    <div id="footer"></div>
 
     <script src="../js/main.js"></script>
     <script src="../js/components.js"></script>
