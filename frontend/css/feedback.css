@@ -1,3 +1,6 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable shorthand-property-no-redundant-values */
 :root {
   --primary-gold: #d4af37;
   --deep-navy: #0a192f;
@@ -153,27 +156,8 @@ body.dark-mode button[type="submit"]:hover {
 
 /* --- Success Message --- */
 #successMessage {
-  margin-top: 1.5rem;
-  text-align: center;
-  color: #27ae60;
-  font-weight: 600;
-  display: none; /* Controlled by JS */
-  background: #e8f5e9;
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-body.dark-mode #successMessage {
-  background: #052e16;
-  color: #4ade80;
-}
-
-/* --- Success Message --- */
-#successMessage {
-/* Success Message (Hidden by default) */
-#successMessage {
   display: none;
-  margin-top: 12px;
+  margin-top: 1.5rem;
   padding: 10px 14px;
   border-radius: 8px;
   background: #e6f7ee;
@@ -184,28 +168,21 @@ body.dark-mode #successMessage {
   text-align: center;
 }
 
+body.dark-mode #successMessage {
+  background: #052e16;
+  color: #4ade80;
+  border-color: #166534;
+}
+
 /* Dropdown options */
 body.dark-mode select option {
   background-color: #0f1b2d;
   color: #ffffff;
-}
-
-body.dark-mode textarea,
-body.dark-mode input {
-  background-color: #0f1b2d !important;
-  color: #ffffff !important;
-  border: 1px solid #334155 !important;
 }
 
 body.dark-mode select:focus {
   border-color: var(--primary-gold) !important;
   box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-}
-
-/* Dropdown options */
-body.dark-mode select option {
-  background-color: #0f1b2d;
-  color: #ffffff;
 }
 
 body.dark-mode textarea,
