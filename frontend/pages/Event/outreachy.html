@@ -1461,115 +1461,112 @@
         }
 
         /* Grid Table */
-/* ===============================
-   PREMIUM COMPARISON TABLE
-=============================== */
 
-.compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-radius: 22px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.18);
-    transition: box-shadow 0.35s ease;
-}
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-radius: 22px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.18);
+            transition: box-shadow 0.35s ease;
+        }
 
-.compare-grid:hover {
-    box-shadow: 
-        0 28px 70px rgba(0, 0, 0, 0.25);
-}
+        .compare-grid:hover {
+            box-shadow: 
+                0 28px 70px rgba(0, 0, 0, 0.25);
+        }
 
-/* Use grid rows */
-.compare-row {
-    display: contents;
-}
+        /* Use grid rows */
+        .compare-row {
+            display: contents;
+        }
 
-/* Cells */
-.compare-row > div {
-    padding: 1.6rem 2rem;
-    font-size: 0.95rem;
-    color: var(--deep-navy);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: 
-        background 0.35s ease,
-        color 0.3s ease,
-        transform 0.2s ease;
-}
+        /* Cells */
+        .compare-row > div {
+            padding: 1.6rem 2rem;
+            font-size: 0.95rem;
+            color: var(--deep-navy);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: 
+                background 0.35s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
+        }
 
-/* ---------- HEADER ---------- */
+        /* ---------- HEADER ---------- */
 
-.compare-row.header > div {
-    background: linear-gradient(
-        135deg,
-        var(--primary-gold),
-        var(--secondary-gold)
-    );
-    color: #111;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-align: center;
+        .compare-row.header > div {
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            );
+            color: #111;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-align: center;
 
-    /* prevent hover override */
-    transition: none;
-}
+            /* prevent hover override */
+            transition: none;
+        }
 
-/* IMPORTANT: Prevent header turning white */
-.compare-row.header:hover > div {
-    background: linear-gradient(
-        135deg,
-        var(--primary-gold),
-        var(--secondary-gold)
-    ) !important;
-    color: #111 !important;
-}
+        /* IMPORTANT: Prevent header turning white */
+        .compare-row.header:hover > div {
+            background: linear-gradient(
+                135deg,
+                var(--primary-gold),
+                var(--secondary-gold)
+            ) !important;
+            color: #111 !important;
+        }
 
-/* ---------- ZEBRA STRIPES ---------- */
+        /* ---------- ZEBRA STRIPES ---------- */
 
-.compare-row:nth-child(even):not(.header) > div {
-    background: rgba(255, 255, 255, 0.65);
-}
+        .compare-row:nth-child(even):not(.header) > div {
+            background: rgba(255, 255, 255, 0.65);
+        }
 
-/* ---------- ROW HOVER ---------- */
+        /* ---------- ROW HOVER ---------- */
 
-.compare-row:not(.header):hover > div {
-    background: rgba(212, 175, 55, 0.12);
-    color: var(--deep-navy);
-    transform: scale(1.01);
-}
+        .compare-row:not(.header):hover > div {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--deep-navy);
+            transform: scale(1.01);
+        }
 
-/* Remove last border */
-.compare-row:last-child > div {
-    border-bottom: none;
-}
+        /* Remove last border */
+        .compare-row:last-child > div {
+            border-bottom: none;
+        }
 
-/* ===============================
-   DARK MODE TABLE
-=============================== */
+        /* ===============================
+        DARK MODE TABLE
+        =============================== */
 
-body.dark-mode .compare-grid {
-    background: rgba(27, 34, 53, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-}
+        body.dark-mode .compare-grid {
+            background: rgba(27, 34, 53, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
 
-body.dark-mode .compare-row > div {
-    color: var(--text-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
+        body.dark-mode .compare-row > div {
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
 
-body.dark-mode .compare-row:nth-child(even):not(.header) > div {
-    background: rgba(27, 34, 53, 0.75);
-}
+        body.dark-mode .compare-row:nth-child(even):not(.header) > div {
+            background: rgba(27, 34, 53, 0.75);
+        }
 
-body.dark-mode .compare-row:not(.header):hover > div {
-    background: rgba(212, 175, 55, 0.20);
-    color: #fff;
-}
+        body.dark-mode .compare-row:not(.header):hover > div {
+            background: rgba(212, 175, 55, 0.20);
+            color: #fff;
+        }
 
         .compare-row>div {
             padding: 1.5rem;
@@ -1690,26 +1687,97 @@ body.dark-mode .compare-row:not(.header):hover > div {
             margin-bottom: 4.5rem;
         }
 
-        /* Stories Grid */
         .success-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
         }
 
-        /* Card */
         .success-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            border-radius: 22px;
-            box-shadow: var(--shadow-main);
+            position: relative;
+            padding: 2.8rem 2.4rem;
+            border-radius: 26px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.85),
+                rgba(255,255,255,0.65)
+            );
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.18);
+            transition:
+                transform 0.5s var(--bounce-curve),
+                box-shadow 0.4s ease,
+                background 0.4s ease;
             overflow: hidden;
-            transition: transform 0.5s var(--bounce-curve), box-shadow 0.4s ease;
         }
 
+        /* Quote Icon */
+        .success-card::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.8rem;
+            color: rgba(212, 175, 55, 0.15);
+        }
+
+        /* Hover Effect */
         .success-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-14px) scale(1.03);
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.28),
+                0 0 45px rgba(212,175,55,0.18);
+        }
+
+        /* Content */
+        .success-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            margin-bottom: 0.4rem;
+            color: var(--deep-navy);
+        }
+
+        .success-content .program {
+            display: inline-block;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--secondary-gold);
+            margin-bottom: 1.4rem;
+        }
+
+        .success-content .quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Dark Mode */
+        body.dark-mode .success-card {
+            background: linear-gradient(
+                145deg,
+                rgba(27,34,53,0.9),
+                rgba(27,34,53,0.75)
+            );
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        body.dark-mode .success-content h3 {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .success-content .quote {
+            color: var(--text-secondary);
         }
 
         .success-photo img {
@@ -2624,10 +2692,11 @@ body.dark-mode .compare-row:not(.header):hover > div {
         }, observerOptions);
 
         // Observe all cards and sections
-        document.querySelectorAll('.cohort-card, .benefit-card, .step-content, .preparation-item').forEach(el => {
+        document.querySelectorAll('.success-card, .cohort-card, .benefits-card, .prepare-card, .contribution-card')
+        .forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(el);
         });
     </script>
