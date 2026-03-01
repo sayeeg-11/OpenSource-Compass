@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../css/program.css">
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
   <link rel="stylesheet" href="../css/pr-generator.css" />
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
   <link rel='manifest' href='../../manifest.json' />
@@ -75,6 +76,9 @@
       </div>
 
       <div class="card-grid" id="programs-grid">
+  <p id="noResults" style="display:none; text-align:center; width:100%; font-weight:600; color:#555;">
+    No programs match the selected filters.
+  </p>
         <div class="program-card beginner paid global seasonal">
           <div class="card-icon"><i class="fas fa-code"></i></div>
           <h3>Google Summer of Code</h3>
@@ -189,7 +193,7 @@
     </section>
   </main>
 
-  <div id="footer" class="footer-container"></div>
+  <div id="footer"></div>
 
   <script src="../js/components.js"></script>
   <script src="../js/theme.js"></script>
@@ -204,39 +208,61 @@
   <script src='../js/pwa.js'></script>
   <script src="../js/pr-generator.js"></script>
   <script>
-    const filters = {
-      level: document.getElementById("levelFilter"),
-      type: document.getElementById("typeFilter"),
-      region: document.getElementById("regionFilter"),
-      status: document.getElementById("statusFilter"),
-    };
+  const filters = {
+    level: document.getElementById("levelFilter"),
+    type: document.getElementById("typeFilter"),
+    region: document.getElementById("regionFilter"),
+    status: document.getElementById("statusFilter"),
+  };
 
-    const cards = document.querySelectorAll(".program-card");
+  const cards = document.querySelectorAll(".program-card");
+  const noResults = document.getElementById("noResults");
 
-    function applyFilters() {
-      cards.forEach(card => {
-        const matchLevel =
-          filters.level.value === "all" || card.classList.contains(filters.level.value);
+  function applyFilters() {
+    let visibleCount = 0;
 
-        const matchType =
-          filters.type.value === "all" || card.classList.contains(filters.type.value);
+    cards.forEach(card => {
+      const matchLevel =
+        filters.level.value === "all" || card.classList.contains(filters.level.value);
 
-        const matchRegion =
-          filters.region.value === "all" || card.classList.contains(filters.region.value);
+      const matchType =
+        filters.type.value === "all" || card.classList.contains(filters.type.value);
 
-        const matchStatus =
-          filters.status.value === "all" || card.classList.contains(filters.status.value);
+      const matchRegion =
+        filters.region.value === "all" || card.classList.contains(filters.region.value);
 
-        card.style.display = (matchLevel && matchType && matchRegion && matchStatus)
-          ? "flex"
-          : "none";
-      });
-    }
+      const matchStatus =
+        filters.status.value === "all" || card.classList.contains(filters.status.value);
 
-    Object.values(filters).forEach(filter =>
-      filter.addEventListener("change", applyFilters)
-    );
-  </script>
+      if (matchLevel && matchType && matchRegion && matchStatus) {
+        card.style.display = "flex";
+        card.style.opacity = "1";
+        card.style.transform = "scale(1)";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    // Show "No Results" message
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  // Add active filter UI feedback
+  Object.values(filters).forEach(filter => {
+    filter.addEventListener("change", () => {
+      // Highlight active filters
+      Object.values(filters).forEach(f => f.classList.remove("active-filter"));
+      if (filter.value !== "all") {
+        filter.classList.add("active-filter");
+      }
+      applyFilters();
+    });
+  });
+
+  // Initial load animation + filtering
+  window.addEventListener("DOMContentLoaded", applyFilters);
+</script>
 </body>
 
 </html>

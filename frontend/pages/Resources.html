@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/chatbot.css" />
   <link rel="stylesheet" href="../css/pr-generator.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
 
   <style>
     /* --- Global Centering --- */
@@ -361,6 +362,155 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(212,175,55,0.25);
 }
+:root {
+  --primary-gold: #c5a059; /* Approximate gold from the image */
+  --footer-bg: #0a0c10;
+  --text-gray: #a1a1a1;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-footer {
+  background-color: var(--footer-bg);
+  color: white;
+  padding: 4rem 2rem 2rem;
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Brand Section */
+.footer-brand {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-mark {
+  background: var(--primary-gold);
+  color: #000;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.footer-tagline {
+  color: var(--text-gray);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 400px;
+}
+
+/* Navigation Columns */
+.footer-columns {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-col-title {
+  color: var(--primary-gold);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* Divider */
+.footer-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin-bottom: 2rem;
+}
+
+/* Bottom Section & Badges */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-badges {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-meta {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+.footer-inline {
+  color: var(--primary-gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-top, .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-columns {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}
   </style>
   <link rel='manifest' href='../../manifest.json' />
 </head>
@@ -379,186 +529,139 @@
   <a href="#quiz-section" class="nav-btn">🎯 Mastery Path</a>
 </div>
 
-  <main>
 
-    <!-- ===== Resources Stats Section (NEW) ===== -->
-<section class="resources-stats-section">
-  <div class="resources-stats-container">
-    <h2 class="stats-title">📊 Resources Overview</h2>
-    <p class="stats-subtitle">
-      Quick snapshot of all learning materials available for your open-source journey.
-    </p>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon">📚</div>
-        <div class="stat-number">3</div>
-        <div class="stat-label">Learning Resources</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">📄</div>
-        <div class="stat-number">4</div>
-        <div class="stat-label">Templates & Assets</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🛠️</div>
-        <div class="stat-number">3</div>
-        <div class="stat-label">Contributor Tools</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">✅</div>
-        <div class="stat-number">2</div>
-        <div class="stat-label">Quick Checklists</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🌱</div>
-        <div class="stat-number">3</div>
-        <div class="stat-label">Beginner Guides</div>
-      </div>
+<main>
+  
+  <section id="recommended-resources" class="resources-section">
+    <div class="section-header">
+      <h3>📚 Recommended Resources</h3>
+      <p>Master the essentials with documentation from industry leaders.</p>
     </div>
-  </div>
-</section>
 
-      <div class="card-grid">
-        <a href="https://docs.github.com"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="card resource-card"
-   aria-label="Visit GitHub Documentation">
+    <div class="card-grid">
+      <a href="https://docs.github.com" target="_blank" rel="noopener noreferrer" class="card resource-card" aria-label="Visit GitHub Documentation">
+        <div class="card-tag">OFFICIAL DOCS</div>
+        <div class="tile-icon">📚</div>
+        <h4>GitHub Documentation</h4>
+        <p>Comprehensive guides on Git workflows, Actions, and team collaboration.</p>
+        <span class="resource-link">
+          Explore Docs <i class="fas fa-arrow-right"></i>
+        </span>
+      </a>
 
-  <p>OFFICIAL DOCS</p>
-  <div class="tile-icon">📚</div>
-  <h4>GitHub Docs</h4>
-  <p>Explore workflows and platform capabilities directly from the source.</p>
+      <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" class="card resource-card" aria-label="Visit Git Documentation">
+        <div class="card-tag">VERSION CONTROL</div>
+        <div class="tile-icon">🗂️</div>
+        <h4>Git Reference</h4>
+        <p>Master the command line with the authoritative guide to Git internals.</p>
+        <span class="resource-link">
+          Open Reference <i class="fas fa-arrow-right"></i>
+        </span>
+      </a>
 
-  <span class="resource-link">
-    Visit Docs <i class="fas fa-arrow-right"></i>
-  </span>
-</a>
+      <a href="https://www.markdownguide.org" target="_blank" rel="noopener noreferrer" class="card resource-card" aria-label="Visit Markdown Guide">
+        <div class="card-tag">WRITING GUIDE</div>
+        <div class="tile-icon">✏️</div>
+        <h4>Markdown Masterclass</h4>
+        <p>Syntax guides for creating high-quality project READMEs and documentation.</p>
+        <span class="resource-link">
+          Learn Syntax <i class="fas fa-arrow-right"></i>
+        </span>
+      </a>
+    </div>
+  </section>
 
-        <a href="https://git-scm.com/doc"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="card resource-card"
-   aria-label="Visit Git Documentation">
 
-  <p>REFERENCE</p>
-  <div class="tile-icon">🗂️</div>
-  <h4>Git Docs</h4>
-  <p>A complete authoritative reference for Git commands and concepts.</p>
-
-  <span class="resource-link">
-    Visit Docs <i class="fas fa-arrow-right"></i>
-  </span>
-</a>
-
-       <a href="https://www.markdownguide.org"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="card resource-card"
-   aria-label="Visit Markdown Guide">
-
-  <p>GUIDE</p>
-  <div class="tile-icon">✏️</div>
-  <h4>Markdown Guide</h4>
-  <p>Learn syntax for creating professional READMEs and docs.</p>
-
-  <span class="resource-link">
-    Visit Docs <i class="fas fa-arrow-right"></i>
-  </span>
-</a>
-      </div>
-    </section>
-
-    <!-- Templates & Assets -->
-    <section id="templates-section" class="templates-section">
-      <h3>Templates &amp; Assets</h3>
-      <p>Pre-made templates and assets to streamline contributions.</p>
-      <!-- Learning Resources -->
-<section class="resources-section">
-  <h3>Learning Resources</h3>
-  <p>Official documentation and trusted guides.</p>
-
-  <div class="card-grid">
-    <article class="card">
-      <p>OFFICIAL DOCS</p>
-      <div class="tile-icon">📚</div>
-      <h4>GitHub Docs</h4>
-      <p>Explore workflows and platform capabilities directly from the source.</p>
-      <div class="resource-link-wrapper">
-        <a href="https://docs.github.com" target="_blank" class="resource-link">
-          Visit Docs <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </article>
-
-    <article class="card">
-      <p>REFERENCE</p>
-      <div class="tile-icon">🗂️</div>
-      <h4>Git Docs</h4>
-      <p>A complete authoritative reference for Git commands and concepts.</p>
-      <div class="resource-link-wrapper">
-        <a href="https://git-scm.com/doc" target="_blank" class="resource-link">
-          Visit Docs <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </article>
-
-    <article class="card">
-      <p>GUIDE</p>
-      <div class="tile-icon">✏️</div>
-      <h4>Markdown Guide</h4>
-      <p>Learn syntax for creating professional READMEs and docs.</p>
-      <div class="resource-link-wrapper">
-        <a href="https://www.markdownguide.org" target="_blank" class="resource-link">
-          Visit Docs <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- Templates & Assets -->
 <section class="templates-section">
   <h3>Templates & Assets</h3>
   <p>Pre-made templates and assets to streamline contributions.</p>
 
   <div class="card-grid">
-    <!-- keep your template cards here (unchanged) -->
+    <div class="card">
+      <h4>Issue Templates</h4>
+      <p>Standardized forms for bug reports and feature requests.</p>
+      <a href="#" class="btn">View Assets</a>
+    </div>
+    <div class="card">
+      <h4>PR Checklists</h4>
+      <p>Markdown templates to include in your Pull Requests.</p>
+      <a href="#" class="btn">Copy Template</a>
+    </div>
+    <div class="card">
+      <h4>Brand Assets</h4>
+      <p>Official logos, colors, and typography guidelines.</p>
+      <a href="#" class="btn">Download</a>
+    </div>
   </div>
 </section>
 
-<!-- Quick Checklists -->
 <section id="checklists-section" class="checklists-section">
   <h3>Quick Checklists</h3>
   <p>Essential reminders to ensure smooth contributions and workflow.</p>
 
   <div class="checklists-grid">
-    <!-- your checklist cards (only once, remove duplicates) -->
+    <div class="card">
+      <h4>Before Submitting</h4>
+      <ul>
+        <li>Self-review your code</li>
+        <li>Update documentation</li>
+        <li>Pass all local tests</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Commit Standards</h4>
+      <ul>
+        <li>Use imperative mood</li>
+        <li>Reference issue numbers</li>
+        <li>Keep it concise</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- Contributor Tools -->
 <section id="tools-section" class="tools-section">
   <h3>Contributor Tools</h3>
   <p>Essential tools to streamline your workflow.</p>
 
   <div class="tools-grid">
-    <!-- your tools cards -->
+    <div class="card">
+      <h4>CLI Helper</h4>
+      <p>Automate repository setup and branch management.</p>
+      <code>npm install -g contrib-cli</code>
+    </div>
+    <div class="card">
+      <h4>Linter Config</h4>
+      <p>Download our shared ESLint/Prettier configurations.</p>
+      <a href="#" class="btn">Get Config</a>
+    </div>
+    <div class="card">
+      <h4>Environment Setup</h4>
+      <p>One-click Docker configurations for local development.</p>
+      <a href="#" class="btn">Setup Now</a>
+    </div>
   </div>
 </section>
 
-<!-- Beginner Issues -->
 <section id="beginner-issues-section" class="beginner-issues-section">
   <h3>Find Beginner-Friendly Issues</h3>
   <p>Discover repositories curated for first-time contributors.</p>
 
   <div class="beginner-grid">
-    <!-- your beginner cards -->
+    <div class="card">
+      <h4>Documentation</h4>
+      <p>Fix typos or improve clarity in our guides.</p>
+      <span class="label">Good First Issue</span>
+    </div>
+    <div class="card">
+      <h4>UI Adjustments</h4>
+      <p>Small CSS tweaks and component styling tasks.</p>
+      <span class="label">Easy Win</span>
+    </div>
+    <div class="card">
+      <h4>Unit Testing</h4>
+      <p>Add coverage for simple utility functions.</p>
+      <span class="label">Help Wanted</span>
+    </div>
   </div>
 </section>
 
@@ -832,15 +935,6 @@
         };
       });
     </script>
-
-  
-
-  <footer>
-    <p>
-      © 2026 OpenSource Compass ·
-      <a href="https://github.com/sayeeg-11/OpenSource-Compass">GitHub</a>
-    </p>
-  </footer>
   <script>
 document.addEventListener("DOMContentLoaded", () => {
   const copyButtons = document.querySelectorAll(".copy-btn");
@@ -870,12 +964,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
-    <section id="recommended-resources"></section>
   </main>
-
   <div id="footer"></div>
-
   <script src="../js/components.js"></script>
   <script src="../js/theme.js"></script>
   <script src="../js/cChatbot.js"></script>
@@ -889,3 +979,5 @@ document.addEventListener("DOMContentLoaded", () => {
   </button>
   <script src='../js/pwa.js'></script>
   <script src="../js/pr-generator.js"></script>
+  </body>
+  </html>

@@ -1,3 +1,8 @@
+/* Remove browser default space */
+body {
+    margin: 0;
+    padding: 0;
+}
 /* ROOT VARIABLES */
 :root {
     --primary-gold: #D4AF37;
@@ -14,6 +19,17 @@
     --bounce-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Fix navbar placement like other pages */
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #FFFFFF;
+}
+
+body.dark-mode #navbar {
+    background: #0f1419;
+}
 /* =========================================
    GLOBAL CARD HOVER ENHANCEMENT SYSTEM
    ========================================= */
@@ -42,7 +58,7 @@ body.dark-mode .card-hover:hover {
 /* HERO SECTION */
 .gsoc-hero {
     position: relative;
-    padding: 8rem 6% 7rem;
+    padding: 4.5rem 6% 7rem;
     overflow: hidden;
     background: linear-gradient(135deg, #FAF8F3 0%, #F0EDE3 100%);
 }

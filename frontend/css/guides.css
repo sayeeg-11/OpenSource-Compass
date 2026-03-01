@@ -16,6 +16,17 @@
   100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
+:root {
+  --bg-color: #ffffff;
+  --section-bg: #fcfbf7;
+  --text-main: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: #ffffff;
+  --border-color: #e2d1a8;
+  --primary-gold: #b59d5c;
+  --footer-bg: #ffffff;
+}
+
 /* Applying entrance animation to all cards */
 .guide-list li, 
 .pr-steps li, 
@@ -808,6 +819,7 @@ body.dark-mode #scrollTopBtn:hover {
 body.dark-mode {
   background-color: #0f172a;
   color: #e5e7eb;
+  --footer-bg: #1a1a1a;
 }
 
 /* Section headings */
