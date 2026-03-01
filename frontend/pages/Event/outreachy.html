@@ -6,576 +6,155 @@
     <title>Outreachy - OpenSource Compass</title>
     <link rel="icon" href="../../library/assets/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Start your Open Source journey with Outreachy. Paid, remote internships for underrepresented communities in tech.">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Core Styles -->
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/navigation.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet" />
-
     <style>
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg,
-                    var(--warm-cream),
-                    var(--light-parchment));
-            overflow: hidden;
+        /* =========================================
+           CORE VARIABLES & THEME
+           ========================================= */
+        :root {
+            --primary-gold: #d4af37;
+            --secondary-gold: #b8860b;
+            --deep-navy: #1b263b;
+            --warm-cream: #fdf4e3;
+            --light-parchment: #fff8e7;
+            --charcoal-dark: #2c2c2c;
+            --text-secondary: #5a5a5a;
+            
+            /* Enhanced Shadows */
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 40px rgba(212, 175, 55, 0.15);
+            
+            /* Premium Transitions */
+            --bounce-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --smooth-curve: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 20%, var(--primary-gold), transparent 40%),
-                radial-gradient(circle at 80% 30%, var(--secondary-gold), transparent 45%);
-            opacity: 0.15;
-            filter: blur(80px);
-            animation: floatBG 12s ease-in-out infinite alternate;
+        body.dark-mode {
+            --deep-navy: #0b1220;
+            --warm-cream: #141a2b;
+            --light-parchment: #1b2235;
+            --charcoal-dark: #070b14;
+            --primary-gold: #e4c76a;
+            --secondary-gold: #c9a43b;
+            --text-primary: #f5f4f0;
+            --text-secondary: #b9bfd1;
+            
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 20px 50px rgba(228, 199, 106, 0.15);
         }
 
-        .hero-container {
-            position: relative;
-            max-width: 1200px;
-            padding: 4rem 1.5rem;
-            margin: auto;
-            text-align: center;
+        /* Typography Base */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--charcoal-dark);
+            background-color: var(--warm-cream);
+            overflow-x: hidden;
         }
 
-        .hero-badge {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            border-radius: 999px;
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--secondary-gold);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(8px);
+        body.dark-mode {
+            color: var(--text-primary);
+            background-color: var(--deep-navy);
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
             color: var(--deep-navy);
         }
 
-        .hero-title span {
-            color: var(--primary-gold);
-            text-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5 {
+            color: var(--text-primary);
         }
 
-        .hero-description {
-            max-width: 720px;
-            margin: 1.5rem auto 2.5rem;
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-actions a{
-            text-decoration: none;
-        }
-
-        .btn {
-            padding: 0.9rem 1.8rem;
-            border-radius: 14px;
-            font-weight: 600;
-            transition: all 0.35s var(--bounce-curve);
-            box-shadow: var(--shadow-main);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg,
-                    var(--primary-gold),
-                    var(--secondary-gold));
-            color: #000;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-        }
-
-        .btn:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .hero-stats {
-            margin-top: 4rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .stat {
-            padding: 1.5rem;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow-main);
-            transition: transform 0.4s ease;
-        }
-
-        .stat:hover {
-            transform: translateY(-8px);
-        }
-
-        .stat h3 {
-            color: var(--primary-gold);
-            margin-bottom: 0.4rem;
-        }
-
-        /* Dark mode auto-adaptation */
-        body.dark-mode .hero {
-            background: linear-gradient(135deg,
-                    var(--deep-navy),
-                    var(--warm-cream));
-        }
-
-        body.dark-mode .stat {
-            background: rgba(27, 34, 53, 0.6);
-        }
-
-        @keyframes floatBG {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-40px);
-            }
-        }
-
-        .about {
-            position: relative;
-            padding: 8rem 1.5rem;
-            background: linear-gradient(180deg,
-                    var(--light-parchment),
-                    var(--warm-cream));
-            overflow: hidden;
-        }
-
-        .about-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 10% 20%, var(--primary-gold), transparent 35%),
-                radial-gradient(circle at 90% 80%, var(--secondary-gold), transparent 40%);
-            opacity: 0.12;
-            filter: blur(90px);
-            animation: aboutFloat 14s ease-in-out infinite alternate;
-        }
-
-        .about-container {
-            position: relative;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .about-intro {
-            max-width: 760px;
-            margin-bottom: 4.5rem;
+        /* =========================================
+           GLOBAL COMPONENTS
+           ========================================= */
+        
+        /* Centered Section Headers */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
         }
 
         .section-eyebrow {
             display: inline-block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            color: var(--secondary-gold);
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            padding: 0.4rem 1.2rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50px;
         }
 
         .section-title {
-            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
             font-weight: 800;
-            line-height: 1.15;
-            color: var(--deep-navy);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
 
         .section-title span {
             color: var(--primary-gold);
-            text-shadow: 0 6px 26px rgba(212, 175, 55, 0.35);
+            position: relative;
+            display: inline-block;
         }
 
         .section-description {
-            margin-top: 1.2rem;
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-        }
-
-        .about-story {
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .about-story h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Golden underline */
-        .about-story h3::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            height: 3px;
-            width: 90px;
-            background: linear-gradient(
-                to right,
-                var(--primary-gold),
-                var(--secondary-gold)
-            );
-            transition: width 0.35s ease;
-        }
-
-        .about-story:hover h3::after {
-            width: 140px;
-        }
-
-        .about-story p {
+            font-size: 1.1rem;
             color: var(--text-secondary);
             line-height: 1.8;
-            font-size: 1.08rem;
-            margin-bottom: 1.2rem;
-            text-align: left;
-            max-width: 90%;
         }
 
-        /* =============================
-        CARDS BELOW TEXT
-        ============================= */
-
-        .about-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        /* CARD STYLE */
-        .about-card {
-            padding: 2.2rem 2rem;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(10px);
-
-            border: 1px solid rgba(212, 175, 55, 0.15);
-
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-
-            text-align: left;
-
-            transition: transform 0.45s var(--bounce-curve),
-                        box-shadow 0.35s ease,
-                        border 0.3s ease;
-        }
-
-        /* HOVER EFFECT */
-        .about-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(212, 175, 55, 0.45);
-        }
-
-        /* ENLARGED TITLE */
-        .about-card h4 {
-            margin-bottom: 0.8rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            transition: transform 0.3s ease;
-        }
-
-        /* Slight grow on hover */
-        .about-card:hover h4 {
-            transform: translateX(6px);
-        }
-
-        .about-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-        }
-
-        /* Responsive */
-        @media (max-width: 950px) {
-            .about-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .about-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Dark Mode */
-        body.dark-mode .about-card {
-            background: rgba(27, 34, 53, 0.9);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        body.dark-mode .about-card:hover {
-            border: 1px solid rgba(212, 175, 55, 0.5);
-        }
-
-        /* Dark Mode */
-        body.dark-mode .about {
-            background: linear-gradient(180deg,
-                    var(--deep-navy),
-                    var(--warm-cream));
-        }
-
-        body.dark-mode .about-card {
-            background: rgba(27, 34, 53, 0.65);
-        }
-
-        @keyframes aboutFloat {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-50px);
-            }
-        }
-
-        @media (max-width: 1100px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 650px) {
-            .about-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .eligibility {
+        /* Premium Card Design */
+        .premium-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.5s var(--bounce-curve);
+            text-align: center;
             position: relative;
-            padding: 8rem 1.5rem;
-            background: linear-gradient(180deg,
-                    var(--warm-cream),
-                    var(--light-parchment));
             overflow: hidden;
+            z-index: 1;
         }
 
-        .eligibility-bg {
+        body.dark-mode .premium-card {
+            background: rgba(27, 34, 53, 0.6);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .premium-card::before {
+            content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(circle at 15% 30%, var(--primary-gold), transparent 40%),
-                radial-gradient(circle at 85% 70%, var(--secondary-gold), transparent 45%);
-            opacity: 0.1;
-            filter: blur(100px);
-            animation: eligibilityFloat 16s ease-in-out infinite alternate;
+            background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
         }
 
-        .eligibility-container {
-            position: relative;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .eligibility-intro {
-            max-width: 760px;
-            margin-bottom: 4.5rem;
-        }
-
-        /* =============================
-        PERFECT ELIGIBILITY LAYOUT
-        ============================= */
-
-        .eligibility-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* force 4 equal columns on desktop */
-            gap: 2rem;
-            align-items: stretch;
-        }
-
-        .eligibility-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            
-            padding: 2rem !important;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-            
-            min-height: 340px; /* equal height */
-        }
-
-        /* Title wrapper */
-        .eligibility-card h3 {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 12px;
-        }
-
-        /* Golden underline */
-        .eligibility-card h3::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            width: 90px; /* final width */
-            background: linear-gradient(
-                to right,
-                var(--primary-gold),
-                var(--secondary-gold)
-            );
-
-            transform: scaleX(0.4);
-            transform-origin: left;
-            transition: transform 0.35s ease;
-        }
-
-        .eligibility-card:hover h3::after {
-            transform: scaleX(1);
-        }
-       
-        /* Title alignment consistency */
-        .eligibility-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            text-align: left;
-        }
-
-        /* Content alignment */
-        .eligibility-card ul,
-        .eligibility-card p {
-            margin: 0;
-            text-align: left;
-            line-height: 1.6;
-        }
-
-        /* Remove unnecessary spacing */
-        .eligibility-card ul {
-            padding-left: 1.2rem;
-        }
-
-        .eligibility-card ul li {
-            margin-bottom: 0.7rem;
-        }
-
-        /* Remove flex-grow to avoid empty space */
-        .eligibility-card ul,
-        .eligibility-card p {
-            flex: none;
-        }
-
-        /* Accent borders stay same */
-        .eligibility-card.success {
-            border-left: 4px solid #2ecc71;
-        }
-
-        .eligibility-card.danger {
-            border-left: 4px solid #e74c3c;
-        }
-
-        .eligibility-card.info {
-            border-left: 4px solid var(--primary-gold);
-        }
-
-        /* Responsive */
-        @media (max-width: 1100px) {
-            .eligibility-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .eligibility-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Footer Note */
-        .eligibility-note {
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .eligibility-note p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-        }
-
-        .eligibility-link {
-            color: var(--primary-gold);
-            font-weight: 600;
-            transition: letter-spacing 0.3s ease;
-        }
-
-        .eligibility-link:hover {
-            letter-spacing: 0.04em;
-        }
-
-        /* Dark Mode */
-        body.dark-mode .eligibility {
-            background: linear-gradient(180deg,
-                    var(--deep-navy),
-                    var(--warm-cream));
-        }
-
-        body.dark-mode .eligibility-card {
-            background: rgba(27, 34, 53, 0.65);
-        }
-
-        @keyframes eligibilityFloat {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-60px);
-            }
-        }
-
-        /* ===============================
-        NEW COMPACT COHORT DESIGN
-        ================================ */
-
-        .cohorts {
-            position: relative;
-            padding: 5rem 1.5rem; /* Reduced from 8rem */
-            background: linear-gradient(
-                180deg,
-                var(--light-parchment),
-                var(--warm-cream)
-            );
-        }
-
+        .premium-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(212, 175, 55, 0.4);
         .cohorts-container {
             position: relative;
             max-width: 1200px;
@@ -1463,7 +1042,6 @@
         /* Grid Table */
 /* ===============================
    PREMIUM COMPARISON TABLE
-=============================== */
 
 .compare-grid {
     display: grid;
@@ -1549,7 +1127,6 @@
 
 /* ===============================
    DARK MODE TABLE
-=============================== */
 
 body.dark-mode .compare-grid {
     background: rgba(27, 34, 53, 0.9);
@@ -1582,297 +1159,444 @@ body.dark-mode .compare-row:not(.header):hover > div {
             transition: background 0.3s ease;
         }
 
-        .compare-row.header>div {
-            font-weight: 600;
-            text-transform: uppercase;
-            background: var(--primary-gold);
-            color: var(--warm-cream);
-            text-align: center;
+        .premium-card:hover::before {
+            opacity: 1;
         }
 
-        .compare-row:nth-child(even):not(.header)>div {
-            background: rgba(255, 255, 255, 0.5);
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s var(--bounce-curve);
         }
 
-        .compare-row>div:hover {
-            background: rgba(255, 255, 255, 0.75);
+        .premium-card:hover .card-icon {
+            transform: scale(1.15) rotate(5deg);
         }
 
-        /* Footer Note */
-        .compare-note {
-            text-align: center;
-            margin-top: 3rem;
+        .premium-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .compare-note p {
-            font-size: 1rem;
+        .premium-card p {
             color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        /* Dark Mode */
-        body.dark-mode .compare {
-            background: linear-gradient(180deg,
-                    var(--deep-navy),
-                    var(--warm-cream));
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s var(--bounce-curve);
+            cursor: pointer;
+            border: none;
         }
 
-        body.dark-mode .compare-row>div {
-            background: rgba(27, 34, 53, 0.65);
-            color: var(--text-primary);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: #111;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
 
-        body.dark-mode .compare-row.header>div {
-            background: var(--primary-gold);
-            color: var(--deep-navy);
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.5);
+            color: #000;
         }
 
-        /* Animation */
-        @keyframes compareFloat {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-50px);
-            }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .compare-grid {
-                display: block;
-            }
-
-            .compare-row {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .compare-row.header {
-                display: none;
-                /* hide headers on small screens */
-            }
-
-            .compare-row>div {
-                padding: 1rem;
-            }
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
         }
 
-        .success {
+        /* Scroll Animation Class */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--smooth-curve), transform 0.8s var(--smooth-curve);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Background Blobs */
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+            animation: floatBlob 15s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -50px) scale(1.1); }
+            100% { transform: translate(-30px, 20px) scale(0.9); }
+        }
+
+        /* Section Layouts */
+        .section-wrapper {
             position: relative;
             padding: 8rem 1.5rem;
-            background: linear-gradient(180deg,
-                    var(--warm-cream),
-                    var(--light-parchment));
             overflow: hidden;
         }
 
-        .success-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 25% 25%, var(--primary-gold), transparent 35%),
-                radial-gradient(circle at 75% 75%, var(--secondary-gold), transparent 40%);
-            opacity: 0.08;
-            filter: blur(120px);
-            animation: successFloat 20s ease-in-out infinite alternate;
+        .section-wrapper:nth-child(even) {
+            background: linear-gradient(180deg, var(--light-parchment), var(--warm-cream));
         }
 
-        .success-container {
+        .section-wrapper:nth-child(odd) {
+            background: linear-gradient(180deg, var(--warm-cream), var(--light-parchment));
+        }
+
+        body.dark-mode .section-wrapper:nth-child(even) {
+            background: linear-gradient(180deg, var(--deep-navy), var(--charcoal-dark));
+        }
+
+        body.dark-mode .section-wrapper:nth-child(odd) {
+            background: linear-gradient(180deg, var(--charcoal-dark), var(--deep-navy));
+        }
+
+        .container {
             position: relative;
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
+            z-index: 2;
         }
 
-        /* Intro */
-        .success-intro {
-            max-width: 760px;
-            margin-bottom: 4.5rem;
+        /* =========================================
+           SPECIFIC SECTIONS
+           ========================================= */
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px; /* Offset for navbar */
         }
 
-        /* Stories Grid */
-        .success-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
+        .hero .bg-blob.blob-1 { width: 400px; height: 400px; background: var(--primary-gold); top: 10%; left: -10%; }
+        .hero .bg-blob.blob-2 { width: 300px; height: 300px; background: var(--secondary-gold); bottom: 10%; right: -5%; }
 
-        /* Card */
-        .success-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            border-radius: 22px;
-            box-shadow: var(--shadow-main);
-            overflow: hidden;
-            transition: transform 0.5s var(--bounce-curve), box-shadow 0.4s ease;
-        }
-
-        .success-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .success-photo img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .success-content {
-            padding: 1.8rem 1.5rem;
-        }
-
-        .success-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--deep-navy);
-        }
-
-        .success-content .program {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .success-content .quote {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Footer Note / CTA */
-        .success-note {
-            margin-top: 3rem;
+        .hero-content {
             text-align: center;
+            max-width: 900px;
         }
 
-        .success-note p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
         }
 
-        .success-link {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background: var(--primary-gold);
-            color: var(--warm-cream);
-            font-weight: 600;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
         }
 
-        .success-link:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+        /* PROCESS / TIMELINE SECTION */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            position: relative;
         }
 
-        body.dark-mode .hero-title {
-            color: white;
+        .process-step {
+            text-align: center;
+            position: relative;
         }
 
-        body.dark-mode h1,
-        body.dark-mode h2,
-        body.dark-mode h3 {
-            color: #eee;
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: #111;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s var(--bounce-curve);
         }
 
-
-
-        /* Dark Mode */
-        body.dark-mode .success {
-            background: linear-gradient(180deg,
-                    var(--deep-navy),
-                    var(--warm-cream));
+        .premium-card:hover .step-number {
+            transform: scale(1.1);
         }
 
-        body.dark-mode .success-card {
-            background: rgba(27, 34, 53, 0.65);
-        }
-
-        body.dark-mode .success-content h3 {
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .success-content .quote,
-        body.dark-mode .success-content .program {
-            color: var(--text-secondary);
-        }
-
-        /* Animations */
-        @keyframes successFloat {
-            from {
-                transform: translateY(0);
+        /* Desktop Connector Lines */
+        @media (min-width: 992px) {
+            .process-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 75px; /* Aligned with number center */
+                right: -50%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, var(--primary-gold), transparent);
+                z-index: 1;
+                opacity: 0.5;
             }
-
-            to {
-                transform: translateY(-50px);
-            }
         }
 
-        /* ==== Global Highlight Stabilizer ==== */
-
-        /* Kill glow pseudo-element everywhere */
-         .benefits-card.highlight::after,
-         .card.highlight::after,
-         .highlight::after {
-         display: none !important;
+        /* COMPARE SECTION */
+        .compare-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-         /* Unified card glass style */
-         .benefits-card,
-         .card {
-         background: rgba(255, 255, 255, 0.88) !important;
-         backdrop-filter: blur(8px);
-         -webkit-backdrop-filter: blur(8px);
-         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-         border: 1px solid rgba(255, 255, 255, 0.05);
+        body.dark-mode .compare-table {
+            background: rgba(27, 34, 53, 0.6);
+            border-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Dark mode consistency */
-        body.dark-mode .benefits-card,
-        body.dark-mode .card {
-         background: rgba(27, 34, 53, 0.92) !important;
+        .compare-table th, .compare-table td {
+            padding: 1.5rem 2rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Controlled gold accent instead of glow */
-        .highlight {
-         border: 1px solid rgba(212, 175, 55, 0.35) !important;
-          box-shadow: 0 10px 25px rgba(212, 175, 55, 0.12) !important;
+        body.dark-mode .compare-table th, body.dark-mode .compare-table td {
+            border-bottom-color: rgba(255,255,255,0.05);
         }
 
-        /* Tone down background bloom globally */
-        .benefits-bg {
-         opacity: 0.04 !important;
-         filter: blur(80px) !important;
+        .compare-table th {
+            background: rgba(212, 175, 55, 0.1);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
         }
 
-        /* ==== Remove ALL Golden Borders from Cards ==== */
-
-        .benefits-card,
-        .card,
-        .highlight {
-         border: 1px solid rgba(255, 255, 255, 0.05) !important;
-         border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
-         box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35) !important;
+        .compare-table tr:last-child td {
+            border-bottom: none;
         }
 
-        /* Kill any leftover pseudo-border effects */
-        .benefits-card::before,
-        .benefits-card::after,
-        .card::before,
-        .card::after,
-        .highlight::before,
-        .highlight::after {
-         border: none !important;
+        .compare-table tr {
+            transition: background 0.3s ease;
+        }
+
+        .compare-table tr:hover td {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Responsive Grid Adjustments */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; }
+
+        /* Custom alignment for lists in cards */
+        .premium-card ul {
+            text-align: left;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .premium-card ul li {
+            margin-bottom: 0.5rem;
         }
         
+        .premium-card ul li i {
+            color: var(--primary-gold);
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        :root {
+  --primary-gold: #c5a059; /* Approximate gold from the image */
+  --footer-bg: #0a0c10;
+  --text-gray: #a1a1a1;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-footer {
+  background-color: var(--footer-bg);
+  color: white;
+  padding: 4rem 2rem 2rem;
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Brand Section */
+.footer-brand {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-mark {
+  background: var(--primary-gold);
+  color: #000;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.footer-tagline {
+  color: var(--text-gray);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 400px;
+}
+
+/* Navigation Columns */
+.footer-columns {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-col-title {
+  color: var(--primary-gold);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--text-gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* Divider */
+.footer-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin-bottom: 2rem;
+}
+
+/* Bottom Section & Badges */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-badges {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-meta {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+.footer-inline {
+  color: var(--primary-gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-top, .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-columns {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}
+
     </style>
-    <link rel='manifest' href='../../../manifest.json' />
 </head>
 
 <body>
+
+    <!-- ================= HEADER ================= -->
     <header>
         <div class="navbar-container">
             <h1>
@@ -1894,680 +1618,271 @@ body.dark-mode .compare-row:not(.header):hover > div {
             </div>
         </div>
     </header>
-    <section class="hero">
-        <div class="hero-bg"></div>
 
-        <div class="hero-container">
-            <!-- Badge -->
-            <div class="hero-badge">
-                🌍 Fully Remote • Paid Open Source Internships
-            </div>
-
-            <!-- Main Content -->
-            <h1 class="hero-title">
-                Start Your Open Source Journey with
-                <span>Outreachy</span>
+    <!-- ================= HERO ================= -->
+    <section class="section-wrapper hero" id="home">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        
+        <div class="container hero-content reveal-up">
+            <span class="section-eyebrow">Fully Remote • Paid Internships</span>
+            <h1 class="section-title">
+                Start Your Open Source Journey with <span>Outreachy</span>
             </h1>
-
-            <p class="hero-description">
-                Outreachy provides paid, remote internships to people from
-                underrepresented communities in tech. Learn, contribute, and
-                grow with real-world open source projects.
+            <p class="section-description" style="max-width: 700px; margin: 0 auto;">
+                Outreachy provides paid, remote internships to people from underrepresented communities in tech. 
+                Learn, contribute, and grow your career by working on real-world open source projects.
             </p>
-
-            <!-- CTA Buttons -->
+            
             <div class="hero-actions">
-                <a href="#prepare" class="btn btn-primary">Get Started</a>
-                <a href="#eligibility" class="btn btn-secondary">Check Eligibility</a>
+                <a href="#prepare" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Get Started
+                </a>
+                <a href="#eligibility" class="btn btn-secondary">
+                    <i class="fas fa-check-circle"></i> Check Eligibility
+                </a>
             </div>
 
-            <!-- Stats -->
             <div class="hero-stats">
-                <div class="stat">
-                    <h3>💰 Paid</h3>
-                    <p>Competitive stipend</p>
+                <div class="premium-card">
+                    <i class="fas fa-hand-holding-usd card-icon"></i>
+                    <h3>Paid Internship</h3>
+                    <p>Receive a competitive stipend for your full-time contribution.</p>
                 </div>
-                <div class="stat">
-                    <h3>🌐 Remote</h3>
-                    <p>Work from anywhere</p>
+                <div class="premium-card">
+                    <i class="fas fa-globe card-icon"></i>
+                    <h3>100% Remote</h3>
+                    <p>Work from anywhere in the world with flexible hours.</p>
                 </div>
-                <div class="stat">
-                    <h3>👩‍💻 Mentored</h3>
-                    <p>Guided by experts</p>
+                <div class="premium-card">
+                    <i class="fas fa-user-friends card-icon"></i>
+                    <h3>Expert Mentorship</h3>
+                    <p>Get guided 1-on-1 by experienced open-source maintainers.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="about" id="about">
-        <div class="about-bg"></div>
 
-        <div class="about-container">
-            <!-- Intro -->
-            <div class="about-intro">
+    <!-- ================= ABOUT ================= -->
+    <section class="section-wrapper" id="about">
+        <div class="container">
+            <div class="section-header reveal-up">
                 <span class="section-eyebrow">About Outreachy</span>
-                <h2 class="section-title">
-                    Empowering Diverse Talent Through
-                    <span>Open Source</span>
-                </h2>
+                <h2 class="section-title">Empowering Diverse Talent in <span>Tech</span></h2>
                 <p class="section-description">
-                    Outreachy is a global initiative that provides paid, remote
-                    internships to people from underrepresented communities in tech.
-                    It bridges opportunity gaps through real-world open source work.
+                    Outreachy exists to remove systemic barriers to entering the tech industry by offering structured mentorship, financial support, and hands-on experience in open source communities.
                 </p>
             </div>
 
-            <!-- Main Content -->
-            <div class="about-grid">
-                <!-- Left Content -->
-                <div class="about-story">
-                    <h3>Why Outreachy Exists</h3>
-                    <p>
-                        Many talented individuals face systemic barriers to entering
-                        the tech industry. Outreachy exists to remove those barriers by
-                        offering structured mentorship, financial support, and hands-on
-                        experience in open source communities.
-                    </p>
-                    <p>
-                        Interns don’t just learn — they contribute meaningfully to
-                        projects used by millions worldwide.
-                    </p>
+            <div class="grid-3 reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card">
+                    <i class="fas fa-users card-icon"></i>
+                    <h3>Global Community</h3>
+                    <p>Collaborate with interns and mentors from all over the world. Build a network that transcends geographical boundaries.</p>
                 </div>
-
-                <!-- Right Cards -->
-                <div class="about-cards">
-                    <div class="about-card">
-                        <h4>🌍 Global Community</h4>
-                        <p>Interns and mentors from all over the world collaborate remotely.</p>
-                    </div>
-                    <div class="about-card">
-                        <h4>💡 Real Impact</h4>
-                        <p>Work on production-grade open source projects with real users.</p>
-                    </div>
-                    <div class="about-card">
-                        <h4>🤝 Strong Mentorship</h4>
-                        <p>One-on-one guidance from experienced open source contributors.</p>
-                    </div>
+                <div class="premium-card">
+                    <i class="fas fa-laptop-code card-icon"></i>
+                    <h3>Real Impact</h3>
+                    <p>Your code won't sit in a sandbox. You will contribute to production-grade software used by millions of people daily.</p>
+                </div>
+                <div class="premium-card">
+                    <i class="fas fa-chart-line card-icon"></i>
+                    <h3>Career Catalyst</h3>
+                    <p>Graduates of Outreachy often transition into full-time roles in tech, armed with a strong portfolio and proven experience.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="eligibility" id="eligibility">
-        <div class="eligibility-bg"></div>
 
-        <div class="eligibility-container">
-            <!-- Intro -->
-            <div class="eligibility-intro">
-                <span class="section-eyebrow">Eligibility</span>
-                <h2 class="section-title">
-                    Who Can Apply for
-                    <span>Outreachy?</span>
-                </h2>
+    <!-- ================= ELIGIBILITY ================= -->
+    <section class="section-wrapper" id="eligibility">
+        <div class="bg-blob blob-1" style="left: auto; right: -10%; top: 30%; background: var(--secondary-gold);"></div>
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-eyebrow">Am I Eligible?</span>
+                <h2 class="section-title">Who Can Apply for <span>Outreachy?</span></h2>
                 <p class="section-description">
-                    Outreachy is designed to be inclusive and beginner-friendly.
-                    You don’t need to be an expert — you need curiosity, commitment,
-                    and the willingness to learn.
+                    Outreachy is designed to be inclusive. You don’t need to be a senior developer — you need curiosity, commitment, and the willingness to learn.
                 </p>
             </div>
 
-            <!-- Eligibility Cards -->
-            <div class="eligibility-grid">
-                <!-- Can Apply -->
-                <div class="eligibility-card success">
-                    <h3>✅ You Can Apply If</h3>
-                    <ul>
-                        <li>You belong to an underrepresented group in tech</li>
-                        <li>You are at least 18 years old</li>
-                        <li>You are available full-time during the internship</li>
-                        <li>You are eligible to work remotely</li>
+            <div class="grid-2 reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card" style="text-align: left; border-top: 4px solid #2ecc71;">
+                    <h3><i class="fas fa-check-circle" style="color:#2ecc71;"></i> You Can Apply If:</h3>
+                    <ul style="list-style: none; padding:0;">
+                        <li><i class="fas fa-check"></i> You face systemic bias or discrimination in tech.</li>
+                        <li><i class="fas fa-check"></i> You are at least 18 years old.</li>
+                        <li><i class="fas fa-check"></i> You are available for a 40 hour/week full-time internship.</li>
+                        <li><i class="fas fa-check"></i> You are eligible to work remotely in your country.</li>
                     </ul>
                 </div>
 
-                <!-- Cannot Apply -->
-                <div class="eligibility-card danger">
-                    <h3>❌ You Cannot Apply If</h3>
-                    <ul>
-                        <li>You are currently a full-time student (exceptions may apply)</li>
-                        <li>You have previously completed an Outreachy internship</li>
-                        <li>You cannot commit to the required hours</li>
+                <div class="premium-card" style="text-align: left; border-top: 4px solid #e74c3c;">
+                    <h3><i class="fas fa-times-circle" style="color:#e74c3c;"></i> You Cannot Apply If:</h3>
+                    <ul style="list-style: none; padding:0;">
+                        <li><i class="fas fa-times"></i> You are a student on a visa that restricts working hours.</li>
+                        <li><i class="fas fa-times"></i> You have previously completed an Outreachy internship.</li>
+                        <li><i class="fas fa-times"></i> You cannot commit to the full 40 hours per week.</li>
                     </ul>
-                </div>
-
-                <!-- Experience -->
-                <div class="eligibility-card info">
-                    <h3>🧠 Experience Level</h3>
-                    <p>
-                        Outreachy welcomes beginners. Prior open source experience is
-                        <strong>not required</strong>. What matters most is your
-                        ability to learn, communicate, and collaborate.
-                    </p>
-                </div>
-
-                <!-- Time -->
-                <div class="eligibility-card info">
-                    <h3>⏰ Time Commitment</h3>
-                    <p>
-                        Internships require approximately
-                        <strong>40 hours per week</strong> for the full duration.
-                        Treat it like a full-time job.
-                    </p>
                 </div>
             </div>
-
-            <!-- Footer Note -->
-            <div class="eligibility-note">
-                <p>
-                    Still unsure? Many successful interns doubted themselves at first.
-                    If you’re motivated — <strong>you should apply.</strong>
+            
+            <div class="section-header reveal-up" style="margin-top: 4rem; margin-bottom: 0;">
+                <p class="section-description">
+                    <strong>Note:</strong> Beginners are welcome! Prior open source experience is not required. What matters most is your ability to communicate and learn.
                 </p>
-                <a href="#prepare" class="eligibility-link">
-                    Learn how to prepare →
-                </a>
             </div>
         </div>
     </section>
-    <section class="cohorts" id="cohorts">
-        <div class="cohorts-bg"></div>
 
-        <div class="cohorts-container">
-            <!-- Intro -->
-            <div class="cohorts-intro">
-                <span class="section-eyebrow">Internship Cycles</span>
-                <h2 class="section-title">
-                    Two <span>Outreachy Cohorts</span> Every Year
-                </h2>
+    <!-- ================= COHORTS ================= -->
+    <section class="section-wrapper" id="cohorts">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-eyebrow">Timeline</span>
+                <h2 class="section-title">Two Cohorts <span>Every Year</span></h2>
                 <p class="section-description">
-                    Outreachy runs two paid internship cohorts annually.
-                    Both follow the same application process and offer
-                    equal opportunities.
+                    Outreachy runs two identical cycles annually to accommodate different schedules worldwide.
                 </p>
             </div>
 
-            <!-- Cohort Cards -->
-            <div class="cohorts-grid">
-                <!-- May Cohort -->
-                <div class="cohort-card">
-                    <div class="cohort-header">
-                        <h3>🌸 May – August</h3>
-                        <span class="cohort-tag">Mid-Year Cohort</span>
-                    </div>
-
-                    <ul class="cohort-timeline">
-                        <li>
-                            <span class="dot"></span>
-                            <div>
-                                <strong>Applications Open</strong>
-                                <p>February – March</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-                            <div>
-                                <strong>Contribution Period</strong>
-                                <p>March – April</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-                            <div>
-                                <strong>Internship</strong>
-                                <p>May – August</p>
-                            </div>
-                        </li>
+            <div class="grid-2 reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card">
+                    <i class="fas fa-sun card-icon"></i>
+                    <h3>May – August Cohort</h3>
+                    <p style="margin-bottom: 1.5rem; font-weight: 600; color: var(--primary-gold);">Mid-Year Cycle</p>
+                    <ul style="list-style:none; padding:0; text-align:center;">
+                        <li><strong>Feb - Mar:</strong> Initial Applications</li>
+                        <li><strong>Mar - Apr:</strong> Contribution Period</li>
+                        <li><strong>May - Aug:</strong> Paid Internship</li>
                     </ul>
-
-                    <div class="cohort-footer">
-                        <p>Ideal for learners free during mid-year months.</p>
-                    </div>
                 </div>
 
-                <!-- December Cohort -->
-                <div class="cohort-card ">
-                    <div class="cohort-header">
-                        <h3>❄️ December – March</h3>
-                        <span class="cohort-tag">End-Year Cohort</span>
-                    </div>
-
-                    <ul class="cohort-timeline">
-                        <li>
-                            <span class="dot"></span>
-                            <div>
-                                <strong>Applications Open</strong>
-                                <p>September – October</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-                            <div>
-                                <strong>Contribution Period</strong>
-                                <p>October – November</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="dot"></span>
-                            <div>
-                                <strong>Internship</strong>
-                                <p>December – March</p>
-                            </div>
-                        </li>
+                <div class="premium-card">
+                    <i class="fas fa-snowflake card-icon"></i>
+                    <h3>December – March Cohort</h3>
+                    <p style="margin-bottom: 1.5rem; font-weight: 600; color: var(--primary-gold);">End-Year Cycle</p>
+                    <ul style="list-style:none; padding:0; text-align:center;">
+                        <li><strong>Sep - Oct:</strong> Initial Applications</li>
+                        <li><strong>Oct - Nov:</strong> Contribution Period</li>
+                        <li><strong>Dec - Mar:</strong> Paid Internship</li>
                     </ul>
-
-                    <div class="cohort-footer">
-                        <p>Perfect for year-end availability.</p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="process" id="process">
-        <div class="process-bg"></div>
 
-        <div class="process-container">
-            <!-- Intro -->
-            <div class="process-intro">
+    <!-- ================= PROCESS ================= -->
+    <section class="section-wrapper" id="process">
+        <div class="container">
+            <div class="section-header reveal-up">
                 <span class="section-eyebrow">Application Process</span>
-                <h2 class="section-title">
-                    Your <span>Outreachy Journey</span>
-                    Step by Step
-                </h2>
+                <h2 class="section-title">Your Journey <span>Step by Step</span></h2>
                 <p class="section-description">
-                    The Outreachy application process is structured to help you learn,
-                    grow, and demonstrate your potential — not to test perfection.
+                    The process is designed to help you learn and demonstrate potential, not to test perfection.
                 </p>
             </div>
 
-            <!-- Stepper -->
-            <div class="process-steps">
-                <div class="process-step">
-                    <span class="step-number">01</span>
-                    <h3>Create an Account</h3>
-                    <p>
-                        Sign up on the official Outreachy platform and complete
-                        your initial eligibility application.
-                    </p>
+            <div class="process-grid reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card process-step">
+                    <div class="step-number">1</div>
+                    <h3>Initial Application</h3>
+                    <p>Submit your basic details and essay answering eligibility questions on the Outreachy portal.</p>
                 </div>
-
-                <div class="process-step">
-                    <span class="step-number">02</span>
-                    <h3>Contribution Period</h3>
-                    <p>
-                        Choose projects, communicate with mentors, and make real
-                        contributions to open source code or documentation.
-                    </p>
+                <div class="premium-card process-step">
+                    <div class="step-number">2</div>
+                    <h3>Contribution Phase</h3>
+                    <p>Select 1-2 projects, interact with mentors, and make your first pull requests over a 4-week period.</p>
                 </div>
-
-                <div class="process-step">
-                    <span class="step-number">03</span>
+                <div class="premium-card process-step">
+                    <div class="step-number">3</div>
                     <h3>Final Application</h3>
-                    <p>
-                        Submit your final application for the project you contributed to,
-                        highlighting your work and learnings.
-                    </p>
+                    <p>Draft a detailed project timeline based on what you learned during the contribution phase.</p>
                 </div>
-
-                <div class="process-step">
-                    <span class="step-number">04</span>
-                    <h3>Selection & Internship</h3>
-                    <p>
-                        Selected applicants begin their paid internship with
-                        full mentorship and real-world impact.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Footer Note -->
-            <div class="process-note">
-                <p>
-                    Feeling nervous? That’s normal. Outreachy values effort,
-                    communication, and growth — not perfection.
-                </p>
-                <a href="#prepare" class="process-link">
-                    Learn how to prepare →
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="prepare" id="prepare">
-        <div class="prepare-bg"></div>
-
-        <div class="prepare-container">
-            <!-- Intro -->
-            <div class="prepare-intro">
-                <span class="section-eyebrow">Preparation Guide</span>
-                <h2 class="section-title">
-                    How to <span>Prepare for Outreachy</span>
-                </h2>
-                <p class="section-description">
-                    You don’t need to know everything before applying.
-                    Focus on steady progress — Outreachy rewards effort,
-                    communication, and consistency.
-                </p>
-            </div>
-
-            <!-- Preparation Cards -->
-            <div class="prepare-grid">
-                <div class="prepare-card">
-                    <h3>🧑‍💻 Learn the Basics</h3>
-                    <ul>
-                        <li>Git & GitHub fundamentals</li>
-                        <li>Basic programming or documentation skills</li>
-                        <li>Command line familiarity</li>
-                    </ul>
-                </div>
-
-                <div class="prepare-card">
-                    <h3>📂 Explore Open Source</h3>
-                    <ul>
-                        <li>Understand how open source works</li>
-                        <li>Read project documentation</li>
-                        <li>Observe issue discussions</li>
-                    </ul>
-                </div>
-
-                <div class="prepare-card">
-                    <h3>🤝 Practice Communication</h3>
-                    <ul>
-                        <li>Ask clear, respectful questions</li>
-                        <li>Engage with mentors early</li>
-                        <li>Explain what you’re learning</li>
-                    </ul>
-                </div>
-
-                <div class="prepare-card">
-                    <h3>🚀 Make Contributions</h3>
-                    <ul>
-                        <li>Start with beginner-friendly issues</li>
-                        <li>Submit small, meaningful PRs</li>
-                        <li>Learn from feedback</li>
-                    </ul>
-                </div>
-
-                <div class="prepare-card">
-                    <h3>📝 Final Application</h3>
-                    <ul>
-                        <li>Document your contributions</li>
-                        <li>Reflect on challenges & growth</li>
-                        <li>Be honest and clear</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="prepare-note">
-                <p>
-                    You don’t need to be perfect — you need to be prepared.
-                    Start small. Stay consistent.
-                </p>
-                <a href="#resources" class="prepare-link">
-                    Explore preparation resources →
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="contribution" id="contribution">
-        <div class="contribution-bg"></div>
-
-        <div class="contribution-container">
-            <!-- Intro -->
-            <div class="contribution-intro">
-                <span class="section-eyebrow">Contribution Period</span>
-                <h2 class="section-title">
-                    What Happens During the
-                    <span>Contribution Period?</span>
-                </h2>
-                <p class="section-description">
-                    This is the most important phase of Outreachy. You explore projects,
-                    work with mentors, and show your learning through real contributions.
-                    Quality matters more than quantity.
-                </p>
-            </div>
-
-            <!-- Flow -->
-            <div class="contribution-grid">
-                <div class="contribution-card">
-                    <span class="step">01</span>
-                    <h3>Explore Projects</h3>
-                    <p>
-                        Browse participating organizations, read project descriptions,
-                        and choose 1–2 projects that genuinely interest you.
-                    </p>
-                </div>
-
-                <div class="contribution-card">
-                    <span class="step">02</span>
-                    <h3>Talk to Mentors</h3>
-                    <p>
-                        Introduce yourself, ask thoughtful questions, and clarify
-                        expectations before starting work.
-                    </p>
-                </div>
-
-                <div class="contribution-card">
-                    <span class="step">03</span>
-                    <h3>Make Contributions</h3>
-                    <p>
-                        Start small. Fix bugs, improve documentation, or add tests.
-                        Show consistency and willingness to learn.
-                    </p>
-                </div>
-
-                <div class="contribution-card ">
-                    <span class="step">04</span>
-                    <h3>Learn & Improve</h3>
-                    <p>
-                        Take feedback positively, refine your work, and document
-                        what you’ve learned — mentors value growth.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Tips -->
-            <div class="contribution-tips">
-                <div class="tip good">
-                    <h4>✅ What Helps</h4>
-                    <ul>
-                        <li>Clear communication</li>
-                        <li>Consistent effort</li>
-                        <li>Asking questions early</li>
-                    </ul>
-                </div>
-
-                <div class="tip bad">
-                    <h4>⚠️ What Hurts</h4>
-                    <ul>
-                        <li>Disappearing without updates</li>
-                        <li>Spamming low-quality PRs</li>
-                        <li>Ignoring feedback</li>
-                    </ul>
+                <div class="premium-card process-step">
+                    <div class="step-number">4</div>
+                    <h3>Internship</h3>
+                    <p>Selected applicants begin their 3-month paid internship with dedicated 1-on-1 mentorship.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="benefits" id="benefits">
-        <div class="benefits-bg"></div>
 
-        <div class="benefits-container">
-            <!-- Intro -->
-            <div class="benefits-intro">
-                <span class="section-eyebrow">Stipend & Benefits</span>
-                <h2 class="section-title">
-                    What You Get as an <span>Outreachy Intern</span>
-                </h2>
+    <!-- ================= PREPARATION & TIPS ================= -->
+    <section class="section-wrapper" id="prepare">
+        <div class="bg-blob blob-1" style="background: var(--primary-gold); top: 50%; left: -10%;"></div>
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-eyebrow">Pro Tips</span>
+                <h2 class="section-title">How to Stand Out in the <span>Contribution Phase</span></h2>
                 <p class="section-description">
-                    Outreachy provides not only financial support but also mentorship, learning opportunities, and
-                    recognition for your contributions to open source. Here's what you can expect:
+                    This is the most critical phase. Mentors evaluate your communication, willingness to learn, and consistency.
                 </p>
             </div>
 
-            <!-- Benefits Grid -->
-            <div class="benefits-grid">
-                <div class="benefits-card ">
-                    <h3>💰 Stipend</h3>
-                    <p>Receive a competitive stipend to support your internship period and help you focus on
-                        contributing full-time.</p>
+            <div class="grid-3 reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card" style="border-top: 4px solid #2ecc71;">
+                    <i class="fas fa-comments card-icon" style="color:#2ecc71;"></i>
+                    <h3>Communicate Early</h3>
+                    <p>Introduce yourself in the project's chat. Don't ghost mentors if you get stuck. Ask public, well-researched questions.</p>
                 </div>
-
-                <div class="benefits-card">
-                    <h3>🩺 Health & Insurance</h3>
-                    <p>Coverage is provided during your internship period, ensuring peace of mind while you contribute
-                        remotely.</p>
+                <div class="premium-card" style="border-top: 4px solid var(--primary-gold);">
+                    <i class="fas fa-layer-group card-icon"></i>
+                    <h3>Focus, Don't Scatter</h3>
+                    <p>Don't try to contribute to 5 different projects. Pick 1 or 2 that align with your skills and commit deeply to them.</p>
                 </div>
-
-                <div class="benefits-card">
-                    <h3>🎓 Mentorship</h3>
-                    <p>Work closely with experienced mentors who guide your contributions and help you grow your skills.
-                    </p>
+                <div class="premium-card" style="border-top: 4px solid #3498db;">
+                    <i class="fas fa-code-branch card-icon" style="color:#3498db;"></i>
+                    <h3>Quality over Quantity</h3>
+                    <p>One well-documented, carefully written PR is worth more than ten 1-line typo fixes. Review feedback gracefully.</p>
                 </div>
-
-                <div class="benefits-card">
-                    <h3>📚 Learning Resources</h3>
-                    <p>Access tutorials, guides, and organizational resources to help you make meaningful contributions.
-                    </p>
-                </div>
-
-                <div class="benefits-card">
-                    <h3>🤝 Networking & Community</h3>
-                    <p>Join a global network of open-source contributors and participate in community discussions.</p>
-                </div>
-
-                <div class="benefits-card">
-                    <h3>🏆 Certificates & Recognition</h3>
-                    <p>Receive official recognition of your work, which can help boost your career and portfolio.</p>
-                </div>
-            </div>
-
-            <!-- Footer Note -->
-            <div class="benefits-note">
-                <p>
-                    All benefits are provided to ensure you can focus on learning, contributing, and growing in a safe,
-                    supportive environment.
-                </p>
             </div>
         </div>
     </section>
-    <section class="compare" id="compare">
-        <div class="compare-bg"></div>
 
-        <div class="compare-container">
-            <!-- Intro -->
-            <div class="compare-intro">
-                <span class="section-eyebrow">Compare Programs</span>
-                <h2 class="section-title">
-                    GSoC vs <span>Outreachy</span>
-                </h2>
+    <!-- ================= COMPARE ================= -->
+    <section class="section-wrapper" id="compare">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-eyebrow">Comparison</span>
+                <h2 class="section-title">Outreachy vs <span>GSoC</span></h2>
                 <p class="section-description">
-                    Both programs help contributors get started with open source, but they differ in duration,
-                    eligibility, and support. Here's a quick comparison to help you choose the right program.
+                    Understanding the differences helps you choose the right program for your current situation.
                 </p>
             </div>
 
-            <!-- Comparison Table -->
-            <div class="compare-grid">
-                <div class="compare-row header">
-                    <div>Feature</div>
-                    <div>GSoC</div>
-                    <div>Outreachy</div>
-                </div>
-
-                <div class="compare-row">
-                    <div>Duration</div>
-                    <div>3+ months (Summer)</div>
-                    <div>3 months (Spring/Fall)</div>
-                </div>
-
-                <div class="compare-row">
-                    <div>Eligibility</div>
-                    <div>Students enrolled in college/university</div>
-                    <div>Anyone underrepresented in tech, worldwide</div>
-                </div>
-
-                <div class="compare-row">
-                    <div>Stipend</div>
-                    <div>Varies by organization & country</div>
-                    <div>Standard stipend to support interns</div>
-                </div>
-
-                <div class="compare-row">
-                    <div>Mentorship</div>
-                    <div>Yes, assigned mentors</div>
-                    <div>Yes, dedicated mentors with close guidance</div>
-                </div>
-
-                <div class="compare-row">
-                    <div>Open Source Exposure</div>
-                    <div>Major open-source projects, mostly code contributions</div>
-                    <div>Diverse projects, coding + non-coding contributions</div>
-                </div>
-
-                <div class="compare-row">
-                    <div>Application Cycle</div>
-                    <div>Annually (Spring)</div>
-                    <div>Twice a year (Spring & Fall)</div>
-                </div>
-            </div>
-
-            <!-- Footer Note -->
-            <div class="compare-note">
-                <p>
-                    Choose the program that best matches your availability, eligibility, and learning goals.
-                </p>
-            </div>
-        </div>
-    </section>
-    <section class="success" id="success">
-        <div class="success-bg"></div>
-
-        <div class="success-container">
-            <!-- Intro -->
-            <div class="success-intro">
-                <span class="section-eyebrow">Inspiring Journeys</span>
-                <h2 class="section-title">
-                    Success <span>Stories</span>
-                </h2>
-                <p class="section-description">
-                    Hear from contributors who made their mark through Outreachy and GSoC. Their journeys can motivate
-                    you to take the leap into open source!
-                </p>
-            </div>
-
-            <!-- Stories Grid -->
-            <div class="success-grid">
-                <!-- Story Card -->
-                <div class="success-card">
-                    <div class="success-photo">
-
-                    </div>
-                    <div class="success-content">
-                        <h3>John Doe</h3>
-                        <span class="program">Outreachy 2025</span>
-                        <p class="quote">
-                            "Outreachy was the stepping stone that helped me gain confidence and contribute to real open
-                            source projects."
-                        </p>
-                    </div>
-                </div>
-
-                <div class="success-card">
-                    <div class="success-photo">
-
-                    </div>
-                    <div class="success-content">
-                        <h3>Jane Smith</h3>
-                        <span class="program">Outreachy 2025</span>
-                        <p class="quote">
-                            "Outreachy introduced me to a global community of mentors and peers. It was life-changing!"
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Add more story cards similarly -->
-            </div>
-
-            <!-- Footer Note / CTA -->
-            <div class="success-note">
-                <p>
-                    Your journey can be next. Start preparing and make your success story!
-                </p>
-                <a href="#prepare" class="success-link">Start Preparing</a>
+            <div class="reveal-up" style="transition-delay: 0.2s; overflow-x: auto;">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Outreachy</th>
+                            <th>Google Summer of Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Target Audience</strong></td>
+                            <td>Underrepresented groups in tech (globally)</td>
+                            <td>Students & beginner contributors</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Time Commitment</strong></td>
+                            <td>Strictly 40 hrs/week (Full-time)</td>
+                            <td>Flexible (Small ~90h, Medium ~175h, Large ~350h)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contribution Phase</strong></td>
+                            <td>Mandatory 4-week period before final selection</td>
+                            <td>Highly recommended, but not strictly mandated</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Types of Roles</strong></td>
+                            <td>Coding, Design, Documentation, Data Science, Marketing</td>
+                            <td>Primarily Coding / Technical</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -2575,64 +1890,54 @@ body.dark-mode .compare-row:not(.header):hover > div {
     <!-- ================= FOOTER ================= -->
     <div id="footer"></div>
 
+    <!-- Scripts -->
     <script src="../../js/components.js"></script>
-
-    <!-- ================= SCRIPTS ================= -->
     <script>
-        // Theme toggle functionality (if needed)
+        // Theme Toggle Logic
         const themeToggle = document.getElementById("themeToggle");
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            if(themeToggle) themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
         if (themeToggle) {
             themeToggle.addEventListener("click", () => {
                 document.body.classList.toggle("dark-mode");
-                themeToggle.textContent =
-                    document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+                let theme = 'light';
+                if (document.body.classList.contains("dark-mode")) {
+                    theme = 'dark';
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+                localStorage.setItem('theme', theme);
             });
         }
 
-        // Create animated particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            if (!particlesContainer) return;
-
-            const particleCount = 30;
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize particles on page load
-        window.addEventListener('DOMContentLoaded', createParticles);
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        // Scroll Reveal Animation via IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal-up');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                if (!entry.isIntersecting) {
+                    return;
                 }
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Run once
             });
-        }, observerOptions);
+        }, revealOptions);
 
-        // Observe all cards and sections
-        document.querySelectorAll('.cohort-card, .benefit-card, .step-content, .preparation-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
         });
     </script>
-
-    <script src='../../js/pwa.js'></script>
 </body>
-
 </html>

@@ -55,13 +55,13 @@ OpenSource Compass
 `;
 
 const footerHTML = `
-<footer class="site-footer" role="contentinfo" aria-label="Site footer">
-<div class="footer-shell">
-<div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-mark" aria-hidden="true">
-          <i class="fas fa-compass"></i>
-        </div>
+ <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+   <div class="footer-shell">
+     <div class="footer-top">
+       <div class="footer-brand">
+         <div class="footer-mark" aria-hidden="true">
+           <i class="fas fa-compass"></i>
+         </div>
          <div>
            <div class="footer-title">OpenSource Compass</div>
            <div class="footer-tagline">
