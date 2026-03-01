@@ -4,23 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Feedback | OpenSource Compass</title>
+  <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+  
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feedback.css">
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <link rel="stylesheet" href="/frontend/css/dark-mode.css">
 
 </head>
 
 <body>
+<div id="cursor-highlight" aria-hidden="true"></div>
 
   <div id="navbar"></div>
 
   <main>
     <section class="feedback-header">
-      <h1>We’d Love Your Feedback</h1>
+      <h3>We’d Love Your Feedback</h3>
       <p>Your feedback helps improve OpenSource Compass for everyone. Let us know how we can make your journey better.</p>
     </section>
 
@@ -33,7 +36,7 @@
         <label for="email">Email <span style="font-weight:400; color:#999; font-size:0.85em">(optional)</span></label>
         <input id="email" type="email" placeholder="john@example.com">
 
-        <label for="type">Feedback Type</label>
+        <label for="type">Feedback Type *</label>
         <select id="type" required>
           <option value="">Select an option...</option>
           <option>Bug Report</option>
@@ -60,13 +63,12 @@
 
     <div id="footer"></div>
 
-
-
   <!-- 🔹 Shared Components + Page Logic -->
   <script src="../js/components.js"></script>
   <script src="../js/feedback.js"></script>
   <script src="../js/theme.js"></script>
   <script src="/frontend/js/DMtheme.js"></script>
+  <script src="../js/chatbot.js"></script>
 
 </body>
 </html>
