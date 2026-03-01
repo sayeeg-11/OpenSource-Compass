@@ -6,7 +6,7 @@
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link
+  <link 
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
@@ -18,43 +18,10 @@
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/contributors.css" />
   <link rel="stylesheet" href="../css/chatbot.css" /> 
-  
+  <link rel="stylesheet" href="../css/footer.css" />
   <link rel='manifest' href='../../manifest.json' />
 
 </head>
-
-<header>
-    <div class="navbar-container">
-        <h1>
-           <i class="fas fa-compass" aria-hidden="true" style="color: var(--primary-gold); margin-right: 0.4rem;"></i>
-OpenSource Compass
-
-        </h1>
-        <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
-             <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links">
-            <a href="${getPath('index.html')}">Home</a>
-            <a href="${getPath('frontend/pages/guides.html')}">Guides</a>
-            <a href="${getPath('frontend/pages/programs.html')}">Programs</a>
-            <a href="${getPath('frontend/pages/Resources.html')}">Resources</a>
-            <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
-            <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
-            <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
-            <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
-           <button
-  id="themeToggle"
-  aria-label="Toggle dark mode"
-  title="Toggle dark mode"
-  style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1.1rem; margin-left: 0.5rem; transition: transform 0.3s ease;"
->
-  <i class="fas fa-moon" aria-hidden="true"></i>
-</button>
-
-        </div>
-    </div>
-</header>
-
 
 <body class="contributors-page">
   <div id="cursor-highlight" aria-hidden="true"></div>
@@ -62,62 +29,42 @@ OpenSource Compass
 
   <main>
     <section class="contributors-section">
-      <h1 style="color:rgba(221, 189, 8, 0.801)">Contributors</h1>
+      <h1>Contributors</h1>
       <p>People who have helped build and improve OpenSource Compass.</p>
 
+      <!-- Stats -->
       <div class="contributors-stats" id="contributors-stats"></div>
 
-  <div class="contributors-controls">
-  <div class="search-wrapper">
-    <i class="fas fa-search search-icon"></i>
-    <input
-      id="contributor-search"
-      type="search"
-      placeholder="Search contributors..."
-      aria-label="Search contributors"
-    />
-  </div>
-
-  <label class="bot-toggle">
-    <input type="checkbox" id="toggle-bots" checked />
-    <span>Show bots</span>
-  </label>
-</div>
-
-
-<div class="contributors-status" id="contributors-status" aria-live="polite"></div>
-
-<!-- Top 3 Contributors Highlight Section -->
-<div class="top-contributors-section" id="top-contributors-section">
-  <h4 class="top-title">
-    <i class="fas fa-crown"></i> Top Contributors
-  </h4>
-  <div class="top-contributors-grid" id="top-contributors-grid"></div>
-</div>
-
-<!-- All Contributors Grid -->
-<div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
-
-      </section>
-      
-    </main>
+      <!-- Controls -->
       <div class="contributors-controls">
-        <input
-          id="contributor-search"
-          type="search"
-          placeholder="Search contributors…"
-          aria-label="Search contributors"
-        />
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            id="contributor-search"
+            type="search"
+            placeholder="Search contributors..."
+            aria-label="Search contributors"
+          />
+        </div>
 
-        <label class="bot-toggle" style="color:rgba(221, 189, 8, 0.801)">
+        <label class="bot-toggle">
           <input type="checkbox" id="toggle-bots" checked />
-          Show bots
+          <span>Show bots</span>
         </label>
       </div>
 
       <div class="contributors-status" id="contributors-status" aria-live="polite"></div>
 
-      <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
+      <!-- Top Contributors -->
+      <div class="top-contributors-section" id="top-contributors-section">
+        <h4 class="top-title">
+          <i class="fas fa-crown"></i> Top Contributors
+        </h4>
+        <div class="top-contributors-grid" id="top-contributors-grid"></div>
+      </div>
+
+      <!-- All Contributors -->
+      <div class="contributors-grid" id="contributors-grid"></div>
     </section>
   </main>
 
@@ -128,116 +75,8 @@ OpenSource Compass
   <script src="../js/contributors.js"></script>
   <script src="../js/chatbot.js"></script>
   <script src="../js/main.js"></script>
-<script src="/frontend/js/DMtheme.js"></script>
-<button id="scrollTopBtn" title="Back to Top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-<!-- </body> -->
-
-  <script>
-    (function enforceCardLayout() {
-      const observer = new MutationObserver(() => {
-        const cards = document.querySelectorAll('.contributor-card');
-        
-        cards.forEach(card => {
-          if (card.dataset.layoutFixed === "true") return;
-
-          const img = card.querySelector('img'); 
-          const links = card.querySelectorAll('a'); 
-          const iconLink = links.length > 0 ? links[links.length - 1] : null; 
-
-          if (img && iconLink) {
-            
-            const leftSection = document.createElement('div');
-            leftSection.className = 'card-avatar-section';
-            
-            const centerSection = document.createElement('div');
-            centerSection.className = 'card-info-section';
-            
-            const rightSection = document.createElement('div');
-            rightSection.className = 'card-icon-section';
-
-            leftSection.appendChild(img);
-            rightSection.appendChild(iconLink);
-
-            const children = Array.from(card.childNodes);
-            children.forEach(child => {
-              if (!leftSection.contains(child) && !rightSection.contains(child)) {
-                centerSection.appendChild(child);
-              }
-            });
-
-            card.innerHTML = '';
-            card.appendChild(leftSection);
-            card.appendChild(centerSection);
-            card.appendChild(rightSection);
-
-            card.dataset.layoutFixed = "true";
-          }
-        });
-      });
-
-      const grid = document.getElementById('contributors-grid');
-      if (grid) {
-        observer.observe(grid, { childList: true, subtree: true });
-      } else {
-        observer.observe(document.body, { childList: true, subtree: true });
-      }
-    })();
-  </script>
-
-  <script>
-    (function fixChatbotOverlap() {
-      function adjustChatbotPosition() {
-        if (document.readyState !== 'complete') {
-          window.addEventListener('load', adjustChatbotPosition);
-          return;
-        }
-
-        const allElements = document.querySelectorAll('*');
-        
-        for (const el of allElements) {
-          if (el.id === 'scrollTopBtn' || 
-              el.closest('footer') || 
-              el.closest('#footer') ||
-              el.classList.contains('contributor-card')) {
-            continue;
-          }
-
-          const styles = window.getComputedStyle(el);
-          
-          if (styles.position === 'fixed') {
-            const rect = el.getBoundingClientRect();
-            
-            const isBottomRight = 
-              rect.bottom > window.innerHeight - 150 && 
-              rect.right > window.innerWidth - 150 &&
-              rect.width > 30 && 
-              rect.width < 150;
-            
-            if (isBottomRight) {
-              el.style.setProperty('bottom', '90px', 'important');
-              el.style.setProperty('right', '20px', 'important');
-              el.style.setProperty('z-index', '1000', 'important');
-            }
-          }
-        }
-      }
-
-      setTimeout(adjustChatbotPosition, 100);
-      setTimeout(adjustChatbotPosition, 500);
-      setTimeout(adjustChatbotPosition, 2000);
-
-      const observer = new MutationObserver(() => {
-        adjustChatbotPosition();
-      });
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
-    })();
-  </script>
-  <script src='../js/pwa.js'></script>
+  <script src="/frontend/js/DMtheme.js"></script>
+  <script src="../js/pwa.js"></script>
 </body>
+
 </html>

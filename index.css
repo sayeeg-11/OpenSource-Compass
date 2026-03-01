@@ -959,7 +959,7 @@ body { background-color: var(--bg-color); color: var(--text-main); }
     /* --- Why Section Wrapper --- */
 #why {
   padding: 100px 20px;
-  background-color: #fcfbf7; /* Light cream theme background */
+  background-color: var(--section-bg); /* Light cream theme background */
   text-align: center; /* Centers the main heading and intro */
 }
 
@@ -1752,4 +1752,27 @@ body.dark-mode .play-button {
 .video-thumbnail-container:hover .play-button {
   transform: scale(1.15);
   box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+}
+
+body.dark-mode .card h4,
+body.dark-mode .program-card h3 {
+  color: var(--primary-gold) !important;
+}
+
+body.dark-mode .card p,
+body.dark-mode .program-card p {
+  color: #d4af37 !important; /* soft gold */
+}
+
+.stat-icon i {
+  color: #ffffff !important;  /* same as light background */
+}
+
+body.dark-mode .stat-icon i {
+  color: #0d1117 !important;  /* same as dark background */
+}
+
+/* Remove underline from all anchor tags */
+a {
+  text-decoration: none;
 }
