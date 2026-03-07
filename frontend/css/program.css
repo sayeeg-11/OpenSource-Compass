@@ -508,3 +508,82 @@ body.dark-mode .label.advanced {
   background: rgba(220, 38, 38, 0.2);
   color: #f87171;
 }
+
+/* Add these skeleton loading styles to your existing program.css */
+
+.skeleton-card {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  pointer-events: none;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.skeleton-card .skeleton-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ddd;
+  margin: 0 auto 20px;
+}
+
+.skeleton-card .skeleton-title {
+  height: 24px;
+  width: 80%;
+  background: #ddd;
+  margin: 10px auto;
+  border-radius: 4px;
+}
+
+.skeleton-card .skeleton-text {
+  height: 16px;
+  width: 90%;
+  background: #ddd;
+  margin: 8px auto;
+  border-radius: 4px;
+}
+
+.skeleton-card .skeleton-badge {
+  height: 30px;
+  width: 100px;
+  background: #ddd;
+  margin: 20px auto 0;
+  border-radius: 20px;
+}
+
+.skeleton-card .skeleton-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  padding: 0 10px;
+}
+
+.skeleton-card .skeleton-stat {
+  height: 20px;
+  width: 80px;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dark mode support for skeleton cards */
+.dark-mode .skeleton-card {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+}
+
+.dark-mode .skeleton-card .skeleton-icon,
+.dark-mode .skeleton-card .skeleton-title,
+.dark-mode .skeleton-card .skeleton-text,
+.dark-mode .skeleton-card .skeleton-badge,
+.dark-mode .skeleton-card .skeleton-stat {
+  background: #444;
+}
