@@ -3,18 +3,19 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>OpenSource Compass</title>
+  <title>OpenSource Compass - Guides</title>
   <link rel="icon" href="../library/assets/favicon.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font Awesome (REQUIRED for logo) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
 
-  <!-- Global CSS -->
+  <!-- CSS Files -->
   <link rel="stylesheet" href="../css/guides.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/pr-generator.css" />
@@ -22,196 +23,14 @@
   <link rel="stylesheet" href="/frontend/css/dark-mode.css">
   <link rel="stylesheet" href="../css/footer.css" />
   <link rel='manifest' href='../../manifest.json' />
-
-  <style>
-    /* =========================================
-   GUIDES PAGE DARK MODE FIXES (Corrected)
-========================================= */
-    /* --- Global Smooth Transition --- */
-    body.dark-mode {
-      background-color: #000000 !important;
-      color: #ffffff !important;
-    }
-
-    body.dark-mode * {
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-    }
-
-    body.dark-mode {
-      background-color: #121212 !important;
-    }
-
-    body.dark-mode section,
-    body.dark-mode main {
-      background: transparent !important;
-      border: none !important;
-    }
-
-    /* 1. Force Main Backgrounds */
-    body.dark-mode .guide,
-    body.dark-mode .pull-request-guide,
-    body.dark-mode .github-guide-timeline,
-    body.dark-mode .contributing-best-practices,
-    body.dark-mode .common-mistakes {
-      background-color: #121212 !important;
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .guide h3,
-    body.dark-mode .pull-request-guide h3,
-    body.dark-mode .github-guide-timeline h3,
-    body.dark-mode .contributing-best-practices h3,
-    body.dark-mode .common-mistakes h2 {
-      color: #d4af37 !important;
-      /* Consistent Golden Headings */
-    }
-
-    /* 2. Enhanced Card Backgrounds */
-    body.dark-mode .guide-list li,
-    body.dark-mode .pr-steps li,
-    body.dark-mode .timeline-list li,
-    body.dark-mode .practice-item,
-    body.dark-mode .mistakes-list li {
-      border: 1px solid #2a2a2a !important;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* 3. Golden Headlines */
-    body.dark-mode .guide-list h4,
-    body.dark-mode .pr-steps h4,
-    body.dark-mode .timeline-list h4,
-    body.dark-mode .practice-item h4 {
-      color: #b8860b !important;
-    }
-
-    /* 5. Descriptions */
-    body.dark-mode .guide-list p,
-    body.dark-mode .pr-steps p,
-    body.dark-mode .timeline-list p,
-    body.dark-mode .practice-item p {
-      color: #b0b0b0 !important;
-    }
-
-    /* 6. ADVANCED HOVER EFFECTS */
-    body.dark-mode .guide-list li:hover,
-    body.dark-mode .pr-steps li:hover,
-    body.dark-mode .timeline-list li:hover,
-    body.dark-mode .practice-item:hover,
-    body.dark-mode .mistakes-list li:hover {
-      /* Lift effect with elastic curve */
-      transform: translateY(-8px) scale(1.02);
-
-      /* Gold Border Glow */
-      border-color: #d4af37 !important;
-
-      /* Deep Shadow & Outer Glow */
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2) !important;
-
-      /* Slight background highlight */
-
-    }
-
-    /* Subtle Shimmer Overlay on Hover */
-    body.dark-mode .guide-list li::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
-      transition: 0.5s;
-    }
-
-    /* Specific fix for Mistakes List text visibility in Dark Mode */
-    body.dark-mode .mistakes-list p {
-      color: #ffffff !important;
-      /* Forces text to white */
-      opacity: 0.9;
-      /* Optional: slightly softer than pure white for better UX */
-    }
-
-    /* Optional: If you want the numbers to remain dark for contrast against the gold circle */
-    body.dark-mode .mistake-icon {
-      color: #121212 !important;
-      background-color: #d4af37 !important;
-    }
-
-    body.dark-mode .guide-list li:hover::after {
-      left: 100%;
-    }
-
-    /* =========================================
-   EQUAL SIZE PRACTICE ITEMS - 4 ROWS x 2 COLUMNS
-========================================= */
-    .practices-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      /* Fixed 2 columns */
-      grid-template-rows: repeat(4, 1fr);
-      /* Fixed 4 rows */
-      gap: 1.5rem;
-      align-items: stretch;
-      /* Force equal heights */
-    }
-
-    /* Responsive: Stack to 1 column on mobile */
-    @media (max-width: 768px) {
-      .practices-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
-    }
-
-    .practice-item {
-      display: flex;
-      flex-direction: column;
-      min-height: 300px;
-      /* Fixed minimum height for all boxes */
-      height: 100%;
-      /* Fill grid cell */
-      padding: 1.5rem;
-      box-sizing: border-box;
-    }
-
-    .practice-item .icon {
-      flex-shrink: 0;
-      /* Icon doesn't grow/shrink */
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      height: 2.5rem;
-      /* Fixed height for icon */
-      line-height: 1;
-    }
-
-    .practice-item h4 {
-      flex-shrink: 0;
-      /* Heading doesn't shrink */
-      min-height: 4.5em;
-      /* Fixed space for headings */
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-
-    .practice-item p {
-      flex-grow: 1;
-      /* Description fills remaining space */
-      margin: 0;
-      line-height: 1.6;
-      display: flex;
-      align-items: flex-start;
-    }
-  </style>
 </head>
 
 <body>
   <div id="cursor-highlight" aria-hidden="true"></div>
-
   <div id="navbar"></div>
 
   <main>
+    <!-- Beginner Guide Section -->
     <section class="guide">
       <h3>Beginner Open Source Guide</h3>
       <p>Open source is a way to collaborate on projects where the code is publicly available. Contributing helps you
@@ -224,28 +43,30 @@
           <span class="step">1</span>
           <h4>Learn Git & GitHub basics</h4>
           <p>Start by understanding Git version control and creating repositories on GitHub. This is the foundation for
-            contributing to open source projects.</p>
+            contributing to open source projects. Git tracks changes, while GitHub hosts repositories and facilitates collaboration.</p>
         </li>
         <li>
           <span class="step">2</span>
           <h4>Explore small projects</h4>
           <p>Contribute to beginner-friendly projects to build confidence and experience. Look for tags like "good first
-            issue."</p>
+            issue" and "help wanted" to find suitable starting points for your first contributions.</p>
         </li>
         <li>
           <span class="step">3</span>
           <h4>Understand issues & labels</h4>
           <p>Learn how to read issues, use labels, and understand project workflows to know where you can contribute
-            effectively.</p>
+            effectively. Labels help categorize issues by type, difficulty, and priority.</p>
         </li>
         <li>
           <span class="step">4</span>
           <h4>Make your first pull request</h4>
           <p>Submit your first PR to fix a bug or add a small feature. This helps you practice collaboration and the
-            contribution process.</p>
+            contribution process. Remember to follow the project's contribution guidelines.</p>
         </li>
       </ul>
     </section>
+
+    <!-- Pull Request Guide Section -->
     <section class="pull-request-guide">
       <h3>Step-by-Step Guide to Your First Pull Request</h3>
       <button class="track-guide-btn btn-small" data-guide-id="gh-01" style="margin-bottom: 20px;">Mark as
@@ -255,46 +76,48 @@
           <span class="step">1</span>
           <i class="fa-solid fa-code-branch icon"></i>
           <h4>Fork the repository</h4>
-          <p>Create your own copy of the repository to work on without affecting the original project.</p>
+          <p>Create your own copy of the repository to work on without affecting the original project. This gives you a personal workspace to make changes.</p>
         </li>
         <li>
           <span class="step">2</span>
           <i class="fa-solid fa-download icon"></i>
           <h4>Clone it locally on your computer</h4>
-          <p>Download the repository to your computer using Git to start making changes.</p>
+          <p>Download the repository to your computer using Git to start making changes. Use `git clone` followed by the repository URL.</p>
         </li>
         <li>
           <span class="step">3</span>
           <i class="fa-solid fa-plus icon"></i>
           <h4>Create a new branch for your changes</h4>
-          <p>Use a descriptive branch name to organize your work and keep main safe.</p>
+          <p>Use a descriptive branch name like "fix-navbar-bug" to organize your work and keep the main branch safe from incomplete features.</p>
         </li>
         <li>
           <span class="step">4</span>
           <i class="fa-solid fa-pencil icon"></i>
           <h4>Make your changes and commit them</h4>
-          <p>Edit the code, add features or fixes, and commit your changes with clear messages.</p>
+          <p>Edit the code, add features or fixes, and commit your changes with clear, concise messages that explain what you changed and why.</p>
         </li>
         <li>
           <span class="step">5</span>
           <i class="fa-solid fa-upload icon"></i>
           <h4>Push the branch to GitHub and open a pull request</h4>
-          <p>Send your branch to GitHub and create a pull request to propose your changes.</p>
+          <p>Send your branch to GitHub and create a pull request to propose your changes. Provide a detailed description of your modifications.</p>
         </li>
         <li>
           <span class="step">6</span>
           <i class="fa-solid fa-check icon"></i>
           <h4>Review feedback and merge once approved</h4>
-          <p>Respond to comments, make any requested edits, and merge once maintainers approve.</p>
+          <p>Respond to comments, make any requested edits, and merge once maintainers approve. Be patient and open to suggestions for improvement.</p>
         </li>
       </ul>
     </section>
+
+    <!-- GitHub Workflows Section -->
     <section class="github-guide-timeline">
       <h3>Understanding GitHub Issues, Labels, and Workflows</h3>
       <button class="track-guide-btn btn-small" data-guide-id="comm-01" style="margin-bottom: 20px;">Mark as
         Completed</button>
       <p>Mastering GitHub issues and workflows helps you contribute effectively and communicate clearly with project
-        maintainers.</p>
+        maintainers. This section covers the essential skills for navigating open source projects.</p>
 
       <ol class="timeline-list">
         <li>
@@ -302,7 +125,7 @@
           <div class="content">
             <h4>How to find issues to work on</h4>
             <p>Learn to identify beginner-friendly issues or areas of the project that match your skills and interest.
-            </p>
+              Check labels like "good first issue," "beginner," or "help wanted" for starting points.</p>
           </div>
         </li>
         <li>
@@ -310,14 +133,15 @@
           <div class="content">
             <h4>Understanding issue labels</h4>
             <p>Recognize labels like "good first issue" or "help wanted" to know what the project expects and where you
-              can contribute.</p>
+              can contribute. Labels also indicate priority, type (bug/feature), and status.</p>
           </div>
         </li>
         <li>
           <div class="icon"><i class="fa-solid fa-comment-dots"></i></div>
           <div class="content">
             <h4>How to comment effectively and ask for clarification</h4>
-            <p>Communicate clearly in issue threads to ask questions, offer help, or provide updates on your work.</p>
+            <p>Communicate clearly in issue threads to ask questions, offer help, or provide updates on your work.
+              Be respectful and specific in your questions to get better responses.</p>
           </div>
         </li>
         <li>
@@ -325,76 +149,77 @@
           <div class="content">
             <h4>How maintainers review contributions and merge PRs</h4>
             <p>Understand the review process, how maintainers provide feedback, and the workflow for merging your pull
-              requests.</p>
+              requests. Reviews may include change requests, approvals, or discussions.</p>
           </div>
         </li>
       </ol>
     </section>
+
+    <!-- Best Practices Section -->
     <section class="contributing-best-practices">
       <h3>Best Practices for Contributing</h3>
       <button class="track-guide-btn btn-small" data-guide-id="oss-01" style="margin-bottom: 20px;">Mark as
         Completed</button>
       <p>Follow these best practices to make your contributions effective, professional, and easy for maintainers to
-        review.</p>
+        review. Adopting good habits early will make you a valued contributor.</p>
 
       <div class="practices-grid">
         <div class="practice-item">
           <div class="icon">📝</div>
           <h4>Write clear, concise commits</h4>
-          <p>Meaningful commit messages make it easier for others to understand your changes.</p>
+          <p>Meaningful commit messages make it easier for others to understand your changes. Use the imperative mood and keep subject lines under 50 characters.</p>
         </div>
         <div class="practice-item">
           <div class="icon">📚</div>
           <h4>Follow contribution guidelines</h4>
-          <p>Adhering to project guidelines ensures your PR meets expectations and saves time for maintainers.</p>
+          <p>Adhering to project guidelines ensures your PR meets expectations and saves time for maintainers. Most projects have a CONTRIBUTING.md file.</p>
         </div>
         <div class="practice-item">
           <div class="icon">🎨</div>
           <h4>Maintain code style and formatting</h4>
-          <p>Keep your code consistent with the project's style and formatting conventions.</p>
+          <p>Keep your code consistent with the project's style and formatting conventions. Use linters and formatters when available.</p>
         </div>
         <div class="practice-item">
           <div class="icon">🤝</div>
           <h4>Communicate professionally</h4>
-          <p>Be polite, constructive, and respectful when discussing changes or providing feedback.</p>
+          <p>Be polite, constructive, and respectful when discussing changes or providing feedback. Assume good intentions and be patient with questions.</p>
         </div>
         <div class="practice-item">
           <div class="icon">🔍</div>
           <h4>Read and understand existing issues</h4>
           <p>
             Review open and closed issues to avoid duplicate efforts and to understand
-            current discussions or decisions.
+            current discussions or decisions. This shows respect for maintainers' time.
           </p>
         </div>
-
         <div class="practice-item">
           <div class="icon">💬</div>
           <h4>Ask before working on large or breaking changes</h4>
           <p>
             Discuss major changes with maintainers beforehand to ensure alignment with
-            the project's direction.
+            the project's direction. This prevents wasted effort on rejected features.
           </p>
         </div>
-
         <div class="practice-item">
           <div class="icon">🧩</div>
           <h4>Keep pull requests small and focused</h4>
           <p>
             Small, well-scoped pull requests are easier to review, test, and merge.
+            Aim for single-purpose PRs that address one issue or feature.
           </p>
         </div>
-
         <div class="practice-item">
           <div class="icon">📄</div>
           <h4>Update documentation when behavior changes</h4>
           <p>
             Make sure README files or guides reflect any changes introduced by your
-            contribution.
+            contribution. Good documentation helps other users understand your changes.
           </p>
         </div>
-
       </div>
     </section>
+
+    <!-- Common Mistakes Section -->
     <section class="common-mistakes">
       <h2>Common Mistakes Beginners Should Avoid</h2>
       <ul class="mistakes-list">
@@ -432,70 +257,22 @@
         </li>
       </ul>
     </section>
-
   </main>
 
   <div id="footer"></div>
 
-  <script src="../js/components.js"></script>
-
-  <script src="../js/theme.js"></script>
-
-
-  <script src="../js/chatbot.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="/frontend/js/DMtheme.js"></script>
+  <!-- Scroll to Top Button -->
   <button id="scrollTopBtn" title="Back to Top">
     <i class="fas fa-chevron-up"></i>
   </button>
-  <script>
-/* ===== FIX: Mark as Completed Button (Issue #998) ===== */
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".track-guide-btn");
 
-  buttons.forEach((button) => {
-    const guideId = button.dataset.guideId;
-
-    // Load saved state from localStorage
-    const savedState = localStorage.getItem("guide_" + guideId);
-
-    if (savedState === "completed") {
-      setCompleted(button);
-    }
-
-    // Click functionality (THIS FIXES THE BUG)
-    button.addEventListener("click", function () {
-      const isCompleted = button.classList.contains("completed");
-
-      if (!isCompleted) {
-        // Mark as completed
-        localStorage.setItem("guide_" + guideId, "completed");
-        setCompleted(button);
-      } else {
-        // Toggle back to incomplete (optional but good UX)
-        localStorage.removeItem("guide_" + guideId);
-        resetButton(button);
-      }
-    });
-  });
-
-  function setCompleted(btn) {
-    btn.textContent = "✓ Completed";
-    btn.classList.add("completed");
-    btn.style.background = "#2ecc71";
-    btn.style.color = "#ffffff";
-    btn.style.border = "none";
-    btn.style.cursor = "pointer";
-  }
-
-  function resetButton(btn) {
-    btn.textContent = "Mark as Completed";
-    btn.classList.remove("completed");
-    btn.style.background = "";
-    btn.style.color = "";
-  }
-});
-</script>
+  <!-- Scripts -->
+  <script src="../js/components.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/chatbot.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="/frontend/js/DMtheme.js"></script>
+  <script src="../js/guides.js"></script>
   <script src='../js/pwa.js'></script>
 </body>
 
