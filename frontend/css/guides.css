@@ -1003,3 +1003,395 @@ body.dark-mode .guide-list h4,
 body.dark-mode .mistakes-list p {
   color: #f9fafb;
 }
+
+/* =========================================
+   GUIDES PAGE STYLES
+========================================= */
+
+/* Read Time Badge Styles */
+.read-time-badge {
+  display: inline-block;
+  margin-left: 15px;
+  padding: 4px 10px;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--primary-gold, #d4af37);
+  font-weight: 500;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+.read-time-badge i {
+  margin-right: 5px;
+  font-size: 0.75rem;
+}
+
+.read-time-badge:hover {
+  background: rgba(212, 175, 55, 0.2);
+  transform: scale(1.05);
+}
+
+/* Section Headings with Badges */
+section h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Dark Mode Support for Read Time Badge */
+body.dark-mode .read-time-badge {
+  background: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+body.dark-mode .read-time-badge:hover {
+  background: rgba(212, 175, 55, 0.25);
+}
+
+/* =========================================
+   EXISTING STYLES FROM YOUR CODE (Consolidated)
+========================================= */
+
+/* Global Smooth Transition */
+body.dark-mode {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+body.dark-mode {
+  background-color: #121212 !important;
+}
+
+body.dark-mode section,
+body.dark-mode main {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Force Main Backgrounds */
+body.dark-mode .guide,
+body.dark-mode .pull-request-guide,
+body.dark-mode .github-guide-timeline,
+body.dark-mode .contributing-best-practices,
+body.dark-mode .common-mistakes {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+body.dark-mode .guide h3,
+body.dark-mode .pull-request-guide h3,
+body.dark-mode .github-guide-timeline h3,
+body.dark-mode .contributing-best-practices h3,
+body.dark-mode .common-mistakes h2 {
+  color: #d4af37 !important;
+}
+
+/* Enhanced Card Backgrounds */
+body.dark-mode .guide-list li,
+body.dark-mode .pr-steps li,
+body.dark-mode .timeline-list li,
+body.dark-mode .practice-item,
+body.dark-mode .mistakes-list li {
+  background: #1e1e1e !important;
+  border: 1px solid #2a2a2a !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Golden Headlines */
+body.dark-mode .guide-list h4,
+body.dark-mode .pr-steps h4,
+body.dark-mode .timeline-list h4,
+body.dark-mode .practice-item h4 {
+  color: #b8860b !important;
+}
+
+/* Descriptions */
+body.dark-mode .guide-list p,
+body.dark-mode .pr-steps p,
+body.dark-mode .timeline-list p,
+body.dark-mode .practice-item p {
+  color: #b0b0b0 !important;
+}
+
+/* Advanced Hover Effects */
+body.dark-mode .guide-list li:hover,
+body.dark-mode .pr-steps li:hover,
+body.dark-mode .timeline-list li:hover,
+body.dark-mode .practice-item:hover,
+body.dark-mode .mistakes-list li:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #d4af37 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2) !important;
+  z-index: 10;
+}
+
+/* Subtle Shimmer Overlay on Hover */
+body.dark-mode .guide-list li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+body.dark-mode .guide-list li:hover::after {
+  left: 100%;
+}
+
+/* Specific fix for Mistakes List text visibility in Dark Mode */
+body.dark-mode .mistakes-list p {
+  color: #ffffff !important;
+  opacity: 0.9;
+}
+
+body.dark-mode .mistake-icon {
+  color: #121212 !important;
+  background-color: #d4af37 !important;
+}
+
+/* Equal Size Practice Items - 4 Rows x 2 Columns */
+.practices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 20px;
+}
+
+/* Responsive: Stack to 1 column on mobile */
+@media (max-width: 768px) {
+  .practices-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.practice-item {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.practice-item .icon {
+  flex-shrink: 0;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  height: 2.5rem;
+  line-height: 1;
+}
+
+.practice-item h4 {
+  flex-shrink: 0;
+  min-height: 4.5em;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.practice-item p {
+  flex-grow: 1;
+  margin: 0;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Guide Lists Styling */
+.guide-list,
+.pr-steps,
+.timeline-list,
+.mistakes-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.guide-list li,
+.pr-steps li,
+.timeline-list li,
+.mistakes-list li {
+  position: relative;
+  padding: 20px 20px 20px 70px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.step {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background: #d4af37;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.mistake-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background: #d4af37;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Timeline List Specific */
+.timeline-list li {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.timeline-list .icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: #d4af37;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-size: 1.2rem;
+}
+
+.timeline-list .content {
+  flex-grow: 1;
+}
+
+.timeline-list .content h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.timeline-list .content p {
+  margin: 0;
+  color: #666;
+}
+
+/* Completed Button Styles */
+.track-guide-btn.completed {
+  background: #2ecc71 !important;
+  color: #ffffff !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.track-guide-btn.completed:hover {
+  background: #27ae60 !important;
+}
+
+/* Scroll to Top Button */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #d4af37;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#scrollTopBtn:hover {
+  background: #b8860b;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#scrollTopBtn.show {
+  display: flex;
+}
+
+/* Dark Mode Scroll to Top */
+body.dark-mode #scrollTopBtn {
+  background: #d4af37;
+  color: #121212;
+}
+
+body.dark-mode #scrollTopBtn:hover {
+  background: #b8860b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  section h3 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .read-time-badge {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  
+  .guide-list li,
+  .pr-steps li,
+  .mistakes-list li {
+    padding: 60px 20px 20px 20px;
+  }
+  
+  .step,
+  .mistake-icon {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+  }
+  
+  .timeline-list li {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .timeline-list .icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
