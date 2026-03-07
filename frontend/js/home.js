@@ -1,4 +1,74 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Replace existing newsletter form handler with enhanced validation
+  const newsletterForm = document.querySelector('.newsletter-form');
+  
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const emailInput = newsletterForm.querySelector('input[type="email"]');
+      const email = emailInput.value.trim();
+      const messageDiv = document.getElementById('newsletterMessage') || createMessageDiv(newsletterForm);
+      
+      // Enhanced email validation - more comprehensive regex
+      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      
+      // Clear previous messages
+      messageDiv.textContent = '';
+      messageDiv.className = 'newsletter-message';
+      
+      // Validate email format
+      if (!emailRegex.test(email)) {
+        showMessage(messageDiv, 'Please enter a valid email address (e.g., name@example.com)', 'error');
+        emailInput.focus();
+        return;
+      }
+      
+      try {
+        // Store in localStorage for demo
+        const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+        
+        if (!subscribers.includes(email)) {
+          subscribers.push(email);
+          localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+          showMessage(messageDiv, `Thank you for subscribing! We'll send updates to ${email}`, 'success');
+          emailInput.value = '';
+        } else {
+          showMessage(messageDiv, 'This email is already subscribed!', 'info');
+        }
+      } catch (error) {
+        console.error('Newsletter subscription error:', error);
+        showMessage(messageDiv, 'An error occurred. Please try again.', 'error');
+      }
+    });
+  }
+  
+  // Helper function to create message div if it doesn't exist
+  function createMessageDiv(form) {
+    let messageDiv = document.getElementById('newsletterMessage');
+    if (!messageDiv) {
+      messageDiv = document.createElement('div');
+      messageDiv.id = 'newsletterMessage';
+      messageDiv.className = 'newsletter-message';
+      form.appendChild(messageDiv);
+    }
+    return messageDiv;
+  }
+  
+  // Helper function to show messages
+  function showMessage(element, text, type) {
+    element.textContent = text;
+    element.classList.add(type);
+    
+    // Auto-hide success messages after 5 seconds
+    if (type === 'success') {
+      setTimeout(() => {
+        element.textContent = '';
+        element.classList.remove(type);
+      }, 5000);
+    }
+  }
+
   // Fade-in sections/cards
   const prefersReducedMotion =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,9 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Stats counter animation
-  const statItems = document.querySelectorAll('.stat-item');
-  if (statItems.length && 'IntersectionObserver' in window) {
-    // Function to animate counter
+  const statNumbers = document.querySelectorAll('.stat-number');
+  if (statNumbers.length && 'IntersectionObserver' in window) {
     function animateCounter(element, target, suffix, duration = 2000) {
       const startTime = performance.now();
       const startValue = 0;
@@ -34,45 +103,53 @@ document.addEventListener('DOMContentLoaded', () => {
       function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
+        
         // Easing function for smooth animation
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const currentValue = Math.floor(easeOutQuart * target);
-
-        element.textContent = currentValue + suffix;
+        let currentValue = Math.floor(easeOutQuart * target);
+        
+        // Format large numbers
+        if (target >= 1000) {
+          currentValue = Math.floor(currentValue / 1000);
+          element.textContent = currentValue + 'K' + suffix;
+        } else {
+          element.textContent = currentValue + suffix;
+        }
 
         if (progress < 1) {
           requestAnimationFrame(updateCounter);
         } else {
           // Ensure final value is exact
-          element.textContent = target + suffix;
+          if (target >= 1000) {
+            element.textContent = Math.floor(target / 1000) + 'K' + suffix;
+          } else {
+            element.textContent = target + suffix;
+          }
         }
       }
 
       requestAnimationFrame(updateCounter);
     }
 
-    // Create observer for stats
     const statsObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const statItem = entry.target;
-            const numberElement = statItem.querySelector('h2');
-
+            const numberElement = entry.target;
+            
             if (numberElement && !numberElement.hasAttribute('data-animated')) {
-              const target = parseFloat(numberElement.getAttribute('data-target') || '0');
+              const target = parseInt(numberElement.getAttribute('data-target') || '0');
               const suffix = numberElement.getAttribute('data-suffix') || '';
-
+              
               // Mark as animated to prevent re-running
               numberElement.setAttribute('data-animated', 'true');
-
+              
               // Start animation with small delay
               setTimeout(() => {
                 animateCounter(numberElement, target, suffix);
               }, 200);
-
-              observer.unobserve(statItem);
+              
+              observer.unobserve(numberElement);
             }
           }
         });
@@ -83,8 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
 
-    // Observe each stat item
-    statItems.forEach(item => statsObserver.observe(item));
+    statNumbers.forEach(item => statsObserver.observe(item));
   }
 
   // Lightweight parallax: move only the visual block (not the whole hero)
@@ -106,18 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { passive: true }
       );
     }
-  }
-
-  // Newsletter demo
-  const form = document.querySelector('.newsletter form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = form.querySelector('input[type="email"]')?.value?.trim();
-      if (!email) return;
-      alert(`Thanks! You'll get updates at ${email}.`);
-      form.reset();
-    });
   }
 });
 
@@ -190,6 +254,7 @@ if (scrollProgressBar) {
     cursor.style.opacity = '';
   });
 })();
+
 // ===============================
 // Back to Top Button 
 // ===============================
@@ -197,7 +262,6 @@ const scrollTopBtn = document.getElementById('scrollTopBtn');
 const scrollThreshold = 300;
 
 if (scrollTopBtn) {
-
   const toggleScrollButton = () => {
     if (window.scrollY > scrollThreshold) {
       scrollTopBtn.classList.add('show');
@@ -212,130 +276,11 @@ if (scrollTopBtn) {
   scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-
 }
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll(".stat-number");
-
-  const animateCounter = (el) => {
-    const target = +el.dataset.target;
-    const suffix = el.dataset.suffix || "";
-    const duration = 1500;
-    const startTime = performance.now();
-
-    const update = (currentTime) => {
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      const value = Math.floor(progress * target);
-
-      if (target >= 1000) {
-        el.textContent = `${Math.floor(value / 1000)}K${suffix}`;
-      } else {
-        el.textContent = `${value}${suffix}`;
-      }
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        el.textContent =
-          target >= 1000
-            ? `${target / 1000}K${suffix}`
-            : `${target}${suffix}`;
-      }
-    };
-
-    requestAnimationFrame(update);
-  };
-
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.6 }
-  );
-
-  counters.forEach((counter) => observer.observe(counter));
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const journey = document.querySelector(".why-journey");
-
-  if (!journey) return;
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        journey.classList.add("is-visible");
-        observer.unobserve(journey);
-      }
-    },
-    { threshold: 0.4 }
-  );
-
-  observer.observe(journey);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll(".counter");
-  const statsSection = document.querySelector(".stats");
-
-  let hasAnimated = false;
-
-  const animateCounter = (counter) => {
-    const target = +counter.getAttribute("data-target");
-    const suffix = counter.getAttribute("data-suffix") || "";
-    const duration = 1200; // animation duration
-    const startTime = performance.now();
-
-    const updateCounter = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.floor(progress * target);
-
-      // Format large numbers
-      let displayValue = value;
-      if (target >= 1000) {
-        displayValue = Math.floor(value / 1000);
-      }
-
-      counter.innerText = displayValue + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        // Final accurate value
-        if (target >= 1000) {
-          counter.innerText = Math.floor(target / 1000) + suffix;
-        } else {
-          counter.innerText = target + suffix;
-        }
-      }
-    };
-
-    requestAnimationFrame(updateCounter);
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !hasAnimated) {
-        counters.forEach(counter => animateCounter(counter));
-        hasAnimated = true;
-        observer.disconnect();
-      }
-    });
-  }, {
-    threshold: 0.4
-  });
-
-  observer.observe(statsSection);
-});
-
+// ===============================
+// Modal Functions
+// ===============================
 function openModal(program) {
   const modal = document.getElementById("programModal");
   const title = document.getElementById("modalTitle");
@@ -370,29 +315,241 @@ function openModal(program) {
         "Submit quality PRs",
         "Show consistency"
       ]
+    },
+    gssoc: {
+      title: "GirlScript Summer of Code",
+      basic: `
+        📅 <b>Duration:</b> 3 Months <br>
+        🎓 <b>Eligibility:</b> Students & beginners <br>
+        🏆 <b>Perks:</b> Certificate & swag <br>
+        ⏳ <b>Timeline:</b> Feb–May
+      `,
+      skills: [
+        "Basic programming knowledge",
+        "Git & GitHub basics",
+        "Willingness to learn"
+      ],
+      prepare: [
+        "Join the community",
+        "Start with beginner issues",
+        "Follow project guidelines"
+      ],
+      tips: [
+        "Be consistent",
+        "Ask for help when stuck",
+        "Document your learning"
+      ]
+    },
+    hack: {
+      title: "Hacktoberfest",
+      basic: `
+        📅 <b>Duration:</b> 1 Month <br>
+        🌍 <b>Eligibility:</b> Everyone <br>
+        🎁 <b>Perks:</b> Swags & goodies <br>
+        ⏳ <b>Timeline:</b> October
+      `,
+      skills: [
+        "Basic Git knowledge",
+        "Ability to read code",
+        "Problem solving"
+      ],
+      prepare: [
+        "Find repositories you like",
+        "Look for hacktoberfest-labeled issues",
+        "Understand contribution guidelines"
+      ],
+      tips: [
+        "Quality over quantity",
+        "Don't spam PRs",
+        "Engage with maintainers"
+      ]
+    },
+    swoc: {
+      title: "Social Winter of Code",
+      basic: `
+        📅 <b>Duration:</b> 3 Months <br>
+        👩‍💻 <b>Eligibility:</b> Beginners <br>
+        🏅 <b>Perks:</b> Certificate <br>
+        ⏳ <b>Timeline:</b> Dec–Feb
+      `,
+      skills: [
+        "Basic programming",
+        "Enthusiasm to learn",
+        "Git basics"
+      ],
+      prepare: [
+        "Explore the platform",
+        "Join Discord/Slack",
+        "Find a mentor"
+      ],
+      tips: [
+        "Start early",
+        "Be active in community",
+        "Complete tasks consistently"
+      ]
+    },
+    linux: {
+      title: "Linux Foundation Mentorship",
+      basic: `
+        📅 <b>Duration:</b> Varies <br>
+        👨‍💻 <b>Eligibility:</b> Developers <br>
+        💰 <b>Stipend:</b> Paid mentorship <br>
+        🌐 <b>Timeline:</b> Yearly
+      `,
+      skills: [
+        "Strong programming skills",
+        "Linux/Unix familiarity",
+        "Open source experience"
+      ],
+      prepare: [
+        "Contribute to LF projects",
+        "Learn about the ecosystem",
+        "Connect with mentors"
+      ],
+      tips: [
+        "Show long-term commitment",
+        "Build a portfolio",
+        "Network in the community"
+      ]
+    },
+    outreachy: {
+      title: "Outreachy",
+      basic: `
+        📅 <b>Duration:</b> 3 Months <br>
+        🌍 <b>Eligibility:</b> Underrepresented groups <br>
+        💰 <b>Stipend:</b> Paid internship <br>
+        ⏳ <b>Timeline:</b> Twice a year
+      `,
+      skills: [
+        "Project-specific skills",
+        "Communication",
+        "Self-motivation"
+      ],
+      prepare: [
+        "Make initial contributions",
+        "Complete the application",
+        "Engage with community"
+      ],
+      tips: [
+        "Apply early",
+        "Be thorough in application",
+        "Show genuine interest"
+      ]
+    },
+    mlh: {
+      title: "MLH Fellowship",
+      basic: `
+        📅 <b>Duration:</b> 12 Weeks <br>
+        🎓 <b>Eligibility:</b> Students <br>
+        💰 <b>Stipend:</b> Paid <br>
+        ⏳ <b>Timeline:</b> Spring/Fall
+      `,
+      skills: [
+        "Team collaboration",
+        "Project-based learning",
+        "Open source interest"
+      ],
+      prepare: [
+        "Build personal projects",
+        "Join MLH events",
+        "Practice coding"
+      ],
+      tips: [
+        "Show passion for tech",
+        "Be a team player",
+        "Learn continuously"
+      ]
+    },
+    kde: {
+      title: "Season of KDE",
+      basic: `
+        📅 <b>Duration:</b> 3 Months <br>
+        🌍 <b>Eligibility:</b> Everyone <br>
+        🏆 <b>Perks:</b> Mentorship <br>
+        ⏳ <b>Timeline:</b> Jan–Apr
+      `,
+      skills: [
+        "Qt/C++ basics",
+        "Open source interest",
+        "Git skills"
+      ],
+      prepare: [
+        "Try KDE applications",
+        "Join the community",
+        "Look at beginner bugs"
+      ],
+      tips: [
+        "Start with documentation",
+        "Ask questions",
+        "Be patient"
+      ]
+    },
+    hyperledger: {
+      title: "Hyperledger Mentorship",
+      basic: `
+        📅 <b>Duration:</b> 3 Months <br>
+        🔗 <b>Focus:</b> Blockchain <br>
+        💰 <b>Stipend:</b> Paid <br>
+        ⏳ <b>Timeline:</b> Summer
+      `,
+      skills: [
+        "Blockchain basics",
+        "Programming (Go/JavaScript)",
+        "Distributed systems interest"
+      ],
+      prepare: [
+        "Learn Hyperledger projects",
+        "Join the community calls",
+        "Explore documentation"
+      ],
+      tips: [
+        "Focus on one project",
+        "Show blockchain interest",
+        "Contribute early"
+      ]
     }
   };
 
   const programData = data[program];
+  
+  if (programData) {
+    title.innerHTML = programData.title;
+    basicInfo.innerHTML = programData.basic;
 
-  title.innerHTML = programData.title;
-  basicInfo.innerHTML = programData.basic;
+    skills.innerHTML = "<ul>" + programData.skills.map(item => `<li>${item}</li>`).join("") + "</ul>";
+    prepare.innerHTML = "<ul>" + programData.prepare.map(item => `<li>${item}</li>`).join("") + "</ul>";
+    tips.innerHTML = "<ul>" + programData.tips.map(item => `<li>${item}</li>`).join("") + "</ul>";
 
-  skills.innerHTML = "<ul>" + programData.skills.map(item => `<li>${item}</li>`).join("") + "</ul>";
-  prepare.innerHTML = "<ul>" + programData.prepare.map(item => `<li>${item}</li>`).join("") + "</ul>";
-  tips.innerHTML = "<ul>" + programData.tips.map(item => `<li>${item}</li>`).join("") + "</ul>";
-
-  modal.style.display = "flex";
+    modal.style.display = "flex";
+  }
 }
 
 function closeModal() {
   document.getElementById("programModal").style.display = "none";
 }
 
-/* Accordion Toggle */
+// Accordion Toggle
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("accordion-header")) {
     const body = e.target.nextElementSibling;
+    
+    // Close other accordions
+    const allBodies = document.querySelectorAll('.accordion-body');
+    allBodies.forEach(b => {
+      if (b !== body) {
+        b.style.display = 'none';
+      }
+    });
+    
+    // Toggle current
     body.style.display = body.style.display === "block" ? "none" : "block";
   }
 });
+
+// Close modal when clicking outside
+window.onclick = function(e) {
+  const modal = document.getElementById("programModal");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
