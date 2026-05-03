@@ -6,6 +6,18 @@
  * Includes AI Assist Controls for fine-grained PR generation.
  */
 
+// FIX: Declare aiAssistState on window to avoid re-declaration SyntaxError
+// if this script is loaded more than once across pages
+if (typeof window.aiAssistState === 'undefined') {
+    window.aiAssistState = {
+        creativity: 50,
+        strictness: 'best-practice',
+        autoSummarize: true,
+        autoDetectType: true,
+        rewriteInput: false,
+    };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const existingForm = document.getElementById('prGeneratorForm');
 
@@ -111,17 +123,6 @@ function getStructureSettings() {
     };
 }
 
-// ==========================================
-// AI Assist State
-// ==========================================
-const aiAssistState = {
-    creativity: 50,
-    strictness: 'best-practice',
-    autoSummarize: true,
-    autoDetectType: true,
-    rewriteInput: false,
-};
-
 function getCreativityLabel(value) {
     if (value <= 20) return 'Low';
     if (value <= 40) return 'Medium-Low';
@@ -151,7 +152,7 @@ function setupAIAssistControls() {
     if (slider && valueLabel) {
         const updateSlider = () => {
             const val = parseInt(slider.value);
-            aiAssistState.creativity = val;
+            window.aiAssistState.creativity = val;
             valueLabel.textContent = getCreativityLabel(val);
 
             // Update slider track gradient
@@ -170,7 +171,7 @@ function setupAIAssistControls() {
             btn.addEventListener('click', () => {
                 btns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                aiAssistState.strictness = btn.dataset.value;
+                window.aiAssistState.strictness = btn.dataset.value;
             });
         });
     }
@@ -180,9 +181,9 @@ function setupAIAssistControls() {
     const autoDetect = document.getElementById('autoDetectTypeToggle');
     const rewriteInput = document.getElementById('rewriteInputToggle');
 
-    if (autoSummarize) autoSummarize.addEventListener('change', () => { aiAssistState.autoSummarize = autoSummarize.checked; });
-    if (autoDetect) autoDetect.addEventListener('change', () => { aiAssistState.autoDetectType = autoDetect.checked; });
-    if (rewriteInput) rewriteInput.addEventListener('change', () => { aiAssistState.rewriteInput = rewriteInput.checked; });
+    if (autoSummarize) autoSummarize.addEventListener('change', () => { window.aiAssistState.autoSummarize = autoSummarize.checked; });
+    if (autoDetect) autoDetect.addEventListener('change', () => { window.aiAssistState.autoDetectType = autoDetect.checked; });
+    if (rewriteInput) rewriteInput.addEventListener('change', () => { window.aiAssistState.rewriteInput = rewriteInput.checked; });
 
     // Per-field AI assist buttons
     const assistBtns = document.querySelectorAll('.ai-field-assist-btn');
@@ -219,8 +220,8 @@ async function handleFieldImprove(btn) {
             body: JSON.stringify({
                 text,
                 fieldName: targetId,
-                creativity: aiAssistState.creativity,
-                strictness: aiAssistState.strictness,
+                creativity: window.aiAssistState.creativity,
+                strictness: window.aiAssistState.strictness,
             }),
         });
 
@@ -353,11 +354,11 @@ async function handlePRGeneration(submitBtn, previewSection, textarea) {
                 structureSettings,
                 // AI Assist parameters
                 aiAssist: {
-                    creativity: aiAssistState.creativity,
-                    strictness: aiAssistState.strictness,
-                    autoSummarize: aiAssistState.autoSummarize,
-                    autoDetectType: aiAssistState.autoDetectType,
-                    rewriteInput: aiAssistState.rewriteInput,
+                    creativity: window.aiAssistState.creativity,
+                    strictness: window.aiAssistState.strictness,
+                    autoSummarize: window.aiAssistState.autoSummarize,
+                    autoDetectType: window.aiAssistState.autoDetectType,
+                    rewriteInput: window.aiAssistState.rewriteInput,
                 },
             }),
         });
@@ -661,15 +662,15 @@ async function analyzePRStatus() {
         if (data.merged) {
             statusBadge = `<span class="pr-badge merged">Merged</span>`;
             statusText = "This Pull Request has been successfully merged.";
-        } 
+        }
         else if (data.state === "open" && data.draft) {
             statusBadge = `<span class="pr-badge draft">Draft</span>`;
             statusText = "This PR is currently in draft state.";
-        } 
+        }
         else if (data.state === "open") {
             statusBadge = `<span class="pr-badge open">Open</span>`;
             statusText = "This PR is open and under review.";
-        } 
+        }
         else {
             statusBadge = `<span class="pr-badge closed">Closed</span>`;
             statusText = "This PR is closed without merge.";

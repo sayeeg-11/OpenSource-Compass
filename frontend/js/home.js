@@ -123,10 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===============================
 // Scroll Progress Indicator (Top)
+// FIX: Renamed variable from 'scrollProgressBar' to 'homeScrollProgressBar'
+// to avoid conflict with the same variable name declared in theme.js
 // ===============================
-const scrollProgressBar = document.getElementById('scrollProgress');
+const homeScrollProgressBar = document.getElementById('scrollProgress');
 
-if (scrollProgressBar) {
+if (homeScrollProgressBar) {
   window.addEventListener(
     'scroll',
     () => {
@@ -136,12 +138,12 @@ if (scrollProgressBar) {
         document.documentElement.clientHeight;
 
       if (docHeight <= 0) {
-        scrollProgressBar.style.width = '0%';
+        homeScrollProgressBar.style.width = '0%';
         return;
       }
 
       const scrollPercent = (scrollTop / docHeight) * 100;
-      scrollProgressBar.style.width = `${scrollPercent}%`;
+      homeScrollProgressBar.style.width = `${scrollPercent}%`;
     },
     { passive: true }
   );
@@ -190,6 +192,7 @@ if (scrollProgressBar) {
     cursor.style.opacity = '';
   });
 })();
+
 // ===============================
 // Back to Top Button 
 // ===============================
@@ -285,6 +288,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll(".counter");
   const statsSection = document.querySelector(".stats");
 
+  // FIX: Guard against null statsSection
+  if (!statsSection) return;
+
   let hasAnimated = false;
 
   const animateCounter = (counter) => {
@@ -334,65 +340,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   observer.observe(statsSection);
-});
-
-function openModal(program) {
-  const modal = document.getElementById("programModal");
-  const title = document.getElementById("modalTitle");
-  const basicInfo = document.getElementById("modalBasicInfo");
-  const skills = document.getElementById("modalSkills");
-  const prepare = document.getElementById("modalPrepare");
-  const tips = document.getElementById("modalTips");
-
-  const data = {
-    gsoc: {
-      title: "Google Summer of Code",
-      basic: `
-        📅 <b>Duration:</b> 12 Weeks <br>
-        🌍 <b>Eligibility:</b> Students worldwide <br>
-        💰 <b>Stipend:</b> Paid <br>
-        ⏳ <b>Timeline:</b> May–Aug
-      `,
-      skills: [
-        "Strong problem solving",
-        "Git & GitHub workflow",
-        "Open source contribution experience"
-      ],
-      prepare: [
-        "Start contributing early",
-        "Fix good first issues",
-        "Interact with mentors",
-        "Understand project roadmap"
-      ],
-      tips: [
-        "Write strong proposal",
-        "Be active in discussions",
-        "Submit quality PRs",
-        "Show consistency"
-      ]
-    }
-  };
-
-  const programData = data[program];
-
-  title.innerHTML = programData.title;
-  basicInfo.innerHTML = programData.basic;
-
-  skills.innerHTML = "<ul>" + programData.skills.map(item => `<li>${item}</li>`).join("") + "</ul>";
-  prepare.innerHTML = "<ul>" + programData.prepare.map(item => `<li>${item}</li>`).join("") + "</ul>";
-  tips.innerHTML = "<ul>" + programData.tips.map(item => `<li>${item}</li>`).join("") + "</ul>";
-
-  modal.style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById("programModal").style.display = "none";
-}
-
-/* Accordion Toggle */
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("accordion-header")) {
-    const body = e.target.nextElementSibling;
-    body.style.display = body.style.display === "block" ? "none" : "block";
-  }
 });

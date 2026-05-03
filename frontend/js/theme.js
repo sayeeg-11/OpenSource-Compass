@@ -77,17 +77,19 @@ function updateThemeIcon(isDark) {
 
 /* ===============================
    CURSOR HIGHLIGHT
+   FIX: Renamed variable from 'cursor' to 'themeCursor' to avoid
+   conflict with the 'cursor' variable declared in home.js
 ================================ */
 
-const cursor = document.getElementById('cursor-highlight');
+const themeCursor = document.getElementById('cursor-highlight');
 
-if (cursor) {
+if (themeCursor) {
     document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-        cursor.style.opacity = '1';
+        themeCursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        themeCursor.style.opacity = '1';
     });
 
     document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
+        themeCursor.style.opacity = '0';
     });
 }
