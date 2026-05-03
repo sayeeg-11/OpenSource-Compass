@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>You're Offline - OpenSource Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;500&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" href="frontend/library/assets/favicon.png" type="image/png" />
+  <style>
+    :root {
+      --primary-gold: #d4af37;
+      --secondary-gold: #b8860b;
+      --deep-navy: #1b263b;
+      --warm-cream: #fdf4e3;
+      --light-parchment: #fff8e7;
+      --charcoal-dark: #2c2c2c;
+      --text-secondary: #5a5a5a;
+      --shadow-main: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Crimson Text", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      background: linear-gradient(135deg, var(--light-parchment) 0%, var(--warm-cream) 100%);
+      color: var(--charcoal-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .offline-container {
+      max-width: 560px;
+      background: white;
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-main);
+      border-top: 4px solid var(--primary-gold);
+    }
+
+    .offline-icon {
+      font-size: 4rem;
+      color: var(--primary-gold);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      color: var(--deep-navy);
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .retry-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      color: white;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .retry-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 1rem;
+      color: var(--secondary-gold);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .home-link:hover { text-decoration: underline; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      color: var(--deep-navy);
+      font-weight: 600;
+    }
+
+    .logo img { height: 28px; }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="logo">
+      <img src="frontend/library/assets/logo.png" alt="OpenSource Compass Logo" onerror="this.style.display='none'" />
+      OpenSource Compass
+    </div>
+
+    <div class="offline-icon">
+      <i class="fas fa-wifi"></i>
+    </div>
+
+    <h1>You're Offline</h1>
+    <p>It looks like you've lost your internet connection. Check your network and try again to continue your open source journey.</p>
+
+    <button class="retry-btn" onclick="window.location.reload()">
+      <i class="fas fa-redo" style="margin-right: 0.4rem;"></i> Try Again
+    </button>
+
+    <a href="/" class="home-link">← Back to Home</a>
+  </div>
+</body>
+</html>

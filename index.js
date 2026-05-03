@@ -5,7 +5,7 @@ const revealOnScroll = () => {
   revealElements.forEach(element => {
     const elementTop = element.getBoundingClientRect().top;
     const elementVisible = 150;
-    
+
     if (elementTop < window.innerHeight - elementVisible) {
       element.classList.add('active');
     }
@@ -42,10 +42,14 @@ const animateCounter = (element) => {
 };
 
 // Trigger counters when stats section is visible
-const statsSection = document.querySelector('.stats-section');
+// FIX: Use '.stats' instead of '.stats-section' to match the actual HTML class
+const statsSection = document.querySelector('.stats');
 let counterTriggered = false;
 
 const checkStatsVisible = () => {
+  // FIX: Guard against null statsSection before calling getBoundingClientRect
+  if (!statsSection) return;
+
   if (!counterTriggered) {
     const sectionTop = statsSection.getBoundingClientRect().top;
     if (sectionTop < window.innerHeight - 200) {
@@ -61,10 +65,13 @@ window.addEventListener('scroll', checkStatsVisible);
 checkStatsVisible();
 
 // Newsletter form
+// FIX: Guard against null newsletterForm before adding event listener
 const newsletterForm = document.querySelector('.newsletter-form');
-newsletterForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = e.target.querySelector('input').value;
-  alert(`Thank you for subscribing! We'll send updates to ${email}`);
-  e.target.reset();
-});
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = e.target.querySelector('input').value;
+    alert(`Thank you for subscribing! We'll send updates to ${email}`);
+    e.target.reset();
+  });
+}

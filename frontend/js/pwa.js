@@ -48,11 +48,15 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-let deferredPrompt;
+// FIX: Use window.deferredPrompt to avoid re-declaration errors
+// if this script is ever executed more than once
+if (typeof window.deferredPrompt === 'undefined') {
+    window.deferredPrompt = null;
+}
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
-    deferredPrompt = e;
+    window.deferredPrompt = e;
 
     const showButton = () => {
         const btn = document.getElementById('pwa-install-btn');
@@ -60,14 +64,14 @@ window.addEventListener('beforeinstallprompt', (e) => {
             btn.style.display = 'inline-flex';
             btn.addEventListener('click', () => {
                 btn.style.display = 'none';
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
+                window.deferredPrompt.prompt();
+                window.deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('User accepted the install prompt');
                     } else {
                         console.log('User dismissed the install prompt');
                     }
-                    deferredPrompt = null;
+                    window.deferredPrompt = null;
                 });
             });
         } else {
@@ -78,6 +82,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 window.addEventListener('appinstalled', () => {
-    deferredPrompt = null;
+    window.deferredPrompt = null;
     console.log('PWA was installed');
 });

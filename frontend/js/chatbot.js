@@ -129,7 +129,10 @@ restoreChatHistory();
     
     // Load data
     // Note: This path assumes index.html is in /pages/ and data is in /data/
-    fetch('../data/chatbot_data.json')
+    // Resolve path relative to root regardless of current page depth
+    const isPagesDir = window.location.pathname.includes('/pages/');
+    const chatbotDataPath = isPagesDir ? '../../frontend/data/chatbot_data.json' : './frontend/data/chatbot_data.json';
+    fetch(chatbotDataPath)
         .then(response => response.json())
         .then(data => {
             intents = data.intents;
